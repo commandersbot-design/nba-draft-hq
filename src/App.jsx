@@ -404,6 +404,7 @@ const Home = ({ onNavigate, onSelectProspect }) => {
               <button onClick={() => onNavigate('big-board')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Big Board</button>
               <button onClick={() => onNavigate('mock-draft')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Mock Draft</button>
               <button onClick={() => onNavigate('team-needs')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Team Needs</button>
+              <button onClick={() => onNavigate('custom-scoring')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Custom Scoring</button>
             </nav>
             <div className="flex items-center gap-3">
               <button className="bg-neutral-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-neutral-800">Sign In</button>
@@ -463,9 +464,9 @@ const Home = ({ onNavigate, onSelectProspect }) => {
               <div className="text-3xl mb-3">🏀</div>
               <div className="font-bold text-neutral-900 group-hover:text-red-600">Team Needs</div>
             </button>
-            <button className="bg-white rounded-xl p-6 border border-neutral-200 hover:border-red-300 hover:shadow-lg transition-all group text-left">
-              <div className="text-3xl mb-3">📚</div>
-              <div className="font-bold text-neutral-900 group-hover:text-red-600">Trait Library</div>
+            <button onClick={() => onNavigate('custom-scoring')} className="bg-white rounded-xl p-6 border border-neutral-200 hover:border-red-300 hover:shadow-lg transition-all group text-left">
+              <div className="text-3xl mb-3">⚖️</div>
+              <div className="font-bold text-neutral-900 group-hover:text-red-600">Custom Scoring</div>
             </button>
           </div>
         </div>
@@ -1027,6 +1028,245 @@ const App = () => {
     window.scrollTo(0, 0);
   };
 
+// Custom Scoring System Component
+const CustomScoring = ({ onBack, onSelectProspect }) => {
+  const CUSTOM_WEIGHTS_KEY = 'nba-draft-hq-custom-weights';
+  const CUSTOM_RANKINGS_KEY = 'nba-draft-hq-custom-rankings';
+
+  const defaultWeights = {
+    advantage_creation: 20,
+    decision_making: 16,
+    shooting_gravity: 14,
+    scalability: 14,
+    defensive_versatility: 12,
+    processing_speed: 10,
+    passing_creation: 8,
+    off_ball_value: 6
+  };
+
+  const [weights, setWeights] = useState(() => {
+    const saved = localStorage.getItem(CUSTOM_WEIGHTS_KEY);
+    return saved ? JSON.parse(saved) : defaultWeights;
+  });
+  const [showPresetModal, setShowPresetModal] = useState(false);
+
+  const traitLabels = {
+    advantage_creation: 'Advantage Creation',
+    decision_making: 'Decision Making',
+    shooting_gravity: 'Shooting Gravity',
+    scalability: 'Scalability',
+    defensive_versatility: 'Defensive Versatility',
+    processing_speed: 'Processing Speed',
+    passing_creation: 'Passing Creation',
+    off_ball_value: 'Off-Ball Value'
+  };
+
+  const presets = {
+    'Default': defaultWeights,
+    'Star Hunter': { advantage_creation: 25, decision_making: 18, shooting_gravity: 16, scalability: 12, defensive_versatility: 10, processing_speed: 8, passing_creation: 6, off_ball_value: 5 },
+    'Safe Pick': { advantage_creation: 15, decision_making: 20, shooting_gravity: 12, scalability: 18, defensive_versatility: 15, processing_speed: 12, passing_creation: 4, off_ball_value: 4 },
+    '3&D Focus': { advantage_creation: 10, decision_making: 12, shooting_gravity: 25, scalability: 20, defensive_versatility: 20, processing_speed: 8, passing_creation: 3, off_ball_value: 2 },
+    'Playmaker': { advantage_creation: 18, decision_making: 22, shooting_gravity: 10, scalability: 12, defensive_versatility: 8, processing_speed: 15, passing_creation: 12, off_ball_value: 3 }
+  };
+
+  const calculateCustomScore = (prospect) => {
+    const details = prospectDetails[prospect.id] || getDefaultDetails(prospect);
+    if (!details.coreTraits) return 0;
+
+    let weightedSum = 0;
+    let totalWeight = 0;
+
+    details.coreTraits.forEach(trait => {
+      const weight = weights[trait.key] || 0;
+      weightedSum += trait.grade * weight;
+      totalWeight += weight;
+    });
+
+    const weightedScore = totalWeight > 0 ? (weightedSum / totalWeight) * 10 : 0;
+    const riskPenalty = details.riskPenalty || 0;
+    return weightedScore - riskPenalty;
+  };
+
+  const customRankings = [...topProspects]
+    .map(p => ({ ...p, customScore: calculateCustomScore(p) }))
+    .sort((a, b) => b.customScore - a.customScore)
+    .map((p, index) => ({ ...p, customRank: index + 1 }));
+
+  const handleWeightChange = (trait, value) => {
+    const newWeights = { ...weights, [trait]: parseInt(value) || 0 };
+    setWeights(newWeights);
+    localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(newWeights));
+  };
+
+  const handleReset = () => {
+    setWeights(defaultWeights);
+    localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(defaultWeights));
+  };
+
+  const applyPreset = (presetName) => {
+    setWeights(presets[presetName]);
+    localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(presets[presetName]));
+    setShowPresetModal(false);
+  };
+
+  const totalWeight = Object.values(weights).reduce((a, b) => a + b, 0);
+
+  return (
+    <div className="min-h-screen bg-[#f5f5f0]">
+      <header className="bg-white border-b border-neutral-200 sticky top-0 z-50">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="flex items-center justify-between h-16">
+            <button onClick={onBack} className="flex items-center gap-2 text-neutral-600 hover:text-neutral-900 font-semibold">← Back</button>
+            <div className="flex items-center gap-2">
+              <span className="text-xl font-black">NBA</span>
+              <span className="text-xl font-black text-red-600">DRAFT</span>
+              <span className="text-xl font-black">HQ</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </header>
+
+      <div className="max-w-[1400px] mx-auto px-6 py-8">
+        <div className="mb-8">
+          <h1 className="text-4xl font-black text-neutral-900 mb-2">Custom Scoring System</h1>
+          <p className="text-neutral-600">Create your own big board by adjusting trait weights</p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Column - Weight Controls */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200 sticky top-24">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-lg font-bold text-neutral-900">Trait Weights</h2>
+                <span className={`text-sm font-bold ${totalWeight === 100 ? 'text-green-600' : 'text-amber-600'}`}>{totalWeight}%</span>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                {Object.entries(traitLabels).map(([key, label]) => (
+                  <div key={key}>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="text-sm font-semibold text-neutral-700">{label}</label>
+                      <span className="text-sm font-bold text-neutral-900">{weights[key]}%</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="40"
+                      value={weights[key]}
+                      onChange={(e) => handleWeightChange(key, e.target.value)}
+                      className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-red-600"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-3">
+                <button onClick={() => setShowPresetModal(true)} className="flex-1 bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors">
+                  Presets
+                </button>
+                <button onClick={handleReset} className="flex-1 bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors">
+                  Reset
+                </button>
+              </div>
+
+              {totalWeight !== 100 && (
+                <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <p className="text-sm text-amber-800">
+                    Weights should total 100% for accurate scoring. Current: {totalWeight}%
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Right Column - Rankings */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
+              <div className="p-6 border-b border-neutral-200">
+                <h2 className="text-lg font-bold text-neutral-900">Your Custom Big Board</h2>
+                <p className="text-sm text-neutral-500">Rankings based on your trait weights</p>
+              </div>
+
+              <div className="divide-y divide-neutral-200">
+                {customRankings.map((prospect) => {
+                  const schoolColor = schoolColors[prospect.school] || '#666';
+                  const rankDiff = prospect.rank - prospect.customRank;
+                  
+                  return (
+                    <div 
+                      key={prospect.id} 
+                      onClick={() => onSelectProspect(prospect.id)}
+                      className="p-4 hover:bg-neutral-50 cursor-pointer transition-colors flex items-center gap-4"
+                    >
+                      <div className="w-12 h-12 bg-neutral-100 rounded-xl flex items-center justify-center">
+                        <span className="text-xl font-black text-neutral-700">{prospect.customRank}</span>
+                      </div>
+                      
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style={{ backgroundColor: schoolColor }}>
+                        {prospect.school.charAt(0)}
+                      </div>
+                      
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-neutral-900">{prospect.name}</span>
+                          {rankDiff > 0 && <span className="text-xs text-green-600 font-bold">↑{rankDiff}</span>}
+                          {rankDiff < 0 && <span className="text-xs text-red-600 font-bold">↓{Math.abs(rankDiff)}</span>}
+                          {rankDiff === 0 && <span className="text-xs text-neutral-400">−</span>}
+                        </div>
+                        <div className="text-sm text-neutral-500">{prospect.position} • {prospect.school}</div>
+                      </div>
+                      
+                      <div className="text-right">
+                        <div className="text-2xl font-black text-red-600">{prospect.customScore.toFixed(1)}</div>
+                        <div className="text-xs text-neutral-400">Default: #{prospect.rank}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Preset Modal */}
+      {showPresetModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full mx-4">
+            <h3 className="text-lg font-bold mb-4">Choose a Preset</h3>
+            <div className="space-y-3">
+              {Object.keys(presets).map(preset => (
+                <button
+                  key={preset}
+                  onClick={() => applyPreset(preset)}
+                  className="w-full p-4 bg-neutral-50 hover:bg-neutral-100 rounded-xl text-left transition-colors"
+                >
+                  <div className="font-bold text-neutral-900">{preset}</div>
+                  <div className="text-sm text-neutral-500">
+                    {preset === 'Default' && 'Balanced evaluation across all traits'}
+                    {preset === 'Star Hunter' && 'Prioritizes upside and star potential'}
+                    {preset === 'Safe Pick' && 'Values NBA readiness and floor'}
+                    {preset === '3&D Focus' && 'Emphasizes shooting and defense'}
+                    {preset === 'Playmaker' && 'Prioritizes creation and passing'}
+                  </div>
+                </button>
+              ))}
+            </div>
+            <button 
+              onClick={() => setShowPresetModal(false)}
+              className="w-full mt-4 py-2 bg-neutral-200 text-neutral-700 rounded-lg font-semibold hover:bg-neutral-300"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ... rest of the switch statement
   switch(view) {
     case 'mock-draft':
       return <MockDraft onBack={handleBackHome} />;
@@ -1036,6 +1276,8 @@ const App = () => {
       return <BigBoard onBack={handleBackHome} onSelectProspect={handleSelectProspect} />;
     case 'profile':
       return <ProspectProfile prospectId={selectedProspect} onBack={handleBackHome} />;
+    case 'custom-scoring':
+      return <CustomScoring onBack={handleBackHome} onSelectProspect={handleSelectProspect} />;
     default:
       return <Home onNavigate={handleNavigate} onSelectProspect={handleSelectProspect} />;
   }
