@@ -1030,39 +1030,41 @@ const App = () => {
 
 // Custom Scoring System Component
 const CustomScoring = ({ onBack, onSelectProspect }) => {
-  const CUSTOM_WEIGHTS_KEY = 'nba-draft-hq-custom-weights';
-  const CUSTOM_RANKINGS_KEY = 'nba-draft-hq-custom-rankings';
+  const CUSTOM_WEIGHTS_KEY = 'nba-draft-hq-custom-weights-v2';
+  const CUSTOM_TRAITS_KEY = 'nba-draft-hq-custom-traits';
 
-  const defaultWeights = {
-    advantage_creation: 20,
-    decision_making: 16,
-    shooting_gravity: 14,
-    scalability: 14,
-    defensive_versatility: 12,
-    processing_speed: 10,
-    passing_creation: 8,
-    off_ball_value: 6
+  const defaultTraits = {
+    advantage_creation: { label: 'Advantage Creation', description: 'Ability to create scoring opportunities off the dribble and break down defenses', defaultWeight: 20 },
+    decision_making: { label: 'Decision Making', description: 'Quality of choices with the ball, shot selection, and basketball IQ', defaultWeight: 16 },
+    shooting_gravity: { label: 'Shooting Gravity', description: 'Ability to stretch the floor and draw defensive attention with shooting threat', defaultWeight: 14 },
+    scalability: { label: 'Scalability', description: 'How well skills translate to NBA level and fit within different team contexts', defaultWeight: 14 },
+    defensive_versatility: { label: 'Defensive Versatility', description: 'Ability to guard multiple positions and switch effectively on defense', defaultWeight: 12 },
+    processing_speed: { label: 'Processing Speed', description: 'How quickly a player reads the game and makes decisions under pressure', defaultWeight: 10 },
+    passing_creation: { label: 'Passing Creation', description: 'Ability to create for others through playmaking and passing vision', defaultWeight: 8 },
+    off_ball_value: { label: 'Off-Ball Value', description: 'Contributions without the ball: cutting, screening, relocation, team defense', defaultWeight: 6 }
   };
+
+  const [activeTraits, setActiveTraits] = useState(() => {
+    const saved = localStorage.getItem(CUSTOM_TRAITS_KEY);
+    return saved ? JSON.parse(saved) : Object.keys(defaultTraits);
+  });
 
   const [weights, setWeights] = useState(() => {
     const saved = localStorage.getItem(CUSTOM_WEIGHTS_KEY);
-    return saved ? JSON.parse(saved) : defaultWeights;
+    if (saved) return JSON.parse(saved);
+    const initial = {};
+    Object.entries(defaultTraits).forEach(([key, trait]) => {
+      initial[key] = trait.defaultWeight;
+    });
+    return initial;
   });
-  const [showPresetModal, setShowPresetModal] = useState(false);
 
-  const traitLabels = {
-    advantage_creation: 'Advantage Creation',
-    decision_making: 'Decision Making',
-    shooting_gravity: 'Shooting Gravity',
-    scalability: 'Scalability',
-    defensive_versatility: 'Defensive Versatility',
-    processing_speed: 'Processing Speed',
-    passing_creation: 'Passing Creation',
-    off_ball_value: 'Off-Ball Value'
-  };
+  const [showPresetModal, setShowPresetModal] = useState(false);
+  const [showTraitManager, setShowTraitManager] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   const presets = {
-    'Default': defaultWeights,
+    'Default': { advantage_creation: 20, decision_making: 16, shooting_gravity: 14, scalability: 14, defensive_versatility: 12, processing_speed: 10, passing_creation: 8, off_ball_value: 6 },
     'Star Hunter': { advantage_creation: 25, decision_making: 18, shooting_gravity: 16, scalability: 12, defensive_versatility: 10, processing_speed: 8, passing_creation: 6, off_ball_value: 5 },
     'Safe Pick': { advantage_creation: 15, decision_making: 20, shooting_gravity: 12, scalability: 18, defensive_versatility: 15, processing_speed: 12, passing_creation: 4, off_ball_value: 4 },
     '3&D Focus': { advantage_creation: 10, decision_making: 12, shooting_gravity: 25, scalability: 20, defensive_versatility: 20, processing_speed: 8, passing_creation: 3, off_ball_value: 2 },
@@ -1077,9 +1079,11 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
     let totalWeight = 0;
 
     details.coreTraits.forEach(trait => {
-      const weight = weights[trait.key] || 0;
-      weightedSum += trait.grade * weight;
-      totalWeight += weight;
+      if (activeTraits.includes(trait.key)) {
+        const weight = weights[trait.key] || 0;
+        weightedSum += trait.grade * weight;
+        totalWeight += weight;
+      }
     });
 
     const weightedScore = totalWeight > 0 ? (weightedSum / totalWeight) * 10 : 0;
@@ -1093,23 +1097,53 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
     .map((p, index) => ({ ...p, customRank: index + 1 }));
 
   const handleWeightChange = (trait, value) => {
-    const newWeights = { ...weights, [trait]: parseInt(value) || 0 };
+    const newValue = parseInt(value) || 0;
+    const currentTotal = Object.entries(weights)
+      .filter(([key]) => activeTraits.includes(key) && key !== trait)
+      .reduce((sum, [, w]) => sum + w, 0);
+    
+    // Prevent going over 100%
+    if (currentTotal + newValue > 100) {
+      return;
+    }
+    
+    const newWeights = { ...weights, [trait]: newValue };
     setWeights(newWeights);
     localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(newWeights));
   };
 
   const handleReset = () => {
-    setWeights(defaultWeights);
-    localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(defaultWeights));
+    const initial = {};
+    Object.entries(defaultTraits).forEach(([key, trait]) => {
+      initial[key] = trait.defaultWeight;
+    });
+    setWeights(initial);
+    setActiveTraits(Object.keys(defaultTraits));
+    localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(initial));
+    localStorage.setItem(CUSTOM_TRAITS_KEY, JSON.stringify(Object.keys(defaultTraits)));
+  };
+
+  const toggleTrait = (traitKey) => {
+    let newActive;
+    if (activeTraits.includes(traitKey)) {
+      newActive = activeTraits.filter(t => t !== traitKey);
+    } else {
+      newActive = [...activeTraits, traitKey];
+    }
+    setActiveTraits(newActive);
+    localStorage.setItem(CUSTOM_TRAITS_KEY, JSON.stringify(newActive));
   };
 
   const applyPreset = (presetName) => {
     setWeights(presets[presetName]);
+    setActiveTraits(Object.keys(defaultTraits));
     localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(presets[presetName]));
+    localStorage.setItem(CUSTOM_TRAITS_KEY, JSON.stringify(Object.keys(defaultTraits)));
     setShowPresetModal(false);
   };
 
-  const totalWeight = Object.values(weights).reduce((a, b) => a + b, 0);
+  const totalWeight = activeTraits.reduce((sum, key) => sum + (weights[key] || 0), 0);
+  const remainingWeight = 100 - totalWeight;
 
   return (
     <div className="min-h-screen bg-[#f5f5f0]">
@@ -1122,7 +1156,7 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
               <span className="text-xl font-black text-red-600">DRAFT</span>
               <span className="text-xl font-black">HQ</span>
             </div>
-            <div></div>
+            <button onClick={() => setShowHelp(true)} className="text-sm text-neutral-500 hover:text-neutral-700">❓ Help</button>
           </div>
         </div>
       </header>
@@ -1130,7 +1164,7 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
       <div className="max-w-[1400px] mx-auto px-6 py-8">
         <div className="mb-8">
           <h1 className="text-4xl font-black text-neutral-900 mb-2">Custom Scoring System</h1>
-          <p className="text-neutral-600">Create your own big board by adjusting trait weights</p>
+          <p className="text-neutral-600">Create your own big board by adjusting trait weights (max 100% total)</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -1139,44 +1173,71 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200 sticky top-24">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-bold text-neutral-900">Trait Weights</h2>
-                <span className={`text-sm font-bold ${totalWeight === 100 ? 'text-green-600' : 'text-amber-600'}`}>{totalWeight}%</span>
+                <div className={`text-sm font-bold px-3 py-1 rounded-full ${totalWeight === 100 ? 'bg-green-100 text-green-700' : remainingWeight > 0 ? 'bg-amber-100 text-amber-700' : 'bg-red-100 text-red-700'}`}>
+                  {totalWeight}% / 100%
+                </div>
               </div>
 
-              <div className="space-y-4 mb-6">
-                {Object.entries(traitLabels).map(([key, label]) => (
-                  <div key={key}>
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="text-sm font-semibold text-neutral-700">{label}</label>
-                      <span className="text-sm font-bold text-neutral-900">{weights[key]}%</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="40"
-                      value={weights[key]}
-                      onChange={(e) => handleWeightChange(key, e.target.value)}
-                      className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-red-600"
-                    />
-                  </div>
-                ))}
+              {/* Progress Bar */}
+              <div className="w-full h-3 bg-neutral-100 rounded-full mb-6 overflow-hidden">
+                <div 
+                  className={`h-full transition-all duration-300 ${totalWeight > 100 ? 'bg-red-500' : totalWeight === 100 ? 'bg-green-500' : 'bg-amber-500'}`}
+                  style={{ width: `${Math.min(totalWeight, 100)}%` }}
+                />
               </div>
 
-              <div className="flex gap-3">
-                <button onClick={() => setShowPresetModal(true)} className="flex-1 bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors">
-                  Presets
-                </button>
-                <button onClick={handleReset} className="flex-1 bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors">
-                  Reset
-                </button>
-              </div>
-
-              {totalWeight !== 100 && (
-                <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                  <p className="text-sm text-amber-800">
-                    Weights should total 100% for accurate scoring. Current: {totalWeight}%
+              {remainingWeight > 0 && (
+                <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-sm text-blue-800">
+                    <span className="font-bold">{remainingWeight}%</span> remaining to allocate
                   </p>
                 </div>
               )}
+
+              {totalWeight > 100 && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-sm text-red-800">
+                    ⚠️ Total exceeds 100%! Reduce some weights.
+                  </p>
+                </div>
+              )}
+
+              <div className="space-y-4 mb-6">
+                {activeTraits.map(key => {
+                  const trait = defaultTraits[key];
+                  const isMaxed = totalWeight >= 100 && weights[key] === 0;
+                  return (
+                    <div key={key} className={`p-3 rounded-lg border ${isMaxed ? 'opacity-50 bg-neutral-50 border-neutral-200' : 'bg-white border-neutral-200'}`}>
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="text-sm font-semibold text-neutral-700">{trait.label}</label>
+                        <span className="text-sm font-bold text-neutral-900">{weights[key]}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max={Math.min(40, weights[key] + remainingWeight)}
+                        value={weights[key]}
+                        onChange={(e) => handleWeightChange(key, e.target.value)}
+                        disabled={isMaxed}
+                        className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-red-600 disabled:opacity-50"
+                      />
+                      <p className="text-xs text-neutral-500 mt-1">{trait.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="flex gap-2 flex-wrap">
+                <button onClick={() => setShowPresetModal(true)} className="flex-1 min-w-[80px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
+                  Presets
+                </button>
+                <button onClick={() => setShowTraitManager(true)} className="flex-1 min-w-[80px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
+                  Edit Traits
+                </button>
+                <button onClick={handleReset} className="flex-1 min-w-[80px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
+                  Reset
+                </button>
+              </div>
             </div>
           </div>
 
@@ -1185,7 +1246,7 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
             <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
               <div className="p-6 border-b border-neutral-200">
                 <h2 className="text-lg font-bold text-neutral-900">Your Custom Big Board</h2>
-                <p className="text-sm text-neutral-500">Rankings based on your trait weights</p>
+                <p className="text-sm text-neutral-500">Rankings based on your {activeTraits.length} active traits</p>
               </div>
 
               <div className="divide-y divide-neutral-200">
@@ -1258,6 +1319,89 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
               className="w-full mt-4 py-2 bg-neutral-200 text-neutral-700 rounded-lg font-semibold hover:bg-neutral-300"
             >
               Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Trait Manager Modal */}
+      {showTraitManager && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <h3 className="text-lg font-bold mb-4">Manage Traits</h3>
+            <p className="text-sm text-neutral-500 mb-4">Toggle traits on/off. Inactive traits won't count toward rankings.</p>
+            <div className="space-y-2 mb-4">
+              {Object.entries(defaultTraits).map(([key, trait]) => (
+                <button
+                  key={key}
+                  onClick={() => toggleTrait(key)}
+                  className={`w-full p-3 rounded-xl text-left transition-colors flex items-center gap-3 ${
+                    activeTraits.includes(key) 
+                      ? 'bg-green-50 border-2 border-green-200' 
+                      : 'bg-neutral-50 border-2 border-neutral-200 opacity-60'
+                  }`}
+                >
+                  <div className={`w-5 h-5 rounded flex items-center justify-center ${activeTraits.includes(key) ? 'bg-green-500 text-white' : 'bg-neutral-300'}`}>
+                    {activeTraits.includes(key) ? '✓' : ''}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-neutral-900">{trait.label}</div>
+                    <div className="text-xs text-neutral-500">{trait.description}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="p-3 bg-blue-50 rounded-lg mb-4">
+              <p className="text-sm text-blue-800">
+                <span className="font-bold">{activeTraits.length}</span> traits active
+              </p>
+            </div>
+            <button 
+              onClick={() => setShowTraitManager(false)}
+              className="w-full py-2 bg-neutral-200 text-neutral-700 rounded-lg font-semibold hover:bg-neutral-300"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Help Modal */}
+      {showHelp && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <h3 className="text-lg font-bold mb-4">How Custom Scoring Works</h3>
+            <div className="space-y-4 text-sm text-neutral-700">
+              <div>
+                <h4 className="font-bold text-neutral-900 mb-1">1. Adjust Weights</h4>
+                <p>Use the sliders to set how much each trait matters to you. The total cannot exceed 100%.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-neutral-900 mb-1">2. Enable/Disable Traits</h4>
+                <p>Click "Edit Traits" to toggle which traits are included in your scoring system.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-neutral-900 mb-1">3. Use Presets</h4>
+                <p>Quick-start with preset philosophies like "Star Hunter" or "Safe Pick".</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-neutral-900 mb-1">4. View Rankings</h4>
+                <p>Your custom big board updates automatically. Arrows show how prospects moved vs default rankings.</p>
+              </div>
+              <div className="p-3 bg-neutral-50 rounded-lg">
+                <h4 className="font-bold text-neutral-900 mb-2">Trait Definitions:</h4>
+                {Object.entries(defaultTraits).map(([key, trait]) => (
+                  <div key={key} className="mb-2">
+                    <span className="font-semibold">{trait.label}:</span> {trait.description}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button 
+              onClick={() => setShowHelp(false)}
+              className="w-full mt-4 py-2 bg-neutral-200 text-neutral-700 rounded-lg font-semibold hover:bg-neutral-300"
+            >
+              Got it
             </button>
           </div>
         </div>
