@@ -1,0 +1,101 @@
+first_name,last_name,position,secondary_position,height_inches,weight_lbs,wingspan_inches,birth_date,college,country,draft_class
+AJ,Dybantsa,SF,PF,81,210,84,2007-01-29,BYU,USA,2026
+Darryn,Peterson,SG,PG,77,200,82,2007-09-01,Kansas,USA,2026
+Cameron,Boozer,PF,C,81,240,84,2007-07-18,Duke,USA,2026
+Caleb,Wilson,SF,PF,80,215,83,2006-01-15,North Carolina,USA,2026
+Kingston,Flemings,PG,SG,76,190,78,2006-01-15,Houston,USA,2026
+Jayden,Quaintance,C,PF,82,240,88,2006-01-15,Kentucky,USA,2026
+Koa,Peat,SF,PF,80,220,83,2006-01-15,Arizona,USA,2026
+Yaxel,Lendeborg,PF,SF,80,230,85,2002-01-15,Michigan,USA,2026
+Hannes,Steinbach,C,PF,81,245,87,2005-01-15,Washington,Germany,2026
+Mikel,Brown,PG,SG,76,185,78,2007-02-08,Louisville,USA,2026
+Keaton,Wagler,SF,SG,78,200,80,2006-01-15,Illinois,USA,2026
+Thomas,Haugh,PF,C,81,235,84,2002-01-15,Florida,USA,2026
+Labaron,Philon,PG,SG,75,180,77,2005-01-15,Alabama,USA,2026
+Patrick,Ngongba,C,PF,83,250,90,2005-01-15,Duke,USA,2026
+Cameron,Carr,SF,SG,78,205,80,2004-01-15,Baylor,USA,2026
+Darius,Acuff,PG,SG,73,175,76,2006-03-15,Arkansas,USA,2026
+Braylon,Mullins,SF,SG,77,195,79,2005-01-15,Connecticut,USA,2026
+Nate,Ament,SF,PF,81,215,84,2006-01-15,Tennessee,USA,2026
+Joshua,Jefferson,SF,PF,81,220,83,2003-01-15,Iowa State,USA,2026
+Christian,Anderson,PG,SG,74,180,77,2005-01-15,Texas Tech,USA,2026
+Benett,Stirtz,PG,SG,76,190,78,2003-01-15,Iowa,USA,2026
+Amari,Allen,SF,PF,80,210,82,2005-01-15,Alabama,USA,2026
+Chris,Cenac,C,PF,81,240,88,2006-09-12,Houston,USA,2026
+Neoklis,Avdalas,SF,SG,79,205,81,2005-01-15,Virginia Tech,Greece,2026
+Tounde,Yessoufou,SF,PF,76,215,82,2007-08-05,Baylor,USA,2026
+Karim,Lopez,SF,PF,80,220,83,2006-01-15,NZ Breakers,Spain,2026
+Tyler,Tanner,PG,SG,71,170,74,2005-01-15,Vanderbilt,USA,2026
+Henri,Veesaar,C,PF,84,240,88,2003-01-15,North Carolina,Estonia,2026
+Dash,Daniels,SF,SG,78,200,80,2007-01-15,Melbourne United,Australia,2026
+Killyan,Toure,PG,SG,75,185,77,2005-01-15,Iowa State,USA,2026
+Dailyn,Swain,SF,PF,80,210,82,2005-01-15,Texas,USA,2026
+Aday,Mara,C,PF,87,260,92,2004-01-15,Michigan,Spain,2026
+Brayden,Burries,SF,SG,76,195,79,2005-04-02,Arizona,USA,2026
+Alex,Karaban,SF,PF,78,220,81,2002-01-15,Connecticut,USA,2026
+Richie,Saunders,SF,SG,77,205,80,2001-01-15,BYU,USA,2026
+Isaiah,Evans,SF,SG,78,200,80,2005-01-15,Duke,USA,2026
+Meleek,Thomas,SF,SG,77,200,79,2006-06-20,Arkansas,USA,2026
+Braden,Smith,PG,SG,72,175,74,2003-01-15,Purdue,USA,2026
+Ryan,Conwell,PG,SG,76,195,78,2003-01-15,Louisville,USA,2026
+JoJo,Tugler,C,PF,80,230,85,2005-01-15,Houston,USA,2026
+Sergio,De Larrea,PG,SG,77,190,78,2005-01-15,Valencia,Spain,2026
+Dame,Sarr,SF,SG,79,210,82,2005-01-15,Duke,France,2026
+Tarris,Reed,C,PF,83,250,89,2003-01-15,Connecticut,USA,2026
+Alex,Condon,C,PF,83,245,88,2004-01-15,Florida,Australia,2026
+Tamin,Lipsey,PG,SG,73,180,76,2002-01-15,Iowa State,USA,2026
+Milan,Momcilovic,PF,SF,80,220,83,2004-01-15,Iowa State,Serbia,2026
+Milos,Uzan,PG,SG,75,185,77,2002-01-15,Houston,France,2026
+Johann,Grunloh,C,PF,83,250,89,2005-01-15,Virginia,Germany,2026
+Nate,Bittle,C,PF,83,245,88,2002-01-15,Oregon,USA,2026
+Flory,Bidunga,C,PF,79,230,85,2004-01-15,Kansas,USA,2026
+Braden,Huff,C,PF,82,240,87,2003-01-15,Gonzaga,USA,2026
+Morez,Johnson,C,PF,81,235,86,2005-01-15,Michigan,USA,2026
+Bruce,Thornton,PG,SG,74,185,76,2003-01-15,Ohio State,USA,2026
+Juke,Harris,SF,SG,79,210,82,2005-01-15,Wake Forest,USA,2026
+Jaden,Bradley,PG,SG,75,190,77,2003-01-15,Arizona,USA,2026
+Zuby,Ejiofor,C,PF,80,235,86,2003-01-15,St. John's,USA,2026
+Silas,DeMary,PG,SG,76,195,78,2003-01-15,Connecticut,USA,2026
+MoMo,Faye,C,PF,81,240,87,2004-01-15,Paris Basketball,France,2026
+Adam,Atamna,PG,SG,77,190,78,2007-01-15,ASVEL,France,2026
+Tomislav,Ivisic,C,PF,85,260,90,2003-01-15,Illinois,Croatia,2026
+Kwame,Evans,SF,PF,81,215,84,2004-01-15,Oregon,USA,2026
+Paul,McNeil,SF,SG,77,200,80,2005-01-15,NC State,USA,2026
+Pryce,Sandfort,SF,SG,78,205,81,2003-01-15,Nebraska,USA,2026
+Nolan,Winter,C,PF,84,245,88,2004-01-15,Wisconsin,USA,2026
+JT,Toppin,PF,C,79,225,84,2004-01-15,Texas Tech,USA,2026
+D'Shayne,Montgomery,SF,SG,76,200,79,2003-01-15,Dayton,USA,2026
+Blue,Cain,PG,SG,77,195,78,2004-01-15,Georgia,USA,2026
+Andrej,Stojakovic,SF,SG,79,210,82,2004-01-15,Illinois,USA,2026
+Tahaad,Pettiford,PG,SG,72,170,74,2005-01-15,Auburn,USA,2026
+K.J.,Lewis,PG,SG,76,195,78,2004-01-15,Georgetown,USA,2026
+Baba,Miller,SF,PF,83,220,86,2003-01-15,Cincinnati,Sweden,2026
+Ja'Kobi,Gillespie,PG,SG,73,180,76,2002-08-25,Tennessee,USA,2026
+Motiejus,Krivas,C,PF,86,270,92,2004-01-15,Arizona,Lithuania,2026
+Tyler,Bilodeau,PF,SF,81,230,85,2003-01-15,UCLA,USA,2026
+Darrion,Williams,PF,SF,76,215,80,2002-01-15,NC State,USA,2026
+Nick,Martinelli,SF,SG,78,205,81,2003-01-15,Northwestern,USA,2026
+Cade,Tyson,SF,SG,79,210,82,2002-01-15,Minnesota,USA,2026
+William,Kyle,C,PF,81,240,87,2003-01-15,Syracuse,USA,2026
+Keyshawn,Hall,PF,SF,79,230,84,2002-01-15,Auburn,USA,2026
+Emanuel,Sharp,PG,SG,75,190,77,2003-01-15,Houston,USA,2026
+Nick,Boyd,PG,SG,75,185,77,2000-01-15,Wisconsin,USA,2026
+Donovan,Dent,PG,SG,74,180,76,2003-01-15,UCLA,USA,2026
+Maliq,Brown,C,PF,81,235,86,2003-01-15,Duke,USA,2026
+Trey,Kaufman-Renn,C,PF,81,245,88,2002-01-15,Purdue,USA,2026
+Tucker,DeVries,SF,SG,79,215,82,2002-01-15,Indiana,USA,2026
+Joshua,Dix,SF,SG,78,200,80,2003-01-15,Creighton,USA,2026
+John,Blackwell,PG,SG,76,195,78,2004-01-15,Wisconsin,USA,2026
+Otega,Oweh,SF,SG,76,210,81,2002-01-15,Kentucky,USA,2026
+Elijah,Mahi,PF,SF,79,220,83,2003-01-15,Santa Clara,USA,2026
+Lamar,Wilkerson,PG,SG,76,200,79,2001-01-15,Indiana,USA,2026
+Kylan,Boswell,PG,SG,74,180,76,2004-01-15,Illinois,USA,2026
+Dillon,Mitchell,SF,PF,80,215,83,2003-01-15,St. John's,USA,2026
+Ben,Henshall,PG,SG,77,195,78,2003-01-15,Perth Wildcats,Australia,2026
+Trevon,Brazile,C,PF,81,230,86,2002-01-15,Arkansas,USA,2026
+Michael,Ruzic,C,PF,83,250,89,2006-01-15,Joventut,Croatia,2026
+Michael,Ajayi,SF,PF,79,215,83,2002-01-15,Butler,USA,2026
+Oscar,Cluff,C,PF,83,255,89,2001-01-15,Purdue,Australia,2026
+Jordan,Burks,PF,SF,81,220,84,2004-01-15,UCF,USA,2026
+Fletcher,Loyer,PG,SG,76,185,77,2003-01-15,Purdue,USA,2026
+Bryce,Hopkins,PF,SF,79,230,85,2002-01-15,St. John's,USA,2026
