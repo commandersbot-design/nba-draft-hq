@@ -1032,6 +1032,8 @@ const App = () => {
 const CustomScoring = ({ onBack, onSelectProspect }) => {
   const CUSTOM_WEIGHTS_KEY = 'nba-draft-hq-custom-weights-v2';
   const CUSTOM_TRAITS_KEY = 'nba-draft-hq-custom-traits';
+  const CUSTOM_PROFILES_KEY = 'nba-draft-hq-custom-profiles';
+  const FAVORITES_KEY = 'nba-draft-hq-favorites';
 
   const defaultTraits = {
     // Core 8 Traits
@@ -1072,6 +1074,18 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
   const [showPresetModal, setShowPresetModal] = useState(false);
   const [showTraitManager, setShowTraitManager] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [showSaveModal, setShowSaveModal] = useState(false);
+  const [showLoadModal, setShowLoadModal] = useState(false);
+  const [profileName, setProfileName] = useState('');
+  const [savedProfiles, setSavedProfiles] = useState(() => {
+    const saved = localStorage.getItem(CUSTOM_PROFILES_KEY);
+    return saved ? JSON.parse(saved) : {};
+  });
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem(FAVORITES_KEY);
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
 
   const presets = {
     'Default': { advantage_creation: 20, decision_making: 16, shooting_gravity: 14, scalability: 14, defensive_versatility: 12, processing_speed: 10, passing_creation: 8, off_ball_value: 6 },
@@ -1200,6 +1214,48 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
   const totalWeight = activeTraits.reduce((sum, key) => sum + (weights[key] || 0), 0);
   const remainingWeight = 100 - totalWeight;
 
+  const handleSaveProfile = () => {
+    if (!profileName.trim()) return;
+    const newProfiles = {
+      ...savedProfiles,
+      [profileName]: { weights, activeTraits, createdAt: new Date().toISOString() }
+    };
+    setSavedProfiles(newProfiles);
+    localStorage.setItem(CUSTOM_PROFILES_KEY, JSON.stringify(newProfiles));
+    setProfileName('');
+    setShowSaveModal(false);
+  };
+
+  const handleLoadProfile = (name) => {
+    const profile = savedProfiles[name];
+    if (profile) {
+      setWeights(profile.weights);
+      setActiveTraits(profile.activeTraits);
+      localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(profile.weights));
+      localStorage.setItem(CUSTOM_TRAITS_KEY, JSON.stringify(profile.activeTraits));
+    }
+    setShowLoadModal(false);
+  };
+
+  const handleDeleteProfile = (name) => {
+    const newProfiles = { ...savedProfiles };
+    delete newProfiles[name];
+    setSavedProfiles(newProfiles);
+    localStorage.setItem(CUSTOM_PROFILES_KEY, JSON.stringify(newProfiles));
+  };
+
+  const toggleFavorite = (prospectId) => {
+    const newFavorites = favorites.includes(prospectId)
+      ? favorites.filter(id => id !== prospectId)
+      : [...favorites, prospectId];
+    setFavorites(newFavorites);
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(newFavorites));
+  };
+
+  const filteredRankings = showFavoritesOnly
+    ? customRankings.filter(p => favorites.includes(p.id))
+    : customRankings;
+
   return (
     <div className="min-h-screen bg-[#f5f5f0]">
       <header className="bg-white border-b border-neutral-200 sticky top-0 z-50">
@@ -1309,13 +1365,19 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
               )}
 
               <div className="flex gap-2 flex-wrap">
-                <button onClick={() => setShowPresetModal(true)} className="flex-1 min-w-[80px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
+                <button onClick={() => setShowPresetModal(true)} className="flex-1 min-w-[70px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
                   Presets
                 </button>
-                <button onClick={() => setShowTraitManager(true)} className="flex-1 min-w-[80px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
-                  Edit Traits
+                <button onClick={() => setShowTraitManager(true)} className="flex-1 min-w-[70px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
+                  Traits
                 </button>
-                <button onClick={handleReset} className="flex-1 min-w-[80px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
+                <button onClick={() => setShowSaveModal(true)} className="flex-1 min-w-[70px] bg-blue-100 text-blue-700 py-2 rounded-lg font-semibold hover:bg-blue-200 transition-colors text-sm">
+                  Save
+                </button>
+                <button onClick={() => setShowLoadModal(true)} className="flex-1 min-w-[70px] bg-green-100 text-green-700 py-2 rounded-lg font-semibold hover:bg-green-200 transition-colors text-sm">
+                  Load
+                </button>
+                <button onClick={handleReset} className="flex-1 min-w-[70px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
                   Reset
                 </button>
               </div>
@@ -1325,22 +1387,44 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
           {/* Right Column - Rankings */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
-              <div className="p-6 border-b border-neutral-200">
-                <h2 className="text-lg font-bold text-neutral-900">Your Custom Big Board</h2>
-                <p className="text-sm text-neutral-500">Rankings based on your {activeTraits.length} active traits</p>
+              <div className="p-6 border-b border-neutral-200 flex items-center justify-between">
+                <div>
+                  <h2 className="text-lg font-bold text-neutral-900">Your Custom Big Board</h2>
+                  <p className="text-sm text-neutral-500">Rankings based on your {activeTraits.length} active traits</p>
+                </div>
+                <button
+                  onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-colors ${
+                    showFavoritesOnly 
+                      ? 'bg-red-100 text-red-700' 
+                      : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                  }`}
+                >
+                  {showFavoritesOnly ? '⭐ Favorites Only' : '☆ Show All'}
+                </button>
               </div>
 
               <div className="divide-y divide-neutral-200">
-                {customRankings.map((prospect) => {
+                {filteredRankings.map((prospect) => {
                   const schoolColor = schoolColors[prospect.school] || '#666';
                   const rankDiff = prospect.rank - prospect.customRank;
                   
                   return (
                     <div 
-                      key={prospect.id} 
-                      onClick={() => onSelectProspect(prospect.id)}
-                      className="p-4 hover:bg-neutral-50 cursor-pointer transition-colors flex items-center gap-4"
+                      key={prospect.id}
+                      className="p-4 hover:bg-neutral-50 transition-colors flex items-center gap-4 group"
                     >
+                      <button
+                        onClick={() => toggleFavorite(prospect.id)}
+                        className="text-2xl hover:scale-110 transition-transform"
+                      >
+                        {favorites.includes(prospect.id) ? '⭐' : '☆'}
+                      </button>
+                      
+                      <div 
+                        className="flex-1 flex items-center gap-4 cursor-pointer"
+                        onClick={() => onSelectProspect(prospect.id)}
+                      >
                       <div className="w-12 h-12 bg-neutral-100 rounded-xl flex items-center justify-center">
                         <span className="text-xl font-black text-neutral-700">{prospect.customRank}</span>
                       </div>
@@ -1472,6 +1556,77 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
               className="w-full py-2 bg-neutral-200 text-neutral-700 rounded-lg font-semibold hover:bg-neutral-300"
             >
               Done
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Save Profile Modal */}
+      {showSaveModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full mx-4">
+            <h3 className="text-lg font-bold mb-4">Save Scoring Profile</h3>
+            <input
+              type="text"
+              value={profileName}
+              onChange={(e) => setProfileName(e.target.value)}
+              placeholder="Enter profile name (e.g., 'My Star Hunter')"
+              className="w-full border border-neutral-300 rounded-lg px-4 py-2 mb-4"
+            />
+            <div className="flex gap-3">
+              <button
+                onClick={handleSaveProfile}
+                disabled={!profileName.trim()}
+                className="flex-1 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => { setShowSaveModal(false); setProfileName(''); }}
+                className="flex-1 bg-neutral-200 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-300"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Load Profile Modal */}
+      {showLoadModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <h3 className="text-lg font-bold mb-4">Load Scoring Profile</h3>
+            {Object.keys(savedProfiles).length === 0 ? (
+              <p className="text-neutral-500 text-center py-4">No saved profiles yet.</p>
+            ) : (
+              <div className="space-y-2 mb-4">
+                {Object.entries(savedProfiles).map(([name, profile]) => (
+                  <div key={name} className="flex items-center gap-2 p-3 bg-neutral-50 rounded-xl">
+                    <button
+                      onClick={() => handleLoadProfile(name)}
+                      className="flex-1 text-left"
+                    >
+                      <div className="font-semibold text-neutral-900">{name}</div>
+                      <div className="text-xs text-neutral-500">
+                        {Object.keys(profile.weights).length} traits • {new Date(profile.createdAt).toLocaleDateString()}
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => handleDeleteProfile(name)}
+                      className="text-red-500 hover:text-red-700 px-2"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+            <button
+              onClick={() => setShowLoadModal(false)}
+              className="w-full py-2 bg-neutral-200 text-neutral-700 rounded-lg font-semibold hover:bg-neutral-300"
+            >
+              Close
             </button>
           </div>
         </div>
