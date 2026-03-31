@@ -1034,14 +1034,24 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
   const CUSTOM_TRAITS_KEY = 'nba-draft-hq-custom-traits';
 
   const defaultTraits = {
-    advantage_creation: { label: 'Advantage Creation', description: 'Ability to create scoring opportunities off the dribble and break down defenses', defaultWeight: 20 },
-    decision_making: { label: 'Decision Making', description: 'Quality of choices with the ball, shot selection, and basketball IQ', defaultWeight: 16 },
-    shooting_gravity: { label: 'Shooting Gravity', description: 'Ability to stretch the floor and draw defensive attention with shooting threat', defaultWeight: 14 },
-    scalability: { label: 'Scalability', description: 'How well skills translate to NBA level and fit within different team contexts', defaultWeight: 14 },
-    defensive_versatility: { label: 'Defensive Versatility', description: 'Ability to guard multiple positions and switch effectively on defense', defaultWeight: 12 },
-    processing_speed: { label: 'Processing Speed', description: 'How quickly a player reads the game and makes decisions under pressure', defaultWeight: 10 },
-    passing_creation: { label: 'Passing Creation', description: 'Ability to create for others through playmaking and passing vision', defaultWeight: 8 },
-    off_ball_value: { label: 'Off-Ball Value', description: 'Contributions without the ball: cutting, screening, relocation, team defense', defaultWeight: 6 }
+    // Core 8 Traits
+    advantage_creation: { label: 'Advantage Creation', description: 'Ability to create scoring opportunities off the dribble and break down defenses', defaultWeight: 20, category: 'core' },
+    decision_making: { label: 'Decision Making', description: 'Quality of choices with the ball, shot selection, and basketball IQ', defaultWeight: 16, category: 'core' },
+    shooting_gravity: { label: 'Shooting Gravity', description: 'Ability to stretch the floor and draw defensive attention with shooting threat', defaultWeight: 14, category: 'core' },
+    scalability: { label: 'Scalability', description: 'How well skills translate to NBA level and fit within different team contexts', defaultWeight: 14, category: 'core' },
+    defensive_versatility: { label: 'Defensive Versatility', description: 'Ability to guard multiple positions and switch effectively on defense', defaultWeight: 12, category: 'core' },
+    processing_speed: { label: 'Processing Speed', description: 'How quickly a player reads the game and makes decisions under pressure', defaultWeight: 10, category: 'core' },
+    passing_creation: { label: 'Passing Creation', description: 'Ability to create for others through playmaking and passing vision', defaultWeight: 8, category: 'core' },
+    off_ball_value: { label: 'Off-Ball Value', description: 'Contributions without the ball: cutting, screening, relocation, team defense', defaultWeight: 6, category: 'core' },
+    // Additional Optional Traits
+    rim_protection: { label: 'Rim Protection', description: 'Ability to block shots and deter drives at the rim', defaultWeight: 0, category: 'optional' },
+    rebounding: { label: 'Rebounding', description: 'Ability to secure boards on both ends of the floor', defaultWeight: 0, category: 'optional' },
+    transition_play: { label: 'Transition Play', description: 'Ability to run the floor and finish in open court', defaultWeight: 0, category: 'optional' },
+    pick_roll_play: { label: 'Pick & Roll Play', description: 'Ability to execute as ball handler or roll man in P&R', defaultWeight: 0, category: 'optional' },
+    isolation_scoring: { label: 'Isolation Scoring', description: 'Ability to create and convert one-on-one matchups', defaultWeight: 0, category: 'optional' },
+    catch_shoot: { label: 'Catch & Shoot', description: 'Ability to knock down shots off the catch without dribbling', defaultWeight: 0, category: 'optional' },
+    post_game: { label: 'Post Game', description: 'Ability to score and create from the post', defaultWeight: 0, category: 'optional' },
+    motor_consistency: { label: 'Motor & Consistency', description: 'Energy level and reliability game-to-game', defaultWeight: 0, category: 'optional' }
   };
 
   const [activeTraits, setActiveTraits] = useState(() => {
@@ -1098,18 +1108,63 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
 
   const handleWeightChange = (trait, value) => {
     const newValue = parseInt(value) || 0;
-    const currentTotal = Object.entries(weights)
-      .filter(([key]) => activeTraits.includes(key) && key !== trait)
-      .reduce((sum, [, w]) => sum + w, 0);
     
-    // Prevent going over 100%
-    if (currentTotal + newValue > 100) {
-      return;
-    }
-    
+    // Allow any value 0-50, but warn if over 100% total
     const newWeights = { ...weights, [trait]: newValue };
     setWeights(newWeights);
     localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(newWeights));
+  };
+
+  const getWeightSuggestions = () => {
+    const suggestions = [];
+    const currentTotal = totalWeight;
+    const remaining = 100 - currentTotal;
+    
+    if (remaining > 0) {
+      // Suggest equal distribution of remaining
+      const perTrait = Math.floor(remaining / activeTraits.length);
+      suggestions.push({
+        label: `Distribute ${remaining}% equally`,
+        action: () => {
+          const newWeights = { ...weights };
+          activeTraits.forEach(key => {
+            newWeights[key] = (newWeights[key] || 0) + perTrait;
+          });
+          setWeights(newWeights);
+          localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(newWeights));
+        }
+      });
+      
+      // Suggest putting all remaining into top weighted trait
+      const topTrait = activeTraits.reduce((a, b) => (weights[a] || 0) > (weights[b] || 0) ? a : b);
+      suggestions.push({
+        label: `Add ${remaining}% to ${defaultTraits[topTrait].label}`,
+        action: () => {
+          const newWeights = { ...weights };
+          newWeights[topTrait] = (newWeights[topTrait] || 0) + remaining;
+          setWeights(newWeights);
+          localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(newWeights));
+        }
+      });
+    }
+    
+    if (currentTotal > 100) {
+      const excess = currentTotal - 100;
+      suggestions.push({
+        label: `Reduce all by ${Math.ceil(excess / activeTraits.length)}% to reach 100%`,
+        action: () => {
+          const newWeights = { ...weights };
+          const reduction = Math.ceil(excess / activeTraits.length);
+          activeTraits.forEach(key => {
+            newWeights[key] = Math.max(0, (newWeights[key] || 0) - reduction);
+          });
+          setWeights(newWeights);
+          localStorage.setItem(CUSTOM_WEIGHTS_KEY, JSON.stringify(newWeights));
+        }
+      });
+    }
+    
+    return suggestions;
   };
 
   const handleReset = () => {
@@ -1205,27 +1260,53 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
               <div className="space-y-4 mb-6">
                 {activeTraits.map(key => {
                   const trait = defaultTraits[key];
-                  const isMaxed = totalWeight >= 100 && weights[key] === 0;
                   return (
-                    <div key={key} className={`p-3 rounded-lg border ${isMaxed ? 'opacity-50 bg-neutral-50 border-neutral-200' : 'bg-white border-neutral-200'}`}>
+                    <div key={key} className="p-3 rounded-lg border bg-white border-neutral-200">
                       <div className="flex items-center justify-between mb-1">
                         <label className="text-sm font-semibold text-neutral-700">{trait.label}</label>
-                        <span className="text-sm font-bold text-neutral-900">{weights[key]}%</span>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="number"
+                            min="0"
+                            max="50"
+                            value={weights[key]}
+                            onChange={(e) => handleWeightChange(key, e.target.value)}
+                            className="w-14 text-right text-sm font-bold border border-neutral-300 rounded px-1 py-0.5"
+                          />
+                          <span className="text-sm font-bold text-neutral-900">%</span>
+                        </div>
                       </div>
                       <input
                         type="range"
                         min="0"
-                        max={Math.min(40, weights[key] + remainingWeight)}
+                        max="50"
                         value={weights[key]}
                         onChange={(e) => handleWeightChange(key, e.target.value)}
-                        disabled={isMaxed}
-                        className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-red-600 disabled:opacity-50"
+                        className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-red-600"
                       />
                       <p className="text-xs text-neutral-500 mt-1">{trait.description}</p>
                     </div>
                   );
                 })}
               </div>
+
+              {/* Suggestions */}
+              {getWeightSuggestions().length > 0 && (
+                <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-xs font-bold text-blue-800 mb-2">💡 Suggestions:</p>
+                  <div className="space-y-1">
+                    {getWeightSuggestions().map((suggestion, i) => (
+                      <button
+                        key={i}
+                        onClick={suggestion.action}
+                        className="block w-full text-left text-xs text-blue-700 hover:text-blue-900 hover:underline"
+                      >
+                        • {suggestion.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="flex gap-2 flex-wrap">
                 <button onClick={() => setShowPresetModal(true)} className="flex-1 min-w-[80px] bg-neutral-100 text-neutral-700 py-2 rounded-lg font-semibold hover:bg-neutral-200 transition-colors text-sm">
@@ -1330,30 +1411,60 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
           <div className="bg-white rounded-2xl p-6 max-w-md w-full mx-4 max-h-[80vh] overflow-y-auto">
             <h3 className="text-lg font-bold mb-4">Manage Traits</h3>
             <p className="text-sm text-neutral-500 mb-4">Toggle traits on/off. Inactive traits won't count toward rankings.</p>
-            <div className="space-y-2 mb-4">
-              {Object.entries(defaultTraits).map(([key, trait]) => (
-                <button
-                  key={key}
-                  onClick={() => toggleTrait(key)}
-                  className={`w-full p-3 rounded-xl text-left transition-colors flex items-center gap-3 ${
-                    activeTraits.includes(key) 
-                      ? 'bg-green-50 border-2 border-green-200' 
-                      : 'bg-neutral-50 border-2 border-neutral-200 opacity-60'
-                  }`}
-                >
-                  <div className={`w-5 h-5 rounded flex items-center justify-center ${activeTraits.includes(key) ? 'bg-green-500 text-white' : 'bg-neutral-300'}`}>
-                    {activeTraits.includes(key) ? '✓' : ''}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-neutral-900">{trait.label}</div>
-                    <div className="text-xs text-neutral-500">{trait.description}</div>
-                  </div>
-                </button>
-              ))}
+            
+            <div className="mb-4">
+              <h4 className="text-xs font-bold text-neutral-400 uppercase mb-2">Core Traits</h4>
+              <div className="space-y-2">
+                {Object.entries(defaultTraits).filter(([,t]) => t.category === 'core').map(([key, trait]) => (
+                  <button
+                    key={key}
+                    onClick={() => toggleTrait(key)}
+                    className={`w-full p-3 rounded-xl text-left transition-colors flex items-center gap-3 ${
+                      activeTraits.includes(key) 
+                        ? 'bg-green-50 border-2 border-green-200' 
+                        : 'bg-neutral-50 border-2 border-neutral-200 opacity-60'
+                    }`}
+                  >
+                    <div className={`w-5 h-5 rounded flex items-center justify-center ${activeTraits.includes(key) ? 'bg-green-500 text-white' : 'bg-neutral-300'}`}>
+                      {activeTraits.includes(key) ? '✓' : ''}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-neutral-900">{trait.label}</div>
+                      <div className="text-xs text-neutral-500">{trait.description}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
+
+            <div className="mb-4">
+              <h4 className="text-xs font-bold text-neutral-400 uppercase mb-2">Additional Traits (Optional)</h4>
+              <div className="space-y-2">
+                {Object.entries(defaultTraits).filter(([,t]) => t.category === 'optional').map(([key, trait]) => (
+                  <button
+                    key={key}
+                    onClick={() => toggleTrait(key)}
+                    className={`w-full p-3 rounded-xl text-left transition-colors flex items-center gap-3 ${
+                      activeTraits.includes(key) 
+                        ? 'bg-blue-50 border-2 border-blue-200' 
+                        : 'bg-neutral-50 border-2 border-neutral-200 opacity-60'
+                    }`}
+                  >
+                    <div className={`w-5 h-5 rounded flex items-center justify-center ${activeTraits.includes(key) ? 'bg-blue-500 text-white' : 'bg-neutral-300'}`}>
+                      {activeTraits.includes(key) ? '✓' : ''}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-neutral-900">{trait.label}</div>
+                      <div className="text-xs text-neutral-500">{trait.description}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="p-3 bg-blue-50 rounded-lg mb-4">
               <p className="text-sm text-blue-800">
-                <span className="font-bold">{activeTraits.length}</span> traits active
+                <span className="font-bold">{activeTraits.length}</span> traits active ({activeTraits.filter(k => defaultTraits[k]?.category === 'core').length} core, {activeTraits.filter(k => defaultTraits[k]?.category === 'optional').length} optional)
               </p>
             </div>
             <button 
