@@ -382,7 +382,7 @@ const BigBoard = ({ onBack, onSelectProspect }) => {
 };
 
 // Home Component
-const Home = ({ onNavigate, onSelectProspect }) => {
+const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode }) => {
   const latestUpdates = [
     { date: 'Mar 30', title: 'Updated Big Board after March Madness', type: 'Analysis' },
     { date: 'Mar 28', title: 'Darryn Peterson declares for draft', type: 'News' },
@@ -407,6 +407,13 @@ const Home = ({ onNavigate, onSelectProspect }) => {
               <button onClick={() => onNavigate('custom-scoring')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Custom Scoring</button>
             </nav>
             <div className="flex items-center gap-3">
+              <button 
+                onClick={toggleDarkMode}
+                className="p-2 rounded-lg text-xl hover:bg-neutral-100 transition-colors"
+                title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              >
+                {darkMode ? '☀️' : '🌙'}
+              </button>
               <button className="bg-neutral-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-neutral-800">Sign In</button>
               <button className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700">Get Started</button>
             </div>
@@ -1010,6 +1017,18 @@ const ProspectProfile = ({ prospectId, onBack }) => {
 const App = () => {
   const [view, setView] = useState('home');
   const [selectedProspect, setSelectedProspect] = useState(null);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('nba-draft-hq-darkmode') === 'true';
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('nba-draft-hq-darkmode', darkMode);
+  }, [darkMode]);
 
   const handleNavigate = (newView) => {
     setView(newView);
@@ -1027,6 +1046,8 @@ const App = () => {
     setSelectedProspect(null);
     window.scrollTo(0, 0);
   };
+
+  const toggleDarkMode = () => setDarkMode(!darkMode);
 
 // Custom Scoring System Component
 const CustomScoring = ({ onBack, onSelectProspect }) => {
@@ -1689,7 +1710,7 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
     case 'custom-scoring':
       return <CustomScoring onBack={handleBackHome} onSelectProspect={handleSelectProspect} />;
     default:
-      return <Home onNavigate={handleNavigate} onSelectProspect={handleSelectProspect} />;
+      return <Home onNavigate={handleNavigate} onSelectProspect={handleSelectProspect} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />;
   }
 };
 
