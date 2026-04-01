@@ -416,63 +416,63 @@ const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode, favorite
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="bg-white border-b border-neutral-200 sticky top-0 z-50">
+    <div className="min-h-screen bg-prospera-bg">
+      <header className="bg-prospera-surface border-b border-prospera-border sticky top-0 z-50">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-black tracking-tight">NBA</span>
-              <span className="text-2xl font-black tracking-tight text-red-600">DRAFT</span>
-              <span className="text-2xl font-black tracking-tight">HQ</span>
+              <span className="text-2xl font-black tracking-tight text-prospera-text-primary">NBA</span>
+              <span className="text-2xl font-black tracking-tight text-prospera-gold">DRAFT</span>
+              <span className="text-2xl font-black tracking-tight text-prospera-text-primary">HQ</span>
             </div>
             <nav className="hidden md:flex items-center gap-8">
-              <button onClick={() => onNavigate('big-board')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Big Board</button>
-              <button onClick={() => onNavigate('mock-draft')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Mock Draft</button>
-              <button onClick={() => onNavigate('team-needs')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Team Needs</button>
-              <button onClick={() => onNavigate('custom-scoring')} className="text-sm font-semibold text-neutral-600 hover:text-neutral-900">Custom Scoring</button>
+              <button onClick={() => onNavigate('big-board')} className="text-sm font-semibold text-prospera-text-secondary hover:text-prospera-text-primary transition-colors">Big Board</button>
+              <button onClick={() => onNavigate('mock-draft')} className="text-sm font-semibold text-prospera-text-secondary hover:text-prospera-text-primary transition-colors">Mock Draft</button>
+              <button onClick={() => onNavigate('team-needs')} className="text-sm font-semibold text-prospera-text-secondary hover:text-prospera-text-primary transition-colors">Team Needs</button>
+              <button onClick={() => onNavigate('custom-scoring')} className="text-sm font-semibold text-prospera-text-secondary hover:text-prospera-text-primary transition-colors">Custom Scoring</button>
             </nav>
             <div className="flex items-center gap-3">
               <button 
                 onClick={toggleDarkMode}
-                className="p-2 rounded-lg text-xl hover:bg-neutral-100 transition-colors"
+                className="p-2 rounded-lg text-xl hover:bg-prospera-surface-alt transition-colors text-prospera-text-primary"
                 title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
               >
                 {darkMode ? '☀️' : '🌙'}
               </button>
-              <button className="bg-neutral-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-neutral-800">Sign In</button>
-              <button className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700">Get Started</button>
+              <button className="bg-prospera-text-primary text-prospera-surface px-4 py-2 rounded-lg text-sm font-semibold hover:bg-prospera-navy transition-colors">Sign In</button>
+              <button className="bg-prospera-gold text-prospera-text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-prospera-gold-hover transition-colors">Get Started</button>
             </div>
           </div>
         </div>
       </header>
 
-      <section className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white py-20">
+      <section className="bg-prospera-navy text-prospera-surface py-20">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">2026 NBA Draft</div>
-              <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">The Most<br /><span className="text-red-500">Complete</span><br />Draft Resource</h1>
-              <p className="text-xl text-neutral-300 mb-8 max-w-lg">Advanced analytics, custom rankings, and in-depth scouting reports for the 2026 NBA Draft class.</p>
+              <div className="inline-block bg-prospera-gold text-prospera-text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">2026 NBA Draft</div>
+              <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6 text-prospera-surface">The Most<br /><span className="text-prospera-gold">Complete</span><br />Draft Resource</h1>
+              <p className="text-xl text-prospera-text-secondary mb-8 max-w-lg">Advanced analytics, custom rankings, and in-depth scouting reports for the 2026 NBA Draft class.</p>
               <div className="flex flex-wrap gap-4">
-                <button onClick={() => onNavigate('big-board')} className="bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition-colors">View Big Board</button>
-                <button onClick={() => onNavigate('mock-draft')} className="bg-white/10 backdrop-blur text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition-colors">Mock Draft</button>
+                <button onClick={() => onNavigate('big-board')} className="bg-prospera-gold text-prospera-text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-prospera-gold-hover transition-colors">View Big Board</button>
+                <button onClick={() => onNavigate('mock-draft')} className="bg-prospera-surface/10 backdrop-blur text-prospera-surface px-8 py-4 rounded-xl text-lg font-bold hover:bg-prospera-surface/20 transition-colors border border-prospera-border">Mock Draft</button>
               </div>
             </div>
             <div className="hidden md:block">
               <div className="relative">
-                <div className="absolute inset-0 bg-red-600 rounded-3xl transform rotate-3 opacity-20"></div>
-                <div className="relative bg-neutral-800 rounded-3xl p-8 border border-neutral-700">
+                <div className="absolute inset-0 bg-prospera-gold rounded-3xl transform rotate-3 opacity-20"></div>
+                <div className="relative bg-prospera-surface-alt rounded-3xl p-8 border border-prospera-border">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-3xl font-black">1</div>
+                    <div className="w-16 h-16 bg-prospera-gold rounded-2xl flex items-center justify-center text-3xl font-black text-prospera-text-primary">1</div>
                     <div>
-                      <div className="text-2xl font-bold">Darryn Peterson</div>
-                      <div className="text-neutral-400">SG, Kansas</div>
+                      <div className="text-2xl font-bold text-prospera-text-primary">AJ Dybantsa</div>
+                      <div className="text-prospera-text-secondary">Wing, BYU</div>
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <div className="flex justify-between text-sm"><span className="text-neutral-400">Draft Score</span><span className="font-bold">84.5</span></div>
-                    <div className="flex justify-between text-sm"><span className="text-neutral-400">Tier</span><span className="font-bold text-amber-400">Franchise</span></div>
-                    <div className="flex justify-between text-sm"><span className="text-neutral-400">Projection</span><span className="font-bold">All-Star</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-prospera-text-secondary">Draft Score</span><span className="font-bold text-prospera-text-primary">84.5</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-prospera-text-secondary">Tier</span><span className="font-bold text-prospera-gold">Franchise</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-prospera-text-secondary">Projection</span><span className="font-bold text-prospera-text-primary">All-Star</span></div>
                   </div>
                 </div>
               </div>
@@ -481,45 +481,45 @@ const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode, favorite
         </div>
       </section>
 
-      <section className="py-12 bg-neutral-50">
+      <section className="py-12 bg-prospera-surface-alt">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <button onClick={() => onNavigate('big-board')} className="bg-white rounded-xl p-6 border border-neutral-200 hover:border-red-300 hover:shadow-lg transition-all group text-left">
+            <button onClick={() => onNavigate('big-board')} className="bg-prospera-surface rounded-xl p-6 border border-prospera-border hover:border-prospera-gold hover:shadow-prospera-lg transition-all group text-left">
               <div className="text-3xl mb-3">📋</div>
-              <div className="font-bold text-neutral-900 group-hover:text-red-600">Full Big Board</div>
+              <div className="font-bold text-prospera-text-primary group-hover:text-prospera-gold transition-colors">Full Big Board</div>
             </button>
-            <button onClick={() => onNavigate('mock-draft')} className="bg-white rounded-xl p-6 border border-neutral-200 hover:border-red-300 hover:shadow-lg transition-all group text-left">
+            <button onClick={() => onNavigate('mock-draft')} className="bg-prospera-surface rounded-xl p-6 border border-prospera-border hover:border-prospera-gold hover:shadow-prospera-lg transition-all group text-left">
               <div className="text-3xl mb-3">🎲</div>
-              <div className="font-bold text-neutral-900 group-hover:text-red-600">Mock Draft</div>
+              <div className="font-bold text-prospera-text-primary group-hover:text-prospera-gold transition-colors">Mock Draft</div>
             </button>
-            <button onClick={() => onNavigate('team-needs')} className="bg-white rounded-xl p-6 border border-neutral-200 hover:border-red-300 hover:shadow-lg transition-all group text-left">
+            <button onClick={() => onNavigate('team-needs')} className="bg-prospera-surface rounded-xl p-6 border border-prospera-border hover:border-prospera-gold hover:shadow-prospera-lg transition-all group text-left">
               <div className="text-3xl mb-3">🏀</div>
-              <div className="font-bold text-neutral-900 group-hover:text-red-600">Team Needs</div>
+              <div className="font-bold text-prospera-text-primary group-hover:text-prospera-gold transition-colors">Team Needs</div>
             </button>
-            <button onClick={() => onNavigate('custom-scoring')} className="bg-white rounded-xl p-6 border border-neutral-200 hover:border-red-300 hover:shadow-lg transition-all group text-left">
+            <button onClick={() => onNavigate('custom-scoring')} className="bg-prospera-surface rounded-xl p-6 border border-prospera-border hover:border-prospera-gold hover:shadow-prospera-lg transition-all group text-left">
               <div className="text-3xl mb-3">⚖️</div>
-              <div className="font-bold text-neutral-900 group-hover:text-red-600">Custom Scoring</div>
+              <div className="font-bold text-prospera-text-primary group-hover:text-prospera-gold transition-colors">Custom Scoring</div>
             </button>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-prospera-bg">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-black text-neutral-900 mb-2">Top 10 Prospects</h2>
-              <p className="text-neutral-500">The best of the 2026 NBA Draft class</p>
+              <h2 className="text-3xl font-black text-prospera-text-primary mb-2">Top 10 Prospects</h2>
+              <p className="text-prospera-text-secondary">The best of the 2026 NBA Draft class</p>
             </div>
-            <button onClick={() => onNavigate('big-board')} className="text-red-600 font-semibold hover:underline">View Full Board →</button>
+            <button onClick={() => onNavigate('big-board')} className="text-prospera-gold font-semibold hover:text-prospera-gold-hover transition-colors">View Full Board →</button>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {topProspects.slice(0, 10).map(prospect => {
-              const tierColor = getTierColor(prospect.tier);
               const schoolColor = schoolColors[prospect.school] || '#666';
+              const isTier1 = prospect.tier === 1;
               return (
-                <div key={prospect.id} className={`${tierColor} border rounded-xl p-4 hover:shadow-lg transition-all hover:scale-[1.02] relative group`}>
+                <div key={prospect.id} className={`bg-prospera-surface border rounded-xl p-4 hover:shadow-prospera-lg transition-all hover:scale-[1.02] relative group ${isTier1 ? 'border-prospera-gold' : 'border-prospera-border'}`}>
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleFavorite(prospect.id); }}
                     className="absolute top-2 right-2 text-xl hover:scale-110 transition-transform z-10"
@@ -528,11 +528,11 @@ const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode, favorite
                   </button>
                   <div onClick={() => onSelectProspect(prospect.id)} className="cursor-pointer">
                     <div className="flex items-start gap-3 mb-3">
-                      <span className="text-4xl font-black text-neutral-900">{prospect.rank}</span>
+                      <span className={`text-4xl font-black ${isTier1 ? 'text-prospera-gold' : 'text-prospera-text-primary'}`}>{prospect.rank}</span>
                       <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ backgroundColor: schoolColor }}>{prospect.school.charAt(0)}</div>
                     </div>
-                    <h3 className="text-lg font-bold text-neutral-900 mb-1">{prospect.name}</h3>
-                    <p className="text-sm text-neutral-600">{prospect.position}, {prospect.school}</p>
+                    <h3 className="text-lg font-bold text-prospera-text-primary mb-1">{prospect.name}</h3>
+                    <p className="text-sm text-prospera-text-secondary">{prospect.position}, {prospect.school}</p>
                   </div>
                 </div>
               );
@@ -541,63 +541,63 @@ const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode, favorite
         </div>
       </section>
 
-      <section className="py-16 bg-neutral-50">
+      <section className="py-16 bg-prospera-surface-alt">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-black text-neutral-900">Latest Updates</h2>
-            <button className="text-red-600 font-semibold hover:underline">View All →</button>
+            <h2 className="text-3xl font-black text-prospera-text-primary">Latest Updates</h2>
+            <button className="text-prospera-gold font-semibold hover:text-prospera-gold-hover transition-colors">View All →</button>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {latestUpdates.map((update, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 border border-neutral-200 hover:shadow-md transition-shadow">
+              <div key={i} className="bg-prospera-surface rounded-xl p-6 border border-prospera-border hover:shadow-prospera transition-shadow">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs font-bold text-red-600 uppercase">{update.type}</span>
-                  <span className="text-xs text-neutral-400">{update.date}</span>
+                  <span className="text-xs font-bold text-prospera-gold uppercase">{update.type}</span>
+                  <span className="text-xs text-prospera-text-secondary">{update.date}</span>
                 </div>
-                <h3 className="font-bold text-neutral-900">{update.title}</h3>
+                <h3 className="font-bold text-prospera-text-primary">{update.title}</h3>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <footer className="bg-neutral-900 text-neutral-400 py-12">
+      <footer className="bg-prospera-navy text-prospera-text-secondary py-12">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-xl font-black text-white">NBA</span>
-                <span className="text-xl font-black text-red-600">DRAFT</span>
-                <span className="text-xl font-black text-white">HQ</span>
+                <span className="text-xl font-black text-prospera-surface">NBA</span>
+                <span className="text-xl font-black text-prospera-gold">DRAFT</span>
+                <span className="text-xl font-black text-prospera-surface">HQ</span>
               </div>
               <p className="text-sm">The most complete NBA Draft resource with advanced analytics and in-depth scouting.</p>
             </div>
             <div>
-              <h4 className="text-white font-bold mb-4">Features</h4>
+              <h4 className="text-prospera-surface font-bold mb-4">Features</h4>
               <ul className="space-y-2 text-sm">
-                <li><button onClick={() => onNavigate('big-board')} className="hover:text-white">Big Board</button></li>
-                <li><button onClick={() => onNavigate('mock-draft')} className="hover:text-white">Mock Draft</button></li>
-                <li><button onClick={() => onNavigate('team-needs')} className="hover:text-white">Team Needs</button></li>
+                <li><button onClick={() => onNavigate('big-board')} className="hover:text-prospera-surface transition-colors">Big Board</button></li>
+                <li><button onClick={() => onNavigate('mock-draft')} className="hover:text-prospera-surface transition-colors">Mock Draft</button></li>
+                <li><button onClick={() => onNavigate('team-needs')} className="hover:text-prospera-surface transition-colors">Team Needs</button></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-bold mb-4">Resources</h4>
+              <h4 className="text-prospera-surface font-bold mb-4">Resources</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white">Trait Library</a></li>
-                <li><a href="#" className="hover:text-white">Scouting Guide</a></li>
-                <li><a href="#" className="hover:text-white">Methodology</a></li>
+                <li><a href="#" className="hover:text-prospera-surface transition-colors">Trait Library</a></li>
+                <li><a href="#" className="hover:text-prospera-surface transition-colors">Scouting Guide</a></li>
+                <li><a href="#" className="hover:text-prospera-surface transition-colors">Methodology</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-bold mb-4">Connect</h4>
+              <h4 className="text-prospera-surface font-bold mb-4">Connect</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white">Twitter</a></li>
-                <li><a href="#" className="hover:text-white">Discord</a></li>
-                <li><a href="#" className="hover:text-white">Newsletter</a></li>
+                <li><a href="#" className="hover:text-prospera-surface transition-colors">Twitter</a></li>
+                <li><a href="#" className="hover:text-prospera-surface transition-colors">Discord</a></li>
+                <li><a href="#" className="hover:text-prospera-surface transition-colors">Newsletter</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-neutral-800 pt-8 text-sm text-center">© 2026 NBA Draft HQ. All rights reserved.</div>
+          <div className="border-t border-prospera-border pt-8 text-sm text-center">© 2026 NBA Draft HQ. All rights reserved.</div>
         </div>
       </footer>
     </div>

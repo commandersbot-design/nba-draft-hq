@@ -2,10 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Inter', sans-serif;
+/* Prospera Design System - Color Tokens */
+:root {
+  /* Backgrounds */
+  --prospera-bg: #F7F5F2;
+  --prospera-surface: #FFFFFF;
+  --prospera-surface-alt: #F1EEE8;
+  
+  /* Borders */
+  --prospera-border: #E7E1D8;
+  
+  /* Text */
+  --prospera-text-primary: #111111;
+  --prospera-text-secondary: #6B6B6B;
+  
+  /* Primary Accent - Gold */
+  --prospera-gold: #D4AF37;
+  --prospera-gold-hover: #B8911E;
+  --prospera-gold-soft: #F3E7B8;
+  
+  /* Supporting Colors */
+  --prospera-navy: #0F172A;
+  --prospera-blue: #3B82F6;
+  --prospera-green: #166534;
+  
+  /* Semantic Colors */
+  --prospera-success: #166534;
+  --prospera-success-soft: #DCFCE7;
+  --prospera-warning: #B54708;
+  --prospera-warning-soft: #FEF0C7;
+  --prospera-danger: #B42318;
+  --prospera-danger-soft: #FEE4E2;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--prospera-bg);
+  color: var(--prospera-text-primary);
+}
+
+/* Prospect Card Styling */
 .prospect-card {
   transform: rotate(-1deg);
   transition: transform 0.3s ease;
@@ -15,6 +51,7 @@ body {
   transform: rotate(0deg);
 }
 
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -28,4 +65,160 @@ body {
 
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
+}
+
+/* Prospera Component Classes */
+@layer components {
+  /* Cards */
+  .prospera-card {
+    background-color: var(--prospera-surface);
+    border: 1px solid var(--prospera-border);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Buttons */
+  .prospera-btn-primary {
+    background-color: var(--prospera-text-primary);
+    color: var(--prospera-surface);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .prospera-btn-primary:hover {
+    background-color: var(--prospera-navy);
+  }
+  
+  .prospera-btn-secondary {
+    background-color: var(--prospera-surface);
+    color: var(--prospera-text-primary);
+    border: 1px solid var(--prospera-border);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .prospera-btn-secondary:hover {
+    background-color: var(--prospera-surface-alt);
+  }
+  
+  .prospera-btn-accent {
+    background-color: var(--prospera-gold);
+    color: var(--prospera-text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .prospera-btn-accent:hover {
+    background-color: var(--prospera-gold-hover);
+  }
+  
+  /* Badges */
+  .prospera-badge {
+    background-color: var(--prospera-surface-alt);
+    color: var(--prospera-text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .prospera-badge-gold {
+    background-color: var(--prospera-gold-soft);
+    color: var(--prospera-text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .prospera-badge-success {
+    background-color: var(--prospera-success-soft);
+    color: var(--prospera-success);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .prospera-badge-warning {
+    background-color: var(--prospera-warning-soft);
+    color: var(--prospera-warning);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .prospera-badge-danger {
+    background-color: var(--prospera-danger-soft);
+    color: var(--prospera-danger);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  /* Mode Toggles / Tabs */
+  .prospera-tab {
+    background-color: transparent;
+    color: var(--prospera-text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .prospera-tab:hover {
+    color: var(--prospera-text-primary);
+  }
+  
+  .prospera-tab-active {
+    background-color: var(--prospera-gold-soft);
+    color: var(--prospera-text-primary);
+    border: 1px solid var(--prospera-gold);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+  
+  /* Stat Cards */
+  .prospera-stat-card {
+    background-color: var(--prospera-surface);
+    border: 1px solid var(--prospera-border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Inputs */
+  .prospera-input {
+    background-color: var(--prospera-surface);
+    border: 1px solid var(--prospera-border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--prospera-text-primary);
+    transition: all 0.2s ease;
+  }
+  
+  .prospera-input:focus {
+    outline: none;
+    border-color: var(--prospera-gold);
+    box-shadow: 0 0 0 3px var(--prospera-gold-soft);
+  }
+}
+
+/* Dark mode support */
+.dark {
+  --prospera-bg: #0F172A;
+  --prospera-surface: #1E293B;
+  --prospera-surface-alt: #334155;
+  --prospera-border: #475569;
+  --prospera-text-primary: #F1F5F9;
+  --prospera-text-secondary: #94A3B8;
 }
