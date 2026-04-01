@@ -336,7 +336,7 @@ const TeamNeeds = ({ onBack }) => {
 };
 
 // Big Board Component
-const BigBoard = ({ onBack, onSelectProspect }) => {
+const BigBoard = ({ onBack, onSelectProspect, favorites, toggleFavorite, isFavorite }) => {
   return (
     <div className="min-h-screen bg-[#f5f5f0]">
       <header className="bg-white border-b border-neutral-200 sticky top-0 z-50">
@@ -364,14 +364,22 @@ const BigBoard = ({ onBack, onSelectProspect }) => {
             const tierColor = getTierColor(prospect.tier);
             const schoolColor = schoolColors[prospect.school] || '#666';
             return (
-              <div key={prospect.id} onClick={() => onSelectProspect(prospect.id)} className={`${tierColor} border rounded-xl p-4 cursor-pointer hover:shadow-lg transition-all hover:scale-[1.02]`}>
-                <div className="flex items-start gap-3 mb-3">
-                  <span className="text-4xl font-black text-neutral-900">{prospect.rank}</span>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ backgroundColor: schoolColor }}>{prospect.school.charAt(0)}</div>
+              <div key={prospect.id} className={`${tierColor} border rounded-xl p-4 hover:shadow-lg transition-all hover:scale-[1.02] relative group`}>
+                <button
+                  onClick={(e) => { e.stopPropagation(); toggleFavorite(prospect.id); }}
+                  className="absolute top-2 right-2 text-xl hover:scale-110 transition-transform z-10"
+                >
+                  {isFavorite(prospect.id) ? '⭐' : '☆'}
+                </button>
+                <div onClick={() => onSelectProspect(prospect.id)} className="cursor-pointer">
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className="text-4xl font-black text-neutral-900">{prospect.rank}</span>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ backgroundColor: schoolColor }}>{prospect.school.charAt(0)}</div>
+                  </div>
+                  <h3 className="text-lg font-bold text-neutral-900 mb-1">{prospect.name}</h3>
+                  <p className="text-sm text-neutral-600">{prospect.position}, {prospect.school}</p>
+                  <div className="mt-2 text-xs text-neutral-500">{prospect.height} • {prospect.weight}</div>
                 </div>
-                <h3 className="text-lg font-bold text-neutral-900 mb-1">{prospect.name}</h3>
-                <p className="text-sm text-neutral-600">{prospect.position}, {prospect.school}</p>
-                <div className="mt-2 text-xs text-neutral-500">{prospect.height} • {prospect.weight}</div>
               </div>
             );
           })}
@@ -382,7 +390,7 @@ const BigBoard = ({ onBack, onSelectProspect }) => {
 };
 
 // Home Component
-const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode }) => {
+const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode, favorites, toggleFavorite, isFavorite }) => {
   const latestUpdates = [
     { date: 'Mar 30', title: 'Updated Big Board after March Madness', type: 'Analysis' },
     { date: 'Mar 28', title: 'Darryn Peterson declares for draft', type: 'News' },
@@ -494,13 +502,21 @@ const Home = ({ onNavigate, onSelectProspect, darkMode, toggleDarkMode }) => {
               const tierColor = getTierColor(prospect.tier);
               const schoolColor = schoolColors[prospect.school] || '#666';
               return (
-                <div key={prospect.id} onClick={() => onSelectProspect(prospect.id)} className={`${tierColor} border rounded-xl p-4 cursor-pointer hover:shadow-lg transition-all hover:scale-[1.02]`}>
-                  <div className="flex items-start gap-3 mb-3">
-                    <span className="text-4xl font-black text-neutral-900">{prospect.rank}</span>
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ backgroundColor: schoolColor }}>{prospect.school.charAt(0)}</div>
+                <div key={prospect.id} className={`${tierColor} border rounded-xl p-4 hover:shadow-lg transition-all hover:scale-[1.02] relative group`}>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); toggleFavorite(prospect.id); }}
+                    className="absolute top-2 right-2 text-xl hover:scale-110 transition-transform z-10"
+                  >
+                    {isFavorite(prospect.id) ? '⭐' : '☆'}
+                  </button>
+                  <div onClick={() => onSelectProspect(prospect.id)} className="cursor-pointer">
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="text-4xl font-black text-neutral-900">{prospect.rank}</span>
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ backgroundColor: schoolColor }}>{prospect.school.charAt(0)}</div>
+                    </div>
+                    <h3 className="text-lg font-bold text-neutral-900 mb-1">{prospect.name}</h3>
+                    <p className="text-sm text-neutral-600">{prospect.position}, {prospect.school}</p>
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-900 mb-1">{prospect.name}</h3>
-                  <p className="text-sm text-neutral-600">{prospect.position}, {prospect.school}</p>
                 </div>
               );
             })}
@@ -701,7 +717,7 @@ const riskLabels = {
 };
 
 // Prospect Profile Component with 4 View Modes
-const ProspectProfile = ({ prospectId, onBack }) => {
+const ProspectProfile = ({ prospectId, onBack, favorites, toggleFavorite, isFavorite }) => {
   const [viewMode, setViewMode] = useState('summary'); // snapshot, summary, report, full
   const prospect = topProspects.find(p => p.id === prospectId) || topProspects[0];
   const details = prospectDetails[prospectId] || getDefaultDetails(prospect);
@@ -752,6 +768,12 @@ const ProspectProfile = ({ prospectId, onBack }) => {
                 </button>
               ))}
             </div>
+            <button
+              onClick={() => toggleFavorite(prospect.id)}
+              className="text-3xl hover:scale-110 transition-transform"
+            >
+              {isFavorite(prospect.id) ? '⭐' : '☆'}
+            </button>
           </div>
         </div>
       </nav>
@@ -1013,6 +1035,26 @@ const ProspectProfile = ({ prospectId, onBack }) => {
   );
 };
 
+// Favorites Hook for shared state
+const useFavorites = () => {
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem(FAVORITES_KEY);
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const toggleFavorite = (prospectId) => {
+    const newFavorites = favorites.includes(prospectId)
+      ? favorites.filter(id => id !== prospectId)
+      : [...favorites, prospectId];
+    setFavorites(newFavorites);
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(newFavorites));
+  };
+
+  const isFavorite = (prospectId) => favorites.includes(prospectId);
+
+  return { favorites, toggleFavorite, isFavorite };
+};
+
 // Main App
 const App = () => {
   const [view, setView] = useState('home');
@@ -1020,6 +1062,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('nba-draft-hq-darkmode') === 'true';
   });
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
     if (darkMode) {
@@ -1050,11 +1093,10 @@ const App = () => {
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
 // Custom Scoring System Component
-const CustomScoring = ({ onBack, onSelectProspect }) => {
+const CustomScoring = ({ onBack, onSelectProspect, favorites, toggleFavorite, isFavorite }) => {
   const CUSTOM_WEIGHTS_KEY = 'nba-draft-hq-custom-weights-v2';
   const CUSTOM_TRAITS_KEY = 'nba-draft-hq-custom-traits';
   const CUSTOM_PROFILES_KEY = 'nba-draft-hq-custom-profiles';
-  const FAVORITES_KEY = 'nba-draft-hq-favorites';
 
   const defaultTraits = {
     // Core 8 Traits
@@ -1101,10 +1143,6 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
   const [savedProfiles, setSavedProfiles] = useState(() => {
     const saved = localStorage.getItem(CUSTOM_PROFILES_KEY);
     return saved ? JSON.parse(saved) : {};
-  });
-  const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem(FAVORITES_KEY);
-    return saved ? JSON.parse(saved) : [];
   });
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
 
@@ -1263,14 +1301,6 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
     delete newProfiles[name];
     setSavedProfiles(newProfiles);
     localStorage.setItem(CUSTOM_PROFILES_KEY, JSON.stringify(newProfiles));
-  };
-
-  const toggleFavorite = (prospectId) => {
-    const newFavorites = favorites.includes(prospectId)
-      ? favorites.filter(id => id !== prospectId)
-      : [...favorites, prospectId];
-    setFavorites(newFavorites);
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(newFavorites));
   };
 
   const filteredRankings = showFavoritesOnly
@@ -1705,13 +1735,13 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
     case 'team-needs':
       return <TeamNeeds onBack={handleBackHome} />;
     case 'big-board':
-      return <BigBoard onBack={handleBackHome} onSelectProspect={handleSelectProspect} />;
+      return <BigBoard onBack={handleBackHome} onSelectProspect={handleSelectProspect} favorites={favorites} toggleFavorite={toggleFavorite} isFavorite={isFavorite} />;
     case 'profile':
-      return <ProspectProfile prospectId={selectedProspect} onBack={handleBackHome} />;
+      return <ProspectProfile prospectId={selectedProspect} onBack={handleBackHome} favorites={favorites} toggleFavorite={toggleFavorite} isFavorite={isFavorite} />;
     case 'custom-scoring':
-      return <CustomScoring onBack={handleBackHome} onSelectProspect={handleSelectProspect} />;
+      return <CustomScoring onBack={handleBackHome} onSelectProspect={handleSelectProspect} favorites={favorites} toggleFavorite={toggleFavorite} isFavorite={isFavorite} />;
     default:
-      return <Home onNavigate={handleNavigate} onSelectProspect={handleSelectProspect} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />;
+      return <Home onNavigate={handleNavigate} onSelectProspect={handleSelectProspect} darkMode={darkMode} toggleDarkMode={toggleDarkMode} favorites={favorites} toggleFavorite={toggleFavorite} isFavorite={isFavorite} />;
   }
 };
 
