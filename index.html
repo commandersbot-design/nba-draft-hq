@@ -8,9 +8,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      #loading { padding: 20px; text-align: center; font-family: sans-serif; }
+      #error { padding: 20px; color: red; display: none; }
+    </style>
   </head>
   <body>
+    <div id="loading">Loading NBA Draft HQ...</div>
+    <div id="error"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.onerror = function(msg, url, line) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').style.display = 'block';
+        document.getElementById('error').innerHTML = '<h2>JavaScript Error</h2><p>' + msg + '</p><p>Line: ' + line + '</p>';
+      };
+      setTimeout(function() {
+        if (document.getElementById('loading').style.display !== 'none') {
+          document.getElementById('loading').innerHTML = 'Still loading... If this persists, check console for errors (F12)';
+        }
+      }, 3000);
+    </script>
   </body>
 </html>
