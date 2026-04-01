@@ -39,42 +39,57 @@ const teams = [
   { id: 30, name: 'Minnesota Timberwolves', abbreviation: 'MIN', record: '57-25', needs: ['Wing', 'SG', 'C'], colors: { primary: '#0C2340', secondary: '#236192' } }
 ];
 
-// Top 25 Prospects
+// Top 25 Prospects (2026 Draft Class)
 const topProspects = [
-  { id: 1, rank: 1, name: 'Darryn Peterson', firstName: 'Darryn', lastName: 'Peterson', school: 'Kansas', position: 'SG', tier: 1, height: "6'5", weight: '195 lbs', age: 19, wingspan: "6'10", classYear: 2026 },
-  { id: 2, rank: 2, name: 'Cam Boozer', firstName: 'Cam', lastName: 'Boozer', school: 'Duke', position: 'PF', tier: 1, height: "6'9", weight: '240 lbs', age: 19, wingspan: "7'2", classYear: 2026 },
-  { id: 3, rank: 3, name: 'AJ Dybantsa', firstName: 'AJ', lastName: 'Dybantsa', school: 'BYU', position: 'SF/PF', tier: 1, height: "6'9", weight: '210 lbs', age: 19, wingspan: "7'0", classYear: 2026 },
-  { id: 4, rank: 4, name: 'Caleb Wilson', firstName: 'Caleb', lastName: 'Wilson', school: 'North Carolina', position: 'SF', tier: 1, height: "6'8", weight: '205 lbs', age: 19, wingspan: "6'11", classYear: 2026 },
-  { id: 5, rank: 5, name: 'Keaton Wagler', firstName: 'Keaton', lastName: 'Wagler', school: 'Illinois', position: 'PG', tier: 2, height: "6'3", weight: '180 lbs', age: 20, wingspan: "6'6", classYear: 2026 },
-  { id: 6, rank: 6, name: 'Darius Acuff Jr.', firstName: 'Darius', lastName: 'Acuff Jr.', school: 'Arkansas', position: 'PG', tier: 2, height: "6'2", weight: '175 lbs', age: 19, wingspan: "6'5", classYear: 2026 },
-  { id: 7, rank: 7, name: 'Brayden Burries', firstName: 'Brayden', lastName: 'Burries', school: 'Arizona', position: 'SG', tier: 2, height: "6'6", weight: '190 lbs', age: 20, wingspan: "6'9", classYear: 2026 },
-  { id: 8, rank: 8, name: 'Kingston Flemings', firstName: 'Kingston', lastName: 'Flemings', school: 'Houston', position: 'PG', tier: 2, height: "6'4", weight: '185 lbs', age: 19, wingspan: "6'7", classYear: 2026 },
-  { id: 9, rank: 9, name: 'Mikel Brown Jr.', firstName: 'Mikel', lastName: 'Brown Jr.', school: 'Louisville', position: 'PG', tier: 2, height: "6'3", weight: '180 lbs', age: 19, wingspan: "6'6", classYear: 2026 },
-  { id: 10, rank: 10, name: 'Jayden Quaintance', firstName: 'Jayden', lastName: 'Quaintance', school: 'Kentucky', position: 'C', tier: 2, height: "6'11", weight: '250 lbs', age: 19, wingspan: "7'4", classYear: 2026 },
-  { id: 11, rank: 11, name: 'Koa Peat', firstName: 'Koa', lastName: 'Peat', school: 'Arizona', position: 'SF/PF', tier: 2, height: "6'8", weight: '215 lbs', age: 19, wingspan: "7'1", classYear: 2026 },
-  { id: 12, rank: 12, name: 'Tyran Stokes', firstName: 'Tyran', lastName: 'Stokes', school: 'LSU', position: 'PF/C', tier: 2, height: "6'10", weight: '245 lbs', age: 19, wingspan: "7'3", classYear: 2026 },
-  { id: 13, rank: 13, name: 'Nate Ament', firstName: 'Nate', lastName: 'Ament', school: 'Texas', position: 'SF', tier: 2, height: "6'7", weight: '200 lbs', age: 20, wingspan: "6'10", classYear: 2026 },
-  { id: 14, rank: 14, name: 'Chris Cenac', firstName: 'Chris', lastName: 'Cenac', school: 'Houston', position: 'C', tier: 3, height: "6'11", weight: '255 lbs', age: 20, wingspan: "7'4", classYear: 2026 },
-  { id: 15, rank: 15, name: 'VJ Edgecombe', firstName: 'VJ', lastName: 'Edgecombe', school: 'Baylor', position: 'SG', tier: 3, height: "6'5", weight: '195 lbs', age: 20, wingspan: "6'9", classYear: 2026 },
-  { id: 16, rank: 16, name: 'Liam McNeeley', firstName: 'Liam', lastName: 'McNeeley', school: 'UConn', position: 'SF', tier: 3, height: "6'7", weight: '205 lbs', age: 20, wingspan: "6'10", classYear: 2026 },
-  { id: 17, rank: 17, name: 'Asa Newell', firstName: 'Asa', lastName: 'Newell', school: 'Florida', position: 'PF', tier: 3, height: "6'9", weight: '220 lbs', age: 19, wingspan: "7'0", classYear: 2026 },
-  { id: 18, rank: 18, name: 'Drake Powell', firstName: 'Drake', lastName: 'Powell', school: 'North Carolina', position: 'SG/SF', tier: 3, height: "6'6", weight: '195 lbs', age: 20, wingspan: "6'10", classYear: 2026 },
-  { id: 19, rank: 19, name: 'John Tonje', firstName: 'John', lastName: 'Tonje', school: 'Wisconsin', position: 'SG', tier: 3, height: "6'5", weight: '190 lbs', age: 21, wingspan: "6'8", classYear: 2026 },
-  { id: 20, rank: 20, name: 'Egor Demin', firstName: 'Egor', lastName: 'Demin', school: 'BYU', position: 'PG', tier: 3, height: "6'8", weight: '195 lbs', age: 20, wingspan: "6'11", classYear: 2026 },
-  { id: 21, rank: 21, name: 'Rasheer Fleming', firstName: 'Rasheer', lastName: 'Fleming', school: "Saint Joseph's", position: 'PF', tier: 3, height: "6'9", weight: '225 lbs', age: 21, wingspan: "7'2", classYear: 2026 },
-  { id: 22, rank: 22, name: 'Oumar Ballo', firstName: 'Oumar', lastName: 'Ballo', school: 'Indiana', position: 'C', tier: 3, height: "6'11", weight: '260 lbs', age: 22, wingspan: "7'5", classYear: 2026 },
-  { id: 23, rank: 23, name: "Ja'Kobi Gillespie", firstName: "Ja'Kobi", lastName: 'Gillespie', school: 'Maryland', position: 'SG', tier: 4, height: "6'3", weight: '185 lbs', age: 21, wingspan: "6'6", classYear: 2026 },
-  { id: 24, rank: 24, name: 'Desmond Claude', firstName: 'Desmond', lastName: 'Claude', school: 'USC', position: 'SF', tier: 4, height: "6'7", weight: '210 lbs', age: 20, wingspan: "7'0", classYear: 2026 },
-  { id: 25, rank: 25, name: 'Great Osobor', firstName: 'Great', lastName: 'Osobor', school: 'Washington', position: 'C', tier: 4, height: "6'11", weight: '245 lbs', age: 21, wingspan: "7'3", classYear: 2026 }
+  { id: 1, rank: 1, name: 'AJ Dybantsa', firstName: 'AJ', lastName: 'Dybantsa', school: 'BYU', position: 'Wing', tier: 1, height: "6'9", age: 19, classYear: 2026 },
+  { id: 2, rank: 2, name: 'Darryn Peterson', firstName: 'Darryn', lastName: 'Peterson', school: 'Kansas', position: 'Guard', tier: 1, height: "6'5", age: 19, classYear: 2026 },
+  { id: 3, rank: 3, name: 'Cameron Boozer', firstName: 'Cameron', lastName: 'Boozer', school: 'Duke', position: 'Forward', tier: 1, height: "6'9", age: 18, classYear: 2026 },
+  { id: 4, rank: 4, name: 'Caleb Wilson', firstName: 'Caleb', lastName: 'Wilson', school: 'North Carolina', position: 'Wing', tier: 1, height: "6'8", age: 19, classYear: 2026 },
+  { id: 5, rank: 5, name: 'Kingston Flemings', firstName: 'Kingston', lastName: 'Flemings', school: 'Houston', position: 'Guard', tier: 2, height: "6'4", age: 19, classYear: 2026 },
+  { id: 6, rank: 6, name: 'Jayden Quaintance', firstName: 'Jayden', lastName: 'Quaintance', school: 'Kentucky', position: 'Big', tier: 2, height: "6'10", age: 19, classYear: 2026 },
+  { id: 7, rank: 7, name: 'Koa Peat', firstName: 'Koa', lastName: 'Peat', school: 'Arizona', position: 'Forward', tier: 2, height: "6'8", age: 19, classYear: 2026 },
+  { id: 8, rank: 8, name: 'Yaxel Lendeborg', firstName: 'Yaxel', lastName: 'Lendeborg', school: 'Michigan', position: 'Forward', tier: 2, height: "6'8.5", age: 23, classYear: 2026 },
+  { id: 9, rank: 9, name: 'Hannes Steinbach', firstName: 'Hannes', lastName: 'Steinbach', school: 'Washington', position: 'Big', tier: 2, height: "6'9.5", age: 20, classYear: 2026 },
+  { id: 10, rank: 10, name: 'Mikel Brown Jr.', firstName: 'Mikel', lastName: 'Brown Jr.', school: 'Louisville', position: 'Guard', tier: 2, height: "6'4", age: 20, classYear: 2026 },
+  { id: 11, rank: 11, name: 'Keaton Wagler', firstName: 'Keaton', lastName: 'Wagler', school: 'Illinois', position: 'Wing', tier: 2, height: "6'6", age: 19, classYear: 2026 },
+  { id: 12, rank: 12, name: 'Thomas Haugh', firstName: 'Thomas', lastName: 'Haugh', school: 'Florida', position: 'Forward', tier: 2, height: "6'9", age: 23, classYear: 2026 },
+  { id: 13, rank: 13, name: 'Labaron Philon', firstName: 'Labaron', lastName: 'Philon', school: 'Alabama', position: 'Guard', tier: 2, height: "6'2.75", age: 20, classYear: 2026 },
+  { id: 14, rank: 14, name: 'Patrick Ngongba II', firstName: 'Patrick', lastName: 'Ngongba II', school: 'Duke', position: 'Big', tier: 2, height: "6'11", age: 20, classYear: 2026 },
+  { id: 15, rank: 15, name: 'Cameron Carr', firstName: 'Cameron', lastName: 'Carr', school: 'Baylor', position: 'Wing', tier: 3, height: "6'6", age: 21, classYear: 2026 },
+  { id: 16, rank: 16, name: 'Darius Acuff Jr.', firstName: 'Darius', lastName: 'Acuff Jr.', school: 'Arkansas', position: 'Guard', tier: 3, height: "6'1", age: 19, classYear: 2026 },
+  { id: 17, rank: 17, name: 'Braylon Mullins', firstName: 'Braylon', lastName: 'Mullins', school: 'Connecticut', position: 'Wing', tier: 3, height: "6'5", age: 20, classYear: 2026 },
+  { id: 18, rank: 18, name: 'Nate Ament', firstName: 'Nate', lastName: 'Ament', school: 'Tennessee', position: 'Wing/Forward', tier: 3, height: "6'9", age: 19, classYear: 2026 },
+  { id: 19, rank: 19, name: 'Joshua Jefferson', firstName: 'Joshua', lastName: 'Jefferson', school: 'Iowa State', position: 'Wing', tier: 3, height: "6'9", age: 22, classYear: 2026 },
+  { id: 20, rank: 20, name: 'Christian Anderson', firstName: 'Christian', lastName: 'Anderson', school: 'Texas Tech', position: 'Guard', tier: 3, height: "6'2", age: 20, classYear: 2026 },
+  { id: 21, rank: 21, name: 'Benett Stirtz', firstName: 'Benett', lastName: 'Stirtz', school: 'Iowa', position: 'Guard', tier: 3, height: "6'4", age: 22, classYear: 2026 },
+  { id: 22, rank: 22, name: 'Amari Allen', firstName: 'Amari', lastName: 'Allen', school: 'Alabama', position: 'Wing', tier: 3, height: "6'8", age: 20, classYear: 2026 },
+  { id: 23, rank: 23, name: 'Chris Cenac Jr.', firstName: 'Chris', lastName: 'Cenac Jr.', school: 'Houston', position: 'Big', tier: 3, height: "6'9.5", age: 19, classYear: 2026 },
+  { id: 24, rank: 24, name: 'Neoklis Avdalas', firstName: 'Neoklis', lastName: 'Avdalas', school: 'Virginia Tech', position: 'Wing', tier: 3, height: "6'7.5", age: 20, classYear: 2026 },
+  { id: 25, rank: 25, name: 'Tounde Yessoufou', firstName: 'Tounde', lastName: 'Yessoufou', school: 'Baylor', position: 'Wing', tier: 3, height: "6'4", age: 20, classYear: 2026 }
 ];
 
 const schoolColors = {
   'Kansas': '#0051ba', 'Duke': '#003087', 'BYU': '#002f5f', 'North Carolina': '#7bafd4',
   'Illinois': '#13294b', 'Arkansas': '#9d2235', 'Arizona': '#cc0033', 'Houston': '#c8102e',
-  'Louisville': '#ad0000', 'Kentucky': '#0033a0', 'LSU': '#461D7C', 'Texas': '#BF5700',
-  'Baylor': '#154734', 'UConn': '#003366', 'Florida': '#0021A5', 'Wisconsin': '#C5050C',
-  "Saint Joseph's": '#9E1B32', 'Indiana': '#990000', 'Maryland': '#E03A3E', 'USC': '#990000',
-  'Washington': '#4B2E83'
+  'Louisville': '#ad0000', 'Kentucky': '#0033a0', 'Michigan': '#00274C', 'Alabama': '#9E1B32',
+  'Baylor': '#154734', 'Connecticut': '#003366', 'Florida': '#0021A5', 'Wisconsin': '#C5050C',
+  'Tennessee': '#FF8200', 'Iowa State': '#C8102E', 'Texas Tech': '#CC0000', 'Iowa': '#FFCD00',
+  'Virginia Tech': '#630031', 'Michigan State': '#18453B', 'Purdue': '#CEB888', 'Minnesota': '#7A0019',
+  'UCLA': '#2774AE', 'Syracuse': '#F76900', 'Northwestern': '#4E2A84', 'Creighton': '#005CA9',
+  'Oregon': '#154733', 'NC State': '#CC0000', 'Nebraska': '#E41C38', 'Texas': '#BF5700',
+  'Georgia': '#BA0C2F', 'Georgetown': '#041E42', 'Cincinnati': '#E00122', 'Auburn': '#0C2340',
+  'Valencia': '#FF6600', 'NZ Breakers': '#000000', 'Vanderbilt': '#866D4B', 'Melbourne United': '#000000',
+  'Paris Basketball': '#1D4289', 'ASVEL': '#CC0000', 'Perth Wildcats': '#FF0000', 'Joventut': '#000000',
+  'Butler': '#13294B', 'UCF': '#BA9B37', 'St. John\'s': '#CF102D', 'Dayton': '#004B8D',
+  'Santa Clara': '#B30738', 'Indiana': '#990000', 'Maryland': '#E03A3E', 'USC': '#990000',
+  'Washington': '#4B2E83', 'Ohio State': '#BB0000', 'Wake Forest': '#9E7E38', 'Virginia': '#232D4B',
+  'Kansas State': '#512888', 'Gonzaga': '#C8102E', 'Oklahoma': '#841617', 'Notre Dame': '#0C2340',
+  'Stanford': '#8C1515', 'Utah': '#BE0000', 'Colorado': '#CFB87C', 'Arizona State': '#8C1D40',
+  'Oregon State': '#DC4405', 'Washington State': '#981E32', 'California': '#003262', 'Utah State': '#00263A',
+  'San Diego State': '#C41230', 'Nevada': '#003366', 'New Mexico': '#BA0C2F', 'Boise State': '#0033A0',
+  'Fresno State': '#DB0032', 'San Jose State': '#0055A2', 'Colorado State': '#1E4D2B', 'Wyoming': '#492F24',
+  'Air Force': '#003087', 'UNLV': '#CF0A2C', 'New Mexico State': '#882345', 'Grand Canyon': '#522398',
+  'Seattle': '#AA0000', 'Tarleton': '#4A2C6A', 'Utah Valley': '#275D38', 'California Baptist': '#A6192E'
 };
 
 const getTierColor = (tier) => {
