@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 const ADMIN_KEY = 'draft-hq-admin-2026';
 const MOCK_DRAFT_KEY = 'nba-draft-hq-mock-2026';
 const LAST_UPDATED_KEY = 'nba-draft-hq-mock-updated';
+const FAVORITES_KEY = 'nba-draft-hq-favorites';
+const SCORING_PROFILES_KEY = 'nba-draft-hq-scoring-profiles';
 
 // Team data with 2026 draft order and needs
 const teams = [
