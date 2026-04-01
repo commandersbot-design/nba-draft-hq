@@ -1468,6 +1468,7 @@ const CustomScoring = ({ onBack, onSelectProspect }) => {
                         <div className="text-2xl font-black text-red-600">{prospect.customScore.toFixed(1)}</div>
                         <div className="text-xs text-neutral-400">Default: #{prospect.rank}</div>
                       </div>
+                      </div>
                     </div>
                   );
                 })}
