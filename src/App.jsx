@@ -20,6 +20,29 @@ const tagOptions = [
   'two-way',
 ];
 
+const viewModes = [
+  {
+    id: 'skim',
+    label: 'Skim',
+    description: 'Fast scan of rank, school, and board movement.',
+  },
+  {
+    id: 'peek',
+    label: 'Peek',
+    description: 'Adds archetype, tier, and workflow context.',
+  },
+  {
+    id: 'peruse',
+    label: 'Peruse',
+    description: 'Expands compare, tags, and board notes.',
+  },
+  {
+    id: 'deep-dive',
+    label: 'Deep Dive',
+    description: 'Full profile with all editable workflow fields.',
+  },
+];
+
 function readSavedValue(key, fallback) {
   try {
     const value = JSON.parse(window.localStorage.getItem(key) || JSON.stringify(fallback));
@@ -52,6 +75,7 @@ function tierOrder(tier) {
 }
 
 function App() {
+  const [viewMode, setViewMode] = useState('peek');
   const [query, setQuery] = useState('');
   const [position, setPosition] = useState('ALL');
   const [school, setSchool] = useState('ALL');
@@ -182,6 +206,7 @@ function App() {
   const notesCount = Object.values(notes).filter((value) => value?.trim()).length;
   const taggedCount = Object.values(customTags).filter((tags) => tags.length > 0).length;
   const customTierCount = Object.keys(customTiers).length;
+  const selectedMode = viewModes.find((mode) => mode.id === viewMode);
 
   const toggleWatchlist = (id) => {
     setWatchlist((current) => (
@@ -248,161 +273,377 @@ function App() {
 
   return (
     <div className="page-shell">
-      <header className="topbar">
-        <div>
-          <p className="eyebrow">Prospera</p>
-          <h1>Prospera</h1>
+      <header className="guide-header panel">
+        <div className="guide-brand">
+          <p className="eyebrow">2026</p>
+          <h1>Prospera Draft Guide</h1>
+          <p className="guide-copy">
+            A ranked board with editorial scan modes, custom tiers, scouting tags, compare tools,
+            and room notes built into the same view.
+          </p>
         </div>
-        <div className="topbar-meta">
-          <span className="pill pill-live">2026 Board</span>
-          <span className="topbar-note">Structured data, custom tiers, and draft tags.</span>
+        <div className="guide-meta">
+          <span className="pill pill-live">Big Board</span>
+          <span className="topbar-note">Updated structure inspired by modern editorial draft boards.</span>
         </div>
       </header>
 
-      <main className="layout">
-        <section className="hero panel">
-          <div className="hero-copy">
-            <p className="eyebrow">Big Board</p>
-            <h2>A clean board with actual workflow now built in.</h2>
-            <p>
-              The board data now lives in a structured JSON file, and you can layer your own tiers
-              and scouting tags on top without touching the base rankings.
-            </p>
-            <div className="hero-actions">
-              <button
-                type="button"
-                className={`action-button${watchlistOnly ? ' is-active' : ''}`}
-                onClick={() => setWatchlistOnly((current) => !current)}
-              >
-                {watchlistOnly ? 'Showing watchlist only' : 'Focus watchlist'}
-              </button>
-              <button type="button" className="text-button" onClick={clearFilters}>
-                Reset filters
-              </button>
-            </div>
-          </div>
+      <section className="mode-bar panel">
+        <div className="mode-copy">
+          <p className="eyebrow">View Mode</p>
+          <h2>{selectedMode?.label}</h2>
+          <p>{selectedMode?.description}</p>
+        </div>
+        <div className="mode-tabs">
+          {viewModes.map((mode) => (
+            <button
+              key={mode.id}
+              type="button"
+              className={`mode-tab${viewMode === mode.id ? ' is-active' : ''}`}
+              onClick={() => setViewMode(mode.id)}
+            >
+              {mode.label}
+            </button>
+          ))}
+        </div>
+      </section>
 
-          <div className="hero-stats">
-            <article className="stat-card">
-              <span className="stat-label">Prospects</span>
-              <strong>{enrichedProspects.length}</strong>
-              <span className="stat-detail">Normalized into structured board data</span>
-            </article>
-            <article className="stat-card">
-              <span className="stat-label">Custom Tiers</span>
-              <strong>{customTierCount}</strong>
-              <span className="stat-detail">Players with overridden board tiers</span>
-            </article>
-            <article className="stat-card">
-              <span className="stat-label">Tagged Players</span>
-              <strong>{taggedCount}</strong>
-              <span className="stat-detail">Prospects marked with draft workflow tags</span>
-            </article>
-            <article className="stat-card">
-              <span className="stat-label">International</span>
-              <strong>{internationalCount}</strong>
-              <span className="stat-detail">Prospects outside the NCAA track</span>
-            </article>
-            <article className="stat-card">
-              <span className="stat-label">Notes Logged</span>
-              <strong>{notesCount}</strong>
-              <span className="stat-detail">Prospects with saved room notes</span>
-            </article>
-          </div>
+      <main className="guide-layout">
+        <section className="left-column">
+          <section className="hero panel">
+            <div className="hero-copy">
+              <p className="eyebrow">Board Summary</p>
+              <h2>A cleaner board with product features intact.</h2>
+              <p>
+                Structured data, custom tiers, generated archetypes, compare workflow, and detail
+                depth that changes with the selected board mode.
+              </p>
+              <div className="hero-actions">
+                <button
+                  type="button"
+                  className={`action-button${watchlistOnly ? ' is-active' : ''}`}
+                  onClick={() => setWatchlistOnly((current) => !current)}
+                >
+                  {watchlistOnly ? 'Showing watchlist only' : 'Focus watchlist'}
+                </button>
+                <button type="button" className="text-button" onClick={clearFilters}>
+                  Reset filters
+                </button>
+              </div>
+            </div>
+
+            <div className="hero-stats">
+              <article className="stat-card">
+                <span className="stat-label">Prospects</span>
+                <strong>{enrichedProspects.length}</strong>
+                <span className="stat-detail">Normalized into structured board data</span>
+              </article>
+              <article className="stat-card">
+                <span className="stat-label">Custom Tiers</span>
+                <strong>{customTierCount}</strong>
+                <span className="stat-detail">Players with overridden board tiers</span>
+              </article>
+              <article className="stat-card">
+                <span className="stat-label">Tagged Players</span>
+                <strong>{taggedCount}</strong>
+                <span className="stat-detail">Prospects marked with workflow tags</span>
+              </article>
+              <article className="stat-card">
+                <span className="stat-label">International</span>
+                <strong>{internationalCount}</strong>
+                <span className="stat-detail">Prospects outside the NCAA track</span>
+              </article>
+              <article className="stat-card">
+                <span className="stat-label">Notes Logged</span>
+                <strong>{notesCount}</strong>
+                <span className="stat-detail">Prospects with saved room notes</span>
+              </article>
+            </div>
+          </section>
+
+          <section className="controls panel">
+            <div className="control-block search-block">
+              <label htmlFor="search">Search</label>
+              <input
+                id="search"
+                type="search"
+                placeholder="Player, school, position, tag"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </div>
+            <div className="control-block">
+              <label htmlFor="position-filter">Position</label>
+              <select id="position-filter" value={position} onChange={(event) => setPosition(event.target.value)}>
+                <option value="ALL">All positions</option>
+                {positions.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="school-filter">School</label>
+              <select id="school-filter" value={school} onChange={(event) => setSchool(event.target.value)}>
+                <option value="ALL">All schools</option>
+                {schools.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="league-filter">League Type</label>
+              <select id="league-filter" value={leagueType} onChange={(event) => setLeagueType(event.target.value)}>
+                <option value="ALL">All leagues</option>
+                {leagueTypes.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="bucket-filter">Board Segment</label>
+              <select id="bucket-filter" value={bucket} onChange={(event) => setBucket(event.target.value)}>
+                <option value="ALL">Entire board</option>
+                <option value="Top 5">Top 5</option>
+                <option value="Lottery">Lottery</option>
+                <option value="First round">First round</option>
+                <option value="Second round">Second round</option>
+                <option value="Board depth">Board depth</option>
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="tier-filter">Tier</label>
+              <select id="tier-filter" value={tierFilter} onChange={(event) => setTierFilter(event.target.value)}>
+                <option value="ALL">All tiers</option>
+                {tiers.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="tag-filter">Tag</label>
+              <select id="tag-filter" value={tagFilter} onChange={(event) => setTagFilter(event.target.value)}>
+                <option value="ALL">All tags</option>
+                {tagOptions.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="sort-filter">Sort</label>
+              <select id="sort-filter" value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
+                <option value="rank">Rank</option>
+                <option value="tier">Tier</option>
+                <option value="movement">Movement</option>
+                <option value="school">School</option>
+                <option value="name">Name</option>
+                <option value="size">Size</option>
+              </select>
+            </div>
+          </section>
+
+          <section className="board panel">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Big Board</p>
+                <h3>{filteredProspects.length} prospects shown</h3>
+              </div>
+              <p className="section-meta">Mode: {selectedMode?.label}</p>
+            </div>
+
+            <div className="board-summary">
+              <div className="summary-chip">{watchlistOnly ? 'Watchlist focus' : 'Full board view'}</div>
+              <div className="summary-chip">{bucket === 'ALL' ? 'All board segments' : bucket}</div>
+              <div className="summary-chip">{tierFilter === 'ALL' ? 'All tiers' : tierFilter}</div>
+              <div className="summary-chip">{tagFilter === 'ALL' ? 'All tags' : `Tag: ${tagFilter}`}</div>
+            </div>
+
+            <div className="rank-list">
+              {filteredProspects.length === 0 ? (
+                <div className="detail-empty">
+                  <h3>No results</h3>
+                  <p>Change the filters or broaden the search terms.</p>
+                </div>
+              ) : (
+                filteredProspects.map((prospect) => (
+                  <button
+                    key={prospect.id}
+                    type="button"
+                    className={`rank-card${prospect.id === activeId ? ' is-active' : ''}`}
+                    onClick={() => setActiveId(prospect.id)}
+                  >
+                    <div className="rank-number">{prospect.rank}</div>
+                    <div className="rank-content">
+                      <div className="rank-topline">
+                        <strong>{prospect.name}</strong>
+                        {watchlist.includes(prospect.id) && <span className="row-badge">Watchlist</span>}
+                      </div>
+                      <div className="rank-subline">{prospect.position}, {prospect.school}</div>
+                      {viewMode !== 'skim' && (
+                        <div className="rank-meta-line">
+                          <span>{prospect.tier}</span>
+                          <span>{prospect.leagueType}</span>
+                          <span>{movementLabel(prospect.movement)}</span>
+                        </div>
+                      )}
+                      {(viewMode === 'peruse' || viewMode === 'deep-dive') && (
+                        <div className="rank-description">
+                          <span>{prospect.archetype}</span>
+                          {prospect.tags.length > 0 && (
+                            <div className="inline-tags">
+                              {prospect.tags.slice(0, 3).map((tag) => (
+                                <span key={tag} className="mini-tag">{tag}</span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </button>
+                ))
+              )}
+            </div>
+          </section>
         </section>
 
-        <section className="controls panel">
-          <div className="control-block search-block">
-            <label htmlFor="search">Search</label>
-            <input
-              id="search"
-              type="search"
-              placeholder="Player, school, position, tag"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </div>
-          <div className="control-block">
-            <label htmlFor="position-filter">Position</label>
-            <select id="position-filter" value={position} onChange={(event) => setPosition(event.target.value)}>
-              <option value="ALL">All positions</option>
-              {positions.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-          <div className="control-block">
-            <label htmlFor="school-filter">School</label>
-            <select id="school-filter" value={school} onChange={(event) => setSchool(event.target.value)}>
-              <option value="ALL">All schools</option>
-              {schools.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-          <div className="control-block">
-            <label htmlFor="league-filter">League Type</label>
-            <select id="league-filter" value={leagueType} onChange={(event) => setLeagueType(event.target.value)}>
-              <option value="ALL">All leagues</option>
-              {leagueTypes.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-          <div className="control-block">
-            <label htmlFor="bucket-filter">Board Segment</label>
-            <select id="bucket-filter" value={bucket} onChange={(event) => setBucket(event.target.value)}>
-              <option value="ALL">Entire board</option>
-              <option value="Top 5">Top 5</option>
-              <option value="Lottery">Lottery</option>
-              <option value="First round">First round</option>
-              <option value="Second round">Second round</option>
-              <option value="Board depth">Board depth</option>
-            </select>
-          </div>
-          <div className="control-block">
-            <label htmlFor="tier-filter">Tier</label>
-            <select id="tier-filter" value={tierFilter} onChange={(event) => setTierFilter(event.target.value)}>
-              <option value="ALL">All tiers</option>
-              {tiers.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-          <div className="control-block">
-            <label htmlFor="tag-filter">Tag</label>
-            <select id="tag-filter" value={tagFilter} onChange={(event) => setTagFilter(event.target.value)}>
-              <option value="ALL">All tags</option>
-              {tagOptions.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-          <div className="control-block">
-            <label htmlFor="sort-filter">Sort</label>
-            <select id="sort-filter" value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
-              <option value="rank">Rank</option>
-              <option value="tier">Tier</option>
-              <option value="movement">Movement</option>
-              <option value="school">School</option>
-              <option value="name">Name</option>
-              <option value="size">Size</option>
-            </select>
-          </div>
-        </section>
-
-        <section className="workflow panel">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Workflow</p>
-              <h3>Shortlist and compare</h3>
+        <aside className="detail panel">
+          {!activeProspect ? (
+            <div className="detail-empty">
+              <p className="eyebrow">Player Detail</p>
+              <h3>Select a prospect</h3>
+              <p>Open a row to inspect rank, size, custom tier, tags, and your notes.</p>
             </div>
-            <p className="section-meta">
-              <span>{watchlistProspects.length}</span> saved - <span>{compareProspects.length}</span> in compare
-            </p>
-          </div>
+          ) : (
+            <div className="detail-card">
+              <div className="detail-top">
+                <div>
+                  <p className="eyebrow">Player Detail</p>
+                  <h3>#{activeProspect.rank} {activeProspect.name}</h3>
+                  <p className="detail-meta">
+                    {activeProspect.position}, {activeProspect.school}, {activeProspect.classYear}
+                  </p>
+                </div>
 
-          <div className="workflow-grid">
+                <div className="detail-actions">
+                  <span className="pill">{activeProspect.tier}</span>
+                  <button
+                    type="button"
+                    className={`action-button${watchlist.includes(activeProspect.id) ? ' is-active' : ''}`}
+                    onClick={() => toggleWatchlist(activeProspect.id)}
+                  >
+                    {watchlist.includes(activeProspect.id) ? 'Saved' : 'Watchlist'}
+                  </button>
+                  <button
+                    type="button"
+                    className={`action-button${compareIds.includes(activeProspect.id) ? ' is-active' : ''}`}
+                    onClick={() => toggleCompare(activeProspect.id)}
+                  >
+                    {compareIds.includes(activeProspect.id) ? 'Compared' : 'Compare'}
+                  </button>
+                </div>
+              </div>
+
+              <div className="detail-grid">
+                {[
+                  ['Rank', activeProspect.rank],
+                  ['Tier', activeProspect.tier],
+                  ['Height', activeProspect.height],
+                  ['Weight', activeProspect.weight || '--'],
+                  ['Wingspan', activeProspect.wingspan || '--'],
+                  ['Country', activeProspect.country],
+                  ['League', activeProspect.leagueType],
+                  ['Movement', movementLabel(activeProspect.movement)],
+                ].map(([label, value]) => (
+                  <div key={label}>
+                    <strong>{label}</strong>
+                    <span>{value}</span>
+                  </div>
+                ))}
+              </div>
+
+              {viewMode !== 'skim' && (
+                <div className="detail-section">
+                  <h4>Archetype</h4>
+                  <p>
+                    <strong>{activeProspect.archetype}</strong> is the fun-board label for a
+                    <strong> {activeProspect.archetypeBase}</strong> profile.
+                  </p>
+                </div>
+              )}
+
+              {(viewMode === 'peek' || viewMode === 'peruse' || viewMode === 'deep-dive') && (
+                <div className="detail-section">
+                  <h4>Team Fit</h4>
+                  <p>{activeProspect.teamFit}</p>
+                </div>
+              )}
+
+              {(viewMode === 'peruse' || viewMode === 'deep-dive') && (
+                <div className="detail-section">
+                  <div className="detail-section-head">
+                    <h4>Workflow Tags</h4>
+                    <span className="section-meta">Use tags to shape your board</span>
+                  </div>
+                  <div className="tag-grid">
+                    {tagOptions.map((tag) => (
+                      <button
+                        key={tag}
+                        type="button"
+                        className={`tag-button${activeProspect.tags.includes(tag) ? ' is-active' : ''}`}
+                        onClick={() => toggleTag(activeProspect.id, tag)}
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {viewMode === 'deep-dive' && (
+                <>
+                  <div className="detail-section">
+                    <div className="detail-section-head">
+                      <h4>Tier Assignment</h4>
+                      <span className="section-meta">Overrides save locally</span>
+                    </div>
+                    <div className="tier-controls">
+                      {['Tier 1', 'Tier 2', 'Tier 3', 'Tier 4', 'Tier 5'].map((tier) => (
+                        <button
+                          key={tier}
+                          type="button"
+                          className={`tier-button${activeProspect.tier === tier ? ' is-active' : ''}`}
+                          onClick={() => updateTier(activeProspect.id, tier === activeProspect.baseTier ? '' : tier)}
+                        >
+                          {tier}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="detail-section">
+                    <div className="detail-section-head">
+                      <h4>Room Notes</h4>
+                      <span className="section-meta">Saved locally in this browser</span>
+                    </div>
+                    <textarea
+                      className="notes-input"
+                      placeholder="Add role notes, bet size, fit concerns, or live eval thoughts."
+                      value={notes[activeProspect.id] || ''}
+                      onChange={(event) => updateNote(activeProspect.id, event.target.value)}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+
+          <section className="workflow panel side-workflow">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Workflow</p>
+                <h3>Shortlist and compare</h3>
+              </div>
+            </div>
+
             <div className="workflow-column">
               <div className="workflow-head">
                 <h4>Watchlist</h4>
@@ -425,264 +666,59 @@ function App() {
               </div>
             </div>
 
-            <div className="workflow-column">
-              <div className="workflow-head">
-                <h4>Compare Queue</h4>
-                <button type="button" className="text-button" onClick={() => setCompareIds([])}>
-                  Clear
-                </button>
-              </div>
-              <div className="compare-list">
-                {compareProspects.length === 0 ? (
-                  <p className="empty-state">Queue up players to compare size, movement, tier, and tags.</p>
-                ) : (
-                  compareProspects.map((prospect) => (
-                    <button key={prospect.id} type="button" className="compare-card" onClick={() => setActiveId(prospect.id)}>
-                      <strong>#{prospect.rank} {prospect.name}</strong>
-                      <span>{prospect.position} - {prospect.school}</span>
-                      <span>{prospect.height} / {prospect.weight || '--'} lb</span>
-                      <span>{prospect.archetype}</span>
+            {(viewMode === 'peruse' || viewMode === 'deep-dive') && (
+              <>
+                <div className="workflow-column compare-stack">
+                  <div className="workflow-head">
+                    <h4>Compare Queue</h4>
+                    <button type="button" className="text-button" onClick={() => setCompareIds([])}>
+                      Clear
                     </button>
-                  ))
-                )}
-              </div>
-            </div>
-          </div>
-
-          {compareProspects.length > 0 && (
-            <div className="compare-matrix">
-              <div className="matrix-row matrix-head">
-                <span>Category</span>
-                {compareProspects.map((prospect) => (
-                  <span key={prospect.id}>{prospect.name}</span>
-                ))}
-              </div>
-              {[
-                ['Rank', 'rank'],
-                ['Tier', 'tier'],
-                ['Position', 'position'],
-                ['Height', 'height'],
-                ['Weight', 'weight'],
-                ['League', 'leagueType'],
-                ['Country', 'country'],
-                ['School', 'school'],
-                ['Class', 'classYear'],
-                ['Movement', 'movement'],
-              ].map(([label, key]) => (
-                <div key={label} className="matrix-row">
-                  <span>{label}</span>
-                  {compareProspects.map((prospect) => (
-                    <span key={`${prospect.id}-${key}`}>{prospect[key] || '--'}</span>
-                  ))}
-                </div>
-              ))}
-              <div className="matrix-row">
-                <span>Tags</span>
-                {compareProspects.map((prospect) => (
-                  <span key={`${prospect.id}-tags`}>{prospect.tags.length ? prospect.tags.join(', ') : '--'}</span>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-
-        <section className="board panel">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Board</p>
-              <h3>Draft board</h3>
-            </div>
-            <p className="section-meta">{filteredProspects.length} prospects shown</p>
-          </div>
-
-          <div className="board-summary">
-            <div className="summary-chip">{watchlistOnly ? 'Watchlist focus' : 'Full board view'}</div>
-            <div className="summary-chip">{bucket === 'ALL' ? 'All board segments' : bucket}</div>
-            <div className="summary-chip">{tierFilter === 'ALL' ? 'All tiers' : tierFilter}</div>
-            <div className="summary-chip">{leagueType === 'ALL' ? 'All leagues' : leagueType}</div>
-            <div className="summary-chip">{tagFilter === 'ALL' ? 'All tags' : `Tag: ${tagFilter}`}</div>
-          </div>
-
-          <div className="table-head" aria-hidden="true">
-            <span>Prospect</span>
-            <span>Position</span>
-            <span>Height</span>
-            <span>Weight</span>
-            <span>Tier</span>
-            <span>Move</span>
-          </div>
-
-          <div className="board-list">
-            {filteredProspects.length === 0 ? (
-              <div className="detail-empty">
-                <h3>No results</h3>
-                <p>Change the filters or broaden the search terms.</p>
-              </div>
-            ) : (
-              filteredProspects.map((prospect) => (
-                <button
-                  key={prospect.id}
-                  type="button"
-                  className={`board-row${prospect.id === activeId ? ' is-active' : ''}`}
-                  onClick={() => setActiveId(prospect.id)}
-                >
-                  <div className="prospect-main">
-                    <div className="prospect-title">
-                      <strong>#{prospect.rank} {prospect.name}</strong>
-                      {watchlist.includes(prospect.id) && <span className="row-badge">Watchlist</span>}
-                    </div>
-                    <div className="prospect-meta">{prospect.school} / {prospect.classYear} / {prospect.leagueType}</div>
-                    <div className="archetype-line">{prospect.archetype}</div>
-                    {prospect.tags.length > 0 && (
-                      <div className="inline-tags">
-                        {prospect.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="mini-tag">{tag}</span>
-                        ))}
-                      </div>
+                  </div>
+                  <div className="compare-list">
+                    {compareProspects.length === 0 ? (
+                      <p className="empty-state">Queue up players to compare size, movement, tier, and tags.</p>
+                    ) : (
+                      compareProspects.map((prospect) => (
+                        <button key={prospect.id} type="button" className="compare-card" onClick={() => setActiveId(prospect.id)}>
+                          <strong>#{prospect.rank} {prospect.name}</strong>
+                          <span>{prospect.position} - {prospect.school}</span>
+                          <span>{prospect.height} / {prospect.weight || '--'} lb</span>
+                          <span>{prospect.tier}</span>
+                        </button>
+                      ))
                     )}
                   </div>
-                  <div className="prospect-role" data-label="Position">{prospect.position}</div>
-                  <div className="board-cell mono" data-label="Height">{prospect.height}</div>
-                  <div className="board-cell mono" data-label="Weight">{prospect.weight || '--'}</div>
-                  <div className="board-cell mono" data-label="Tier">{prospect.tier}</div>
-                  <div className="board-cell mono" data-label="Move">{prospect.movement}</div>
-                </button>
-              ))
-            )}
-          </div>
-        </section>
-
-        <aside className="detail panel">
-          {!activeProspect ? (
-            <div className="detail-empty">
-              <p className="eyebrow">Player Detail</p>
-              <h3>Select a prospect</h3>
-              <p>Open a row to inspect rank, size, custom tier, tags, and your notes.</p>
-            </div>
-          ) : (
-            <div className="detail-card">
-              <div className="detail-top">
-                <div>
-                  <p className="eyebrow">Player Detail</p>
-                  <h3>#{activeProspect.rank} {activeProspect.name}</h3>
-                  <p className="detail-meta">
-                    {activeProspect.school} / {activeProspect.position} / {activeProspect.classYear} / {activeProspect.leagueType}
-                  </p>
                 </div>
 
-                <div className="detail-actions">
-                  <span className="pill">{activeProspect.tier}</span>
-                  <button
-                    type="button"
-                    className={`action-button${watchlist.includes(activeProspect.id) ? ' is-active' : ''}`}
-                    onClick={() => toggleWatchlist(activeProspect.id)}
-                  >
-                    {watchlist.includes(activeProspect.id) ? 'Saved to watchlist' : 'Save to watchlist'}
-                  </button>
-                  <button
-                    type="button"
-                    className={`action-button${compareIds.includes(activeProspect.id) ? ' is-active' : ''}`}
-                    onClick={() => toggleCompare(activeProspect.id)}
-                  >
-                    {compareIds.includes(activeProspect.id) ? 'In compare queue' : 'Add to compare'}
-                  </button>
-                </div>
-              </div>
-
-              <div className="detail-grid">
-                {[
-                  ['Rank', activeProspect.rank],
-                  ['Base Tier', activeProspect.baseTier],
-                  ['Current Tier', activeProspect.tier],
-                  ['Height', activeProspect.height],
-                  ['Weight', activeProspect.weight || '--'],
-                  ['Wingspan', activeProspect.wingspan || '--'],
-                  ['School', activeProspect.school],
-                  ['Country', activeProspect.country],
-                  ['League', activeProspect.leagueType],
-                  ['Class', activeProspect.classYear],
-                  ['Movement', movementLabel(activeProspect.movement)],
-                ].map(([label, value]) => (
-                  <div key={label}>
-                    <strong>{label}</strong>
-                    <span>{value}</span>
+                {compareProspects.length > 0 && (
+                  <div className="compare-matrix">
+                    <div className="matrix-row matrix-head">
+                      <span>Category</span>
+                      {compareProspects.map((prospect) => (
+                        <span key={prospect.id}>{prospect.name}</span>
+                      ))}
+                    </div>
+                    {[
+                      ['Rank', 'rank'],
+                      ['Tier', 'tier'],
+                      ['Position', 'position'],
+                      ['Height', 'height'],
+                      ['Weight', 'weight'],
+                      ['League', 'leagueType'],
+                    ].map(([label, key]) => (
+                      <div key={label} className="matrix-row">
+                        <span>{label}</span>
+                        {compareProspects.map((prospect) => (
+                          <span key={`${prospect.id}-${key}`}>{prospect[key] || '--'}</span>
+                        ))}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-
-              <div className="detail-section">
-                <h4>Archetype</h4>
-                <p>
-                  <strong>{activeProspect.archetype}</strong> is the fun-board label for a
-                  <strong> {activeProspect.archetypeBase}</strong> profile.
-                </p>
-              </div>
-
-              <div className="detail-section">
-                <div className="detail-section-head">
-                  <h4>Tier Assignment</h4>
-                  <span className="section-meta">Overrides save locally</span>
-                </div>
-                <div className="tier-controls">
-                  {['Tier 1', 'Tier 2', 'Tier 3', 'Tier 4', 'Tier 5'].map((tier) => (
-                    <button
-                      key={tier}
-                      type="button"
-                      className={`tier-button${activeProspect.tier === tier ? ' is-active' : ''}`}
-                      onClick={() => updateTier(activeProspect.id, tier === activeProspect.baseTier ? '' : tier)}
-                    >
-                      {tier}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="detail-section">
-                <div className="detail-section-head">
-                  <h4>Workflow Tags</h4>
-                  <span className="section-meta">Use tags to shape your board</span>
-                </div>
-                <div className="tag-grid">
-                  {tagOptions.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      className={`tag-button${activeProspect.tags.includes(tag) ? ' is-active' : ''}`}
-                      onClick={() => toggleTag(activeProspect.id, tag)}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="detail-section">
-                <h4>Board Context</h4>
-                <p>
-                  This prospect sits in the <strong>{boardBucket(activeProspect.rank)}</strong> segment of your board
-                  at <strong>#{activeProspect.rank}</strong>, with a listed movement of <strong>{activeProspect.movement}</strong>.
-                </p>
-              </div>
-
-              <div className="detail-section">
-                <h4>Team Fit</h4>
-                <p>{activeProspect.teamFit}</p>
-              </div>
-
-              <div className="detail-section">
-                <div className="detail-section-head">
-                  <h4>Room Notes</h4>
-                  <span className="section-meta">Saved locally in this browser</span>
-                </div>
-                <textarea
-                  className="notes-input"
-                  placeholder="Add role notes, bet size, fit concerns, or live eval thoughts."
-                  value={notes[activeProspect.id] || ''}
-                  onChange={(event) => updateNote(activeProspect.id, event.target.value)}
-                />
-              </div>
-            </div>
-          )}
+                )}
+              </>
+            )}
+          </section>
         </aside>
       </main>
     </div>
