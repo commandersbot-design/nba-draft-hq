@@ -10,7 +10,13 @@
     "classYear": "Fr.",
     "movement": "0",
     "baseTier": "Tier 1",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "darrynpeterson",
@@ -23,7 +29,13 @@
     "classYear": "Fr.",
     "movement": "+1",
     "baseTier": "Tier 1",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "cameronboozer",
@@ -36,7 +48,13 @@
     "classYear": "Fr.",
     "movement": "+2",
     "baseTier": "Tier 1",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "calebwilson",
@@ -49,7 +67,13 @@
     "classYear": "Fr.",
     "movement": "0",
     "baseTier": "Tier 1",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "kingstonflemings",
@@ -62,7 +86,13 @@
     "classYear": "Fr.",
     "movement": "+8",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "dariusacuff",
@@ -75,7 +105,13 @@
     "classYear": "Fr.",
     "movement": "0",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "mikelbrown",
@@ -88,7 +124,13 @@
     "classYear": "Fr.",
     "movement": "+2",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "keatonwagler",
@@ -101,7 +143,13 @@
     "classYear": "Fr.",
     "movement": "+3",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "braydenburries",
@@ -114,7 +162,13 @@
     "classYear": "Fr.",
     "movement": "+10",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "yaxellendeborg",
@@ -127,7 +181,13 @@
     "classYear": "Sr.",
     "movement": "+4",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "labaronphilon",
@@ -140,7 +200,13 @@
     "classYear": "So.",
     "movement": "+1",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "chriscenac",
@@ -153,7 +219,13 @@
     "classYear": "Fr.",
     "movement": "+15",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "amariallen",
@@ -166,7 +238,13 @@
     "classYear": "Fr.",
     "movement": "-6",
     "baseTier": "Tier 2",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "nateament",
@@ -179,7 +257,13 @@
     "classYear": "Fr.",
     "movement": "+2",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "isaiahevans",
@@ -192,7 +276,13 @@
     "classYear": "So.",
     "movement": "+5",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Scoring wing",
+    "archetype": "Pressure Valve Wing",
+    "teamFit": "Fits teams that need perimeter scoring without giving up lineup size."
   },
   {
     "id": "cameroncarr",
@@ -205,7 +295,13 @@
     "classYear": "Jr.",
     "movement": "+1",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "hannessteinbach",
@@ -218,7 +314,13 @@
     "classYear": "Fr.",
     "movement": "+1",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "meleekthomas",
@@ -231,7 +333,13 @@
     "classYear": "Fr.",
     "movement": "-10",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "alijaharenas",
@@ -244,7 +352,13 @@
     "classYear": "Fr.",
     "movement": "+4",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "karimlopez",
@@ -257,7 +371,13 @@
     "classYear": "2007",
     "movement": "+6",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "Spain",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "allengraves",
@@ -270,7 +390,13 @@
     "classYear": "Fr.",
     "movement": "-6",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "thomashaugh",
@@ -283,7 +409,13 @@
     "classYear": "Jr.",
     "movement": "-1",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "bennettstirtz",
@@ -296,7 +428,13 @@
     "classYear": "Sr.",
     "movement": "+2",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "dashdaniels",
@@ -309,7 +447,13 @@
     "classYear": "2007",
     "movement": "0",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "Australia",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "jaydenquaintance",
@@ -322,7 +466,13 @@
     "classYear": "So.",
     "movement": "-15",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "braylonmullins",
@@ -335,7 +485,13 @@
     "classYear": "Fr.",
     "movement": "+2",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "koapeat",
@@ -348,7 +504,13 @@
     "classYear": "Fr.",
     "movement": "+7",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "morezjohnson",
@@ -361,7 +523,13 @@
     "classYear": "So.",
     "movement": "+11",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "killyantoure",
@@ -374,7 +542,13 @@
     "classYear": "Fr.",
     "movement": "+67",
     "baseTier": "Tier 3",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "alexcondon",
@@ -387,7 +561,13 @@
     "classYear": "So.",
     "movement": "+12",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "dailynswain",
@@ -400,7 +580,13 @@
     "classYear": "Jr.",
     "movement": "+38",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "luigisuigo",
@@ -413,7 +599,13 @@
     "classYear": "2007",
     "movement": "+69",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "Italy",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "matasvokietaitis",
@@ -426,7 +618,13 @@
     "classYear": "Fr.",
     "movement": "-3",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "henriveesaar",
@@ -439,7 +637,13 @@
     "classYear": "Jr.",
     "movement": "-2",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "christiananderson",
@@ -452,7 +656,13 @@
     "classYear": "So.",
     "movement": "+3",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "joshuajefferson",
@@ -465,7 +675,13 @@
     "classYear": "Sr.",
     "movement": "+8",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "trevonbrazile",
@@ -478,7 +694,13 @@
     "classYear": "Sr.",
     "movement": "-15",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "toundeyessoufou",
@@ -491,7 +713,13 @@
     "classYear": "Fr.",
     "movement": "+21",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "milanmomcilovic",
@@ -504,7 +732,13 @@
     "classYear": "Jr.",
     "movement": "-2",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "keyshawnhall",
@@ -517,7 +751,13 @@
     "classYear": "Sr.",
     "movement": "0",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Scoring wing",
+    "archetype": "Pressure Valve Wing",
+    "teamFit": "Fits teams that need perimeter scoring without giving up lineup size."
   },
   {
     "id": "sergiode",
@@ -530,7 +770,13 @@
     "classYear": "2005",
     "movement": "+7",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "Spain",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "babamiller",
@@ -543,7 +789,13 @@
     "classYear": "Sr.",
     "movement": "+10",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "jadenbradley",
@@ -556,7 +808,13 @@
     "classYear": "Sr.",
     "movement": "+40",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "adamatamna",
@@ -569,7 +827,13 @@
     "classYear": "2007",
     "movement": "+11",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "France",
+    "wingspan": "",
+    "archetypeBase": "Scoring wing",
+    "archetype": "Pressure Valve Wing",
+    "teamFit": "Fits teams that need perimeter scoring without giving up lineup size."
   },
   {
     "id": "milosuzan",
@@ -582,7 +846,13 @@
     "classYear": "Sr.",
     "movement": "+4",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "jaronpierre",
@@ -595,7 +865,13 @@
     "classYear": "Sr.",
     "movement": "+55",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "billyrichmond",
@@ -608,7 +884,13 @@
     "classYear": "So.",
     "movement": "-4",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "patrickngongba",
@@ -621,7 +903,13 @@
     "classYear": "So.",
     "movement": "+6",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "alexkaraban",
@@ -634,7 +922,13 @@
     "classYear": "Sr.",
     "movement": "+52",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "ruebenchinyelu",
@@ -647,7 +941,13 @@
     "classYear": "Jr.",
     "movement": "+51",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "brysontiller",
@@ -660,7 +960,13 @@
     "classYear": "Fr.",
     "movement": "+9",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "natebittle",
@@ -673,7 +979,13 @@
     "classYear": "Sr.",
     "movement": "+1",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "lamarwilkerson",
@@ -686,7 +998,13 @@
     "classYear": "Sr.",
     "movement": "+48",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "maliqueewin",
@@ -699,7 +1017,13 @@
     "classYear": "Sr.",
     "movement": "+9",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "tarrisreed",
@@ -712,7 +1036,13 @@
     "classYear": "Sr.",
     "movement": "-9",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "trewhite",
@@ -725,7 +1055,13 @@
     "classYear": "Sr.",
     "movement": "+26",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "florybidunga",
@@ -738,7 +1074,13 @@
     "classYear": "So.",
     "movement": "-10",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "ryanconwell",
@@ -751,7 +1093,13 @@
     "classYear": "Sr.",
     "movement": "+12",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "zubyejiofor",
@@ -764,7 +1112,13 @@
     "classYear": "Sr.",
     "movement": "+5",
     "baseTier": "Tier 4",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "mouhamedfaye",
@@ -777,7 +1131,13 @@
     "classYear": "2005",
     "movement": "+41",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "Italy",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "isaiahjohnson",
@@ -790,7 +1150,13 @@
     "classYear": "Sr.",
     "movement": "-28",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "ebukaokorie",
@@ -803,7 +1169,13 @@
     "classYear": "Fr.",
     "movement": "-21",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "soloball",
@@ -816,7 +1188,13 @@
     "classYear": "Jr.",
     "movement": "-12",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "jukeharris",
@@ -829,7 +1207,13 @@
     "classYear": "So.",
     "movement": "-7",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "elyjahfreeman",
@@ -842,7 +1226,13 @@
     "classYear": "So.",
     "movement": "-34",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "miikkamuurinen",
@@ -855,7 +1245,13 @@
     "classYear": "2007",
     "movement": "-30",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "Serbia",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "milesbyrd",
@@ -868,7 +1264,13 @@
     "classYear": "Jr.",
     "movement": "+34",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "kanoncatchings",
@@ -881,7 +1283,13 @@
     "classYear": "So.",
     "movement": "+4",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "adaymara",
@@ -894,7 +1302,13 @@
     "classYear": "Jr.",
     "movement": "-13",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "davidpunch",
@@ -907,7 +1321,13 @@
     "classYear": "So.",
     "movement": "+31",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "keshawnmurphy",
@@ -920,7 +1340,13 @@
     "classYear": "Sr.",
     "movement": "+15",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "ognjensrzentic",
@@ -933,7 +1359,13 @@
     "classYear": "2007",
     "movement": "+29",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "International Pro",
+    "country": "Serbia",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "ajstorr",
@@ -946,7 +1378,13 @@
     "classYear": "Sr.",
     "movement": "-6",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "rafaelcastro",
@@ -959,7 +1397,13 @@
     "classYear": "Sr.",
     "movement": "+27",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "markmitchell",
@@ -972,7 +1416,13 @@
     "classYear": "Sr.",
     "movement": "-46",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "jttoppin",
@@ -985,7 +1435,13 @@
     "classYear": "Jr.",
     "movement": "-41",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "neoklisavdalas",
@@ -998,7 +1454,13 @@
     "classYear": "Fr.",
     "movement": "-4",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Scoring wing",
+    "archetype": "Pressure Valve Wing",
+    "teamFit": "Fits teams that need perimeter scoring without giving up lineup size."
   },
   {
     "id": "ericreibe",
@@ -1011,7 +1473,13 @@
     "classYear": "Fr.",
     "movement": "+14",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "collinchandler",
@@ -1024,7 +1492,13 @@
     "classYear": "So.",
     "movement": "-11",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "jalenharalson",
@@ -1037,7 +1511,13 @@
     "classYear": "Fr.",
     "movement": "-5",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "bradensmith",
@@ -1050,7 +1530,13 @@
     "classYear": "So.",
     "movement": "-20",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "mattable",
@@ -1063,7 +1549,13 @@
     "classYear": "Fr.",
     "movement": "+19",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "davisfogle",
@@ -1076,7 +1568,13 @@
     "classYear": "Fr.",
     "movement": "-38",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "bjedwards",
@@ -1089,7 +1587,13 @@
     "classYear": "Sr.",
     "movement": "-8",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "bayendongo",
@@ -1102,7 +1606,13 @@
     "classYear": "Jr.",
     "movement": "-4",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   },
   {
     "id": "kjlewis",
@@ -1115,7 +1625,13 @@
     "classYear": "Jr.",
     "movement": "-28",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "andrejstojakovic",
@@ -1128,7 +1644,13 @@
     "classYear": "Jr.",
     "movement": "+14",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Scoring wing",
+    "archetype": "Pressure Valve Wing",
+    "teamFit": "Fits teams that need perimeter scoring without giving up lineup size."
   },
   {
     "id": "jeremyfears",
@@ -1141,7 +1663,13 @@
     "classYear": "Jr.",
     "movement": "-8",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "xavierbooker",
@@ -1154,7 +1682,13 @@
     "classYear": "Jr.",
     "movement": "0",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Play-finishing four",
+    "archetype": "Glass-and-Gas Four",
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
   },
   {
     "id": "tomislavivisic",
@@ -1167,7 +1701,13 @@
     "classYear": "Jr.",
     "movement": "-6",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Interior anchor",
+    "archetype": "Paint Eraser",
+    "teamFit": "Fits teams looking for rim utility, screening, and size stabilization in the rotation."
   },
   {
     "id": "sethtrimble",
@@ -1180,7 +1720,13 @@
     "classYear": "Sr.",
     "movement": "-26",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "karterknox",
@@ -1193,7 +1739,13 @@
     "classYear": "So.",
     "movement": "-1",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "jasperjohnson",
@@ -1206,7 +1758,13 @@
     "classYear": "Fr.",
     "movement": "+1",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "mackenziemgbako",
@@ -1219,7 +1777,13 @@
     "classYear": "Jr.",
     "movement": "+1",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Hybrid forward",
+    "archetype": "Mismatch Cartographer",
+    "teamFit": "Best as a lineup bridge piece between star guards and a rim-protecting five."
   },
   {
     "id": "naithangeorge",
@@ -1232,7 +1796,13 @@
     "classYear": "Fr.",
     "movement": "-29",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Combo guard creator",
+    "archetype": "Advantage Mechanic",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "tylertanner",
@@ -1245,7 +1815,13 @@
     "classYear": "So.",
     "movement": "+4",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Lead guard organizer",
+    "archetype": "Tempo Pilot",
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
   },
   {
     "id": "damesarr",
@@ -1258,7 +1834,13 @@
     "classYear": "Fr.",
     "movement": "+4",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "mylescolvin",
@@ -1271,7 +1853,13 @@
     "classYear": "Jr.",
     "movement": "-1",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Shotmaking guard",
+    "archetype": "Heat-Check Courier",
+    "teamFit": "Best on rosters that already have a primary initiator and need shotmaking on the second side."
   },
   {
     "id": "coencarr",
@@ -1284,7 +1872,13 @@
     "classYear": "Jr.",
     "movement": "+2",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Two-way wing",
+    "archetype": "Switchblade Wing",
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
   },
   {
     "id": "magoongwath",
@@ -1297,6 +1891,12 @@
     "classYear": "So.",
     "movement": "0",
     "baseTier": "Tier 5",
-    "tags": []
+    "tags": [],
+    "leagueType": "NCAA",
+    "country": "Unknown",
+    "wingspan": "",
+    "archetypeBase": "Modern frontcourt big",
+    "archetype": "Coverage Bender Big",
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
   }
 ]

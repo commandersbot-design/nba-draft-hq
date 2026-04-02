@@ -145,6 +145,7 @@ button {
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
 }
 
 .stat-card {
@@ -184,7 +185,7 @@ button {
 .controls {
   grid-column: 1 / 2;
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) repeat(6, minmax(130px, 0.5fr));
+  grid-template-columns: minmax(0, 1.25fr) repeat(6, minmax(118px, 0.48fr));
   gap: 14px;
   padding: 18px;
 }
@@ -498,6 +499,12 @@ button {
   letter-spacing: 0.1em;
 }
 
+.archetype-line {
+  margin-top: 8px;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
 .prospect-role {
   color: var(--text-soft);
   font-size: 0.92rem;
@@ -714,6 +721,10 @@ button {
   .hero,
   .controls,
   .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
     grid-template-columns: 1fr;
   }
 

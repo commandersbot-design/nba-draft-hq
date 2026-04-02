@@ -55,6 +55,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [position, setPosition] = useState('ALL');
   const [school, setSchool] = useState('ALL');
+  const [leagueType, setLeagueType] = useState('ALL');
   const [bucket, setBucket] = useState('ALL');
   const [tierFilter, setTierFilter] = useState('ALL');
   const [tagFilter, setTagFilter] = useState('ALL');
@@ -112,6 +113,10 @@ function App() {
     () => [...new Set(enrichedProspects.map((prospect) => prospect.school))].sort((left, right) => left.localeCompare(right)),
     [enrichedProspects],
   );
+  const leagueTypes = useMemo(
+    () => [...new Set(enrichedProspects.map((prospect) => prospect.leagueType))],
+    [enrichedProspects],
+  );
   const tiers = useMemo(
     () => [...new Set(enrichedProspects.map((prospect) => prospect.tier))].sort((left, right) => tierOrder(left) - tierOrder(right)),
     [enrichedProspects],
@@ -128,16 +133,22 @@ function App() {
         prospect.weight || '',
         prospect.tier,
         prospect.tags.join(' '),
+        prospect.leagueType,
+        prospect.country,
+        prospect.archetype,
+        prospect.archetypeBase,
+        prospect.teamFit,
       ].join(' ').toLowerCase();
 
       const searchMatch = !query || haystack.includes(query.toLowerCase());
       const positionMatch = position === 'ALL' || prospect.position === position;
       const schoolMatch = school === 'ALL' || prospect.school === school;
+      const leagueMatch = leagueType === 'ALL' || prospect.leagueType === leagueType;
       const bucketMatch = bucket === 'ALL' || boardBucket(prospect.rank) === bucket;
       const tierMatch = tierFilter === 'ALL' || prospect.tier === tierFilter;
       const tagMatch = tagFilter === 'ALL' || prospect.tags.includes(tagFilter);
       const watchlistMatch = !watchlistOnly || watchlist.includes(prospect.id);
-      return searchMatch && positionMatch && schoolMatch && bucketMatch && tierMatch && tagMatch && watchlistMatch;
+      return searchMatch && positionMatch && schoolMatch && leagueMatch && bucketMatch && tierMatch && tagMatch && watchlistMatch;
     });
 
     return [...next].sort((left, right) => {
@@ -156,7 +167,7 @@ function App() {
           return left.rank - right.rank;
       }
     });
-  }, [bucket, enrichedProspects, position, query, school, sortBy, tagFilter, tierFilter, watchlist, watchlistOnly]);
+  }, [bucket, enrichedProspects, leagueType, position, query, school, sortBy, tagFilter, tierFilter, watchlist, watchlistOnly]);
 
   useEffect(() => {
     if (!filteredProspects.find((prospect) => prospect.id === activeId)) {
@@ -194,6 +205,7 @@ function App() {
     setQuery('');
     setPosition('ALL');
     setSchool('ALL');
+    setLeagueType('ALL');
     setBucket('ALL');
     setTierFilter('ALL');
     setTagFilter('ALL');
@@ -289,7 +301,7 @@ function App() {
             <article className="stat-card">
               <span className="stat-label">International</span>
               <strong>{internationalCount}</strong>
-              <span className="stat-detail">Tagged with birth-year intake</span>
+              <span className="stat-detail">Prospects outside the NCAA track</span>
             </article>
             <article className="stat-card">
               <span className="stat-label">Notes Logged</span>
@@ -324,6 +336,15 @@ function App() {
             <select id="school-filter" value={school} onChange={(event) => setSchool(event.target.value)}>
               <option value="ALL">All schools</option>
               {schools.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+          <div className="control-block">
+            <label htmlFor="league-filter">League Type</label>
+            <select id="league-filter" value={leagueType} onChange={(event) => setLeagueType(event.target.value)}>
+              <option value="ALL">All leagues</option>
+              {leagueTypes.map((option) => (
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
@@ -420,7 +441,7 @@ function App() {
                       <strong>#{prospect.rank} {prospect.name}</strong>
                       <span>{prospect.position} - {prospect.school}</span>
                       <span>{prospect.height} / {prospect.weight || '--'} lb</span>
-                      <span>{prospect.tier}</span>
+                      <span>{prospect.archetype}</span>
                     </button>
                   ))
                 )}
@@ -442,6 +463,8 @@ function App() {
                 ['Position', 'position'],
                 ['Height', 'height'],
                 ['Weight', 'weight'],
+                ['League', 'leagueType'],
+                ['Country', 'country'],
                 ['School', 'school'],
                 ['Class', 'classYear'],
                 ['Movement', 'movement'],
@@ -476,6 +499,7 @@ function App() {
             <div className="summary-chip">{watchlistOnly ? 'Watchlist focus' : 'Full board view'}</div>
             <div className="summary-chip">{bucket === 'ALL' ? 'All board segments' : bucket}</div>
             <div className="summary-chip">{tierFilter === 'ALL' ? 'All tiers' : tierFilter}</div>
+            <div className="summary-chip">{leagueType === 'ALL' ? 'All leagues' : leagueType}</div>
             <div className="summary-chip">{tagFilter === 'ALL' ? 'All tags' : `Tag: ${tagFilter}`}</div>
           </div>
 
@@ -507,7 +531,8 @@ function App() {
                       <strong>#{prospect.rank} {prospect.name}</strong>
                       {watchlist.includes(prospect.id) && <span className="row-badge">Watchlist</span>}
                     </div>
-                    <div className="prospect-meta">{prospect.school} / {prospect.classYear}</div>
+                    <div className="prospect-meta">{prospect.school} / {prospect.classYear} / {prospect.leagueType}</div>
+                    <div className="archetype-line">{prospect.archetype}</div>
                     {prospect.tags.length > 0 && (
                       <div className="inline-tags">
                         {prospect.tags.slice(0, 3).map((tag) => (
@@ -541,7 +566,7 @@ function App() {
                   <p className="eyebrow">Player Detail</p>
                   <h3>#{activeProspect.rank} {activeProspect.name}</h3>
                   <p className="detail-meta">
-                    {activeProspect.school} / {activeProspect.position} / {activeProspect.classYear}
+                    {activeProspect.school} / {activeProspect.position} / {activeProspect.classYear} / {activeProspect.leagueType}
                   </p>
                 </div>
 
@@ -571,7 +596,10 @@ function App() {
                   ['Current Tier', activeProspect.tier],
                   ['Height', activeProspect.height],
                   ['Weight', activeProspect.weight || '--'],
+                  ['Wingspan', activeProspect.wingspan || '--'],
                   ['School', activeProspect.school],
+                  ['Country', activeProspect.country],
+                  ['League', activeProspect.leagueType],
                   ['Class', activeProspect.classYear],
                   ['Movement', movementLabel(activeProspect.movement)],
                 ].map(([label, value]) => (
@@ -580,6 +608,14 @@ function App() {
                     <span>{value}</span>
                   </div>
                 ))}
+              </div>
+
+              <div className="detail-section">
+                <h4>Archetype</h4>
+                <p>
+                  <strong>{activeProspect.archetype}</strong> is the fun-board label for a
+                  <strong> {activeProspect.archetypeBase}</strong> profile.
+                </p>
               </div>
 
               <div className="detail-section">
@@ -626,6 +662,11 @@ function App() {
                   This prospect sits in the <strong>{boardBucket(activeProspect.rank)}</strong> segment of your board
                   at <strong>#{activeProspect.rank}</strong>, with a listed movement of <strong>{activeProspect.movement}</strong>.
                 </p>
+              </div>
+
+              <div className="detail-section">
+                <h4>Team Fit</h4>
+                <p>{activeProspect.teamFit}</p>
               </div>
 
               <div className="detail-section">
