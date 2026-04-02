@@ -144,6 +144,7 @@ button {
 .hero-stats {
   display: grid;
   gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .stat-card {
@@ -183,7 +184,7 @@ button {
 .controls {
   grid-column: 1 / 2;
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) repeat(4, minmax(160px, 0.55fr));
+  grid-template-columns: minmax(0, 1.3fr) repeat(6, minmax(130px, 0.5fr));
   gap: 14px;
   padding: 18px;
 }
@@ -387,6 +388,26 @@ button {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
+}
+
+.inline-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.mini-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background: var(--surface-3);
 }
 
 .section-head {
@@ -630,6 +651,33 @@ button {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 10px;
+}
+
+.tier-controls,
+.tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tier-button,
+.tag-button {
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text-soft);
+  border-radius: 999px;
+  padding: 9px 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.tier-button.is-active,
+.tag-button.is-active {
+  border-color: rgba(217, 255, 99, 0.24);
+  background: rgba(217, 255, 99, 0.12);
+  color: var(--accent);
 }
 
 .notes-input {

@@ -1,9 +1,24 @@
 import { useEffect, useMemo, useState } from 'react';
-import prospects from './data/prospects';
+import prospects from './data/prospects.json';
 
 const watchlistKey = 'prospera.watchlist';
 const compareKey = 'prospera.compare';
 const notesKey = 'prospera.notes';
+const customTierKey = 'prospera.custom-tiers';
+const customTagsKey = 'prospera.custom-tags';
+
+const tagOptions = [
+  'upside',
+  'safe',
+  'shooter',
+  'creator',
+  'defender',
+  'connector',
+  'big-swing',
+  'stash',
+  'rim-pressure',
+  'two-way',
+];
 
 function readSavedValue(key, fallback) {
   try {
@@ -27,22 +42,37 @@ function movementLabel(movement) {
   return movement.startsWith('+') ? `${movement} riser` : `${movement} faller`;
 }
 
+function movementValue(movement) {
+  return Number.parseInt(movement, 10) || 0;
+}
+
+function tierOrder(tier) {
+  const match = /(\d+)/.exec(tier || '');
+  return match ? Number(match[1]) : 99;
+}
+
 function App() {
   const [query, setQuery] = useState('');
   const [position, setPosition] = useState('ALL');
   const [school, setSchool] = useState('ALL');
   const [bucket, setBucket] = useState('ALL');
+  const [tierFilter, setTierFilter] = useState('ALL');
+  const [tagFilter, setTagFilter] = useState('ALL');
   const [sortBy, setSortBy] = useState('rank');
   const [watchlistOnly, setWatchlistOnly] = useState(false);
   const [activeId, setActiveId] = useState(prospects[0]?.id ?? null);
   const [watchlist, setWatchlist] = useState([]);
   const [compareIds, setCompareIds] = useState([]);
   const [notes, setNotes] = useState({});
+  const [customTiers, setCustomTiers] = useState({});
+  const [customTags, setCustomTags] = useState({});
 
   useEffect(() => {
     setWatchlist(readSavedValue(watchlistKey, []));
     setCompareIds(readSavedValue(compareKey, []));
     setNotes(readSavedValue(notesKey, {}));
+    setCustomTiers(readSavedValue(customTierKey, {}));
+    setCustomTags(readSavedValue(customTagsKey, {}));
   }, []);
 
   useEffect(() => {
@@ -57,17 +87,38 @@ function App() {
     window.localStorage.setItem(notesKey, JSON.stringify(notes));
   }, [notes]);
 
+  useEffect(() => {
+    window.localStorage.setItem(customTierKey, JSON.stringify(customTiers));
+  }, [customTiers]);
+
+  useEffect(() => {
+    window.localStorage.setItem(customTagsKey, JSON.stringify(customTags));
+  }, [customTags]);
+
+  const enrichedProspects = useMemo(
+    () => prospects.map((prospect) => ({
+      ...prospect,
+      tier: customTiers[prospect.id] || prospect.baseTier,
+      tags: customTags[prospect.id] || prospect.tags || [],
+    })),
+    [customTags, customTiers],
+  );
+
   const positions = useMemo(
-    () => [...new Set(prospects.map((prospect) => prospect.position))],
-    [],
+    () => [...new Set(enrichedProspects.map((prospect) => prospect.position))],
+    [enrichedProspects],
   );
   const schools = useMemo(
-    () => [...new Set(prospects.map((prospect) => prospect.school))].sort((left, right) => left.localeCompare(right)),
-    [],
+    () => [...new Set(enrichedProspects.map((prospect) => prospect.school))].sort((left, right) => left.localeCompare(right)),
+    [enrichedProspects],
+  );
+  const tiers = useMemo(
+    () => [...new Set(enrichedProspects.map((prospect) => prospect.tier))].sort((left, right) => tierOrder(left) - tierOrder(right)),
+    [enrichedProspects],
   );
 
   const filteredProspects = useMemo(() => {
-    const next = prospects.filter((prospect) => {
+    const next = enrichedProspects.filter((prospect) => {
       const haystack = [
         prospect.name,
         prospect.school,
@@ -75,31 +126,37 @@ function App() {
         prospect.height,
         prospect.classYear,
         prospect.weight || '',
+        prospect.tier,
+        prospect.tags.join(' '),
       ].join(' ').toLowerCase();
 
       const searchMatch = !query || haystack.includes(query.toLowerCase());
       const positionMatch = position === 'ALL' || prospect.position === position;
       const schoolMatch = school === 'ALL' || prospect.school === school;
       const bucketMatch = bucket === 'ALL' || boardBucket(prospect.rank) === bucket;
+      const tierMatch = tierFilter === 'ALL' || prospect.tier === tierFilter;
+      const tagMatch = tagFilter === 'ALL' || prospect.tags.includes(tagFilter);
       const watchlistMatch = !watchlistOnly || watchlist.includes(prospect.id);
-      return searchMatch && positionMatch && schoolMatch && bucketMatch && watchlistMatch;
+      return searchMatch && positionMatch && schoolMatch && bucketMatch && tierMatch && tagMatch && watchlistMatch;
     });
 
     return [...next].sort((left, right) => {
       switch (sortBy) {
         case 'movement':
-          return Number.parseInt(right.movement, 10) - Number.parseInt(left.movement, 10);
+          return movementValue(right.movement) - movementValue(left.movement);
         case 'school':
           return left.school.localeCompare(right.school);
         case 'name':
           return left.name.localeCompare(right.name);
         case 'size':
           return right.height.localeCompare(left.height, undefined, { numeric: true });
+        case 'tier':
+          return tierOrder(left.tier) - tierOrder(right.tier) || left.rank - right.rank;
         default:
           return left.rank - right.rank;
       }
     });
-  }, [bucket, position, query, school, sortBy, watchlist, watchlistOnly]);
+  }, [bucket, enrichedProspects, position, query, school, sortBy, tagFilter, tierFilter, watchlist, watchlistOnly]);
 
   useEffect(() => {
     if (!filteredProspects.find((prospect) => prospect.id === activeId)) {
@@ -107,11 +164,13 @@ function App() {
     }
   }, [activeId, filteredProspects]);
 
-  const activeProspect = prospects.find((prospect) => prospect.id === activeId) ?? null;
-  const watchlistProspects = watchlist.map((id) => prospects.find((prospect) => prospect.id === id)).filter(Boolean);
-  const compareProspects = compareIds.map((id) => prospects.find((prospect) => prospect.id === id)).filter(Boolean);
-  const internationalCount = prospects.filter((prospect) => /^\d{4}$/.test(prospect.classYear)).length;
+  const activeProspect = enrichedProspects.find((prospect) => prospect.id === activeId) ?? null;
+  const watchlistProspects = watchlist.map((id) => enrichedProspects.find((prospect) => prospect.id === id)).filter(Boolean);
+  const compareProspects = compareIds.map((id) => enrichedProspects.find((prospect) => prospect.id === id)).filter(Boolean);
+  const internationalCount = enrichedProspects.filter((prospect) => /^\d{4}$/.test(prospect.classYear)).length;
   const notesCount = Object.values(notes).filter((value) => value?.trim()).length;
+  const taggedCount = Object.values(customTags).filter((tags) => tags.length > 0).length;
+  const customTierCount = Object.keys(customTiers).length;
 
   const toggleWatchlist = (id) => {
     setWatchlist((current) => (
@@ -136,6 +195,8 @@ function App() {
     setPosition('ALL');
     setSchool('ALL');
     setBucket('ALL');
+    setTierFilter('ALL');
+    setTagFilter('ALL');
     setSortBy('rank');
     setWatchlistOnly(false);
   };
@@ -147,6 +208,32 @@ function App() {
     }));
   };
 
+  const updateTier = (id, value) => {
+    setCustomTiers((current) => {
+      if (!value) {
+        const { [id]: _removed, ...rest } = current;
+        return rest;
+      }
+      return { ...current, [id]: value };
+    });
+  };
+
+  const toggleTag = (id, tag) => {
+    setCustomTags((current) => {
+      const nextTags = current[id] || [];
+      const updated = nextTags.includes(tag)
+        ? nextTags.filter((entry) => entry !== tag)
+        : [...nextTags, tag];
+
+      if (updated.length === 0) {
+        const { [id]: _removed, ...rest } = current;
+        return rest;
+      }
+
+      return { ...current, [id]: updated };
+    });
+  };
+
   return (
     <div className="page-shell">
       <header className="topbar">
@@ -156,7 +243,7 @@ function App() {
         </div>
         <div className="topbar-meta">
           <span className="pill pill-live">2026 Board</span>
-          <span className="topbar-note">Built around your actual prospect list.</span>
+          <span className="topbar-note">Structured data, custom tiers, and draft tags.</span>
         </div>
       </header>
 
@@ -164,10 +251,10 @@ function App() {
         <section className="hero panel">
           <div className="hero-copy">
             <p className="eyebrow">Big Board</p>
-            <h2>A factual board, not fake scouting copy.</h2>
+            <h2>A clean board with actual workflow now built in.</h2>
             <p>
-              Rank, size, school, class, movement, compare queue, and saved room notes. The board
-              now reflects the prospect list you actually provided.
+              The board data now lives in a structured JSON file, and you can layer your own tiers
+              and scouting tags on top without touching the base rankings.
             </p>
             <div className="hero-actions">
               <button
@@ -186,8 +273,18 @@ function App() {
           <div className="hero-stats">
             <article className="stat-card">
               <span className="stat-label">Prospects</span>
-              <strong>{prospects.length}</strong>
-              <span className="stat-detail">Only the players from your board</span>
+              <strong>{enrichedProspects.length}</strong>
+              <span className="stat-detail">Normalized into structured board data</span>
+            </article>
+            <article className="stat-card">
+              <span className="stat-label">Custom Tiers</span>
+              <strong>{customTierCount}</strong>
+              <span className="stat-detail">Players with overridden board tiers</span>
+            </article>
+            <article className="stat-card">
+              <span className="stat-label">Tagged Players</span>
+              <strong>{taggedCount}</strong>
+              <span className="stat-detail">Prospects marked with draft workflow tags</span>
             </article>
             <article className="stat-card">
               <span className="stat-label">International</span>
@@ -208,7 +305,7 @@ function App() {
             <input
               id="search"
               type="search"
-              placeholder="Player, school, position"
+              placeholder="Player, school, position, tag"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
             />
@@ -243,9 +340,28 @@ function App() {
             </select>
           </div>
           <div className="control-block">
+            <label htmlFor="tier-filter">Tier</label>
+            <select id="tier-filter" value={tierFilter} onChange={(event) => setTierFilter(event.target.value)}>
+              <option value="ALL">All tiers</option>
+              {tiers.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+          <div className="control-block">
+            <label htmlFor="tag-filter">Tag</label>
+            <select id="tag-filter" value={tagFilter} onChange={(event) => setTagFilter(event.target.value)}>
+              <option value="ALL">All tags</option>
+              {tagOptions.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+          <div className="control-block">
             <label htmlFor="sort-filter">Sort</label>
             <select id="sort-filter" value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
               <option value="rank">Rank</option>
+              <option value="tier">Tier</option>
               <option value="movement">Movement</option>
               <option value="school">School</option>
               <option value="name">Name</option>
@@ -297,14 +413,14 @@ function App() {
               </div>
               <div className="compare-list">
                 {compareProspects.length === 0 ? (
-                  <p className="empty-state">Queue up players to compare size, role, and movement.</p>
+                  <p className="empty-state">Queue up players to compare size, movement, tier, and tags.</p>
                 ) : (
                   compareProspects.map((prospect) => (
                     <button key={prospect.id} type="button" className="compare-card" onClick={() => setActiveId(prospect.id)}>
                       <strong>#{prospect.rank} {prospect.name}</strong>
                       <span>{prospect.position} - {prospect.school}</span>
                       <span>{prospect.height} / {prospect.weight || '--'} lb</span>
-                      <span>{movementLabel(prospect.movement)}</span>
+                      <span>{prospect.tier}</span>
                     </button>
                   ))
                 )}
@@ -322,6 +438,7 @@ function App() {
               </div>
               {[
                 ['Rank', 'rank'],
+                ['Tier', 'tier'],
                 ['Position', 'position'],
                 ['Height', 'height'],
                 ['Weight', 'weight'],
@@ -336,6 +453,12 @@ function App() {
                   ))}
                 </div>
               ))}
+              <div className="matrix-row">
+                <span>Tags</span>
+                {compareProspects.map((prospect) => (
+                  <span key={`${prospect.id}-tags`}>{prospect.tags.length ? prospect.tags.join(', ') : '--'}</span>
+                ))}
+              </div>
             </div>
           )}
         </section>
@@ -352,7 +475,8 @@ function App() {
           <div className="board-summary">
             <div className="summary-chip">{watchlistOnly ? 'Watchlist focus' : 'Full board view'}</div>
             <div className="summary-chip">{bucket === 'ALL' ? 'All board segments' : bucket}</div>
-            <div className="summary-chip">{sortBy === 'rank' ? 'Sorted by rank' : `Sorted by ${sortBy}`}</div>
+            <div className="summary-chip">{tierFilter === 'ALL' ? 'All tiers' : tierFilter}</div>
+            <div className="summary-chip">{tagFilter === 'ALL' ? 'All tags' : `Tag: ${tagFilter}`}</div>
           </div>
 
           <div className="table-head" aria-hidden="true">
@@ -360,7 +484,7 @@ function App() {
             <span>Position</span>
             <span>Height</span>
             <span>Weight</span>
-            <span>School</span>
+            <span>Tier</span>
             <span>Move</span>
           </div>
 
@@ -383,12 +507,19 @@ function App() {
                       <strong>#{prospect.rank} {prospect.name}</strong>
                       {watchlist.includes(prospect.id) && <span className="row-badge">Watchlist</span>}
                     </div>
-                    <div className="prospect-meta">{boardBucket(prospect.rank)} / {prospect.classYear}</div>
+                    <div className="prospect-meta">{prospect.school} / {prospect.classYear}</div>
+                    {prospect.tags.length > 0 && (
+                      <div className="inline-tags">
+                        {prospect.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className="mini-tag">{tag}</span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <div className="prospect-role" data-label="Position">{prospect.position}</div>
                   <div className="board-cell mono" data-label="Height">{prospect.height}</div>
                   <div className="board-cell mono" data-label="Weight">{prospect.weight || '--'}</div>
-                  <div className="board-cell" data-label="School">{prospect.school}</div>
+                  <div className="board-cell mono" data-label="Tier">{prospect.tier}</div>
                   <div className="board-cell mono" data-label="Move">{prospect.movement}</div>
                 </button>
               ))
@@ -401,7 +532,7 @@ function App() {
             <div className="detail-empty">
               <p className="eyebrow">Player Detail</p>
               <h3>Select a prospect</h3>
-              <p>Open a row from the board to inspect ranking, size, school context, and your notes.</p>
+              <p>Open a row to inspect rank, size, custom tier, tags, and your notes.</p>
             </div>
           ) : (
             <div className="detail-card">
@@ -415,7 +546,7 @@ function App() {
                 </div>
 
                 <div className="detail-actions">
-                  <span className="pill">{boardBucket(activeProspect.rank)}</span>
+                  <span className="pill">{activeProspect.tier}</span>
                   <button
                     type="button"
                     className={`action-button${watchlist.includes(activeProspect.id) ? ' is-active' : ''}`}
@@ -436,7 +567,8 @@ function App() {
               <div className="detail-grid">
                 {[
                   ['Rank', activeProspect.rank],
-                  ['Position', activeProspect.position],
+                  ['Base Tier', activeProspect.baseTier],
+                  ['Current Tier', activeProspect.tier],
                   ['Height', activeProspect.height],
                   ['Weight', activeProspect.weight || '--'],
                   ['School', activeProspect.school],
@@ -448,6 +580,44 @@ function App() {
                     <span>{value}</span>
                   </div>
                 ))}
+              </div>
+
+              <div className="detail-section">
+                <div className="detail-section-head">
+                  <h4>Tier Assignment</h4>
+                  <span className="section-meta">Overrides save locally</span>
+                </div>
+                <div className="tier-controls">
+                  {['Tier 1', 'Tier 2', 'Tier 3', 'Tier 4', 'Tier 5'].map((tier) => (
+                    <button
+                      key={tier}
+                      type="button"
+                      className={`tier-button${activeProspect.tier === tier ? ' is-active' : ''}`}
+                      onClick={() => updateTier(activeProspect.id, tier === activeProspect.baseTier ? '' : tier)}
+                    >
+                      {tier}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="detail-section">
+                <div className="detail-section-head">
+                  <h4>Workflow Tags</h4>
+                  <span className="section-meta">Use tags to shape your board</span>
+                </div>
+                <div className="tag-grid">
+                  {tagOptions.map((tag) => (
+                    <button
+                      key={tag}
+                      type="button"
+                      className={`tag-button${activeProspect.tags.includes(tag) ? ' is-active' : ''}`}
+                      onClick={() => toggleTag(activeProspect.id, tag)}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div className="detail-section">
