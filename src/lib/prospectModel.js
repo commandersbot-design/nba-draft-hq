@@ -4,6 +4,18 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
+function boardBucket(rank) {
+  if (rank <= 5) return 'Top 5';
+  if (rank <= 14) return 'Lottery';
+  if (rank <= 30) return 'First round';
+  if (rank <= 60) return 'Second round';
+  return 'Board depth';
+}
+
+function movementValue(movement) {
+  return Number.parseInt(movement, 10) || 0;
+}
+
 function heightToInches(height) {
   const [feet, inches] = String(height).split('-').map(Number);
   return Number.isFinite(feet) && Number.isFinite(inches) ? feet * 12 + inches : 0;
