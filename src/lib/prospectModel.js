@@ -62,7 +62,24 @@ function positionTraits(position) {
   };
 }
 
-function traitScores(prospect) {
+function hasText(value) {
+  return typeof value === 'string' ? value.trim().length > 0 : value !== null && value !== undefined;
+}
+
+function firstDefined(...values) {
+  return values.find((value) => value !== undefined && value !== null);
+}
+
+function normalizeStringArray(value) {
+  if (!Array.isArray(value)) return [];
+  return value.map((item) => String(item).trim()).filter(Boolean);
+}
+
+function sourceLabel(isReal) {
+  return isReal ? 'Structured' : 'Derived';
+}
+
+function deriveTraitScores(prospect) {
   const base = positionTraits(prospect.position);
   const rankLift = clamp(18 - Math.floor(prospect.rank / 6), -8, 14);
   const movementLift = clamp((parseInt(prospect.movement, 10) || 0) / 2, -8, 8);
@@ -87,11 +104,41 @@ function traitScores(prospect) {
   }));
 }
 
+function normalizeTraitScores(prospect) {
+  const derivedTraits = deriveTraitScores(prospect);
+  const suppliedTraits = Array.isArray(prospect.traits)
+    ? prospect.traits
+    : Array.isArray(prospect.traitScores)
+      ? prospect.traitScores
+      : null;
+
+  if (!suppliedTraits) {
+    return { values: derivedTraits, isReal: false };
+  }
+
+  const byName = Object.fromEntries(suppliedTraits.map((trait) => [trait.name, trait]));
+  const normalized = CORE_TRAITS.map((name) => {
+    const supplied = byName[name];
+    const fallback = derivedTraits.find((trait) => trait.name === name);
+    const score = firstDefined(supplied?.score, fallback?.score, 0);
+
+    return {
+      name,
+      score,
+      band: firstDefined(supplied?.band, supplied?.percentile, fallback?.band, percentileBand(score)),
+      confidence: firstDefined(supplied?.confidence, fallback?.confidence, 'Medium'),
+      note: firstDefined(supplied?.note, fallback?.note, 'No evaluator note yet.'),
+    };
+  });
+
+  return { values: normalized, isReal: true };
+}
+
 function compositeScore(traits) {
   return Math.round(traits.reduce((sum, trait) => sum + trait.score, 0) / traits.length);
 }
 
-function roleProjection(position, rank) {
+function deriveRoleProjection(position, rank) {
   if (rank <= 5) return 'Primary lineup cornerstone';
   if (position.includes('PG') && rank <= 20) return 'Starting lead or co-creator';
   if (position.includes('SF') || position.includes('SG')) return rank <= 30 ? 'Starting wing connector' : 'Rotation wing bet';
@@ -99,14 +146,14 @@ function roleProjection(position, rank) {
   return 'Rotation pathway';
 }
 
-function riskLevel(rank, classYear) {
+function deriveRiskLevel(rank, classYear) {
   if (/^\d{4}$/.test(classYear)) return 'High';
   if (rank <= 15) return 'Moderate';
   if (classYear === 'Sr.') return 'Low-Moderate';
   return 'Moderate-High';
 }
 
-function summaryBlocks(prospect, traits) {
+function deriveSummary(prospect, traits) {
   const topTraits = [...traits].sort((left, right) => right.score - left.score).slice(0, 2).map((trait) => trait.name);
   const bottomTraits = [...traits].sort((left, right) => left.score - right.score).slice(0, 2).map((trait) => trait.name);
 
@@ -128,7 +175,26 @@ function summaryBlocks(prospect, traits) {
   };
 }
 
-function statsBlock(prospect, offenseScore, defenseScore) {
+function normalizeSummary(prospect, traits) {
+  const suppliedSummary = prospect.summary;
+  const derivedSummary = deriveSummary(prospect, traits);
+
+  if (!suppliedSummary) {
+    return { value: derivedSummary, isReal: false };
+  }
+
+  return {
+    isReal: hasText(suppliedSummary.synopsis) || normalizeStringArray(suppliedSummary.strengths).length > 0,
+    value: {
+      synopsis: firstDefined(suppliedSummary.synopsis, derivedSummary.synopsis),
+      strengths: normalizeStringArray(firstDefined(suppliedSummary.strengths, derivedSummary.strengths)),
+      weaknesses: normalizeStringArray(firstDefined(suppliedSummary.weaknesses, derivedSummary.weaknesses)),
+      swingFactors: normalizeStringArray(firstDefined(suppliedSummary.swingFactors, derivedSummary.swingFactors)),
+    },
+  };
+}
+
+function deriveStats(prospect, offenseScore, defenseScore) {
   const age = estimatedAge(prospect.classYear, prospect.rank);
   const height = heightToInches(prospect.height);
   return {
@@ -153,13 +219,32 @@ function statsBlock(prospect, offenseScore, defenseScore) {
   };
 }
 
-function projectionBlock(prospect, traits, offenseScore, defenseScore) {
+function normalizeStats(prospect, offenseScore, defenseScore) {
+  const derivedStats = deriveStats(prospect, offenseScore, defenseScore);
+  const suppliedStats = prospect.stats;
+
+  if (!suppliedStats) {
+    return { value: derivedStats, isReal: false };
+  }
+
+  return {
+    isReal: !!(suppliedStats.season || suppliedStats.advanced || suppliedStats.gameLogAvailable || suppliedStats.shotProfileAvailable),
+    value: {
+      season: { ...derivedStats.season, ...(suppliedStats.season || {}) },
+      advanced: { ...derivedStats.advanced, ...(suppliedStats.advanced || {}) },
+      gameLogAvailable: firstDefined(suppliedStats.gameLogAvailable, derivedStats.gameLogAvailable),
+      shotProfileAvailable: firstDefined(suppliedStats.shotProfileAvailable, derivedStats.shotProfileAvailable),
+    },
+  };
+}
+
+function deriveProjection(prospect, traits, offenseScore, defenseScore) {
   const topTrait = [...traits].sort((left, right) => right.score - left.score)[0];
   return {
-    bestOutcome: `${roleProjection(prospect.position, Math.max(1, prospect.rank - 10))} with ${topTrait.name.toLowerCase()} driving lineup value.`,
-    medianOutcome: roleProjection(prospect.position, prospect.rank),
+    bestOutcome: `${deriveRoleProjection(prospect.position, Math.max(1, prospect.rank - 10))} with ${topTrait.name.toLowerCase()} driving lineup value.`,
+    medianOutcome: deriveRoleProjection(prospect.position, prospect.rank),
     swingSkill: topTrait.name === 'Defensive Versatility' ? 'Shooting Gravity' : 'Defensive Versatility',
-    riskSummary: `${riskLevel(prospect.rank, prospect.classYear)} risk because the path depends on ${topTrait.name.toLowerCase()} holding against better competition.`,
+    riskSummary: `${deriveRiskLevel(prospect.rank, prospect.classYear)} risk because the path depends on ${topTrait.name.toLowerCase()} holding against better competition.`,
     draftRange: boardBucket(prospect.rank),
     stockBand: movementValue(prospect.movement) >= 8 ? 'Rising' : movementValue(prospect.movement) <= -8 ? 'Sliding' : 'Stable',
     offenseScore,
@@ -167,35 +252,128 @@ function projectionBlock(prospect, traits, offenseScore, defenseScore) {
   };
 }
 
+function normalizeProjection(prospect, traits, offenseScore, defenseScore) {
+  const derivedProjection = deriveProjection(prospect, traits, offenseScore, defenseScore);
+  const suppliedProjection = prospect.projection;
+
+  if (!suppliedProjection) {
+    return { value: derivedProjection, isReal: false };
+  }
+
+  return {
+    isReal: hasText(suppliedProjection.bestOutcome) || hasText(suppliedProjection.medianOutcome) || hasText(suppliedProjection.riskSummary),
+    value: { ...derivedProjection, ...suppliedProjection },
+  };
+}
+
+function normalizeMeasurements(prospect) {
+  const supplied = prospect.measurements || {};
+  const height = firstDefined(supplied.height, prospect.height, '--');
+  const weight = firstDefined(supplied.weight, prospect.weight, '');
+  const wingspan = firstDefined(supplied.wingspan, prospect.wingspan, '');
+  const standingReach = firstDefined(supplied.standingReach, prospect.standingReach, '');
+  const measurementLine = `${height}${weight ? ` / ${weight} lb` : ''}${wingspan ? ` / ${wingspan} ws` : ''}`;
+
+  return {
+    value: {
+      height,
+      weight,
+      wingspan,
+      standingReach,
+      measurementLine,
+    },
+    isReal: !!prospect.measurements,
+  };
+}
+
+function normalizeSources(prospect) {
+  const sources = Array.isArray(prospect.sources) ? prospect.sources : [];
+  return sources
+    .filter((source) => hasText(source?.label) || hasText(source?.url))
+    .map((source) => ({
+      label: source.label || source.url,
+      url: source.url || '',
+      type: source.type || 'reference',
+    }));
+}
+
 /**
- * Isolate derived profile fields from raw source data. These fields are safe
- * placeholders until real scouting inputs replace them.
+ * Isolate derived profile fields from raw source data. When real scouting data
+ * is provided in the raw prospect record, it overrides the placeholders here.
+ *
+ * Supported optional source fields on each prospect:
+ * - measurements: { height, weight, wingspan, standingReach }
+ * - age
+ * - riskLevel
+ * - roleProjection
+ * - traits: [{ name, score, band, confidence, note }]
+ * - summary: { synopsis, strengths, weaknesses, swingFactors }
+ * - stats: { season, advanced, gameLogAvailable, shotProfileAvailable }
+ * - projection: { bestOutcome, medianOutcome, swingSkill, riskSummary, draftRange, stockBand }
+ * - sources: [{ label, url, type }]
  *
  * @param {Array<Record<string, any>>} prospects
  */
 export function enrichProspects(prospects) {
   return prospects.map((prospect) => {
-    const traits = traitScores(prospect);
-    const overallComposite = compositeScore(traits);
-    const offenseScore = Math.round((traits[0].score + traits[2].score + traits[3].score + traits[4].score) / 4);
-    const defenseScore = Math.round(traits[7].score);
-    const age = estimatedAge(prospect.classYear, prospect.rank);
-    const measurementLine = `${prospect.height}${prospect.weight ? ` / ${prospect.weight} lb` : ''}${prospect.wingspan ? ` / ${prospect.wingspan} ws` : ''}`;
-    const summary = summaryBlocks(prospect, traits);
+    const measurements = normalizeMeasurements(prospect);
+    const age = firstDefined(prospect.age, prospect.bio?.age, estimatedAge(prospect.classYear, prospect.rank));
+    const traitData = normalizeTraitScores(prospect);
+    const overallComposite = firstDefined(prospect.overallComposite, prospect.scores?.overallComposite, compositeScore(traitData.values));
+    const offenseScore = firstDefined(
+      prospect.offenseScore,
+      prospect.scores?.offense,
+      Math.round((traitData.values[0].score + traitData.values[2].score + traitData.values[3].score + traitData.values[4].score) / 4),
+    );
+    const defenseScore = firstDefined(
+      prospect.defenseScore,
+      prospect.scores?.defense,
+      Math.round(traitData.values[7].score),
+    );
+    const summary = normalizeSummary(prospect, traitData.values);
+    const stats = normalizeStats(prospect, offenseScore, defenseScore);
+    const projection = normalizeProjection(prospect, traitData.values, offenseScore, defenseScore);
+    const roleProjection = firstDefined(prospect.roleProjection, prospect.scouting?.roleProjection, deriveRoleProjection(prospect.position, prospect.rank));
+    const riskLevel = firstDefined(prospect.riskLevel, prospect.scouting?.riskLevel, deriveRiskLevel(prospect.rank, prospect.classYear));
+    const sources = normalizeSources(prospect);
+
+    const realFieldCount = [
+      measurements.isReal,
+      traitData.isReal,
+      summary.isReal,
+      stats.isReal,
+      projection.isReal,
+      hasText(prospect.age) || hasText(prospect.bio?.age),
+      hasText(prospect.roleProjection) || hasText(prospect.scouting?.roleProjection),
+      hasText(prospect.riskLevel) || hasText(prospect.scouting?.riskLevel),
+      sources.length > 0,
+    ].filter(Boolean).length;
 
     return {
       ...prospect,
+      height: measurements.value.height,
+      weight: measurements.value.weight,
+      wingspan: measurements.value.wingspan,
+      standingReach: measurements.value.standingReach,
       age,
-      measurementLine,
+      measurementLine: measurements.value.measurementLine,
       overallComposite,
       offenseScore,
       defenseScore,
-      riskLevel: riskLevel(prospect.rank, prospect.classYear),
-      roleProjection: roleProjection(prospect.position, prospect.rank),
-      traitScores: traits,
-      summary,
-      stats: statsBlock(prospect, offenseScore, defenseScore),
-      projection: projectionBlock(prospect, traits, offenseScore, defenseScore),
+      riskLevel,
+      roleProjection,
+      traitScores: traitData.values,
+      summary: summary.value,
+      stats: stats.value,
+      projection: projection.value,
+      sources,
+      dataQuality: {
+        profile: realFieldCount >= 5 ? 'Structured' : realFieldCount > 0 ? 'Mixed' : 'Derived',
+        traits: sourceLabel(traitData.isReal),
+        summary: sourceLabel(summary.isReal),
+        stats: sourceLabel(stats.isReal),
+        projection: sourceLabel(projection.isReal),
+      },
     };
   });
 }

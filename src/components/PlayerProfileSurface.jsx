@@ -42,6 +42,13 @@ export function PlayerProfileSurface({
         </div>
       </div>
 
+      <div className="board-summary">
+        <div className="summary-chip">Profile {prospect.dataQuality.profile}</div>
+        <div className="summary-chip">Traits {prospect.dataQuality.traits}</div>
+        <div className="summary-chip">Stats {prospect.dataQuality.stats}</div>
+        <div className="summary-chip">Projection {prospect.dataQuality.projection}</div>
+      </div>
+
       <section className="profile-hero-grid">
         <div className="profile-hero-card">
           <span className="stat-label">Composite</span>
@@ -147,7 +154,11 @@ export function PlayerProfileSurface({
               </div>
             </div>
             <p className="section-note">
-              Game log and shot profile surfaces are componentized but currently using placeholders until real data is connected.
+              {prospect.dataQuality.stats === 'Structured'
+                ? 'Stat rows are coming from structured source data.'
+                : prospect.dataQuality.stats === 'Mixed'
+                  ? 'Structured stats are partially connected; missing fields still fall back to derived placeholders.'
+                  : 'Game log and shot profile surfaces are componentized but currently using inferred placeholders until real data is connected.'}
             </p>
           </div>
 
@@ -165,6 +176,25 @@ export function PlayerProfileSurface({
             <h4>Team Fit</h4>
             <p>{prospect.teamFit}</p>
           </div>
+
+          {prospect.sources.length > 0 && (
+            <div className="detail-section">
+              <h4>Sources</h4>
+              <div className="chip-list">
+                {prospect.sources.map((source) => (
+                  source.url ? (
+                    <a key={`${source.label}-${source.url}`} className="chip" href={source.url} target="_blank" rel="noreferrer">
+                      <span className="chip-label">{source.label}</span>
+                    </a>
+                  ) : (
+                    <div key={source.label} className="chip">
+                      <span className="chip-label">{source.label}</span>
+                    </div>
+                  )
+                ))}
+              </div>
+            </div>
+          )}
         </>
       )}
 
