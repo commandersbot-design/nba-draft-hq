@@ -12,11 +12,62 @@
     "baseTier": "Tier 1",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Two-way wing",
     "archetype": "Switchblade Wing",
-    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent.",
+    "age": 19.2,
+    "measurements": {
+      "height": "6-9",
+      "weight": "210",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate",
+    "roleProjection": "Primary lineup cornerstone",
+    "scores": {
+      "overallComposite": 85,
+      "offense": 82,
+      "defense": 79
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 91, "note": "Wins space with size, burst, and shot-creation fluidity." },
+      { "name": "Decision Making", "score": 80, "note": "Can carry high-usage reps without defaulting into chaos." },
+      { "name": "Passing Creation", "score": 72, "note": "Capable secondary creation tool, still less advanced than the scoring package." },
+      { "name": "Shooting Gravity", "score": 87, "note": "Pull-up threat already bends coverages." },
+      { "name": "Off-Ball Value", "score": 78, "note": "Size and spacing utility keep him playable beside other creators." },
+      { "name": "Processing Speed", "score": 77, "note": "Reads are generally quick enough for star-usage projection." },
+      { "name": "Scalability", "score": 88, "note": "Star-size wing scoring scales cleanly into almost any lineup." },
+      { "name": "Defensive Versatility", "score": 81, "note": "Physical tools give him real multi-matchup value." }
+    ],
+    "summary": {
+      "synopsis": "Premier jumbo wing prospect with real primary-creator upside and clean two-way scalability.",
+      "strengths": [
+        "Star wing size with self-creation juice.",
+        "Jumper pressure already forces defensive concessions.",
+        "Can play on or off the ball without shrinking the lineup."
+      ],
+      "weaknesses": [
+        "Playmaking still projects better as strong secondary than elite table-setting.",
+        "Shot diet can drift difficult when he hunts tough pull-ups."
+      ],
+      "swingFactors": [
+        "Whether the passing creation reaches clear lead-engine level.",
+        "How consistently the defensive tools become possession-to-possession impact."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "All-NBA caliber scoring wing who can anchor offense without losing defensive size.",
+      "medianOutcome": "High-end first-option or elite co-star wing creator.",
+      "swingSkill": "Passing Creation",
+      "riskSummary": "The ceiling is tied to whether the processing and passing fully catch up to the scoring burden.",
+      "draftRange": "Top 5",
+      "stockBand": "Stable"
+    },
+    "sources": [
+      { "label": "BYU roster", "url": "https://byucougars.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/aj-dybantsa", "type": "bio" }
+    ]
   },
   {
     "id": "darrynpeterson",
@@ -31,11 +82,62 @@
     "baseTier": "Tier 1",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Combo guard creator",
     "archetype": "Advantage Mechanic",
-    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
+    "age": 19.2,
+    "measurements": {
+      "height": "6-5",
+      "weight": "195",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate",
+    "roleProjection": "Starting lead or co-creator",
+    "scores": {
+      "overallComposite": 82,
+      "offense": 83,
+      "defense": 63
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 89, "note": "One of the better downhill and separation creators in the class." },
+      { "name": "Decision Making", "score": 74, "note": "Shotmaking confidence can outrun possession control at times." },
+      { "name": "Passing Creation", "score": 79, "note": "Can generate real passing value once the paint is bent." },
+      { "name": "Shooting Gravity", "score": 82, "note": "Jumper threat is a real driver of his offensive profile." },
+      { "name": "Off-Ball Value", "score": 67, "note": "Still strongest with the ball rather than as a pure connector." },
+      { "name": "Processing Speed", "score": 73, "note": "Enough to handle creator reps, but not yet fully surgical." },
+      { "name": "Scalability", "score": 72, "note": "Works best if paired with size and defense elsewhere." },
+      { "name": "Defensive Versatility", "score": 61, "note": "More lineup-managed than lineup-driving on defense right now." }
+    ],
+    "summary": {
+      "synopsis": "Dynamic guard creator with real shotmaking gravity and a path to high-end on-ball offense.",
+      "strengths": [
+        "Can create paint touches and tough shots against set defenses.",
+        "Jumper threat gives the handle real leverage.",
+        "Passing reads appear once he gets two on the ball."
+      ],
+      "weaknesses": [
+        "Defensive value is currently more functional than additive.",
+        "Decision-making consistency will determine how much lead-guard equity he has."
+      ],
+      "swingFactors": [
+        "Whether the passing sharpens into true primary-engine orchestration.",
+        "How much defensive resistance he can offer in playoff-sized lineups."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Primary guard scorer with enough passing to drive efficient offense.",
+      "medianOutcome": "High-level combo guard creator who can close games on offense.",
+      "swingSkill": "Decision Making",
+      "riskSummary": "The offensive upside is clear, but the floor depends on shot selection and defensive survivability.",
+      "draftRange": "Top 5",
+      "stockBand": "Stable"
+    },
+    "sources": [
+      { "label": "Kansas roster", "url": "https://kuathletics.com/sports/mbball/roster/", "type": "bio" },
+      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/darryn-peterson", "type": "bio" }
+    ]
   },
   {
     "id": "cameronboozer",
@@ -50,11 +152,62 @@
     "baseTier": "Tier 1",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Play-finishing four",
     "archetype": "Glass-and-Gas Four",
-    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making.",
+    "age": 18.7,
+    "measurements": {
+      "height": "6-10",
+      "weight": "250",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate",
+    "roleProjection": "Starting frontcourt piece",
+    "scores": {
+      "overallComposite": 81,
+      "offense": 79,
+      "defense": 77
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 80, "note": "Creates angles more with strength and touch than shake." },
+      { "name": "Decision Making", "score": 84, "note": "Rarely looks rushed for a young high-usage forward." },
+      { "name": "Passing Creation", "score": 72, "note": "Can keep offense moving and punish help reads." },
+      { "name": "Shooting Gravity", "score": 68, "note": "Not a finished spacer yet, but enough touch to project improvement." },
+      { "name": "Off-Ball Value", "score": 81, "note": "Rebounding, screening, and finishing travel cleanly." },
+      { "name": "Processing Speed", "score": 84, "note": "Plays with unusual feel for pace, timing, and counters." },
+      { "name": "Scalability", "score": 86, "note": "Can fit with multiple frontcourt partners because the feel is real." },
+      { "name": "Defensive Versatility", "score": 78, "note": "Should survive across frontcourt matchups if the mobility holds." }
+    ],
+    "summary": {
+      "synopsis": "Polished young forward with mature feel, interior productivity, and real lineup versatility.",
+      "strengths": [
+        "Advanced processing and poise for a freshman big forward.",
+        "Finishes possessions with rebounding and functional strength.",
+        "Can play within structure without needing offense built around him."
+      ],
+      "weaknesses": [
+        "Perimeter shooting needs to become more respected to maximize spacing value.",
+        "Not a pure burst athlete, so advantage creation has to stay skill-based."
+      ],
+      "swingFactors": [
+        "Whether the jumper becomes a true forcing function for defenses.",
+        "How much frontcourt defensive range he can carry at NBA speed."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "High-level two-way frontcourt hub who closes games in multiple lineup shapes.",
+      "medianOutcome": "Winning starting four with offensive feel and reliable rebounding.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The floor is strong; the upside depends on how much spacing and switch value arrive.",
+      "draftRange": "Top 5",
+      "stockBand": "Rising"
+    },
+    "sources": [
+      { "label": "Duke roster", "url": "https://goduke.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/cameron-boozer", "type": "bio" }
+    ]
   },
   {
     "id": "calebwilson",
@@ -69,11 +222,62 @@
     "baseTier": "Tier 1",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Modern frontcourt big",
     "archetype": "Coverage Bender Big",
-    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses.",
+    "age": 19.7,
+    "measurements": {
+      "height": "6-10",
+      "weight": "215",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting frontcourt piece",
+    "scores": {
+      "overallComposite": 79,
+      "offense": 73,
+      "defense": 84
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 75, "note": "Gets to productive spots more with length and activity than pure handle." },
+      { "name": "Decision Making", "score": 76, "note": "Generally keeps the game simple and on time." },
+      { "name": "Passing Creation", "score": 65, "note": "Useful connective passer, not yet a creator hub." },
+      { "name": "Shooting Gravity", "score": 64, "note": "Range remains more projective than proven." },
+      { "name": "Off-Ball Value", "score": 80, "note": "Cuts, finishes, and activity play cleanly." },
+      { "name": "Processing Speed", "score": 78, "note": "Rotations and reactions tend to be ahead of average frontcourt prospects." },
+      { "name": "Scalability", "score": 83, "note": "Defensive range gives him multiple frontcourt fits." },
+      { "name": "Defensive Versatility", "score": 89, "note": "The main selling point is frontcourt coverage range and disruption." }
+    ],
+    "summary": {
+      "synopsis": "Mobile, toolsy frontcourt defender whose value starts with coverage flexibility and activity.",
+      "strengths": [
+        "Real defensive playmaking and movement for his size.",
+        "Off-ball offense fits modern frontcourt roles.",
+        "Can play with another big without clogging defensive scheme options."
+      ],
+      "weaknesses": [
+        "Half-court offensive creation is still limited.",
+        "The jumper needs to become trustworthy to unlock bigger offensive ceiling."
+      ],
+      "swingFactors": [
+        "Whether the shooting becomes playable enough to hold spacing.",
+        "How much physical growth he adds without losing movement."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Impact two-way frontcourt defender with enough offensive skill to stay on the floor deep in games.",
+      "medianOutcome": "Starting or high-minute rotation big built around defense and connective offense.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The defensive base is strong, but the offensive ceiling depends heavily on the jumper stabilizing.",
+      "draftRange": "Top 5",
+      "stockBand": "Stable"
+    },
+    "sources": [
+      { "label": "North Carolina roster", "url": "https://goheels.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/caleb-wilson", "type": "bio" }
+    ]
   },
   {
     "id": "kingstonflemings",
@@ -88,11 +292,62 @@
     "baseTier": "Tier 2",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Lead guard organizer",
     "archetype": "Tempo Pilot",
-    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
+    "age": 19.3,
+    "measurements": {
+      "height": "6-4",
+      "weight": "185",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting lead or co-creator",
+    "scores": {
+      "overallComposite": 78,
+      "offense": 79,
+      "defense": 63
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 84, "note": "Gets two feet in the paint and shifts pace effectively." },
+      { "name": "Decision Making", "score": 82, "note": "Organized style keeps possessions on schedule." },
+      { "name": "Passing Creation", "score": 77, "note": "Creates clean passes without overdribbling the advantage away." },
+      { "name": "Shooting Gravity", "score": 72, "note": "Enough pull-up utility to keep defenders honest." },
+      { "name": "Off-Ball Value", "score": 66, "note": "Primary value still starts with on-ball orchestration." },
+      { "name": "Processing Speed", "score": 83, "note": "Reads develop quickly and usually stay connected to the right pass." },
+      { "name": "Scalability", "score": 71, "note": "Needs the jumper and defense to hold up for easy lineup fit." },
+      { "name": "Defensive Versatility", "score": 62, "note": "Defensive floor is more about effort than true coverage flexibility." }
+    ],
+    "summary": {
+      "synopsis": "Steady lead-guard prospect built around pace control, passing organization, and pragmatic shot creation.",
+      "strengths": [
+        "Plays under control and keeps the game connected.",
+        "Gets the offense into actions quickly.",
+        "Shows enough scoring threat to make the passing matter."
+      ],
+      "weaknesses": [
+        "Does not have overwhelming physical tools on defense.",
+        "Must prove the jumper can carry bigger NBA usage pressure."
+      ],
+      "swingFactors": [
+        "Whether the shooting becomes a true guard advantage creator.",
+        "How much defensive resistance he can generate at point of attack."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Winning starting point guard who keeps offense organized and efficient.",
+      "medianOutcome": "Rotation lead guard or steady co-creator in skill-first lineups.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The feel is bankable, but the role size depends on how much scoring and point-of-attack defense arrive.",
+      "draftRange": "Lottery",
+      "stockBand": "Rising"
+    },
+    "sources": [
+      { "label": "Houston roster", "url": "https://uhcougars.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/kingston-flemings", "type": "bio" }
+    ]
   },
   {
     "id": "dariusacuff",
@@ -107,11 +362,62 @@
     "baseTier": "Tier 2",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Lead guard organizer",
     "archetype": "Tempo Pilot",
-    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
+    "age": 19.4,
+    "measurements": {
+      "height": "6-2",
+      "weight": "190",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting lead or co-creator",
+    "scores": {
+      "overallComposite": 77,
+      "offense": 80,
+      "defense": 58
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 87, "note": "Small-space creation and live-dribble pressure are real strengths." },
+      { "name": "Decision Making", "score": 73, "note": "Can tilt toward scoring mode before the simplest pass." },
+      { "name": "Passing Creation", "score": 80, "note": "Sees kick-outs and pocket passes once he collapses the lane." },
+      { "name": "Shooting Gravity", "score": 74, "note": "Shotmaking matters, though consistency remains important." },
+      { "name": "Off-Ball Value", "score": 60, "note": "Profile is still much more on-ball than connective." },
+      { "name": "Processing Speed", "score": 71, "note": "Can make high-difficulty reads, but the possession control is still variable." },
+      { "name": "Scalability", "score": 66, "note": "Lineup fit tightens if the ball-dominant usage does not translate." },
+      { "name": "Defensive Versatility", "score": 57, "note": "Size limits the defensive pathways." }
+    ],
+    "summary": {
+      "synopsis": "Electric downhill guard with real paint pressure and live-dribble passing upside.",
+      "strengths": [
+        "Can crack defenses off the bounce.",
+        "Passing flashes are strong when the first advantage is created.",
+        "Brings the kind of guard burst that changes defensive priorities."
+      ],
+      "weaknesses": [
+        "Undersized guards need exceptional decision quality, and he is not there yet.",
+        "Defensive projection is role-limiting unless he materially overperforms physically."
+      ],
+      "swingFactors": [
+        "Whether the jumper and decision-making make him efficient enough to lead offense.",
+        "How well he survives being targeted on the other end."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Explosive lead guard creator who drives offense with paint touches and pull-up threat.",
+      "medianOutcome": "Microwave scoring guard with real passing utility.",
+      "swingSkill": "Decision Making",
+      "riskSummary": "The talent pop is obvious, but small-guard margin for error makes the efficiency questions central.",
+      "draftRange": "Lottery",
+      "stockBand": "Stable"
+    },
+    "sources": [
+      { "label": "Arkansas roster", "url": "https://arkansasrazorbacks.com/sport/m-basketball/roster/", "type": "bio" },
+      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/darius-acuff-jr", "type": "bio" }
+    ]
   },
   {
     "id": "mikelbrown",
@@ -126,11 +432,62 @@
     "baseTier": "Tier 2",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Lead guard organizer",
     "archetype": "Tempo Pilot",
-    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
+    "age": 20.0,
+    "measurements": {
+      "height": "6-5",
+      "weight": "180",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate",
+    "roleProjection": "Starting lead or co-creator",
+    "scores": {
+      "overallComposite": 79,
+      "offense": 80,
+      "defense": 60
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 82, "note": "Gets into offense smoothly and creates enough separation to run actions." },
+      { "name": "Decision Making", "score": 79, "note": "Usually sees the next pass and keeps pace under control." },
+      { "name": "Passing Creation", "score": 77, "note": "Can create shots for others without overextending." },
+      { "name": "Shooting Gravity", "score": 80, "note": "Jumper is a meaningful part of the offensive profile." },
+      { "name": "Off-Ball Value", "score": 65, "note": "Can play off another creator if the jumper keeps translating." },
+      { "name": "Processing Speed", "score": 76, "note": "Generally plays one beat ahead rather than one beat late." },
+      { "name": "Scalability", "score": 72, "note": "Size helps the offensive fit more than the defensive one." },
+      { "name": "Defensive Versatility", "score": 60, "note": "More neutral than clearly additive defensively." }
+    ],
+    "summary": {
+      "synopsis": "Skilled guard prospect with a balanced scoring-passing profile and clean offensive projection.",
+      "strengths": [
+        "Comfortable running offense without hijacking possessions.",
+        "Jumper gives him both on-ball and off-ball utility.",
+        "Size for a lead guard helps the offensive translation."
+      ],
+      "weaknesses": [
+        "Does not currently profile as a true physical pressure defender.",
+        "Needs enough rim pressure to keep the guard archetype from flattening."
+      ],
+      "swingFactors": [
+        "Whether the first-step burst is enough to create consistent paint leverage.",
+        "How much defensive value he can add beyond just being playable."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Efficient lead guard who can score, organize, and play within a good offense.",
+      "medianOutcome": "Starting-caliber combo initiator with shooting and connective passing.",
+      "swingSkill": "Advantage Creation",
+      "riskSummary": "The feel is there, but his ceiling depends on getting enough downhill pressure against NBA athletes.",
+      "draftRange": "Lottery",
+      "stockBand": "Stable"
+    },
+    "sources": [
+      { "label": "Louisville roster", "url": "https://gocards.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/mikel-brown-jr", "type": "bio" }
+    ]
   },
   {
     "id": "keatonwagler",
@@ -145,11 +502,62 @@
     "baseTier": "Tier 2",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Combo guard creator",
     "archetype": "Advantage Mechanic",
-    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
+    "age": 19.2,
+    "measurements": {
+      "height": "6-6",
+      "weight": "185",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate",
+    "roleProjection": "Starting lead or co-creator",
+    "scores": {
+      "overallComposite": 80,
+      "offense": 81,
+      "defense": 68
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 74, "note": "More pace-and-skill creator than power driver." },
+      { "name": "Decision Making", "score": 83, "note": "One of the cleaner decision-makers in this guard cluster." },
+      { "name": "Passing Creation", "score": 71, "note": "Keeps actions connected and can hit the next read." },
+      { "name": "Shooting Gravity", "score": 86, "note": "The jumper is already a real pressure point." },
+      { "name": "Off-Ball Value", "score": 82, "note": "Can scale as a movement shooter and secondary attacker." },
+      { "name": "Processing Speed", "score": 84, "note": "Usually gets to the right decision quickly." },
+      { "name": "Scalability", "score": 88, "note": "Big guard shooting and decision-making fit nearly any lineup." },
+      { "name": "Defensive Versatility", "score": 69, "note": "Size helps, but the defensive outcome still needs proving." }
+    ],
+    "summary": {
+      "synopsis": "Big guard shooter with real feel and one of the cleaner scalability cases near the top of the board.",
+      "strengths": [
+        "Jumper pressure changes how defenses can cover him.",
+        "Decision-making supports both on-ball and off-ball roles.",
+        "Size gives him easier lineup fit than smaller guards."
+      ],
+      "weaknesses": [
+        "Needs enough burst to keep defenders from flattening the handle.",
+        "Defensive value is still more theoretical than banked."
+      ],
+      "swingFactors": [
+        "Whether the handle generates enough paint pressure to unlock primary reps.",
+        "How much two-way impact comes with added strength."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Big lead guard or elite secondary creator whose shooting makes him easy to build around.",
+      "medianOutcome": "High-value combo guard who closes games because the decision-making and shot fit everywhere.",
+      "swingSkill": "Advantage Creation",
+      "riskSummary": "The floor is strong because of size and shooting; the bigger upside depends on how much self-creation arrives.",
+      "draftRange": "Lottery",
+      "stockBand": "Stable"
+    },
+    "sources": [
+      { "label": "Illinois roster", "url": "https://fightingillini.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "247Sports profile", "url": "https://247sports.com/player/keaton-wagler-46135016/", "type": "reference" }
+    ]
   },
   {
     "id": "braydenburries",
@@ -164,11 +572,62 @@
     "baseTier": "Tier 2",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "United States",
     "wingspan": "",
     "archetypeBase": "Combo guard creator",
     "archetype": "Advantage Mechanic",
-    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
+    "age": 20.5,
+    "measurements": {
+      "height": "6-4",
+      "weight": "205",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate",
+    "roleProjection": "Starting lead or co-creator",
+    "scores": {
+      "overallComposite": 79,
+      "offense": 82,
+      "defense": 64
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 83, "note": "Gets to pull-ups and paint touches with strong pace changes." },
+      { "name": "Decision Making", "score": 75, "note": "Still balancing scorer instincts with control." },
+      { "name": "Passing Creation", "score": 70, "note": "Can create the next pass but is wired to score first." },
+      { "name": "Shooting Gravity", "score": 85, "note": "Shotmaking is a major reason he sits this high on the board." },
+      { "name": "Off-Ball Value", "score": 68, "note": "Can function off another handler because the jumper carries." },
+      { "name": "Processing Speed", "score": 73, "note": "The offense still tilts toward difficult self-created solutions." },
+      { "name": "Scalability", "score": 74, "note": "Shotmaking gives him an offensive lane even if he is not full-time lead." },
+      { "name": "Defensive Versatility", "score": 63, "note": "Physical competitiveness matters because the defensive tools are not overwhelming." }
+    ],
+    "summary": {
+      "synopsis": "Scoring-minded combo guard with enough shotmaking to carry real offensive upside.",
+      "strengths": [
+        "Can manufacture offense late in possessions.",
+        "Jumper pressure changes the coverage.",
+        "Has enough strength to survive physical guard play."
+      ],
+      "weaknesses": [
+        "Creator balance is still tilted more toward difficult scoring than orchestration.",
+        "Defensive ceiling looks more neutral than driving."
+      ],
+      "swingFactors": [
+        "Whether the passing and possession management become cleaner.",
+        "How much point-of-attack competitiveness translates at the next level."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "High-end scoring combo guard who can swing playoff possessions with shotmaking.",
+      "medianOutcome": "Offensive-minded secondary guard with starter-level scoring punch.",
+      "swingSkill": "Decision Making",
+      "riskSummary": "The scoring bet is real, but the role size depends on whether he can drive efficient offense instead of just difficult offense.",
+      "draftRange": "Lottery",
+      "stockBand": "Rising"
+    },
+    "sources": [
+      { "label": "Arizona roster", "url": "https://arizonawildcats.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "247Sports profile", "url": "https://247sports.com/player/brayden-burries-46138908/", "type": "reference" }
+    ]
   },
   {
     "id": "yaxellendeborg",
@@ -183,11 +642,62 @@
     "baseTier": "Tier 2",
     "tags": [],
     "leagueType": "NCAA",
-    "country": "Unknown",
+    "country": "Puerto Rico / Dominican Republic",
     "wingspan": "",
     "archetypeBase": "Play-finishing four",
     "archetype": "Glass-and-Gas Four",
-    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making."
+    "teamFit": "Fits pacey frontcourts that need size, rebounding, and quick decision-making.",
+    "age": 23.5,
+    "measurements": {
+      "height": "6-10",
+      "weight": "240",
+      "wingspan": ""
+    },
+    "riskLevel": "Low-Moderate",
+    "roleProjection": "Starting frontcourt piece",
+    "scores": {
+      "overallComposite": 80,
+      "offense": 78,
+      "defense": 84
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 76, "note": "Creates more with feel, power, and second-effort than pure burst." },
+      { "name": "Decision Making", "score": 85, "note": "Processes well for a frontcourt player and rarely kills possessions." },
+      { "name": "Passing Creation", "score": 78, "note": "Can pass on the move and keep short-roll offense alive." },
+      { "name": "Shooting Gravity", "score": 64, "note": "Still more workable than feared, but not the offensive driver." },
+      { "name": "Off-Ball Value", "score": 84, "note": "Rebounding, cutting, screening, and activity all translate." },
+      { "name": "Processing Speed", "score": 86, "note": "Feel is one of the strongest parts of the profile." },
+      { "name": "Scalability", "score": 89, "note": "Can fit next to multiple stars because he does the connective work." },
+      { "name": "Defensive Versatility", "score": 86, "note": "Brings real frontcourt resistance and utility." }
+    ],
+    "summary": {
+      "synopsis": "Mature, productive frontcourt connector whose feel and two-way utility give him one of the safer role pathways on the board.",
+      "strengths": [
+        "Processes the game quickly on both ends.",
+        "Adds rebounding and physicality without needing touches.",
+        "Can keep offense moving as a connective big."
+      ],
+      "weaknesses": [
+        "Older prospect, so upside questions will follow him.",
+        "Jumper still needs to prove it can fully stretch NBA spacing."
+      ],
+      "swingFactors": [
+        "Whether the shot becomes good enough to stay out of the way in every lineup.",
+        "How much his mature feel offsets the lower runway than freshman bets."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Winning starting four/five connector who anchors rotation lineups with feel, defense, and rebounding.",
+      "medianOutcome": "High-minute rotation frontcourt piece who improves lineup function on both ends.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The floor is strong because the role utility is clear; the ceiling depends on whether the spacing holds.",
+      "draftRange": "Lottery",
+      "stockBand": "Stable"
+    },
+    "sources": [
+      { "label": "Michigan roster", "url": "https://mgoblue.com/sports/mens-basketball/roster", "type": "bio" },
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Yaxel_Lendeborg", "type": "reference" }
+    ]
   },
   {
     "id": "labaronphilon",
