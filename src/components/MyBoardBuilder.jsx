@@ -18,6 +18,8 @@ export function MyBoardBuilder({
   onSaveBoard,
   onLoadBoard,
   onDeleteBoard,
+  onExportBoardJson,
+  onExportBoardCsv,
 }) {
   const [boardName, setBoardName] = useState('');
   const orderedProspects = customBoard
@@ -38,6 +40,8 @@ export function MyBoardBuilder({
           <h3>Manual board builder</h3>
         </div>
         <div className="mode-tabs">
+          <button type="button" className="inline-action" onClick={onExportBoardCsv}>Export CSV</button>
+          <button type="button" className="inline-action" onClick={onExportBoardJson}>Export JSON</button>
           <button type="button" className={`mode-tab${boardView === 'card' ? ' is-active' : ''}`} onClick={() => onSetBoardView('card')}>Card View</button>
           <button type="button" className={`mode-tab${boardView === 'list' ? ' is-active' : ''}`} onClick={() => onSetBoardView('list')}>Compact View</button>
         </div>

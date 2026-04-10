@@ -6,6 +6,7 @@ import { NotesWorkspace } from './components/NotesWorkspace';
 import { PlayerProfileSurface } from './components/PlayerProfileSurface';
 import { ProspectRankCard } from './components/ProspectRankCard';
 import { useLocalStorageState } from './hooks/useLocalStorageState';
+import { buildBoardExportRows, buildNotesExportRows, downloadCsv, downloadJson } from './lib/exporters';
 import { APP_VIEWS, BOARD_CARD_SETTINGS, TAG_OPTIONS, VIEW_MODES } from './lib/constants';
 import { createEmptyStructuredNote, enrichProspects } from './lib/prospectModel';
 
@@ -176,6 +177,7 @@ function App() {
   const activeProspectNotes = notes.filter((note) => note.playerId === activeProspect?.id);
   const compareProspects = compareIds.map((id) => prospectsById[id]).filter(Boolean);
   const watchlistProspects = watchlist.map((id) => prospectsById[id]).filter(Boolean);
+  const myBoardProspects = myBoard.map((id) => prospectsById[id]).filter(Boolean);
   const selectedMode = VIEW_MODES.find((mode) => mode.id === viewMode);
   const internationalCount = enrichedProspects.filter((prospect) => /^\d{4}$/.test(prospect.classYear)).length;
   const notesCount = notes.length;
@@ -355,6 +357,22 @@ function App() {
 
   const deleteSavedView = (id) => {
     setSavedViews((current) => current.filter((entry) => entry.id !== id));
+  };
+
+  const exportNotesJson = () => {
+    downloadJson('prospera-notes', buildNotesExportRows(notes, prospectsById));
+  };
+
+  const exportNotesCsv = () => {
+    downloadCsv('prospera-notes', buildNotesExportRows(notes, prospectsById));
+  };
+
+  const exportBoardJson = () => {
+    downloadJson('prospera-board', buildBoardExportRows(myBoardProspects));
+  };
+
+  const exportBoardCsv = () => {
+    downloadCsv('prospera-board', buildBoardExportRows(myBoardProspects));
   };
 
   return (
@@ -648,6 +666,8 @@ function App() {
               onSaveBoard={saveCurrentBoard}
               onLoadBoard={loadSavedBoard}
               onDeleteBoard={deleteSavedBoard}
+              onExportBoardJson={exportBoardJson}
+              onExportBoardCsv={exportBoardCsv}
             />
           )}
 
@@ -667,6 +687,8 @@ function App() {
               onCreateNote={createNote}
               onUpdateNote={updateNote}
               onDeleteNote={deleteNote}
+              onExportJson={exportNotesJson}
+              onExportCsv={exportNotesCsv}
             />
           )}
         </section>

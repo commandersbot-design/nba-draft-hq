@@ -8,6 +8,8 @@ export function NotesWorkspace({
   onCreateNote,
   onUpdateNote,
   onDeleteNote,
+  onExportJson,
+  onExportCsv,
 }) {
   return (
     <section className="workspace-section panel">
@@ -16,9 +18,17 @@ export function NotesWorkspace({
           <p className="eyebrow">Notes Workspace</p>
           <h3>Structured evaluator notes</h3>
         </div>
-        <button type="button" className="action-button" onClick={() => onCreateNote(selectedPlayerId)}>
-          New note
-        </button>
+        <div className="detail-actions">
+          <button type="button" className="inline-action" onClick={onExportCsv}>
+            Export CSV
+          </button>
+          <button type="button" className="inline-action" onClick={onExportJson}>
+            Export JSON
+          </button>
+          <button type="button" className="action-button" onClick={() => onCreateNote(selectedPlayerId)}>
+            New note
+          </button>
+        </div>
       </div>
 
       <div className="notes-layout">
