@@ -18,6 +18,30 @@ const myBoardKey = 'prospera.my-board';
 const myBoardViewKey = 'prospera.my-board-view';
 const cardSettingsKey = 'prospera.card-settings';
 const savedBoardsKey = 'prospera.saved-boards';
+const savedViewsKey = 'prospera.saved-views';
+
+const FILTER_PRESETS = [
+  {
+    id: 'top-of-board',
+    label: 'Top of Board',
+    state: { bucket: 'Lottery', sortBy: 'rank', viewMode: 'peek', appView: 'big-board' },
+  },
+  {
+    id: 'international',
+    label: 'International',
+    state: { leagueType: 'International Pro', sortBy: 'overall', viewMode: 'peruse', appView: 'big-board' },
+  },
+  {
+    id: 'tier-1',
+    label: 'Tier 1',
+    state: { tierFilter: 'Tier 1', sortBy: 'overall', viewMode: 'peruse', appView: 'big-board' },
+  },
+  {
+    id: 'watchlist',
+    label: 'Watchlist',
+    state: { watchlistOnly: true, sortBy: 'manual', viewMode: 'deep-dive', appView: 'my-board' },
+  },
+];
 
 function boardBucket(rank) {
   if (rank <= 5) return 'Top 5';
@@ -63,6 +87,8 @@ function App() {
   const [myBoardView, setMyBoardView] = useLocalStorageState(myBoardViewKey, 'card');
   const [cardSettings, setCardSettings] = useLocalStorageState(cardSettingsKey, defaultCardSettings());
   const [savedBoards, setSavedBoards] = useLocalStorageState(savedBoardsKey, []);
+  const [savedViews, setSavedViews] = useLocalStorageState(savedViewsKey, []);
+  const [viewName, setViewName] = useState('');
 
   const enrichedProspects = useMemo(
     () => enrichProspects(prospects).map((prospect) => ({
@@ -277,6 +303,60 @@ function App() {
     setWatchlistOnly(false);
   };
 
+  const getCurrentViewState = () => ({
+    appView,
+    viewMode,
+    query,
+    position,
+    school,
+    leagueType,
+    bucket,
+    tierFilter,
+    tagFilter,
+    sortBy,
+    watchlistOnly,
+  });
+
+  const applyViewState = (state = {}) => {
+    setAppView(state.appView || 'big-board');
+    setViewMode(state.viewMode || 'peek');
+    setQuery(state.query || '');
+    setPosition(state.position || 'ALL');
+    setSchool(state.school || 'ALL');
+    setLeagueType(state.leagueType || 'ALL');
+    setBucket(state.bucket || 'ALL');
+    setTierFilter(state.tierFilter || 'ALL');
+    setTagFilter(state.tagFilter || 'ALL');
+    setSortBy(state.sortBy || 'rank');
+    setWatchlistOnly(Boolean(state.watchlistOnly));
+  };
+
+  const saveCurrentView = (name) => {
+    const normalizedName = String(name || '').trim();
+    if (!normalizedName) return;
+
+    const state = getCurrentViewState();
+    setSavedViews((current) => [
+      {
+        id: `${Date.now()}`,
+        name: normalizedName,
+        state,
+        createdAt: new Date().toISOString(),
+      },
+      ...current.filter((entry) => entry.name !== normalizedName),
+    ]);
+  };
+
+  const loadSavedView = (id) => {
+    const savedView = savedViews.find((entry) => entry.id === id);
+    if (!savedView) return;
+    applyViewState(savedView.state);
+  };
+
+  const deleteSavedView = (id) => {
+    setSavedViews((current) => current.filter((entry) => entry.id !== id));
+  };
+
   return (
     <div className="page-shell">
       {/* Implementation note: Tier 1 surfaces are split into modular workspaces so
@@ -390,6 +470,59 @@ function App() {
           </section>
 
           <section className="controls panel">
+            <div className="saved-views-bar">
+              <div className="saved-view-controls">
+                <input
+                  className="notes-input compact-input"
+                  value={viewName}
+                  placeholder="Save current view"
+                  onChange={(event) => setViewName(event.target.value)}
+                />
+                <button
+                  type="button"
+                  className="action-button"
+                  onClick={() => {
+                    saveCurrentView(viewName);
+                    setViewName('');
+                  }}
+                >
+                  Save View
+                </button>
+              </div>
+
+              <div className="preset-row">
+                {FILTER_PRESETS.map((preset) => (
+                  <button
+                    key={preset.id}
+                    type="button"
+                    className="mode-tab"
+                    onClick={() => applyViewState(preset.state)}
+                  >
+                    {preset.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="saved-view-list">
+                {savedViews.length === 0 ? (
+                  <p className="empty-state">No saved views yet. Save a filter stack to reuse it across workspaces.</p>
+                ) : (
+                  savedViews.map((savedView) => (
+                    <div key={savedView.id} className="saved-view-card">
+                      <div>
+                        <strong>{savedView.name}</strong>
+                        <span>{new Date(savedView.createdAt).toLocaleString()}</span>
+                      </div>
+                      <div className="detail-actions">
+                        <button type="button" className="inline-action" onClick={() => loadSavedView(savedView.id)}>Load</button>
+                        <button type="button" className="inline-action" onClick={() => deleteSavedView(savedView.id)}>Delete</button>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
             <div className="control-block search-block">
               <label htmlFor="search">Search</label>
               <input
