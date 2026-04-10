@@ -17,6 +17,7 @@ const customTagsKey = 'prospera.custom-tags';
 const myBoardKey = 'prospera.my-board';
 const myBoardViewKey = 'prospera.my-board-view';
 const cardSettingsKey = 'prospera.card-settings';
+const savedBoardsKey = 'prospera.saved-boards';
 
 function boardBucket(rank) {
   if (rank <= 5) return 'Top 5';
@@ -61,6 +62,7 @@ function App() {
   const [myBoard, setMyBoard] = useLocalStorageState(myBoardKey, prospects.map((prospect) => prospect.id));
   const [myBoardView, setMyBoardView] = useLocalStorageState(myBoardViewKey, 'card');
   const [cardSettings, setCardSettings] = useLocalStorageState(cardSettingsKey, defaultCardSettings());
+  const [savedBoards, setSavedBoards] = useLocalStorageState(savedBoardsKey, []);
 
   const enrichedProspects = useMemo(
     () => enrichProspects(prospects).map((prospect) => ({
@@ -174,7 +176,7 @@ function App() {
       if (current.includes(id)) {
         return current.filter((entry) => entry !== id);
       }
-      if (current.length >= 4) {
+      if (current.length >= 3) {
         return [...current.slice(1), id];
       }
       return [...current, id];
@@ -236,6 +238,31 @@ function App() {
 
   const toggleCardSetting = (key) => {
     setCardSettings((current) => ({ ...current, [key]: !current[key] }));
+  };
+
+  const saveCurrentBoard = (name) => {
+    const normalizedName = String(name || '').trim();
+    if (!normalizedName) return;
+
+    setSavedBoards((current) => [
+      {
+        id: `${Date.now()}`,
+        name: normalizedName,
+        board: myBoard,
+        createdAt: new Date().toISOString(),
+      },
+      ...current.filter((entry) => entry.name !== normalizedName),
+    ]);
+  };
+
+  const loadSavedBoard = (id) => {
+    const board = savedBoards.find((entry) => entry.id === id);
+    if (!board) return;
+    setMyBoard(board.board);
+  };
+
+  const deleteSavedBoard = (id) => {
+    setSavedBoards((current) => current.filter((entry) => entry.id !== id));
   };
 
   const clearFilters = () => {
@@ -484,6 +511,10 @@ function App() {
               onSetBoardView={setMyBoardView}
               onToggleCardSetting={toggleCardSetting}
               onReorder={reorderMyBoard}
+              savedBoards={savedBoards}
+              onSaveBoard={saveCurrentBoard}
+              onLoadBoard={loadSavedBoard}
+              onDeleteBoard={deleteSavedBoard}
             />
           )}
 

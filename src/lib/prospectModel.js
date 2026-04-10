@@ -1,4 +1,5 @@
 import { CORE_TRAITS } from './constants';
+import profileStats from '../data/profileStats.json';
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -220,8 +221,9 @@ function deriveStats(prospect, offenseScore, defenseScore) {
 }
 
 function normalizeStats(prospect, offenseScore, defenseScore) {
+  const pipelineStats = profileStats[prospect.id];
   const derivedStats = deriveStats(prospect, offenseScore, defenseScore);
-  const suppliedStats = prospect.stats;
+  const suppliedStats = pipelineStats?.stats || prospect.stats;
 
   if (!suppliedStats) {
     return { value: derivedStats, isReal: false };
@@ -287,7 +289,11 @@ function normalizeMeasurements(prospect) {
 }
 
 function normalizeSources(prospect) {
-  const sources = Array.isArray(prospect.sources) ? prospect.sources : [];
+  const pipelineStats = profileStats[prospect.id];
+  const sources = [
+    ...(Array.isArray(prospect.sources) ? prospect.sources : []),
+    ...(Array.isArray(pipelineStats?.sources) ? pipelineStats.sources : []),
+  ];
   return sources
     .filter((source) => hasText(source?.label) || hasText(source?.url))
     .map((source) => ({
@@ -316,6 +322,7 @@ function normalizeSources(prospect) {
  */
 export function enrichProspects(prospects) {
   return prospects.map((prospect) => {
+    const pipelineStats = profileStats[prospect.id] || {};
     const measurements = normalizeMeasurements(prospect);
     const age = firstDefined(prospect.age, prospect.bio?.age, estimatedAge(prospect.classYear, prospect.rank));
     const traitData = normalizeTraitScores(prospect);
@@ -366,12 +373,19 @@ export function enrichProspects(prospects) {
       summary: summary.value,
       stats: stats.value,
       projection: projection.value,
+      statCards: Array.isArray(pipelineStats.statCards) ? pipelineStats.statCards : [],
+      statPercentiles: pipelineStats.percentiles || {},
+      statStrengths: Array.isArray(pipelineStats.statStrengths) ? pipelineStats.statStrengths : [],
+      statWeaknesses: Array.isArray(pipelineStats.statWeaknesses) ? pipelineStats.statWeaknesses : [],
+      archetypeIndicators: Array.isArray(pipelineStats.archetypeIndicators) ? pipelineStats.archetypeIndicators : [],
+      comparisonInputs: pipelineStats.comparisonInputs || {},
+      profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],
       sources,
       dataQuality: {
-        profile: realFieldCount >= 5 ? 'Structured' : realFieldCount > 0 ? 'Mixed' : 'Derived',
+        profile: realFieldCount >= 5 || pipelineStats.season ? 'Structured' : realFieldCount > 0 ? 'Mixed' : 'Derived',
         traits: sourceLabel(traitData.isReal),
         summary: sourceLabel(summary.isReal),
-        stats: sourceLabel(stats.isReal),
+        stats: sourceLabel(stats.isReal || !!pipelineStats.season),
         projection: sourceLabel(projection.isReal),
       },
     };

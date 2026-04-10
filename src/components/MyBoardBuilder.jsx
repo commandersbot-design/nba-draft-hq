@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ProspectRankCard } from './ProspectRankCard';
 
 export function MyBoardBuilder({
@@ -13,7 +14,12 @@ export function MyBoardBuilder({
   onSetBoardView,
   onToggleCardSetting,
   onReorder,
+  savedBoards,
+  onSaveBoard,
+  onLoadBoard,
+  onDeleteBoard,
 }) {
+  const [boardName, setBoardName] = useState('');
   const orderedProspects = customBoard
     .map((id) => prospects.find((prospect) => prospect.id === id))
     .filter(Boolean);
@@ -52,6 +58,48 @@ export function MyBoardBuilder({
               {key}
             </button>
           ))}
+        </div>
+      </div>
+
+      <div className="detail-section">
+        <div className="detail-section-head">
+          <h4>Saved Boards</h4>
+        </div>
+        <div className="saved-board-toolbar">
+          <input
+            className="notes-input compact-input"
+            value={boardName}
+            placeholder="Board name"
+            onChange={(event) => setBoardName(event.target.value)}
+          />
+          <button
+            type="button"
+            className="action-button"
+            onClick={() => {
+              onSaveBoard(boardName);
+              setBoardName('');
+            }}
+          >
+            Save Board
+          </button>
+        </div>
+        <div className="saved-board-list">
+          {savedBoards.length === 0 ? (
+            <p className="empty-state">No saved boards yet.</p>
+          ) : (
+            savedBoards.map((board) => (
+              <div key={board.id} className="saved-board-card">
+                <div>
+                  <strong>{board.name}</strong>
+                  <span>{new Date(board.createdAt).toLocaleString()}</span>
+                </div>
+                <div className="detail-actions">
+                  <button type="button" className="inline-action" onClick={() => onLoadBoard(board.id)}>Load</button>
+                  <button type="button" className="inline-action" onClick={() => onDeleteBoard(board.id)}>Delete</button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
 

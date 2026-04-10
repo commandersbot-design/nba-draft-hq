@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TAG_OPTIONS } from '../lib/constants';
 
 export function PlayerProfileSurface({
@@ -12,6 +13,8 @@ export function PlayerProfileSurface({
   onToggleTag,
   onCreateNote,
 }) {
+  const [activeSection, setActiveSection] = useState('Overview');
+
   if (!prospect) {
     return (
       <div className="detail-empty">
@@ -47,6 +50,19 @@ export function PlayerProfileSurface({
         <div className="summary-chip">Traits {prospect.dataQuality.traits}</div>
         <div className="summary-chip">Stats {prospect.dataQuality.stats}</div>
         <div className="summary-chip">Projection {prospect.dataQuality.projection}</div>
+      </div>
+
+      <div className="mode-tabs profile-tabs">
+        {prospect.profileSections.map((section) => (
+          <button
+            key={section}
+            type="button"
+            className={`mode-tab${activeSection === section ? ' is-active' : ''}`}
+            onClick={() => setActiveSection(section)}
+          >
+            {section}
+          </button>
+        ))}
       </div>
 
       <section className="profile-hero-grid">
@@ -85,54 +101,87 @@ export function PlayerProfileSurface({
         ))}
       </div>
 
-      <div className="detail-section">
-        <h4>Summary</h4>
-        <p>{prospect.summary.synopsis}</p>
-      </div>
-
-      <div className="split-section">
-        <div className="detail-section">
-          <h4>Strengths</h4>
-          <ul className="profile-list">
-            {prospect.summary.strengths.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </div>
-        <div className="detail-section">
-          <h4>Weaknesses</h4>
-          <ul className="profile-list">
-            {prospect.summary.weaknesses.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </div>
-      </div>
-
-      <div className="detail-section">
-        <h4>Development Swing Factors</h4>
-        <ul className="profile-list">
-          {prospect.summary.swingFactors.map((item) => <li key={item}>{item}</li>)}
-        </ul>
-      </div>
-
-      <div className="detail-section">
-        <h4>Structured Trait Evaluation</h4>
-        <div className="trait-grid">
-          {prospect.traitScores.map((trait) => (
-            <div key={trait.name} className="trait-card">
-              <div className="trait-topline">
-                <strong>{trait.name}</strong>
-                <span>{trait.score}</span>
-              </div>
-              <div className="trait-meta">
-                <span>{trait.band}</span>
-                <span>{trait.confidence}</span>
-              </div>
-              <p>{trait.note}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {(viewMode === 'peek' || viewMode === 'peruse' || viewMode === 'deep-dive') && (
+      {(activeSection === 'Overview' || activeSection === 'Full Profile') && (
         <>
+          <div className="detail-section">
+            <h4>Summary</h4>
+            <p>{prospect.summary.synopsis}</p>
+          </div>
+
+          <div className="split-section">
+            <div className="detail-section">
+              <h4>Strengths</h4>
+              <ul className="profile-list">
+                {prospect.summary.strengths.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+            <div className="detail-section">
+              <h4>Weaknesses</h4>
+              <ul className="profile-list">
+                {prospect.summary.weaknesses.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+
+          <div className="detail-section">
+            <h4>Development Swing Factors</h4>
+            <ul className="profile-list">
+              {prospect.summary.swingFactors.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </div>
+        </>
+      )}
+
+      {(activeSection === 'Model' || activeSection === 'Full Profile') && (
+        <>
+          <div className="detail-section">
+            <h4>Structured Trait Evaluation</h4>
+            <div className="trait-grid">
+              {prospect.traitScores.map((trait) => (
+                <div key={trait.name} className="trait-card">
+                  <div className="trait-topline">
+                    <strong>{trait.name}</strong>
+                    <span>{trait.score}</span>
+                  </div>
+                  <div className="trait-meta">
+                    <span>{trait.band}</span>
+                    <span>{trait.confidence}</span>
+                  </div>
+                  <p>{trait.note}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="detail-section">
+            <h4>Projection</h4>
+            <div className="projection-stack">
+              <div><strong>Best outcome:</strong> {prospect.projection.bestOutcome}</div>
+              <div><strong>Median outcome:</strong> {prospect.projection.medianOutcome}</div>
+              <div><strong>Swing skill:</strong> {prospect.projection.swingSkill}</div>
+              <div><strong>Risk summary:</strong> {prospect.projection.riskSummary}</div>
+            </div>
+          </div>
+        </>
+      )}
+
+      {(viewMode === 'peek' || viewMode === 'peruse' || viewMode === 'deep-dive') && (activeSection === 'Stats' || activeSection === 'Full Profile') && (
+        <>
+          {prospect.statCards.length > 0 && (
+            <div className="detail-section">
+              <h4>Stat Cards</h4>
+              <div className="stat-card-grid">
+                {prospect.statCards.map((card) => (
+                  <div key={card.label} className="profile-hero-card stat-mini-card">
+                    <span className="stat-label">{card.label}</span>
+                    <strong>{card.value}</strong>
+                    <span className="stat-detail">{card.percentile ? `${card.percentile}th pct` : 'Awaiting percentile'}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="detail-section">
             <h4>Statistical Context</h4>
             <div className="split-section">
@@ -162,15 +211,22 @@ export function PlayerProfileSurface({
             </p>
           </div>
 
-          <div className="detail-section">
-            <h4>Projection</h4>
-            <div className="projection-stack">
-              <div><strong>Best outcome:</strong> {prospect.projection.bestOutcome}</div>
-              <div><strong>Median outcome:</strong> {prospect.projection.medianOutcome}</div>
-              <div><strong>Swing skill:</strong> {prospect.projection.swingSkill}</div>
-              <div><strong>Risk summary:</strong> {prospect.projection.riskSummary}</div>
+          {(prospect.statStrengths.length > 0 || prospect.statWeaknesses.length > 0) && (
+            <div className="split-section">
+              <div className="detail-section">
+                <h4>Stat-Based Strengths</h4>
+                <ul className="profile-list">
+                  {(prospect.statStrengths.length ? prospect.statStrengths : ['No clear positive statistical signals yet.']).map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+              <div className="detail-section">
+                <h4>Stat-Based Weaknesses</h4>
+                <ul className="profile-list">
+                  {(prospect.statWeaknesses.length ? prospect.statWeaknesses : ['No clear statistical weaknesses yet.']).map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="detail-section">
             <h4>Team Fit</h4>
@@ -196,6 +252,18 @@ export function PlayerProfileSurface({
             </div>
           )}
         </>
+      )}
+
+      {(activeSection === 'Comps' || activeSection === 'Full Profile') && (
+        <div className="detail-section">
+          <h4>Comparison Inputs</h4>
+          <div className="projection-stack">
+            <div><strong>Final score:</strong> {prospect.comparisonInputs.finalScore || prospect.overallComposite}</div>
+            <div><strong>Offensive snapshot:</strong> {prospect.comparisonInputs.offensiveSummary || `${prospect.offenseScore} offense score`}</div>
+            <div><strong>Defensive snapshot:</strong> {prospect.comparisonInputs.defensiveSummary || `${prospect.defenseScore} defense score`}</div>
+            <div><strong>Archetype indicators:</strong> {(prospect.archetypeIndicators || []).join(', ') || 'Awaiting stat indicators'}</div>
+          </div>
+        </div>
       )}
 
       {(viewMode === 'peruse' || viewMode === 'deep-dive') && (
@@ -240,6 +308,7 @@ export function PlayerProfileSurface({
         </>
       )}
 
+      {(activeSection === 'Notes' || activeSection === 'Full Profile') && (
       <div className="detail-section">
         <div className="detail-section-head">
           <h4>Notes</h4>
@@ -259,6 +328,7 @@ export function PlayerProfileSurface({
           </div>
         )}
       </div>
+      )}
     </div>
   );
 }

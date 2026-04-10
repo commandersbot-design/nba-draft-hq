@@ -668,6 +668,10 @@ button {
   padding: 22px;
 }
 
+.profile-tabs {
+  margin-top: -2px;
+}
+
 .detail-card {
   display: grid;
   gap: 18px;
@@ -691,6 +695,16 @@ button {
   margin-top: 10px;
   font-size: 1.3rem;
   letter-spacing: -0.04em;
+}
+
+.stat-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-mini-card strong {
+  font-size: 1.1rem;
 }
 
 .split-section {
@@ -823,6 +837,10 @@ button {
   gap: 12px;
 }
 
+.compare-sheet-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .compare-column,
 .note-list-panel,
 .note-editor-card,
@@ -859,6 +877,12 @@ button {
   padding: 12px 14px;
 }
 
+.compare-row-3 {
+  display: grid;
+  grid-template-columns: 140px repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
 .compare-row span:first-child {
   color: var(--muted);
   text-transform: uppercase;
@@ -876,6 +900,52 @@ button {
   display: grid;
   grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
   gap: 16px;
+}
+
+.saved-board-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.saved-board-list {
+  display: grid;
+  gap: 10px;
+}
+
+.saved-board-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
+.saved-board-card strong,
+.saved-board-card span {
+  display: block;
+}
+
+.saved-board-card span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.compact-input {
+  min-height: 0;
+  resize: none;
+}
+
+.compare-notes-column {
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  border-radius: 18px;
+  padding: 14px;
 }
 
 .note-list-panel {
@@ -1040,11 +1110,16 @@ button {
   .detail-grid,
   .matrix-row,
   .profile-hero-grid,
+  .stat-card-grid,
   .split-section,
   .trait-grid,
   .compare-sheet,
   .note-grid,
   .my-board-row {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-row-3 {
     grid-template-columns: 1fr;
   }
 }
@@ -1057,6 +1132,11 @@ button {
   .controls,
   .rank-card {
     grid-template-columns: 1fr;
+  }
+
+  .saved-board-toolbar {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .mode-tabs,

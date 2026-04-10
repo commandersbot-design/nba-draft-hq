@@ -5,7 +5,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "db:init": "node scripts/init-db.js",
+    "db:migrate:ingestion": "node scripts/ingestion/migrate-ingestion.js",
+    "ingest:seed-prospects": "node scripts/ingestion/seed-prospects.js",
+    "ingest:sync": "node scripts/ingestion/sync-all.js",
+    "ingest:transform": "node scripts/ingestion/transform.js",
+    "ingest:export": "node scripts/ingestion/export-profile-stats.js"
   },
   "dependencies": {
     "react": "^18.2.0",

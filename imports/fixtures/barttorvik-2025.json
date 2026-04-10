@@ -1,0 +1,157 @@
+{
+  "source": "Bart Torvik export fixture",
+  "season": "2025-26",
+  "generatedAt": "2026-04-10T18:00:00.000Z",
+  "players": [
+    {
+      "playerName": "AJ Dybantsa",
+      "externalPlayerKey": "torvik-aj-dybantsa",
+      "advanced": {
+        "tsPct": 0.612,
+        "efgPct": 0.559,
+        "usgPct": 0.286,
+        "astPct": 17.3,
+        "tovPct": 11.2,
+        "ortg": 119.8,
+        "drtg": 96.2,
+        "bpm": 8.9,
+        "reboundRate": 11.6
+      }
+    },
+    {
+      "playerName": "Darryn Peterson",
+      "externalPlayerKey": "torvik-darryn-peterson",
+      "advanced": {
+        "tsPct": 0.587,
+        "efgPct": 0.531,
+        "usgPct": 0.301,
+        "astPct": 23.8,
+        "tovPct": 13.4,
+        "ortg": 114.1,
+        "drtg": 99.1,
+        "bpm": 7.4,
+        "reboundRate": 8.4
+      }
+    },
+    {
+      "playerName": "Cameron Boozer",
+      "externalPlayerKey": "torvik-cameron-boozer",
+      "advanced": {
+        "tsPct": 0.624,
+        "efgPct": 0.571,
+        "usgPct": 0.267,
+        "astPct": 16.1,
+        "tovPct": 9.9,
+        "ortg": 121.6,
+        "drtg": 95.7,
+        "bpm": 9.1,
+        "reboundRate": 16.3
+      }
+    },
+    {
+      "playerName": "Caleb Wilson",
+      "externalPlayerKey": "torvik-caleb-wilson",
+      "advanced": {
+        "tsPct": 0.602,
+        "efgPct": 0.551,
+        "usgPct": 0.224,
+        "astPct": 10.8,
+        "tovPct": 10.2,
+        "ortg": 118.7,
+        "drtg": 92.8,
+        "bpm": 8.3,
+        "reboundRate": 15.1
+      }
+    },
+    {
+      "playerName": "Kingston Flemings",
+      "externalPlayerKey": "torvik-kingston-flemings",
+      "advanced": {
+        "tsPct": 0.571,
+        "efgPct": 0.519,
+        "usgPct": 0.251,
+        "astPct": 28.9,
+        "tovPct": 12.2,
+        "ortg": 113.4,
+        "drtg": 98.6,
+        "bpm": 6.1,
+        "reboundRate": 7.5
+      }
+    },
+    {
+      "playerName": "Darius Acuff",
+      "externalPlayerKey": "torvik-darius-acuff",
+      "advanced": {
+        "tsPct": 0.561,
+        "efgPct": 0.507,
+        "usgPct": 0.298,
+        "astPct": 29.8,
+        "tovPct": 14.6,
+        "ortg": 110.9,
+        "drtg": 101.8,
+        "bpm": 5.7,
+        "reboundRate": 6.2
+      }
+    },
+    {
+      "playerName": "Mikel Brown",
+      "externalPlayerKey": "torvik-mikel-brown",
+      "advanced": {
+        "tsPct": 0.603,
+        "efgPct": 0.561,
+        "usgPct": 0.265,
+        "astPct": 31.1,
+        "tovPct": 11.1,
+        "ortg": 118.9,
+        "drtg": 99.8,
+        "bpm": 6.8,
+        "reboundRate": 5.1
+      }
+    },
+    {
+      "playerName": "Keaton Wagler",
+      "externalPlayerKey": "torvik-keaton-wagler",
+      "advanced": {
+        "tsPct": 0.625,
+        "efgPct": 0.596,
+        "usgPct": 0.234,
+        "astPct": 19.5,
+        "tovPct": 9.2,
+        "ortg": 123.2,
+        "drtg": 97.6,
+        "bpm": 7.5,
+        "reboundRate": 8.7
+      }
+    },
+    {
+      "playerName": "Brayden Burries",
+      "externalPlayerKey": "torvik-brayden-burries",
+      "advanced": {
+        "tsPct": 0.599,
+        "efgPct": 0.566,
+        "usgPct": 0.279,
+        "astPct": 16.7,
+        "tovPct": 12.4,
+        "ortg": 116.8,
+        "drtg": 100.4,
+        "bpm": 6.9,
+        "reboundRate": 8.3
+      }
+    },
+    {
+      "playerName": "Yaxel Lendeborg",
+      "externalPlayerKey": "torvik-yaxel-lendeborg",
+      "advanced": {
+        "tsPct": 0.614,
+        "efgPct": 0.553,
+        "usgPct": 0.241,
+        "astPct": 21.2,
+        "tovPct": 10.1,
+        "ortg": 120.8,
+        "drtg": 93.9,
+        "bpm": 10.1,
+        "reboundRate": 18.9
+      }
+    }
+  ]
+}
