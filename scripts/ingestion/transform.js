@@ -68,25 +68,45 @@ function buildStatCards(row) {
 }
 
 function normalizeRows(db, season) {
-  const players = db.prepare(`
-    SELECT id, first_name, last_name, position
-    FROM players
-    WHERE draft_class = 2026
-    ORDER BY id
-  `).all();
+  const rowsByPlayer = new Map();
+  const rawRows = db.prepare(`
+    SELECT
+      p.id,
+      p.first_name,
+      p.last_name,
+      p.position,
+      r.source,
+      r.payload
+    FROM players p
+    JOIN player_stats_raw r
+      ON r.player_id = p.id
+     AND r.season = ?
+    WHERE p.draft_class = 2026
+    ORDER BY p.id, r.source
+  `).all(season);
 
-  const rawStatsStmt = db.prepare(`
-    SELECT source, payload
-    FROM player_stats_raw
-    WHERE player_id = ? AND season = ?
-  `);
+  for (const rawRow of rawRows) {
+    if (!rowsByPlayer.has(rawRow.id)) {
+      rowsByPlayer.set(rawRow.id, {
+        id: rawRow.id,
+        first_name: rawRow.first_name,
+        last_name: rawRow.last_name,
+        position: rawRow.position,
+        rawRows: [],
+      });
+    }
+
+    rowsByPlayer.get(rawRow.id).rawRows.push({
+      source: rawRow.source,
+      payload: rawRow.payload,
+    });
+  }
 
   const normalized = [];
 
-  for (const player of players) {
-    const rawRows = rawStatsStmt.all(player.id, season);
-    const cbbd = rawRows.find((row) => row.source === 'CollegeBasketballData');
-    const torvik = rawRows.find((row) => row.source === 'BartTorvikDataset');
+  for (const player of rowsByPlayer.values()) {
+    const cbbd = player.rawRows.find((row) => row.source === 'CollegeBasketballData');
+    const torvik = player.rawRows.find((row) => row.source === 'BartTorvikDataset');
     if (!cbbd && !torvik) continue;
 
     const basic = cbbd ? JSON.parse(cbbd.payload) : {};
@@ -169,6 +189,11 @@ function normalizeRows(db, season) {
 }
 
 function writeNormalizedRows(db, rows) {
+  const clearSeasonStmt = db.prepare(`
+    DELETE FROM player_stats_normalized
+    WHERE season = ? AND source = 'ProsperaAggregate'
+  `);
+
   const stmt = db.prepare(`
     INSERT INTO player_stats_normalized (
       player_id, season, source, last_updated, position_group, games, minutes_per_game,
@@ -211,6 +236,8 @@ function writeNormalizedRows(db, rows) {
   `);
 
   withTransaction(db, () => {
+    clearSeasonStmt.run(rows[0]?.season || '2025-26');
+
     for (const row of rows) {
       stmt.run(
         row.playerId,

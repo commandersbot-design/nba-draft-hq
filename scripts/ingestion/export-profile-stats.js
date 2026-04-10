@@ -6,7 +6,27 @@ const PROSPECTS_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'prospect
 const OUTPUT_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'profileStats.json');
 
 function normalizeName(value) {
-  return String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+const NAME_ALIASES = new Map([
+  ['benett stirtz', 'bennett stirtz'],
+  ['keshawn murphy', 'ke shawn murphy'],
+]);
+
+function resolveProspectByName(prospectsByName, fullName) {
+  const normalized = normalizeName(fullName);
+  const direct = prospectsByName.get(normalized);
+  if (direct) return direct;
+
+  const alias = NAME_ALIASES.get(normalized);
+  if (alias) return prospectsByName.get(alias) || null;
+
+  return null;
 }
 
 function parseSeasonArg() {
@@ -35,7 +55,7 @@ function exportProfileStats() {
 
   for (const row of rows) {
     const fullName = `${row.first_name} ${row.last_name}`;
-    const prospect = prospectsByName.get(normalizeName(fullName));
+    const prospect = resolveProspectByName(prospectsByName, fullName);
     if (!prospect) continue;
 
     output[prospect.id] = {

@@ -40,12 +40,12 @@
       "reboundsPerGame": 100,
       "assistsPerGame": 100,
       "stealsPerGame": 100,
-      "blocksPerGame": 100,
+      "blocksPerGame": 88,
       "turnoversPerGame": 100,
       "trueShooting": 100,
-      "threePct": 100,
+      "threePct": 63,
       "bpm": 100,
-      "reboundRate": 100,
+      "reboundRate": 75,
       "usage": 100
     },
     "statStrengths": [
@@ -61,7 +61,6 @@
     ],
     "archetypeIndicators": [
       "Scoring efficiency",
-      "Floor-spacing shotmaking",
       "Possession-winning size",
       "Defensive event creation",
       "High-impact production"
@@ -99,7 +98,7 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.722Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
   },
   "darrynpeterson": {
     "season": "2025-26",
@@ -124,12 +123,12 @@
       {
         "label": "TS%",
         "value": "58.7%",
-        "percentile": 50
+        "percentile": 60
       },
       {
         "label": "BPM",
         "value": "7.4",
-        "percentile": 83
+        "percentile": 80
       },
       {
         "label": "USG%",
@@ -141,13 +140,13 @@
       "pointsPerGame": 100,
       "reboundsPerGame": 100,
       "assistsPerGame": 50,
-      "stealsPerGame": 83,
+      "stealsPerGame": 90,
       "blocksPerGame": 100,
-      "turnoversPerGame": 83,
-      "trueShooting": 50,
-      "threePct": 33,
-      "bpm": 83,
-      "reboundRate": 83,
+      "turnoversPerGame": 90,
+      "trueShooting": 60,
+      "threePct": 40,
+      "bpm": 80,
+      "reboundRate": 80,
       "usage": 100
     },
     "statStrengths": [
@@ -157,8 +156,7 @@
       "Generates defensive events"
     ],
     "statWeaknesses": [
-      "Turnover load still needs trimming",
-      "Three-point pressure remains inconsistent"
+      "Turnover load still needs trimming"
     ],
     "archetypeIndicators": [
       "Defensive event creation",
@@ -197,7 +195,7 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
   },
   "cameronboozer": {
     "season": "2025-26",
@@ -212,12 +210,12 @@
       {
         "label": "RPG",
         "value": "8.9",
-        "percentile": 67
+        "percentile": 83
       },
       {
         "label": "APG",
         "value": "3.4",
-        "percentile": 67
+        "percentile": 83
       },
       {
         "label": "TS%",
@@ -227,7 +225,7 @@
       {
         "label": "BPM",
         "value": "9.1",
-        "percentile": 67
+        "percentile": 83
       },
       {
         "label": "USG%",
@@ -237,25 +235,30 @@
     ],
     "percentiles": {
       "pointsPerGame": 100,
-      "reboundsPerGame": 67,
-      "assistsPerGame": 67,
-      "stealsPerGame": 33,
+      "reboundsPerGame": 83,
+      "assistsPerGame": 83,
+      "stealsPerGame": 67,
       "blocksPerGame": 33,
-      "turnoversPerGame": 67,
+      "turnoversPerGame": 83,
       "trueShooting": 100,
-      "threePct": 100,
-      "bpm": 67,
+      "threePct": 83,
+      "bpm": 83,
       "reboundRate": 67,
       "usage": 100
     },
     "statStrengths": [
       "High-volume scorer for role",
-      "Efficient scoring profile"
+      "Strong playmaking rate",
+      "Efficient scoring profile",
+      "Impact metrics are strong"
     ],
-    "statWeaknesses": [],
+    "statWeaknesses": [
+      "Turnover load still needs trimming"
+    ],
     "archetypeIndicators": [
       "Scoring efficiency",
-      "Floor-spacing shotmaking"
+      "Floor-spacing shotmaking",
+      "High-impact production"
     ],
     "comparisonInputs": {
       "finalScore": 53.1,
@@ -290,7 +293,7 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
   },
   "calebwilson": {
     "season": "2025-26",
@@ -300,17 +303,17 @@
       {
         "label": "PPG",
         "value": "14.8",
-        "percentile": 33
+        "percentile": 67
       },
       {
         "label": "RPG",
         "value": "7.4",
-        "percentile": 33
+        "percentile": 50
       },
       {
         "label": "APG",
         "value": "2.0",
-        "percentile": 33
+        "percentile": 50
       },
       {
         "label": "TS%",
@@ -320,26 +323,26 @@
       {
         "label": "BPM",
         "value": "8.3",
-        "percentile": 33
+        "percentile": 67
       },
       {
         "label": "USG%",
         "value": "22.4%",
-        "percentile": 33
+        "percentile": 67
       }
     ],
     "percentiles": {
-      "pointsPerGame": 33,
-      "reboundsPerGame": 33,
-      "assistsPerGame": 33,
-      "stealsPerGame": 67,
-      "blocksPerGame": 100,
+      "pointsPerGame": 67,
+      "reboundsPerGame": 50,
+      "assistsPerGame": 50,
+      "stealsPerGame": 83,
+      "blocksPerGame": 83,
       "turnoversPerGame": 33,
       "trueShooting": 33,
       "threePct": 33,
-      "bpm": 33,
+      "bpm": 67,
       "reboundRate": 33,
-      "usage": 33
+      "usage": 67
     },
     "statStrengths": [
       "Generates defensive events"
@@ -384,7 +387,7 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
   },
   "kingstonflemings": {
     "season": "2025-26",
@@ -394,56 +397,54 @@
       {
         "label": "PPG",
         "value": "16.9",
-        "percentile": 33
+        "percentile": 60
       },
       {
         "label": "RPG",
         "value": "4.1",
-        "percentile": 50
+        "percentile": 40
       },
       {
         "label": "APG",
         "value": "5.8",
-        "percentile": 83
+        "percentile": 70
       },
       {
         "label": "TS%",
         "value": "57.1%",
-        "percentile": 33
+        "percentile": 30
       },
       {
         "label": "BPM",
         "value": "6.1",
-        "percentile": 33
+        "percentile": 40
       },
       {
         "label": "USG%",
         "value": "25.1%",
-        "percentile": 33
+        "percentile": 50
       }
     ],
     "percentiles": {
-      "pointsPerGame": 33,
-      "reboundsPerGame": 50,
-      "assistsPerGame": 83,
+      "pointsPerGame": 60,
+      "reboundsPerGame": 40,
+      "assistsPerGame": 70,
       "stealsPerGame": 100,
-      "blocksPerGame": 50,
-      "turnoversPerGame": 33,
-      "trueShooting": 33,
+      "blocksPerGame": 60,
+      "turnoversPerGame": 50,
+      "trueShooting": 30,
       "threePct": 50,
-      "bpm": 33,
+      "bpm": 40,
       "reboundRate": 50,
-      "usage": 33
+      "usage": 50
     },
     "statStrengths": [
-      "Strong playmaking rate",
       "Generates defensive events"
     ],
     "statWeaknesses": [
       "Efficiency still lags role expectation"
     ],
     "archetypeIndicators": [
-      "Primary creation",
       "Defensive event creation"
     ],
     "comparisonInputs": {
@@ -479,7 +480,7 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
   },
   "yaxellendeborg": {
     "season": "2025-26",
@@ -489,7 +490,7 @@
       {
         "label": "PPG",
         "value": "17.3",
-        "percentile": 67
+        "percentile": 83
       },
       {
         "label": "RPG",
@@ -514,23 +515,24 @@
       {
         "label": "USG%",
         "value": "24.1%",
-        "percentile": 67
+        "percentile": 83
       }
     ],
     "percentiles": {
-      "pointsPerGame": 67,
+      "pointsPerGame": 83,
       "reboundsPerGame": 100,
       "assistsPerGame": 100,
       "stealsPerGame": 100,
       "blocksPerGame": 67,
       "turnoversPerGame": 100,
       "trueShooting": 67,
-      "threePct": 67,
+      "threePct": 50,
       "bpm": 100,
       "reboundRate": 100,
-      "usage": 67
+      "usage": 83
     },
     "statStrengths": [
+      "High-volume scorer for role",
       "Strong playmaking rate",
       "Impact metrics are strong",
       "Wins extra possessions on the glass",
@@ -577,7 +579,94 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
+  },
+  "hannessteinbach": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "big",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "12.8",
+        "percentile": 17
+      },
+      {
+        "label": "RPG",
+        "value": "7.3",
+        "percentile": 33
+      },
+      {
+        "label": "APG",
+        "value": "1.9",
+        "percentile": 33
+      },
+      {
+        "label": "TS%",
+        "value": "61.1%",
+        "percentile": 50
+      },
+      {
+        "label": "BPM",
+        "value": "6.5",
+        "percentile": 33
+      },
+      {
+        "label": "USG%",
+        "value": "20.1%",
+        "percentile": 17
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 17,
+      "reboundsPerGame": 33,
+      "assistsPerGame": 33,
+      "stealsPerGame": 33,
+      "blocksPerGame": 50,
+      "turnoversPerGame": 33,
+      "trueShooting": 50,
+      "threePct": 67,
+      "bpm": 33,
+      "reboundRate": 50,
+      "usage": 17
+    },
+    "statStrengths": [],
+    "statWeaknesses": [],
+    "archetypeIndicators": [],
+    "comparisonInputs": {
+      "finalScore": 43.9,
+      "offensiveSummary": "12.8 PPG on 61.1 TS%",
+      "defensiveSummary": "0.8 STL / 1.2 BLK / 95.5 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 30,
+        "minutes": 27.6,
+        "points": 12.8,
+        "rebounds": 7.3,
+        "assists": 1.9,
+        "steals": 0.8,
+        "blocks": 1.2,
+        "turnovers": 1.9
+      },
+      "advanced": {
+        "fgPct": 0.554,
+        "threePct": 0.318,
+        "ftPct": 0.731,
+        "trueShooting": "61.1%",
+        "efgPct": "56.5%",
+        "usage": "20.1%",
+        "assistRate": "8.7%",
+        "turnoverRate": "10.3%",
+        "ortg": 118.1,
+        "drtg": 95.5,
+        "bpm": 6.5,
+        "reboundRate": "15.6%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.353Z"
   },
   "mikelbrown": {
     "season": "2025-26",
@@ -587,46 +676,46 @@
       {
         "label": "PPG",
         "value": "17.1",
-        "percentile": 50
+        "percentile": 70
       },
       {
         "label": "RPG",
         "value": "3.6",
-        "percentile": 17
+        "percentile": 10
       },
       {
         "label": "APG",
         "value": "6.4",
-        "percentile": 100
+        "percentile": 90
       },
       {
         "label": "TS%",
         "value": "60.3%",
-        "percentile": 83
+        "percentile": 90
       },
       {
         "label": "BPM",
         "value": "6.8",
-        "percentile": 50
+        "percentile": 60
       },
       {
         "label": "USG%",
         "value": "26.5%",
-        "percentile": 50
+        "percentile": 70
       }
     ],
     "percentiles": {
-      "pointsPerGame": 50,
-      "reboundsPerGame": 17,
-      "assistsPerGame": 100,
-      "stealsPerGame": 33,
-      "blocksPerGame": 33,
-      "turnoversPerGame": 50,
-      "trueShooting": 83,
-      "threePct": 67,
-      "bpm": 50,
-      "reboundRate": 17,
-      "usage": 50
+      "pointsPerGame": 70,
+      "reboundsPerGame": 10,
+      "assistsPerGame": 90,
+      "stealsPerGame": 40,
+      "blocksPerGame": 30,
+      "turnoversPerGame": 60,
+      "trueShooting": 90,
+      "threePct": 80,
+      "bpm": 60,
+      "reboundRate": 10,
+      "usage": 70
     },
     "statStrengths": [
       "Strong playmaking rate",
@@ -634,7 +723,8 @@
     ],
     "statWeaknesses": [],
     "archetypeIndicators": [
-      "Primary creation"
+      "Primary creation",
+      "Floor-spacing shotmaking"
     ],
     "comparisonInputs": {
       "finalScore": 45.5,
@@ -669,7 +759,7 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
   },
   "keatonwagler": {
     "season": "2025-26",
@@ -679,17 +769,17 @@
       {
         "label": "PPG",
         "value": "16.0",
-        "percentile": 17
+        "percentile": 30
       },
       {
         "label": "RPG",
         "value": "4.7",
-        "percentile": 67
+        "percentile": 70
       },
       {
         "label": "APG",
         "value": "4.2",
-        "percentile": 33
+        "percentile": 40
       },
       {
         "label": "TS%",
@@ -699,26 +789,26 @@
       {
         "label": "BPM",
         "value": "7.5",
-        "percentile": 100
+        "percentile": 90
       },
       {
         "label": "USG%",
         "value": "23.4%",
-        "percentile": 17
+        "percentile": 20
       }
     ],
     "percentiles": {
-      "pointsPerGame": 17,
-      "reboundsPerGame": 67,
-      "assistsPerGame": 33,
-      "stealsPerGame": 17,
+      "pointsPerGame": 30,
+      "reboundsPerGame": 70,
+      "assistsPerGame": 40,
+      "stealsPerGame": 20,
       "blocksPerGame": 100,
-      "turnoversPerGame": 17,
+      "turnoversPerGame": 20,
       "trueShooting": 100,
       "threePct": 100,
-      "bpm": 100,
-      "reboundRate": 100,
-      "usage": 17
+      "bpm": 90,
+      "reboundRate": 90,
+      "usage": 20
     },
     "statStrengths": [
       "Efficient scoring profile",
@@ -765,7 +855,290 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.353Z"
+  },
+  "thomashaugh": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "wing",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "13.9",
+        "percentile": 38
+      },
+      {
+        "label": "RPG",
+        "value": "6.7",
+        "percentile": 88
+      },
+      {
+        "label": "APG",
+        "value": "2.9",
+        "percentile": 88
+      },
+      {
+        "label": "TS%",
+        "value": "60.2%",
+        "percentile": 75
+      },
+      {
+        "label": "BPM",
+        "value": "6.7",
+        "percentile": 88
+      },
+      {
+        "label": "USG%",
+        "value": "21.8%",
+        "percentile": 38
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 38,
+      "reboundsPerGame": 88,
+      "assistsPerGame": 88,
+      "stealsPerGame": 75,
+      "blocksPerGame": 75,
+      "turnoversPerGame": 38,
+      "trueShooting": 75,
+      "threePct": 50,
+      "bpm": 88,
+      "reboundRate": 88,
+      "usage": 38
+    },
+    "statStrengths": [
+      "Strong playmaking rate",
+      "Efficient scoring profile",
+      "Impact metrics are strong",
+      "Wins extra possessions on the glass",
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [],
+    "archetypeIndicators": [
+      "Possession-winning size",
+      "Defensive event creation",
+      "High-impact production"
+    ],
+    "comparisonInputs": {
+      "finalScore": 44.4,
+      "offensiveSummary": "13.9 PPG on 60.2 TS%",
+      "defensiveSummary": "1.0 STL / 0.7 BLK / 96.1 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 33,
+        "minutes": 29.6,
+        "points": 13.9,
+        "rebounds": 6.7,
+        "assists": 2.9,
+        "steals": 1,
+        "blocks": 0.7,
+        "turnovers": 1.8
+      },
+      "advanced": {
+        "fgPct": 0.486,
+        "threePct": 0.364,
+        "ftPct": 0.779,
+        "trueShooting": "60.2%",
+        "efgPct": "55.7%",
+        "usage": "21.8%",
+        "assistRate": "14.7%",
+        "turnoverRate": "9.6%",
+        "ortg": 119.4,
+        "drtg": 96.1,
+        "bpm": 6.7,
+        "reboundRate": "12.7%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.353Z"
+  },
+  "labaronphilon": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "guard",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "15.8",
+        "percentile": 20
+      },
+      {
+        "label": "RPG",
+        "value": "3.7",
+        "percentile": 20
+      },
+      {
+        "label": "APG",
+        "value": "5.9",
+        "percentile": 80
+      },
+      {
+        "label": "TS%",
+        "value": "57.6%",
+        "percentile": 50
+      },
+      {
+        "label": "BPM",
+        "value": "6.2",
+        "percentile": 50
+      },
+      {
+        "label": "USG%",
+        "value": "23.8%",
+        "percentile": 30
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 20,
+      "reboundsPerGame": 20,
+      "assistsPerGame": 80,
+      "stealsPerGame": 70,
+      "blocksPerGame": 60,
+      "turnoversPerGame": 50,
+      "trueShooting": 50,
+      "threePct": 30,
+      "bpm": 50,
+      "reboundRate": 30,
+      "usage": 30
+    },
+    "statStrengths": [
+      "Strong playmaking rate"
+    ],
+    "statWeaknesses": [
+      "Three-point pressure remains inconsistent"
+    ],
+    "archetypeIndicators": [
+      "Primary creation",
+      "Defensive event creation"
+    ],
+    "comparisonInputs": {
+      "finalScore": 42.3,
+      "offensiveSummary": "15.8 PPG on 57.6 TS%",
+      "defensiveSummary": "1.4 STL / 0.3 BLK / 98.9 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 33,
+        "minutes": 30.7,
+        "points": 15.8,
+        "rebounds": 3.7,
+        "assists": 5.9,
+        "steals": 1.4,
+        "blocks": 0.3,
+        "turnovers": 2.4
+      },
+      "advanced": {
+        "fgPct": 0.452,
+        "threePct": 0.345,
+        "ftPct": 0.793,
+        "trueShooting": "57.6%",
+        "efgPct": "52.1%",
+        "usage": "23.8%",
+        "assistRate": "29.6%",
+        "turnoverRate": "11.4%",
+        "ortg": 115.2,
+        "drtg": 98.9,
+        "bpm": 6.2,
+        "reboundRate": "6.8%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "cameroncarr": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "wing",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "14.9",
+        "percentile": 63
+      },
+      {
+        "label": "RPG",
+        "value": "3.8",
+        "percentile": 13
+      },
+      {
+        "label": "APG",
+        "value": "2.4",
+        "percentile": 50
+      },
+      {
+        "label": "TS%",
+        "value": "59.7%",
+        "percentile": 63
+      },
+      {
+        "label": "BPM",
+        "value": "5.8",
+        "percentile": 38
+      },
+      {
+        "label": "USG%",
+        "value": "23.6%",
+        "percentile": 63
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 63,
+      "reboundsPerGame": 13,
+      "assistsPerGame": 50,
+      "stealsPerGame": 75,
+      "blocksPerGame": 25,
+      "turnoversPerGame": 63,
+      "trueShooting": 63,
+      "threePct": 88,
+      "bpm": 38,
+      "reboundRate": 13,
+      "usage": 63
+    },
+    "statStrengths": [
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [],
+    "archetypeIndicators": [
+      "Floor-spacing shotmaking",
+      "Defensive event creation"
+    ],
+    "comparisonInputs": {
+      "finalScore": 41.8,
+      "offensiveSummary": "14.9 PPG on 59.7 TS%",
+      "defensiveSummary": "1.0 STL / 0.3 BLK / 99.4 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 31,
+        "minutes": 29.1,
+        "points": 14.9,
+        "rebounds": 3.8,
+        "assists": 2.4,
+        "steals": 1,
+        "blocks": 0.3,
+        "turnovers": 2
+      },
+      "advanced": {
+        "fgPct": 0.438,
+        "threePct": 0.381,
+        "ftPct": 0.807,
+        "trueShooting": "59.7%",
+        "efgPct": "56.1%",
+        "usage": "23.6%",
+        "assistRate": "12.3%",
+        "turnoverRate": "10.8%",
+        "ortg": 117.3,
+        "drtg": 99.4,
+        "bpm": 5.8,
+        "reboundRate": "6.9%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
   },
   "dariusacuff": {
     "season": "2025-26",
@@ -775,46 +1148,46 @@
       {
         "label": "PPG",
         "value": "18.7",
-        "percentile": 83
+        "percentile": 90
       },
       {
         "label": "RPG",
         "value": "3.9",
-        "percentile": 33
+        "percentile": 30
       },
       {
         "label": "APG",
         "value": "5.7",
-        "percentile": 67
+        "percentile": 60
       },
       {
         "label": "TS%",
         "value": "56.1%",
-        "percentile": 17
+        "percentile": 10
       },
       {
         "label": "BPM",
         "value": "5.7",
-        "percentile": 17
+        "percentile": 20
       },
       {
         "label": "USG%",
         "value": "29.8%",
-        "percentile": 83
+        "percentile": 90
       }
     ],
     "percentiles": {
-      "pointsPerGame": 83,
-      "reboundsPerGame": 33,
-      "assistsPerGame": 67,
-      "stealsPerGame": 67,
-      "blocksPerGame": 33,
+      "pointsPerGame": 90,
+      "reboundsPerGame": 30,
+      "assistsPerGame": 60,
+      "stealsPerGame": 70,
+      "blocksPerGame": 30,
       "turnoversPerGame": 100,
-      "trueShooting": 17,
-      "threePct": 17,
-      "bpm": 17,
-      "reboundRate": 33,
-      "usage": 83
+      "trueShooting": 10,
+      "threePct": 10,
+      "bpm": 20,
+      "reboundRate": 20,
+      "usage": 90
     },
     "statStrengths": [
       "High-volume scorer for role"
@@ -824,7 +1197,9 @@
       "Turnover load still needs trimming",
       "Three-point pressure remains inconsistent"
     ],
-    "archetypeIndicators": [],
+    "archetypeIndicators": [
+      "Defensive event creation"
+    ],
     "comparisonInputs": {
       "finalScore": 41.2,
       "offensiveSummary": "18.7 PPG on 56.1 TS%",
@@ -858,7 +1233,480 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "nateament": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "wing",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "14.1",
+        "percentile": 50
+      },
+      {
+        "label": "RPG",
+        "value": "6.2",
+        "percentile": 75
+      },
+      {
+        "label": "APG",
+        "value": "2.7",
+        "percentile": 63
+      },
+      {
+        "label": "TS%",
+        "value": "58.9%",
+        "percentile": 38
+      },
+      {
+        "label": "BPM",
+        "value": "6.4",
+        "percentile": 75
+      },
+      {
+        "label": "USG%",
+        "value": "22.9%",
+        "percentile": 50
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 50,
+      "reboundsPerGame": 75,
+      "assistsPerGame": 63,
+      "stealsPerGame": 75,
+      "blocksPerGame": 100,
+      "turnoversPerGame": 75,
+      "trueShooting": 38,
+      "threePct": 25,
+      "bpm": 75,
+      "reboundRate": 100,
+      "usage": 50
+    },
+    "statStrengths": [
+      "Impact metrics are strong",
+      "Wins extra possessions on the glass",
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [
+      "Turnover load still needs trimming",
+      "Three-point pressure remains inconsistent"
+    ],
+    "archetypeIndicators": [
+      "Possession-winning size",
+      "Defensive event creation",
+      "High-impact production"
+    ],
+    "comparisonInputs": {
+      "finalScore": 43.3,
+      "offensiveSummary": "14.1 PPG on 58.9 TS%",
+      "defensiveSummary": "1.0 STL / 1.1 BLK / 96.8 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 30,
+        "minutes": 28.4,
+        "points": 14.1,
+        "rebounds": 6.2,
+        "assists": 2.7,
+        "steals": 1,
+        "blocks": 1.1,
+        "turnovers": 2.1
+      },
+      "advanced": {
+        "fgPct": 0.458,
+        "threePct": 0.349,
+        "ftPct": 0.781,
+        "trueShooting": "58.9%",
+        "efgPct": "54.1%",
+        "usage": "22.9%",
+        "assistRate": "14.2%",
+        "turnoverRate": "11.7%",
+        "ortg": 116.2,
+        "drtg": 96.8,
+        "bpm": 6.4,
+        "reboundRate": "13.2%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "amariallen": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "wing",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "12.4",
+        "percentile": 25
+      },
+      {
+        "label": "RPG",
+        "value": "4.9",
+        "percentile": 50
+      },
+      {
+        "label": "APG",
+        "value": "2.1",
+        "percentile": 25
+      },
+      {
+        "label": "TS%",
+        "value": "58.2%",
+        "percentile": 13
+      },
+      {
+        "label": "BPM",
+        "value": "5.5",
+        "percentile": 25
+      },
+      {
+        "label": "USG%",
+        "value": "20.8%",
+        "percentile": 25
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 25,
+      "reboundsPerGame": 50,
+      "assistsPerGame": 25,
+      "stealsPerGame": 88,
+      "blocksPerGame": 50,
+      "turnoversPerGame": 38,
+      "trueShooting": 13,
+      "threePct": 38,
+      "bpm": 25,
+      "reboundRate": 50,
+      "usage": 25
+    },
+    "statStrengths": [
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [
+      "Efficiency still lags role expectation"
+    ],
+    "archetypeIndicators": [
+      "Defensive event creation"
+    ],
+    "comparisonInputs": {
+      "finalScore": 40,
+      "offensiveSummary": "12.4 PPG on 58.2 TS%",
+      "defensiveSummary": "1.2 STL / 0.5 BLK / 97.1 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 29,
+        "minutes": 25.6,
+        "points": 12.4,
+        "rebounds": 4.9,
+        "assists": 2.1,
+        "steals": 1.2,
+        "blocks": 0.5,
+        "turnovers": 1.8
+      },
+      "advanced": {
+        "fgPct": 0.468,
+        "threePct": 0.361,
+        "ftPct": 0.774,
+        "trueShooting": "58.2%",
+        "efgPct": "53.4%",
+        "usage": "20.8%",
+        "assistRate": "11.6%",
+        "turnoverRate": "10.1%",
+        "ortg": 114.8,
+        "drtg": 97.1,
+        "bpm": 5.5,
+        "reboundRate": "8.9%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "chriscenac": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "big",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "13.6",
+        "percentile": 50
+      },
+      {
+        "label": "RPG",
+        "value": "8.1",
+        "percentile": 67
+      },
+      {
+        "label": "APG",
+        "value": "1.8",
+        "percentile": 17
+      },
+      {
+        "label": "TS%",
+        "value": "61.9%",
+        "percentile": 83
+      },
+      {
+        "label": "BPM",
+        "value": "7.2",
+        "percentile": 50
+      },
+      {
+        "label": "USG%",
+        "value": "21.4%",
+        "percentile": 50
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 50,
+      "reboundsPerGame": 67,
+      "assistsPerGame": 17,
+      "stealsPerGame": 33,
+      "blocksPerGame": 100,
+      "turnoversPerGame": 50,
+      "trueShooting": 83,
+      "threePct": 17,
+      "bpm": 50,
+      "reboundRate": 83,
+      "usage": 50
+    },
+    "statStrengths": [
+      "Efficient scoring profile",
+      "Wins extra possessions on the glass",
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [
+      "Three-point pressure remains inconsistent"
+    ],
+    "archetypeIndicators": [
+      "Possession-winning size",
+      "Defensive event creation"
+    ],
+    "comparisonInputs": {
+      "finalScore": 46.5,
+      "offensiveSummary": "13.6 PPG on 61.9 TS%",
+      "defensiveSummary": "0.8 STL / 1.9 BLK / 94.2 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 31,
+        "minutes": 27.2,
+        "points": 13.6,
+        "rebounds": 8.1,
+        "assists": 1.8,
+        "steals": 0.8,
+        "blocks": 1.9,
+        "turnovers": 2
+      },
+      "advanced": {
+        "fgPct": 0.571,
+        "threePct": 0.289,
+        "ftPct": 0.706,
+        "trueShooting": "61.9%",
+        "efgPct": "57.2%",
+        "usage": "21.4%",
+        "assistRate": "9.8%",
+        "turnoverRate": "10.9%",
+        "ortg": 119.1,
+        "drtg": 94.2,
+        "bpm": 7.2,
+        "reboundRate": "16.8%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "karimlopez": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "wing",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "11.7",
+        "percentile": 13
+      },
+      {
+        "label": "RPG",
+        "value": "5.2",
+        "percentile": 63
+      },
+      {
+        "label": "APG",
+        "value": "1.9",
+        "percentile": 13
+      },
+      {
+        "label": "TS%",
+        "value": "58.5%",
+        "percentile": 25
+      },
+      {
+        "label": "BPM",
+        "value": "5.3",
+        "percentile": 13
+      },
+      {
+        "label": "USG%",
+        "value": "19.2%",
+        "percentile": 13
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 13,
+      "reboundsPerGame": 63,
+      "assistsPerGame": 13,
+      "stealsPerGame": 13,
+      "blocksPerGame": 63,
+      "turnoversPerGame": 13,
+      "trueShooting": 25,
+      "threePct": 13,
+      "bpm": 13,
+      "reboundRate": 63,
+      "usage": 13
+    },
+    "statStrengths": [],
+    "statWeaknesses": [
+      "Efficiency still lags role expectation",
+      "Three-point pressure remains inconsistent"
+    ],
+    "archetypeIndicators": [],
+    "comparisonInputs": {
+      "finalScore": 39.3,
+      "offensiveSummary": "11.7 PPG on 58.5 TS%",
+      "defensiveSummary": "0.8 STL / 0.6 BLK / 98.3 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 28,
+        "minutes": 24.5,
+        "points": 11.7,
+        "rebounds": 5.2,
+        "assists": 1.9,
+        "steals": 0.8,
+        "blocks": 0.6,
+        "turnovers": 1.7
+      },
+      "advanced": {
+        "fgPct": 0.474,
+        "threePct": 0.344,
+        "ftPct": 0.752,
+        "trueShooting": "58.5%",
+        "efgPct": "53.8%",
+        "usage": "19.2%",
+        "assistRate": "9.9%",
+        "turnoverRate": "9.2%",
+        "ortg": 116.4,
+        "drtg": 98.3,
+        "bpm": 5.3,
+        "reboundRate": "10.8%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "dashdaniels": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "guard",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "10.6",
+        "percentile": 10
+      },
+      {
+        "label": "RPG",
+        "value": "4.9",
+        "percentile": 90
+      },
+      {
+        "label": "APG",
+        "value": "3.1",
+        "percentile": 10
+      },
+      {
+        "label": "TS%",
+        "value": "56.9%",
+        "percentile": 20
+      },
+      {
+        "label": "BPM",
+        "value": "4.8",
+        "percentile": 10
+      },
+      {
+        "label": "USG%",
+        "value": "18.1%",
+        "percentile": 10
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 10,
+      "reboundsPerGame": 90,
+      "assistsPerGame": 10,
+      "stealsPerGame": 40,
+      "blocksPerGame": 100,
+      "turnoversPerGame": 10,
+      "trueShooting": 20,
+      "threePct": 20,
+      "bpm": 10,
+      "reboundRate": 100,
+      "usage": 10
+    },
+    "statStrengths": [
+      "Wins extra possessions on the glass",
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [
+      "Efficiency still lags role expectation",
+      "Three-point pressure remains inconsistent",
+      "Playmaking volume is light for guard archetype"
+    ],
+    "archetypeIndicators": [
+      "Defensive event creation"
+    ],
+    "comparisonInputs": {
+      "finalScore": 37,
+      "offensiveSummary": "10.6 PPG on 56.9 TS%",
+      "defensiveSummary": "1.2 STL / 0.4 BLK / 97.8 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 27,
+        "minutes": 23.4,
+        "points": 10.6,
+        "rebounds": 4.9,
+        "assists": 3.1,
+        "steals": 1.2,
+        "blocks": 0.4,
+        "turnovers": 1.9
+      },
+      "advanced": {
+        "fgPct": 0.451,
+        "threePct": 0.338,
+        "ftPct": 0.768,
+        "trueShooting": "56.9%",
+        "efgPct": "52.3%",
+        "usage": "18.1%",
+        "assistRate": "17.3%",
+        "turnoverRate": "11.2%",
+        "ortg": 112.9,
+        "drtg": 97.8,
+        "bpm": 4.8,
+        "reboundRate": "9.6%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
   },
   "braydenburries": {
     "season": "2025-26",
@@ -868,54 +1716,57 @@
       {
         "label": "PPG",
         "value": "18.4",
-        "percentile": 67
+        "percentile": 80
       },
       {
         "label": "RPG",
         "value": "4.8",
-        "percentile": 83
+        "percentile": 80
       },
       {
         "label": "APG",
         "value": "3.8",
-        "percentile": 17
+        "percentile": 30
       },
       {
         "label": "TS%",
         "value": "59.9%",
-        "percentile": 67
+        "percentile": 70
       },
       {
         "label": "BPM",
         "value": "6.9",
-        "percentile": 67
+        "percentile": 70
       },
       {
         "label": "USG%",
         "value": "27.9%",
-        "percentile": 67
+        "percentile": 80
       }
     ],
     "percentiles": {
-      "pointsPerGame": 67,
-      "reboundsPerGame": 83,
-      "assistsPerGame": 17,
+      "pointsPerGame": 80,
+      "reboundsPerGame": 80,
+      "assistsPerGame": 30,
       "stealsPerGame": 50,
       "blocksPerGame": 100,
-      "turnoversPerGame": 67,
-      "trueShooting": 67,
-      "threePct": 83,
-      "bpm": 67,
-      "reboundRate": 67,
-      "usage": 67
+      "turnoversPerGame": 80,
+      "trueShooting": 70,
+      "threePct": 90,
+      "bpm": 70,
+      "reboundRate": 70,
+      "usage": 80
     },
     "statStrengths": [
+      "High-volume scorer for role",
       "Generates defensive events"
     ],
     "statWeaknesses": [
+      "Turnover load still needs trimming",
       "Playmaking volume is light for guard archetype"
     ],
     "archetypeIndicators": [
+      "Scoring efficiency",
       "Floor-spacing shotmaking",
       "Defensive event creation"
     ],
@@ -952,6 +1803,474 @@
       "gameLogAvailable": true,
       "shotProfileAvailable": false
     },
-    "updatedAt": "2026-04-10T18:53:20.723Z"
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "isaiahevans": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "wing",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "15.2",
+        "percentile": 75
+      },
+      {
+        "label": "RPG",
+        "value": "4.0",
+        "percentile": 25
+      },
+      {
+        "label": "APG",
+        "value": "2.3",
+        "percentile": 38
+      },
+      {
+        "label": "TS%",
+        "value": "60.8%",
+        "percentile": 88
+      },
+      {
+        "label": "BPM",
+        "value": "6.0",
+        "percentile": 50
+      },
+      {
+        "label": "USG%",
+        "value": "24.1%",
+        "percentile": 75
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 75,
+      "reboundsPerGame": 25,
+      "assistsPerGame": 38,
+      "stealsPerGame": 25,
+      "blocksPerGame": 38,
+      "turnoversPerGame": 50,
+      "trueShooting": 88,
+      "threePct": 100,
+      "bpm": 50,
+      "reboundRate": 25,
+      "usage": 75
+    },
+    "statStrengths": [
+      "High-volume scorer for role",
+      "Efficient scoring profile"
+    ],
+    "statWeaknesses": [],
+    "archetypeIndicators": [
+      "Scoring efficiency",
+      "Floor-spacing shotmaking"
+    ],
+    "comparisonInputs": {
+      "finalScore": 42.9,
+      "offensiveSummary": "15.2 PPG on 60.8 TS%",
+      "defensiveSummary": "0.9 STL / 0.4 BLK / 100.1 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 32,
+        "minutes": 28.9,
+        "points": 15.2,
+        "rebounds": 4,
+        "assists": 2.3,
+        "steals": 0.9,
+        "blocks": 0.4,
+        "turnovers": 1.9
+      },
+      "advanced": {
+        "fgPct": 0.447,
+        "threePct": 0.389,
+        "ftPct": 0.826,
+        "trueShooting": "60.8%",
+        "efgPct": "57.3%",
+        "usage": "24.1%",
+        "assistRate": "10.9%",
+        "turnoverRate": "9.7%",
+        "ortg": 118.4,
+        "drtg": 100.1,
+        "bpm": 6,
+        "reboundRate": "7.1%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "meleekthomas": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "guard",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "16.1",
+        "percentile": 40
+      },
+      {
+        "label": "RPG",
+        "value": "4.4",
+        "percentile": 60
+      },
+      {
+        "label": "APG",
+        "value": "3.6",
+        "percentile": 20
+      },
+      {
+        "label": "TS%",
+        "value": "57.4%",
+        "percentile": 40
+      },
+      {
+        "label": "BPM",
+        "value": "5.9",
+        "percentile": 30
+      },
+      {
+        "label": "USG%",
+        "value": "25.9%",
+        "percentile": 60
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 40,
+      "reboundsPerGame": 60,
+      "assistsPerGame": 20,
+      "stealsPerGame": 20,
+      "blocksPerGame": 60,
+      "turnoversPerGame": 80,
+      "trueShooting": 40,
+      "threePct": 60,
+      "bpm": 30,
+      "reboundRate": 60,
+      "usage": 60
+    },
+    "statStrengths": [],
+    "statWeaknesses": [
+      "Turnover load still needs trimming",
+      "Playmaking volume is light for guard archetype"
+    ],
+    "archetypeIndicators": [],
+    "comparisonInputs": {
+      "finalScore": 41.7,
+      "offensiveSummary": "16.1 PPG on 57.4 TS%",
+      "defensiveSummary": "1.1 STL / 0.3 BLK / 100.6 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 32,
+        "minutes": 30.3,
+        "points": 16.1,
+        "rebounds": 4.4,
+        "assists": 3.6,
+        "steals": 1.1,
+        "blocks": 0.3,
+        "turnovers": 2.7
+      },
+      "advanced": {
+        "fgPct": 0.441,
+        "threePct": 0.356,
+        "ftPct": 0.801,
+        "trueShooting": "57.4%",
+        "efgPct": "52.5%",
+        "usage": "25.9%",
+        "assistRate": "18.1%",
+        "turnoverRate": "12.8%",
+        "ortg": 113.2,
+        "drtg": 100.6,
+        "bpm": 5.9,
+        "reboundRate": "8.1%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "alijaharenas": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "wing",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "17.5",
+        "percentile": 88
+      },
+      {
+        "label": "RPG",
+        "value": "4.1",
+        "percentile": 38
+      },
+      {
+        "label": "APG",
+        "value": "2.8",
+        "percentile": 75
+      },
+      {
+        "label": "TS%",
+        "value": "59.3%",
+        "percentile": 50
+      },
+      {
+        "label": "BPM",
+        "value": "6.2",
+        "percentile": 63
+      },
+      {
+        "label": "USG%",
+        "value": "26.6%",
+        "percentile": 88
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 88,
+      "reboundsPerGame": 38,
+      "assistsPerGame": 75,
+      "stealsPerGame": 75,
+      "blocksPerGame": 13,
+      "turnoversPerGame": 88,
+      "trueShooting": 50,
+      "threePct": 75,
+      "bpm": 63,
+      "reboundRate": 38,
+      "usage": 88
+    },
+    "statStrengths": [
+      "High-volume scorer for role",
+      "Strong playmaking rate",
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [
+      "Turnover load still needs trimming"
+    ],
+    "archetypeIndicators": [
+      "Floor-spacing shotmaking",
+      "Defensive event creation"
+    ],
+    "comparisonInputs": {
+      "finalScore": 43.3,
+      "offensiveSummary": "17.5 PPG on 59.3 TS%",
+      "defensiveSummary": "1.0 STL / 0.2 BLK / 101.1 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 31,
+        "minutes": 29.8,
+        "points": 17.5,
+        "rebounds": 4.1,
+        "assists": 2.8,
+        "steals": 1,
+        "blocks": 0.2,
+        "turnovers": 2.5
+      },
+      "advanced": {
+        "fgPct": 0.449,
+        "threePct": 0.377,
+        "ftPct": 0.818,
+        "trueShooting": "59.3%",
+        "efgPct": "55.2%",
+        "usage": "26.6%",
+        "assistRate": "13.5%",
+        "turnoverRate": "11.8%",
+        "ortg": 115.9,
+        "drtg": 101.1,
+        "bpm": 6.2,
+        "reboundRate": "7.4%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "allengraves": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "big",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "13.4",
+        "percentile": 33
+      },
+      {
+        "label": "RPG",
+        "value": "7.0",
+        "percentile": 17
+      },
+      {
+        "label": "APG",
+        "value": "2.2",
+        "percentile": 67
+      },
+      {
+        "label": "TS%",
+        "value": "59.6%",
+        "percentile": 17
+      },
+      {
+        "label": "BPM",
+        "value": "5.7",
+        "percentile": 17
+      },
+      {
+        "label": "USG%",
+        "value": "21.3%",
+        "percentile": 33
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 33,
+      "reboundsPerGame": 17,
+      "assistsPerGame": 67,
+      "stealsPerGame": 50,
+      "blocksPerGame": 17,
+      "turnoversPerGame": 67,
+      "trueShooting": 17,
+      "threePct": 100,
+      "bpm": 17,
+      "reboundRate": 17,
+      "usage": 33
+    },
+    "statStrengths": [],
+    "statWeaknesses": [
+      "Efficiency still lags role expectation",
+      "Rebound rate trails frontcourt expectation"
+    ],
+    "archetypeIndicators": [
+      "Floor-spacing shotmaking"
+    ],
+    "comparisonInputs": {
+      "finalScore": 41.2,
+      "offensiveSummary": "13.4 PPG on 59.6 TS%",
+      "defensiveSummary": "0.9 STL / 0.8 BLK / 97.2 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 30,
+        "minutes": 27.9,
+        "points": 13.4,
+        "rebounds": 7,
+        "assists": 2.2,
+        "steals": 0.9,
+        "blocks": 0.8,
+        "turnovers": 2.1
+      },
+      "advanced": {
+        "fgPct": 0.503,
+        "threePct": 0.331,
+        "ftPct": 0.743,
+        "trueShooting": "59.6%",
+        "efgPct": "54.9%",
+        "usage": "21.3%",
+        "assistRate": "10.8%",
+        "turnoverRate": "10.7%",
+        "ortg": 117.6,
+        "drtg": 97.2,
+        "bpm": 5.7,
+        "reboundRate": "14.4%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
+  },
+  "bennettstirtz": {
+    "season": "2025-26",
+    "source": "ProsperaAggregate",
+    "positionGroup": "guard",
+    "statCards": [
+      {
+        "label": "PPG",
+        "value": "16.4",
+        "percentile": 50
+      },
+      {
+        "label": "RPG",
+        "value": "4.3",
+        "percentile": 50
+      },
+      {
+        "label": "APG",
+        "value": "6.7",
+        "percentile": 100
+      },
+      {
+        "label": "TS%",
+        "value": "60.1%",
+        "percentile": 80
+      },
+      {
+        "label": "BPM",
+        "value": "7.8",
+        "percentile": 100
+      },
+      {
+        "label": "USG%",
+        "value": "24.8%",
+        "percentile": 40
+      }
+    ],
+    "percentiles": {
+      "pointsPerGame": 50,
+      "reboundsPerGame": 50,
+      "assistsPerGame": 100,
+      "stealsPerGame": 90,
+      "blocksPerGame": 30,
+      "turnoversPerGame": 30,
+      "trueShooting": 80,
+      "threePct": 70,
+      "bpm": 100,
+      "reboundRate": 40,
+      "usage": 40
+    },
+    "statStrengths": [
+      "Strong playmaking rate",
+      "Efficient scoring profile",
+      "Impact metrics are strong",
+      "Generates defensive events"
+    ],
+    "statWeaknesses": [],
+    "archetypeIndicators": [
+      "Primary creation",
+      "Floor-spacing shotmaking",
+      "Defensive event creation",
+      "High-impact production"
+    ],
+    "comparisonInputs": {
+      "finalScore": 48.2,
+      "offensiveSummary": "16.4 PPG on 60.1 TS%",
+      "defensiveSummary": "1.5 STL / 0.2 BLK / 98.0 DRTG"
+    },
+    "stats": {
+      "season": {
+        "games": 34,
+        "minutes": 32.8,
+        "points": 16.4,
+        "rebounds": 4.3,
+        "assists": 6.7,
+        "steals": 1.5,
+        "blocks": 0.2,
+        "turnovers": 2.2
+      },
+      "advanced": {
+        "fgPct": 0.466,
+        "threePct": 0.372,
+        "ftPct": 0.836,
+        "trueShooting": "60.1%",
+        "efgPct": "55.4%",
+        "usage": "24.8%",
+        "assistRate": "32.6%",
+        "turnoverRate": "10.5%",
+        "ortg": 120.1,
+        "drtg": 98,
+        "bpm": 7.8,
+        "reboundRate": "6.9%"
+      },
+      "gameLogAvailable": true,
+      "shotProfileAvailable": false
+    },
+    "updatedAt": "2026-04-10T19:09:57.354Z"
   }
 }
