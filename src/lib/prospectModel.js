@@ -3,6 +3,7 @@ import { findHistoricalPrecedents } from './historicalComps';
 import authoredProfilesTier3 from '../data/authoredProfilesTier3.json';
 import authoredProfilesTier4 from '../data/authoredProfilesTier4';
 import authoredProfilesTier5 from '../data/authoredProfilesTier5';
+import measurementOverrides from '../data/measurementOverrides';
 import sourceDirectories from '../data/sourceDirectories';
 import profileStats from '../data/profileStats.json';
 
@@ -328,6 +329,8 @@ function normalizeMeasurements(prospect) {
   const weight = firstDefined(supplied.weight, prospect.weight, '');
   const wingspan = firstDefined(supplied.wingspan, prospect.wingspan, '');
   const standingReach = firstDefined(supplied.standingReach, prospect.standingReach, '');
+  const sourceStatus = firstDefined(supplied.sourceStatus, '');
+  const wingspanStatus = firstDefined(supplied.wingspanStatus, wingspan ? 'provided' : '');
   const measurementLine = `${height}${weight ? ` / ${weight} lb` : ''}${wingspan ? ` / ${wingspan} ws` : ''}`;
 
   return {
@@ -336,6 +339,8 @@ function normalizeMeasurements(prospect) {
       weight,
       wingspan,
       standingReach,
+      sourceStatus,
+      wingspanStatus,
       measurementLine,
     },
     isReal: !!prospect.measurements || hasText(height) || hasText(weight) || hasText(wingspan),
@@ -382,6 +387,7 @@ function normalizeSources(prospect) {
 export function enrichProspects(prospects) {
   return prospects.map((prospect) => {
     const authoredOverride = {
+      ...(measurementOverrides[prospect.id] || {}),
       ...(authoredProfilesTier3[prospect.id] || {}),
       ...(authoredProfilesTier4[prospect.id] || {}),
       ...(authoredProfilesTier5[prospect.id] || {}),
