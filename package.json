@@ -12,7 +12,9 @@
     "ingest:sync": "node scripts/ingestion/sync-all.js",
     "ingest:transform": "node scripts/ingestion/transform.js",
     "ingest:export": "node scripts/ingestion/export-profile-stats.js",
-    "ingest:historical": "node scripts/ingestion/export-historical-prospects.js"
+    "ingest:historical:sync": "node scripts/ingestion/sync-historical-prospects.js",
+    "ingest:historical:export": "node scripts/ingestion/export-historical-prospects.js",
+    "ingest:historical": "npm run ingest:historical:sync && npm run ingest:historical:export"
   },
   "dependencies": {
     "react": "^18.2.0",

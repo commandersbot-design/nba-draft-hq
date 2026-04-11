@@ -1,7 +1,5 @@
-import { useMemo, useState } from 'react';
+import { Suspense, lazy, useMemo, useState } from 'react';
 import prospects from './data/prospects.json';
-import { CompareEngine } from './components/CompareEngine';
-import { HistoricalMatrixLite } from './components/HistoricalMatrixLite';
 import { MyBoardBuilder } from './components/MyBoardBuilder';
 import { NotesWorkspace } from './components/NotesWorkspace';
 import { PlayerProfileSurface } from './components/PlayerProfileSurface';
@@ -10,6 +8,9 @@ import { useLocalStorageState } from './hooks/useLocalStorageState';
 import { buildBoardExportRows, buildNotesExportRows, downloadCsv, downloadJson } from './lib/exporters';
 import { APP_VIEWS, BOARD_CARD_SETTINGS, TAG_OPTIONS, VIEW_MODES } from './lib/constants';
 import { createEmptyStructuredNote, enrichProspects } from './lib/prospectModel';
+
+const CompareEngine = lazy(() => import('./components/CompareEngine').then((module) => ({ default: module.CompareEngine })));
+const HistoricalMatrixLite = lazy(() => import('./components/HistoricalMatrixLite').then((module) => ({ default: module.HistoricalMatrixLite })));
 
 const watchlistKey = 'prospera.watchlist';
 const compareKey = 'prospera.compare';
@@ -812,7 +813,9 @@ function App() {
           )}
 
           {appView === 'compare' && (
-            <CompareEngine prospects={compareProspects} notesByPlayer={notesByPlayer} onOpenHistorical={openHistorical} />
+            <Suspense fallback={<section className="workspace-section panel"><p className="empty-state">Loading compare workspace…</p></section>}>
+              <CompareEngine prospects={compareProspects} notesByPlayer={notesByPlayer} onOpenHistorical={openHistorical} />
+            </Suspense>
           )}
 
           {appView === 'notes' && (
@@ -833,10 +836,12 @@ function App() {
           )}
 
           {appView === 'historical' && (
-            <HistoricalMatrixLite
-              selectedHistoricalId={selectedHistoricalId}
-              onClearSelectedHistorical={() => setSelectedHistoricalId(null)}
-            />
+            <Suspense fallback={<section className="workspace-section panel"><p className="empty-state">Loading historical workspace…</p></section>}>
+              <HistoricalMatrixLite
+                selectedHistoricalId={selectedHistoricalId}
+                onClearSelectedHistorical={() => setSelectedHistoricalId(null)}
+              />
+            </Suspense>
           )}
         </section>
 

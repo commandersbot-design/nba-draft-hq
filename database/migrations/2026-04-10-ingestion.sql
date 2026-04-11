@@ -79,7 +79,34 @@ CREATE TABLE IF NOT EXISTS player_stats_normalized (
     UNIQUE(player_id, season, source)
 );
 
+CREATE TABLE IF NOT EXISTS historical_prospects_raw (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    historical_id TEXT NOT NULL UNIQUE,
+    draft_year INTEGER NOT NULL,
+    draft_slot INTEGER NOT NULL,
+    player_name TEXT NOT NULL,
+    position TEXT NOT NULL,
+    school TEXT NOT NULL,
+    height TEXT,
+    age REAL,
+    archetype TEXT,
+    role_outcome TEXT,
+    outcome_tier TEXT,
+    points_per_game REAL,
+    rebounds_per_game REAL,
+    assists_per_game REAL,
+    true_shooting TEXT,
+    bpm REAL,
+    notes TEXT,
+    source TEXT NOT NULL,
+    payload JSON NOT NULL,
+    last_updated DATETIME NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE INDEX IF NOT EXISTS idx_sync_log_source_season ON source_sync_log(source, season, started_at DESC);
 CREATE INDEX IF NOT EXISTS idx_player_stats_raw_lookup ON player_stats_raw(player_id, season, source);
 CREATE INDEX IF NOT EXISTS idx_player_game_logs_raw_lookup ON player_game_logs_raw(player_id, season, source);
 CREATE INDEX IF NOT EXISTS idx_player_stats_normalized_lookup ON player_stats_normalized(player_id, season, source);
+CREATE INDEX IF NOT EXISTS idx_historical_prospects_year_slot ON historical_prospects_raw(draft_year DESC, draft_slot ASC);
