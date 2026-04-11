@@ -430,6 +430,20 @@ button {
   color: var(--text);
 }
 
+.historical-row-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.historical-row-button:hover strong {
+  color: var(--accent);
+}
+
 .historical-table tbody tr.is-focused {
   background: rgba(216, 178, 71, 0.08);
 }
@@ -1230,6 +1244,14 @@ button {
   border: 1px solid var(--line);
   background: linear-gradient(180deg, #fffefb, #faf5ea);
   border-radius: 18px;
+}
+
+.historical-overview-grid,
+.historical-context-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .note-list-panel {

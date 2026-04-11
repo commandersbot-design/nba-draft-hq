@@ -116,6 +116,11 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
               </div>
             </div>
             <p>{prospect.summary?.synopsis}</p>
+            {prospect.historicalContext && (
+              <p className="section-note">
+                {prospect.historicalContext.draftSlotBand} history: {prospect.historicalContext.bestHistoricalOutcome}
+              </p>
+            )}
           </div>
         ))}
       </div>
@@ -165,6 +170,27 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
           Choose {left.name} if you need {left.roleProjection.toLowerCase()} with {topTrait(left)?.name?.toLowerCase() || 'strong trait support'} driving the case.
           Choose {right.name} if you prefer a {right.archetypeBase.toLowerCase()} pathway and are buying {topTrait(right)?.name?.toLowerCase() || 'the top trait'} as the cleaner answer.
         </p>
+      </div>
+
+      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
+        {compareProspects.map((prospect) => (
+          <div key={`${prospect.id}-historical-context`} className="detail-section compare-notes-column">
+            <h4>Historical Context</h4>
+            {prospect.historicalContext ? (
+              <>
+                <p>{prospect.historicalContext.narrative}</p>
+                <div className="projection-stack">
+                  <div><strong>Slot band:</strong> {prospect.historicalContext.draftSlotBand}</div>
+                  <div><strong>Best precedent:</strong> {prospect.historicalContext.bestHistoricalOutcome}</div>
+                  <div><strong>Avg BPM:</strong> {prospect.historicalContext.averageBpm}</div>
+                  <div><strong>Avg TS:</strong> {prospect.historicalContext.averageTrueShooting}</div>
+                </div>
+              </>
+            ) : (
+              <p className="empty-state">Historical context is not available yet.</p>
+            )}
+          </div>
+        ))}
       </div>
 
       <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>

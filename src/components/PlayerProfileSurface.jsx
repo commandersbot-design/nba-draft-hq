@@ -29,6 +29,7 @@ export function PlayerProfileSurface({
   const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
   const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
   const comparisonAnchors = (prospect.historicalPrecedents || []).slice(0, 3);
+  const historicalContext = prospect.historicalContext;
 
   return (
     <div className="detail-card">
@@ -185,6 +186,39 @@ export function PlayerProfileSurface({
               {prospect.summary.swingFactors.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>
+
+          {historicalContext && (
+            <div className="detail-section detail-section-emphasis">
+              <div className="detail-section-head">
+                <h4>Historical Context</h4>
+                <span className="section-meta">{historicalContext.draftSlotBand} precedent band</span>
+              </div>
+              <div className="historical-context-grid">
+                <div className="profile-hero-card stat-mini-card">
+                  <span className="stat-label">Archetype Matches</span>
+                  <strong>{historicalContext.archetypeMatchCount}</strong>
+                  <span className="stat-detail">{historicalContext.archetypeFamily} comps in dataset</span>
+                </div>
+                <div className="profile-hero-card stat-mini-card">
+                  <span className="stat-label">Slot Matches</span>
+                  <strong>{historicalContext.slotBandMatchCount}</strong>
+                  <span className="stat-detail">{historicalContext.draftSlotBand} peers</span>
+                </div>
+                <div className="profile-hero-card stat-mini-card">
+                  <span className="stat-label">Average BPM</span>
+                  <strong>{historicalContext.averageBpm}</strong>
+                  <span className="stat-detail">Comparable pool impact</span>
+                </div>
+                <div className="profile-hero-card stat-mini-card">
+                  <span className="stat-label">Average TS%</span>
+                  <strong>{historicalContext.averageTrueShooting}</strong>
+                  <span className="stat-detail">Comparable pool efficiency</span>
+                </div>
+              </div>
+              <p>{historicalContext.narrative}</p>
+              <p className="section-note">{historicalContext.riskSignal}</p>
+            </div>
+          )}
         </>
       )}
 

@@ -1,5 +1,5 @@
 import { CORE_TRAITS } from './constants';
-import { findHistoricalPrecedents } from './historicalComps';
+import { buildHistoricalContext, findHistoricalPrecedents } from './historicalComps';
 import authoredProfilesTier3 from '../data/authoredProfilesTier3.json';
 import authoredProfilesTier4 from '../data/authoredProfilesTier4';
 import authoredProfilesTier5 from '../data/authoredProfilesTier5';
@@ -423,6 +423,16 @@ export function enrichProspects(prospects) {
       position: sourceProspect.position,
       stats: stats.value,
     });
+    const historicalContext = buildHistoricalContext({
+      ...sourceProspect,
+      age,
+      roleProjection,
+      overallComposite,
+      archetype: sourceProspect.archetype,
+      position: sourceProspect.position,
+      rank: sourceProspect.rank,
+      stats: stats.value,
+    });
 
     const realFieldCount = [
       measurements.isReal,
@@ -460,6 +470,7 @@ export function enrichProspects(prospects) {
       archetypeIndicators: Array.isArray(pipelineStats.archetypeIndicators) ? pipelineStats.archetypeIndicators : [],
       comparisonInputs: pipelineStats.comparisonInputs || {},
       historicalPrecedents,
+      historicalContext,
       profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],
       sources,
       dataQuality: {

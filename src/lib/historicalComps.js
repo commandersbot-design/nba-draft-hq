@@ -1,9 +1,39 @@
 import historicalProspects from '../data/historicalProspects.json';
 
-function positionFamily(position) {
+export function positionFamily(position) {
   if (String(position).includes('PG')) return 'guard';
   if (String(position).includes('SF') || String(position).includes('SG')) return 'wing';
   return 'big';
+}
+
+export function draftSlotBand(draftSlot) {
+  const slot = safeNumber(draftSlot);
+  if (slot <= 3) return 'Top 3';
+  if (slot <= 8) return 'Top 8';
+  if (slot <= 14) return 'Lottery';
+  if (slot <= 30) return 'First Round';
+  return 'Later Round';
+}
+
+export function outcomeScore(outcomeTier) {
+  switch (outcomeTier) {
+    case 'Outlier':
+      return 4;
+    case 'Hit':
+      return 3;
+    case 'Swing':
+      return 2;
+    default:
+      return 1;
+  }
+}
+
+function archetypeFamily(archetype = '') {
+  const label = archetype.toLowerCase();
+  if (label.includes('wing')) return 'Wing';
+  if (label.includes('big') || label.includes('paint') || label.includes('coverage')) return 'Big';
+  if (label.includes('guard') || label.includes('pilot') || label.includes('creator') || label.includes('mechanic')) return 'Guard';
+  return 'Hybrid';
 }
 
 function numericTs(value) {
@@ -32,8 +62,99 @@ export function findHistoricalPrecedents(prospect, limit = 3) {
   return historicalProspects
     .map((entry) => ({
       ...entry,
+      positionFamily: positionFamily(entry.position),
+      draftSlotBand: draftSlotBand(entry.draftSlot),
+      archetypeFamily: archetypeFamily(entry.archetype),
+      outcomeScore: outcomeScore(entry.outcomeTier),
       matchScore: Number(precedentScore(prospect, entry).toFixed(1)),
     }))
     .sort((left, right) => right.matchScore - left.matchScore)
     .slice(0, limit);
+}
+
+function average(values) {
+  if (values.length === 0) return 0;
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+}
+
+function buildOutcomeMix(entries) {
+  const counts = entries.reduce((accumulator, entry) => {
+    accumulator[entry.outcomeTier] = (accumulator[entry.outcomeTier] || 0) + 1;
+    return accumulator;
+  }, {});
+
+  return ['Outlier', 'Hit', 'Swing', 'Miss']
+    .filter((tier) => counts[tier])
+    .map((tier) => ({
+      tier,
+      count: counts[tier],
+      share: `${Math.round((counts[tier] / entries.length) * 100)}%`,
+    }));
+}
+
+function buildContextNarrative({ archetypeMatches, slotBandMatches, familyMatches }) {
+  const bestArchetypeOutcome = average(archetypeMatches.map((entry) => outcomeScore(entry.outcomeTier)));
+  const bestSlotOutcome = average(slotBandMatches.map((entry) => outcomeScore(entry.outcomeTier)));
+  const bestFamilyOutcome = average(familyMatches.map((entry) => outcomeScore(entry.outcomeTier)));
+
+  if (bestArchetypeOutcome >= 3) {
+    return 'Closest archetype matches have mostly landed on strong NBA outcomes.';
+  }
+
+  if (bestSlotOutcome >= 3) {
+    return 'Draft-slot peers have produced solid historical outcomes, even if stylistic matches are mixed.';
+  }
+
+  if (bestFamilyOutcome >= 2.5) {
+    return 'Position-family history is workable, but the precedent pool still looks more volatile than clean.';
+  }
+
+  return 'Historical context is mixed, which puts more weight on your live evaluation and role conviction.';
+}
+
+export function buildHistoricalContext(prospect, precedentLimit = 4) {
+  const precedents = findHistoricalPrecedents(prospect, precedentLimit);
+  const family = positionFamily(prospect.position);
+  const slotBand = draftSlotBand(prospect.rank);
+  const archetypeMatches = historicalProspects.filter((entry) => entry.archetype === prospect.archetype);
+  const slotBandMatches = historicalProspects.filter((entry) => draftSlotBand(entry.draftSlot) === slotBand);
+  const familyMatches = historicalProspects.filter((entry) => positionFamily(entry.position) === family);
+  const comparablePool = precedents.length > 0 ? precedents : familyMatches.slice(0, precedentLimit);
+  const outcomeMix = buildOutcomeMix(comparablePool);
+  const averageBpm = average(comparablePool.map((entry) => safeNumber(entry.bpm)));
+  const averageTs = average(comparablePool.map((entry) => numericTs(entry.trueShooting)));
+  const bestOutcome = [...comparablePool].sort((left, right) => outcomeScore(right.outcomeTier) - outcomeScore(left.outcomeTier))[0];
+  const riskSignal = outcomeMix.find((entry) => entry.tier === 'Swing' || entry.tier === 'Miss');
+
+  return {
+    positionFamily: family,
+    draftSlotBand: slotBand,
+    archetypeFamily: archetypeFamily(prospect.archetype),
+    comparablePoolSize: comparablePool.length,
+    archetypeMatchCount: archetypeMatches.length,
+    slotBandMatchCount: slotBandMatches.length,
+    familyMatchCount: familyMatches.length,
+    outcomeMix,
+    averageBpm: comparablePool.length ? averageBpm.toFixed(1) : '--',
+    averageTrueShooting: comparablePool.length ? `${averageTs.toFixed(1)}%` : '--',
+    bestHistoricalOutcome: bestOutcome
+      ? `${bestOutcome.name} (${bestOutcome.draftYear}, ${bestOutcome.outcomeTier})`
+      : 'No strong historical anchor yet',
+    riskSignal: riskSignal
+      ? `${riskSignal.share} of the closest pool landed in volatile outcomes.`
+      : 'Closest pool has leaned toward more stable outcomes.',
+    narrative: buildContextNarrative({ archetypeMatches, slotBandMatches, familyMatches }),
+    slotBandOutcomes: buildOutcomeMix(slotBandMatches),
+    archetypeOutcomes: buildOutcomeMix(archetypeMatches),
+  };
+}
+
+export function buildHistoricalDataset() {
+  return historicalProspects.map((entry) => ({
+    ...entry,
+    positionFamily: positionFamily(entry.position),
+    draftSlotBand: draftSlotBand(entry.draftSlot),
+    archetypeFamily: archetypeFamily(entry.archetype),
+    outcomeScore: outcomeScore(entry.outcomeTier),
+  }));
 }
