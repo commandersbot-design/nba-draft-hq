@@ -151,6 +151,23 @@ export function CompareEngine({ prospects, notesByPlayer }) {
           );
         })}
       </div>
+
+      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
+        {compareProspects.map((prospect) => (
+          <div key={`${prospect.id}-historical`} className="detail-section compare-notes-column">
+            <h4>Historical Precedents</h4>
+            {(prospect.historicalPrecedents || []).length === 0 ? (
+              <p className="empty-state">No historical precedents available.</p>
+            ) : (
+              prospect.historicalPrecedents.slice(0, 2).map((entry) => (
+                <p key={entry.id}>
+                  <strong>{entry.name}</strong> · {entry.draftYear} · {entry.roleOutcome} · {entry.outcomeTier}
+                </p>
+              ))
+            )}
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

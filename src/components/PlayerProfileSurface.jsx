@@ -263,6 +263,21 @@ export function PlayerProfileSurface({
             <div><strong>Defensive snapshot:</strong> {prospect.comparisonInputs.defensiveSummary || `${prospect.defenseScore} defense score`}</div>
             <div><strong>Archetype indicators:</strong> {(prospect.archetypeIndicators || []).join(', ') || 'Awaiting stat indicators'}</div>
           </div>
+
+          <div className="detail-section">
+            <h4>Historical Precedents</h4>
+            <div className="note-preview-list">
+              {(prospect.historicalPrecedents || []).map((entry) => (
+                <article key={entry.id} className="note-preview-card">
+                  <strong>{entry.name}</strong>
+                  <span>{entry.draftYear} · #{entry.draftSlot} · {entry.outcomeTier}</span>
+                  <p>
+                    {entry.archetype} · {entry.roleOutcome} · {entry.pointsPerGame} PPG · {entry.trueShooting} TS · match {entry.matchScore}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       )}
 

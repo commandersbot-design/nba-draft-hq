@@ -1,4 +1,5 @@
 import { CORE_TRAITS } from './constants';
+import { findHistoricalPrecedents } from './historicalComps';
 import profileStats from '../data/profileStats.json';
 
 function clamp(value, min, max) {
@@ -343,6 +344,15 @@ export function enrichProspects(prospects) {
     const roleProjection = firstDefined(prospect.roleProjection, prospect.scouting?.roleProjection, deriveRoleProjection(prospect.position, prospect.rank));
     const riskLevel = firstDefined(prospect.riskLevel, prospect.scouting?.riskLevel, deriveRiskLevel(prospect.rank, prospect.classYear));
     const sources = normalizeSources(prospect);
+    const historicalPrecedents = findHistoricalPrecedents({
+      ...prospect,
+      age,
+      roleProjection,
+      overallComposite,
+      archetype: prospect.archetype,
+      position: prospect.position,
+      stats: stats.value,
+    });
 
     const realFieldCount = [
       measurements.isReal,
@@ -379,6 +389,7 @@ export function enrichProspects(prospects) {
       statWeaknesses: Array.isArray(pipelineStats.statWeaknesses) ? pipelineStats.statWeaknesses : [],
       archetypeIndicators: Array.isArray(pipelineStats.archetypeIndicators) ? pipelineStats.archetypeIndicators : [],
       comparisonInputs: pipelineStats.comparisonInputs || {},
+      historicalPrecedents,
       profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],
       sources,
       dataQuality: {
