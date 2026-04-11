@@ -1,6 +1,7 @@
 import { CORE_TRAITS } from './constants';
 import { findHistoricalPrecedents } from './historicalComps';
 import authoredProfilesTier3 from '../data/authoredProfilesTier3.json';
+import authoredProfilesTier4 from '../data/authoredProfilesTier4';
 import profileStats from '../data/profileStats.json';
 
 function clamp(value, min, max) {
@@ -324,7 +325,10 @@ function normalizeSources(prospect) {
  */
 export function enrichProspects(prospects) {
   return prospects.map((prospect) => {
-    const authoredOverride = authoredProfilesTier3[prospect.id] || {};
+    const authoredOverride = {
+      ...(authoredProfilesTier3[prospect.id] || {}),
+      ...(authoredProfilesTier4[prospect.id] || {}),
+    };
     const sourceProspect = { ...prospect, ...authoredOverride };
     const pipelineStats = profileStats[prospect.id] || {};
     const measurements = normalizeMeasurements(sourceProspect);
