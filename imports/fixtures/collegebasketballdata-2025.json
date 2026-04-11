@@ -2592,6 +2592,916 @@
           "assists": 1
         }
       ]
+    },
+    {
+      "playerName": "Mark Mitchell",
+      "externalPlayerKey": "cbbd-mark-mitchell",
+      "stats": {
+        "games": 33,
+        "minutesPerGame": 30.2,
+        "pointsPerGame": 14.1,
+        "reboundsPerGame": 5.9,
+        "assistsPerGame": 2.3,
+        "stealsPerGame": 0.9,
+        "blocksPerGame": 0.5,
+        "turnoversPerGame": 2,
+        "fgPct": 0.486,
+        "threePct": 0.322,
+        "ftPct": 0.748
+      },
+      "gameLogs": [
+        {
+          "gameId": "mmi-001",
+          "gameDate": "2025-11-15",
+          "opponent": "Arkansas",
+          "points": 16,
+          "rebounds": 6,
+          "assists": 2
+        },
+        {
+          "gameId": "mmi-002",
+          "gameDate": "2025-12-02",
+          "opponent": "Texas A&M",
+          "points": 12,
+          "rebounds": 5,
+          "assists": 3
+        }
+      ]
+    },
+    {
+      "playerName": "JT Toppin",
+      "externalPlayerKey": "cbbd-jt-toppin",
+      "stats": {
+        "games": 32,
+        "minutesPerGame": 29.4,
+        "pointsPerGame": 15.2,
+        "reboundsPerGame": 8.8,
+        "assistsPerGame": 1.6,
+        "stealsPerGame": 0.8,
+        "blocksPerGame": 1.1,
+        "turnoversPerGame": 2.1,
+        "fgPct": 0.523,
+        "threePct": 0.281,
+        "ftPct": 0.701
+      },
+      "gameLogs": [
+        {
+          "gameId": "jtt-001",
+          "gameDate": "2025-11-18",
+          "opponent": "Kansas",
+          "points": 18,
+          "rebounds": 10,
+          "assists": 1
+        },
+        {
+          "gameId": "jtt-002",
+          "gameDate": "2025-12-05",
+          "opponent": "Baylor",
+          "points": 14,
+          "rebounds": 8,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Neoklis Avdalas",
+      "externalPlayerKey": "cbbd-neoklis-avdalas",
+      "stats": {
+        "games": 29,
+        "minutesPerGame": 26.8,
+        "pointsPerGame": 12.6,
+        "reboundsPerGame": 4.7,
+        "assistsPerGame": 2.8,
+        "stealsPerGame": 1,
+        "blocksPerGame": 0.4,
+        "turnoversPerGame": 2,
+        "fgPct": 0.452,
+        "threePct": 0.361,
+        "ftPct": 0.782
+      },
+      "gameLogs": [
+        {
+          "gameId": "na-001",
+          "gameDate": "2025-11-14",
+          "opponent": "Clemson",
+          "points": 14,
+          "rebounds": 5,
+          "assists": 3
+        },
+        {
+          "gameId": "na-002",
+          "gameDate": "2025-12-01",
+          "opponent": "Louisville",
+          "points": 11,
+          "rebounds": 4,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Eric Reibe",
+      "externalPlayerKey": "cbbd-eric-reibe",
+      "stats": {
+        "games": 28,
+        "minutesPerGame": 22.3,
+        "pointsPerGame": 10.4,
+        "reboundsPerGame": 6.8,
+        "assistsPerGame": 0.9,
+        "stealsPerGame": 0.4,
+        "blocksPerGame": 1.7,
+        "turnoversPerGame": 1.8,
+        "fgPct": 0.561,
+        "threePct": 0.244,
+        "ftPct": 0.688
+      },
+      "gameLogs": [
+        {
+          "gameId": "er-001",
+          "gameDate": "2025-11-17",
+          "opponent": "Seton Hall",
+          "points": 12,
+          "rebounds": 7,
+          "assists": 1
+        },
+        {
+          "gameId": "er-002",
+          "gameDate": "2025-12-03",
+          "opponent": "Villanova",
+          "points": 9,
+          "rebounds": 7,
+          "assists": 1
+        }
+      ]
+    },
+    {
+      "playerName": "Collin Chandler",
+      "externalPlayerKey": "cbbd-collin-chandler",
+      "stats": {
+        "games": 31,
+        "minutesPerGame": 27.7,
+        "pointsPerGame": 12.7,
+        "reboundsPerGame": 3.6,
+        "assistsPerGame": 3.8,
+        "stealsPerGame": 0.9,
+        "blocksPerGame": 0.2,
+        "turnoversPerGame": 2,
+        "fgPct": 0.447,
+        "threePct": 0.358,
+        "ftPct": 0.799
+      },
+      "gameLogs": [
+        {
+          "gameId": "cc-001",
+          "gameDate": "2025-11-16",
+          "opponent": "Florida",
+          "points": 14,
+          "rebounds": 4,
+          "assists": 4
+        },
+        {
+          "gameId": "cc-002",
+          "gameDate": "2025-12-04",
+          "opponent": "Tennessee",
+          "points": 11,
+          "rebounds": 3,
+          "assists": 3
+        }
+      ]
+    },
+    {
+      "playerName": "Jalen Haralson",
+      "externalPlayerKey": "cbbd-jalen-haralson",
+      "stats": {
+        "games": 30,
+        "minutesPerGame": 28.5,
+        "pointsPerGame": 13.4,
+        "reboundsPerGame": 5.1,
+        "assistsPerGame": 2.2,
+        "stealsPerGame": 1,
+        "blocksPerGame": 0.4,
+        "turnoversPerGame": 1.9,
+        "fgPct": 0.461,
+        "threePct": 0.344,
+        "ftPct": 0.768
+      },
+      "gameLogs": [
+        {
+          "gameId": "jh-001",
+          "gameDate": "2025-11-15",
+          "opponent": "Duke",
+          "points": 15,
+          "rebounds": 5,
+          "assists": 2
+        },
+        {
+          "gameId": "jh-002",
+          "gameDate": "2025-12-02",
+          "opponent": "Virginia",
+          "points": 12,
+          "rebounds": 5,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Braden Smith",
+      "externalPlayerKey": "cbbd-braden-smith",
+      "stats": {
+        "games": 34,
+        "minutesPerGame": 33.1,
+        "pointsPerGame": 15.8,
+        "reboundsPerGame": 4,
+        "assistsPerGame": 7.2,
+        "stealsPerGame": 1.5,
+        "blocksPerGame": 0.1,
+        "turnoversPerGame": 2.6,
+        "fgPct": 0.451,
+        "threePct": 0.373,
+        "ftPct": 0.846
+      },
+      "gameLogs": [
+        {
+          "gameId": "bsm-001",
+          "gameDate": "2025-11-18",
+          "opponent": "Marquette",
+          "points": 17,
+          "rebounds": 4,
+          "assists": 9
+        },
+        {
+          "gameId": "bsm-002",
+          "gameDate": "2025-12-05",
+          "opponent": "Michigan",
+          "points": 14,
+          "rebounds": 3,
+          "assists": 8
+        }
+      ]
+    },
+    {
+      "playerName": "Matt Able",
+      "externalPlayerKey": "cbbd-matt-able",
+      "stats": {
+        "games": 29,
+        "minutesPerGame": 26,
+        "pointsPerGame": 11.8,
+        "reboundsPerGame": 3.7,
+        "assistsPerGame": 1.8,
+        "stealsPerGame": 0.8,
+        "blocksPerGame": 0.2,
+        "turnoversPerGame": 1.6,
+        "fgPct": 0.443,
+        "threePct": 0.371,
+        "ftPct": 0.811
+      },
+      "gameLogs": [
+        {
+          "gameId": "ma-001",
+          "gameDate": "2025-11-12",
+          "opponent": "Wake Forest",
+          "points": 13,
+          "rebounds": 4,
+          "assists": 2
+        },
+        {
+          "gameId": "ma-002",
+          "gameDate": "2025-11-29",
+          "opponent": "Virginia Tech",
+          "points": 10,
+          "rebounds": 3,
+          "assists": 1
+        }
+      ]
+    },
+    {
+      "playerName": "Davis Fogle",
+      "externalPlayerKey": "cbbd-davis-fogle",
+      "stats": {
+        "games": 28,
+        "minutesPerGame": 24.9,
+        "pointsPerGame": 10.9,
+        "reboundsPerGame": 4.1,
+        "assistsPerGame": 1.6,
+        "stealsPerGame": 0.7,
+        "blocksPerGame": 0.2,
+        "turnoversPerGame": 1.5,
+        "fgPct": 0.438,
+        "threePct": 0.364,
+        "ftPct": 0.792
+      },
+      "gameLogs": [
+        {
+          "gameId": "df-001",
+          "gameDate": "2025-11-14",
+          "opponent": "Saint Marys",
+          "points": 12,
+          "rebounds": 4,
+          "assists": 1
+        },
+        {
+          "gameId": "df-002",
+          "gameDate": "2025-12-01",
+          "opponent": "San Francisco",
+          "points": 9,
+          "rebounds": 4,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "BJ Edwards",
+      "externalPlayerKey": "cbbd-bj-edwards",
+      "stats": {
+        "games": 32,
+        "minutesPerGame": 28.6,
+        "pointsPerGame": 12.5,
+        "reboundsPerGame": 3,
+        "assistsPerGame": 5.4,
+        "stealsPerGame": 1,
+        "blocksPerGame": 0.1,
+        "turnoversPerGame": 2.3,
+        "fgPct": 0.442,
+        "threePct": 0.349,
+        "ftPct": 0.804
+      },
+      "gameLogs": [
+        {
+          "gameId": "bje-001",
+          "gameDate": "2025-11-17",
+          "opponent": "Tulane",
+          "points": 14,
+          "rebounds": 3,
+          "assists": 6
+        },
+        {
+          "gameId": "bje-002",
+          "gameDate": "2025-12-03",
+          "opponent": "Memphis",
+          "points": 11,
+          "rebounds": 2,
+          "assists": 5
+        }
+      ]
+    },
+    {
+      "playerName": "Baye Ndongo",
+      "externalPlayerKey": "cbbd-baye-ndongo",
+      "stats": {
+        "games": 31,
+        "minutesPerGame": 27.5,
+        "pointsPerGame": 12.8,
+        "reboundsPerGame": 8,
+        "assistsPerGame": 1.3,
+        "stealsPerGame": 0.8,
+        "blocksPerGame": 1.4,
+        "turnoversPerGame": 1.9,
+        "fgPct": 0.547,
+        "threePct": 0.214,
+        "ftPct": 0.667
+      },
+      "gameLogs": [
+        {
+          "gameId": "bn-001",
+          "gameDate": "2025-11-19",
+          "opponent": "Clemson",
+          "points": 14,
+          "rebounds": 9,
+          "assists": 1
+        },
+        {
+          "gameId": "bn-002",
+          "gameDate": "2025-12-06",
+          "opponent": "Duke",
+          "points": 11,
+          "rebounds": 8,
+          "assists": 1
+        }
+      ]
+    },
+    {
+      "playerName": "KJ Lewis",
+      "externalPlayerKey": "cbbd-kj-lewis",
+      "stats": {
+        "games": 33,
+        "minutesPerGame": 29.8,
+        "pointsPerGame": 13.7,
+        "reboundsPerGame": 4.4,
+        "assistsPerGame": 2.5,
+        "stealsPerGame": 1.1,
+        "blocksPerGame": 0.3,
+        "turnoversPerGame": 1.9,
+        "fgPct": 0.456,
+        "threePct": 0.341,
+        "ftPct": 0.773
+      },
+      "gameLogs": [
+        {
+          "gameId": "kjl-001",
+          "gameDate": "2025-11-15",
+          "opponent": "Villanova",
+          "points": 16,
+          "rebounds": 4,
+          "assists": 2
+        },
+        {
+          "gameId": "kjl-002",
+          "gameDate": "2025-12-03",
+          "opponent": "St Johns",
+          "points": 12,
+          "rebounds": 5,
+          "assists": 3
+        }
+      ]
+    },
+    {
+      "playerName": "Andrej Stojakovic",
+      "externalPlayerKey": "cbbd-andrej-stojakovic",
+      "stats": {
+        "games": 32,
+        "minutesPerGame": 30.1,
+        "pointsPerGame": 14.4,
+        "reboundsPerGame": 4.5,
+        "assistsPerGame": 2,
+        "stealsPerGame": 0.8,
+        "blocksPerGame": 0.3,
+        "turnoversPerGame": 1.8,
+        "fgPct": 0.459,
+        "threePct": 0.372,
+        "ftPct": 0.821
+      },
+      "gameLogs": [
+        {
+          "gameId": "as-001",
+          "gameDate": "2025-11-18",
+          "opponent": "Purdue",
+          "points": 17,
+          "rebounds": 5,
+          "assists": 2
+        },
+        {
+          "gameId": "as-002",
+          "gameDate": "2025-12-05",
+          "opponent": "Indiana",
+          "points": 12,
+          "rebounds": 4,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Jeremy Fears",
+      "externalPlayerKey": "cbbd-jeremy-fears",
+      "stats": {
+        "games": 33,
+        "minutesPerGame": 30,
+        "pointsPerGame": 12.2,
+        "reboundsPerGame": 2.9,
+        "assistsPerGame": 6.1,
+        "stealsPerGame": 1.3,
+        "blocksPerGame": 0.1,
+        "turnoversPerGame": 2.4,
+        "fgPct": 0.446,
+        "threePct": 0.337,
+        "ftPct": 0.789
+      },
+      "gameLogs": [
+        {
+          "gameId": "jf-001",
+          "gameDate": "2025-11-16",
+          "opponent": "Maryland",
+          "points": 13,
+          "rebounds": 3,
+          "assists": 7
+        },
+        {
+          "gameId": "jf-002",
+          "gameDate": "2025-12-04",
+          "opponent": "Ohio State",
+          "points": 11,
+          "rebounds": 2,
+          "assists": 6
+        }
+      ]
+    },
+    {
+      "playerName": "Xavier Booker",
+      "externalPlayerKey": "cbbd-xavier-booker",
+      "stats": {
+        "games": 29,
+        "minutesPerGame": 24.7,
+        "pointsPerGame": 11.4,
+        "reboundsPerGame": 6.5,
+        "assistsPerGame": 1.1,
+        "stealsPerGame": 0.5,
+        "blocksPerGame": 1.2,
+        "turnoversPerGame": 1.8,
+        "fgPct": 0.501,
+        "threePct": 0.309,
+        "ftPct": 0.729
+      },
+      "gameLogs": [
+        {
+          "gameId": "xb-001",
+          "gameDate": "2025-11-14",
+          "opponent": "Rutgers",
+          "points": 13,
+          "rebounds": 7,
+          "assists": 1
+        },
+        {
+          "gameId": "xb-002",
+          "gameDate": "2025-12-01",
+          "opponent": "Wisconsin",
+          "points": 10,
+          "rebounds": 6,
+          "assists": 1
+        }
+      ]
+    },
+    {
+      "playerName": "Tomislav Ivisic",
+      "externalPlayerKey": "cbbd-tomislav-ivisic",
+      "stats": {
+        "games": 31,
+        "minutesPerGame": 27.8,
+        "pointsPerGame": 13.1,
+        "reboundsPerGame": 8.2,
+        "assistsPerGame": 1.7,
+        "stealsPerGame": 0.6,
+        "blocksPerGame": 1.3,
+        "turnoversPerGame": 2,
+        "fgPct": 0.539,
+        "threePct": 0.301,
+        "ftPct": 0.717
+      },
+      "gameLogs": [
+        {
+          "gameId": "ti-001",
+          "gameDate": "2025-11-18",
+          "opponent": "Northwestern",
+          "points": 15,
+          "rebounds": 9,
+          "assists": 1
+        },
+        {
+          "gameId": "ti-002",
+          "gameDate": "2025-12-06",
+          "opponent": "Purdue",
+          "points": 12,
+          "rebounds": 8,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Seth Trimble",
+      "externalPlayerKey": "cbbd-seth-trimble",
+      "stats": {
+        "games": 33,
+        "minutesPerGame": 30.5,
+        "pointsPerGame": 13.3,
+        "reboundsPerGame": 3.3,
+        "assistsPerGame": 4.8,
+        "stealsPerGame": 1.2,
+        "blocksPerGame": 0.2,
+        "turnoversPerGame": 2.1,
+        "fgPct": 0.452,
+        "threePct": 0.348,
+        "ftPct": 0.796
+      },
+      "gameLogs": [
+        {
+          "gameId": "st-001",
+          "gameDate": "2025-11-15",
+          "opponent": "Duke",
+          "points": 15,
+          "rebounds": 3,
+          "assists": 5
+        },
+        {
+          "gameId": "st-002",
+          "gameDate": "2025-12-03",
+          "opponent": "Virginia",
+          "points": 12,
+          "rebounds": 4,
+          "assists": 4
+        }
+      ]
+    },
+    {
+      "playerName": "Karter Knox",
+      "externalPlayerKey": "cbbd-karter-knox",
+      "stats": {
+        "games": 31,
+        "minutesPerGame": 28.8,
+        "pointsPerGame": 13,
+        "reboundsPerGame": 4.9,
+        "assistsPerGame": 2,
+        "stealsPerGame": 0.9,
+        "blocksPerGame": 0.4,
+        "turnoversPerGame": 1.8,
+        "fgPct": 0.463,
+        "threePct": 0.351,
+        "ftPct": 0.775
+      },
+      "gameLogs": [
+        {
+          "gameId": "kk-001",
+          "gameDate": "2025-11-17",
+          "opponent": "Ole Miss",
+          "points": 15,
+          "rebounds": 5,
+          "assists": 2
+        },
+        {
+          "gameId": "kk-002",
+          "gameDate": "2025-12-04",
+          "opponent": "Alabama",
+          "points": 11,
+          "rebounds": 4,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Jasper Johnson",
+      "externalPlayerKey": "cbbd-jasper-johnson",
+      "stats": {
+        "games": 30,
+        "minutesPerGame": 27.1,
+        "pointsPerGame": 12.4,
+        "reboundsPerGame": 3.2,
+        "assistsPerGame": 4.1,
+        "stealsPerGame": 1,
+        "blocksPerGame": 0.1,
+        "turnoversPerGame": 2,
+        "fgPct": 0.444,
+        "threePct": 0.359,
+        "ftPct": 0.807
+      },
+      "gameLogs": [
+        {
+          "gameId": "jj-001",
+          "gameDate": "2025-11-14",
+          "opponent": "Florida",
+          "points": 14,
+          "rebounds": 3,
+          "assists": 4
+        },
+        {
+          "gameId": "jj-002",
+          "gameDate": "2025-12-01",
+          "opponent": "Auburn",
+          "points": 11,
+          "rebounds": 3,
+          "assists": 5
+        }
+      ]
+    },
+    {
+      "playerName": "Mackenzie Mgbako",
+      "externalPlayerKey": "cbbd-mackenzie-mgbako",
+      "stats": {
+        "games": 32,
+        "minutesPerGame": 30.3,
+        "pointsPerGame": 14,
+        "reboundsPerGame": 5.5,
+        "assistsPerGame": 1.8,
+        "stealsPerGame": 0.7,
+        "blocksPerGame": 0.4,
+        "turnoversPerGame": 1.9,
+        "fgPct": 0.449,
+        "threePct": 0.367,
+        "ftPct": 0.803
+      },
+      "gameLogs": [
+        {
+          "gameId": "mmg-001",
+          "gameDate": "2025-11-18",
+          "opponent": "LSU",
+          "points": 16,
+          "rebounds": 6,
+          "assists": 2
+        },
+        {
+          "gameId": "mmg-002",
+          "gameDate": "2025-12-05",
+          "opponent": "Arkansas",
+          "points": 12,
+          "rebounds": 5,
+          "assists": 1
+        }
+      ]
+    },
+    {
+      "playerName": "Naithan George",
+      "externalPlayerKey": "cbbd-naithan-george",
+      "stats": {
+        "games": 31,
+        "minutesPerGame": 29,
+        "pointsPerGame": 12.6,
+        "reboundsPerGame": 3.1,
+        "assistsPerGame": 5,
+        "stealsPerGame": 1.1,
+        "blocksPerGame": 0.1,
+        "turnoversPerGame": 2.3,
+        "fgPct": 0.441,
+        "threePct": 0.346,
+        "ftPct": 0.788
+      },
+      "gameLogs": [
+        {
+          "gameId": "ng-001",
+          "gameDate": "2025-11-19",
+          "opponent": "Wake Forest",
+          "points": 14,
+          "rebounds": 3,
+          "assists": 6
+        },
+        {
+          "gameId": "ng-002",
+          "gameDate": "2025-12-06",
+          "opponent": "Clemson",
+          "points": 11,
+          "rebounds": 3,
+          "assists": 5
+        }
+      ]
+    },
+    {
+      "playerName": "Tyler Tanner",
+      "externalPlayerKey": "cbbd-tyler-tanner",
+      "stats": {
+        "games": 30,
+        "minutesPerGame": 27.4,
+        "pointsPerGame": 11.9,
+        "reboundsPerGame": 2.7,
+        "assistsPerGame": 4.7,
+        "stealsPerGame": 1,
+        "blocksPerGame": 0.1,
+        "turnoversPerGame": 2.2,
+        "fgPct": 0.438,
+        "threePct": 0.341,
+        "ftPct": 0.781
+      },
+      "gameLogs": [
+        {
+          "gameId": "tt-001",
+          "gameDate": "2025-11-15",
+          "opponent": "Mississippi State",
+          "points": 13,
+          "rebounds": 2,
+          "assists": 5
+        },
+        {
+          "gameId": "tt-002",
+          "gameDate": "2025-12-02",
+          "opponent": "Florida",
+          "points": 10,
+          "rebounds": 3,
+          "assists": 4
+        }
+      ]
+    },
+    {
+      "playerName": "Dame Sarr",
+      "externalPlayerKey": "cbbd-dame-sarr",
+      "stats": {
+        "games": 29,
+        "minutesPerGame": 26.5,
+        "pointsPerGame": 12.1,
+        "reboundsPerGame": 3.8,
+        "assistsPerGame": 1.9,
+        "stealsPerGame": 0.9,
+        "blocksPerGame": 0.2,
+        "turnoversPerGame": 1.7,
+        "fgPct": 0.447,
+        "threePct": 0.366,
+        "ftPct": 0.798
+      },
+      "gameLogs": [
+        {
+          "gameId": "dsa-001",
+          "gameDate": "2025-11-16",
+          "opponent": "NC State",
+          "points": 14,
+          "rebounds": 4,
+          "assists": 2
+        },
+        {
+          "gameId": "dsa-002",
+          "gameDate": "2025-12-03",
+          "opponent": "Virginia",
+          "points": 10,
+          "rebounds": 3,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Myles Colvin",
+      "externalPlayerKey": "cbbd-myles-colvin",
+      "stats": {
+        "games": 31,
+        "minutesPerGame": 27.9,
+        "pointsPerGame": 12.7,
+        "reboundsPerGame": 4.2,
+        "assistsPerGame": 1.7,
+        "stealsPerGame": 0.8,
+        "blocksPerGame": 0.3,
+        "turnoversPerGame": 1.8,
+        "fgPct": 0.452,
+        "threePct": 0.374,
+        "ftPct": 0.807
+      },
+      "gameLogs": [
+        {
+          "gameId": "mc-001",
+          "gameDate": "2025-11-14",
+          "opponent": "Pittsburgh",
+          "points": 15,
+          "rebounds": 4,
+          "assists": 1
+        },
+        {
+          "gameId": "mc-002",
+          "gameDate": "2025-12-01",
+          "opponent": "Clemson",
+          "points": 11,
+          "rebounds": 4,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Coen Carr",
+      "externalPlayerKey": "cbbd-coen-carr",
+      "stats": {
+        "games": 32,
+        "minutesPerGame": 26.7,
+        "pointsPerGame": 11.5,
+        "reboundsPerGame": 5.8,
+        "assistsPerGame": 1.6,
+        "stealsPerGame": 1,
+        "blocksPerGame": 0.5,
+        "turnoversPerGame": 1.8,
+        "fgPct": 0.519,
+        "threePct": 0.298,
+        "ftPct": 0.703
+      },
+      "gameLogs": [
+        {
+          "gameId": "cca-001",
+          "gameDate": "2025-11-17",
+          "opponent": "Rutgers",
+          "points": 13,
+          "rebounds": 6,
+          "assists": 1
+        },
+        {
+          "gameId": "cca-002",
+          "gameDate": "2025-12-04",
+          "opponent": "Maryland",
+          "points": 10,
+          "rebounds": 5,
+          "assists": 2
+        }
+      ]
+    },
+    {
+      "playerName": "Magoon Gwath",
+      "externalPlayerKey": "cbbd-magoon-gwath",
+      "stats": {
+        "games": 30,
+        "minutesPerGame": 24.4,
+        "pointsPerGame": 10.8,
+        "reboundsPerGame": 7,
+        "assistsPerGame": 1,
+        "stealsPerGame": 0.7,
+        "blocksPerGame": 1.8,
+        "turnoversPerGame": 1.9,
+        "fgPct": 0.543,
+        "threePct": 0.267,
+        "ftPct": 0.689
+      },
+      "gameLogs": [
+        {
+          "gameId": "mg-001",
+          "gameDate": "2025-11-18",
+          "opponent": "UNLV",
+          "points": 12,
+          "rebounds": 7,
+          "assists": 1
+        },
+        {
+          "gameId": "mg-002",
+          "gameDate": "2025-12-05",
+          "opponent": "Boise State",
+          "points": 9,
+          "rebounds": 8,
+          "assists": 1
+        }
+      ]
     }
   ]
 }

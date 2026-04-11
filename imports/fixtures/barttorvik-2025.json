@@ -1112,6 +1112,396 @@
         "bpm": 5.9,
         "reboundRate": 16
       }
+    },
+    {
+      "playerName": "Mark Mitchell",
+      "externalPlayerKey": "torvik-mark-mitchell",
+      "advanced": {
+        "tsPct": 0.581,
+        "efgPct": 0.536,
+        "usgPct": 0.219,
+        "astPct": 11.2,
+        "tovPct": 10.7,
+        "ortg": 115.8,
+        "drtg": 98.6,
+        "bpm": 5.4,
+        "reboundRate": 10.9
+      }
+    },
+    {
+      "playerName": "JT Toppin",
+      "externalPlayerKey": "torvik-jt-toppin",
+      "advanced": {
+        "tsPct": 0.596,
+        "efgPct": 0.552,
+        "usgPct": 0.241,
+        "astPct": 7.4,
+        "tovPct": 11.5,
+        "ortg": 117.4,
+        "drtg": 96.1,
+        "bpm": 6.9,
+        "reboundRate": 17.8
+      }
+    },
+    {
+      "playerName": "Neoklis Avdalas",
+      "externalPlayerKey": "torvik-neoklis-avdalas",
+      "advanced": {
+        "tsPct": 0.583,
+        "efgPct": 0.541,
+        "usgPct": 0.214,
+        "astPct": 14.2,
+        "tovPct": 10.1,
+        "ortg": 115.3,
+        "drtg": 98.2,
+        "bpm": 5.2,
+        "reboundRate": 8.3
+      }
+    },
+    {
+      "playerName": "Eric Reibe",
+      "externalPlayerKey": "torvik-eric-reibe",
+      "advanced": {
+        "tsPct": 0.599,
+        "efgPct": 0.557,
+        "usgPct": 0.182,
+        "astPct": 5.1,
+        "tovPct": 11.6,
+        "ortg": 118.1,
+        "drtg": 95.5,
+        "bpm": 5.8,
+        "reboundRate": 15.7
+      }
+    },
+    {
+      "playerName": "Collin Chandler",
+      "externalPlayerKey": "torvik-collin-chandler",
+      "advanced": {
+        "tsPct": 0.579,
+        "efgPct": 0.533,
+        "usgPct": 0.208,
+        "astPct": 18.7,
+        "tovPct": 11.2,
+        "ortg": 114.9,
+        "drtg": 98.3,
+        "bpm": 5,
+        "reboundRate": 6.1
+      }
+    },
+    {
+      "playerName": "Jalen Haralson",
+      "externalPlayerKey": "torvik-jalen-haralson",
+      "advanced": {
+        "tsPct": 0.587,
+        "efgPct": 0.543,
+        "usgPct": 0.217,
+        "astPct": 10.6,
+        "tovPct": 10.4,
+        "ortg": 116.1,
+        "drtg": 97.4,
+        "bpm": 5.3,
+        "reboundRate": 9.5
+      }
+    },
+    {
+      "playerName": "Braden Smith",
+      "externalPlayerKey": "torvik-braden-smith",
+      "advanced": {
+        "tsPct": 0.603,
+        "efgPct": 0.567,
+        "usgPct": 0.246,
+        "astPct": 35.2,
+        "tovPct": 12.1,
+        "ortg": 119.5,
+        "drtg": 98.7,
+        "bpm": 7.2,
+        "reboundRate": 5
+      }
+    },
+    {
+      "playerName": "Matt Able",
+      "externalPlayerKey": "torvik-matt-able",
+      "advanced": {
+        "tsPct": 0.588,
+        "efgPct": 0.551,
+        "usgPct": 0.191,
+        "astPct": 8.3,
+        "tovPct": 9.3,
+        "ortg": 116.8,
+        "drtg": 99.1,
+        "bpm": 4.9,
+        "reboundRate": 6.4
+      }
+    },
+    {
+      "playerName": "Davis Fogle",
+      "externalPlayerKey": "torvik-davis-fogle",
+      "advanced": {
+        "tsPct": 0.582,
+        "efgPct": 0.545,
+        "usgPct": 0.182,
+        "astPct": 7.4,
+        "tovPct": 9.1,
+        "ortg": 115.9,
+        "drtg": 99.3,
+        "bpm": 4.7,
+        "reboundRate": 7.1
+      }
+    },
+    {
+      "playerName": "BJ Edwards",
+      "externalPlayerKey": "torvik-bj-edwards",
+      "advanced": {
+        "tsPct": 0.576,
+        "efgPct": 0.531,
+        "usgPct": 0.214,
+        "astPct": 29.8,
+        "tovPct": 13,
+        "ortg": 113.9,
+        "drtg": 98.8,
+        "bpm": 5.1,
+        "reboundRate": 4.9
+      }
+    },
+    {
+      "playerName": "Baye Ndongo",
+      "externalPlayerKey": "torvik-baye-ndongo",
+      "advanced": {
+        "tsPct": 0.592,
+        "efgPct": 0.553,
+        "usgPct": 0.203,
+        "astPct": 6.7,
+        "tovPct": 10.8,
+        "ortg": 117.1,
+        "drtg": 96.6,
+        "bpm": 5.9,
+        "reboundRate": 16.8
+      }
+    },
+    {
+      "playerName": "KJ Lewis",
+      "externalPlayerKey": "torvik-kj-lewis",
+      "advanced": {
+        "tsPct": 0.581,
+        "efgPct": 0.539,
+        "usgPct": 0.218,
+        "astPct": 11.7,
+        "tovPct": 10.2,
+        "ortg": 115.4,
+        "drtg": 98.5,
+        "bpm": 5.2,
+        "reboundRate": 7.9
+      }
+    },
+    {
+      "playerName": "Andrej Stojakovic",
+      "externalPlayerKey": "torvik-andrej-stojakovic",
+      "advanced": {
+        "tsPct": 0.597,
+        "efgPct": 0.563,
+        "usgPct": 0.228,
+        "astPct": 9.5,
+        "tovPct": 9.8,
+        "ortg": 118,
+        "drtg": 99,
+        "bpm": 5.8,
+        "reboundRate": 8.4
+      }
+    },
+    {
+      "playerName": "Jeremy Fears",
+      "externalPlayerKey": "torvik-jeremy-fears",
+      "advanced": {
+        "tsPct": 0.571,
+        "efgPct": 0.526,
+        "usgPct": 0.201,
+        "astPct": 31.6,
+        "tovPct": 13.2,
+        "ortg": 113.2,
+        "drtg": 98.1,
+        "bpm": 5.4,
+        "reboundRate": 4.4
+      }
+    },
+    {
+      "playerName": "Xavier Booker",
+      "externalPlayerKey": "torvik-xavier-booker",
+      "advanced": {
+        "tsPct": 0.587,
+        "efgPct": 0.545,
+        "usgPct": 0.189,
+        "astPct": 6,
+        "tovPct": 10.9,
+        "ortg": 116.4,
+        "drtg": 96.9,
+        "bpm": 5.6,
+        "reboundRate": 14.2
+      }
+    },
+    {
+      "playerName": "Tomislav Ivisic",
+      "externalPlayerKey": "torvik-tomislav-ivisic",
+      "advanced": {
+        "tsPct": 0.598,
+        "efgPct": 0.559,
+        "usgPct": 0.208,
+        "astPct": 8.4,
+        "tovPct": 11.3,
+        "ortg": 117.8,
+        "drtg": 95.8,
+        "bpm": 6.1,
+        "reboundRate": 16.1
+      }
+    },
+    {
+      "playerName": "Seth Trimble",
+      "externalPlayerKey": "torvik-seth-trimble",
+      "advanced": {
+        "tsPct": 0.579,
+        "efgPct": 0.536,
+        "usgPct": 0.216,
+        "astPct": 24.1,
+        "tovPct": 11.5,
+        "ortg": 114.8,
+        "drtg": 98.6,
+        "bpm": 5.3,
+        "reboundRate": 5.3
+      }
+    },
+    {
+      "playerName": "Karter Knox",
+      "externalPlayerKey": "torvik-karter-knox",
+      "advanced": {
+        "tsPct": 0.586,
+        "efgPct": 0.546,
+        "usgPct": 0.213,
+        "astPct": 10.2,
+        "tovPct": 10,
+        "ortg": 116,
+        "drtg": 97.9,
+        "bpm": 5.2,
+        "reboundRate": 9
+      }
+    },
+    {
+      "playerName": "Jasper Johnson",
+      "externalPlayerKey": "torvik-jasper-johnson",
+      "advanced": {
+        "tsPct": 0.578,
+        "efgPct": 0.534,
+        "usgPct": 0.207,
+        "astPct": 21.3,
+        "tovPct": 11.7,
+        "ortg": 114.7,
+        "drtg": 98.4,
+        "bpm": 5,
+        "reboundRate": 4.8
+      }
+    },
+    {
+      "playerName": "Mackenzie Mgbako",
+      "externalPlayerKey": "torvik-mackenzie-mgbako",
+      "advanced": {
+        "tsPct": 0.591,
+        "efgPct": 0.556,
+        "usgPct": 0.224,
+        "astPct": 8.8,
+        "tovPct": 10.1,
+        "ortg": 117,
+        "drtg": 98.8,
+        "bpm": 5.5,
+        "reboundRate": 10.7
+      }
+    },
+    {
+      "playerName": "Naithan George",
+      "externalPlayerKey": "torvik-naithan-george",
+      "advanced": {
+        "tsPct": 0.574,
+        "efgPct": 0.529,
+        "usgPct": 0.211,
+        "astPct": 28.1,
+        "tovPct": 12.8,
+        "ortg": 113.6,
+        "drtg": 98.9,
+        "bpm": 5.1,
+        "reboundRate": 4.6
+      }
+    },
+    {
+      "playerName": "Tyler Tanner",
+      "externalPlayerKey": "torvik-tyler-tanner",
+      "advanced": {
+        "tsPct": 0.569,
+        "efgPct": 0.523,
+        "usgPct": 0.198,
+        "astPct": 25.7,
+        "tovPct": 12.6,
+        "ortg": 112.8,
+        "drtg": 99,
+        "bpm": 4.8,
+        "reboundRate": 4.2
+      }
+    },
+    {
+      "playerName": "Dame Sarr",
+      "externalPlayerKey": "torvik-dame-sarr",
+      "advanced": {
+        "tsPct": 0.585,
+        "efgPct": 0.548,
+        "usgPct": 0.195,
+        "astPct": 9.3,
+        "tovPct": 9.6,
+        "ortg": 116.2,
+        "drtg": 98.6,
+        "bpm": 5,
+        "reboundRate": 6.9
+      }
+    },
+    {
+      "playerName": "Myles Colvin",
+      "externalPlayerKey": "torvik-myles-colvin",
+      "advanced": {
+        "tsPct": 0.592,
+        "efgPct": 0.559,
+        "usgPct": 0.207,
+        "astPct": 8.7,
+        "tovPct": 9.8,
+        "ortg": 117.1,
+        "drtg": 98.9,
+        "bpm": 5.2,
+        "reboundRate": 7
+      }
+    },
+    {
+      "playerName": "Coen Carr",
+      "externalPlayerKey": "torvik-coen-carr",
+      "advanced": {
+        "tsPct": 0.581,
+        "efgPct": 0.544,
+        "usgPct": 0.184,
+        "astPct": 7.9,
+        "tovPct": 10.2,
+        "ortg": 115.6,
+        "drtg": 97.4,
+        "bpm": 5.1,
+        "reboundRate": 11.4
+      }
+    },
+    {
+      "playerName": "Magoon Gwath",
+      "externalPlayerKey": "torvik-magoon-gwath",
+      "advanced": {
+        "tsPct": 0.593,
+        "efgPct": 0.557,
+        "usgPct": 0.181,
+        "astPct": 5.5,
+        "tovPct": 11.4,
+        "ortg": 117.2,
+        "drtg": 95.9,
+        "bpm": 5.8,
+        "reboundRate": 15.6
+      }
     }
   ]
 }
