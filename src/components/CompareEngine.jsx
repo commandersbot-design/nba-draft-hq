@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { buildHistoricalSimilarity } from '../lib/historicalComps';
+
 function traitMap(prospect) {
   return Object.fromEntries(prospect.traitScores.map((trait) => [trait.name, trait]));
 }
@@ -35,8 +38,15 @@ const FUTURE_HISTORICAL_TRACKS = [
   'Outcome bands by draft slot',
 ];
 
+const HISTORICAL_MODES = [
+  { id: 'archetype', label: 'Same Archetype' },
+  { id: 'slot-band', label: 'Same Slot Band' },
+  { id: 'position-family', label: 'Same Position Family' },
+];
+
 export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const compareProspects = prospects.slice(0, 3);
+  const [historicalMode, setHistoricalMode] = useState('archetype');
 
   if (compareProspects.length < 2) {
     return (
@@ -57,6 +67,10 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const rightTraits = traitMap(right);
   const whyLeft = buildDecisionBullets(left, right);
   const whyRight = buildDecisionBullets(right, left);
+  const historicalSimilarity = compareProspects.map((prospect) => ({
+    prospect,
+    similarity: buildHistoricalSimilarity(prospect, historicalMode),
+  }));
 
   const rows = [
     {
@@ -92,7 +106,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
           <p className="eyebrow">Compare</p>
           <h3>{compareProspects.map((prospect) => prospect.name).join(' vs ')}</h3>
         </div>
-        <p className="section-meta">Built for side-by-side evaluation now, historical comp depth next.</p>
+        <p className="section-meta">Built for side-by-side evaluation with expandable historical context.</p>
       </div>
 
       <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
@@ -170,6 +184,57 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
           Choose {left.name} if you need {left.roleProjection.toLowerCase()} with {topTrait(left)?.name?.toLowerCase() || 'strong trait support'} driving the case.
           Choose {right.name} if you prefer a {right.archetypeBase.toLowerCase()} pathway and are buying {topTrait(right)?.name?.toLowerCase() || 'the top trait'} as the cleaner answer.
         </p>
+      </div>
+
+      <div className="detail-section compare-future">
+        <div className="detail-section-head">
+          <h4>Historical Similarity Mode</h4>
+          <span className="section-meta">Switch the cohort lens without leaving compare</span>
+        </div>
+        <div className="tag-grid">
+          {HISTORICAL_MODES.map((mode) => (
+            <button
+              key={mode.id}
+              type="button"
+              className={`tag-button${historicalMode === mode.id ? ' is-active' : ''}`}
+              onClick={() => setHistoricalMode(mode.id)}
+            >
+              {mode.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
+        {historicalSimilarity.map(({ prospect, similarity }) => (
+          <div key={`${prospect.id}-historical-similarity`} className="detail-section compare-notes-column">
+            <div className="detail-section-head">
+              <h4>{similarity.label}</h4>
+              <span className="section-meta">{similarity.poolSize} comps in pool</span>
+            </div>
+            <div className="projection-stack">
+              <div><strong>Outcome range:</strong> {similarity.outcomeRange}</div>
+              <div><strong>Most common result:</strong> {similarity.topOutcome}</div>
+              <div><strong>Outcome mix:</strong> {similarity.outcomeMix.map((entry) => `${entry.tier} ${entry.share}`).join(' · ') || '--'}</div>
+            </div>
+            <div className="note-preview-list">
+              {similarity.matches.length === 0 ? (
+                <p className="empty-state">No close cohort matches for this lens yet.</p>
+              ) : (
+                similarity.matches.map((entry) => (
+                  <article key={`${prospect.id}-${entry.id}`} className="note-preview-card">
+                    <strong>{entry.name}</strong>
+                    <span>{entry.draftYear} · #{entry.draftSlot} · {entry.outcomeTier}</span>
+                    <p>{entry.roleOutcome} · {entry.archetype} · match {entry.matchScore}</p>
+                    <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
+                      Open cohort comp
+                    </button>
+                  </article>
+                ))
+              )}
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>

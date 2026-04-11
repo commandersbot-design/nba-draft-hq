@@ -158,3 +158,67 @@ export function buildHistoricalDataset() {
     outcomeScore: outcomeScore(entry.outcomeTier),
   }));
 }
+
+function cohortLabel(mode, prospect, family, slotBand, archetypeFamily) {
+  switch (mode) {
+    case 'archetype':
+      return `Same archetype: ${prospect.archetype}`;
+    case 'slot-band':
+      return `Same draft band: ${slotBand}`;
+    case 'position-family':
+      return `Same position family: ${family}`;
+    default:
+      return archetypeFamily;
+  }
+}
+
+function cohortEntries(mode, prospect) {
+  const dataset = buildHistoricalDataset();
+  const family = positionFamily(prospect.position);
+  const slotBand = draftSlotBand(prospect.rank);
+
+  switch (mode) {
+    case 'archetype':
+      return dataset.filter((entry) => entry.archetype === prospect.archetype);
+    case 'slot-band':
+      return dataset.filter((entry) => entry.draftSlotBand === slotBand);
+    case 'position-family':
+      return dataset.filter((entry) => entry.positionFamily === family);
+    default:
+      return [];
+  }
+}
+
+function summarizeOutcomeRange(entries) {
+  if (entries.length === 0) return 'No precedent range yet';
+  const tiers = [...new Set(entries.map((entry) => entry.outcomeTier))]
+    .sort((left, right) => outcomeScore(right) - outcomeScore(left));
+  if (tiers.length === 1) return `${tiers[0]} outcomes only`;
+  return `${tiers[0]} to ${tiers[tiers.length - 1]} outcomes`;
+}
+
+export function buildHistoricalSimilarity(prospect, mode, limit = 4) {
+  const family = positionFamily(prospect.position);
+  const slotBand = draftSlotBand(prospect.rank);
+  const prospectArchetypeFamily = archetypeFamily(prospect.archetype);
+  const entries = cohortEntries(mode, prospect);
+  const matches = entries
+    .map((entry) => ({
+      ...entry,
+      matchScore: Number(precedentScore(prospect, entry).toFixed(1)),
+    }))
+    .sort((left, right) => right.matchScore - left.matchScore)
+    .slice(0, limit);
+  const outcomeMix = buildOutcomeMix(entries);
+  const topOutcome = outcomeMix[0]?.tier || '--';
+
+  return {
+    mode,
+    label: cohortLabel(mode, prospect, family, slotBand, prospectArchetypeFamily),
+    poolSize: entries.length,
+    outcomeMix,
+    outcomeRange: summarizeOutcomeRange(entries),
+    topOutcome,
+    matches,
+  };
+}
