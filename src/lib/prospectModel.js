@@ -3,6 +3,7 @@ import { findHistoricalPrecedents } from './historicalComps';
 import authoredProfilesTier3 from '../data/authoredProfilesTier3.json';
 import authoredProfilesTier4 from '../data/authoredProfilesTier4';
 import authoredProfilesTier5 from '../data/authoredProfilesTier5';
+import sourceDirectories from '../data/sourceDirectories';
 import profileStats from '../data/profileStats.json';
 
 function clamp(value, min, max) {
@@ -87,6 +88,23 @@ function searchUrl(query) {
 function buildFallbackSources(prospect, pipelineStats) {
   const sources = [];
   const playerLabel = [prospect.name, prospect.school].filter(Boolean).join(' ');
+  const directory = sourceDirectories[prospect.school];
+
+  if (directory?.team) {
+    sources.push({
+      label: 'Official team page',
+      url: directory.team,
+      type: 'team',
+    });
+  }
+
+  if (directory?.roster) {
+    sources.push({
+      label: 'Official roster',
+      url: directory.roster,
+      type: 'bio',
+    });
+  }
 
   if (playerLabel) {
     sources.push({
