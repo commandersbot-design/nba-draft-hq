@@ -9,6 +9,7 @@ export function MyBoardBuilder({
   watchlist,
   activeId,
   onSelect,
+  onToggleWatchlist,
   onToggleCompare,
   onQuickNote,
   onSetBoardView,
@@ -135,6 +136,7 @@ export function MyBoardBuilder({
               isWatched={watchlist.includes(prospect.id)}
               cardSettings={cardSettings}
               onSelect={onSelect}
+              onToggleWatchlist={onToggleWatchlist}
               onToggleCompare={onToggleCompare}
               onQuickNote={onQuickNote}
             />

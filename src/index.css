@@ -564,6 +564,15 @@ button {
   transform: translateY(-1px);
 }
 
+.rank-card.is-priority {
+  border-color: rgba(212, 175, 55, 0.18);
+}
+
+.rank-card.is-featured {
+  background: linear-gradient(180deg, #fffdf9, #f7eedc);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
 .rank-number {
   display: inline-flex;
   align-items: center;
@@ -576,6 +585,12 @@ button {
   color: var(--accent);
   font-size: 1.25rem;
   font-weight: 800;
+}
+
+.row-badge-featured {
+  color: var(--accent);
+  background: rgba(212, 175, 55, 0.14);
+  border-color: rgba(212, 175, 55, 0.28);
 }
 
 .rank-topline,
@@ -1276,6 +1291,12 @@ button {
   border: 1px solid var(--line);
   background: transparent;
   color: var(--text-soft);
+}
+
+.inline-action.is-active {
+  border-color: rgba(212, 175, 55, 0.28);
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--accent);
 }
 
 .rank-chip {

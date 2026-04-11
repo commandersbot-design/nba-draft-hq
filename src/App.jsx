@@ -391,7 +391,7 @@ function App() {
 
     switch (mode) {
       case 'top':
-        setBucket('Lottery');
+        setTierFilter('Tier 1');
         setSortBy('rank');
         setViewMode('peek');
         break;
@@ -778,6 +778,7 @@ function App() {
                     isWatched={watchlist.includes(prospect.id)}
                     cardSettings={cardSettings}
                     onSelect={setActiveId}
+                    onToggleWatchlist={toggleWatchlist}
                     onToggleCompare={toggleCompare}
                     onQuickNote={createNote}
                   />
@@ -843,9 +844,9 @@ function App() {
             prospect={activeProspect}
             notes={activeProspectNotes}
             viewMode={viewMode}
-            isWatched={!!activeProspect && watchlist.includes(activeProspect.id)}
-            isCompared={!!activeProspect && compareIds.includes(activeProspect.id)}
-            onToggleWatchlist={toggleWatchlist}
+              isWatched={!!activeProspect && watchlist.includes(activeProspect.id)}
+              isCompared={!!activeProspect && compareIds.includes(activeProspect.id)}
+              onToggleWatchlist={toggleWatchlist}
             onToggleCompare={toggleCompare}
             onUpdateTier={updateTier}
             onToggleTag={toggleTag}
