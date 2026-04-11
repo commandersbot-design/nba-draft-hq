@@ -294,9 +294,47 @@ button {
 
 .controls {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) repeat(7, minmax(110px, 0.52fr));
+  grid-template-columns: minmax(0, 1.4fr) repeat(4, minmax(120px, 0.56fr));
   gap: 14px;
   padding: 18px;
+}
+
+.discovery-strip {
+  padding: 22px;
+}
+
+.discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.discovery-card {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffefb, #f8f2e8);
+  color: var(--text);
+  border-radius: 20px;
+  padding: 16px;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.discovery-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(212, 175, 55, 0.28);
+  box-shadow: 0 16px 28px rgba(39, 31, 11, 0.08);
+}
+
+.discovery-card strong {
+  font-size: 1rem;
+}
+
+.discovery-card span {
+  color: var(--text-soft);
+  line-height: 1.6;
+  font-size: 0.9rem;
 }
 
 .saved-views-bar {
@@ -406,6 +444,16 @@ button {
 .control-block {
   display: grid;
   gap: 8px;
+}
+
+.controls-toggle-block {
+  align-content: end;
+}
+
+.controls-toggle {
+  width: 100%;
+  justify-content: center;
+  min-height: 50px;
 }
 
 .control-block label {
@@ -1262,6 +1310,7 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .discovery-grid,
   .quick-start-grid {
     grid-template-columns: 1fr;
   }

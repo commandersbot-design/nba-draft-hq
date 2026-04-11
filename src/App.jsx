@@ -70,6 +70,7 @@ function defaultCardSettings() {
 function App() {
   const [appView, setAppView] = useState('big-board');
   const [viewMode, setViewMode] = useState('peek');
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [query, setQuery] = useState('');
   const [position, setPosition] = useState('ALL');
   const [school, setSchool] = useState('ALL');
@@ -187,6 +188,7 @@ function App() {
   const taggedCount = Object.values(customTags).filter((tags) => tags.length > 0).length;
   const customTierCount = Object.keys(customTiers).length;
   const isFirstRun = watchlist.length === 0 && notes.length === 0 && savedViews.length === 0 && savedBoards.length === 0;
+  const advancedFiltersActive = school !== 'ALL' || leagueType !== 'ALL' || bucket !== 'ALL' || tierFilter !== 'ALL' || tagFilter !== 'ALL' || watchlistOnly;
 
   const notesByPlayer = useMemo(
     () => notes.reduce((accumulator, note) => {
@@ -384,6 +386,40 @@ function App() {
     downloadCsv('prospera-board', buildBoardExportRows(myBoardProspects));
   };
 
+  const applyQuickDiscovery = (mode) => {
+    clearFilters();
+
+    switch (mode) {
+      case 'top':
+        setBucket('Lottery');
+        setSortBy('rank');
+        setViewMode('peek');
+        break;
+      case 'guards':
+        setPosition('PG');
+        setSortBy('overall');
+        break;
+      case 'wings':
+        setQuery('wing');
+        setSortBy('overall');
+        break;
+      case 'bigs':
+        setQuery('big');
+        setSortBy('defense');
+        break;
+      case 'upside':
+        setTagFilter('upside');
+        setViewMode('peruse');
+        break;
+      case 'international':
+        setLeagueType('International Pro');
+        setSortBy('overall');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="page-shell">
       {/* Implementation note: Tier 1 surfaces are split into modular workspaces so
@@ -496,6 +532,42 @@ function App() {
             </div>
           </section>
 
+          <section className="discovery-strip panel">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Start Exploring</p>
+                <h3>Open the board with one click</h3>
+              </div>
+              <p className="section-meta">Fast paths for new users who do not want to configure filters first.</p>
+            </div>
+            <div className="discovery-grid">
+              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('top')}>
+                <strong>Top of board</strong>
+                <span>Start with the lottery group and the clearest top-end names.</span>
+              </button>
+              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('guards')}>
+                <strong>Lead guards</strong>
+                <span>Jump straight into initiators, creators, and shot-driving guard profiles.</span>
+              </button>
+              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('wings')}>
+                <strong>Wings</strong>
+                <span>Scan the strongest wing archetypes and scalable lineup fits.</span>
+              </button>
+              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('bigs')}>
+                <strong>Bigs</strong>
+                <span>Focus on rim, frontcourt versatility, and defensive translation.</span>
+              </button>
+              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('international')}>
+                <strong>International</strong>
+                <span>See global prospects and non-NCAA development paths quickly.</span>
+              </button>
+              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('upside')}>
+                <strong>Upside swings</strong>
+                <span>Filter toward longer-term bets and more volatile ceiling plays.</span>
+              </button>
+            </div>
+          </section>
+
           {isFirstRun && (
             <section className="quick-start panel">
               <div className="section-head">
@@ -523,6 +595,54 @@ function App() {
           )}
 
           <section className="controls panel">
+            <div className="control-block search-block">
+              <label htmlFor="search">Search</label>
+              <input
+                id="search"
+                type="search"
+                placeholder="Search player, school, archetype, or role"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </div>
+            <div className="control-block">
+              <label htmlFor="position-filter">Position</label>
+              <select id="position-filter" value={position} onChange={(event) => setPosition(event.target.value)}>
+                <option value="ALL">All positions</option>
+                {positions.map((option) => <option key={option} value={option}>{option}</option>)}
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="sort-filter">Sort</label>
+              <select id="sort-filter" value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
+                <option value="rank">Rank</option>
+                <option value="overall">Overall Score</option>
+                <option value="tier">Tier</option>
+                <option value="age">Age</option>
+                <option value="position">Position</option>
+                <option value="offense">Offense</option>
+                <option value="defense">Defense</option>
+                <option value="manual">Custom Order</option>
+                <option value="movement">Movement</option>
+              </select>
+            </div>
+            <div className="control-block">
+              <label htmlFor="mode-filter">View</label>
+              <select id="mode-filter" value={viewMode} onChange={(event) => setViewMode(event.target.value)}>
+                {VIEW_MODES.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}
+              </select>
+            </div>
+            <div className="control-block controls-toggle-block">
+              <label>More</label>
+              <button
+                type="button"
+                className={`action-button controls-toggle${showAdvancedFilters ? ' is-active' : ''}`}
+                onClick={() => setShowAdvancedFilters((current) => !current)}
+              >
+                {showAdvancedFilters ? 'Hide advanced' : advancedFiltersActive ? 'Advanced filters active' : 'Show advanced'}
+              </button>
+            </div>
+
             <div className="saved-views-bar">
               <div className="saved-view-controls">
                 <input
@@ -576,76 +696,59 @@ function App() {
               </div>
             </div>
 
-            <div className="control-block search-block">
-              <label htmlFor="search">Search</label>
-              <input
-                id="search"
-                type="search"
-                placeholder="Player, school, position, archetype"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-              />
-            </div>
-            <div className="control-block">
-              <label htmlFor="position-filter">Position</label>
-              <select id="position-filter" value={position} onChange={(event) => setPosition(event.target.value)}>
-                <option value="ALL">All positions</option>
-                {positions.map((option) => <option key={option} value={option}>{option}</option>)}
-              </select>
-            </div>
-            <div className="control-block">
-              <label htmlFor="school-filter">School</label>
-              <select id="school-filter" value={school} onChange={(event) => setSchool(event.target.value)}>
-                <option value="ALL">All schools</option>
-                {schools.map((option) => <option key={option} value={option}>{option}</option>)}
-              </select>
-            </div>
-            <div className="control-block">
-              <label htmlFor="league-filter">League Type</label>
-              <select id="league-filter" value={leagueType} onChange={(event) => setLeagueType(event.target.value)}>
-                <option value="ALL">All leagues</option>
-                {leagueTypes.map((option) => <option key={option} value={option}>{option}</option>)}
-              </select>
-            </div>
-            <div className="control-block">
-              <label htmlFor="bucket-filter">Board Segment</label>
-              <select id="bucket-filter" value={bucket} onChange={(event) => setBucket(event.target.value)}>
-                <option value="ALL">Entire board</option>
-                <option value="Top 5">Top 5</option>
-                <option value="Lottery">Lottery</option>
-                <option value="First round">First round</option>
-                <option value="Second round">Second round</option>
-                <option value="Board depth">Board depth</option>
-              </select>
-            </div>
-            <div className="control-block">
-              <label htmlFor="tier-filter">Tier</label>
-              <select id="tier-filter" value={tierFilter} onChange={(event) => setTierFilter(event.target.value)}>
-                <option value="ALL">All tiers</option>
-                {tiers.map((option) => <option key={option} value={option}>{option}</option>)}
-              </select>
-            </div>
-            <div className="control-block">
-              <label htmlFor="tag-filter">Tag</label>
-              <select id="tag-filter" value={tagFilter} onChange={(event) => setTagFilter(event.target.value)}>
-                <option value="ALL">All tags</option>
-                {TAG_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
-              </select>
-            </div>
-            <div className="control-block">
-              <label htmlFor="sort-filter">Sort</label>
-              <select id="sort-filter" value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
-                <option value="rank">Rank</option>
-                <option value="overall">Overall Score</option>
-                <option value="tier">Tier</option>
-                <option value="age">Age</option>
-                <option value="position">Position</option>
-                <option value="offense">Offensive Score</option>
-                <option value="defense">Defensive Score</option>
-                <option value="manual">Custom Order</option>
-                <option value="movement">Movement</option>
-              </select>
-            </div>
+            {showAdvancedFilters && (
+              <>
+                <div className="control-block">
+                  <label htmlFor="school-filter">School</label>
+                  <select id="school-filter" value={school} onChange={(event) => setSchool(event.target.value)}>
+                    <option value="ALL">All schools</option>
+                    {schools.map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                </div>
+                <div className="control-block">
+                  <label htmlFor="league-filter">League Type</label>
+                  <select id="league-filter" value={leagueType} onChange={(event) => setLeagueType(event.target.value)}>
+                    <option value="ALL">All leagues</option>
+                    {leagueTypes.map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                </div>
+                <div className="control-block">
+                  <label htmlFor="bucket-filter">Board Segment</label>
+                  <select id="bucket-filter" value={bucket} onChange={(event) => setBucket(event.target.value)}>
+                    <option value="ALL">Entire board</option>
+                    <option value="Top 5">Top 5</option>
+                    <option value="Lottery">Lottery</option>
+                    <option value="First round">First round</option>
+                    <option value="Second round">Second round</option>
+                    <option value="Board depth">Board depth</option>
+                  </select>
+                </div>
+                <div className="control-block">
+                  <label htmlFor="tier-filter">Tier</label>
+                  <select id="tier-filter" value={tierFilter} onChange={(event) => setTierFilter(event.target.value)}>
+                    <option value="ALL">All tiers</option>
+                    {tiers.map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                </div>
+                <div className="control-block">
+                  <label htmlFor="tag-filter">Tag</label>
+                  <select id="tag-filter" value={tagFilter} onChange={(event) => setTagFilter(event.target.value)}>
+                    <option value="ALL">All tags</option>
+                    {TAG_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                </div>
+                <div className="control-block">
+                  <label>Saved Players</label>
+                  <button
+                    type="button"
+                    className={`action-button controls-toggle${watchlistOnly ? ' is-active' : ''}`}
+                    onClick={() => setWatchlistOnly((current) => !current)}
+                  >
+                    {watchlistOnly ? 'Showing saved only' : 'Show saved only'}
+                  </button>
+                </div>
+              </>
+            )}
           </section>
 
           {appView === 'big-board' && (
