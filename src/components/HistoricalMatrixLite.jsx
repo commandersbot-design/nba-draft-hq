@@ -27,6 +27,7 @@ const historicalProspects = buildHistoricalDataset();
 
 export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHistorical }) {
   const [query, setQuery] = useState('');
+  const [draftYearFilter, setDraftYearFilter] = useState('ALL');
   const [outcomeFilter, setOutcomeFilter] = useState('ALL');
   const [positionFilter, setPositionFilter] = useState('ALL');
   const [slotFilter, setSlotFilter] = useState('ALL');
@@ -39,6 +40,11 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
     if (!selectedEntry) return;
     setQuery(selectedEntry.name);
   }, [selectedHistoricalId]);
+
+  const draftYearOptions = useMemo(
+    () => [...new Set(historicalProspects.map((entry) => entry.draftYear))].sort((left, right) => right - left),
+    [],
+  );
 
   const outcomeOptions = useMemo(
     () => [...new Set(historicalProspects.map((entry) => entry.outcomeTier))],
@@ -71,12 +77,13 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
 
     return (
       (!query || haystack.includes(query.toLowerCase())) &&
+      (draftYearFilter === 'ALL' || String(entry.draftYear) === draftYearFilter) &&
       (outcomeFilter === 'ALL' || entry.outcomeTier === outcomeFilter) &&
       (positionFilter === 'ALL' || entry.position === positionFilter) &&
       (slotFilter === 'ALL' || entry.draftSlotBand === slotFilter) &&
       (archetypeFilter === 'ALL' || entry.archetypeFamily === archetypeFilter)
     );
-  }), [archetypeFilter, outcomeFilter, positionFilter, query, slotFilter]);
+  }), [archetypeFilter, draftYearFilter, outcomeFilter, positionFilter, query, slotFilter]);
 
   const focusedEntry = useMemo(
     () => historicalProspects.find((entry) => entry.id === selectedHistoricalId) || rows[0] || null,
@@ -91,10 +98,15 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
     }, {});
 
     return {
+      yearRange: rows.length ? `${Math.min(...rows.map((entry) => entry.draftYear))}-${Math.max(...rows.map((entry) => entry.draftYear))}` : '--',
       averageBpm: rows.length ? average(rows.map((entry) => Number(entry.bpm) || 0)).toFixed(1) : '--',
       averageTs: rows.length ? `${average(rows.map((entry) => Number.parseFloat(String(entry.trueShooting).replace('%', '')) || 0)).toFixed(1)}%` : '--',
       topOutcome: Object.entries(outcomeCounts).sort((left, right) => right[1] - left[1])[0]?.[0] || '--',
       slotContext: slotFilter === 'ALL' ? 'All slot bands' : slotFilter,
+      outcomeMix: ['Outlier', 'Hit', 'Swing', 'Miss']
+        .filter((tier) => outcomeCounts[tier])
+        .map((tier) => `${tier} ${Math.round((outcomeCounts[tier] / rows.length) * 100)}%`)
+        .join(' · ') || '--',
     };
   }, [rows, slotFilter]);
 
@@ -135,6 +147,13 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
           />
         </div>
         <div className="control-block">
+          <label htmlFor="historical-year">Draft Year</label>
+          <select id="historical-year" value={draftYearFilter} onChange={(event) => setDraftYearFilter(event.target.value)}>
+            <option value="ALL">All draft years</option>
+            {draftYearOptions.map((option) => <option key={option} value={String(option)}>{option}</option>)}
+          </select>
+        </div>
+        <div className="control-block">
           <label htmlFor="historical-outcome">Outcome</label>
           <select id="historical-outcome" value={outcomeFilter} onChange={(event) => setOutcomeFilter(event.target.value)}>
             <option value="ALL">All outcomes</option>
@@ -171,6 +190,11 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
           <span className="stat-detail">{overview.slotContext}</span>
         </article>
         <article className="profile-hero-card stat-mini-card">
+          <span className="stat-label">Class Window</span>
+          <strong>{overview.yearRange}</strong>
+          <span className="stat-detail">{draftYearFilter === 'ALL' ? 'Filtered cohort range' : `Draft year ${draftYearFilter}`}</span>
+        </article>
+        <article className="profile-hero-card stat-mini-card">
           <span className="stat-label">Top Outcome</span>
           <strong>{overview.topOutcome}</strong>
           <span className="stat-detail">Dominant result in current slice</span>
@@ -185,6 +209,14 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
           <strong>{overview.averageTs}</strong>
           <span className="stat-detail">Efficiency baseline for this view</span>
         </article>
+      </div>
+
+      <div className="board-summary board-summary-subtle">
+        <div className="summary-chip">{draftYearFilter === 'ALL' ? 'All classes' : `Class ${draftYearFilter}`}</div>
+        <div className="summary-chip">{overview.slotContext}</div>
+        <div className="summary-chip">{positionFilter === 'ALL' ? 'All positions' : positionFilter}</div>
+        <div className="summary-chip">{archetypeFilter === 'ALL' ? 'All archetype families' : archetypeFilter}</div>
+        <div className="summary-chip">{overview.outcomeMix}</div>
       </div>
 
       {focusedEntry && (

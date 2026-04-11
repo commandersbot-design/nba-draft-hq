@@ -11,7 +11,8 @@
     "ingest:seed-prospects": "node scripts/ingestion/seed-prospects.js",
     "ingest:sync": "node scripts/ingestion/sync-all.js",
     "ingest:transform": "node scripts/ingestion/transform.js",
-    "ingest:export": "node scripts/ingestion/export-profile-stats.js"
+    "ingest:export": "node scripts/ingestion/export-profile-stats.js",
+    "ingest:historical": "node scripts/ingestion/export-historical-prospects.js"
   },
   "dependencies": {
     "react": "^18.2.0",
