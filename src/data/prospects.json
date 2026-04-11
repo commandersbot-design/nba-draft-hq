@@ -716,7 +716,57 @@
     "wingspan": "",
     "archetypeBase": "Lead guard organizer",
     "archetype": "Tempo Pilot",
-    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment."
+    "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
+    "age": 20.4,
+    "measurements": {
+      "height": "6-4",
+      "weight": "175",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate",
+    "roleProjection": "Starting lead or co-creator",
+    "scores": {
+      "overallComposite": 79,
+      "offense": 80,
+      "defense": 67
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 82, "note": "Wins paint touches with pacing changes, angles, and patient downhill craft." },
+      { "name": "Decision Making", "score": 84, "note": "Keeps possessions organized and usually sees the clean early read." },
+      { "name": "Passing Creation", "score": 81, "note": "Can create advantage passes off live dribble without overextending the action." },
+      { "name": "Shooting Gravity", "score": 72, "note": "Shot is credible enough to keep defenses attached, but not yet a true warper." },
+      { "name": "Off-Ball Value", "score": 66, "note": "Value is still strongest when he is steering the offense." },
+      { "name": "Processing Speed", "score": 85, "note": "Processes quickly and rarely looks sped up by the possession." },
+      { "name": "Scalability", "score": 74, "note": "Feel gives him lineup portability, but the jumper still determines how easy the fit is." },
+      { "name": "Defensive Versatility", "score": 63, "note": "Competitive guard defender, though not a size-driven stopper." }
+    ],
+    "summary": {
+      "synopsis": "Steady secondary lead guard prospect whose value starts with pace control, passing organization, and low-chaos possession management.",
+      "strengths": [
+        "Runs offense with maturity and keeps teammates involved.",
+        "Passing reads arrive early enough to keep actions flowing.",
+        "Gets to workable paint touches without needing elite burst."
+      ],
+      "weaknesses": [
+        "Needs the jumper to become more forceful to unlock higher-usage pathways.",
+        "Defensive value is functional rather than lineup-shifting."
+      ],
+      "swingFactors": [
+        "Whether the pull-up threat becomes strong enough to bend coverages.",
+        "How much point-of-attack resistance he can offer against bigger guards."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Winning lead guard who organizes offense, limits mistakes, and closes games with composed advantage creation.",
+      "medianOutcome": "Rotation lead or co-creator who stabilizes second units and fits skill-first lineups.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The floor is strong because the feel is real; the ceiling depends on the shot carrying bigger offensive leverage.",
+      "draftRange": "Lottery / mid-first",
+      "stockBand": "Rising"
+    },
+    "sources": [
+      { "label": "Alabama roster", "url": "https://rolltide.com/sports/mens-basketball/roster", "type": "bio" }
+    ]
   },
   {
     "id": "chriscenac",
@@ -735,7 +785,57 @@
     "wingspan": "",
     "archetypeBase": "Modern frontcourt big",
     "archetype": "Coverage Bender Big",
-    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses."
+    "teamFit": "Best next to a mobile frontcourt partner or within aggressive help-heavy defenses.",
+    "age": 19.1,
+    "measurements": {
+      "height": "6-11",
+      "weight": "230",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting frontcourt piece",
+    "scores": {
+      "overallComposite": 78,
+      "offense": 72,
+      "defense": 84
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 67, "note": "Offense still comes more from tools, length, and finishing than self-created polish." },
+      { "name": "Decision Making", "score": 74, "note": "Keeps things simple and generally plays within the possession." },
+      { "name": "Passing Creation", "score": 58, "note": "Mostly a play-finisher and connector rather than a true passing hub." },
+      { "name": "Shooting Gravity", "score": 56, "note": "Spacing projection remains more long-term than current." },
+      { "name": "Off-Ball Value", "score": 81, "note": "Rim pressure, offensive glass, and activity give him immediate utility." },
+      { "name": "Processing Speed", "score": 76, "note": "Defensive reads and recovery reactions are encouraging for his age." },
+      { "name": "Scalability", "score": 80, "note": "Can slot into lineups that need size, mobility, and low-maintenance offense." },
+      { "name": "Defensive Versatility", "score": 88, "note": "Coverage range and playmaking are the core selling points." }
+    ],
+    "summary": {
+      "synopsis": "Toolsy frontcourt bet whose value starts with defensive range, rim deterrence, and modern off-ball big utility.",
+      "strengths": [
+        "Brings real defensive event creation for a young big.",
+        "Covers ground well enough to fit more than one scheme.",
+        "Finishing and activity play already look translatable."
+      ],
+      "weaknesses": [
+        "Half-court offensive creation is still limited.",
+        "Shooting value is mostly projection today."
+      ],
+      "swingFactors": [
+        "Whether the jumper becomes playable enough to hold spacing.",
+        "How much offensive processing he adds beyond finishing and connective reads."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "Impact two-way big who can anchor aggressive defensive coverages while staying playable offensively.",
+      "medianOutcome": "Starting or high-minute rotation big built on defense, activity, and vertical utility.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The defensive base is compelling, but the offensive ceiling still depends on skill growth rather than current creation.",
+      "draftRange": "Lottery / mid-first",
+      "stockBand": "Rising"
+    },
+    "sources": [
+      { "label": "Houston roster", "url": "https://uhcougars.com/sports/mens-basketball/roster", "type": "bio" }
+    ]
   },
   {
     "id": "amariallen",
@@ -754,7 +854,57 @@
     "wingspan": "",
     "archetypeBase": "Two-way wing",
     "archetype": "Switchblade Wing",
-    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent."
+    "teamFit": "Fits switch-heavy groups that need a wing connector next to on-ball talent.",
+    "age": 19.2,
+    "measurements": {
+      "height": "6-6",
+      "weight": "195",
+      "wingspan": ""
+    },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting wing connector",
+    "scores": {
+      "overallComposite": 77,
+      "offense": 73,
+      "defense": 79
+    },
+    "traits": [
+      { "name": "Advantage Creation", "score": 71, "note": "Can attack tilted defenses, but not yet a primary on-ball problem solver." },
+      { "name": "Decision Making", "score": 77, "note": "Usually stays within the read and keeps the game moving." },
+      { "name": "Passing Creation", "score": 64, "note": "Useful secondary passer without major creation burden." },
+      { "name": "Shooting Gravity", "score": 73, "note": "Projects as a respectable spacing wing if the jumper settles." },
+      { "name": "Off-Ball Value", "score": 82, "note": "Cuts, fills lanes, and complements star usage well." },
+      { "name": "Processing Speed", "score": 78, "note": "Reacts quickly enough to play a connective role on both ends." },
+      { "name": "Scalability", "score": 84, "note": "Wing size plus low-maintenance offense should fit around higher-end talent." },
+      { "name": "Defensive Versatility", "score": 81, "note": "Has the tools to guard across wing assignments and survive switches." }
+    ],
+    "summary": {
+      "synopsis": "Projectable two-way wing whose strongest pathway is as a scalable connector rather than an offense-driver.",
+      "strengths": [
+        "Wing size and movement give him real lineup utility.",
+        "Plays comfortably off the ball and does not need many touches.",
+        "Defensive tools should translate into multi-assignment value."
+      ],
+      "weaknesses": [
+        "On-ball creation ceiling is still limited.",
+        "Needs the jumper to stabilize to maximize the 3-and-D-plus outcome."
+      ],
+      "swingFactors": [
+        "Whether the shooting becomes clearly respected by NBA defenses.",
+        "How much self-creation arrives to raise the offensive ceiling."
+      ]
+    },
+    "projection": {
+      "bestOutcome": "High-end two-way wing connector who closes games because the fit is easy on both ends.",
+      "medianOutcome": "Rotation wing with scalable defense and enough shooting to stay in lineups.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The role floor is attractive, but the long-term value depends on whether the jumper becomes a true lineup-strength enhancer.",
+      "draftRange": "Lottery / mid-first",
+      "stockBand": "Cooling"
+    },
+    "sources": [
+      { "label": "Alabama roster", "url": "https://rolltide.com/sports/mens-basketball/roster", "type": "bio" }
+    ]
   },
   {
     "id": "nateament",
