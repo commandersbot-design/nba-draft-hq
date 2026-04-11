@@ -229,6 +229,35 @@ button {
   align-content: start;
 }
 
+.quick-start {
+  padding: 22px;
+}
+
+.quick-start-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.quick-start-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffdf9, #f8f2e7);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.quick-start-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+}
+
+.quick-start-card p {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+
 .stat-card {
   border: 1px solid var(--line);
   background: linear-gradient(180deg, #fffdf9, #f9f4ea);
@@ -543,6 +572,17 @@ button {
   font-size: 0.88rem;
 }
 
+.rank-why {
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  line-height: 1.6;
+  font-size: 0.89rem;
+}
+
+.rank-why strong {
+  color: var(--text);
+}
+
 .inline-tags {
   display: flex;
   gap: 6px;
@@ -620,6 +660,13 @@ button {
 
 .detail-section + .detail-section {
   margin-top: 18px;
+}
+
+.highlight-section {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffdf9, #f8f2e7);
+  border-radius: 18px;
 }
 
 .detail-section h4 {
@@ -1212,6 +1259,10 @@ button {
   }
 
   .matrix-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-start-grid {
     grid-template-columns: 1fr;
   }
 

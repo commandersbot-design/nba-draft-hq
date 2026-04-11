@@ -33,23 +33,23 @@ export const APP_VIEWS = [
 export const VIEW_MODES = [
   {
     id: 'skim',
-    label: 'Skim',
-    description: 'Fast scan of rank, school, archetype, and stock movement.',
+    label: 'Snapshot',
+    description: 'Fast scan of the board with the most important signals only.',
   },
   {
     id: 'peek',
-    label: 'Peek',
-    description: 'Adds profile signals, tiers, and projection context.',
+    label: 'Summary',
+    description: 'Adds role, tier, and evaluation context without the full scouting layer.',
   },
   {
     id: 'peruse',
-    label: 'Peruse',
-    description: 'Expands compare, notes, and workflow context.',
+    label: 'Report',
+    description: 'Brings in compare, notes, and deeper board workflow.',
   },
   {
     id: 'deep-dive',
-    label: 'Deep Dive',
-    description: 'Full scouting operating view with editable board controls.',
+    label: 'Full Profile',
+    description: 'Complete scouting workspace with all profile and board controls visible.',
   },
 ];
 

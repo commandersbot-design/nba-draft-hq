@@ -186,6 +186,7 @@ function App() {
   const notesCount = notes.length;
   const taggedCount = Object.values(customTags).filter((tags) => tags.length > 0).length;
   const customTierCount = Object.keys(customTiers).length;
+  const isFirstRun = watchlist.length === 0 && notes.length === 0 && savedViews.length === 0 && savedBoards.length === 0;
 
   const notesByPlayer = useMemo(
     () => notes.reduce((accumulator, note) => {
@@ -494,6 +495,32 @@ function App() {
               </article>
             </div>
           </section>
+
+          {isFirstRun && (
+            <section className="quick-start panel">
+              <div className="section-head">
+                <div>
+                  <p className="eyebrow">Quick Start</p>
+                  <h3>Start here</h3>
+                </div>
+                <p className="section-meta">Three steps to make the board useful immediately.</p>
+              </div>
+              <div className="quick-start-grid">
+                <article className="quick-start-card">
+                  <strong>1. Scan the board</strong>
+                  <p>Use `Summary` first. It gives enough context to understand who matters without opening every profile.</p>
+                </article>
+                <article className="quick-start-card">
+                  <strong>2. Save a shortlist</strong>
+                  <p>Add players to the watchlist as you go. That turns the board into a working shortlist instead of a static ranking.</p>
+                </article>
+                <article className="quick-start-card">
+                  <strong>3. Compare before ranking</strong>
+                  <p>Queue two or three players, compare them, then move to `My Board` once the tradeoffs are clearer.</p>
+                </article>
+              </div>
+            </section>
+          )}
 
           <section className="controls panel">
             <div className="saved-views-bar">

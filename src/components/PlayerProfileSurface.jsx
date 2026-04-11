@@ -26,6 +26,9 @@ export function PlayerProfileSurface({
     );
   }
 
+  const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
+  const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
+
   return (
     <div className="detail-card">
       <div className="detail-top">
@@ -83,6 +86,14 @@ export function PlayerProfileSurface({
           <span className="stat-detail">{prospect.archetypeBase}</span>
         </div>
       </section>
+
+      <div className="detail-section highlight-section">
+        <h4>Why This Player Matters</h4>
+        <p>
+          {whyItMatters}
+          {topTrait ? ` ${topTrait.name} is the clearest reason this profile stays relevant on the board.` : ''}
+        </p>
+      </div>
 
       <div className="detail-grid">
         {[

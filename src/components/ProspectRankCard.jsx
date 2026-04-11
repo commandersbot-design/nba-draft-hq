@@ -8,6 +8,9 @@ export function ProspectRankCard({
   onToggleCompare,
   onQuickNote,
 }) {
+  const topTrait = prospect.traitScores?.[0];
+  const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
+
   return (
     <button
       type="button"
@@ -53,6 +56,13 @@ export function ProspectRankCard({
               <span>{prospect.traitScores.slice(0, 2).map((trait) => `${trait.name.split(' ')[0]} ${trait.score}`).join(' / ')}</span>
             )}
           </div>
+        )}
+
+        {viewMode !== 'skim' && whyItMatters && (
+          <p className="rank-why">
+            <strong>Why it matters:</strong> {whyItMatters}
+            {topTrait ? ` ${topTrait.name} is currently the clearest carrying trait.` : ''}
+          </p>
         )}
 
         {(viewMode === 'peruse' || viewMode === 'deep-dive') && (
