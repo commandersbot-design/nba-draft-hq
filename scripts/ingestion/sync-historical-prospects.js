@@ -1,10 +1,5 @@
-const fs = require('fs');
-const path = require('path');
 const { openDatabase, nowIso, withTransaction } = require('../lib/db');
-
-const SOURCE_PATH = path.join(__dirname, '..', '..', 'imports', 'fixtures', 'historical-prospects-seed.json');
-const SOURCE_NAME = 'historical-seed';
-const SEASON = 'historical';
+const { fetchHistoricalDataset } = require('./sources/historicalDataset');
 
 function toNumber(value, fallback = null) {
   const next = Number(value);
@@ -15,83 +10,10 @@ function toString(value, fallback = '') {
   return typeof value === 'string' ? value.trim() : value == null ? fallback : String(value).trim();
 }
 
-function loadSourceRows() {
-  return JSON.parse(fs.readFileSync(SOURCE_PATH, 'utf8'));
-}
-
-function syncHistoricalProspects() {
+async function syncHistoricalProspects() {
   const db = openDatabase();
   const startedAt = nowIso();
-  const rows = loadSourceRows();
-  const upsert = db.prepare(`
-    INSERT INTO historical_prospects_raw (
-      historical_id,
-      draft_year,
-      draft_slot,
-      player_name,
-      position,
-      school,
-      height,
-      age,
-      archetype,
-      role_outcome,
-      outcome_tier,
-      points_per_game,
-      rebounds_per_game,
-      assists_per_game,
-      true_shooting,
-      bpm,
-      notes,
-      source,
-      payload,
-      last_updated,
-      updated_at
-    ) VALUES (
-      @historical_id,
-      @draft_year,
-      @draft_slot,
-      @player_name,
-      @position,
-      @school,
-      @height,
-      @age,
-      @archetype,
-      @role_outcome,
-      @outcome_tier,
-      @points_per_game,
-      @rebounds_per_game,
-      @assists_per_game,
-      @true_shooting,
-      @bpm,
-      @notes,
-      @source,
-      @payload,
-      @last_updated,
-      @updated_at
-    )
-    ON CONFLICT(historical_id) DO UPDATE SET
-      draft_year = excluded.draft_year,
-      draft_slot = excluded.draft_slot,
-      player_name = excluded.player_name,
-      position = excluded.position,
-      school = excluded.school,
-      height = excluded.height,
-      age = excluded.age,
-      archetype = excluded.archetype,
-      role_outcome = excluded.role_outcome,
-      outcome_tier = excluded.outcome_tier,
-      points_per_game = excluded.points_per_game,
-      rebounds_per_game = excluded.rebounds_per_game,
-      assists_per_game = excluded.assists_per_game,
-      true_shooting = excluded.true_shooting,
-      bpm = excluded.bpm,
-      notes = excluded.notes,
-      source = excluded.source,
-      payload = excluded.payload,
-      last_updated = excluded.last_updated,
-      updated_at = excluded.updated_at
-  `);
-  const insertLog = db.prepare(`
+  const syncLog = db.prepare(`
     INSERT INTO source_sync_log (
       source,
       sync_type,
@@ -106,8 +28,78 @@ function syncHistoricalProspects() {
   `);
 
   try {
+    const dataset = await fetchHistoricalDataset();
+    const upsert = db.prepare(`
+      INSERT INTO historical_prospects_raw (
+        historical_id,
+        draft_year,
+        draft_slot,
+        player_name,
+        position,
+        school,
+        height,
+        age,
+        archetype,
+        role_outcome,
+        outcome_tier,
+        points_per_game,
+        rebounds_per_game,
+        assists_per_game,
+        true_shooting,
+        bpm,
+        notes,
+        source,
+        payload,
+        last_updated,
+        updated_at
+      ) VALUES (
+        @historical_id,
+        @draft_year,
+        @draft_slot,
+        @player_name,
+        @position,
+        @school,
+        @height,
+        @age,
+        @archetype,
+        @role_outcome,
+        @outcome_tier,
+        @points_per_game,
+        @rebounds_per_game,
+        @assists_per_game,
+        @true_shooting,
+        @bpm,
+        @notes,
+        @source,
+        @payload,
+        @last_updated,
+        @updated_at
+      )
+      ON CONFLICT(historical_id) DO UPDATE SET
+        draft_year = excluded.draft_year,
+        draft_slot = excluded.draft_slot,
+        player_name = excluded.player_name,
+        position = excluded.position,
+        school = excluded.school,
+        height = excluded.height,
+        age = excluded.age,
+        archetype = excluded.archetype,
+        role_outcome = excluded.role_outcome,
+        outcome_tier = excluded.outcome_tier,
+        points_per_game = excluded.points_per_game,
+        rebounds_per_game = excluded.rebounds_per_game,
+        assists_per_game = excluded.assists_per_game,
+        true_shooting = excluded.true_shooting,
+        bpm = excluded.bpm,
+        notes = excluded.notes,
+        source = excluded.source,
+        payload = excluded.payload,
+        last_updated = excluded.last_updated,
+        updated_at = excluded.updated_at
+    `);
+
     withTransaction(db, () => {
-      for (const row of rows) {
+      for (const row of dataset.rows) {
         const timestamp = nowIso();
         upsert.run({
           historical_id: toString(row.id),
@@ -127,7 +119,7 @@ function syncHistoricalProspects() {
           true_shooting: toString(row.trueShooting),
           bpm: toNumber(row.bpm, null),
           notes: toString(row.notes),
-          source: SOURCE_NAME,
+          source: dataset.source,
           payload: JSON.stringify(row),
           last_updated: timestamp,
           updated_at: timestamp,
@@ -135,30 +127,30 @@ function syncHistoricalProspects() {
       }
     });
 
-    insertLog.run(
-      SOURCE_NAME,
+    syncLog.run(
+      dataset.source,
       'historical-sync',
-      SEASON,
+      dataset.season,
       'success',
       startedAt,
       nowIso(),
-      rows.length,
-      rows.length,
-      JSON.stringify({ sourceFile: path.basename(SOURCE_PATH) }),
+      dataset.rows.length,
+      dataset.rows.length,
+      JSON.stringify(dataset.metadata),
     );
 
-    console.log(`Synced ${rows.length} historical records into SQLite.`);
+    console.log(`Synced ${dataset.rows.length} historical records into SQLite from ${dataset.metadata.datasetPath}.`);
   } catch (error) {
-    insertLog.run(
-      SOURCE_NAME,
+    syncLog.run(
+      'HistoricalDatasetImport',
       'historical-sync',
-      SEASON,
+      'historical',
       'error',
       startedAt,
       nowIso(),
-      rows.length,
       0,
-      JSON.stringify({ sourceFile: path.basename(SOURCE_PATH), error: error.message }),
+      0,
+      JSON.stringify({ error: error.message }),
     );
     throw error;
   } finally {

@@ -3,6 +3,7 @@ import { buildHistoricalDataset, draftSlotBand } from '../lib/historicalComps';
 
 const COLUMN_OPTIONS = [
   { id: 'draftYear', label: 'Year' },
+  { id: 'eraBucket', label: 'Era' },
   { id: 'draftSlot', label: 'Draft Slot' },
   { id: 'draftSlotBand', label: 'Slot Band' },
   { id: 'position', label: 'Position' },
@@ -23,10 +24,27 @@ const COLUMN_OPTIONS = [
 ];
 
 const DEFAULT_COLUMNS = ['draftYear', 'draftSlot', 'position', 'archetype', 'roleOutcome', 'outcomeTier', 'pointsPerGame', 'trueShooting', 'bpm'];
+const COHORT_MODES = [
+  { id: 'all', label: 'All Results' },
+  { id: 'same-archetype', label: 'Same Archetype' },
+  { id: 'same-slot-band', label: 'Same Slot Band' },
+  { id: 'same-position-family', label: 'Same Position Family' },
+];
+
 const historicalProspects = buildHistoricalDataset();
+
+function cohortRows(rows, focusedEntry, cohortMode) {
+  if (!focusedEntry || cohortMode === 'all') return rows;
+  if (cohortMode === 'same-archetype') return rows.filter((entry) => entry.archetype === focusedEntry.archetype);
+  if (cohortMode === 'same-slot-band') return rows.filter((entry) => entry.draftSlotBand === focusedEntry.draftSlotBand);
+  if (cohortMode === 'same-position-family') return rows.filter((entry) => entry.positionFamily === focusedEntry.positionFamily);
+  return rows;
+}
 
 export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHistorical }) {
   const [query, setQuery] = useState('');
+  const [focusedId, setFocusedId] = useState(selectedHistoricalId);
+  const [cohortMode, setCohortMode] = useState('all');
   const [draftYearFilter, setDraftYearFilter] = useState('ALL');
   const [outcomeFilter, setOutcomeFilter] = useState('ALL');
   const [positionFilter, setPositionFilter] = useState('ALL');
@@ -38,6 +56,7 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
     if (!selectedHistoricalId) return;
     const selectedEntry = historicalProspects.find((entry) => entry.id === selectedHistoricalId);
     if (!selectedEntry) return;
+    setFocusedId(selectedEntry.id);
     setQuery(selectedEntry.name);
   }, [selectedHistoricalId]);
 
@@ -55,16 +74,18 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
     () => [...new Set(historicalProspects.map((entry) => entry.position))],
     [],
   );
+
   const slotOptions = useMemo(
     () => [...new Set(historicalProspects.map((entry) => entry.draftSlotBand))],
     [],
   );
+
   const archetypeFamilies = useMemo(
     () => [...new Set(historicalProspects.map((entry) => entry.archetypeFamily))],
     [],
   );
 
-  const rows = useMemo(() => historicalProspects.filter((entry) => {
+  const filteredRows = useMemo(() => historicalProspects.filter((entry) => {
     const haystack = [
       entry.name,
       entry.school,
@@ -86,8 +107,13 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
   }), [archetypeFilter, draftYearFilter, outcomeFilter, positionFilter, query, slotFilter]);
 
   const focusedEntry = useMemo(
-    () => historicalProspects.find((entry) => entry.id === selectedHistoricalId) || rows[0] || null,
-    [rows, selectedHistoricalId],
+    () => historicalProspects.find((entry) => entry.id === focusedId) || historicalProspects.find((entry) => entry.id === selectedHistoricalId) || filteredRows[0] || null,
+    [filteredRows, focusedId, selectedHistoricalId],
+  );
+
+  const rows = useMemo(
+    () => cohortRows(filteredRows, focusedEntry, cohortMode),
+    [cohortMode, filteredRows, focusedEntry],
   );
 
   const overview = useMemo(() => {
@@ -134,6 +160,27 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
           <p className="section-meta">{rows.length} historical records shown</p>
         </div>
       </div>
+
+      {focusedEntry && (
+        <div className="detail-section compare-future">
+          <div className="detail-section-head">
+            <h4>Cohort Tabs</h4>
+            <span className="section-meta">Open the historical workspace around the active precedent</span>
+          </div>
+          <div className="tag-grid">
+            {COHORT_MODES.map((mode) => (
+              <button
+                key={mode.id}
+                type="button"
+                className={`tag-button${cohortMode === mode.id ? ' is-active' : ''}`}
+                onClick={() => setCohortMode(mode.id)}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="matrix-toolbar">
         <div className="control-block search-block">
@@ -213,9 +260,9 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
 
       <div className="board-summary board-summary-subtle">
         <div className="summary-chip">{draftYearFilter === 'ALL' ? 'All classes' : `Class ${draftYearFilter}`}</div>
+        <div className="summary-chip">{focusedEntry ? `${focusedEntry.name}` : 'No focused precedent'}</div>
+        <div className="summary-chip">{cohortMode === 'all' ? 'All results' : COHORT_MODES.find((mode) => mode.id === cohortMode)?.label}</div>
         <div className="summary-chip">{overview.slotContext}</div>
-        <div className="summary-chip">{positionFilter === 'ALL' ? 'All positions' : positionFilter}</div>
-        <div className="summary-chip">{archetypeFilter === 'ALL' ? 'All archetype families' : archetypeFilter}</div>
         <div className="summary-chip">{overview.outcomeMix}</div>
       </div>
 
@@ -235,10 +282,10 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
               {[
                 ['Outcome', focusedEntry.outcomeTier],
                 ['Position Family', focusedEntry.positionFamily],
-                ['School', focusedEntry.school],
+                ['Era', focusedEntry.eraBucket],
                 ['BPM', focusedEntry.bpm],
                 ['TS%', focusedEntry.trueShooting],
-                ['Draft Slot', focusedEntry.draftSlot],
+                ['BPM Percentile', focusedEntry.percentiles?.bpm ? `${focusedEntry.percentiles.bpm}th` : '--'],
               ].map(([label, value]) => (
                 <div key={label}>
                   <strong>{label}</strong>
@@ -281,9 +328,9 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
           </thead>
           <tbody>
             {rows.map((entry) => (
-              <tr key={entry.id} className={selectedHistoricalId === entry.id ? 'is-focused' : ''}>
+              <tr key={entry.id} className={focusedEntry?.id === entry.id ? 'is-focused' : ''}>
                 <td>
-                  <button type="button" className="historical-row-button" onClick={() => setQuery(entry.name)}>
+                  <button type="button" className="historical-row-button" onClick={() => { setFocusedId(entry.id); setQuery(entry.name); }}>
                     <strong>{entry.name}</strong>
                   </button>
                 </td>
@@ -297,7 +344,7 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
       </div>
 
       <p className="section-note">
-        This matrix is intentionally lightweight: it is for quick precedent checks and outcome framing, not full research sprawl.
+        This matrix is now cohort-first: focus a precedent, then pivot through archetype, slot-band, and position-family lenses without leaving the workspace.
       </p>
     </section>
   );

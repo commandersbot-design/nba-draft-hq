@@ -152,10 +152,13 @@ export function buildHistoricalContext(prospect, precedentLimit = 4) {
 export function buildHistoricalDataset() {
   return historicalProspects.map((entry) => ({
     ...entry,
-    positionFamily: positionFamily(entry.position),
-    draftSlotBand: draftSlotBand(entry.draftSlot),
-    archetypeFamily: archetypeFamily(entry.archetype),
-    outcomeScore: outcomeScore(entry.outcomeTier),
+    positionFamily: entry.positionFamily || positionFamily(entry.position),
+    draftSlotBand: entry.draftSlotBand || draftSlotBand(entry.draftSlot),
+    archetypeFamily: entry.archetypeFamily || archetypeFamily(entry.archetype),
+    outcomeScore: entry.outcomeScore || outcomeScore(entry.outcomeTier),
+    eraBucket: entry.eraBucket || 'Unknown',
+    percentiles: entry.percentiles || {},
+    comparisonInputs: entry.comparisonInputs || {},
   }));
 }
 

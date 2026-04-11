@@ -16,7 +16,23 @@
     "trueShooting": "62.1%",
     "bpm": 5.2,
     "draftSlot": 1,
-    "notes": "Size-and-shooting wing whose upside rests on creation growth."
+    "notes": "Size-and-shooting wing whose upside rests on creation growth.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 21,
+      "rebounds": 16,
+      "assists": 11,
+      "trueShooting": 89,
+      "bpm": 42
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Current",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "alex-sarr-2024",
@@ -35,7 +51,23 @@
     "trueShooting": "56.7%",
     "bpm": 4.8,
     "draftSlot": 2,
-    "notes": "Movement and rim defense made sense, but offensive certainty was still early-stage."
+    "notes": "Movement and rim defense made sense, but offensive certainty was still early-stage.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "big",
+    "archetypeFamily": "Big",
+    "percentiles": {
+      "points": 18,
+      "rebounds": 9,
+      "assists": 18,
+      "trueShooting": 18,
+      "bpm": 9
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Current",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "reed-sheppard-2024",
@@ -54,7 +86,23 @@
     "trueShooting": "69.9%",
     "bpm": 13.7,
     "draftSlot": 3,
-    "notes": "Elite efficiency guard with defensive playmaking and feel."
+    "notes": "Elite efficiency guard with defensive playmaking and feel.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "guard",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 29,
+      "rebounds": 29,
+      "assists": 64,
+      "trueShooting": 100,
+      "bpm": 100
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Current",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "stephon-castle-2024",
@@ -73,7 +121,23 @@
     "trueShooting": "55.3%",
     "bpm": 6.2,
     "draftSlot": 4,
-    "notes": "Size, defense, and connective offensive feel created a clear role foundation."
+    "notes": "Size, defense, and connective offensive feel created a clear role foundation.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 14,
+      "rebounds": 36,
+      "assists": 7,
+      "trueShooting": 21,
+      "bpm": 14
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Current",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "ron-holland-2024",
@@ -92,7 +156,23 @@
     "trueShooting": "53.3%",
     "bpm": 6.8,
     "draftSlot": 5,
-    "notes": "Motor and downhill pressure are real, but the jumper shapes the entire ceiling."
+    "notes": "Motor and downhill pressure are real, but the jumper shapes the entire ceiling.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 95,
+      "rebounds": 89,
+      "assists": 63,
+      "trueShooting": 26,
+      "bpm": 58
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Current",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "tidjane-salaun-2024",
@@ -111,7 +191,23 @@
     "trueShooting": "57.8%",
     "bpm": 3.5,
     "draftSlot": 6,
-    "notes": "Age, frame, and mobility are attractive; on-ball polish is still early."
+    "notes": "Age, frame, and mobility are attractive; on-ball polish is still early.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 16,
+      "rebounds": 21,
+      "assists": 21,
+      "trueShooting": 58,
+      "bpm": 11
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Current",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "donovan-clingan-2024",
@@ -130,7 +226,23 @@
     "trueShooting": "66.8%",
     "bpm": 12.9,
     "draftSlot": 7,
-    "notes": "Rim protection and interior size create a strong role floor."
+    "notes": "Rim protection and interior size create a strong role floor.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "big",
+    "archetypeFamily": "Big",
+    "percentiles": {
+      "points": 45,
+      "rebounds": 55,
+      "assists": 55,
+      "trueShooting": 73,
+      "bpm": 73
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Current",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "rob-dillingham-2024",
@@ -149,7 +261,23 @@
     "trueShooting": "61.8%",
     "bpm": 10.5,
     "draftSlot": 8,
-    "notes": "Creation craft and pull-up shotmaking are real; physical/defensive tolerance is the question."
+    "notes": "Creation craft and pull-up shotmaking are real; physical/defensive tolerance is the question.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "guard",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 57,
+      "rebounds": 7,
+      "assists": 43,
+      "trueShooting": 86,
+      "bpm": 79
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Current",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "cody-williams-2024",
@@ -168,7 +296,23 @@
     "trueShooting": "62.4%",
     "bpm": 4.6,
     "draftSlot": 10,
-    "notes": "Length and touch are intriguing, but strength and creation volume still need time."
+    "notes": "Length and touch are intriguing, but strength and creation volume still need time.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 32,
+      "rebounds": 11,
+      "assists": 32,
+      "trueShooting": 95,
+      "bpm": 26
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Current",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "matas-buzelis-2024",
@@ -187,7 +331,23 @@
     "trueShooting": "54.3%",
     "bpm": 5.1,
     "draftSlot": 11,
-    "notes": "Size-and-skill case is appealing, but the frame and shot readiness still matter a lot."
+    "notes": "Size-and-skill case is appealing, but the frame and shot readiness still matter a lot.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "wing",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 47,
+      "rebounds": 84,
+      "assists": 42,
+      "trueShooting": 32,
+      "bpm": 37
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Current",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "nikola-topic-2024",
@@ -206,7 +366,23 @@
     "trueShooting": "60.2%",
     "bpm": 8.7,
     "draftSlot": 12,
-    "notes": "Big lead guard indicators are there, but health and defensive pressure shape the final range."
+    "notes": "Big lead guard indicators are there, but health and defensive pressure shape the final range.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 86,
+      "rebounds": 14,
+      "assists": 93,
+      "trueShooting": 79,
+      "bpm": 50
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Current",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "devin-carter-2024",
@@ -225,7 +401,23 @@
     "trueShooting": "58.6%",
     "bpm": 11.4,
     "draftSlot": 13,
-    "notes": "Older guard model, but event creation and competitive edge were strong role indicators."
+    "notes": "Older guard model, but event creation and competitive edge were strong role indicators.",
+    "eraBucket": "Current",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "guard",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 93,
+      "rebounds": 100,
+      "assists": 29,
+      "trueShooting": 64,
+      "bpm": 86
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Current",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "dalton-knecht-2024",
@@ -244,7 +436,23 @@
     "trueShooting": "63.7%",
     "bpm": 10.8,
     "draftSlot": 17,
-    "notes": "Older prospect, but the shooting and scoring translation case was clean."
+    "notes": "Older prospect, but the shooting and scoring translation case was clean.",
+    "eraBucket": "Current",
+    "draftSlotBand": "First Round",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 63,
+      "assists": 37,
+      "trueShooting": 100,
+      "bpm": 95
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "First Round",
+      "eraBucket": "Current",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "ja-kobe-walter-2024",
@@ -263,7 +471,23 @@
     "trueShooting": "51.5%",
     "bpm": 4.2,
     "draftSlot": 19,
-    "notes": "The scoring tools are real, but efficiency and broader feel still determine the final tier."
+    "notes": "The scoring tools are real, but efficiency and broader feel still determine the final tier.",
+    "eraBucket": "Current",
+    "draftSlotBand": "First Round",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 53,
+      "rebounds": 58,
+      "assists": 26,
+      "trueShooting": 11,
+      "bpm": 16
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "First Round",
+      "eraBucket": "Current",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "brandon-miller-2023",
@@ -282,7 +506,23 @@
     "trueShooting": "58.2%",
     "bpm": 11.2,
     "draftSlot": 2,
-    "notes": "Movement shooter plus size-driven self-creation upside."
+    "notes": "Movement shooter plus size-driven self-creation upside.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 84,
+      "rebounds": 100,
+      "assists": 53,
+      "trueShooting": 68,
+      "bpm": 100
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Recent",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "amen-thompson-2023",
@@ -301,7 +541,23 @@
     "trueShooting": "56.1%",
     "bpm": 8.1,
     "draftSlot": 4,
-    "notes": "Explosive transition and paint-touch creator with jumper risk."
+    "notes": "Explosive transition and paint-touch creator with jumper risk.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 64,
+      "rebounds": 71,
+      "assists": 71,
+      "trueShooting": 29,
+      "bpm": 43
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "ausar-thompson-2023",
@@ -320,7 +576,23 @@
     "trueShooting": "56.3%",
     "bpm": 8,
     "draftSlot": 5,
-    "notes": "Wing-size athlete with defensive value and connective offense."
+    "notes": "Wing-size athlete with defensive value and connective offense.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 63,
+      "rebounds": 95,
+      "assists": 100,
+      "trueShooting": 42,
+      "bpm": 63
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "anthony-black-2023",
@@ -339,7 +611,23 @@
     "trueShooting": "57.6%",
     "bpm": 7.6,
     "draftSlot": 6,
-    "notes": "Size, defense, and connective feel were attractive, but scoring gravity remained uncertain."
+    "notes": "Size, defense, and connective feel were attractive, but scoring gravity remained uncertain.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 36,
+      "rebounds": 50,
+      "assists": 43,
+      "trueShooting": 43,
+      "bpm": 21
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "jarace-walker-2023",
@@ -358,7 +646,23 @@
     "trueShooting": "59.1%",
     "bpm": 9.6,
     "draftSlot": 8,
-    "notes": "Strength and defensive playmaking translated, but shot and advantage creation remained swing variables."
+    "notes": "Strength and defensive playmaking translated, but shot and advantage creation remained swing variables.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "big",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 27,
+      "rebounds": 27,
+      "assists": 64,
+      "trueShooting": 36,
+      "bpm": 45
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "taylor-hendricks-2023",
@@ -377,7 +681,23 @@
     "trueShooting": "60.8%",
     "bpm": 10.3,
     "draftSlot": 9,
-    "notes": "High-value modern frontcourt indicators with fewer on-ball demands."
+    "notes": "High-value modern frontcourt indicators with fewer on-ball demands.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "big",
+    "archetypeFamily": "Big",
+    "percentiles": {
+      "points": 64,
+      "rebounds": 36,
+      "assists": 36,
+      "trueShooting": 45,
+      "bpm": 55
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "cason-wallace-2023",
@@ -396,7 +716,23 @@
     "trueShooting": "58.4%",
     "bpm": 9.1,
     "draftSlot": 10,
-    "notes": "Decision speed, shot quality, and point-of-attack defense created a dependable guard value profile."
+    "notes": "Decision speed, shot quality, and point-of-attack defense created a dependable guard value profile.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "guard",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 21,
+      "rebounds": 21,
+      "assists": 50,
+      "trueShooting": 57,
+      "bpm": 57
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Recent",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "dereck-lively-2023",
@@ -415,7 +751,23 @@
     "trueShooting": "68.6%",
     "bpm": 7.2,
     "draftSlot": 12,
-    "notes": "College production was muted, but the role-specific defensive tools were easy to trust."
+    "notes": "College production was muted, but the role-specific defensive tools were easy to trust.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "big",
+    "archetypeFamily": "Big",
+    "percentiles": {
+      "points": 9,
+      "rebounds": 18,
+      "assists": 27,
+      "trueShooting": 82,
+      "bpm": 18
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "keyonte-george-2023",
@@ -434,7 +786,23 @@
     "trueShooting": "52.1%",
     "bpm": 4.4,
     "draftSlot": 16,
-    "notes": "Shot difficulty and self-creation were real, but efficiency and defensive floor stayed unstable."
+    "notes": "Shot difficulty and self-creation were real, but efficiency and defensive floor stayed unstable.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "First Round",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 58,
+      "rebounds": 42,
+      "assists": 79,
+      "trueShooting": 16,
+      "bpm": 21
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "First Round",
+      "eraBucket": "Recent",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "paolo-banchero-2022",
@@ -453,7 +821,23 @@
     "trueShooting": "55.7%",
     "bpm": 8.9,
     "draftSlot": 1,
-    "notes": "Creation-forward archetype built on size, touch, and mismatch offense."
+    "notes": "Creation-forward archetype built on size, touch, and mismatch offense.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "big",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 91,
+      "rebounds": 64,
+      "assists": 100,
+      "trueShooting": 9,
+      "bpm": 27
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "chet-holmgren-2022",
@@ -472,7 +856,23 @@
     "trueShooting": "69.1%",
     "bpm": 13.4,
     "draftSlot": 2,
-    "notes": "Elite rim deterrence with enough skill to stay additive on offense."
+    "notes": "Elite rim deterrence with enough skill to stay additive on offense.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "big",
+    "archetypeFamily": "Big",
+    "percentiles": {
+      "points": 55,
+      "rebounds": 100,
+      "assists": 73,
+      "trueShooting": 91,
+      "bpm": 91
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "jabari-smith-jr-2022",
@@ -491,7 +891,23 @@
     "trueShooting": "57.5%",
     "bpm": 9.4,
     "draftSlot": 3,
-    "notes": "Shotmaking size was premium, but self-creation limits capped the top-end offensive pathway."
+    "notes": "Shotmaking size was premium, but self-creation limits capped the top-end offensive pathway.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "big",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 82,
+      "rebounds": 55,
+      "assists": 82,
+      "trueShooting": 27,
+      "bpm": 36
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "keegan-murray-2022",
@@ -510,7 +926,23 @@
     "trueShooting": "63.8%",
     "bpm": 13.1,
     "draftSlot": 4,
-    "notes": "Older but clean production and shooting/finishing mix translated into a stable high-value role."
+    "notes": "Older but clean production and shooting/finishing mix translated into a stable high-value role.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "big",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 91,
+      "assists": 55,
+      "trueShooting": 64,
+      "bpm": 82
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "jaden-ivey-2022",
@@ -529,7 +961,23 @@
     "trueShooting": "58.4%",
     "bpm": 8,
     "draftSlot": 5,
-    "notes": "Explosive advantage creation showed up quickly, while decision consistency remained uneven."
+    "notes": "Explosive advantage creation showed up quickly, while decision consistency remained uneven.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 79,
+      "rebounds": 43,
+      "assists": 14,
+      "trueShooting": 57,
+      "bpm": 36
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "bennedict-mathurin-2022",
@@ -548,7 +996,23 @@
     "trueShooting": "58.5%",
     "bpm": 9,
     "draftSlot": 6,
-    "notes": "Vertical pressure, shooting, and transition pop gave him a cleaner scoring-wing floor."
+    "notes": "Vertical pressure, shooting, and transition pop gave him a cleaner scoring-wing floor.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 68,
+      "rebounds": 74,
+      "assists": 58,
+      "trueShooting": 79,
+      "bpm": 84
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "shaedon-sharpe-2022",
@@ -567,7 +1031,23 @@
     "trueShooting": "0.0%",
     "bpm": 0,
     "draftSlot": 7,
-    "notes": "Upside case was rooted in athletic scoring talent more than a stable evidence base."
+    "notes": "Upside case was rooted in athletic scoring talent more than a stable evidence base.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 5,
+      "rebounds": 5,
+      "assists": 5,
+      "trueShooting": 5,
+      "bpm": 5
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Recent",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "jalen-williams-2022",
@@ -586,7 +1066,23 @@
     "trueShooting": "58.4%",
     "bpm": 10.2,
     "draftSlot": 12,
-    "notes": "Late-lottery value model for wings with feel, size, and efficiency."
+    "notes": "Late-lottery value model for wings with feel, size, and efficiency.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 79,
+      "rebounds": 58,
+      "assists": 95,
+      "trueShooting": 74,
+      "bpm": 89
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Recent",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "walker-kessler-2022",
@@ -605,7 +1101,23 @@
     "trueShooting": "69.3%",
     "bpm": 13.8,
     "draftSlot": 22,
-    "notes": "Outcome reminder for elite shot-block indicators translating quickly."
+    "notes": "Outcome reminder for elite shot-block indicators translating quickly.",
+    "eraBucket": "Recent",
+    "draftSlotBand": "First Round",
+    "positionFamily": "big",
+    "archetypeFamily": "Big",
+    "percentiles": {
+      "points": 36,
+      "rebounds": 73,
+      "assists": 18,
+      "trueShooting": 100,
+      "bpm": 100
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "First Round",
+      "eraBucket": "Recent",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "cade-cunningham-2021",
@@ -624,7 +1136,23 @@
     "trueShooting": "57.4%",
     "bpm": 10.3,
     "draftSlot": 1,
-    "notes": "Large on-ball initiator with real shotmaking and pace control."
+    "notes": "Large on-ball initiator with real shotmaking and pace control.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 79,
+      "assists": 21,
+      "trueShooting": 36,
+      "bpm": 71
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Earlier",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "jalen-green-2021",
@@ -643,7 +1171,23 @@
     "trueShooting": "61.0%",
     "bpm": 5.7,
     "draftSlot": 2,
-    "notes": "Shot creation and athletic burst were obvious, but the all-around floor stayed fragile."
+    "notes": "Shot creation and athletic burst were obvious, but the all-around floor stayed fragile.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 74,
+      "rebounds": 37,
+      "assists": 79,
+      "trueShooting": 84,
+      "bpm": 47
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Earlier",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "evan-mobley-2021",
@@ -662,7 +1206,23 @@
     "trueShooting": "61.3%",
     "bpm": 11.4,
     "draftSlot": 3,
-    "notes": "Mobile frontcourt defender whose value scales with coverage range."
+    "notes": "Mobile frontcourt defender whose value scales with coverage range.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "big",
+    "archetypeFamily": "Big",
+    "percentiles": {
+      "points": 73,
+      "rebounds": 91,
+      "assists": 91,
+      "trueShooting": 55,
+      "bpm": 64
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Earlier",
+      "positionFamily": "big"
+    }
   },
   {
     "id": "scottie-barnes-2021",
@@ -681,7 +1241,23 @@
     "trueShooting": "57.0%",
     "bpm": 8.7,
     "draftSlot": 4,
-    "notes": "Playmaking size and defensive versatility created a broad role floor with star paths."
+    "notes": "Playmaking size and defensive versatility created a broad role floor with star paths.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 26,
+      "rebounds": 32,
+      "assists": 89,
+      "trueShooting": 53,
+      "bpm": 74
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Earlier",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "jalen-suggs-2021",
@@ -700,7 +1276,23 @@
     "trueShooting": "59.8%",
     "bpm": 9.5,
     "draftSlot": 5,
-    "notes": "Competitive two-way guard with some creation juice, but the offensive ceiling stayed below top-tier outcomes."
+    "notes": "Competitive two-way guard with some creation juice, but the offensive ceiling stayed below top-tier outcomes.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 43,
+      "rebounds": 57,
+      "assists": 64,
+      "trueShooting": 71,
+      "bpm": 64
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Earlier",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "josh-giddey-2021",
@@ -719,7 +1311,23 @@
     "trueShooting": "47.8%",
     "bpm": 4.9,
     "draftSlot": 6,
-    "notes": "Passing size and vision were real, but shooting and defensive limitations narrowed the lineup ceiling."
+    "notes": "Passing size and vision were real, but shooting and defensive limitations narrowed the lineup ceiling.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 7,
+      "rebounds": 86,
+      "assists": 100,
+      "trueShooting": 7,
+      "bpm": 7
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Earlier",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "franz-wagner-2021",
@@ -738,7 +1346,23 @@
     "trueShooting": "56.8%",
     "bpm": 8.1,
     "draftSlot": 8,
-    "notes": "Feel, size, and scalable wing skill translated into much more than a connector outcome."
+    "notes": "Feel, size, and scalable wing skill translated into much more than a connector outcome.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 37,
+      "rebounds": 79,
+      "assists": 84,
+      "trueShooting": 47,
+      "bpm": 68
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Earlier",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "anthony-edwards-2020",
@@ -757,7 +1381,23 @@
     "trueShooting": "52.3%",
     "bpm": 8.9,
     "draftSlot": 1,
-    "notes": "Power athlete scorer whose decision growth unlocked star-level creation."
+    "notes": "Power athlete scorer whose decision growth unlocked star-level creation.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 89,
+      "rebounds": 68,
+      "assists": 79,
+      "trueShooting": 21,
+      "bpm": 79
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Earlier",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "lamelo-ball-2020",
@@ -776,7 +1416,23 @@
     "trueShooting": "49.8%",
     "bpm": 7.8,
     "draftSlot": 3,
-    "notes": "Size, passing imagination, and pace control carried the bet despite efficiency variance."
+    "notes": "Size, passing imagination, and pace control carried the bet despite efficiency variance.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 3",
+    "positionFamily": "guard",
+    "archetypeFamily": "Guard",
+    "percentiles": {
+      "points": 71,
+      "rebounds": 93,
+      "assists": 86,
+      "trueShooting": 14,
+      "bpm": 29
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 3",
+      "eraBucket": "Earlier",
+      "positionFamily": "guard"
+    }
   },
   {
     "id": "patrick-williams-2020",
@@ -795,7 +1451,23 @@
     "trueShooting": "56.2%",
     "bpm": 5.1,
     "draftSlot": 4,
-    "notes": "Tools and switch value were clear, but the offensive role path stayed thinner than hoped."
+    "notes": "Tools and switch value were clear, but the offensive role path stayed thinner than hoped.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 16,
+      "rebounds": 32,
+      "assists": 21,
+      "trueShooting": 37,
+      "bpm": 37
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Earlier",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "isaac-okoro-2020",
@@ -814,7 +1486,23 @@
     "trueShooting": "58.1%",
     "bpm": 6.7,
     "draftSlot": 5,
-    "notes": "Strength and on-ball defense translated, but offensive scalability remained the pressure point."
+    "notes": "Strength and on-ball defense translated, but offensive scalability remained the pressure point.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Top 8",
+    "positionFamily": "wing",
+    "archetypeFamily": "Wing",
+    "percentiles": {
+      "points": 42,
+      "rebounds": 58,
+      "assists": 47,
+      "trueShooting": 63,
+      "bpm": 53
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Top 8",
+      "eraBucket": "Earlier",
+      "positionFamily": "wing"
+    }
   },
   {
     "id": "tyrese-haliburton-2020",
@@ -833,6 +1521,22 @@
     "trueShooting": "63.1%",
     "bpm": 11.6,
     "draftSlot": 12,
-    "notes": "Elite feel and efficiency profile drastically outperformed draft slot expectations."
+    "notes": "Elite feel and efficiency profile drastically outperformed draft slot expectations.",
+    "eraBucket": "Earlier",
+    "draftSlotBand": "Lottery",
+    "positionFamily": "guard",
+    "archetypeFamily": "Hybrid",
+    "percentiles": {
+      "points": 57,
+      "rebounds": 71,
+      "assists": 79,
+      "trueShooting": 93,
+      "bpm": 93
+    },
+    "comparisonInputs": {
+      "draftSlotBand": "Lottery",
+      "eraBucket": "Earlier",
+      "positionFamily": "guard"
+    }
   }
 ]
