@@ -5,19 +5,19 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  --surface: #161718;
-  --surface-2: #1c1f21;
-  --surface-3: #25292d;
-  --surface-4: #2d3439;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
-  --text: #f4f1e8;
-  --text-soft: #cbc4b6;
-  --muted: #938d82;
-  --accent: #d8b247;
-  --accent-soft: rgba(216, 178, 71, 0.14);
-  --shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+  color-scheme: light;
+  --surface: #f7f5f2;
+  --surface-2: #ffffff;
+  --surface-3: #fcfaf6;
+  --surface-4: #f2ece3;
+  --line: rgba(17, 17, 17, 0.08);
+  --line-strong: rgba(17, 17, 17, 0.16);
+  --text: #111111;
+  --text-soft: #47433d;
+  --muted: #7a7267;
+  --accent: #b78e1d;
+  --accent-soft: rgba(212, 175, 55, 0.16);
+  --shadow: 0 18px 44px rgba(39, 31, 11, 0.08);
 }
 
 * {
@@ -34,9 +34,9 @@ body,
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(216, 178, 71, 0.12), transparent 18%),
-    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.06), transparent 22%),
-    linear-gradient(180deg, #101112 0%, #151719 100%);
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.14), transparent 20%),
+    radial-gradient(circle at bottom right, rgba(209, 194, 170, 0.24), transparent 24%),
+    linear-gradient(180deg, #f9f6f1 0%, #f3eee7 100%);
   color: var(--text);
   font-family: 'Manrope', sans-serif;
 }
@@ -60,7 +60,7 @@ button {
 
 .panel {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(27, 30, 33, 0.94), rgba(20, 22, 24, 0.98));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(251, 248, 242, 0.98));
   border-radius: 28px;
   box-shadow: var(--shadow);
 }
@@ -72,6 +72,18 @@ button {
   gap: 20px;
   padding: 28px;
   margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-header::after {
+  content: '';
+  position: absolute;
+  inset: auto -40px -80px auto;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.16), transparent 68%);
+  pointer-events: none;
 }
 
 .guide-brand h1,
@@ -133,9 +145,8 @@ button {
   color: var(--text);
   border-radius: 999px;
   padding: 10px 14px;
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   font-weight: 700;
 }
 
@@ -220,7 +231,7 @@ button {
 
 .stat-card {
   border: 1px solid var(--line);
-  background: var(--surface-2);
+  background: linear-gradient(180deg, #fffdf9, #f9f4ea);
   border-radius: 20px;
   padding: 18px;
 }
@@ -265,7 +276,7 @@ button {
   gap: 12px;
   padding: 14px;
   border: 1px solid var(--line);
-  background: var(--surface-2);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 243, 233, 0.96));
   border-radius: 18px;
 }
 
@@ -342,10 +353,9 @@ button {
 
 .historical-table thead th {
   border-top: 0;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(17, 17, 17, 0.03);
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   font-size: 0.68rem;
 }
 
@@ -372,8 +382,7 @@ button {
 .control-block label {
   color: var(--muted);
   font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.08em;
   font-weight: 700;
 }
 
@@ -432,8 +441,7 @@ button {
   border-radius: 999px;
   padding: 6px 10px;
   font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   font-weight: 700;
 }
 
@@ -468,13 +476,15 @@ button {
   color: inherit;
   padding: 16px;
   text-align: left;
-  transition: border-color 120ms ease, background 120ms ease, transform 120ms ease;
+  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
 }
 
 .rank-card:hover,
 .rank-card.is-active {
   border-color: rgba(216, 178, 71, 0.28);
   background: var(--surface-3);
+  box-shadow: 0 16px 28px rgba(39, 31, 11, 0.08);
+  transform: translateY(-1px);
 }
 
 .rank-number {
@@ -484,7 +494,7 @@ button {
   width: 58px;
   height: 58px;
   border-radius: 18px;
-  background: rgba(216, 178, 71, 0.08);
+  background: rgba(212, 175, 55, 0.12);
   border: 1px solid rgba(216, 178, 71, 0.16);
   color: var(--accent);
   font-size: 1.25rem;
@@ -521,8 +531,7 @@ button {
   margin-top: 10px;
   color: var(--muted);
   font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .rank-description {
@@ -597,8 +606,7 @@ button {
 .detail-grid strong {
   display: block;
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.08em;
   font-size: 0.68rem;
   margin-bottom: 8px;
 }
@@ -617,8 +625,7 @@ button {
 .detail-section h4 {
   margin: 0 0 10px;
   font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   color: var(--muted);
 }
 
@@ -644,8 +651,7 @@ button {
 .workflow-head h4 {
   margin: 0;
   font-size: 0.92rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   color: var(--muted);
 }
 
@@ -872,8 +878,7 @@ button {
   margin-top: 10px;
   color: var(--muted);
   font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
 }
 
 .compact-grid {
@@ -1132,8 +1137,7 @@ button {
   border-radius: 999px;
   padding: 6px 10px;
   font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   font-weight: 700;
 }
 
@@ -1169,8 +1173,7 @@ button {
   border-radius: 999px;
   padding: 7px 10px;
   font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   font-weight: 700;
 }
 

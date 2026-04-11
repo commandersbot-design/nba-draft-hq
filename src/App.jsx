@@ -390,15 +390,15 @@ function App() {
       <header className="guide-header panel">
         <div className="guide-brand">
           <p className="eyebrow">2026</p>
-          <h1>Prospera Draft Guide</h1>
+          <h1>Prospera Draft HQ</h1>
           <p className="guide-copy">
-            A structured scouting operating system: profiles, board building, compare, and notes,
-            all inside the same decision surface.
+            Scouting, simplified. Explore the board, compare prospects, and organize your evaluation
+            without losing the thread of what actually matters.
           </p>
         </div>
         <div className="guide-meta">
           <span className="pill pill-live">Tier 1</span>
-          <span className="topbar-note">Profiles, board builder, compare engine, notes workspace.</span>
+          <span className="topbar-note">Profiles, board builder, compare, notes, and historical context.</span>
         </div>
       </header>
 
@@ -447,10 +447,10 @@ function App() {
           <section className="hero panel">
             <div className="hero-copy">
               <p className="eyebrow">Board Summary</p>
-              <h2>Evaluate more clearly. Decide faster.</h2>
+              <h2>See the board the way decision-makers do.</h2>
               <p>
-                The board now supports structured profiles, a personal board, side-by-side compare,
-                and notes built for front-office workflow instead of casual browsing.
+                Prospera turns a crowded draft cycle into a cleaner working surface: structured profiles,
+                a personal board, side-by-side compare, notes, and context that stays readable.
               </p>
               <div className="hero-actions">
                 <button
@@ -470,7 +470,7 @@ function App() {
               <article className="stat-card">
                 <span className="stat-label">Prospects</span>
                 <strong>{enrichedProspects.length}</strong>
-                <span className="stat-detail">Structured profile records</span>
+                <span className="stat-detail">Board records with structured profile support</span>
               </article>
               <article className="stat-card">
                 <span className="stat-label">Custom Tiers</span>
@@ -485,7 +485,7 @@ function App() {
               <article className="stat-card">
                 <span className="stat-label">International</span>
                 <strong>{internationalCount}</strong>
-                <span className="stat-detail">Prospects outside the NCAA track</span>
+                <span className="stat-detail">Prospects outside the standard NCAA pipeline</span>
               </article>
               <article className="stat-card">
                 <span className="stat-label">Notes Logged</span>
@@ -628,7 +628,7 @@ function App() {
                   <p className="eyebrow">Big Board Surface</p>
                   <h3>{filteredProspects.length} prospects shown</h3>
                 </div>
-                <p className="section-meta">{sortBy === 'manual' ? 'Manual order active' : `Sorted by ${sortBy}`}</p>
+                <p className="section-meta">{sortBy === 'manual' ? 'Custom order active' : `Sorted by ${sortBy}`}</p>
               </div>
 
               <div className="board-summary">
@@ -737,7 +737,7 @@ function App() {
               </div>
               <div className="chip-list">
                 {watchlistProspects.length === 0 ? (
-                  <p className="empty-state">Save players here while shaping your board.</p>
+                  <p className="empty-state">Save players here as your shortlist takes shape.</p>
                 ) : (
                   watchlistProspects.map((prospect) => (
                     <div key={prospect.id} className="chip">
@@ -760,7 +760,7 @@ function App() {
               </div>
               <div className="compare-list">
                 {compareProspects.length === 0 ? (
-                  <p className="empty-state">Queue players here for the compare workspace.</p>
+                  <p className="empty-state">Queue players here to compare them side by side.</p>
                 ) : (
                   compareProspects.map((prospect) => (
                     <button key={prospect.id} type="button" className="compare-card" onClick={() => { setActiveId(prospect.id); setAppView('compare'); }}>
