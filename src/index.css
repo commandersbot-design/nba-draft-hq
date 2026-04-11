@@ -508,6 +508,10 @@ button {
   margin-bottom: 18px;
 }
 
+.board-summary-subtle {
+  opacity: 0.88;
+}
+
 .summary-chip,
 .row-badge,
 .mini-tag,
@@ -898,6 +902,15 @@ button {
   gap: 18px;
 }
 
+.profile-spotlight {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffefb, #f8f2e8);
+  border-radius: 22px;
+}
+
 .profile-hero-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -909,6 +922,10 @@ button {
   background: var(--surface-2);
   border-radius: 18px;
   padding: 16px;
+}
+
+.profile-hero-card-main {
+  background: linear-gradient(180deg, #fffdf8, #f5ead3);
 }
 
 .profile-hero-card strong {
@@ -932,6 +949,13 @@ button {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+
+.detail-section-emphasis {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffefb, #faf5ea);
+  border-radius: 18px;
 }
 
 .profile-list {
@@ -1074,6 +1098,10 @@ button {
   padding: 16px;
 }
 
+.compare-column-hero {
+  background: linear-gradient(180deg, #fffefb, #f8f2e8);
+}
+
 .compare-column h4 {
   margin: 0 0 6px;
   font-size: 1rem;
@@ -1084,10 +1112,39 @@ button {
   color: var(--text-soft);
 }
 
+.compare-hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.compare-hero-metrics div {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  background: var(--surface-2);
+}
+
+.compare-hero-metrics strong,
+.compare-hero-metrics span {
+  display: block;
+}
+
+.compare-hero-metrics span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
 .compare-grid,
 .trait-compare-grid {
   display: grid;
   gap: 10px;
+}
+
+.compare-grid-emphasis {
+  margin-top: 4px;
 }
 
 .compare-row {
@@ -1166,6 +1223,13 @@ button {
   background: var(--surface-2);
   border-radius: 18px;
   padding: 14px;
+}
+
+.compare-future {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffefb, #faf5ea);
+  border-radius: 18px;
 }
 
 .note-list-panel {

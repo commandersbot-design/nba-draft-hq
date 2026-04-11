@@ -27,7 +27,7 @@ const FILTER_PRESETS = [
   {
     id: 'top-of-board',
     label: 'Top of Board',
-    state: { bucket: 'Lottery', sortBy: 'rank', viewMode: 'peek', appView: 'big-board' },
+    state: { tierFilter: 'Tier 1', sortBy: 'rank', viewMode: 'peek', appView: 'big-board' },
   },
   {
     id: 'international',
@@ -483,11 +483,11 @@ function App() {
         <section className="left-column">
           <section className="hero panel">
             <div className="hero-copy">
-              <p className="eyebrow">Board Summary</p>
-              <h2>See the board the way decision-makers do.</h2>
+              <p className="eyebrow">Draft Workspace</p>
+              <h2>One place to scan, compare, and decide.</h2>
               <p>
-                Prospera turns a crowded draft cycle into a cleaner working surface: structured profiles,
-                a personal board, side-by-side compare, notes, and context that stays readable.
+                Prospera is built to move from first look to real evaluation fast. Open the board,
+                narrow the field, compare tradeoffs, and keep context attached to every player.
               </p>
               <div className="hero-actions">
                 <button
@@ -505,29 +505,29 @@ function App() {
 
             <div className="hero-stats">
               <article className="stat-card">
-                <span className="stat-label">Prospects</span>
+                <span className="stat-label">Board</span>
                 <strong>{enrichedProspects.length}</strong>
-                <span className="stat-detail">Board records with structured profile support</span>
+                <span className="stat-detail">Prospects with structured profile layers</span>
               </article>
               <article className="stat-card">
-                <span className="stat-label">Custom Tiers</span>
-                <strong>{customTierCount}</strong>
-                <span className="stat-detail">Personal overrides applied</span>
+                <span className="stat-label">Saved Players</span>
+                <strong>{watchlist.length}</strong>
+                <span className="stat-detail">Shortlist built directly from the board</span>
               </article>
               <article className="stat-card">
-                <span className="stat-label">Tagged Players</span>
+                <span className="stat-label">Compare Queue</span>
+                <strong>{compareIds.length}</strong>
+                <span className="stat-detail">Prospects ready for side-by-side evaluation</span>
+              </article>
+              <article className="stat-card">
+                <span className="stat-label">Tagged</span>
                 <strong>{taggedCount}</strong>
-                <span className="stat-detail">Structured workflow labels assigned</span>
+                <span className="stat-detail">Workflow labels attached across the board</span>
               </article>
               <article className="stat-card">
                 <span className="stat-label">International</span>
                 <strong>{internationalCount}</strong>
                 <span className="stat-detail">Prospects outside the standard NCAA pipeline</span>
-              </article>
-              <article className="stat-card">
-                <span className="stat-label">Notes Logged</span>
-                <strong>{notesCount}</strong>
-                <span className="stat-detail">Structured evaluator notes saved</span>
               </article>
             </div>
           </section>
@@ -755,13 +755,13 @@ function App() {
             <section className="board panel">
               <div className="section-head">
                 <div>
-                  <p className="eyebrow">Big Board Surface</p>
+                  <p className="eyebrow">Big Board</p>
                   <h3>{filteredProspects.length} prospects shown</h3>
                 </div>
                 <p className="section-meta">{sortBy === 'manual' ? 'Custom order active' : `Sorted by ${sortBy}`}</p>
               </div>
 
-              <div className="board-summary">
+              <div className="board-summary board-summary-subtle">
                 <div className="summary-chip">{watchlistOnly ? 'Watchlist focus' : 'Full board view'}</div>
                 <div className="summary-chip">{bucket === 'ALL' ? 'All board segments' : bucket}</div>
                 <div className="summary-chip">{tierFilter === 'ALL' ? 'All tiers' : tierFilter}</div>
@@ -796,6 +796,7 @@ function App() {
               watchlist={watchlist}
               activeId={activeProspect?.id}
               onSelect={setActiveId}
+              onToggleWatchlist={toggleWatchlist}
               onToggleCompare={toggleCompare}
               onQuickNote={createNote}
               onSetBoardView={setMyBoardView}

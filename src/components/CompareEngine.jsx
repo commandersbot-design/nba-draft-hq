@@ -28,6 +28,13 @@ function buildDecisionBullets(primary, secondary) {
   ].filter(Boolean).slice(0, 3);
 }
 
+const FUTURE_HISTORICAL_TRACKS = [
+  'Prior-class percentile ranges',
+  'Era-aware stat normalization',
+  'Historical archetype clusters',
+  'Outcome bands by draft slot',
+];
+
 export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const compareProspects = prospects.slice(0, 3);
 
@@ -57,11 +64,11 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       values: compareProspects.map((prospect) => `${prospect.measurementLine} / ${prospect.wingspan || '--'}`),
     },
     {
-      label: 'Stats',
+      label: 'Production',
       values: compareProspects.map((prospect) => `${prospect.stats.season.points} pts / ${prospect.stats.season.rebounds} reb / ${prospect.stats.season.assists} ast`),
     },
     {
-      label: 'Advanced',
+      label: 'Efficiency',
       values: compareProspects.map((prospect) => `TS ${prospect.stats.advanced.trueShooting || '--'} / BPM ${renderCell(prospect.stats.advanced.bpm)}`),
     },
     {
@@ -69,15 +76,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       values: compareProspects.map((prospect) => prospect.comparisonInputs.finalScore || prospect.overallComposite),
     },
     {
-      label: 'Offense',
-      values: compareProspects.map((prospect) => prospect.offenseScore),
-    },
-    {
-      label: 'Defense',
-      values: compareProspects.map((prospect) => prospect.defenseScore),
-    },
-    {
-      label: 'Role Projection',
+      label: 'Role',
       values: compareProspects.map((prospect) => prospect.roleProjection),
     },
     {
@@ -90,22 +89,38 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
     <section className="workspace-section panel">
       <div className="section-head">
         <div>
-          <p className="eyebrow">Compare Engine</p>
+          <p className="eyebrow">Compare</p>
           <h3>{compareProspects.map((prospect) => prospect.name).join(' vs ')}</h3>
         </div>
+        <p className="section-meta">Built for side-by-side evaluation now, historical comp depth next.</p>
       </div>
 
       <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
         {compareProspects.map((prospect) => (
-          <div key={prospect.id} className="compare-column">
+          <div key={prospect.id} className="compare-column compare-column-hero">
+            <span className="stat-label">#{prospect.rank}</span>
             <h4>{prospect.name}</h4>
-            <p>{prospect.position}, {prospect.school}</p>
-            <p>{prospect.comparisonInputs.offensiveSummary || `${prospect.overallComposite} composite`}</p>
+            <p>{prospect.position} · {prospect.school}</p>
+            <div className="compare-hero-metrics">
+              <div>
+                <strong>{prospect.overallComposite}</strong>
+                <span>overall</span>
+              </div>
+              <div>
+                <strong>{prospect.offenseScore}</strong>
+                <span>offense</span>
+              </div>
+              <div>
+                <strong>{prospect.defenseScore}</strong>
+                <span>defense</span>
+              </div>
+            </div>
+            <p>{prospect.summary?.synopsis}</p>
           </div>
         ))}
       </div>
 
-      <div className="compare-grid">
+      <div className="compare-grid compare-grid-emphasis">
         {rows.map((row) => (
           <div key={row.label} className={`compare-row compare-row-${compareProspects.length}`}>
             <span>{row.label}</span>
@@ -115,7 +130,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       </div>
 
       <div className="detail-section">
-        <h4>Prospera Traits</h4>
+        <h4>Trait Comparison</h4>
         <div className="trait-compare-grid">
           {left.traitScores.map((trait) => (
             <div key={trait.name} className={`compare-row compare-row-${compareProspects.length}`}>
@@ -130,13 +145,13 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       </div>
 
       <div className="split-section">
-        <div className="detail-section">
+        <div className="detail-section detail-section-emphasis">
           <h4>Why {left.name} over {right.name}</h4>
           <ul className="profile-list">
             {(whyLeft.length ? whyLeft : ['Decision comes down to stylistic preference rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
-        <div className="detail-section">
+        <div className="detail-section detail-section-emphasis">
           <h4>Why {right.name} over {left.name}</h4>
           <ul className="profile-list">
             {(whyRight.length ? whyRight : ['Decision comes down to role context rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
@@ -167,14 +182,14 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
         {compareProspects.map((prospect) => (
           <div key={`${prospect.id}-historical`} className="detail-section compare-notes-column">
-            <h4>Historical Precedents</h4>
+            <h4>Historical Anchors</h4>
             {(prospect.historicalPrecedents || []).length === 0 ? (
               <p className="empty-state">No historical precedents available.</p>
             ) : (
               prospect.historicalPrecedents.slice(0, 2).map((entry) => (
                 <div key={entry.id} className="compare-precedent-row">
                   <p>
-                    <strong>{entry.name}</strong> | {entry.draftYear} | {entry.roleOutcome} | {entry.outcomeTier}
+                    <strong>{entry.name}</strong> · {entry.draftYear} · {entry.roleOutcome} · {entry.outcomeTier}
                   </p>
                   <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
                     Open
@@ -184,6 +199,16 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
             )}
           </div>
         ))}
+      </div>
+
+      <div className="detail-section compare-future">
+        <div className="detail-section-head">
+          <h4>Historical Data Expansion Path</h4>
+          <span className="section-meta">Foundation ready for deeper compare layers</span>
+        </div>
+        <ul className="profile-list">
+          {FUTURE_HISTORICAL_TRACKS.map((item) => <li key={item}>{item}</li>)}
+        </ul>
       </div>
     </section>
   );
