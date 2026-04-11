@@ -1,7 +1,7 @@
 [
   {
     "id": "ajdybantsa",
-    "rank": 2,
+    "rank": 1,
     "name": "AJ Dybantsa",
     "height": "6-9",
     "weight": "210",
@@ -31,14 +31,46 @@
       "defense": 79
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 91, "note": "Wins space with size, burst, and shot-creation fluidity." },
-      { "name": "Decision Making", "score": 80, "note": "Can carry high-usage reps without defaulting into chaos." },
-      { "name": "Passing Creation", "score": 72, "note": "Capable secondary creation tool, still less advanced than the scoring package." },
-      { "name": "Shooting Gravity", "score": 87, "note": "Pull-up threat already bends coverages." },
-      { "name": "Off-Ball Value", "score": 78, "note": "Size and spacing utility keep him playable beside other creators." },
-      { "name": "Processing Speed", "score": 77, "note": "Reads are generally quick enough for star-usage projection." },
-      { "name": "Scalability", "score": 88, "note": "Star-size wing scoring scales cleanly into almost any lineup." },
-      { "name": "Defensive Versatility", "score": 81, "note": "Physical tools give him real multi-matchup value." }
+      {
+        "name": "Advantage Creation",
+        "score": 91,
+        "note": "Wins space with size, burst, and shot-creation fluidity."
+      },
+      {
+        "name": "Decision Making",
+        "score": 80,
+        "note": "Can carry high-usage reps without defaulting into chaos."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 72,
+        "note": "Capable secondary creation tool, still less advanced than the scoring package."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 87,
+        "note": "Pull-up threat already bends coverages."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 78,
+        "note": "Size and spacing utility keep him playable beside other creators."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 77,
+        "note": "Reads are generally quick enough for star-usage projection."
+      },
+      {
+        "name": "Scalability",
+        "score": 88,
+        "note": "Star-size wing scoring scales cleanly into almost any lineup."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 81,
+        "note": "Physical tools give him real multi-matchup value."
+      }
     ],
     "summary": {
       "synopsis": "Premier jumbo wing prospect with real primary-creator upside and clean two-way scalability.",
@@ -65,13 +97,21 @@
       "stockBand": "Stable"
     },
     "sources": [
-      { "label": "BYU roster", "url": "https://byucougars.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/aj-dybantsa", "type": "bio" }
+      {
+        "label": "BYU roster",
+        "url": "https://byucougars.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "USA Basketball bio",
+        "url": "https://www.usab.com/players/aj-dybantsa",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "darrynpeterson",
-    "rank": 3,
+    "rank": 2,
     "name": "Darryn Peterson",
     "height": "6-5",
     "weight": "195",
@@ -101,14 +141,46 @@
       "defense": 63
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 89, "note": "One of the better downhill and separation creators in the class." },
-      { "name": "Decision Making", "score": 74, "note": "Shotmaking confidence can outrun possession control at times." },
-      { "name": "Passing Creation", "score": 79, "note": "Can generate real passing value once the paint is bent." },
-      { "name": "Shooting Gravity", "score": 82, "note": "Jumper threat is a real driver of his offensive profile." },
-      { "name": "Off-Ball Value", "score": 67, "note": "Still strongest with the ball rather than as a pure connector." },
-      { "name": "Processing Speed", "score": 73, "note": "Enough to handle creator reps, but not yet fully surgical." },
-      { "name": "Scalability", "score": 72, "note": "Works best if paired with size and defense elsewhere." },
-      { "name": "Defensive Versatility", "score": 61, "note": "More lineup-managed than lineup-driving on defense right now." }
+      {
+        "name": "Advantage Creation",
+        "score": 89,
+        "note": "One of the better downhill and separation creators in the class."
+      },
+      {
+        "name": "Decision Making",
+        "score": 74,
+        "note": "Shotmaking confidence can outrun possession control at times."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 79,
+        "note": "Can generate real passing value once the paint is bent."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 82,
+        "note": "Jumper threat is a real driver of his offensive profile."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 67,
+        "note": "Still strongest with the ball rather than as a pure connector."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 73,
+        "note": "Enough to handle creator reps, but not yet fully surgical."
+      },
+      {
+        "name": "Scalability",
+        "score": 72,
+        "note": "Works best if paired with size and defense elsewhere."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 61,
+        "note": "More lineup-managed than lineup-driving on defense right now."
+      }
     ],
     "summary": {
       "synopsis": "Dynamic guard creator with real shotmaking gravity and a path to high-end on-ball offense.",
@@ -135,13 +207,21 @@
       "stockBand": "Stable"
     },
     "sources": [
-      { "label": "Kansas roster", "url": "https://kuathletics.com/sports/mbball/roster/", "type": "bio" },
-      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/darryn-peterson", "type": "bio" }
+      {
+        "label": "Kansas roster",
+        "url": "https://kuathletics.com/sports/mbball/roster/",
+        "type": "bio"
+      },
+      {
+        "label": "USA Basketball bio",
+        "url": "https://www.usab.com/players/darryn-peterson",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "cameronboozer",
-    "rank": 4,
+    "rank": 3,
     "name": "Cameron Boozer",
     "height": "6-10",
     "weight": "250",
@@ -171,14 +251,46 @@
       "defense": 77
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 80, "note": "Creates angles more with strength and touch than shake." },
-      { "name": "Decision Making", "score": 84, "note": "Rarely looks rushed for a young high-usage forward." },
-      { "name": "Passing Creation", "score": 72, "note": "Can keep offense moving and punish help reads." },
-      { "name": "Shooting Gravity", "score": 68, "note": "Not a finished spacer yet, but enough touch to project improvement." },
-      { "name": "Off-Ball Value", "score": 81, "note": "Rebounding, screening, and finishing travel cleanly." },
-      { "name": "Processing Speed", "score": 84, "note": "Plays with unusual feel for pace, timing, and counters." },
-      { "name": "Scalability", "score": 86, "note": "Can fit with multiple frontcourt partners because the feel is real." },
-      { "name": "Defensive Versatility", "score": 78, "note": "Should survive across frontcourt matchups if the mobility holds." }
+      {
+        "name": "Advantage Creation",
+        "score": 80,
+        "note": "Creates angles more with strength and touch than shake."
+      },
+      {
+        "name": "Decision Making",
+        "score": 84,
+        "note": "Rarely looks rushed for a young high-usage forward."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 72,
+        "note": "Can keep offense moving and punish help reads."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 68,
+        "note": "Not a finished spacer yet, but enough touch to project improvement."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 81,
+        "note": "Rebounding, screening, and finishing travel cleanly."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 84,
+        "note": "Plays with unusual feel for pace, timing, and counters."
+      },
+      {
+        "name": "Scalability",
+        "score": 86,
+        "note": "Can fit with multiple frontcourt partners because the feel is real."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 78,
+        "note": "Should survive across frontcourt matchups if the mobility holds."
+      }
     ],
     "summary": {
       "synopsis": "Polished young forward with mature feel, interior productivity, and real lineup versatility.",
@@ -205,13 +317,21 @@
       "stockBand": "Rising"
     },
     "sources": [
-      { "label": "Duke roster", "url": "https://goduke.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/cameron-boozer", "type": "bio" }
+      {
+        "label": "Duke roster",
+        "url": "https://goduke.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "USA Basketball bio",
+        "url": "https://www.usab.com/players/cameron-boozer",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "calebwilson",
-    "rank": 5,
+    "rank": 4,
     "name": "Caleb Wilson",
     "height": "6-10",
     "weight": "215",
@@ -241,14 +361,46 @@
       "defense": 84
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 75, "note": "Gets to productive spots more with length and activity than pure handle." },
-      { "name": "Decision Making", "score": 76, "note": "Generally keeps the game simple and on time." },
-      { "name": "Passing Creation", "score": 65, "note": "Useful connective passer, not yet a creator hub." },
-      { "name": "Shooting Gravity", "score": 64, "note": "Range remains more projective than proven." },
-      { "name": "Off-Ball Value", "score": 80, "note": "Cuts, finishes, and activity play cleanly." },
-      { "name": "Processing Speed", "score": 78, "note": "Rotations and reactions tend to be ahead of average frontcourt prospects." },
-      { "name": "Scalability", "score": 83, "note": "Defensive range gives him multiple frontcourt fits." },
-      { "name": "Defensive Versatility", "score": 89, "note": "The main selling point is frontcourt coverage range and disruption." }
+      {
+        "name": "Advantage Creation",
+        "score": 75,
+        "note": "Gets to productive spots more with length and activity than pure handle."
+      },
+      {
+        "name": "Decision Making",
+        "score": 76,
+        "note": "Generally keeps the game simple and on time."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 65,
+        "note": "Useful connective passer, not yet a creator hub."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 64,
+        "note": "Range remains more projective than proven."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 80,
+        "note": "Cuts, finishes, and activity play cleanly."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 78,
+        "note": "Rotations and reactions tend to be ahead of average frontcourt prospects."
+      },
+      {
+        "name": "Scalability",
+        "score": 83,
+        "note": "Defensive range gives him multiple frontcourt fits."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 89,
+        "note": "The main selling point is frontcourt coverage range and disruption."
+      }
     ],
     "summary": {
       "synopsis": "Mobile, toolsy frontcourt defender whose value starts with coverage flexibility and activity.",
@@ -275,13 +427,21 @@
       "stockBand": "Stable"
     },
     "sources": [
-      { "label": "North Carolina roster", "url": "https://goheels.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/caleb-wilson", "type": "bio" }
+      {
+        "label": "North Carolina roster",
+        "url": "https://goheels.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "USA Basketball bio",
+        "url": "https://www.usab.com/players/caleb-wilson",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "kingstonflemings",
-    "rank": 6,
+    "rank": 5,
     "name": "Kingston Flemings",
     "height": "6-4",
     "weight": "185",
@@ -311,14 +471,46 @@
       "defense": 63
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 84, "note": "Gets two feet in the paint and shifts pace effectively." },
-      { "name": "Decision Making", "score": 82, "note": "Organized style keeps possessions on schedule." },
-      { "name": "Passing Creation", "score": 77, "note": "Creates clean passes without overdribbling the advantage away." },
-      { "name": "Shooting Gravity", "score": 72, "note": "Enough pull-up utility to keep defenders honest." },
-      { "name": "Off-Ball Value", "score": 66, "note": "Primary value still starts with on-ball orchestration." },
-      { "name": "Processing Speed", "score": 83, "note": "Reads develop quickly and usually stay connected to the right pass." },
-      { "name": "Scalability", "score": 71, "note": "Needs the jumper and defense to hold up for easy lineup fit." },
-      { "name": "Defensive Versatility", "score": 62, "note": "Defensive floor is more about effort than true coverage flexibility." }
+      {
+        "name": "Advantage Creation",
+        "score": 84,
+        "note": "Gets two feet in the paint and shifts pace effectively."
+      },
+      {
+        "name": "Decision Making",
+        "score": 82,
+        "note": "Organized style keeps possessions on schedule."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 77,
+        "note": "Creates clean passes without overdribbling the advantage away."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 72,
+        "note": "Enough pull-up utility to keep defenders honest."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 66,
+        "note": "Primary value still starts with on-ball orchestration."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 83,
+        "note": "Reads develop quickly and usually stay connected to the right pass."
+      },
+      {
+        "name": "Scalability",
+        "score": 71,
+        "note": "Needs the jumper and defense to hold up for easy lineup fit."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 62,
+        "note": "Defensive floor is more about effort than true coverage flexibility."
+      }
     ],
     "summary": {
       "synopsis": "Steady lead-guard prospect built around pace control, passing organization, and pragmatic shot creation.",
@@ -345,13 +537,21 @@
       "stockBand": "Rising"
     },
     "sources": [
-      { "label": "Houston roster", "url": "https://uhcougars.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/kingston-flemings", "type": "bio" }
+      {
+        "label": "Houston roster",
+        "url": "https://uhcougars.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "USA Basketball bio",
+        "url": "https://www.usab.com/players/kingston-flemings",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "dariusacuff",
-    "rank": 7,
+    "rank": 6,
     "name": "Darius Acuff",
     "height": "6-2",
     "weight": "190",
@@ -381,14 +581,46 @@
       "defense": 58
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 87, "note": "Small-space creation and live-dribble pressure are real strengths." },
-      { "name": "Decision Making", "score": 73, "note": "Can tilt toward scoring mode before the simplest pass." },
-      { "name": "Passing Creation", "score": 80, "note": "Sees kick-outs and pocket passes once he collapses the lane." },
-      { "name": "Shooting Gravity", "score": 74, "note": "Shotmaking matters, though consistency remains important." },
-      { "name": "Off-Ball Value", "score": 60, "note": "Profile is still much more on-ball than connective." },
-      { "name": "Processing Speed", "score": 71, "note": "Can make high-difficulty reads, but the possession control is still variable." },
-      { "name": "Scalability", "score": 66, "note": "Lineup fit tightens if the ball-dominant usage does not translate." },
-      { "name": "Defensive Versatility", "score": 57, "note": "Size limits the defensive pathways." }
+      {
+        "name": "Advantage Creation",
+        "score": 87,
+        "note": "Small-space creation and live-dribble pressure are real strengths."
+      },
+      {
+        "name": "Decision Making",
+        "score": 73,
+        "note": "Can tilt toward scoring mode before the simplest pass."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 80,
+        "note": "Sees kick-outs and pocket passes once he collapses the lane."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 74,
+        "note": "Shotmaking matters, though consistency remains important."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 60,
+        "note": "Profile is still much more on-ball than connective."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 71,
+        "note": "Can make high-difficulty reads, but the possession control is still variable."
+      },
+      {
+        "name": "Scalability",
+        "score": 66,
+        "note": "Lineup fit tightens if the ball-dominant usage does not translate."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 57,
+        "note": "Size limits the defensive pathways."
+      }
     ],
     "summary": {
       "synopsis": "Electric downhill guard with real paint pressure and live-dribble passing upside.",
@@ -415,13 +647,21 @@
       "stockBand": "Stable"
     },
     "sources": [
-      { "label": "Arkansas roster", "url": "https://arkansasrazorbacks.com/sport/m-basketball/roster/", "type": "bio" },
-      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/darius-acuff-jr", "type": "bio" }
+      {
+        "label": "Arkansas roster",
+        "url": "https://arkansasrazorbacks.com/sport/m-basketball/roster/",
+        "type": "bio"
+      },
+      {
+        "label": "USA Basketball bio",
+        "url": "https://www.usab.com/players/darius-acuff-jr",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "mikelbrown",
-    "rank": 8,
+    "rank": 7,
     "name": "Mikel Brown",
     "height": "6-5",
     "weight": "180",
@@ -437,7 +677,7 @@
     "archetypeBase": "Lead guard organizer",
     "archetype": "Tempo Pilot",
     "teamFit": "Best with shooting around him and a secondary wing defender handling the toughest perimeter assignment.",
-    "age": 20.0,
+    "age": 20,
     "measurements": {
       "height": "6-5",
       "weight": "180",
@@ -451,14 +691,46 @@
       "defense": 60
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 82, "note": "Gets into offense smoothly and creates enough separation to run actions." },
-      { "name": "Decision Making", "score": 79, "note": "Usually sees the next pass and keeps pace under control." },
-      { "name": "Passing Creation", "score": 77, "note": "Can create shots for others without overextending." },
-      { "name": "Shooting Gravity", "score": 80, "note": "Jumper is a meaningful part of the offensive profile." },
-      { "name": "Off-Ball Value", "score": 65, "note": "Can play off another creator if the jumper keeps translating." },
-      { "name": "Processing Speed", "score": 76, "note": "Generally plays one beat ahead rather than one beat late." },
-      { "name": "Scalability", "score": 72, "note": "Size helps the offensive fit more than the defensive one." },
-      { "name": "Defensive Versatility", "score": 60, "note": "More neutral than clearly additive defensively." }
+      {
+        "name": "Advantage Creation",
+        "score": 82,
+        "note": "Gets into offense smoothly and creates enough separation to run actions."
+      },
+      {
+        "name": "Decision Making",
+        "score": 79,
+        "note": "Usually sees the next pass and keeps pace under control."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 77,
+        "note": "Can create shots for others without overextending."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 80,
+        "note": "Jumper is a meaningful part of the offensive profile."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 65,
+        "note": "Can play off another creator if the jumper keeps translating."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 76,
+        "note": "Generally plays one beat ahead rather than one beat late."
+      },
+      {
+        "name": "Scalability",
+        "score": 72,
+        "note": "Size helps the offensive fit more than the defensive one."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 60,
+        "note": "More neutral than clearly additive defensively."
+      }
     ],
     "summary": {
       "synopsis": "Skilled guard prospect with a balanced scoring-passing profile and clean offensive projection.",
@@ -485,13 +757,21 @@
       "stockBand": "Stable"
     },
     "sources": [
-      { "label": "Louisville roster", "url": "https://gocards.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "USA Basketball bio", "url": "https://www.usab.com/players/mikel-brown-jr", "type": "bio" }
+      {
+        "label": "Louisville roster",
+        "url": "https://gocards.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "USA Basketball bio",
+        "url": "https://www.usab.com/players/mikel-brown-jr",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "keatonwagler",
-    "rank": 9,
+    "rank": 8,
     "name": "Keaton Wagler",
     "height": "6-6",
     "weight": "185",
@@ -521,14 +801,46 @@
       "defense": 68
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 74, "note": "More pace-and-skill creator than power driver." },
-      { "name": "Decision Making", "score": 83, "note": "One of the cleaner decision-makers in this guard cluster." },
-      { "name": "Passing Creation", "score": 71, "note": "Keeps actions connected and can hit the next read." },
-      { "name": "Shooting Gravity", "score": 86, "note": "The jumper is already a real pressure point." },
-      { "name": "Off-Ball Value", "score": 82, "note": "Can scale as a movement shooter and secondary attacker." },
-      { "name": "Processing Speed", "score": 84, "note": "Usually gets to the right decision quickly." },
-      { "name": "Scalability", "score": 88, "note": "Big guard shooting and decision-making fit nearly any lineup." },
-      { "name": "Defensive Versatility", "score": 69, "note": "Size helps, but the defensive outcome still needs proving." }
+      {
+        "name": "Advantage Creation",
+        "score": 74,
+        "note": "More pace-and-skill creator than power driver."
+      },
+      {
+        "name": "Decision Making",
+        "score": 83,
+        "note": "One of the cleaner decision-makers in this guard cluster."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 71,
+        "note": "Keeps actions connected and can hit the next read."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 86,
+        "note": "The jumper is already a real pressure point."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 82,
+        "note": "Can scale as a movement shooter and secondary attacker."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 84,
+        "note": "Usually gets to the right decision quickly."
+      },
+      {
+        "name": "Scalability",
+        "score": 88,
+        "note": "Big guard shooting and decision-making fit nearly any lineup."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 69,
+        "note": "Size helps, but the defensive outcome still needs proving."
+      }
     ],
     "summary": {
       "synopsis": "Big guard shooter with real feel and one of the cleaner scalability cases near the top of the board.",
@@ -555,13 +867,21 @@
       "stockBand": "Stable"
     },
     "sources": [
-      { "label": "Illinois roster", "url": "https://fightingillini.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "247Sports profile", "url": "https://247sports.com/player/keaton-wagler-46135016/", "type": "reference" }
+      {
+        "label": "Illinois roster",
+        "url": "https://fightingillini.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "247Sports profile",
+        "url": "https://247sports.com/player/keaton-wagler-46135016/",
+        "type": "reference"
+      }
     ]
   },
   {
     "id": "braydenburries",
-    "rank": 10,
+    "rank": 9,
     "name": "Brayden Burries",
     "height": "6-4",
     "weight": "205",
@@ -591,14 +911,46 @@
       "defense": 64
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 83, "note": "Gets to pull-ups and paint touches with strong pace changes." },
-      { "name": "Decision Making", "score": 75, "note": "Still balancing scorer instincts with control." },
-      { "name": "Passing Creation", "score": 70, "note": "Can create the next pass but is wired to score first." },
-      { "name": "Shooting Gravity", "score": 85, "note": "Shotmaking is a major reason he sits this high on the board." },
-      { "name": "Off-Ball Value", "score": 68, "note": "Can function off another handler because the jumper carries." },
-      { "name": "Processing Speed", "score": 73, "note": "The offense still tilts toward difficult self-created solutions." },
-      { "name": "Scalability", "score": 74, "note": "Shotmaking gives him an offensive lane even if he is not full-time lead." },
-      { "name": "Defensive Versatility", "score": 63, "note": "Physical competitiveness matters because the defensive tools are not overwhelming." }
+      {
+        "name": "Advantage Creation",
+        "score": 83,
+        "note": "Gets to pull-ups and paint touches with strong pace changes."
+      },
+      {
+        "name": "Decision Making",
+        "score": 75,
+        "note": "Still balancing scorer instincts with control."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 70,
+        "note": "Can create the next pass but is wired to score first."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 85,
+        "note": "Shotmaking is a major reason he sits this high on the board."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 68,
+        "note": "Can function off another handler because the jumper carries."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 73,
+        "note": "The offense still tilts toward difficult self-created solutions."
+      },
+      {
+        "name": "Scalability",
+        "score": 74,
+        "note": "Shotmaking gives him an offensive lane even if he is not full-time lead."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 63,
+        "note": "Physical competitiveness matters because the defensive tools are not overwhelming."
+      }
     ],
     "summary": {
       "synopsis": "Scoring-minded combo guard with enough shotmaking to carry real offensive upside.",
@@ -625,13 +977,21 @@
       "stockBand": "Rising"
     },
     "sources": [
-      { "label": "Arizona roster", "url": "https://arizonawildcats.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "247Sports profile", "url": "https://247sports.com/player/brayden-burries-46138908/", "type": "reference" }
+      {
+        "label": "Arizona roster",
+        "url": "https://arizonawildcats.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "247Sports profile",
+        "url": "https://247sports.com/player/brayden-burries-46138908/",
+        "type": "reference"
+      }
     ]
   },
   {
     "id": "yaxellendeborg",
-    "rank": 11,
+    "rank": 10,
     "name": "Yaxel Lendeborg",
     "height": "6-10",
     "weight": "240",
@@ -661,14 +1021,46 @@
       "defense": 84
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 76, "note": "Creates more with feel, power, and second-effort than pure burst." },
-      { "name": "Decision Making", "score": 85, "note": "Processes well for a frontcourt player and rarely kills possessions." },
-      { "name": "Passing Creation", "score": 78, "note": "Can pass on the move and keep short-roll offense alive." },
-      { "name": "Shooting Gravity", "score": 64, "note": "Still more workable than feared, but not the offensive driver." },
-      { "name": "Off-Ball Value", "score": 84, "note": "Rebounding, cutting, screening, and activity all translate." },
-      { "name": "Processing Speed", "score": 86, "note": "Feel is one of the strongest parts of the profile." },
-      { "name": "Scalability", "score": 89, "note": "Can fit next to multiple stars because he does the connective work." },
-      { "name": "Defensive Versatility", "score": 86, "note": "Brings real frontcourt resistance and utility." }
+      {
+        "name": "Advantage Creation",
+        "score": 76,
+        "note": "Creates more with feel, power, and second-effort than pure burst."
+      },
+      {
+        "name": "Decision Making",
+        "score": 85,
+        "note": "Processes well for a frontcourt player and rarely kills possessions."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 78,
+        "note": "Can pass on the move and keep short-roll offense alive."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 64,
+        "note": "Still more workable than feared, but not the offensive driver."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 84,
+        "note": "Rebounding, cutting, screening, and activity all translate."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 86,
+        "note": "Feel is one of the strongest parts of the profile."
+      },
+      {
+        "name": "Scalability",
+        "score": 89,
+        "note": "Can fit next to multiple stars because he does the connective work."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 86,
+        "note": "Brings real frontcourt resistance and utility."
+      }
     ],
     "summary": {
       "synopsis": "Mature, productive frontcourt connector whose feel and two-way utility give him one of the safer role pathways on the board.",
@@ -695,13 +1087,21 @@
       "stockBand": "Stable"
     },
     "sources": [
-      { "label": "Michigan roster", "url": "https://mgoblue.com/sports/mens-basketball/roster", "type": "bio" },
-      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Yaxel_Lendeborg", "type": "reference" }
+      {
+        "label": "Michigan roster",
+        "url": "https://mgoblue.com/sports/mens-basketball/roster",
+        "type": "bio"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Yaxel_Lendeborg",
+        "type": "reference"
+      }
     ]
   },
   {
     "id": "labaronphilon",
-    "rank": 12,
+    "rank": 11,
     "name": "Labaron Philon",
     "height": "6-4",
     "weight": "175",
@@ -731,14 +1131,46 @@
       "defense": 67
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 82, "note": "Wins paint touches with pacing changes, angles, and patient downhill craft." },
-      { "name": "Decision Making", "score": 84, "note": "Keeps possessions organized and usually sees the clean early read." },
-      { "name": "Passing Creation", "score": 81, "note": "Can create advantage passes off live dribble without overextending the action." },
-      { "name": "Shooting Gravity", "score": 72, "note": "Shot is credible enough to keep defenses attached, but not yet a true warper." },
-      { "name": "Off-Ball Value", "score": 66, "note": "Value is still strongest when he is steering the offense." },
-      { "name": "Processing Speed", "score": 85, "note": "Processes quickly and rarely looks sped up by the possession." },
-      { "name": "Scalability", "score": 74, "note": "Feel gives him lineup portability, but the jumper still determines how easy the fit is." },
-      { "name": "Defensive Versatility", "score": 63, "note": "Competitive guard defender, though not a size-driven stopper." }
+      {
+        "name": "Advantage Creation",
+        "score": 82,
+        "note": "Wins paint touches with pacing changes, angles, and patient downhill craft."
+      },
+      {
+        "name": "Decision Making",
+        "score": 84,
+        "note": "Keeps possessions organized and usually sees the clean early read."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 81,
+        "note": "Can create advantage passes off live dribble without overextending the action."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 72,
+        "note": "Shot is credible enough to keep defenses attached, but not yet a true warper."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 66,
+        "note": "Value is still strongest when he is steering the offense."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 85,
+        "note": "Processes quickly and rarely looks sped up by the possession."
+      },
+      {
+        "name": "Scalability",
+        "score": 74,
+        "note": "Feel gives him lineup portability, but the jumper still determines how easy the fit is."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 63,
+        "note": "Competitive guard defender, though not a size-driven stopper."
+      }
     ],
     "summary": {
       "synopsis": "Steady secondary lead guard prospect whose value starts with pace control, passing organization, and low-chaos possession management.",
@@ -765,12 +1197,16 @@
       "stockBand": "Rising"
     },
     "sources": [
-      { "label": "Alabama roster", "url": "https://rolltide.com/sports/mens-basketball/roster", "type": "bio" }
+      {
+        "label": "Alabama roster",
+        "url": "https://rolltide.com/sports/mens-basketball/roster",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "chriscenac",
-    "rank": 13,
+    "rank": 12,
     "name": "Chris Cenac",
     "height": "6-11",
     "weight": "230",
@@ -800,14 +1236,46 @@
       "defense": 84
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 67, "note": "Offense still comes more from tools, length, and finishing than self-created polish." },
-      { "name": "Decision Making", "score": 74, "note": "Keeps things simple and generally plays within the possession." },
-      { "name": "Passing Creation", "score": 58, "note": "Mostly a play-finisher and connector rather than a true passing hub." },
-      { "name": "Shooting Gravity", "score": 56, "note": "Spacing projection remains more long-term than current." },
-      { "name": "Off-Ball Value", "score": 81, "note": "Rim pressure, offensive glass, and activity give him immediate utility." },
-      { "name": "Processing Speed", "score": 76, "note": "Defensive reads and recovery reactions are encouraging for his age." },
-      { "name": "Scalability", "score": 80, "note": "Can slot into lineups that need size, mobility, and low-maintenance offense." },
-      { "name": "Defensive Versatility", "score": 88, "note": "Coverage range and playmaking are the core selling points." }
+      {
+        "name": "Advantage Creation",
+        "score": 67,
+        "note": "Offense still comes more from tools, length, and finishing than self-created polish."
+      },
+      {
+        "name": "Decision Making",
+        "score": 74,
+        "note": "Keeps things simple and generally plays within the possession."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 58,
+        "note": "Mostly a play-finisher and connector rather than a true passing hub."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 56,
+        "note": "Spacing projection remains more long-term than current."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 81,
+        "note": "Rim pressure, offensive glass, and activity give him immediate utility."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 76,
+        "note": "Defensive reads and recovery reactions are encouraging for his age."
+      },
+      {
+        "name": "Scalability",
+        "score": 80,
+        "note": "Can slot into lineups that need size, mobility, and low-maintenance offense."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 88,
+        "note": "Coverage range and playmaking are the core selling points."
+      }
     ],
     "summary": {
       "synopsis": "Toolsy frontcourt bet whose value starts with defensive range, rim deterrence, and modern off-ball big utility.",
@@ -834,12 +1302,16 @@
       "stockBand": "Rising"
     },
     "sources": [
-      { "label": "Houston roster", "url": "https://uhcougars.com/sports/mens-basketball/roster", "type": "bio" }
+      {
+        "label": "Houston roster",
+        "url": "https://uhcougars.com/sports/mens-basketball/roster",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "amariallen",
-    "rank": 14,
+    "rank": 13,
     "name": "Amari Allen",
     "height": "6-6",
     "weight": "195",
@@ -869,14 +1341,46 @@
       "defense": 79
     },
     "traits": [
-      { "name": "Advantage Creation", "score": 71, "note": "Can attack tilted defenses, but not yet a primary on-ball problem solver." },
-      { "name": "Decision Making", "score": 77, "note": "Usually stays within the read and keeps the game moving." },
-      { "name": "Passing Creation", "score": 64, "note": "Useful secondary passer without major creation burden." },
-      { "name": "Shooting Gravity", "score": 73, "note": "Projects as a respectable spacing wing if the jumper settles." },
-      { "name": "Off-Ball Value", "score": 82, "note": "Cuts, fills lanes, and complements star usage well." },
-      { "name": "Processing Speed", "score": 78, "note": "Reacts quickly enough to play a connective role on both ends." },
-      { "name": "Scalability", "score": 84, "note": "Wing size plus low-maintenance offense should fit around higher-end talent." },
-      { "name": "Defensive Versatility", "score": 81, "note": "Has the tools to guard across wing assignments and survive switches." }
+      {
+        "name": "Advantage Creation",
+        "score": 71,
+        "note": "Can attack tilted defenses, but not yet a primary on-ball problem solver."
+      },
+      {
+        "name": "Decision Making",
+        "score": 77,
+        "note": "Usually stays within the read and keeps the game moving."
+      },
+      {
+        "name": "Passing Creation",
+        "score": 64,
+        "note": "Useful secondary passer without major creation burden."
+      },
+      {
+        "name": "Shooting Gravity",
+        "score": 73,
+        "note": "Projects as a respectable spacing wing if the jumper settles."
+      },
+      {
+        "name": "Off-Ball Value",
+        "score": 82,
+        "note": "Cuts, fills lanes, and complements star usage well."
+      },
+      {
+        "name": "Processing Speed",
+        "score": 78,
+        "note": "Reacts quickly enough to play a connective role on both ends."
+      },
+      {
+        "name": "Scalability",
+        "score": 84,
+        "note": "Wing size plus low-maintenance offense should fit around higher-end talent."
+      },
+      {
+        "name": "Defensive Versatility",
+        "score": 81,
+        "note": "Has the tools to guard across wing assignments and survive switches."
+      }
     ],
     "summary": {
       "synopsis": "Projectable two-way wing whose strongest pathway is as a scalable connector rather than an offense-driver.",
@@ -903,12 +1407,16 @@
       "stockBand": "Cooling"
     },
     "sources": [
-      { "label": "Alabama roster", "url": "https://rolltide.com/sports/mens-basketball/roster", "type": "bio" }
+      {
+        "label": "Alabama roster",
+        "url": "https://rolltide.com/sports/mens-basketball/roster",
+        "type": "bio"
+      }
     ]
   },
   {
     "id": "nateament",
-    "rank": 15,
+    "rank": 14,
     "name": "Nate Ament",
     "height": "6-9",
     "weight": "190",
@@ -927,7 +1435,7 @@
   },
   {
     "id": "isaiahevans",
-    "rank": 16,
+    "rank": 15,
     "name": "Isaiah Evans",
     "height": "6-6",
     "weight": "180",
@@ -946,7 +1454,7 @@
   },
   {
     "id": "cameroncarr",
-    "rank": 17,
+    "rank": 16,
     "name": "Cameron Carr",
     "height": "6-6",
     "weight": "180",
@@ -965,7 +1473,7 @@
   },
   {
     "id": "hannessteinbach",
-    "rank": 18,
+    "rank": 17,
     "name": "Hannes Steinbach",
     "height": "6-10",
     "weight": "225",
@@ -984,7 +1492,7 @@
   },
   {
     "id": "meleekthomas",
-    "rank": 19,
+    "rank": 18,
     "name": "Meleek Thomas",
     "height": "6-5",
     "weight": "185",
@@ -1003,7 +1511,7 @@
   },
   {
     "id": "alijaharenas",
-    "rank": 20,
+    "rank": 19,
     "name": "Alijah Arenas",
     "height": "6-6",
     "weight": "195",
@@ -1022,7 +1530,7 @@
   },
   {
     "id": "karimlopez",
-    "rank": 21,
+    "rank": 20,
     "name": "Karim Lopez",
     "height": "6-8",
     "weight": "210",
@@ -1041,7 +1549,7 @@
   },
   {
     "id": "allengraves",
-    "rank": 22,
+    "rank": 21,
     "name": "Allen Graves",
     "height": "6-9",
     "weight": "225",
@@ -1060,7 +1568,7 @@
   },
   {
     "id": "thomashaugh",
-    "rank": 23,
+    "rank": 22,
     "name": "Thomas Haugh",
     "height": "6-9",
     "weight": "210",
@@ -1079,7 +1587,7 @@
   },
   {
     "id": "bennettstirtz",
-    "rank": 24,
+    "rank": 23,
     "name": "Bennett Stirtz",
     "height": "6-4",
     "weight": "190",
@@ -1098,7 +1606,7 @@
   },
   {
     "id": "dashdaniels",
-    "rank": 25,
+    "rank": 24,
     "name": "Dash Daniels",
     "height": "6-6",
     "weight": "200",
@@ -1117,7 +1625,7 @@
   },
   {
     "id": "jaydenquaintance",
-    "rank": 26,
+    "rank": 25,
     "name": "Jayden Quaintance",
     "height": "6-10",
     "weight": "255",
@@ -1136,7 +1644,7 @@
   },
   {
     "id": "braylonmullins",
-    "rank": 27,
+    "rank": 26,
     "name": "Braylon Mullins",
     "height": "6-5",
     "weight": "180",
@@ -1155,7 +1663,7 @@
   },
   {
     "id": "koapeat",
-    "rank": 28,
+    "rank": 27,
     "name": "Koa Peat",
     "height": "6-8",
     "weight": "235",
@@ -1174,7 +1682,7 @@
   },
   {
     "id": "morezjohnson",
-    "rank": 29,
+    "rank": 28,
     "name": "Morez Johnson",
     "height": "6-9",
     "weight": "225",
@@ -1193,7 +1701,7 @@
   },
   {
     "id": "killyantoure",
-    "rank": 30,
+    "rank": 29,
     "name": "Killyan Toure",
     "height": "6-2",
     "weight": null,
@@ -1212,7 +1720,7 @@
   },
   {
     "id": "alexcondon",
-    "rank": 31,
+    "rank": 30,
     "name": "Alex Condon",
     "height": "7-0",
     "weight": "220",
@@ -1231,7 +1739,7 @@
   },
   {
     "id": "dailynswain",
-    "rank": 32,
+    "rank": 31,
     "name": "Dailyn Swain",
     "height": "6-7",
     "weight": "220",
@@ -1250,7 +1758,7 @@
   },
   {
     "id": "luigisuigo",
-    "rank": 33,
+    "rank": 32,
     "name": "Luigi Suigo",
     "height": "7-4",
     "weight": "245",
@@ -1269,7 +1777,7 @@
   },
   {
     "id": "matasvokietaitis",
-    "rank": 34,
+    "rank": 33,
     "name": "Matas Vokietaitis",
     "height": "7-0",
     "weight": "255",
@@ -1288,7 +1796,7 @@
   },
   {
     "id": "henriveesaar",
-    "rank": 35,
+    "rank": 34,
     "name": "Henri Veesaar",
     "height": "7-0",
     "weight": "220",
@@ -1307,7 +1815,7 @@
   },
   {
     "id": "christiananderson",
-    "rank": 36,
+    "rank": 35,
     "name": "Christian Anderson",
     "height": "6-0",
     "weight": "165",
@@ -1326,7 +1834,7 @@
   },
   {
     "id": "joshuajefferson",
-    "rank": 37,
+    "rank": 36,
     "name": "Joshua Jefferson",
     "height": "6-9",
     "weight": "240",
@@ -1345,7 +1853,7 @@
   },
   {
     "id": "trevonbrazile",
-    "rank": 38,
+    "rank": 37,
     "name": "Trevon Brazile",
     "height": "6-10",
     "weight": "215",
@@ -1364,7 +1872,7 @@
   },
   {
     "id": "toundeyessoufou",
-    "rank": 39,
+    "rank": 38,
     "name": "Tounde Yessoufou",
     "height": "6-5",
     "weight": "215",
@@ -1383,7 +1891,7 @@
   },
   {
     "id": "milanmomcilovic",
-    "rank": 40,
+    "rank": 39,
     "name": "Milan Momcilovic",
     "height": "6-8",
     "weight": "220",
@@ -1402,7 +1910,7 @@
   },
   {
     "id": "keyshawnhall",
-    "rank": 41,
+    "rank": 40,
     "name": "Keyshawn Hall",
     "height": "6-7",
     "weight": "240",
@@ -1421,7 +1929,7 @@
   },
   {
     "id": "sergiode",
-    "rank": 42,
+    "rank": 41,
     "name": "Sergio De",
     "height": "6-6",
     "weight": "175",
@@ -1440,7 +1948,7 @@
   },
   {
     "id": "babamiller",
-    "rank": 43,
+    "rank": 42,
     "name": "Baba Miller",
     "height": "7-0",
     "weight": "215",
@@ -1459,7 +1967,7 @@
   },
   {
     "id": "jadenbradley",
-    "rank": 44,
+    "rank": 43,
     "name": "Jaden Bradley",
     "height": "6-3",
     "weight": "185",
@@ -1478,7 +1986,7 @@
   },
   {
     "id": "adamatamna",
-    "rank": 45,
+    "rank": 44,
     "name": "Adam Atamna",
     "height": "6-5",
     "weight": "205",
@@ -1497,7 +2005,7 @@
   },
   {
     "id": "milosuzan",
-    "rank": 46,
+    "rank": 45,
     "name": "Milos Uzan",
     "height": "6-4",
     "weight": "185",
@@ -1516,7 +2024,7 @@
   },
   {
     "id": "jaronpierre",
-    "rank": 47,
+    "rank": 46,
     "name": "Jaron Pierre",
     "height": "6-6",
     "weight": "200",
@@ -1535,7 +2043,7 @@
   },
   {
     "id": "billyrichmond",
-    "rank": 48,
+    "rank": 47,
     "name": "Billy Richmond",
     "height": "6-5",
     "weight": "200",
@@ -1554,7 +2062,7 @@
   },
   {
     "id": "patrickngongba",
-    "rank": 49,
+    "rank": 48,
     "name": "Patrick Ngongba",
     "height": "6-11",
     "weight": "250",
@@ -1573,7 +2081,7 @@
   },
   {
     "id": "alexkaraban",
-    "rank": 50,
+    "rank": 49,
     "name": "Alex Karaban",
     "height": "6-8",
     "weight": "220",
@@ -1592,7 +2100,7 @@
   },
   {
     "id": "ruebenchinyelu",
-    "rank": 51,
+    "rank": 50,
     "name": "Rueben Chinyelu",
     "height": "6-9",
     "weight": null,
@@ -1611,7 +2119,7 @@
   },
   {
     "id": "brysontiller",
-    "rank": 52,
+    "rank": 51,
     "name": "Bryson Tiller",
     "height": "6-10",
     "weight": "235",
@@ -1630,7 +2138,7 @@
   },
   {
     "id": "natebittle",
-    "rank": 53,
+    "rank": 52,
     "name": "Nate Bittle",
     "height": "7-0",
     "weight": "215",
@@ -1649,7 +2157,7 @@
   },
   {
     "id": "lamarwilkerson",
-    "rank": 54,
+    "rank": 53,
     "name": "Lamar Wilkerson",
     "height": "6-3",
     "weight": "200",
@@ -1668,7 +2176,7 @@
   },
   {
     "id": "maliqueewin",
-    "rank": 55,
+    "rank": 54,
     "name": "Malique Ewin",
     "height": "6-10",
     "weight": "240",
@@ -1687,7 +2195,7 @@
   },
   {
     "id": "tarrisreed",
-    "rank": 56,
+    "rank": 55,
     "name": "Tarris Reed",
     "height": "6-8",
     "weight": "220",
@@ -1706,7 +2214,7 @@
   },
   {
     "id": "trewhite",
-    "rank": 57,
+    "rank": 56,
     "name": "Tre White",
     "height": "6-7",
     "weight": "205",
@@ -1725,7 +2233,7 @@
   },
   {
     "id": "florybidunga",
-    "rank": 58,
+    "rank": 57,
     "name": "Flory Bidunga",
     "height": "6-8",
     "weight": "215",
@@ -1744,7 +2252,7 @@
   },
   {
     "id": "ryanconwell",
-    "rank": 59,
+    "rank": 58,
     "name": "Ryan Conwell",
     "height": "6-4",
     "weight": "215",
@@ -1763,7 +2271,7 @@
   },
   {
     "id": "zubyejiofor",
-    "rank": 60,
+    "rank": 59,
     "name": "Zuby Ejiofor",
     "height": "6-9",
     "weight": "240",
@@ -1782,7 +2290,7 @@
   },
   {
     "id": "mouhamedfaye",
-    "rank": 61,
+    "rank": 60,
     "name": "Mouhamed Faye",
     "height": "6-10",
     "weight": "225",
@@ -1801,7 +2309,7 @@
   },
   {
     "id": "isaiahjohnson",
-    "rank": 62,
+    "rank": 61,
     "name": "Isaiah Johnson",
     "height": "6-9",
     "weight": "330",
@@ -1820,7 +2328,7 @@
   },
   {
     "id": "ebukaokorie",
-    "rank": 63,
+    "rank": 62,
     "name": "Ebuka Okorie",
     "height": "6-2",
     "weight": "185",
@@ -1839,7 +2347,7 @@
   },
   {
     "id": "soloball",
-    "rank": 64,
+    "rank": 63,
     "name": "Solo Ball",
     "height": "6-4",
     "weight": "190",
@@ -1858,7 +2366,7 @@
   },
   {
     "id": "jukeharris",
-    "rank": 65,
+    "rank": 64,
     "name": "Juke Harris",
     "height": "6-7",
     "weight": "200",
@@ -1877,7 +2385,7 @@
   },
   {
     "id": "elyjahfreeman",
-    "rank": 66,
+    "rank": 65,
     "name": "Elyjah Freeman",
     "height": "6-8",
     "weight": "185",
@@ -1896,7 +2404,7 @@
   },
   {
     "id": "miikkamuurinen",
-    "rank": 67,
+    "rank": 66,
     "name": "Miikka Muurinen",
     "height": "6-11",
     "weight": "185",
@@ -1915,7 +2423,7 @@
   },
   {
     "id": "milesbyrd",
-    "rank": 68,
+    "rank": 67,
     "name": "Miles Byrd",
     "height": "6-6",
     "weight": "180",
@@ -1934,7 +2442,7 @@
   },
   {
     "id": "kanoncatchings",
-    "rank": 69,
+    "rank": 68,
     "name": "Kanon Catchings",
     "height": "6-9",
     "weight": "210",
@@ -1953,7 +2461,7 @@
   },
   {
     "id": "adaymara",
-    "rank": 70,
+    "rank": 69,
     "name": "Aday Mara",
     "height": "7-3",
     "weight": "240",
@@ -1972,7 +2480,7 @@
   },
   {
     "id": "davidpunch",
-    "rank": 71,
+    "rank": 70,
     "name": "David Punch",
     "height": "6-7",
     "weight": "245",
@@ -1991,7 +2499,7 @@
   },
   {
     "id": "keshawnmurphy",
-    "rank": 72,
+    "rank": 71,
     "name": "Ke Shawn Murphy",
     "height": "6-10",
     "weight": "230",
@@ -2010,7 +2518,7 @@
   },
   {
     "id": "ognjensrzentic",
-    "rank": 73,
+    "rank": 72,
     "name": "Ognjen Srzentic",
     "height": "6-7",
     "weight": "195",
@@ -2029,7 +2537,7 @@
   },
   {
     "id": "ajstorr",
-    "rank": 74,
+    "rank": 73,
     "name": "AJ Storr",
     "height": "6-7",
     "weight": "205",
@@ -2048,7 +2556,7 @@
   },
   {
     "id": "rafaelcastro",
-    "rank": 75,
+    "rank": 74,
     "name": "Rafael Castro",
     "height": "6-11",
     "weight": "220",
@@ -2067,7 +2575,7 @@
   },
   {
     "id": "markmitchell",
-    "rank": 76,
+    "rank": 75,
     "name": "Mark Mitchell",
     "height": "6-9",
     "weight": "230",
@@ -2086,7 +2594,7 @@
   },
   {
     "id": "jttoppin",
-    "rank": 77,
+    "rank": 76,
     "name": "JT Toppin",
     "height": "6-8",
     "weight": "225",
@@ -2105,7 +2613,7 @@
   },
   {
     "id": "neoklisavdalas",
-    "rank": 78,
+    "rank": 77,
     "name": "Neoklis Avdalas",
     "height": "6-9",
     "weight": "200",
@@ -2124,7 +2632,7 @@
   },
   {
     "id": "ericreibe",
-    "rank": 79,
+    "rank": 78,
     "name": "Eric Reibe",
     "height": "7-0",
     "weight": "235",
@@ -2143,7 +2651,7 @@
   },
   {
     "id": "collinchandler",
-    "rank": 80,
+    "rank": 79,
     "name": "Collin Chandler",
     "height": "6-5",
     "weight": "205",
@@ -2162,7 +2670,7 @@
   },
   {
     "id": "jalenharalson",
-    "rank": 81,
+    "rank": 80,
     "name": "Jalen Haralson",
     "height": "6-7",
     "weight": "220",
@@ -2181,7 +2689,7 @@
   },
   {
     "id": "bradensmith",
-    "rank": 82,
+    "rank": 81,
     "name": "Braden Smith",
     "height": "6-0",
     "weight": "175",
@@ -2200,7 +2708,7 @@
   },
   {
     "id": "mattable",
-    "rank": 83,
+    "rank": 82,
     "name": "Matt Able",
     "height": "6-5",
     "weight": "200",
@@ -2219,7 +2727,7 @@
   },
   {
     "id": "davisfogle",
-    "rank": 84,
+    "rank": 83,
     "name": "Davis Fogle",
     "height": "6-7",
     "weight": "185",
@@ -2238,7 +2746,7 @@
   },
   {
     "id": "bjedwards",
-    "rank": 85,
+    "rank": 84,
     "name": "BJ Edwards",
     "height": "6-3",
     "weight": "190",
@@ -2257,7 +2765,7 @@
   },
   {
     "id": "bayendongo",
-    "rank": 86,
+    "rank": 85,
     "name": "Baye Ndongo",
     "height": "6-9",
     "weight": "225",
@@ -2276,7 +2784,7 @@
   },
   {
     "id": "kjlewis",
-    "rank": 87,
+    "rank": 86,
     "name": "KJ Lewis",
     "height": "6-4",
     "weight": "205",
@@ -2295,7 +2803,7 @@
   },
   {
     "id": "andrejstojakovic",
-    "rank": 88,
+    "rank": 87,
     "name": "Andrej Stojakovic",
     "height": "6-7",
     "weight": "190",
@@ -2314,7 +2822,7 @@
   },
   {
     "id": "jeremyfears",
-    "rank": 89,
+    "rank": 88,
     "name": "Jeremy Fears",
     "height": "6-2",
     "weight": "190",
@@ -2333,7 +2841,7 @@
   },
   {
     "id": "xavierbooker",
-    "rank": 90,
+    "rank": 89,
     "name": "Xavier Booker",
     "height": "6-11",
     "weight": "220",
@@ -2352,7 +2860,7 @@
   },
   {
     "id": "tomislavivisic",
-    "rank": 91,
+    "rank": 90,
     "name": "Tomislav Ivisic",
     "height": "7-1",
     "weight": "255",
@@ -2371,7 +2879,7 @@
   },
   {
     "id": "sethtrimble",
-    "rank": 92,
+    "rank": 91,
     "name": "Seth Trimble",
     "height": "6-3",
     "weight": "190",
@@ -2390,7 +2898,7 @@
   },
   {
     "id": "karterknox",
-    "rank": 93,
+    "rank": 92,
     "name": "Karter Knox",
     "height": "6-6",
     "weight": "215",
@@ -2409,7 +2917,7 @@
   },
   {
     "id": "jasperjohnson",
-    "rank": 94,
+    "rank": 93,
     "name": "Jasper Johnson",
     "height": "6-5",
     "weight": "180",
@@ -2428,7 +2936,7 @@
   },
   {
     "id": "mackenziemgbako",
-    "rank": 95,
+    "rank": 94,
     "name": "Mackenzie Mgbako",
     "height": "6-9",
     "weight": "215",
@@ -2447,7 +2955,7 @@
   },
   {
     "id": "naithangeorge",
-    "rank": 96,
+    "rank": 95,
     "name": "Naithan George",
     "height": "6-3",
     "weight": "180",
@@ -2466,7 +2974,7 @@
   },
   {
     "id": "tylertanner",
-    "rank": 97,
+    "rank": 96,
     "name": "Tyler Tanner",
     "height": "6-1",
     "weight": "175",
@@ -2485,7 +2993,7 @@
   },
   {
     "id": "damesarr",
-    "rank": 98,
+    "rank": 97,
     "name": "Dame Sarr",
     "height": "6-5",
     "weight": "190",
@@ -2504,7 +3012,7 @@
   },
   {
     "id": "mylescolvin",
-    "rank": 99,
+    "rank": 98,
     "name": "Myles Colvin",
     "height": "6-6",
     "weight": "200",
@@ -2523,7 +3031,7 @@
   },
   {
     "id": "coencarr",
-    "rank": 100,
+    "rank": 99,
     "name": "Coen Carr",
     "height": "6-5",
     "weight": "220",
