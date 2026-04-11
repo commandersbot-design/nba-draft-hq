@@ -6,6 +6,28 @@ function renderCell(value) {
   return value ?? '--';
 }
 
+function topTrait(prospect) {
+  return [...prospect.traitScores].sort((left, right) => right.score - left.score)[0];
+}
+
+function buildDecisionBullets(primary, secondary) {
+  const primaryTopTrait = topTrait(primary);
+  const secondaryTopTrait = topTrait(secondary);
+
+  return [
+    primaryTopTrait && (!secondaryTopTrait || primaryTopTrait.score > secondaryTopTrait.score)
+      ? `${primaryTopTrait.name} is the cleaner headlining trait.`
+      : null,
+    primary.summary?.strengths?.[0] || null,
+    primary.riskLevel === 'Low-Moderate' && secondary.riskLevel !== 'Low-Moderate'
+      ? 'Lower risk pathway.'
+      : null,
+    primary.projection?.swingSkill && primary.projection.swingSkill !== secondary.projection?.swingSkill
+      ? `More convincing swing skill pathway through ${primary.projection.swingSkill}.`
+      : null,
+  ].filter(Boolean).slice(0, 3);
+}
+
 export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const compareProspects = prospects.slice(0, 3);
 
@@ -26,18 +48,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const [left, right] = compareProspects;
   const leftTraits = traitMap(left);
   const rightTraits = traitMap(right);
-
-  const whyLeft = [
-    left.overallComposite > right.overallComposite ? `Higher composite score (${left.overallComposite} vs ${right.overallComposite})` : null,
-    (left.comparisonInputs.finalScore || 0) > (right.comparisonInputs.finalScore || 0) ? 'Stronger stat-backed comparison score' : null,
-    left.offenseScore > right.offenseScore ? 'Cleaner offensive signal' : null,
-  ].filter(Boolean);
-
-  const whyRight = [
-    right.overallComposite > left.overallComposite ? `Higher composite score (${right.overallComposite} vs ${left.overallComposite})` : null,
-    right.defenseScore > left.defenseScore ? 'Better defensive floor' : null,
-    right.riskLevel === 'Low-Moderate' && left.riskLevel !== 'Low-Moderate' ? 'Lower risk pathway' : null,
-  ].filter(Boolean);
+  const whyLeft = buildDecisionBullets(left, right);
+  const whyRight = buildDecisionBullets(right, left);
 
   const rows = [
     {
@@ -121,13 +133,13 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         <div className="detail-section">
           <h4>Why {left.name} over {right.name}</h4>
           <ul className="profile-list">
-            {(whyLeft.length ? whyLeft : ['Decision comes down to stylistic preference rather than a clear edge.']).map((item) => <li key={item}>{item}</li>)}
+            {(whyLeft.length ? whyLeft : ['Decision comes down to stylistic preference rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
         <div className="detail-section">
           <h4>Why {right.name} over {left.name}</h4>
           <ul className="profile-list">
-            {(whyRight.length ? whyRight : ['Decision comes down to role context rather than a clear edge.']).map((item) => <li key={item}>{item}</li>)}
+            {(whyRight.length ? whyRight : ['Decision comes down to role context rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
       </div>
@@ -135,8 +147,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       <div className="detail-section">
         <h4>Decision Context</h4>
         <p>
-          Choose {left.name} if you need {left.roleProjection.toLowerCase()} and want {left.archetype.toLowerCase()} traits.
-          Choose {right.name} if you value {right.riskLevel.toLowerCase()} risk exposure and a {right.archetypeBase.toLowerCase()} path.
+          Choose {left.name} if you need {left.roleProjection.toLowerCase()} with {topTrait(left)?.name?.toLowerCase() || 'strong trait support'} driving the case.
+          Choose {right.name} if you prefer a {right.archetypeBase.toLowerCase()} pathway and are buying {topTrait(right)?.name?.toLowerCase() || 'the top trait'} as the cleaner answer.
         </p>
       </div>
 
@@ -162,7 +174,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
               prospect.historicalPrecedents.slice(0, 2).map((entry) => (
                 <div key={entry.id} className="compare-precedent-row">
                   <p>
-                    <strong>{entry.name}</strong> · {entry.draftYear} · {entry.roleOutcome} · {entry.outcomeTier}
+                    <strong>{entry.name}</strong> | {entry.draftYear} | {entry.roleOutcome} | {entry.outcomeTier}
                   </p>
                   <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
                     Open

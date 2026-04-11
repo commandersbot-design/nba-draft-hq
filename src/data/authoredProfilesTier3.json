@@ -1,0 +1,498 @@
+{
+  "nateament": {
+    "age": 19.0,
+    "measurements": { "height": "6-9", "weight": "190", "wingspan": "" },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting wing-forward connector",
+    "scores": { "overallComposite": 78, "offense": 75, "defense": 79 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 74, "note": "Creates more with size, fluidity, and mismatch reads than raw burst." },
+      { "name": "Decision Making", "score": 78, "note": "Usually keeps the possession moving and does not over-force counters." },
+      { "name": "Passing Creation", "score": 68, "note": "Can connect advantages from the wing-forward slot." },
+      { "name": "Shooting Gravity", "score": 73, "note": "Jumper projects as an important swing piece of the profile." },
+      { "name": "Off-Ball Value", "score": 80, "note": "Size and movement make him easy to fit around stronger creators." },
+      { "name": "Processing Speed", "score": 79, "note": "Reads are generally on time for a young hybrid forward." },
+      { "name": "Scalability", "score": 84, "note": "Should scale because the profile does not demand offensive ownership." },
+      { "name": "Defensive Versatility", "score": 82, "note": "Can credibly defend across forward matchups and survive switching." }
+    ],
+    "summary": {
+      "synopsis": "Long-term hybrid forward bet built on size, connectivity, and two-way lineup fit more than immediate offensive dominance.",
+      "strengths": ["Scalable forward frame with real defensive utility.", "Plays a connector style that should travel into better lineups.", "Jumper path is good enough to keep real upside on the table."],
+      "weaknesses": ["Does not yet create easy offense on his own.", "Still needs more physical certainty to handle tougher interior assignments."],
+      "swingFactors": ["Whether the jumper becomes a real spacing lever.", "How much on-ball scoring pressure he can actually absorb."]
+    },
+    "projection": {
+      "bestOutcome": "High-end two-way forward connector who closes games because the fit is clean on both ends.",
+      "medianOutcome": "Starting combo forward with scalable defense and enough offensive feel to stay additive.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The role floor is real, but the ceiling still depends on offensive force becoming more than connective value.",
+      "draftRange": "Mid-first",
+      "stockBand": "Stable"
+    }
+  },
+  "isaiahevans": {
+    "age": 19.2,
+    "measurements": { "height": "6-6", "weight": "180", "wingspan": "" },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting scoring wing",
+    "scores": { "overallComposite": 78, "offense": 81, "defense": 64 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 80, "note": "Can turn shooting threat into real second-side creation." },
+      { "name": "Decision Making", "score": 71, "note": "Still learning how much creation burden he can handle efficiently." },
+      { "name": "Passing Creation", "score": 62, "note": "Passing is functional but not a driver." },
+      { "name": "Shooting Gravity", "score": 88, "note": "Shotmaking is the defining offensive force in the profile." },
+      { "name": "Off-Ball Value", "score": 79, "note": "Movement shooting and spacing value should travel easily." },
+      { "name": "Processing Speed", "score": 72, "note": "Offensive reads are improving but not yet surgical." },
+      { "name": "Scalability", "score": 78, "note": "Easy offensive fit if the defense holds enough weight." },
+      { "name": "Defensive Versatility", "score": 60, "note": "Defensive outcomes still depend on added strength and consistency." }
+    ],
+    "summary": {
+      "synopsis": "Shotmaking wing whose best pathway is as a spacing-and-scoring pressure source rather than a do-everything creator.",
+      "strengths": ["Real jumper gravity changes coverage behavior.", "Can score without monopolizing the offense.", "Size is good enough for wing lineup structures."],
+      "weaknesses": ["Defensive floor still needs work.", "Playmaking does not yet lift the rest of the offense."],
+      "swingFactors": ["Whether the body and defense stabilize enough for playoff lineups.", "How much self-creation he adds beyond shotmaking."]
+    },
+    "projection": {
+      "bestOutcome": "Dynamic scoring wing who tilts spacing and gives lineups a real shotmaking release valve.",
+      "medianOutcome": "Rotation scoring wing whose value is tied to offense-first lineup construction.",
+      "swingSkill": "Defensive Versatility",
+      "riskSummary": "The jumper is bankable enough to keep a role alive, but the long-term value depends on defensive viability.",
+      "draftRange": "Mid-first",
+      "stockBand": "Rising"
+    }
+  },
+  "cameroncarr": {
+    "age": 21.0,
+    "measurements": { "height": "6-6", "weight": "180", "wingspan": "" },
+    "riskLevel": "Moderate",
+    "roleProjection": "Rotation scoring wing",
+    "scores": { "overallComposite": 75, "offense": 77, "defense": 66 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 72, "note": "Can attack tilted defenders but is not a primary engine." },
+      { "name": "Decision Making", "score": 73, "note": "Generally keeps the ball moving within a secondary role." },
+      { "name": "Passing Creation", "score": 60, "note": "Passing is more connective than inventive." },
+      { "name": "Shooting Gravity", "score": 81, "note": "Shooting remains the cleanest offensive translation point." },
+      { "name": "Off-Ball Value", "score": 77, "note": "Should fit lineups that already have creators." },
+      { "name": "Processing Speed", "score": 73, "note": "Reads are fine for a role wing, not yet standout." },
+      { "name": "Scalability", "score": 79, "note": "Simple offensive role makes the fit straightforward." },
+      { "name": "Defensive Versatility", "score": 65, "note": "Defense still projects more adequate than value-adding." }
+    ],
+    "summary": {
+      "synopsis": "Shooting-oriented wing whose clearest value is as a low-maintenance offensive complement.",
+      "strengths": ["Jumper gives him immediate role clarity.", "Does not need many touches to contribute.", "Wing size keeps viable lineup combinations open."],
+      "weaknesses": ["Does not bring much primary creation.", "Defensive ceiling looks more neutral than additive."],
+      "swingFactors": ["Whether the defense clears a trustworthy playoff threshold.", "How much secondary closeout creation becomes available."]
+    },
+    "projection": {
+      "bestOutcome": "Reliable rotation wing whose shooting and size make him easy to keep on the floor.",
+      "medianOutcome": "Bench scoring wing who fits lineups needing spacing more than creation.",
+      "swingSkill": "Defensive Versatility",
+      "riskSummary": "He has a clean offensive lane, but the overall value depends on whether the defense holds enough weight.",
+      "draftRange": "Mid-first / late-first",
+      "stockBand": "Stable"
+    }
+  },
+  "hannessteinbach": {
+    "age": 19.3,
+    "measurements": { "height": "6-10", "weight": "225", "wingspan": "" },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Rotation or starting frontcourt piece",
+    "scores": { "overallComposite": 76, "offense": 70, "defense": 81 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 63, "note": "Offense still comes from touch, positioning, and simple counters." },
+      { "name": "Decision Making", "score": 76, "note": "Usually makes the right simple frontcourt read." },
+      { "name": "Passing Creation", "score": 57, "note": "Passing is more connective than creation-based." },
+      { "name": "Shooting Gravity", "score": 58, "note": "Any floor-spacing value is still developmental." },
+      { "name": "Off-Ball Value", "score": 79, "note": "Activity, screening, and finishing should translate." },
+      { "name": "Processing Speed", "score": 77, "note": "Defensive reads are encouraging for a young big." },
+      { "name": "Scalability", "score": 78, "note": "Projects as a useful piece if the defense continues to travel." },
+      { "name": "Defensive Versatility", "score": 84, "note": "The defense is the real selling point in the profile." }
+    ],
+    "summary": {
+      "synopsis": "Young frontcourt defender with enough feel and activity to project into modern rotation big minutes.",
+      "strengths": ["Defensive processing looks starter-viable.", "Off-ball big tools translate without special play calls.", "Plays within structure and does not force offense."],
+      "weaknesses": ["Offensive ceiling remains limited.", "Spacing value is still mostly projective."],
+      "swingFactors": ["Whether the jumper becomes usable enough to keep lineups open.", "How much physical upside arrives without flattening mobility."]
+    },
+    "projection": {
+      "bestOutcome": "Two-way rotation big who survives high-level defensive scheme demands and stays playable offensively.",
+      "medianOutcome": "Low-maintenance rotation big built around defense and functional feel.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The defensive base gives him a path, but the offensive value still needs a real separator.",
+      "draftRange": "Mid-first / late-first",
+      "stockBand": "Stable"
+    }
+  },
+  "meleekthomas": {
+    "age": 19.5,
+    "measurements": { "height": "6-5", "weight": "185", "wingspan": "" },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Scoring guard creator",
+    "scores": { "overallComposite": 76, "offense": 79, "defense": 62 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 82, "note": "Can generate offense with pace changes and scoring aggression." },
+      { "name": "Decision Making", "score": 70, "note": "Still toggles between advantage creation and overdribble risk." },
+      { "name": "Passing Creation", "score": 68, "note": "Passing is useful, though not the driving value prop." },
+      { "name": "Shooting Gravity", "score": 78, "note": "Jumper matters enough to keep defenders honest." },
+      { "name": "Off-Ball Value", "score": 64, "note": "Best with the offense flowing through him or near him." },
+      { "name": "Processing Speed", "score": 70, "note": "Processing still needs to become cleaner possession to possession." },
+      { "name": "Scalability", "score": 67, "note": "Scales best if the shot and decisions settle at a higher level." },
+      { "name": "Defensive Versatility", "score": 59, "note": "Defense remains a role-management question." }
+    ],
+    "summary": {
+      "synopsis": "Aggressive scoring guard whose pathway is built on shotmaking and advantage pressure rather than floor-general control.",
+      "strengths": ["Can create tough offense from the perimeter.", "Has enough shotmaking to keep a real offensive lane alive.", "Brings scoring confidence that can swing bench units."],
+      "weaknesses": ["Decision quality still lags the scoring ambition.", "Defensive value is not yet helping the profile."],
+      "swingFactors": ["Whether the passing sharpens enough for bigger offensive trust.", "How much defensive survivability he can build."]
+    },
+    "projection": {
+      "bestOutcome": "Microwave plus guard with enough creation and shotmaking to close offense-first games.",
+      "medianOutcome": "Bench scoring guard whose role depends on streak scoring and lineup insulation.",
+      "swingSkill": "Decision Making",
+      "riskSummary": "The scoring talent is real, but the profile is fragile unless the possessions become cleaner.",
+      "draftRange": "Mid-first / late-first",
+      "stockBand": "Sliding"
+    }
+  },
+  "alijaharenas": {
+    "age": 19.0,
+    "measurements": { "height": "6-6", "weight": "195", "wingspan": "" },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting scoring wing",
+    "scores": { "overallComposite": 77, "offense": 80, "defense": 61 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 81, "note": "Can get into shots and lean on scoring talent quickly." },
+      { "name": "Decision Making", "score": 69, "note": "Still more scorer-brained than orchestrator-brained." },
+      { "name": "Passing Creation", "score": 60, "note": "Passing is a secondary tool for now." },
+      { "name": "Shooting Gravity", "score": 84, "note": "Shotmaking pressure is the cleanest offensive value." },
+      { "name": "Off-Ball Value", "score": 73, "note": "Can still matter as a spacing and movement weapon." },
+      { "name": "Processing Speed", "score": 69, "note": "Reads are not yet consistently fast enough for full offensive trust." },
+      { "name": "Scalability", "score": 74, "note": "Scales if the defense and decisions settle." },
+      { "name": "Defensive Versatility", "score": 58, "note": "Defense is still a question mark rather than a positive." }
+    ],
+    "summary": {
+      "synopsis": "Scoring wing prospect with real shotmaking pop and a wider-than-usual range of offensive outcomes.",
+      "strengths": ["Can create and make difficult perimeter shots.", "Shot gravity gives him a natural lane into lineups.", "Wing size keeps higher-end outcomes alive."],
+      "weaknesses": ["Defensive value is still speculative.", "Playmaking and decision quality remain behind the scoring tools."],
+      "swingFactors": ["Whether the on-ball process catches up to the shotmaking.", "How much defensive discipline he can add."]
+    },
+    "projection": {
+      "bestOutcome": "Dynamic scoring wing whose shooting pressure lets him function as a featured option.",
+      "medianOutcome": "Shotmaking wing scorer who fits best in offense-first lineup constructions.",
+      "swingSkill": "Decision Making",
+      "riskSummary": "The offensive talent gives him a real ceiling, but the role range stays wide until the rest of the game sharpens.",
+      "draftRange": "Mid-first / late-first",
+      "stockBand": "Rising"
+    }
+  },
+  "karimlopez": {
+    "age": 18.6,
+    "measurements": { "height": "6-8", "weight": "210", "wingspan": "" },
+    "riskLevel": "High",
+    "roleProjection": "Developmental scoring forward",
+    "scores": { "overallComposite": 75, "offense": 74, "defense": 69 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 72, "note": "Has some mismatch scoring tools but not yet reliable separation." },
+      { "name": "Decision Making", "score": 68, "note": "Still learning how much to force against pro-level size and pace." },
+      { "name": "Passing Creation", "score": 59, "note": "Passing remains a secondary developmental skill." },
+      { "name": "Shooting Gravity", "score": 74, "note": "Jumper is important to the profile and gives him a clean pathway." },
+      { "name": "Off-Ball Value", "score": 72, "note": "Should fit off stronger creators if the shot keeps moving forward." },
+      { "name": "Processing Speed", "score": 67, "note": "Processing still looks young against professional context." },
+      { "name": "Scalability", "score": 74, "note": "Forward size keeps fit paths available if the offense stabilizes." },
+      { "name": "Defensive Versatility", "score": 69, "note": "Can survive multiple forward looks, but needs more consistency." }
+    ],
+    "summary": {
+      "synopsis": "Young international forward bet built more on long-term offensive upside than immediate finished utility.",
+      "strengths": ["Forward size plus skill gives him a real developmental runway.", "Jumper keeps a clear role pathway available.", "Already operating in a professional context."],
+      "weaknesses": ["Still raw in processing and decision pace.", "Not yet physically or skillfully sturdy enough for a high-floor projection."],
+      "swingFactors": ["Whether the shooting becomes a true bankable weapon.", "How much creation and defensive consistency arrive over time."]
+    },
+    "projection": {
+      "bestOutcome": "Scoring forward with enough size and shotmaking to become a real offensive chess piece.",
+      "medianOutcome": "Developmental rotation forward whose value depends on spacing and growth.",
+      "swingSkill": "Processing Speed",
+      "riskSummary": "The age and tools are attractive, but the profile still requires a meaningful amount of projection.",
+      "draftRange": "Mid-first / late-first",
+      "stockBand": "Rising"
+    }
+  },
+  "allengraves": {
+    "age": 19.4,
+    "measurements": { "height": "6-9", "weight": "225", "wingspan": "" },
+    "riskLevel": "Moderate",
+    "roleProjection": "Rotation frontcourt connector",
+    "scores": { "overallComposite": 74, "offense": 70, "defense": 78 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 62, "note": "Mostly operates as a play finisher and simple counter player." },
+      { "name": "Decision Making", "score": 76, "note": "Plays within structure and avoids ugly possessions." },
+      { "name": "Passing Creation", "score": 60, "note": "Can connect actions without functioning as a hub." },
+      { "name": "Shooting Gravity", "score": 59, "note": "Shot is still more hope than pressure source." },
+      { "name": "Off-Ball Value", "score": 80, "note": "Rebounding and physical utility give him role clarity." },
+      { "name": "Processing Speed", "score": 77, "note": "Defensive reads are solid enough for a role big." },
+      { "name": "Scalability", "score": 78, "note": "Low-maintenance style should translate into rotation utility." },
+      { "name": "Defensive Versatility", "score": 80, "note": "Defense is the cleaner path to staying on the floor." }
+    ],
+    "summary": {
+      "synopsis": "Functional frontcourt role player whose best case is built on defense, rebounding, and connective play.",
+      "strengths": ["Does the simple frontcourt work well.", "Defensive value is easier to trust than offensive upside.", "Should fit lineups that need utility instead of touches."],
+      "weaknesses": ["Offensive ceiling is limited.", "Does not bring a clear spacing lever yet."],
+      "swingFactors": ["Whether the jumper becomes enough to keep the paint cleaner.", "How much defensive versatility he can sustain at higher levels."]
+    },
+    "projection": {
+      "bestOutcome": "Reliable rotation big-forward who stays playable because the role utility is real.",
+      "medianOutcome": "Depth frontcourt piece built on rebounding and defense.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The role is understandable, but the offensive value needs something more than pure utility.",
+      "draftRange": "Late-first / early-second",
+      "stockBand": "Stable"
+    }
+  },
+  "thomashaugh": {
+    "age": 21.5,
+    "measurements": { "height": "6-9", "weight": "210", "wingspan": "" },
+    "riskLevel": "Low-Moderate",
+    "roleProjection": "Rotation forward connector",
+    "scores": { "overallComposite": 75, "offense": 73, "defense": 77 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 66, "note": "Creates enough through feel and quick decisions, not pressure scoring." },
+      { "name": "Decision Making", "score": 81, "note": "One of the cleaner decision-makers in this range." },
+      { "name": "Passing Creation", "score": 70, "note": "Can keep offense connected from the forward slot." },
+      { "name": "Shooting Gravity", "score": 70, "note": "Useful enough spacing to keep him viable in modern lineups." },
+      { "name": "Off-Ball Value", "score": 82, "note": "Knows how to fit next to stronger offensive teammates." },
+      { "name": "Processing Speed", "score": 82, "note": "Processes quickly on both sides of the ball." },
+      { "name": "Scalability", "score": 84, "note": "Scales because he complements rather than competes with primary talent." },
+      { "name": "Defensive Versatility", "score": 76, "note": "Good enough defensively to survive across forward looks." }
+    ],
+    "summary": {
+      "synopsis": "Winning forward connector who projects more through feel and lineup fit than raw upside.",
+      "strengths": ["Makes fast, useful decisions.", "Fits around stars without needing usage.", "Brings enough two-way competence to survive different lineup shapes."],
+      "weaknesses": ["Does not create much individual offense.", "Ceiling is limited because the profile is role-oriented."],
+      "swingFactors": ["Whether the shooting becomes a more respected lever.", "How much defensive range he can hold against NBA athletes."]
+    },
+    "projection": {
+      "bestOutcome": "Highly useful connector forward who plays in a lot of winning lineups.",
+      "medianOutcome": "Reliable rotation forward built on feel, spacing, and quick decisions.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The role floor is fairly stable, but the upside is capped unless the shot becomes more threatening.",
+      "draftRange": "Late-first / early-second",
+      "stockBand": "Stable"
+    }
+  },
+  "bennettstirtz": {
+    "age": 22.4,
+    "measurements": { "height": "6-4", "weight": "190", "wingspan": "" },
+    "riskLevel": "Low-Moderate",
+    "roleProjection": "Rotation lead guard",
+    "scores": { "overallComposite": 77, "offense": 79, "defense": 63 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 78, "note": "Creates enough advantages through craft and pace." },
+      { "name": "Decision Making", "score": 86, "note": "One of the cleaner possession managers in this tier." },
+      { "name": "Passing Creation", "score": 84, "note": "Consistently finds useful passes without overcomplicating reads." },
+      { "name": "Shooting Gravity", "score": 74, "note": "Jumper keeps defenders honest and supports the control game." },
+      { "name": "Off-Ball Value", "score": 68, "note": "Best when the offense runs through him to some degree." },
+      { "name": "Processing Speed", "score": 86, "note": "High processing floor is the core reason to buy the profile." },
+      { "name": "Scalability", "score": 73, "note": "Works best in skill-first lineups that can cover some physical gaps." },
+      { "name": "Defensive Versatility", "score": 58, "note": "Defense is the clearer limiter on the role size." }
+    ],
+    "summary": {
+      "synopsis": "Older lead-guard prospect whose value is built on control, passing, and low-mistake orchestration.",
+      "strengths": ["Processes quickly and keeps the offense steady.", "Passing is a real NBA-caliber trait in this tier.", "Can run possessions without chaos."],
+      "weaknesses": ["Does not bring major size or defensive margin for error.", "Athletic ceiling caps the top-end creation projection."],
+      "swingFactors": ["Whether the shot stays strong enough for better defenders.", "How well he survives being targeted defensively."]
+    },
+    "projection": {
+      "bestOutcome": "Steady rotation lead guard who keeps good offenses on schedule.",
+      "medianOutcome": "Backup or bridge guard whose value comes from control and passing.",
+      "swingSkill": "Defensive Versatility",
+      "riskSummary": "The floor is supported by feel, but the role size is constrained by physical limitations.",
+      "draftRange": "Late-first / early-second",
+      "stockBand": "Rising"
+    }
+  },
+  "dashdaniels": {
+    "age": 18.7,
+    "measurements": { "height": "6-6", "weight": "200", "wingspan": "" },
+    "riskLevel": "High",
+    "roleProjection": "Developmental combo guard",
+    "scores": { "overallComposite": 74, "offense": 71, "defense": 78 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 68, "note": "Still more developmental than reliable with the ball." },
+      { "name": "Decision Making", "score": 73, "note": "Shows connective instincts even when the skill level is still forming." },
+      { "name": "Passing Creation", "score": 71, "note": "Passing is one of the more promising guard tools." },
+      { "name": "Shooting Gravity", "score": 58, "note": "Jumper remains the biggest offensive question." },
+      { "name": "Off-Ball Value", "score": 74, "note": "Size and defense give him a path without high usage." },
+      { "name": "Processing Speed", "score": 75, "note": "Processes the game well for his age and stage." },
+      { "name": "Scalability", "score": 76, "note": "Should scale if the shooting becomes even passable." },
+      { "name": "Defensive Versatility", "score": 82, "note": "Defensive size and activity are the main appeal." }
+    ],
+    "summary": {
+      "synopsis": "Young guard-wing bet whose long-term value starts with defense, size, and connective feel rather than finished offense.",
+      "strengths": ["Good size for a guard development swing.", "Defensive tools give him a clearer floor than many young guards.", "Passing instincts are worth building on."],
+      "weaknesses": ["Jumper is still the swing question.", "Half-court offense is not yet stable enough for trust."],
+      "swingFactors": ["Whether the shot becomes playable.", "How much on-ball comfort arrives without losing the defensive identity."]
+    },
+    "projection": {
+      "bestOutcome": "Two-way big guard who can defend up a slot and keep offense moving.",
+      "medianOutcome": "Developmental rotation guard-wing whose role is shaped by defense and connective play.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "The defensive base helps, but the offensive pathway is still heavily projection-based.",
+      "draftRange": "Late-first / early-second",
+      "stockBand": "Stable"
+    }
+  },
+  "jaydenquaintance": {
+    "age": 18.8,
+    "measurements": { "height": "6-10", "weight": "255", "wingspan": "" },
+    "riskLevel": "High",
+    "roleProjection": "Defensive frontcourt anchor",
+    "scores": { "overallComposite": 79, "offense": 69, "defense": 88 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 63, "note": "Offense is still mostly play-finishing and simple counters." },
+      { "name": "Decision Making", "score": 73, "note": "Keeps offensive possessions simple and useful." },
+      { "name": "Passing Creation", "score": 54, "note": "Not yet a creator from the frontcourt." },
+      { "name": "Shooting Gravity", "score": 49, "note": "Spacing value is still a long-range outcome." },
+      { "name": "Off-Ball Value", "score": 82, "note": "Vertical pressure, screening, and glass work already matter." },
+      { "name": "Processing Speed", "score": 78, "note": "Defensive read speed is ahead of most young bigs." },
+      { "name": "Scalability", "score": 80, "note": "Defense gives him a path into many lineup environments." },
+      { "name": "Defensive Versatility", "score": 92, "note": "The defensive upside is the reason to bet high." }
+    ],
+    "summary": {
+      "synopsis": "Young defensive big swing whose draft value is driven overwhelmingly by the chance to become a frontcourt problem-solver.",
+      "strengths": ["Real defensive ceiling for his age.", "Physical tools and movement are hard to find.", "Can impact possessions without offensive touches."],
+      "weaknesses": ["Offense is still raw.", "The shot is not yet part of the realistic present-tense value."],
+      "swingFactors": ["Whether the offense gets to baseline functionality quickly enough.", "How much defensive dominance shows up against better athletes."]
+    },
+    "projection": {
+      "bestOutcome": "Impact defensive big who can shape scheme options on his own.",
+      "medianOutcome": "Defense-first rotation big whose offense remains basic but survivable.",
+      "swingSkill": "Offensive utility",
+      "riskSummary": "The defensive tools justify the swing, but the profile remains volatile because the offense is still so early.",
+      "draftRange": "Mid-first / late-first",
+      "stockBand": "Sliding"
+    }
+  },
+  "braylonmullins": {
+    "age": 19.1,
+    "measurements": { "height": "6-5", "weight": "180", "wingspan": "" },
+    "riskLevel": "Moderate",
+    "roleProjection": "Rotation scoring wing",
+    "scores": { "overallComposite": 75, "offense": 77, "defense": 64 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 71, "note": "Can attack secondary actions but not yet full-service creation." },
+      { "name": "Decision Making", "score": 73, "note": "Generally stays within role but still has force-the-shot moments." },
+      { "name": "Passing Creation", "score": 56, "note": "Passing is not the main value proposition." },
+      { "name": "Shooting Gravity", "score": 83, "note": "The shot is the reason to bet on the profile." },
+      { "name": "Off-Ball Value", "score": 78, "note": "Movement shooting and spacing fit modern offenses cleanly." },
+      { "name": "Processing Speed", "score": 72, "note": "Fine for a scoring role, not a standout processing profile." },
+      { "name": "Scalability", "score": 79, "note": "Should scale because the role is easy to understand." },
+      { "name": "Defensive Versatility", "score": 60, "note": "Defense remains more survive-than-drive." }
+    ],
+    "summary": {
+      "synopsis": "Shooting-led wing prospect whose most practical pathway is as a spacing and scoring complement.",
+      "strengths": ["Real off-ball scoring value.", "Shot gives him a clean offensive translation point.", "Does not need heavy usage to matter."],
+      "weaknesses": ["Limited defensive ceiling.", "Passing and creation are still narrow."],
+      "swingFactors": ["Whether the defense clears a playoff viability threshold.", "How much secondary shot creation becomes available."]
+    },
+    "projection": {
+      "bestOutcome": "Reliable rotation scorer whose shooting keeps him in closing lineups.",
+      "medianOutcome": "Bench wing shooter with enough scoring punch to swing games in spurts.",
+      "swingSkill": "Defensive Versatility",
+      "riskSummary": "The offensive fit is easy to see, but the overall value still depends on whether the defense survives.",
+      "draftRange": "Late-first / early-second",
+      "stockBand": "Stable"
+    }
+  },
+  "koapeat": {
+    "age": 19.0,
+    "measurements": { "height": "6-8", "weight": "235", "wingspan": "" },
+    "riskLevel": "Moderate-High",
+    "roleProjection": "Starting combo forward",
+    "scores": { "overallComposite": 76, "offense": 75, "defense": 76 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 74, "note": "Can attack mismatches and use strength to finish possessions." },
+      { "name": "Decision Making", "score": 77, "note": "Generally sees the right next action and does not overplay touches." },
+      { "name": "Passing Creation", "score": 66, "note": "Passing is useful enough to keep the ball moving from the frontcourt." },
+      { "name": "Shooting Gravity", "score": 68, "note": "Jumper is important but not yet fully trusted." },
+      { "name": "Off-Ball Value", "score": 79, "note": "Can rebound, finish, and work as a forward complement." },
+      { "name": "Processing Speed", "score": 78, "note": "Feel is part of the appeal in a strong body." },
+      { "name": "Scalability", "score": 80, "note": "Forward skill set gives him a fair amount of lineup flexibility." },
+      { "name": "Defensive Versatility", "score": 77, "note": "Can guard enough frontcourt actions to keep different lineups alive." }
+    ],
+    "summary": {
+      "synopsis": "Strong hybrid forward bet built around physical utility, connective feel, and a broad enough two-way pathway.",
+      "strengths": ["Brings real forward strength and rebounding.", "Can play with or without offensive ownership.", "Defensive translation looks viable across forward roles."],
+      "weaknesses": ["Still needs the jumper to sharpen to raise the ceiling.", "Does not yet have a truly dominant offensive skill."],
+      "swingFactors": ["Whether the shooting becomes a plus skill.", "How much mismatch creation he can sustain against NBA size."]
+    },
+    "projection": {
+      "bestOutcome": "Two-way starting forward whose strength, feel, and fit make him easy to deploy.",
+      "medianOutcome": "Useful frontcourt connector with enough offense and defense to stay in real rotations.",
+      "swingSkill": "Shooting Gravity",
+      "riskSummary": "He has a broad role path, but the upside still depends on the skill package becoming more dangerous.",
+      "draftRange": "Late-first",
+      "stockBand": "Rising"
+    }
+  },
+  "morezjohnson": {
+    "age": 20.1,
+    "measurements": { "height": "6-9", "weight": "225", "wingspan": "" },
+    "riskLevel": "Moderate",
+    "roleProjection": "Rotation defensive big",
+    "scores": { "overallComposite": 74, "offense": 66, "defense": 82 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 58, "note": "Offense is still limited to finishes and simple touches." },
+      { "name": "Decision Making", "score": 72, "note": "Plays a simple, role-appropriate game." },
+      { "name": "Passing Creation", "score": 50, "note": "Passing is not a major value area." },
+      { "name": "Shooting Gravity", "score": 43, "note": "There is not yet meaningful spacing pressure." },
+      { "name": "Off-Ball Value", "score": 80, "note": "Screens, rebounds, and rim utility give him a usable role path." },
+      { "name": "Processing Speed", "score": 76, "note": "Reads enough to execute defensive responsibilities." },
+      { "name": "Scalability", "score": 75, "note": "Can fit if the lineup can absorb limited spacing." },
+      { "name": "Defensive Versatility", "score": 86, "note": "Defense is the reason to take the bet." }
+    ],
+    "summary": {
+      "synopsis": "Defense-first frontcourt prospect whose draft case rests on rim utility and simple role execution.",
+      "strengths": ["Defensive floor is easier to believe than the offense.", "Brings rebounding and physical frontcourt work.", "Can help a second unit without needing touches."],
+      "weaknesses": ["No real shooting gravity yet.", "Offense is too limited to carry a bigger role."],
+      "swingFactors": ["Whether the offense reaches enough baseline utility.", "How much scheme-flexibility he actually offers defensively."]
+    },
+    "projection": {
+      "bestOutcome": "Useful rotation big whose defense and physicality justify real minutes.",
+      "medianOutcome": "Situational frontcourt defender and rebounder.",
+      "swingSkill": "Offensive utility",
+      "riskSummary": "The defense gives him a path, but the offense still needs to clear a basic translatability line.",
+      "draftRange": "Late-first / early-second",
+      "stockBand": "Rising"
+    }
+  },
+  "killyantoure": {
+    "age": 19.4,
+    "measurements": { "height": "6-2", "weight": "", "wingspan": "" },
+    "riskLevel": "High",
+    "roleProjection": "Developmental lead guard",
+    "scores": { "overallComposite": 73, "offense": 75, "defense": 58 },
+    "traits": [
+      { "name": "Advantage Creation", "score": 77, "note": "Shows real guard burst and angle creation when he gets downhill." },
+      { "name": "Decision Making", "score": 68, "note": "Still learning how to manage pace and efficiency together." },
+      { "name": "Passing Creation", "score": 73, "note": "Passing flashes are part of the appeal." },
+      { "name": "Shooting Gravity", "score": 67, "note": "Jumper still needs to become more threatening to unlock easier offense." },
+      { "name": "Off-Ball Value", "score": 57, "note": "Value remains mostly tied to on-ball usage." },
+      { "name": "Processing Speed", "score": 69, "note": "Reads are promising but still inconsistent." },
+      { "name": "Scalability", "score": 60, "note": "Small-guard fit gets tight if the shot and control do not level up." },
+      { "name": "Defensive Versatility", "score": 54, "note": "Physical limitations narrow the defensive pathways." }
+    ],
+    "summary": {
+      "synopsis": "Young lead-guard swing whose value depends on live-dribble creation maturing into real offensive control.",
+      "strengths": ["Can pressure the paint as a small guard.", "Passing flashes point to actual creation upside.", "Youth keeps the developmental runway open."],
+      "weaknesses": ["Small guard margin for error is thin.", "The jumper and decision-making are both still works in progress."],
+      "swingFactors": ["Whether the shot becomes respected enough to unlock easier reads.", "How much offensive control he gains without losing aggression."]
+    },
+    "projection": {
+      "bestOutcome": "Dynamic offense-driving small guard who survives because the shot and playmaking fully arrive.",
+      "medianOutcome": "Developmental change-of-pace guard whose role depends on scoring bursts.",
+      "swingSkill": "Decision Making",
+      "riskSummary": "The size and current inconsistency make the profile volatile even if the guard talent is real.",
+      "draftRange": "Late-first / early-second",
+      "stockBand": "Rising"
+    }
+  }
+}

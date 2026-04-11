@@ -1,5 +1,6 @@
 import { CORE_TRAITS } from './constants';
 import { findHistoricalPrecedents } from './historicalComps';
+import authoredProfilesTier3 from '../data/authoredProfilesTier3.json';
 import profileStats from '../data/profileStats.json';
 
 function clamp(value, min, max) {
@@ -323,34 +324,36 @@ function normalizeSources(prospect) {
  */
 export function enrichProspects(prospects) {
   return prospects.map((prospect) => {
+    const authoredOverride = authoredProfilesTier3[prospect.id] || {};
+    const sourceProspect = { ...prospect, ...authoredOverride };
     const pipelineStats = profileStats[prospect.id] || {};
-    const measurements = normalizeMeasurements(prospect);
-    const age = firstDefined(prospect.age, prospect.bio?.age, estimatedAge(prospect.classYear, prospect.rank));
-    const traitData = normalizeTraitScores(prospect);
-    const overallComposite = firstDefined(prospect.overallComposite, prospect.scores?.overallComposite, compositeScore(traitData.values));
+    const measurements = normalizeMeasurements(sourceProspect);
+    const age = firstDefined(sourceProspect.age, sourceProspect.bio?.age, estimatedAge(sourceProspect.classYear, sourceProspect.rank));
+    const traitData = normalizeTraitScores(sourceProspect);
+    const overallComposite = firstDefined(sourceProspect.overallComposite, sourceProspect.scores?.overallComposite, compositeScore(traitData.values));
     const offenseScore = firstDefined(
-      prospect.offenseScore,
-      prospect.scores?.offense,
+      sourceProspect.offenseScore,
+      sourceProspect.scores?.offense,
       Math.round((traitData.values[0].score + traitData.values[2].score + traitData.values[3].score + traitData.values[4].score) / 4),
     );
     const defenseScore = firstDefined(
-      prospect.defenseScore,
-      prospect.scores?.defense,
+      sourceProspect.defenseScore,
+      sourceProspect.scores?.defense,
       Math.round(traitData.values[7].score),
     );
-    const summary = normalizeSummary(prospect, traitData.values);
-    const stats = normalizeStats(prospect, offenseScore, defenseScore);
-    const projection = normalizeProjection(prospect, traitData.values, offenseScore, defenseScore);
-    const roleProjection = firstDefined(prospect.roleProjection, prospect.scouting?.roleProjection, deriveRoleProjection(prospect.position, prospect.rank));
-    const riskLevel = firstDefined(prospect.riskLevel, prospect.scouting?.riskLevel, deriveRiskLevel(prospect.rank, prospect.classYear));
-    const sources = normalizeSources(prospect);
+    const summary = normalizeSummary(sourceProspect, traitData.values);
+    const stats = normalizeStats(sourceProspect, offenseScore, defenseScore);
+    const projection = normalizeProjection(sourceProspect, traitData.values, offenseScore, defenseScore);
+    const roleProjection = firstDefined(sourceProspect.roleProjection, sourceProspect.scouting?.roleProjection, deriveRoleProjection(sourceProspect.position, sourceProspect.rank));
+    const riskLevel = firstDefined(sourceProspect.riskLevel, sourceProspect.scouting?.riskLevel, deriveRiskLevel(sourceProspect.rank, sourceProspect.classYear));
+    const sources = normalizeSources(sourceProspect);
     const historicalPrecedents = findHistoricalPrecedents({
-      ...prospect,
+      ...sourceProspect,
       age,
       roleProjection,
       overallComposite,
-      archetype: prospect.archetype,
-      position: prospect.position,
+      archetype: sourceProspect.archetype,
+      position: sourceProspect.position,
       stats: stats.value,
     });
 
@@ -367,7 +370,7 @@ export function enrichProspects(prospects) {
     ].filter(Boolean).length;
 
     return {
-      ...prospect,
+      ...sourceProspect,
       height: measurements.value.height,
       weight: measurements.value.weight,
       wingspan: measurements.value.wingspan,
