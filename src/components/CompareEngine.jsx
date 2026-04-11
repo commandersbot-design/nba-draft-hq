@@ -6,7 +6,7 @@ function renderCell(value) {
   return value ?? '--';
 }
 
-export function CompareEngine({ prospects, notesByPlayer }) {
+export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const compareProspects = prospects.slice(0, 3);
 
   if (compareProspects.length < 2) {
@@ -160,9 +160,14 @@ export function CompareEngine({ prospects, notesByPlayer }) {
               <p className="empty-state">No historical precedents available.</p>
             ) : (
               prospect.historicalPrecedents.slice(0, 2).map((entry) => (
-                <p key={entry.id}>
-                  <strong>{entry.name}</strong> · {entry.draftYear} · {entry.roleOutcome} · {entry.outcomeTier}
-                </p>
+                <div key={entry.id} className="compare-precedent-row">
+                  <p>
+                    <strong>{entry.name}</strong> · {entry.draftYear} · {entry.roleOutcome} · {entry.outcomeTier}
+                  </p>
+                  <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
+                    Open
+                  </button>
+                </div>
               ))
             )}
           </div>

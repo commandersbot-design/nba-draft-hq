@@ -12,6 +12,7 @@ export function PlayerProfileSurface({
   onUpdateTier,
   onToggleTag,
   onCreateNote,
+  onOpenHistorical,
 }) {
   const [activeSection, setActiveSection] = useState('Overview');
 
@@ -274,6 +275,9 @@ export function PlayerProfileSurface({
                   <p>
                     {entry.archetype} · {entry.roleOutcome} · {entry.pointsPerGame} PPG · {entry.trueShooting} TS · match {entry.matchScore}
                   </p>
+                  <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
+                    Open in Historical
+                  </button>
                 </article>
               ))}
             </div>

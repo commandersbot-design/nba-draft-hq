@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import historicalProspects from '../data/historicalProspects.json';
 
 const COLUMN_OPTIONS = [
@@ -21,11 +21,18 @@ const COLUMN_OPTIONS = [
 
 const DEFAULT_COLUMNS = ['draftYear', 'draftSlot', 'position', 'archetype', 'roleOutcome', 'outcomeTier', 'pointsPerGame', 'trueShooting', 'bpm'];
 
-export function HistoricalMatrixLite() {
+export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHistorical }) {
   const [query, setQuery] = useState('');
   const [outcomeFilter, setOutcomeFilter] = useState('ALL');
   const [positionFilter, setPositionFilter] = useState('ALL');
   const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS);
+
+  useEffect(() => {
+    if (!selectedHistoricalId) return;
+    const selectedEntry = historicalProspects.find((entry) => entry.id === selectedHistoricalId);
+    if (!selectedEntry) return;
+    setQuery(selectedEntry.name);
+  }, [selectedHistoricalId]);
 
   const outcomeOptions = useMemo(
     () => [...new Set(historicalProspects.map((entry) => entry.outcomeTier))],
@@ -70,7 +77,14 @@ export function HistoricalMatrixLite() {
           <p className="eyebrow">Historical Matrix</p>
           <h3>Outcome context without dashboard clutter</h3>
         </div>
-        <p className="section-meta">{rows.length} historical records shown</p>
+        <div className="detail-actions">
+          {selectedHistoricalId && (
+            <button type="button" className="inline-action" onClick={onClearSelectedHistorical}>
+              Clear focus
+            </button>
+          )}
+          <p className="section-meta">{rows.length} historical records shown</p>
+        </div>
       </div>
 
       <div className="matrix-toolbar">
@@ -131,7 +145,7 @@ export function HistoricalMatrixLite() {
           </thead>
           <tbody>
             {rows.map((entry) => (
-              <tr key={entry.id}>
+              <tr key={entry.id} className={selectedHistoricalId === entry.id ? 'is-focused' : ''}>
                 <td>
                   <strong>{entry.name}</strong>
                 </td>

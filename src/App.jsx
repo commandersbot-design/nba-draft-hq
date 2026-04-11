@@ -21,6 +21,7 @@ const myBoardViewKey = 'prospera.my-board-view';
 const cardSettingsKey = 'prospera.card-settings';
 const savedBoardsKey = 'prospera.saved-boards';
 const savedViewsKey = 'prospera.saved-views';
+const historicalSelectionKey = 'prospera.historical-selection';
 
 const FILTER_PRESETS = [
   {
@@ -90,6 +91,7 @@ function App() {
   const [cardSettings, setCardSettings] = useLocalStorageState(cardSettingsKey, defaultCardSettings());
   const [savedBoards, setSavedBoards] = useLocalStorageState(savedBoardsKey, []);
   const [savedViews, setSavedViews] = useLocalStorageState(savedViewsKey, []);
+  const [selectedHistoricalId, setSelectedHistoricalId] = useLocalStorageState(historicalSelectionKey, null);
   const [viewName, setViewName] = useState('');
 
   const enrichedProspects = useMemo(
@@ -358,6 +360,11 @@ function App() {
 
   const deleteSavedView = (id) => {
     setSavedViews((current) => current.filter((entry) => entry.id !== id));
+  };
+
+  const openHistorical = (historicalId) => {
+    setSelectedHistoricalId(historicalId);
+    setAppView('historical');
   };
 
   const exportNotesJson = () => {
@@ -673,7 +680,7 @@ function App() {
           )}
 
           {appView === 'compare' && (
-            <CompareEngine prospects={compareProspects} notesByPlayer={notesByPlayer} />
+            <CompareEngine prospects={compareProspects} notesByPlayer={notesByPlayer} onOpenHistorical={openHistorical} />
           )}
 
           {appView === 'notes' && (
@@ -694,7 +701,10 @@ function App() {
           )}
 
           {appView === 'historical' && (
-            <HistoricalMatrixLite />
+            <HistoricalMatrixLite
+              selectedHistoricalId={selectedHistoricalId}
+              onClearSelectedHistorical={() => setSelectedHistoricalId(null)}
+            />
           )}
         </section>
 
@@ -710,6 +720,7 @@ function App() {
             onUpdateTier={updateTier}
             onToggleTag={toggleTag}
             onCreateNote={createNote}
+            onOpenHistorical={openHistorical}
           />
 
           <section className="workflow panel side-workflow">

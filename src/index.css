@@ -353,6 +353,17 @@ button {
   color: var(--text);
 }
 
+.historical-table tbody tr.is-focused {
+  background: rgba(216, 178, 71, 0.08);
+}
+
+.compare-precedent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .control-block {
   display: grid;
   gap: 8px;

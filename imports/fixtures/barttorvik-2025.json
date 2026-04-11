@@ -737,6 +737,381 @@
         "bpm": 7.3,
         "reboundRate": 11.6
       }
+    },
+    {
+      "playerName": "Rueben Chinyelu",
+      "externalPlayerKey": "torvik-rueben-chinyelu",
+      "advanced": {
+        "tsPct": 0.607,
+        "efgPct": 0.592,
+        "usgPct": 0.171,
+        "astPct": 5.2,
+        "tovPct": 12.4,
+        "ortg": 119.3,
+        "drtg": 95.1,
+        "bpm": 6.7,
+        "reboundRate": 17.5
+      }
+    },
+    {
+      "playerName": "Bryson Tiller",
+      "externalPlayerKey": "torvik-bryson-tiller",
+      "advanced": {
+        "tsPct": 0.588,
+        "efgPct": 0.543,
+        "usgPct": 0.207,
+        "astPct": 8.9,
+        "tovPct": 10.2,
+        "ortg": 116.2,
+        "drtg": 97,
+        "bpm": 5.5,
+        "reboundRate": 13.5
+      }
+    },
+    {
+      "playerName": "Nate Bittle",
+      "externalPlayerKey": "torvik-nate-bittle",
+      "advanced": {
+        "tsPct": 0.612,
+        "efgPct": 0.571,
+        "usgPct": 0.224,
+        "astPct": 9.7,
+        "tovPct": 10.9,
+        "ortg": 120.4,
+        "drtg": 94.6,
+        "bpm": 7.8,
+        "reboundRate": 17
+      }
+    },
+    {
+      "playerName": "Lamar Wilkerson",
+      "externalPlayerKey": "torvik-lamar-wilkerson",
+      "advanced": {
+        "tsPct": 0.621,
+        "efgPct": 0.598,
+        "usgPct": 0.246,
+        "astPct": 9.1,
+        "tovPct": 9.2,
+        "ortg": 121.6,
+        "drtg": 100.2,
+        "bpm": 6.2,
+        "reboundRate": 6.3
+      }
+    },
+    {
+      "playerName": "Malique Ewin",
+      "externalPlayerKey": "torvik-malique-ewin",
+      "advanced": {
+        "tsPct": 0.599,
+        "efgPct": 0.562,
+        "usgPct": 0.196,
+        "astPct": 6.8,
+        "tovPct": 11.1,
+        "ortg": 118.3,
+        "drtg": 96.4,
+        "bpm": 6.1,
+        "reboundRate": 16.1
+      }
+    },
+    {
+      "playerName": "Tarris Reed",
+      "externalPlayerKey": "torvik-tarris-reed",
+      "advanced": {
+        "tsPct": 0.603,
+        "efgPct": 0.571,
+        "usgPct": 0.184,
+        "astPct": 5.9,
+        "tovPct": 10.7,
+        "ortg": 118.8,
+        "drtg": 95.7,
+        "bpm": 6,
+        "reboundRate": 16.9
+      }
+    },
+    {
+      "playerName": "Tre White",
+      "externalPlayerKey": "torvik-tre-white",
+      "advanced": {
+        "tsPct": 0.586,
+        "efgPct": 0.541,
+        "usgPct": 0.217,
+        "astPct": 10.4,
+        "tovPct": 10.1,
+        "ortg": 115.7,
+        "drtg": 99.1,
+        "bpm": 5.3,
+        "reboundRate": 8.4
+      }
+    },
+    {
+      "playerName": "Flory Bidunga",
+      "externalPlayerKey": "torvik-flory-bidunga",
+      "advanced": {
+        "tsPct": 0.613,
+        "efgPct": 0.604,
+        "usgPct": 0.173,
+        "astPct": 4.7,
+        "tovPct": 12,
+        "ortg": 120.2,
+        "drtg": 94.2,
+        "bpm": 6.6,
+        "reboundRate": 16.5
+      }
+    },
+    {
+      "playerName": "Ryan Conwell",
+      "externalPlayerKey": "torvik-ryan-conwell",
+      "advanced": {
+        "tsPct": 0.618,
+        "efgPct": 0.592,
+        "usgPct": 0.238,
+        "astPct": 11.3,
+        "tovPct": 9.6,
+        "ortg": 120.9,
+        "drtg": 99.8,
+        "bpm": 6.4,
+        "reboundRate": 6.7
+      }
+    },
+    {
+      "playerName": "Zuby Ejiofor",
+      "externalPlayerKey": "torvik-zuby-ejiofor",
+      "advanced": {
+        "tsPct": 0.596,
+        "efgPct": 0.555,
+        "usgPct": 0.214,
+        "astPct": 6.2,
+        "tovPct": 10.5,
+        "ortg": 117.1,
+        "drtg": 96.2,
+        "bpm": 6.3,
+        "reboundRate": 16.7
+      }
+    },
+    {
+      "playerName": "Mouhamed Faye",
+      "externalPlayerKey": "torvik-mouhamed-faye",
+      "advanced": {
+        "tsPct": 0.591,
+        "efgPct": 0.561,
+        "usgPct": 0.178,
+        "astPct": 4.9,
+        "tovPct": 11.6,
+        "ortg": 116.1,
+        "drtg": 95.4,
+        "bpm": 5.8,
+        "reboundRate": 17.2
+      }
+    },
+    {
+      "playerName": "Isaiah Johnson",
+      "externalPlayerKey": "torvik-isaiah-johnson",
+      "advanced": {
+        "tsPct": 0.582,
+        "efgPct": 0.548,
+        "usgPct": 0.186,
+        "astPct": 4.3,
+        "tovPct": 13.2,
+        "ortg": 114.7,
+        "drtg": 97.3,
+        "bpm": 5.4,
+        "reboundRate": 18.4
+      }
+    },
+    {
+      "playerName": "Ebuka Okorie",
+      "externalPlayerKey": "torvik-ebuka-okorie",
+      "advanced": {
+        "tsPct": 0.574,
+        "efgPct": 0.529,
+        "usgPct": 0.224,
+        "astPct": 27.9,
+        "tovPct": 13.6,
+        "ortg": 113.5,
+        "drtg": 98.8,
+        "bpm": 5.1,
+        "reboundRate": 4.8
+      }
+    },
+    {
+      "playerName": "Solo Ball",
+      "externalPlayerKey": "torvik-solo-ball",
+      "advanced": {
+        "tsPct": 0.619,
+        "efgPct": 0.594,
+        "usgPct": 0.232,
+        "astPct": 8,
+        "tovPct": 8.8,
+        "ortg": 121.4,
+        "drtg": 99.7,
+        "bpm": 6.1,
+        "reboundRate": 5.6
+      }
+    },
+    {
+      "playerName": "Juke Harris",
+      "externalPlayerKey": "torvik-juke-harris",
+      "advanced": {
+        "tsPct": 0.587,
+        "efgPct": 0.546,
+        "usgPct": 0.214,
+        "astPct": 9.6,
+        "tovPct": 10.3,
+        "ortg": 115.9,
+        "drtg": 98.7,
+        "bpm": 5.2,
+        "reboundRate": 8
+      }
+    },
+    {
+      "playerName": "Elyjah Freeman",
+      "externalPlayerKey": "torvik-elyjah-freeman",
+      "advanced": {
+        "tsPct": 0.593,
+        "efgPct": 0.549,
+        "usgPct": 0.208,
+        "astPct": 10.1,
+        "tovPct": 10.7,
+        "ortg": 116.4,
+        "drtg": 97.9,
+        "bpm": 5.5,
+        "reboundRate": 11.2
+      }
+    },
+    {
+      "playerName": "Miikka Muurinen",
+      "externalPlayerKey": "torvik-miikka-muurinen",
+      "advanced": {
+        "tsPct": 0.578,
+        "efgPct": 0.537,
+        "usgPct": 0.183,
+        "astPct": 6.6,
+        "tovPct": 10.9,
+        "ortg": 114.8,
+        "drtg": 96,
+        "bpm": 5,
+        "reboundRate": 14.1
+      }
+    },
+    {
+      "playerName": "Miles Byrd",
+      "externalPlayerKey": "torvik-miles-byrd",
+      "advanced": {
+        "tsPct": 0.608,
+        "efgPct": 0.577,
+        "usgPct": 0.239,
+        "astPct": 11.4,
+        "tovPct": 9.9,
+        "ortg": 119.6,
+        "drtg": 98.2,
+        "bpm": 6.5,
+        "reboundRate": 7.4
+      }
+    },
+    {
+      "playerName": "Kanon Catchings",
+      "externalPlayerKey": "torvik-kanon-catchings",
+      "advanced": {
+        "tsPct": 0.589,
+        "efgPct": 0.548,
+        "usgPct": 0.209,
+        "astPct": 8.7,
+        "tovPct": 10.1,
+        "ortg": 116.1,
+        "drtg": 97.4,
+        "bpm": 5.6,
+        "reboundRate": 10.6
+      }
+    },
+    {
+      "playerName": "Aday Mara",
+      "externalPlayerKey": "torvik-aday-mara",
+      "advanced": {
+        "tsPct": 0.607,
+        "efgPct": 0.571,
+        "usgPct": 0.197,
+        "astPct": 8.2,
+        "tovPct": 11.8,
+        "ortg": 118.5,
+        "drtg": 94.8,
+        "bpm": 6.7,
+        "reboundRate": 17.1
+      }
+    },
+    {
+      "playerName": "David Punch",
+      "externalPlayerKey": "torvik-david-punch",
+      "advanced": {
+        "tsPct": 0.584,
+        "efgPct": 0.541,
+        "usgPct": 0.198,
+        "astPct": 7.9,
+        "tovPct": 10,
+        "ortg": 115.4,
+        "drtg": 97,
+        "bpm": 5.2,
+        "reboundRate": 12.8
+      }
+    },
+    {
+      "playerName": "Ke Shawn Murphy",
+      "externalPlayerKey": "torvik-ke-shawn-murphy",
+      "advanced": {
+        "tsPct": 0.592,
+        "efgPct": 0.552,
+        "usgPct": 0.205,
+        "astPct": 7.1,
+        "tovPct": 10.6,
+        "ortg": 116.7,
+        "drtg": 96.3,
+        "bpm": 5.8,
+        "reboundRate": 15.1
+      }
+    },
+    {
+      "playerName": "Ognjen Srzentic",
+      "externalPlayerKey": "torvik-ognjen-srzentic",
+      "advanced": {
+        "tsPct": 0.599,
+        "efgPct": 0.573,
+        "usgPct": 0.193,
+        "astPct": 12.8,
+        "tovPct": 9.4,
+        "ortg": 118.9,
+        "drtg": 98.1,
+        "bpm": 5.4,
+        "reboundRate": 5.7
+      }
+    },
+    {
+      "playerName": "AJ Storr",
+      "externalPlayerKey": "torvik-aj-storr",
+      "advanced": {
+        "tsPct": 0.586,
+        "efgPct": 0.544,
+        "usgPct": 0.231,
+        "astPct": 8.5,
+        "tovPct": 10.8,
+        "ortg": 115.2,
+        "drtg": 99.4,
+        "bpm": 5.5,
+        "reboundRate": 7.2
+      }
+    },
+    {
+      "playerName": "Rafael Castro",
+      "externalPlayerKey": "torvik-rafael-castro",
+      "advanced": {
+        "tsPct": 0.601,
+        "efgPct": 0.566,
+        "usgPct": 0.194,
+        "astPct": 6.1,
+        "tovPct": 10.9,
+        "ortg": 118,
+        "drtg": 96.1,
+        "bpm": 5.9,
+        "reboundRate": 16
+      }
     }
   ]
 }
