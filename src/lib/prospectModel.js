@@ -80,6 +80,38 @@ function normalizeStringArray(value) {
   return value.map((item) => String(item).trim()).filter(Boolean);
 }
 
+function searchUrl(query) {
+  return `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+}
+
+function buildFallbackSources(prospect, pipelineStats) {
+  const sources = [];
+  const playerLabel = [prospect.name, prospect.school].filter(Boolean).join(' ');
+
+  if (playerLabel) {
+    sources.push({
+      label: 'Measurement search',
+      url: searchUrl(`${playerLabel} height weight wingspan basketball`),
+      type: 'measurement',
+    });
+    sources.push({
+      label: 'Roster search',
+      url: searchUrl(`${playerLabel} basketball roster`),
+      type: 'bio',
+    });
+  }
+
+  if (playerLabel && pipelineStats?.stats?.season) {
+    sources.push({
+      label: 'Stat search',
+      url: searchUrl(`${playerLabel} basketball stats`),
+      type: 'stats',
+    });
+  }
+
+  return sources;
+}
+
 function sourceLabel(isReal) {
   return isReal ? 'Structured' : 'Derived';
 }
@@ -288,7 +320,7 @@ function normalizeMeasurements(prospect) {
       standingReach,
       measurementLine,
     },
-    isReal: !!prospect.measurements,
+    isReal: !!prospect.measurements || hasText(height) || hasText(weight) || hasText(wingspan),
   };
 }
 
@@ -297,6 +329,7 @@ function normalizeSources(prospect) {
   const sources = [
     ...(Array.isArray(prospect.sources) ? prospect.sources : []),
     ...(Array.isArray(pipelineStats?.sources) ? pipelineStats.sources : []),
+    ...buildFallbackSources(prospect, pipelineStats),
   ];
   return sources
     .filter((source) => hasText(source?.label) || hasText(source?.url))
@@ -304,7 +337,11 @@ function normalizeSources(prospect) {
       label: source.label || source.url,
       url: source.url || '',
       type: source.type || 'reference',
-    }));
+    }))
+    .filter((source, index, collection) => {
+      const key = `${source.label}|${source.url}|${source.type}`;
+      return collection.findIndex((item) => `${item.label}|${item.url}|${item.type}` === key) === index;
+    });
 }
 
 /**
