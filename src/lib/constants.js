@@ -27,6 +27,7 @@ export const APP_VIEWS = [
   { id: 'my-board', label: 'My Board' },
   { id: 'compare', label: 'Compare' },
   { id: 'notes', label: 'Notes' },
+  { id: 'historical', label: 'Historical' },
 ];
 
 export const VIEW_MODES = [

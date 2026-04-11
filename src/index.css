@@ -310,6 +310,49 @@ button {
   font-size: 0.78rem;
 }
 
+.matrix-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(180px, 0.5fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.historical-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface-2);
+}
+
+.historical-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 960px;
+}
+
+.historical-table th,
+.historical-table td {
+  padding: 14px 16px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.historical-table thead th {
+  border-top: 0;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+}
+
+.historical-table td strong {
+  color: var(--text);
+}
+
 .control-block {
   display: grid;
   gap: 8px;
@@ -1152,6 +1195,10 @@ button {
 
   .controls {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .matrix-toolbar {
+    grid-template-columns: 1fr;
   }
 
   .hero-stats {

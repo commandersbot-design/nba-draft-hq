@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import prospects from './data/prospects.json';
 import { CompareEngine } from './components/CompareEngine';
+import { HistoricalMatrixLite } from './components/HistoricalMatrixLite';
 import { MyBoardBuilder } from './components/MyBoardBuilder';
 import { NotesWorkspace } from './components/NotesWorkspace';
 import { PlayerProfileSurface } from './components/PlayerProfileSurface';
@@ -690,6 +691,10 @@ function App() {
               onExportJson={exportNotesJson}
               onExportCsv={exportNotesCsv}
             />
+          )}
+
+          {appView === 'historical' && (
+            <HistoricalMatrixLite />
           )}
         </section>
 
