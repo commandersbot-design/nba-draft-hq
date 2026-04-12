@@ -69,3 +69,26 @@ The current working path remains:
 ## Next phase
 
 Next work should implement source-specific ingestion modules against the new raw tables, then normalize into the new Prospera historical tables before adding derived percentile and outcome logic.
+
+That next layer is now scaffolded with:
+- `scripts/ingestion/sync-historical-sources.js`
+- `scripts/ingestion/normalize-historical-sources.js`
+- `scripts/ingestion/shared/fileDataset.js`
+- `scripts/ingestion/shared/historicalSourceUtils.js`
+
+Source-specific adapters now exist for:
+- `CollegeBasketballData`
+- `Sports Reference`
+- `Bart Torvik`
+- `Basketball Reference`
+- `NBA.com Stats`
+
+Package entrypoints:
+- `npm run ingest:historical:sources:sync`
+- `npm run ingest:historical:sources:normalize`
+- `npm run ingest:historical:sources`
+
+The intended progression is now:
+1. sync source-specific raw historical data into raw tables
+2. normalize that data into Prospera historical model tables
+3. add derived percentile, outcome-label, and comparison-feature logic on top

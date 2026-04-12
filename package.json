@@ -15,7 +15,10 @@
     "ingest:historical:sync": "node scripts/ingestion/sync-historical-prospects.js",
     "ingest:historical:transform": "node scripts/ingestion/transform-historical-prospects.js",
     "ingest:historical:export": "node scripts/ingestion/export-historical-prospects.js",
-    "ingest:historical": "npm run ingest:historical:sync && npm run ingest:historical:transform && npm run ingest:historical:export"
+    "ingest:historical": "npm run ingest:historical:sync && npm run ingest:historical:transform && npm run ingest:historical:export",
+    "ingest:historical:sources:sync": "node scripts/ingestion/sync-historical-sources.js",
+    "ingest:historical:sources:normalize": "node scripts/ingestion/normalize-historical-sources.js",
+    "ingest:historical:sources": "npm run ingest:historical:sources:sync && npm run ingest:historical:sources:normalize"
   },
   "dependencies": {
     "react": "^18.2.0",
