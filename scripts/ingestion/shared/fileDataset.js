@@ -144,6 +144,7 @@ function loadStructuredFiles(targetPath) {
 
   const files = walkFiles(targetPath)
     .filter((filePath) => /\.(json|csv|jsonl|ndjson)$/i.test(filePath))
+    .filter((filePath) => !/(^|[\\/])(_?manifest|schema|readme)(\.[^.]+)?$/i.test(filePath))
     .sort((left, right) => left.localeCompare(right));
 
   const rows = [];

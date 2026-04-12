@@ -1,0 +1,233 @@
+{
+  "generatedAt": "2026-04-12T03:19:03.338Z",
+  "totalSources": 5,
+  "populatedSources": 5,
+  "totalRows": 220,
+  "sources": [
+    {
+      "id": "collegeBasketballData",
+      "label": "CollegeBasketballData",
+      "directory": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\upstream\\collegebasketballdata",
+      "exists": true,
+      "fileCount": 1,
+      "rowCount": 44,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "coverage": {
+        "playerName": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "season": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "team": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "position": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "sourcePlayerId": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        }
+      },
+      "files": [
+        "imports\\upstream\\collegebasketballdata\\bootstrap.json"
+      ]
+    },
+    {
+      "id": "sportsReference",
+      "label": "Sports Reference",
+      "directory": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\upstream\\sports-reference",
+      "exists": true,
+      "fileCount": 1,
+      "rowCount": 44,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "coverage": {
+        "playerName": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "season": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "team": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "position": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "sourcePlayerId": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        }
+      },
+      "files": [
+        "imports\\upstream\\sports-reference\\bootstrap.json"
+      ]
+    },
+    {
+      "id": "bartTorvik",
+      "label": "Bart Torvik",
+      "directory": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\upstream\\bart-torvik",
+      "exists": true,
+      "fileCount": 1,
+      "rowCount": 44,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "coverage": {
+        "playerName": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "season": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "team": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "position": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "sourcePlayerId": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        }
+      },
+      "files": [
+        "imports\\upstream\\bart-torvik\\bootstrap.json"
+      ]
+    },
+    {
+      "id": "basketballReference",
+      "label": "Basketball Reference",
+      "directory": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\upstream\\basketball-reference",
+      "exists": true,
+      "fileCount": 1,
+      "rowCount": 44,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "coverage": {
+        "playerName": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "season": {
+          "present": 0,
+          "total": 44,
+          "percent": 0
+        },
+        "team": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "position": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "sourcePlayerId": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        }
+      },
+      "files": [
+        "imports\\upstream\\basketball-reference\\bootstrap.json"
+      ]
+    },
+    {
+      "id": "nbaStats",
+      "label": "NBA.com Stats",
+      "directory": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\upstream\\nba-combine",
+      "exists": true,
+      "fileCount": 1,
+      "rowCount": 44,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "coverage": {
+        "playerName": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "season": {
+          "present": 0,
+          "total": 44,
+          "percent": 0
+        },
+        "team": {
+          "present": 0,
+          "total": 44,
+          "percent": 0
+        },
+        "position": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        },
+        "sourcePlayerId": {
+          "present": 44,
+          "total": 44,
+          "percent": 100
+        }
+      },
+      "files": [
+        "imports\\upstream\\nba-combine\\bootstrap.json"
+      ]
+    }
+  ]
+}

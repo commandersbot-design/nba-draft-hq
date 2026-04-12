@@ -3,6 +3,7 @@ const path = require('path');
 const DEFAULT_HISTORICAL_UPSTREAM_DIR = path.join(__dirname, '..', '..', '..', 'imports', 'upstream', 'historical');
 const DEFAULT_HISTORICAL_SINGLE_FILE = path.join(__dirname, '..', '..', '..', 'imports', 'upstream', 'historical-prospects-upstream.json');
 const DEFAULT_HISTORICAL_FALLBACK = path.join(__dirname, '..', '..', '..', 'imports', 'fixtures', 'historical-prospects-seed.json');
+const DEFAULT_SOURCE_UPSTREAM_ROOT = path.join(__dirname, '..', '..', '..', 'imports', 'upstream');
 
 const SOURCE_CONFIG = {
   collegeBasketballData: {
@@ -15,6 +16,9 @@ const SOURCE_CONFIG = {
       endpoint: 'CBBD_STATS_ENDPOINT',
       apiKey: 'CBBD_API_KEY',
     },
+    paths: {
+      upstreamDirectory: path.join(DEFAULT_SOURCE_UPSTREAM_ROOT, 'collegebasketballdata'),
+    },
     rawTables: ['cbb_player_seasons_raw', 'cbb_game_logs_raw'],
     normalizedTables: ['prospects_historical', 'prospect_season_stats', 'prospect_game_logs'],
     derivedTables: ['prospect_percentiles', 'prospect_model_features', 'prospect_comparison_inputs'],
@@ -26,6 +30,9 @@ const SOURCE_CONFIG = {
     enabled: true,
     category: 'college-history',
     provenance: 'dataset-or-adapter',
+    paths: {
+      upstreamDirectory: path.join(DEFAULT_SOURCE_UPSTREAM_ROOT, 'sports-reference'),
+    },
     rawTables: ['cbb_player_seasons_raw'],
     normalizedTables: ['prospects_historical', 'prospect_season_stats'],
     derivedTables: ['prospect_percentiles', 'prospect_model_features', 'prospect_outcome_labels'],
@@ -37,6 +44,9 @@ const SOURCE_CONFIG = {
     enabled: true,
     category: 'advanced-metrics',
     provenance: 'dataset',
+    paths: {
+      upstreamDirectory: path.join(DEFAULT_SOURCE_UPSTREAM_ROOT, 'bart-torvik'),
+    },
     rawTables: ['cbb_advanced_metrics_raw'],
     normalizedTables: ['prospects_historical', 'prospect_advanced_metrics'],
     derivedTables: ['prospect_percentiles', 'prospect_model_features', 'prospect_archetype_inputs', 'prospect_comparison_inputs'],
@@ -48,6 +58,9 @@ const SOURCE_CONFIG = {
     enabled: true,
     category: 'nba-outcomes',
     provenance: 'dataset-or-adapter',
+    paths: {
+      upstreamDirectory: path.join(DEFAULT_SOURCE_UPSTREAM_ROOT, 'basketball-reference'),
+    },
     rawTables: ['nba_draft_history_raw', 'nba_player_outcomes_raw'],
     normalizedTables: ['prospects_historical', 'prospect_nba_outcomes'],
     derivedTables: ['prospect_outcome_labels', 'prospect_comparison_inputs'],
@@ -59,6 +72,9 @@ const SOURCE_CONFIG = {
     enabled: true,
     category: 'measurements',
     provenance: 'external-api-or-dataset',
+    paths: {
+      upstreamDirectory: path.join(DEFAULT_SOURCE_UPSTREAM_ROOT, 'nba-combine'),
+    },
     rawTables: ['combine_measurements_raw'],
     normalizedTables: ['prospects_historical', 'prospect_physical_measurements'],
     derivedTables: ['prospect_model_features', 'prospect_archetype_inputs', 'prospect_comparison_inputs'],
@@ -90,4 +106,5 @@ module.exports = {
   DEFAULT_HISTORICAL_UPSTREAM_DIR,
   DEFAULT_HISTORICAL_SINGLE_FILE,
   DEFAULT_HISTORICAL_FALLBACK,
+  DEFAULT_SOURCE_UPSTREAM_ROOT,
 };
