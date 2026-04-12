@@ -7,11 +7,15 @@
     "build": "vite build",
     "preview": "vite preview",
     "db:init": "node scripts/init-db.js",
+    "platform:migrate": "node scripts/platform/apply-platform-migration.js",
+    "platform:seed": "node scripts/platform/seed-platform-vocabularies.js",
     "db:migrate:ingestion": "node scripts/ingestion/migrate-ingestion.js",
     "ingest:seed-prospects": "node scripts/ingestion/seed-prospects.js",
     "ingest:sync": "node scripts/ingestion/sync-all.js",
     "ingest:transform": "node scripts/ingestion/transform.js",
     "ingest:export": "node scripts/ingestion/export-profile-stats.js",
+    "ingest:cbbd": "node scripts/platform/run-cbbd-connector.js",
+    "ingest:nba": "node scripts/platform/run-nba-combine-connector.js",
     "ingest:historical:sync": "node scripts/ingestion/sync-historical-prospects.js",
     "ingest:historical:transform": "node scripts/ingestion/transform-historical-prospects.js",
     "ingest:historical:export": "node scripts/ingestion/export-historical-prospects.js",
@@ -24,7 +28,9 @@
     "ingest:historical:bootstrap": "node scripts/ingestion/bootstrap-historical-sources.js",
     "ingest:historical:derived": "node scripts/ingestion/derive-historical-features.js",
     "ingest:historical:derived:export": "node scripts/ingestion/export-historical-derived.js",
-    "ingest:historical:full": "npm run ingest:historical:bootstrap && npm run ingest:historical:sources && npm run ingest:historical:derived && npm run ingest:historical:derived:export && npm run ingest:historical:coverage:export && npm run ingest:historical:sources:status"
+    "ingest:historical:full": "npm run ingest:historical:bootstrap && npm run ingest:historical:sources && npm run ingest:historical:derived && npm run ingest:historical:derived:export && npm run ingest:historical:coverage:export && npm run ingest:historical:sources:status",
+    "import:csv": "node scripts/platform/import-vendor-csv.js",
+    "validate:data": "node scripts/platform/validate-platform-data.js"
   },
   "dependencies": {
     "react": "^18.2.0",
