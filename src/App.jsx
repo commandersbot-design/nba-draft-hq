@@ -1,5 +1,4 @@
-import { Suspense, lazy, useMemo, useState } from 'react';
-import prospects from './data/prospects.json';
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import { MyBoardBuilder } from './components/MyBoardBuilder';
 import { NotesWorkspace } from './components/NotesWorkspace';
 import { PlayerProfileSurface } from './components/PlayerProfileSurface';
@@ -7,7 +6,6 @@ import { ProspectRankCard } from './components/ProspectRankCard';
 import { useLocalStorageState } from './hooks/useLocalStorageState';
 import { buildBoardExportRows, buildNotesExportRows, downloadCsv, downloadJson } from './lib/exporters';
 import { APP_VIEWS, BOARD_CARD_SETTINGS, TAG_OPTIONS, VIEW_MODES } from './lib/constants';
-import { createEmptyStructuredNote, enrichProspects } from './lib/prospectModel';
 
 const CompareEngine = lazy(() => import('./components/CompareEngine').then((module) => ({ default: module.CompareEngine })));
 const HistoricalMatrixLite = lazy(() => import('./components/HistoricalMatrixLite').then((module) => ({ default: module.HistoricalMatrixLite })));
@@ -69,6 +67,7 @@ function defaultCardSettings() {
 }
 
 function App() {
+  const [runtime, setRuntime] = useState({ prospects: [], enrichProspects: null, createEmptyStructuredNote: null, loaded: false });
   const [appView, setAppView] = useState('big-board');
   const [viewMode, setViewMode] = useState('peek');
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
@@ -81,14 +80,14 @@ function App() {
   const [tagFilter, setTagFilter] = useState('ALL');
   const [sortBy, setSortBy] = useState('rank');
   const [watchlistOnly, setWatchlistOnly] = useState(false);
-  const [activeId, setActiveId] = useState(prospects[0]?.id ?? null);
+  const [activeId, setActiveId] = useState(null);
 
   const [watchlist, setWatchlist] = useLocalStorageState(watchlistKey, []);
   const [compareIds, setCompareIds] = useLocalStorageState(compareKey, []);
   const [notes, setNotes] = useLocalStorageState(notesKey, []);
   const [customTiers, setCustomTiers] = useLocalStorageState(customTierKey, {});
   const [customTags, setCustomTags] = useLocalStorageState(customTagsKey, {});
-  const [myBoard, setMyBoard] = useLocalStorageState(myBoardKey, prospects.map((prospect) => prospect.id));
+  const [myBoard, setMyBoard] = useLocalStorageState(myBoardKey, []);
   const [myBoardView, setMyBoardView] = useLocalStorageState(myBoardViewKey, 'card');
   const [cardSettings, setCardSettings] = useLocalStorageState(cardSettingsKey, defaultCardSettings());
   const [savedBoards, setSavedBoards] = useLocalStorageState(savedBoardsKey, []);
@@ -96,13 +95,46 @@ function App() {
   const [selectedHistoricalId, setSelectedHistoricalId] = useLocalStorageState(historicalSelectionKey, null);
   const [viewName, setViewName] = useState('');
 
+  useEffect(() => {
+    let isMounted = true;
+
+    Promise.all([
+      import('./data/prospects.json'),
+      import('./lib/prospectModel'),
+    ]).then(([prospectsModule, modelModule]) => {
+      if (!isMounted) return;
+      setRuntime({
+        prospects: prospectsModule.default || [],
+        enrichProspects: modelModule.enrichProspects,
+        createEmptyStructuredNote: modelModule.createEmptyStructuredNote,
+        loaded: true,
+      });
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!runtime.loaded || runtime.prospects.length === 0) return;
+
+    setActiveId((current) => current || runtime.prospects[0]?.id || null);
+    setMyBoard((current) => {
+      const validIds = new Set(runtime.prospects.map((prospect) => prospect.id));
+      const persisted = current.filter((id) => validIds.has(id));
+      const missing = runtime.prospects.map((prospect) => prospect.id).filter((id) => !persisted.includes(id));
+      return [...persisted, ...missing];
+    });
+  }, [runtime.loaded, runtime.prospects, setMyBoard]);
+
   const enrichedProspects = useMemo(
-    () => enrichProspects(prospects).map((prospect) => ({
+    () => (runtime.enrichProspects ? runtime.enrichProspects(runtime.prospects) : []).map((prospect) => ({
       ...prospect,
       tier: customTiers[prospect.id] || prospect.baseTier,
       tags: customTags[prospect.id] || prospect.tags || [],
     })),
-    [customTags, customTiers],
+    [customTags, customTiers, runtime.enrichProspects, runtime.prospects],
   );
 
   const prospectsById = useMemo(
@@ -243,8 +275,8 @@ function App() {
   };
 
   const createNote = (playerId) => {
-    if (!playerId) return;
-    const note = createEmptyStructuredNote(playerId);
+    if (!playerId || !runtime.createEmptyStructuredNote) return;
+    const note = runtime.createEmptyStructuredNote(playerId);
     setNotes((current) => [note, ...current]);
     setActiveId(playerId);
     setAppView('notes');
@@ -420,6 +452,34 @@ function App() {
         break;
     }
   };
+
+  if (!runtime.loaded) {
+    return (
+      <div className="page-shell">
+        <header className="guide-header panel">
+          <div className="guide-brand">
+            <p className="eyebrow">2026</p>
+            <h1>Prospera Draft HQ</h1>
+            <p className="guide-copy">Loading board, profiles, and historical context.</p>
+          </div>
+        </header>
+        <main className="guide-layout">
+          <section className="left-column">
+            <section className="panel">
+              <p className="empty-state">Loading scouting workspace…</p>
+            </section>
+          </section>
+          <aside className="detail panel">
+            <div className="detail-empty">
+              <p className="eyebrow">Player Detail</p>
+              <h3>Preparing profiles</h3>
+              <p>Prospera is loading the board and model context.</p>
+            </div>
+          </aside>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="page-shell">
