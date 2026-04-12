@@ -140,6 +140,8 @@ function normalizeNbaCombineIntoPlatform(db, { rows, snapshotPath, runId }) {
       playerName: row.playerName,
       schoolTeam: '',
       draftClass: Number.isFinite(draftClass) && draftClass > 0 ? draftClass : 2026,
+      sourceName: SOURCE.displayName,
+      externalId: row.sourcePlayerId || row.playerName,
     });
 
     const seasonId = ensureSeason(db, {

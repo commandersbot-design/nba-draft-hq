@@ -52,7 +52,30 @@ function buildPlayerIndex(db) {
   return index;
 }
 
-function resolvePlayer({ db, playerName, schoolTeam = '', draftClass = 2026 }) {
+function findOverride(db, { sourceName, externalId }) {
+  if (!sourceName || !externalId) return null;
+
+  const row = db.prepare(`
+    SELECT player_id, confidence_override
+    FROM entity_resolution_overrides
+    WHERE source_name = ? AND external_id = ?
+  `).get(sourceName, externalId);
+
+  if (!row) return null;
+
+  return {
+    playerId: row.player_id,
+    confidence: row.confidence_override ?? 1,
+    strategy: 'manual-override',
+  };
+}
+
+function resolvePlayer({ db, playerName, schoolTeam = '', draftClass = 2026, sourceName = '', externalId = '' }) {
+  const override = findOverride(db, { sourceName, externalId });
+  if (override) {
+    return override;
+  }
+
   const index = buildPlayerIndex(db);
   const normalizedName = normalizeName(playerName);
   const normalizedSchool = normalizeName(schoolTeam);
@@ -74,6 +97,7 @@ function resolvePlayer({ db, playerName, schoolTeam = '', draftClass = 2026 }) {
 
 module.exports = {
   buildPlayerIndex,
+  findOverride,
   normalizeName,
   resolvePlayer,
 };

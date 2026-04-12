@@ -37,7 +37,45 @@ function upsertMeasurement(db, {
   measurement,
   sourceRecordId,
 }) {
-  const stmt = db.prepare(`
+  const existing = db.prepare(`
+    SELECT id
+    FROM measurements
+    WHERE player_id = ? AND season_id = ? AND measurement_context = 'draft-combine'
+    ORDER BY id DESC
+    LIMIT 1
+  `).get(playerId, seasonId);
+
+  const values = [
+    feetInchesToNumber(measurement.height),
+    numericOrNull(measurement.weight),
+    feetInchesToNumber(measurement.wingspan),
+    feetInchesToNumber(measurement.standingReach),
+    numericOrNull(measurement.maxVertical),
+    numericOrNull(measurement.laneAgility),
+    numericOrNull(measurement.shuttleRun),
+    numericOrNull(measurement.sprint),
+    sourceRecordId || null,
+  ];
+
+  if (existing) {
+    db.prepare(`
+      UPDATE measurements
+      SET height_inches = ?,
+          weight_lbs = ?,
+          wingspan_inches = ?,
+          standing_reach_inches = ?,
+          max_vertical = ?,
+          lane_agility = ?,
+          shuttle_run = ?,
+          three_quarter_sprint = ?,
+          source_record_id = ?,
+          updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).run(...values, existing.id);
+    return existing.id;
+  }
+
+  const result = db.prepare(`
     INSERT INTO measurements (
       player_id,
       season_id,
@@ -52,21 +90,13 @@ function upsertMeasurement(db, {
       three_quarter_sprint,
       source_record_id
     ) VALUES (?, ?, 'draft-combine', ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-
-  stmt.run(
+  `).run(
     playerId,
     seasonId,
-    feetInchesToNumber(measurement.height),
-    numericOrNull(measurement.weight),
-    feetInchesToNumber(measurement.wingspan),
-    feetInchesToNumber(measurement.standingReach),
-    numericOrNull(measurement.maxVertical),
-    numericOrNull(measurement.laneAgility),
-    numericOrNull(measurement.shuttleRun),
-    numericOrNull(measurement.sprint),
-    sourceRecordId || null,
+    ...values,
   );
+
+  return result.lastInsertRowid;
 }
 
 function upsertDraftInfo(db, {

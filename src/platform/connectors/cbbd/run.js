@@ -63,6 +63,8 @@ function buildResolvedRows(db, season, payloadPlayers = []) {
       playerName: entry.playerName,
       schoolTeam: entry.schoolTeam || entry.team || '',
       draftClass: 2026,
+      sourceName: SOURCE.displayName,
+      externalId: entry.externalPlayerKey || entry.playerName,
     });
 
     if (resolution.playerId) {
@@ -110,6 +112,8 @@ function normalizeCbbdIntoPlatform(db, { season, payloadPlayers, snapshotPath, r
       playerName: row.playerName,
       schoolTeam: row.schoolTeam || row.team || '',
       draftClass: 2026,
+      sourceName: SOURCE.displayName,
+      externalId: row.externalPlayerKey || row.playerName,
     });
 
     if (!resolution.playerId) {
