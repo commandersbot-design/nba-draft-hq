@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-12T02:48:43.498Z",
+  "generatedAt": "2026-04-12T03:11:01.988Z",
   "rawCounts": {
     "seasonStats": 88,
     "advancedMetrics": 44,
@@ -7,7 +7,7 @@
     "combine": 44
   },
   "normalizedCounts": {
-    "prospectsHistoricalRows": 880,
+    "prospectsHistoricalRows": 1100,
     "uniqueHistoricalPlayers": 44,
     "seasonStats": 88,
     "advancedMetrics": 44,
@@ -72,6 +72,62 @@
       "status": "success",
       "records_fetched": 176,
       "records_written": 1892,
+      "finished_at": "2026-04-12T03:10:57.585Z"
+    },
+    {
+      "source": "HistoricalNormalization",
+      "sync_type": "historical-normalize",
+      "status": "success",
+      "records_fetched": 220,
+      "records_written": 220,
+      "finished_at": "2026-04-12T03:10:55.328Z"
+    },
+    {
+      "source": "NBA.com Stats",
+      "sync_type": "historical-sync",
+      "status": "success",
+      "records_fetched": 44,
+      "records_written": 44,
+      "finished_at": "2026-04-12T03:10:53.049Z"
+    },
+    {
+      "source": "Basketball Reference",
+      "sync_type": "historical-sync",
+      "status": "success",
+      "records_fetched": 44,
+      "records_written": 88,
+      "finished_at": "2026-04-12T03:10:53.047Z"
+    },
+    {
+      "source": "Bart Torvik",
+      "sync_type": "historical-sync",
+      "status": "success",
+      "records_fetched": 44,
+      "records_written": 44,
+      "finished_at": "2026-04-12T03:10:53.043Z"
+    },
+    {
+      "source": "Sports Reference",
+      "sync_type": "historical-sync",
+      "status": "success",
+      "records_fetched": 44,
+      "records_written": 44,
+      "finished_at": "2026-04-12T03:10:53.040Z"
+    },
+    {
+      "source": "CollegeBasketballData",
+      "sync_type": "historical-sync",
+      "status": "success",
+      "records_fetched": 44,
+      "records_written": 44,
+      "finished_at": "2026-04-12T03:10:53.036Z"
+    },
+    {
+      "source": "HistoricalDerivedFeatures",
+      "sync_type": "historical-derived",
+      "status": "success",
+      "records_fetched": 176,
+      "records_written": 1892,
       "finished_at": "2026-04-12T02:47:52.351Z"
     },
     {
@@ -129,62 +185,6 @@
       "records_fetched": 176,
       "records_written": 1892,
       "finished_at": "2026-04-12T02:25:09.112Z"
-    },
-    {
-      "source": "HistoricalNormalization",
-      "sync_type": "historical-normalize",
-      "status": "success",
-      "records_fetched": 220,
-      "records_written": 220,
-      "finished_at": "2026-04-12T02:25:06.880Z"
-    },
-    {
-      "source": "NBA.com Stats",
-      "sync_type": "historical-sync",
-      "status": "success",
-      "records_fetched": 44,
-      "records_written": 44,
-      "finished_at": "2026-04-12T02:25:04.668Z"
-    },
-    {
-      "source": "Basketball Reference",
-      "sync_type": "historical-sync",
-      "status": "success",
-      "records_fetched": 44,
-      "records_written": 88,
-      "finished_at": "2026-04-12T02:25:04.665Z"
-    },
-    {
-      "source": "Bart Torvik",
-      "sync_type": "historical-sync",
-      "status": "success",
-      "records_fetched": 44,
-      "records_written": 44,
-      "finished_at": "2026-04-12T02:25:04.662Z"
-    },
-    {
-      "source": "Sports Reference",
-      "sync_type": "historical-sync",
-      "status": "success",
-      "records_fetched": 44,
-      "records_written": 44,
-      "finished_at": "2026-04-12T02:25:04.658Z"
-    },
-    {
-      "source": "CollegeBasketballData",
-      "sync_type": "historical-sync",
-      "status": "success",
-      "records_fetched": 44,
-      "records_written": 44,
-      "finished_at": "2026-04-12T02:25:04.655Z"
-    },
-    {
-      "source": "HistoricalDerivedFeatures",
-      "sync_type": "historical-derived",
-      "status": "error",
-      "records_fetched": 0,
-      "records_written": 0,
-      "finished_at": "2026-04-12T02:18:48.321Z"
     }
   ]
 }
