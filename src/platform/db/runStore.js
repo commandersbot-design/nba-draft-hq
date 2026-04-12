@@ -42,7 +42,7 @@ function storeSourceRecord(db, record) {
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
-  stmt.run(
+  const result = stmt.run(
     record.sourceName,
     record.reliabilityTier,
     record.entityType,
@@ -53,6 +53,8 @@ function storeSourceRecord(db, record) {
     record.sourceLastUpdated || nowIso(),
     record.ingestionRunId || null,
   );
+
+  return result.lastInsertRowid;
 }
 
 function writeSnapshot(snapshotDirectory, name, payload) {
