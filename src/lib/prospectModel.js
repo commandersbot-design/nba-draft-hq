@@ -135,6 +135,167 @@ function sourceLabel(isReal) {
   return isReal ? 'Structured' : 'Derived';
 }
 
+function percentileToLabel(value) {
+  if (!Number.isFinite(value)) return 'Untracked';
+  if (value >= 90) return 'Elite';
+  if (value >= 75) return 'Strong';
+  if (value >= 60) return 'Positive';
+  if (value >= 40) return 'Neutral';
+  if (value >= 25) return 'Soft';
+  return 'Concern';
+}
+
+function normalizeMetricValue(value) {
+  if (typeof value === 'string') {
+    const numeric = Number.parseFloat(value.replace('%', ''));
+    return Number.isFinite(numeric) ? numeric : null;
+  }
+  return Number.isFinite(value) ? value : null;
+}
+
+function buildRiskFlags(prospect, statPercentiles, traits) {
+  const flags = [];
+  const shootingTrait = traits.find((trait) => trait.name === 'Shooting Gravity')?.score ?? 0;
+  const processingTrait = traits.find((trait) => trait.name === 'Processing Speed')?.score ?? 0;
+  const creationTrait = traits.find((trait) => trait.name === 'Advantage Creation')?.score ?? 0;
+  const defenseTrait = traits.find((trait) => trait.name === 'Defensive Versatility')?.score ?? 0;
+  const scalabilityTrait = traits.find((trait) => trait.name === 'Scalability')?.score ?? 0;
+  const age = Number(prospect.age);
+
+  if (shootingTrait <= 5.5 || (statPercentiles.threePct ?? 50) <= 40 || (statPercentiles.trueShooting ?? 50) <= 40) {
+    flags.push({ key: 'shooting_risk', label: 'Shooting risk', severity: shootingTrait <= 4.5 ? 'high' : 'moderate' });
+  }
+  if (creationTrait <= 5.5 && prospect.position.includes('PG')) {
+    flags.push({ key: 'creation_translation_risk', label: 'Creation translation risk', severity: 'moderate' });
+  }
+  if (defenseTrait <= 5.5 || (statPercentiles.blocksPerGame ?? 50) <= 35) {
+    flags.push({ key: 'defensive_role_risk', label: 'Defensive role risk', severity: defenseTrait <= 4.5 ? 'high' : 'moderate' });
+  }
+  if (processingTrait <= 5.5) {
+    flags.push({ key: 'processing_risk', label: 'Processing risk', severity: processingTrait <= 4.5 ? 'high' : 'moderate' });
+  }
+  if (age >= 22.5 && scalabilityTrait <= 6.5) {
+    flags.push({ key: 'age_upside_risk', label: 'Age/upside risk', severity: 'moderate' });
+  }
+  if ((statPercentiles.reboundRate ?? 50) <= 30 && (prospect.position.includes('C') || prospect.position.includes('PF'))) {
+    flags.push({ key: 'physical_translation_risk', label: 'Physical translation risk', severity: 'moderate' });
+  }
+
+  if (flags.length === 0) {
+    flags.push({ key: 'baseline_risk', label: 'Baseline variance', severity: prospect.riskLevel === 'High' ? 'high' : prospect.riskLevel === 'Low-Moderate' ? 'low' : 'moderate' });
+  }
+
+  return flags.slice(0, 4);
+}
+
+function buildAutoInterpretation(prospect, traits, statPercentiles, riskFlags) {
+  const traitByName = Object.fromEntries(traits.map((trait) => [trait.name, trait]));
+  const strengths = [];
+  const weaknesses = [];
+
+  const pushStrength = (label, explanation) => {
+    if (strengths.some((entry) => entry.label === label)) return;
+    strengths.push({ label, explanation });
+  };
+
+  const pushWeakness = (label, explanation) => {
+    if (weaknesses.some((entry) => entry.label === label)) return;
+    weaknesses.push({ label, explanation });
+  };
+
+  if ((traitByName['Advantage Creation']?.score ?? 0) >= 7.5 && (statPercentiles.pointsPerGame ?? 0) >= 65) {
+    pushStrength('Paint Touch Creator', 'consistently bends the defense off the bounce');
+  }
+  if ((traitByName['Shooting Gravity']?.score ?? 0) >= 7.5 && ((statPercentiles.threePct ?? 0) >= 65 || (statPercentiles.trueShooting ?? 0) >= 65)) {
+    pushStrength('Warps Spacing', 'forces attention with real shotmaking pressure');
+  }
+  if ((traitByName['Processing Speed']?.score ?? 0) >= 7.5) {
+    pushStrength('Fast Processor', 'sees the next action early and keeps possessions moving');
+  }
+  if ((traitByName['Off-Ball Value']?.score ?? 0) >= 7.5) {
+    pushStrength('Connector Value', 'adds utility without needing every possession');
+  }
+  if ((traitByName['Defensive Versatility']?.score ?? 0) >= 7.5 && (statPercentiles.blocksPerGame ?? statPercentiles.stealsPerGame ?? 0) >= 65) {
+    pushStrength('Switchable Coverage', 'holds value across multiple matchups and actions');
+  }
+  if ((traitByName['Passing Creation']?.score ?? 0) >= 7.5 && (statPercentiles.assistsPerGame ?? 0) >= 65) {
+    pushStrength('Advantage Passing', 'turns touches into clean looks for others');
+  }
+
+  if ((traitByName['Shooting Gravity']?.score ?? 10) <= 5.5 && ((statPercentiles.threePct ?? 100) <= 40 || (statPercentiles.trueShooting ?? 100) <= 40)) {
+    pushWeakness('Shooting Concern', 'the jumper still leaves defenders room to cheat');
+  }
+  if ((traitByName['Defensive Versatility']?.score ?? 10) <= 5.5) {
+    pushWeakness('Defensive Role Question', 'the defensive fit is still more theoretical than stable');
+  }
+  if ((traitByName['Processing Speed']?.score ?? 10) <= 5.5) {
+    pushWeakness('Slow Processor', 'possession speed and reads still lag the role ask');
+  }
+  if ((traitByName['Scalability']?.score ?? 10) <= 5.5) {
+    pushWeakness('Role Compression Risk', 'the pathway narrows if star-level usage is unavailable');
+  }
+  if ((traitByName['Passing Creation']?.score ?? 10) <= 5.5 && prospect.position.includes('PG')) {
+    pushWeakness('Table-Setting Concern', 'lead guard touches do not yet create enough for others');
+  }
+
+  const sortedTraits = [...traits].sort((left, right) => right.score - left.score);
+  const sortedWeakTraits = [...traits].sort((left, right) => left.score - right.score);
+  const swingTrait = (() => {
+    const shot = traitByName['Shooting Gravity']?.score ?? 0;
+    const creation = traitByName['Advantage Creation']?.score ?? 0;
+    const defense = traitByName['Defensive Versatility']?.score ?? 0;
+    const processing = traitByName['Processing Speed']?.score ?? 0;
+    if (creation >= 7.5 && shot <= 6.5) return 'Shooting Gravity';
+    if (defense <= 6.0) return 'Defensive Versatility';
+    if (processing <= 6.0) return 'Processing Speed';
+    return sortedWeakTraits[0]?.name || 'Shooting Gravity';
+  })();
+
+  const topStrength = strengths[0]?.label || sortedTraits[0]?.name || 'trait strength';
+  const topWeakness = weaknesses[0]?.label || sortedWeakTraits[0]?.name || 'the swing skill';
+  const summarySentence = `A ${prospect.archetypeBase.toLowerCase()} profile with ${topStrength.toLowerCase()} as the clearest value driver, whose long-term ceiling will be shaped by whether ${topWeakness.toLowerCase()} stabilizes.`;
+
+  return {
+    strengths: strengths.slice(0, 3),
+    weaknesses: weaknesses.slice(0, 2),
+    swingSkill: swingTrait,
+    summarySentence,
+    riskFlags,
+  };
+}
+
+function buildModelBreakdown(prospect, traits, statPercentiles, interpretation) {
+  const weightedTraitScore = Number((traits.reduce((sum, trait) => sum + trait.score, 0) / traits.length).toFixed(1));
+  const riskPenalty = Number((interpretation.riskFlags.reduce((sum, flag) => {
+    if (flag.severity === 'high') return sum + 0.9;
+    if (flag.severity === 'moderate') return sum + 0.45;
+    return sum + 0.15;
+  }, 0)).toFixed(1));
+  const finalBoardScore = Number((weightedTraitScore - riskPenalty + ((statPercentiles.bpm ?? 50) / 20)).toFixed(1));
+  const modelTier = finalBoardScore >= 8.8 ? 'Tier 1 model' : finalBoardScore >= 8.1 ? 'Tier 2 model' : finalBoardScore >= 7.3 ? 'Tier 3 model' : finalBoardScore >= 6.6 ? 'Tier 4 model' : 'Tier 5 model';
+
+  return {
+    finalBoardScore,
+    weightedTraitScore,
+    riskPenalty,
+    modelTier,
+    boardRank: prospect.rank,
+    coreTraitBars: traits.map((trait) => ({
+      key: trait.name,
+      label: trait.name,
+      score: trait.score,
+      width: `${Math.max(8, Math.min(100, trait.score * 10))}%`,
+    })),
+    riskPanel: interpretation.riskFlags,
+    interpretationCard: {
+      strengths: interpretation.strengths,
+      weaknesses: interpretation.weaknesses,
+      swingSkill: interpretation.swingSkill,
+      summarySentence: interpretation.summarySentence,
+    },
+  };
+}
+
 function deriveTraitScores(prospect) {
   const base = positionTraits(prospect.position);
   const rankLift = clamp(18 - Math.floor(prospect.rank / 6), -8, 14);
@@ -433,6 +594,16 @@ export function enrichProspects(prospects) {
       rank: sourceProspect.rank,
       stats: stats.value,
     });
+    const autoInterpretation = buildAutoInterpretation(sourceProspect, traitData.values, pipelineStats.percentiles || {}, buildRiskFlags(sourceProspect, pipelineStats.percentiles || {}, traitData.values));
+    const modelBreakdown = buildModelBreakdown(
+      {
+        ...sourceProspect,
+        rank: sourceProspect.rank,
+      },
+      traitData.values,
+      pipelineStats.percentiles || {},
+      autoInterpretation,
+    );
 
     const realFieldCount = [
       measurements.isReal,
@@ -469,6 +640,8 @@ export function enrichProspects(prospects) {
       statWeaknesses: Array.isArray(pipelineStats.statWeaknesses) ? pipelineStats.statWeaknesses : [],
       archetypeIndicators: Array.isArray(pipelineStats.archetypeIndicators) ? pipelineStats.archetypeIndicators : [],
       comparisonInputs: pipelineStats.comparisonInputs || {},
+      autoInterpretation,
+      modelBreakdown,
       historicalPrecedents,
       historicalContext,
       profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],

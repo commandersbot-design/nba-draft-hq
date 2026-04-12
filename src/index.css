@@ -989,6 +989,42 @@ button {
   gap: 12px;
 }
 
+.model-bar-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.model-bar-row {
+  display: grid;
+  gap: 8px;
+}
+
+.model-bar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.model-bar-head span {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.model-bar-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--surface-4);
+  overflow: hidden;
+}
+
+.model-bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.55), rgba(183, 142, 29, 0.95));
+}
+
 .trait-card {
   border: 1px solid var(--line);
   background: var(--surface-2);

@@ -30,6 +30,7 @@ export function PlayerProfileSurface({
   const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
   const comparisonAnchors = (prospect.historicalPrecedents || []).slice(0, 3);
   const historicalContext = prospect.historicalContext;
+  const modelBreakdown = prospect.modelBreakdown;
 
   return (
     <div className="detail-card">
@@ -224,6 +225,26 @@ export function PlayerProfileSurface({
 
       {(activeSection === 'Model' || activeSection === 'Full Profile') && (
         <>
+          <div className="split-section">
+            <div className="detail-section detail-section-emphasis">
+              <h4>Final Score Card</h4>
+              <div className="projection-stack">
+                <div><strong>Final board score:</strong> {modelBreakdown.finalBoardScore}</div>
+                <div><strong>Weighted trait score:</strong> {modelBreakdown.weightedTraitScore}</div>
+                <div><strong>Risk penalty:</strong> {modelBreakdown.riskPenalty}</div>
+                <div><strong>Model tier:</strong> {modelBreakdown.modelTier}</div>
+                <div><strong>Board rank:</strong> #{modelBreakdown.boardRank}</div>
+              </div>
+            </div>
+            <div className="detail-section detail-section-emphasis">
+              <h4>Interpretation Card</h4>
+              <div className="projection-stack">
+                <div><strong>Swing skill:</strong> {modelBreakdown.interpretationCard.swingSkill}</div>
+                <div><strong>Summary:</strong> {modelBreakdown.interpretationCard.summarySentence}</div>
+              </div>
+            </div>
+          </div>
+
           <div className="detail-section">
             <h4>Trait Grades / Model Outputs</h4>
             <div className="trait-grid">
@@ -240,6 +261,48 @@ export function PlayerProfileSurface({
                   <p>{trait.note}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="detail-section">
+            <h4>Core Trait Bars</h4>
+            <div className="model-bar-stack">
+              {modelBreakdown.coreTraitBars.map((trait) => (
+                <div key={trait.key} className="model-bar-row">
+                  <div className="model-bar-head">
+                    <strong>{trait.label}</strong>
+                    <span>{trait.score}</span>
+                  </div>
+                  <div className="model-bar-track">
+                    <div className="model-bar-fill" style={{ width: trait.width }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="split-section">
+            <div className="detail-section">
+              <h4>Risk Panel</h4>
+              <div className="note-preview-list">
+                {modelBreakdown.riskPanel.map((flag) => (
+                  <article key={flag.key} className="note-preview-card">
+                    <strong>{flag.label}</strong>
+                    <span>{flag.severity}</span>
+                  </article>
+                ))}
+              </div>
+            </div>
+            <div className="detail-section">
+              <h4>Auto Strengths / Weaknesses</h4>
+              <div className="projection-stack">
+                {modelBreakdown.interpretationCard.strengths.map((item) => (
+                  <div key={item.label}><strong>{item.label}:</strong> {item.explanation}</div>
+                ))}
+                {modelBreakdown.interpretationCard.weaknesses.map((item) => (
+                  <div key={item.label}><strong>{item.label}:</strong> {item.explanation}</div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -316,6 +379,15 @@ export function PlayerProfileSurface({
           )}
 
           <div className="detail-section">
+            <h4>Percentile Context</h4>
+            <div className="projection-stack">
+              {Object.entries(prospect.statPercentiles || {}).slice(0, 6).map(([key, value]) => (
+                <div key={key}><strong>{key}:</strong> {value}th percentile</div>
+              ))}
+            </div>
+          </div>
+
+          <div className="detail-section">
             <h4>Team Fit</h4>
             <p>{prospect.teamFit}</p>
           </div>
@@ -349,6 +421,7 @@ export function PlayerProfileSurface({
             <div><strong>Offensive snapshot:</strong> {prospect.comparisonInputs.offensiveSummary || `${prospect.offenseScore} offense score`}</div>
             <div><strong>Defensive snapshot:</strong> {prospect.comparisonInputs.defensiveSummary || `${prospect.defenseScore} defense score`}</div>
             <div><strong>Archetype indicators:</strong> {(prospect.archetypeIndicators || []).join(', ') || 'Awaiting stat indicators'}</div>
+            <div><strong>Historical percentile tags:</strong> {Object.entries(prospect.statPercentiles || {}).slice(0, 4).map(([key, value]) => `${key} ${value}`).join(' · ') || 'Awaiting percentiles'}</div>
           </div>
 
           <div className="detail-section">

@@ -21,7 +21,9 @@ function buildDecisionBullets(primary, secondary) {
     primaryTopTrait && (!secondaryTopTrait || primaryTopTrait.score > secondaryTopTrait.score)
       ? `${primaryTopTrait.name} is the cleaner headlining trait.`
       : null,
-    primary.summary?.strengths?.[0] || null,
+    primary.autoInterpretation?.strengths?.[0]
+      ? `${primary.autoInterpretation.strengths[0].label}: ${primary.autoInterpretation.strengths[0].explanation}.`
+      : primary.summary?.strengths?.[0] || null,
     primary.riskLevel === 'Low-Moderate' && secondary.riskLevel !== 'Low-Moderate'
       ? 'Lower risk pathway.'
       : null,
@@ -87,7 +89,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
     },
     {
       label: 'Final Score',
-      values: compareProspects.map((prospect) => prospect.comparisonInputs.finalScore || prospect.overallComposite),
+      values: compareProspects.map((prospect) => prospect.modelBreakdown?.finalBoardScore || prospect.comparisonInputs.finalScore || prospect.overallComposite),
     },
     {
       label: 'Role',
@@ -117,8 +119,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
             <p>{prospect.position} · {prospect.school}</p>
             <div className="compare-hero-metrics">
               <div>
-                <strong>{prospect.overallComposite}</strong>
-                <span>overall</span>
+                <strong>{prospect.modelBreakdown?.finalBoardScore || prospect.overallComposite}</strong>
+                <span>final score</span>
               </div>
               <div>
                 <strong>{prospect.offenseScore}</strong>
@@ -129,7 +131,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
                 <span>defense</span>
               </div>
             </div>
-            <p>{prospect.summary?.synopsis}</p>
+            <p>{prospect.autoInterpretation?.summarySentence || prospect.summary?.synopsis}</p>
             {prospect.historicalContext && (
               <p className="section-note">
                 {prospect.historicalContext.draftSlotBand} history: {prospect.historicalContext.bestHistoricalOutcome}
@@ -178,12 +180,31 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         </div>
       </div>
 
-      <div className="detail-section">
-        <h4>Decision Context</h4>
-        <p>
-          Choose {left.name} if you need {left.roleProjection.toLowerCase()} with {topTrait(left)?.name?.toLowerCase() || 'strong trait support'} driving the case.
-          Choose {right.name} if you prefer a {right.archetypeBase.toLowerCase()} pathway and are buying {topTrait(right)?.name?.toLowerCase() || 'the top trait'} as the cleaner answer.
-        </p>
+      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
+        {compareProspects.map((prospect) => (
+          <div key={`${prospect.id}-model`} className="detail-section compare-notes-column">
+            <h4>Model Breakdown</h4>
+            <div className="projection-stack">
+              <div><strong>Weighted traits:</strong> {prospect.modelBreakdown?.weightedTraitScore}</div>
+              <div><strong>Risk penalty:</strong> {prospect.modelBreakdown?.riskPenalty}</div>
+              <div><strong>Model tier:</strong> {prospect.modelBreakdown?.modelTier}</div>
+              <div><strong>Swing skill:</strong> {prospect.modelBreakdown?.interpretationCard?.swingSkill}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
+        {compareProspects.map((prospect) => (
+          <div key={`${prospect.id}-stat-context`} className="detail-section compare-notes-column">
+            <h4>Stat Context</h4>
+            <div className="projection-stack">
+              {Object.entries(prospect.statPercentiles || {}).slice(0, 5).map(([key, value]) => (
+                <div key={key}><strong>{key}:</strong> {value}th pct</div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="detail-section compare-future">
