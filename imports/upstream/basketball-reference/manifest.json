@@ -1,0 +1,22 @@
+{
+  "source": "Basketball Reference",
+  "purpose": "Draft history and NBA outcome records for historical prospects.",
+  "acceptedFormats": [".json", ".csv", ".jsonl", ".ndjson"],
+  "recommendedFileNames": ["2020.json", "2021.json", "lottery-2015-2024.csv"],
+  "preferredContainers": ["rows", "data", "results", "players", "records", "draftHistory", "outcomes"],
+  "requiredCoverageTargets": ["player name", "draft year", "draft slot", "NBA team"],
+  "preferredAliases": {
+    "source_player_id": ["source_player_id", "sourcePlayerId", "player_id", "playerId", "id"],
+    "player_name": ["player_name", "playerName", "name", "player"],
+    "draft_year": ["draft_year", "draftYear", "year"],
+    "draft_slot": ["draft_slot", "draftSlot", "pick", "draft_pick"],
+    "nba_team": ["nba_team", "nbaTeam", "team", "franchise"],
+    "school_team": ["school_team", "schoolTeam", "school", "college"],
+    "position": ["position", "pos"],
+    "games_played": ["games_played", "games", "g"],
+    "minutes": ["minutes", "mp"],
+    "points": ["points", "pts"],
+    "rebounds": ["rebounds", "trb"],
+    "assists": ["assists", "ast"]
+  }
+}

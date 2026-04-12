@@ -10,6 +10,8 @@ Prospera now supports bulk historical source drops per provider directory.
 - `imports/upstream/basketball-reference/`
 - `imports/upstream/nba-combine/`
 
+Each directory can include a local `manifest.json` that documents expected field aliases and recommended file naming. The ingestion loader ignores manifest files automatically.
+
 ## Accepted file formats
 
 - `.json`
@@ -44,6 +46,23 @@ Use year/class-oriented names such as:
 - `guards-2019-2021.jsonl`
 
 Manifest, schema, and readme files are ignored by the loader.
+
+## Recommended workflow
+
+1. Drop raw class or year files into the correct source directory.
+2. Check the local `manifest.json` in that folder if you need alias guidance.
+3. Run:
+
+```powershell
+npm run ingest:historical:sources:status
+```
+
+4. Inspect `src/data/historicalSourceStatus.json` to confirm the row counts, detected years, and field coverage look sane.
+5. Run the full pipeline:
+
+```powershell
+npm run ingest:historical:full
+```
 
 ## Validation and status
 

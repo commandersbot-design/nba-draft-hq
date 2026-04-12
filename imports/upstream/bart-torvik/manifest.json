@@ -1,0 +1,25 @@
+{
+  "source": "Bart Torvik",
+  "purpose": "Advanced metrics and impact context for historical prospects.",
+  "acceptedFormats": [".json", ".csv", ".jsonl", ".ndjson"],
+  "recommendedFileNames": ["2020.json", "2021.json", "2022-advanced.csv"],
+  "preferredContainers": ["rows", "data", "results", "players", "records", "advancedMetrics"],
+  "requiredCoverageTargets": ["player name", "season/year", "team/school"],
+  "preferredAliases": {
+    "source_player_id": ["source_player_id", "sourcePlayerId", "player_id", "playerId", "id"],
+    "player_name": ["player_name", "playerName", "name", "player"],
+    "season": ["season", "season_year", "year"],
+    "school_team": ["school_team", "schoolTeam", "team", "school", "team_name"],
+    "position": ["position", "pos"],
+    "bpm": ["bpm"],
+    "obpm": ["obpm"],
+    "dbpm": ["dbpm"],
+    "ts_pct": ["ts_pct", "tsPct", "ts", "ts%"],
+    "efg_pct": ["efg_pct", "efgPct", "efg", "efg%"],
+    "usg_pct": ["usg_pct", "usgPct", "usage", "usage_rate"],
+    "ast_pct": ["ast_pct", "astPct", "assist_rate", "ast_rate"],
+    "tov_pct": ["tov_pct", "tovPct", "turnover_rate", "tov_rate"],
+    "stl_pct": ["stl_pct", "stlPct", "steal_rate", "stl_rate"],
+    "blk_pct": ["blk_pct", "blkPct", "block_rate", "blk_rate"]
+  }
+}

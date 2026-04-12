@@ -1,0 +1,25 @@
+{
+  "source": "CollegeBasketballData",
+  "purpose": "Structured college season stats and game log-ready player season rows.",
+  "acceptedFormats": [".json", ".csv", ".jsonl", ".ndjson"],
+  "recommendedFileNames": ["2020.json", "2021.json", "2022-lottery.csv"],
+  "preferredContainers": ["rows", "data", "results", "players", "records", "seasons"],
+  "requiredCoverageTargets": ["player name", "season/year", "team/school", "position"],
+  "preferredAliases": {
+    "source_player_id": ["source_player_id", "sourcePlayerId", "player_id", "playerId", "id", "athlete_id"],
+    "player_name": ["player_name", "playerName", "name", "player"],
+    "season": ["season", "season_year", "year"],
+    "school_team": ["school_team", "schoolTeam", "team", "school", "team_name"],
+    "class_year": ["class_year", "classYear", "class", "yr"],
+    "age": ["age"],
+    "position": ["position", "pos"],
+    "games": ["games", "gp", "g"],
+    "points": ["points", "ppg", "pts"],
+    "rebounds": ["rebounds", "rpg", "trb"],
+    "assists": ["assists", "apg", "ast"],
+    "steals": ["steals", "spg", "stl"],
+    "blocks": ["blocks", "bpg", "blk"],
+    "turnovers": ["turnovers", "tov", "to"],
+    "minutes": ["minutes", "mp", "minutes_per_game"]
+  }
+}

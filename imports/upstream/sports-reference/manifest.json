@@ -1,0 +1,21 @@
+{
+  "source": "Sports Reference",
+  "purpose": "Historical college player seasons and career context.",
+  "acceptedFormats": [".json", ".csv", ".jsonl", ".ndjson"],
+  "recommendedFileNames": ["2018.json", "2019.json", "2020-careers.csv"],
+  "preferredContainers": ["rows", "data", "results", "players", "records", "seasons"],
+  "requiredCoverageTargets": ["player name", "season/year", "team/school"],
+  "preferredAliases": {
+    "source_player_id": ["source_player_id", "sourcePlayerId", "sports_reference_id", "player_id", "playerId", "id"],
+    "player_name": ["player_name", "playerName", "name", "player"],
+    "season": ["season", "season_year", "year"],
+    "school_team": ["school_team", "schoolTeam", "team", "school", "team_name"],
+    "class_year": ["class_year", "classYear", "class", "yr"],
+    "age": ["age"],
+    "position": ["position", "pos"],
+    "games": ["games", "gp", "g"],
+    "points": ["points", "ppg", "pts"],
+    "rebounds": ["rebounds", "rpg", "trb"],
+    "assists": ["assists", "apg", "ast"]
+  }
+}

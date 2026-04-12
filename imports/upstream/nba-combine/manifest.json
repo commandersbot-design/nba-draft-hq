@@ -1,0 +1,20 @@
+{
+  "source": "NBA.com Stats",
+  "purpose": "Historical combine and physical measurement records.",
+  "acceptedFormats": [".json", ".csv", ".jsonl", ".ndjson"],
+  "recommendedFileNames": ["2020.json", "2021.json", "2022-combine.csv"],
+  "preferredContainers": ["rows", "data", "results", "players", "records", "measurements", "combine"],
+  "requiredCoverageTargets": ["player name", "combine year", "position"],
+  "preferredAliases": {
+    "source_player_id": ["source_player_id", "sourcePlayerId", "player_id", "playerId", "id"],
+    "player_name": ["player_name", "playerName", "name", "player"],
+    "combine_year": ["combine_year", "combineYear", "year"],
+    "position": ["position", "pos"],
+    "height": ["height", "height_no_shoes", "height_without_shoes", "heightNoShoes"],
+    "weight": ["weight", "weight_lbs", "weightLb"],
+    "wingspan": ["wingspan", "wingspan_inches", "wingspanInches"],
+    "standing_reach": ["standing_reach", "standingReach", "standing_reach_inches"],
+    "max_vertical": ["max_vertical", "maxVertical", "vertical", "max_vert"],
+    "three_quarter_sprint": ["three_quarter_sprint", "threeQuarterSprint"]
+  }
+}
