@@ -217,6 +217,9 @@ export function PlayerProfileSurface({
                 </div>
               </div>
               <p>{historicalContext.narrative}</p>
+              {prospect.historicalSignals?.summary && (
+                <p className="section-note">{prospect.historicalSignals.summary}</p>
+              )}
               <p className="section-note">{historicalContext.riskSignal}</p>
             </div>
           )}
@@ -241,6 +244,7 @@ export function PlayerProfileSurface({
               <div className="projection-stack">
                 <div><strong>Swing skill:</strong> {modelBreakdown.interpretationCard.swingSkill}</div>
                 <div><strong>Summary:</strong> {modelBreakdown.interpretationCard.summarySentence}</div>
+                <div><strong>Historical read:</strong> {modelBreakdown.interpretationCard.historicalSignal}</div>
               </div>
             </div>
           </div>
@@ -422,6 +426,7 @@ export function PlayerProfileSurface({
             <div><strong>Defensive snapshot:</strong> {prospect.comparisonInputs.defensiveSummary || `${prospect.defenseScore} defense score`}</div>
             <div><strong>Archetype indicators:</strong> {(prospect.archetypeIndicators || []).join(', ') || 'Awaiting stat indicators'}</div>
             <div><strong>Historical percentile tags:</strong> {Object.entries(prospect.statPercentiles || {}).slice(0, 4).map(([key, value]) => `${key} ${value}`).join(' · ') || 'Awaiting percentiles'}</div>
+            <div><strong>Historical signal:</strong> {prospect.historicalSignals?.topOutcomeShare || 'Awaiting cohort signal'}</div>
           </div>
 
           <div className="detail-section">

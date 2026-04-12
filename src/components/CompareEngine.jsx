@@ -16,6 +16,8 @@ function topTrait(prospect) {
 function buildDecisionBullets(primary, secondary) {
   const primaryTopTrait = topTrait(primary);
   const secondaryTopTrait = topTrait(secondary);
+  const primaryHistorical = primary.historicalSignals;
+  const secondaryHistorical = secondary.historicalSignals;
 
   return [
     primaryTopTrait && (!secondaryTopTrait || primaryTopTrait.score > secondaryTopTrait.score)
@@ -26,6 +28,12 @@ function buildDecisionBullets(primary, secondary) {
       : primary.summary?.strengths?.[0] || null,
     primary.riskLevel === 'Low-Moderate' && secondary.riskLevel !== 'Low-Moderate'
       ? 'Lower risk pathway.'
+      : null,
+    primaryHistorical?.signal === 'stable' && secondaryHistorical?.signal !== 'stable'
+      ? `Historical backdrop is cleaner: ${primaryHistorical.topOutcomeShare}.`
+      : null,
+    primaryHistorical?.signal === 'mixed' && secondaryHistorical?.signal === 'volatile'
+      ? `Historical pool is less volatile around ${primaryHistorical.topComparableName || 'the current archetype lane'}.`
       : null,
     primary.projection?.swingSkill && primary.projection.swingSkill !== secondary.projection?.swingSkill
       ? `More convincing swing skill pathway through ${primary.projection.swingSkill}.`
@@ -189,6 +197,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
               <div><strong>Risk penalty:</strong> {prospect.modelBreakdown?.riskPenalty}</div>
               <div><strong>Model tier:</strong> {prospect.modelBreakdown?.modelTier}</div>
               <div><strong>Swing skill:</strong> {prospect.modelBreakdown?.interpretationCard?.swingSkill}</div>
+              <div><strong>Historical signal:</strong> {prospect.modelBreakdown?.historicalSignal?.signal || '--'}</div>
             </div>
           </div>
         ))}
@@ -266,13 +275,14 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
               <>
                 <p>{prospect.historicalContext.narrative}</p>
                 <div className="projection-stack">
-                  <div><strong>Slot band:</strong> {prospect.historicalContext.draftSlotBand}</div>
-                  <div><strong>Best precedent:</strong> {prospect.historicalContext.bestHistoricalOutcome}</div>
-                  <div><strong>Avg BPM:</strong> {prospect.historicalContext.averageBpm}</div>
-                  <div><strong>Avg TS:</strong> {prospect.historicalContext.averageTrueShooting}</div>
-                </div>
-              </>
-            ) : (
+                <div><strong>Slot band:</strong> {prospect.historicalContext.draftSlotBand}</div>
+                <div><strong>Best precedent:</strong> {prospect.historicalContext.bestHistoricalOutcome}</div>
+                <div><strong>Avg BPM:</strong> {prospect.historicalContext.averageBpm}</div>
+                <div><strong>Avg TS:</strong> {prospect.historicalContext.averageTrueShooting}</div>
+                <div><strong>Pool signal:</strong> {prospect.historicalSignals?.topOutcomeShare || '--'}</div>
+              </div>
+            </>
+          ) : (
               <p className="empty-state">Historical context is not available yet.</p>
             )}
           </div>
