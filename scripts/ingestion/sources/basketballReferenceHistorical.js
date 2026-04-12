@@ -1,22 +1,24 @@
-const { loadSourceRows, sourceDirectory, toNumber, toString } = require('../shared/historicalSourceUtils');
+const { loadSourceRows, sourceDirectory } = require('../shared/historicalSourceUtils');
+const { createSourceMapper } = require('../shared/sourceRowMappers');
 
-function normalizeRow(row) {
-  return {
-    sourcePlayerId: toString(row.source_player_id || row.player_id || row.id || row.playerId),
-    playerName: toString(row.player_name || row.playerName || row.name),
-    draftYear: toNumber(row.draft_year || row.draftYear),
-    draftSlot: toNumber(row.draft_slot || row.draftSlot),
-    nbaTeam: toString(row.nba_team || row.nbaTeam || row.team),
-    position: toString(row.position),
-    schoolTeam: toString(row.school_team || row.schoolTeam || row.school),
-    nbaGames: toNumber(row.nba_games || row.games_played),
-    nbaMinutes: toNumber(row.nba_minutes || row.minutes),
-    nbaPoints: toNumber(row.nba_points || row.points),
-    nbaRebounds: toNumber(row.nba_rebounds || row.rebounds),
-    nbaAssists: toNumber(row.nba_assists || row.assists),
-    nbaBpm: toNumber(row.nba_bpm || row.bpm),
-  };
-}
+const normalizeRow = createSourceMapper({
+  sourcePlayerId: ['source_player_id', 'player_id', 'id', 'playerId', 'basketball_reference_id'],
+  playerName: ['player_name', 'playerName', 'name', 'player'],
+  draftYear: ['draft_year', 'draftYear', 'year'],
+  fields: {
+    draftYear: { aliases: ['draft_year', 'draftYear', 'year'], type: 'draftYear' },
+    draftSlot: { aliases: ['draft_slot', 'draftSlot', 'pick', 'draft_pick'], type: 'number' },
+    nbaTeam: { aliases: ['nba_team', 'nbaTeam', 'team', 'franchise'] },
+    position: { aliases: ['position', 'pos'], type: 'position' },
+    schoolTeam: { aliases: ['school_team', 'schoolTeam', 'school', 'college'] },
+    nbaGames: { aliases: ['nba_games', 'games_played', 'games', 'g'], type: 'number' },
+    nbaMinutes: { aliases: ['nba_minutes', 'minutes', 'mp'], type: 'number' },
+    nbaPoints: { aliases: ['nba_points', 'points', 'pts'], type: 'number' },
+    nbaRebounds: { aliases: ['nba_rebounds', 'rebounds', 'trb'], type: 'number' },
+    nbaAssists: { aliases: ['nba_assists', 'assists', 'ast'], type: 'number' },
+    nbaBpm: { aliases: ['nba_bpm', 'bpm'], type: 'number' },
+  },
+});
 
 async function fetchBasketballReferenceHistorical() {
   const loaded = loadSourceRows('basketballReference', {

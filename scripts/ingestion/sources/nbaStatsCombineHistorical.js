@@ -1,22 +1,24 @@
-const { loadSourceRows, sourceDirectory, toNumber, toString } = require('../shared/historicalSourceUtils');
+const { loadSourceRows, sourceDirectory } = require('../shared/historicalSourceUtils');
+const { createSourceMapper } = require('../shared/sourceRowMappers');
 
-function normalizeRow(row) {
-  return {
-    sourcePlayerId: toString(row.source_player_id || row.player_id || row.id || row.playerId),
-    playerName: toString(row.player_name || row.playerName || row.name),
-    combineYear: toNumber(row.combine_year || row.combineYear || row.year),
-    age: toNumber(row.age),
-    position: toString(row.position),
-    height: toString(row.height),
-    weight: toNumber(row.weight),
-    wingspan: toString(row.wingspan),
-    standingReach: toString(row.standing_reach || row.standingReach),
-    maxVertical: toNumber(row.max_vertical || row.maxVertical || row.vertical),
-    laneAgility: toNumber(row.lane_agility || row.laneAgility),
-    shuttleRun: toNumber(row.shuttle_run || row.shuttleRun),
-    sprint: toNumber(row.sprint),
-  };
-}
+const normalizeRow = createSourceMapper({
+  sourcePlayerId: ['source_player_id', 'player_id', 'id', 'playerId', 'combine_id'],
+  playerName: ['player_name', 'playerName', 'name', 'player'],
+  combineYear: ['combine_year', 'combineYear', 'year'],
+  fields: {
+    combineYear: { aliases: ['combine_year', 'combineYear', 'year'], type: 'number' },
+    age: { aliases: ['age'], type: 'number' },
+    position: { aliases: ['position', 'pos'], type: 'position' },
+    height: { aliases: ['height', 'height_no_shoes', 'height_without_shoes', 'heightNoShoes'] },
+    weight: { aliases: ['weight', 'weight_lbs', 'weightLb'], type: 'number' },
+    wingspan: { aliases: ['wingspan', 'wingspan_inches', 'wingspanInches'] },
+    standingReach: { aliases: ['standing_reach', 'standingReach', 'standing_reach_inches'] },
+    maxVertical: { aliases: ['max_vertical', 'maxVertical', 'vertical', 'max_vert'], type: 'number' },
+    laneAgility: { aliases: ['lane_agility', 'laneAgility'], type: 'number' },
+    shuttleRun: { aliases: ['shuttle_run', 'shuttleRun', 'shuttle'], type: 'number' },
+    sprint: { aliases: ['sprint', 'three_quarter_sprint', 'threeQuarterSprint'], type: 'number' },
+  },
+});
 
 async function fetchNbaStatsCombineHistorical() {
   const loaded = loadSourceRows('nbaStats', {

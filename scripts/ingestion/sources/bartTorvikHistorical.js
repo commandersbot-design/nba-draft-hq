@@ -1,26 +1,28 @@
-const { loadSourceRows, sourceDirectory, toNumber, toString } = require('../shared/historicalSourceUtils');
+const { loadSourceRows, sourceDirectory } = require('../shared/historicalSourceUtils');
+const { createSourceMapper } = require('../shared/sourceRowMappers');
 
-function normalizeRow(row) {
-  return {
-    sourcePlayerId: toString(row.source_player_id || row.player_id || row.id || row.playerId),
-    playerName: toString(row.player_name || row.playerName || row.name),
-    season: toString(row.season),
-    schoolTeam: toString(row.school_team || row.schoolTeam || row.school || row.team),
-    league: toString(row.league, 'NCAA'),
-    age: toNumber(row.age),
-    position: toString(row.position),
-    tsPct: toNumber(row.ts_pct || row.tsPct),
-    efgPct: toNumber(row.efg_pct || row.efgPct),
-    usgPct: toNumber(row.usg_pct || row.usgPct || row.usage),
-    astPct: toNumber(row.ast_pct || row.astPct || row.assist_rate),
-    tovPct: toNumber(row.tov_pct || row.tovPct || row.turnover_rate),
-    stlPct: toNumber(row.stl_pct || row.stlPct || row.steal_rate),
-    blkPct: toNumber(row.blk_pct || row.blkPct || row.block_rate),
-    bpm: toNumber(row.bpm),
-    obpm: toNumber(row.obpm),
-    dbpm: toNumber(row.dbpm),
-  };
-}
+const normalizeRow = createSourceMapper({
+  sourcePlayerId: ['source_player_id', 'player_id', 'id', 'playerId', 'bart_torvik_id'],
+  playerName: ['player_name', 'playerName', 'name', 'player'],
+  season: ['season', 'season_year', 'year'],
+  fields: {
+    season: { aliases: ['season', 'season_year', 'year'], type: 'season' },
+    schoolTeam: { aliases: ['school_team', 'schoolTeam', 'school', 'team', 'team_name'] },
+    league: { aliases: ['league'], fallback: 'NCAA' },
+    age: { aliases: ['age'], type: 'number' },
+    position: { aliases: ['position', 'pos'], type: 'position' },
+    tsPct: { aliases: ['ts_pct', 'tsPct', 'ts', 'ts%'], type: 'number' },
+    efgPct: { aliases: ['efg_pct', 'efgPct', 'efg', 'efg%'], type: 'number' },
+    usgPct: { aliases: ['usg_pct', 'usgPct', 'usage', 'usage_rate'], type: 'number' },
+    astPct: { aliases: ['ast_pct', 'astPct', 'assist_rate', 'ast_rate'], type: 'number' },
+    tovPct: { aliases: ['tov_pct', 'tovPct', 'turnover_rate', 'tov_rate'], type: 'number' },
+    stlPct: { aliases: ['stl_pct', 'stlPct', 'steal_rate', 'stl_rate'], type: 'number' },
+    blkPct: { aliases: ['blk_pct', 'blkPct', 'block_rate', 'blk_rate'], type: 'number' },
+    bpm: { aliases: ['bpm'], type: 'number' },
+    obpm: { aliases: ['obpm'], type: 'number' },
+    dbpm: { aliases: ['dbpm'], type: 'number' },
+  },
+});
 
 async function fetchBartTorvikHistorical() {
   const loaded = loadSourceRows('bartTorvik', {

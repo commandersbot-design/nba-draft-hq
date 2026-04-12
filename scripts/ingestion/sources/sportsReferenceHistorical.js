@@ -1,28 +1,30 @@
-const { loadSourceRows, sourceDirectory, toNumber, toString } = require('../shared/historicalSourceUtils');
+const { loadSourceRows, sourceDirectory } = require('../shared/historicalSourceUtils');
+const { createSourceMapper } = require('../shared/sourceRowMappers');
 
-function normalizeRow(row) {
-  return {
-    sourcePlayerId: toString(row.source_player_id || row.player_id || row.id || row.playerId),
-    playerName: toString(row.player_name || row.playerName || row.name),
-    season: toString(row.season),
-    schoolTeam: toString(row.school_team || row.schoolTeam || row.school || row.team),
-    league: toString(row.league, 'NCAA'),
-    classYear: toString(row.class_year || row.classYear),
-    age: toNumber(row.age),
-    position: toString(row.position),
-    games: toNumber(row.games || row.gp),
-    minutes: toNumber(row.minutes || row.mpg),
-    points: toNumber(row.points || row.ppg),
-    rebounds: toNumber(row.rebounds || row.rpg),
-    assists: toNumber(row.assists || row.apg),
-    steals: toNumber(row.steals || row.spg),
-    blocks: toNumber(row.blocks || row.bpg),
-    turnovers: toNumber(row.turnovers || row.tpg),
-    fgPct: toNumber(row.fg_pct || row.fgPct),
-    threePct: toNumber(row.three_pct || row.threePct),
-    ftPct: toNumber(row.ft_pct || row.ftPct),
-  };
-}
+const normalizeRow = createSourceMapper({
+  sourcePlayerId: ['source_player_id', 'player_id', 'id', 'playerId', 'sports_reference_id'],
+  playerName: ['player_name', 'playerName', 'name', 'player'],
+  season: ['season', 'season_year', 'year'],
+  fields: {
+    season: { aliases: ['season', 'season_year', 'year'], type: 'season' },
+    schoolTeam: { aliases: ['school_team', 'schoolTeam', 'school', 'team', 'team_name'] },
+    league: { aliases: ['league'], fallback: 'NCAA' },
+    classYear: { aliases: ['class_year', 'classYear', 'class', 'yr'] },
+    age: { aliases: ['age'], type: 'number' },
+    position: { aliases: ['position', 'pos'], type: 'position' },
+    games: { aliases: ['games', 'gp', 'g'], type: 'number' },
+    minutes: { aliases: ['minutes', 'mpg', 'min'], type: 'number' },
+    points: { aliases: ['points', 'ppg', 'pts'], type: 'number' },
+    rebounds: { aliases: ['rebounds', 'rpg', 'trb'], type: 'number' },
+    assists: { aliases: ['assists', 'apg', 'ast'], type: 'number' },
+    steals: { aliases: ['steals', 'spg', 'stl'], type: 'number' },
+    blocks: { aliases: ['blocks', 'bpg', 'blk'], type: 'number' },
+    turnovers: { aliases: ['turnovers', 'tpg', 'tov'], type: 'number' },
+    fgPct: { aliases: ['fg_pct', 'fgPct', 'fg%'], type: 'number' },
+    threePct: { aliases: ['three_pct', 'threePct', '3p%', '3pt_pct'], type: 'number' },
+    ftPct: { aliases: ['ft_pct', 'ftPct', 'ft%'], type: 'number' },
+  },
+});
 
 async function fetchSportsReferenceHistorical() {
   const loaded = loadSourceRows('sportsReference', {
