@@ -1,9 +1,13 @@
 const fs = require('fs');
 const path = require('path');
+const {
+  DEFAULT_HISTORICAL_UPSTREAM_DIR,
+  DEFAULT_HISTORICAL_SINGLE_FILE,
+  DEFAULT_HISTORICAL_FALLBACK,
+} = require('../config/sources');
+const { buildSourceSyncMetadata, requireSourceConfig } = require('../config');
 
-const DEFAULT_UPSTREAM_DIR = path.join(__dirname, '..', '..', '..', 'imports', 'upstream', 'historical');
-const DEFAULT_DATASET_PATH = path.join(__dirname, '..', '..', '..', 'imports', 'upstream', 'historical-prospects-upstream.json');
-const FALLBACK_DATASET_PATH = path.join(__dirname, '..', '..', '..', 'imports', 'fixtures', 'historical-prospects-seed.json');
+const HISTORICAL_SOURCE = requireSourceConfig('historicalDatasetImport');
 
 function walkFiles(targetPath) {
   const stat = fs.statSync(targetPath);
@@ -103,22 +107,22 @@ async function loadDataset() {
     };
   }
 
-  if (fs.existsSync(DEFAULT_UPSTREAM_DIR)) {
-    return loadBulkDataset(DEFAULT_UPSTREAM_DIR);
+  if (fs.existsSync(DEFAULT_HISTORICAL_UPSTREAM_DIR)) {
+    return loadBulkDataset(DEFAULT_HISTORICAL_UPSTREAM_DIR);
   }
 
-  if (fs.existsSync(DEFAULT_DATASET_PATH)) {
+  if (fs.existsSync(DEFAULT_HISTORICAL_SINGLE_FILE)) {
     return {
-      datasetPath: DEFAULT_DATASET_PATH,
-      files: [DEFAULT_DATASET_PATH],
-      payload: loadJsonFile(DEFAULT_DATASET_PATH).map(normalizeRow),
+      datasetPath: DEFAULT_HISTORICAL_SINGLE_FILE,
+      files: [DEFAULT_HISTORICAL_SINGLE_FILE],
+      payload: loadJsonFile(DEFAULT_HISTORICAL_SINGLE_FILE).map(normalizeRow),
     };
   }
 
   return {
-    datasetPath: FALLBACK_DATASET_PATH,
-    files: [FALLBACK_DATASET_PATH],
-    payload: loadJsonFile(FALLBACK_DATASET_PATH).map(normalizeRow),
+    datasetPath: DEFAULT_HISTORICAL_FALLBACK,
+    files: [DEFAULT_HISTORICAL_FALLBACK],
+    payload: loadJsonFile(DEFAULT_HISTORICAL_FALLBACK).map(normalizeRow),
   };
 }
 
@@ -126,22 +130,22 @@ async function fetchHistoricalDataset() {
   const { datasetPath, files, payload } = await loadDataset();
 
   return {
-    source: 'HistoricalDatasetImport',
+    source: HISTORICAL_SOURCE.label,
     season: 'historical',
     rows: payload,
-    metadata: {
+    metadata: buildSourceSyncMetadata('historicalDatasetImport', {
       mode: process.env.HISTORICAL_DATASET_PATH
         ? 'configured-path'
-        : fs.existsSync(DEFAULT_UPSTREAM_DIR)
+        : fs.existsSync(DEFAULT_HISTORICAL_UPSTREAM_DIR)
           ? 'upstream-directory'
-          : fs.existsSync(DEFAULT_DATASET_PATH)
+          : fs.existsSync(DEFAULT_HISTORICAL_SINGLE_FILE)
             ? 'upstream-single-file'
             : 'fixture-fallback',
       datasetPath,
       fileCount: files.length,
       files,
       note: 'Structured historical dataset import. Supports bulk JSON/CSV file ingestion from an upstream directory.',
-    },
+    }),
   };
 }
 
