@@ -79,6 +79,23 @@ function deriveHistoricalFeatures() {
 
   try {
     const seasonRows = db.prepare(`
+      WITH deduped_prospects AS (
+        SELECT *
+        FROM (
+          SELECT
+            ph.*,
+            ROW_NUMBER() OVER (
+              PARTITION BY ph.source, ph.source_player_id, ph.season
+              ORDER BY
+                CASE WHEN ph.age IS NOT NULL THEN 0 ELSE 1 END,
+                CASE WHEN ph.position IS NOT NULL THEN 0 ELSE 1 END,
+                ph.id DESC
+            ) AS row_priority
+          FROM prospects_historical ph
+          WHERE ph.season IS NOT NULL
+        )
+        WHERE row_priority = 1
+      )
       SELECT
         ph.id AS prospect_historical_id,
         ph.player_id,
@@ -109,13 +126,15 @@ function deriveHistoricalFeatures() {
         am.bpm,
         am.obpm,
         am.dbpm
-      FROM prospects_historical ph
+      FROM deduped_prospects ph
       LEFT JOIN prospect_season_stats ss
-        ON ss.prospect_historical_id = ph.id
+        ON ss.source = ph.source
+       AND ss.source_player_id = ph.source_player_id
+       AND ss.season = ph.season
       LEFT JOIN prospect_advanced_metrics am
-        ON am.prospect_historical_id = ph.id
+        ON am.source = ph.source
+       AND am.source_player_id = ph.source_player_id
        AND am.season = ph.season
-      WHERE ph.season IS NOT NULL
     `).all();
 
     const outcomeRows = db.prepare(`

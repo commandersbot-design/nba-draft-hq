@@ -1,4 +1,5 @@
 import historicalProspects from '../data/historicalProspects.json';
+import historicalDerived from '../data/historicalDerived.json';
 
 export function positionFamily(position) {
   if (String(position).includes('PG')) return 'guard';
@@ -59,13 +60,9 @@ function precedentScore(prospect, historical) {
 }
 
 export function findHistoricalPrecedents(prospect, limit = 3) {
-  return historicalProspects
+  return buildHistoricalDataset()
     .map((entry) => ({
       ...entry,
-      positionFamily: positionFamily(entry.position),
-      draftSlotBand: draftSlotBand(entry.draftSlot),
-      archetypeFamily: archetypeFamily(entry.archetype),
-      outcomeScore: outcomeScore(entry.outcomeTier),
       matchScore: Number(precedentScore(prospect, entry).toFixed(1)),
     }))
     .sort((left, right) => right.matchScore - left.matchScore)
@@ -113,12 +110,13 @@ function buildContextNarrative({ archetypeMatches, slotBandMatches, familyMatche
 }
 
 export function buildHistoricalContext(prospect, precedentLimit = 4) {
+  const dataset = buildHistoricalDataset();
   const precedents = findHistoricalPrecedents(prospect, precedentLimit);
   const family = positionFamily(prospect.position);
   const slotBand = draftSlotBand(prospect.rank);
-  const archetypeMatches = historicalProspects.filter((entry) => entry.archetype === prospect.archetype);
-  const slotBandMatches = historicalProspects.filter((entry) => draftSlotBand(entry.draftSlot) === slotBand);
-  const familyMatches = historicalProspects.filter((entry) => positionFamily(entry.position) === family);
+  const archetypeMatches = dataset.filter((entry) => entry.archetype === prospect.archetype);
+  const slotBandMatches = dataset.filter((entry) => entry.draftSlotBand === slotBand);
+  const familyMatches = dataset.filter((entry) => entry.positionFamily === family);
   const comparablePool = precedents.length > 0 ? precedents : familyMatches.slice(0, precedentLimit);
   const outcomeMix = buildOutcomeMix(comparablePool);
   const averageBpm = average(comparablePool.map((entry) => safeNumber(entry.bpm)));
@@ -152,13 +150,23 @@ export function buildHistoricalContext(prospect, precedentLimit = 4) {
 export function buildHistoricalDataset() {
   return historicalProspects.map((entry) => ({
     ...entry,
+    derived: historicalDerived[entry.id] || null,
     positionFamily: entry.positionFamily || positionFamily(entry.position),
     draftSlotBand: entry.draftSlotBand || draftSlotBand(entry.draftSlot),
-    archetypeFamily: entry.archetypeFamily || archetypeFamily(entry.archetype),
-    outcomeScore: entry.outcomeScore || outcomeScore(entry.outcomeTier),
+    archetypeFamily: historicalDerived[entry.id]?.archetypeInputs?.family || entry.archetypeFamily || archetypeFamily(entry.archetype),
+    outcomeScore: historicalDerived[entry.id]?.outcomeLabel?.score || entry.outcomeScore || outcomeScore(entry.outcomeTier),
     eraBucket: entry.eraBucket || 'Unknown',
-    percentiles: entry.percentiles || {},
-    comparisonInputs: entry.comparisonInputs || {},
+    percentiles: {
+      ...(entry.percentiles || {}),
+      ...(historicalDerived[entry.id]?.percentiles || {}),
+    },
+    comparisonInputs: {
+      ...(entry.comparisonInputs || {}),
+      ...(historicalDerived[entry.id]?.comparisonInputs?.vector || {}),
+      ...(historicalDerived[entry.id]?.comparisonInputs?.cohortKeys || {}),
+    },
+    historicalOutcomeLabel: historicalDerived[entry.id]?.outcomeLabel?.tier || null,
+    modelFeatures: historicalDerived[entry.id]?.modelFeatures || null,
   }));
 }
 

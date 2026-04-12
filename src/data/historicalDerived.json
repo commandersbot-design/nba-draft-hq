@@ -1,0 +1,4486 @@
+{
+  "alex-sarr-2024": {
+    "id": "alex-sarr-2024",
+    "playerName": "Alex Sarr",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "PF/C",
+    "age": 19.1,
+    "schoolTeam": "Perth Wildcats",
+    "league": "International Pro",
+    "percentiles": {
+      "points": 43,
+      "rebounds": 67,
+      "assists": 43,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 43,
+      "rebounds_overall": 67,
+      "assists_overall": 43,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 67,
+      "assists_position": 67,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 4.992
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.567,
+        "effective_fg_pct": 0.515,
+        "turnover_pct": 0.101,
+        "usage_pct": 0.294
+      },
+      "impactSignals": {
+        "bpm": 4.8,
+        "obpm": 3,
+        "dbpm": 1.8,
+        "stocks_pct": 0.067
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 2,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 19.1,
+        "size_signal": "frontcourt",
+        "impact_signal": 4.8
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.1,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.567,
+        "bpm": 4.8,
+        "usage_pct": 0.294,
+        "stocks_pct": 0.067
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "amen-thompson-2023": {
+    "id": "amen-thompson-2023",
+    "playerName": "Amen Thompson",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "PG/SG",
+    "age": 20.2,
+    "schoolTeam": "OTE",
+    "league": "OTE",
+    "percentiles": {
+      "points": 93,
+      "rebounds": 70,
+      "assists": 93,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 93,
+      "rebounds_overall": 70,
+      "assists_overall": 93,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 8.1
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.561,
+        "effective_fg_pct": 0.51,
+        "turnover_pct": 0.164,
+        "usage_pct": 0.364
+      },
+      "impactSignals": {
+        "bpm": 8.1,
+        "obpm": 5,
+        "dbpm": 3.1,
+        "stocks_pct": 0.035
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 4,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Combo Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 20.2,
+        "size_signal": "guard",
+        "impact_signal": 8.1
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.2,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.561,
+        "bpm": 8.1,
+        "usage_pct": 0.364,
+        "stocks_pct": 0.035
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "guard",
+        "archetype_family": "Combo Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "anthony-black-2023": {
+    "id": "anthony-black-2023",
+    "playerName": "Anthony Black",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "PG/SG",
+    "age": 19.3,
+    "schoolTeam": "Arkansas",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 63,
+      "rebounds": 56,
+      "assists": 78,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 63,
+      "rebounds_overall": 56,
+      "assists_overall": 78,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 78,
+      "assists_position": 56,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 7.904
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.576,
+        "effective_fg_pct": 0.524,
+        "turnover_pct": 0.139,
+        "usage_pct": 0.328
+      },
+      "impactSignals": {
+        "bpm": 7.6,
+        "obpm": 4.7,
+        "dbpm": 2.9,
+        "stocks_pct": 0.035
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 6,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 19.3,
+        "size_signal": "guard",
+        "impact_signal": 7.6
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.3,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.576,
+        "bpm": 7.6,
+        "usage_pct": 0.328,
+        "stocks_pct": 0.035
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "anthony-edwards-2020": {
+    "id": "anthony-edwards-2020",
+    "playerName": "Anthony Edwards",
+    "draftYear": 2020,
+    "season": "2019-20",
+    "position": "SG",
+    "age": 18.9,
+    "schoolTeam": "Georgia",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 73,
+      "assists": 73,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 100,
+      "rebounds_overall": 73,
+      "assists_overall": 73,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9.612
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.523,
+        "effective_fg_pct": 0.475,
+        "turnover_pct": 0.125,
+        "usage_pct": 0.391
+      },
+      "impactSignals": {
+        "bpm": 8.9,
+        "obpm": 5.5,
+        "dbpm": 3.4,
+        "stocks_pct": 0.036000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 5 outcome",
+      "score": 1,
+      "reasons": {
+        "draft_slot": 1,
+        "nba_games": 28,
+        "nba_minutes": 320,
+        "nba_bpm": -2.6
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 18.9,
+        "size_signal": "wing",
+        "impact_signal": 8.9
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 18.9,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.523,
+        "bpm": 8.9,
+        "usage_pct": 0.391,
+        "stocks_pct": 0.036000000000000004
+      },
+      "cohortKeys": {
+        "season": "2019-20",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "ausar-thompson-2023": {
+    "id": "ausar-thompson-2023",
+    "playerName": "Ausar Thompson",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "SG/SF",
+    "age": 20.2,
+    "schoolTeam": "OTE",
+    "league": "OTE",
+    "percentiles": {
+      "points": 85,
+      "rebounds": 93,
+      "assists": 100,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 85,
+      "rebounds_overall": 93,
+      "assists_overall": 100,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 78,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 8
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.563,
+        "effective_fg_pct": 0.512,
+        "turnover_pct": 0.166,
+        "usage_pct": 0.363
+      },
+      "impactSignals": {
+        "bpm": 8,
+        "obpm": 5,
+        "dbpm": 3,
+        "stocks_pct": 0.035
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 5,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 20.2,
+        "size_signal": "wing",
+        "impact_signal": 8
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.2,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.563,
+        "bpm": 8,
+        "usage_pct": 0.363,
+        "stocks_pct": 0.035
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "bennedict-mathurin-2022": {
+    "id": "bennedict-mathurin-2022",
+    "playerName": "Bennedict Mathurin",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "SG/SF",
+    "age": 20.1,
+    "schoolTeam": "Arizona",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 85,
+      "rebounds": 63,
+      "assists": 78,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 85,
+      "rebounds_overall": 63,
+      "assists_overall": 78,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 78,
+      "assists_position": 78,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.585,
+        "effective_fg_pct": 0.532,
+        "turnover_pct": 0.121,
+        "usage_pct": 0.377
+      },
+      "impactSignals": {
+        "bpm": 9,
+        "obpm": 5.6,
+        "dbpm": 3.4,
+        "stocks_pct": 0.036000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 6,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 20.1,
+        "size_signal": "wing",
+        "impact_signal": 9
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.1,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.585,
+        "bpm": 9,
+        "usage_pct": 0.377,
+        "stocks_pct": 0.036000000000000004
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "brandon-miller-2023": {
+    "id": "brandon-miller-2023",
+    "playerName": "Brandon Miller",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "SF",
+    "age": 20.6,
+    "schoolTeam": "Alabama",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 100,
+      "assists": 63,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 100,
+      "rebounds_overall": 100,
+      "assists_overall": 63,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 56,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 11.2
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.582,
+        "effective_fg_pct": 0.529,
+        "turnover_pct": 0.116,
+        "usage_pct": 0.388
+      },
+      "impactSignals": {
+        "bpm": 11.2,
+        "obpm": 6.9,
+        "dbpm": 4.3,
+        "stocks_pct": 0.038
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 2,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 20.6,
+        "size_signal": "wing",
+        "impact_signal": 11.2
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.6,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.582,
+        "bpm": 11.2,
+        "usage_pct": 0.388,
+        "stocks_pct": 0.038
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "cade-cunningham-2021": {
+    "id": "cade-cunningham-2021",
+    "playerName": "Cade Cunningham",
+    "draftYear": 2021,
+    "season": "2020-21",
+    "position": "PG/SG",
+    "age": 19.6,
+    "schoolTeam": "Oklahoma State",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 71,
+      "assists": 71,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 100,
+      "rebounds_overall": 71,
+      "assists_overall": 71,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 56,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 10.712
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.574,
+        "effective_fg_pct": 0.522,
+        "turnover_pct": 0.134,
+        "usage_pct": 0.401
+      },
+      "impactSignals": {
+        "bpm": 10.3,
+        "obpm": 6.4,
+        "dbpm": 3.9,
+        "stocks_pct": 0.037
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 1,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 19.6,
+        "size_signal": "guard",
+        "impact_signal": 10.3
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.6,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.574,
+        "bpm": 10.3,
+        "usage_pct": 0.401,
+        "stocks_pct": 0.037
+      },
+      "cohortKeys": {
+        "season": "2020-21",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "cason-wallace-2023": {
+    "id": "cason-wallace-2023",
+    "playerName": "Cason Wallace",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "PG/SG",
+    "age": 19.5,
+    "schoolTeam": "Kentucky",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 56,
+      "rebounds": 41,
+      "assists": 85,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 56,
+      "rebounds_overall": 41,
+      "assists_overall": 85,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 56,
+      "assists_position": 78,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9.464
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.584,
+        "effective_fg_pct": 0.531,
+        "turnover_pct": 0.144,
+        "usage_pct": 0.317
+      },
+      "impactSignals": {
+        "bpm": 9.1,
+        "obpm": 5.6,
+        "dbpm": 3.5,
+        "stocks_pct": 0.036000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 10,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 19.5,
+        "size_signal": "guard",
+        "impact_signal": 9.1
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.5,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.584,
+        "bpm": 9.1,
+        "usage_pct": 0.317,
+        "stocks_pct": 0.036000000000000004
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "chet-holmgren-2022": {
+    "id": "chet-holmgren-2022",
+    "playerName": "Chet Holmgren",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "C",
+    "age": 20.1,
+    "schoolTeam": "Gonzaga",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 56,
+      "rebounds": 100,
+      "assists": 63,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 56,
+      "rebounds_overall": 100,
+      "assists_overall": 63,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 60,
+      "assists_position": 73,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 13.4
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.691,
+        "effective_fg_pct": 0.628,
+        "turnover_pct": 0.114,
+        "usage_pct": 0.341
+      },
+      "impactSignals": {
+        "bpm": 13.4,
+        "obpm": 8.3,
+        "dbpm": 5.1,
+        "stocks_pct": 0.07500000000000001
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 2,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 20.1,
+        "size_signal": "frontcourt",
+        "impact_signal": 13.4
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.1,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.691,
+        "bpm": 13.4,
+        "usage_pct": 0.341,
+        "stocks_pct": 0.07500000000000001
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "cody-williams-2024": {
+    "id": "cody-williams-2024",
+    "playerName": "Cody Williams",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "SF",
+    "age": 19.4,
+    "schoolTeam": "Colorado",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 57,
+      "rebounds": 43,
+      "assists": 62,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 57,
+      "rebounds_overall": 43,
+      "assists_overall": 62,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 62,
+      "assists_position": 71,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 4.784
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.624,
+        "effective_fg_pct": 0.567,
+        "turnover_pct": 0.11,
+        "usage_pct": 0.319
+      },
+      "impactSignals": {
+        "bpm": 4.6,
+        "obpm": 2.9,
+        "dbpm": 1.7,
+        "stocks_pct": 0.032
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 10,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.4,
+        "size_signal": "wing",
+        "impact_signal": 4.6
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.4,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.624,
+        "bpm": 4.6,
+        "usage_pct": 0.319,
+        "stocks_pct": 0.032
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "dalton-knecht-2024": {
+    "id": "dalton-knecht-2024",
+    "playerName": "Dalton Knecht",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "SG/SF",
+    "age": 23.1,
+    "schoolTeam": "Tennessee",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 81,
+      "assists": 67,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 100,
+      "rebounds_overall": 81,
+      "assists_overall": 67,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 81,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 10.152
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.637,
+        "effective_fg_pct": 0.579,
+        "turnover_pct": 0.112,
+        "usage_pct": 0.417
+      },
+      "impactSignals": {
+        "bpm": 10.8,
+        "obpm": 6.7,
+        "dbpm": 4.1,
+        "stocks_pct": 0.038
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 17,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 23.1,
+        "size_signal": "wing",
+        "impact_signal": 10.8
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 23.1,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.637,
+        "bpm": 10.8,
+        "usage_pct": 0.417,
+        "stocks_pct": 0.038
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "dereck-lively-ii-2023": {
+    "id": "dereck-lively-ii-2023",
+    "playerName": "Dereck Lively II",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "C",
+    "age": 19.3,
+    "schoolTeam": "Duke",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 41,
+      "rebounds": 63,
+      "assists": 41,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 41,
+      "rebounds_overall": 63,
+      "assists_overall": 41,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 56,
+      "assists_position": 56,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 7.488
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.686,
+        "effective_fg_pct": 0.624,
+        "turnover_pct": 0.104,
+        "usage_pct": 0.252
+      },
+      "impactSignals": {
+        "bpm": 7.2,
+        "obpm": 4.5,
+        "dbpm": 2.7,
+        "stocks_pct": 0.069
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 12,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 19.3,
+        "size_signal": "frontcourt",
+        "impact_signal": 7.2
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.3,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.686,
+        "bpm": 7.2,
+        "usage_pct": 0.252,
+        "stocks_pct": 0.069
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "devin-carter-2024": {
+    "id": "devin-carter-2024",
+    "playerName": "Devin Carter",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "PG/SG",
+    "age": 22.3,
+    "schoolTeam": "Providence",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 95,
+      "rebounds": 100,
+      "assists": 86,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 95,
+      "rebounds_overall": 100,
+      "assists_overall": 86,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 60,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 11.4
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.586,
+        "effective_fg_pct": 0.533,
+        "turnover_pct": 0.135,
+        "usage_pct": 0.397
+      },
+      "impactSignals": {
+        "bpm": 11.4,
+        "obpm": 7.1,
+        "dbpm": 4.3,
+        "stocks_pct": 0.038
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 13,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 22.3,
+        "size_signal": "guard",
+        "impact_signal": 11.4
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 22.3,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.586,
+        "bpm": 11.4,
+        "usage_pct": 0.397,
+        "stocks_pct": 0.038
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "donovan-clingan-2024": {
+    "id": "donovan-clingan-2024",
+    "playerName": "Donovan Clingan",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "C",
+    "age": 20.3,
+    "schoolTeam": "UConn",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 67,
+      "rebounds": 95,
+      "assists": 57,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 67,
+      "rebounds_overall": 95,
+      "assists_overall": 57,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 12.9
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.668,
+        "effective_fg_pct": 0.607,
+        "turnover_pct": 0.109,
+        "usage_pct": 0.33
+      },
+      "impactSignals": {
+        "bpm": 12.9,
+        "obpm": 8,
+        "dbpm": 4.9,
+        "stocks_pct": 0.07500000000000001
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 7,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 20.3,
+        "size_signal": "frontcourt",
+        "impact_signal": 12.9
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.3,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.668,
+        "bpm": 12.9,
+        "usage_pct": 0.33,
+        "stocks_pct": 0.07500000000000001
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "evan-mobley-2021": {
+    "id": "evan-mobley-2021",
+    "playerName": "Evan Mobley",
+    "draftYear": 2021,
+    "season": "2020-21",
+    "position": "PF/C",
+    "age": 20,
+    "schoolTeam": "USC",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 81,
+      "rebounds": 100,
+      "assists": 43,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 81,
+      "rebounds_overall": 100,
+      "assists_overall": 43,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 11.856
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.613,
+        "effective_fg_pct": 0.557,
+        "turnover_pct": 0.12,
+        "usage_pct": 0.364
+      },
+      "impactSignals": {
+        "bpm": 11.4,
+        "obpm": 7.1,
+        "dbpm": 4.3,
+        "stocks_pct": 0.07300000000000001
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 3,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 20,
+        "size_signal": "frontcourt",
+        "impact_signal": 11.4
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.613,
+        "bpm": 11.4,
+        "usage_pct": 0.364,
+        "stocks_pct": 0.07300000000000001
+      },
+      "cohortKeys": {
+        "season": "2020-21",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "franz-wagner-2021": {
+    "id": "franz-wagner-2021",
+    "playerName": "Franz Wagner",
+    "draftYear": 2021,
+    "season": "2020-21",
+    "position": "SF",
+    "age": 19.8,
+    "schoolTeam": "Michigan",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 62,
+      "rebounds": 81,
+      "assists": 62,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 62,
+      "rebounds_overall": 81,
+      "assists_overall": 62,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 78,
+      "assists_position": 78,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 8.424
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.568,
+        "effective_fg_pct": 0.516,
+        "turnover_pct": 0.128,
+        "usage_pct": 0.325
+      },
+      "impactSignals": {
+        "bpm": 8.1,
+        "obpm": 5,
+        "dbpm": 3.1,
+        "stocks_pct": 0.035
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 5 outcome",
+      "score": 1,
+      "reasons": {
+        "draft_slot": 8,
+        "nba_games": 28,
+        "nba_minutes": 320,
+        "nba_bpm": -2.6
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.8,
+        "size_signal": "wing",
+        "impact_signal": 8.1
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.568,
+        "bpm": 8.1,
+        "usage_pct": 0.325,
+        "stocks_pct": 0.035
+      },
+      "cohortKeys": {
+        "season": "2020-21",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "isaac-okoro-2020": {
+    "id": "isaac-okoro-2020",
+    "playerName": "Isaac Okoro",
+    "draftYear": 2020,
+    "season": "2019-20",
+    "position": "SG/SF",
+    "age": 19.3,
+    "schoolTeam": "Auburn",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 60,
+      "rebounds": 60,
+      "assists": 60,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 60,
+      "rebounds_overall": 60,
+      "assists_overall": 60,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 78,
+      "assists_position": 78,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 6.968
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.581,
+        "effective_fg_pct": 0.528,
+        "turnover_pct": 0.115,
+        "usage_pct": 0.329
+      },
+      "impactSignals": {
+        "bpm": 6.7,
+        "obpm": 4.2,
+        "dbpm": 2.5,
+        "stocks_pct": 0.034
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 5,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.3,
+        "size_signal": "wing",
+        "impact_signal": 6.7
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.3,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.581,
+        "bpm": 6.7,
+        "usage_pct": 0.329,
+        "stocks_pct": 0.034
+      },
+      "cohortKeys": {
+        "season": "2019-20",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "ja-kobe-walter-2024": {
+    "id": "ja-kobe-walter-2024",
+    "playerName": "Ja'Kobe Walter",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "SG",
+    "age": 19.7,
+    "schoolTeam": "Baylor",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 76,
+      "rebounds": 71,
+      "assists": 52,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 76,
+      "rebounds_overall": 71,
+      "assists_overall": 52,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 81,
+      "assists_position": 62,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 4.368
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.515,
+        "effective_fg_pct": 0.468,
+        "turnover_pct": 0.107,
+        "usage_pct": 0.345
+      },
+      "impactSignals": {
+        "bpm": 4.2,
+        "obpm": 2.6,
+        "dbpm": 1.6,
+        "stocks_pct": 0.031
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 19,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.7,
+        "size_signal": "wing",
+        "impact_signal": 4.2
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.7,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.515,
+        "bpm": 4.2,
+        "usage_pct": 0.345,
+        "stocks_pct": 0.031
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "jabari-smith-jr-2022": {
+    "id": "jabari-smith-jr-2022",
+    "playerName": "Jabari Smith Jr.",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "PF",
+    "age": 19,
+    "schoolTeam": "Auburn",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 63,
+      "rebounds": 70,
+      "assists": 70,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 63,
+      "rebounds_overall": 70,
+      "assists_overall": 70,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 73,
+      "assists_position": 87,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 10.152
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.575,
+        "effective_fg_pct": 0.523,
+        "turnover_pct": 0.115,
+        "usage_pct": 0.369
+      },
+      "impactSignals": {
+        "bpm": 9.4,
+        "obpm": 5.8,
+        "dbpm": 3.6,
+        "stocks_pct": 0.051000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 3,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 19,
+        "size_signal": "frontcourt",
+        "impact_signal": 9.4
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.575,
+        "bpm": 9.4,
+        "usage_pct": 0.369,
+        "stocks_pct": 0.051000000000000004
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "jaden-ivey-2022": {
+    "id": "jaden-ivey-2022",
+    "playerName": "Jaden Ivey",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "PG/SG",
+    "age": 20.2,
+    "schoolTeam": "Purdue",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 78,
+      "rebounds": 56,
+      "assists": 85,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 78,
+      "rebounds_overall": 56,
+      "assists_overall": 85,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 100,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 8
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.584,
+        "effective_fg_pct": 0.531,
+        "turnover_pct": 0.129,
+        "usage_pct": 0.373
+      },
+      "impactSignals": {
+        "bpm": 8,
+        "obpm": 5,
+        "dbpm": 3,
+        "stocks_pct": 0.035
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 5,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 20.2,
+        "size_signal": "guard",
+        "impact_signal": 8
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.2,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.584,
+        "bpm": 8,
+        "usage_pct": 0.373,
+        "stocks_pct": 0.035
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "jalen-green-2021": {
+    "id": "jalen-green-2021",
+    "playerName": "Jalen Green",
+    "draftYear": 2021,
+    "season": "2020-21",
+    "position": "SG",
+    "age": 19.4,
+    "schoolTeam": "G League Ignite",
+    "league": "G League",
+    "percentiles": {
+      "points": 90,
+      "rebounds": 52,
+      "assists": 52,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 90,
+      "rebounds_overall": 52,
+      "assists_overall": 52,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 56,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 5.928
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.61,
+        "effective_fg_pct": 0.555,
+        "turnover_pct": 0.125,
+        "usage_pct": 0.379
+      },
+      "impactSignals": {
+        "bpm": 5.7,
+        "obpm": 3.5,
+        "dbpm": 2.2,
+        "stocks_pct": 0.033
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 2,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.4,
+        "size_signal": "wing",
+        "impact_signal": 5.7
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.4,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.61,
+        "bpm": 5.7,
+        "usage_pct": 0.379,
+        "stocks_pct": 0.033
+      },
+      "cohortKeys": {
+        "season": "2020-21",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "jalen-suggs-2021": {
+    "id": "jalen-suggs-2021",
+    "playerName": "Jalen Suggs",
+    "draftYear": 2021,
+    "season": "2020-21",
+    "position": "PG/SG",
+    "age": 20.1,
+    "schoolTeam": "Gonzaga",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 71,
+      "rebounds": 62,
+      "assists": 90,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 71,
+      "rebounds_overall": 62,
+      "assists_overall": 90,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 78,
+      "assists_position": 78,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9.5
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.598,
+        "effective_fg_pct": 0.544,
+        "turnover_pct": 0.146,
+        "usage_pct": 0.344
+      },
+      "impactSignals": {
+        "bpm": 9.5,
+        "obpm": 5.9,
+        "dbpm": 3.6,
+        "stocks_pct": 0.036000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 5,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 20.1,
+        "size_signal": "guard",
+        "impact_signal": 9.5
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.1,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.598,
+        "bpm": 9.5,
+        "usage_pct": 0.344,
+        "stocks_pct": 0.036000000000000004
+      },
+      "cohortKeys": {
+        "season": "2020-21",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "jalen-williams-2022": {
+    "id": "jalen-williams-2022",
+    "playerName": "Jalen Williams",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "SG/SF",
+    "age": 21.2,
+    "schoolTeam": "Santa Clara",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 93,
+      "rebounds": 48,
+      "assists": 100,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 93,
+      "rebounds_overall": 48,
+      "assists_overall": 100,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 100,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 10.2
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.584,
+        "effective_fg_pct": 0.531,
+        "turnover_pct": 0.143,
+        "usage_pct": 0.38
+      },
+      "impactSignals": {
+        "bpm": 10.2,
+        "obpm": 6.3,
+        "dbpm": 3.9,
+        "stocks_pct": 0.037
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 5 outcome",
+      "score": 1,
+      "reasons": {
+        "draft_slot": 12,
+        "nba_games": 28,
+        "nba_minutes": 320,
+        "nba_bpm": -2.6
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 21.2,
+        "size_signal": "wing",
+        "impact_signal": 10.2
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 21.2,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.584,
+        "bpm": 10.2,
+        "usage_pct": 0.38,
+        "stocks_pct": 0.037
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "jarace-walker-2023": {
+    "id": "jarace-walker-2023",
+    "playerName": "Jarace Walker",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "PF",
+    "age": 19.8,
+    "schoolTeam": "Houston",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 48,
+      "rebounds": 78,
+      "assists": 56,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 48,
+      "rebounds_overall": 78,
+      "assists_overall": 56,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 78,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9.984
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.591,
+        "effective_fg_pct": 0.537,
+        "turnover_pct": 0.112,
+        "usage_pct": 0.312
+      },
+      "impactSignals": {
+        "bpm": 9.6,
+        "obpm": 6,
+        "dbpm": 3.6,
+        "stocks_pct": 0.052
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 8,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 19.8,
+        "size_signal": "frontcourt",
+        "impact_signal": 9.6
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.591,
+        "bpm": 9.6,
+        "usage_pct": 0.312,
+        "stocks_pct": 0.052
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "josh-giddey-2021": {
+    "id": "josh-giddey-2021",
+    "playerName": "Josh Giddey",
+    "draftYear": 2021,
+    "season": "2020-21",
+    "position": "PG/SG",
+    "age": 18.8,
+    "schoolTeam": "Adelaide 36ers",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 52,
+      "rebounds": 90,
+      "assists": 100,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 52,
+      "rebounds_overall": 90,
+      "assists_overall": 100,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 56,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 5.292
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.478,
+        "effective_fg_pct": 0.435,
+        "turnover_pct": 0.184,
+        "usage_pct": 0.309
+      },
+      "impactSignals": {
+        "bpm": 4.9,
+        "obpm": 3,
+        "dbpm": 1.9,
+        "stocks_pct": 0.032
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 6,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Combo Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 18.8,
+        "size_signal": "guard",
+        "impact_signal": 4.9
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 18.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.478,
+        "bpm": 4.9,
+        "usage_pct": 0.309,
+        "stocks_pct": 0.032
+      },
+      "cohortKeys": {
+        "season": "2020-21",
+        "position_group": "guard",
+        "archetype_family": "Combo Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "keegan-murray-2022": {
+    "id": "keegan-murray-2022",
+    "playerName": "Keegan Murray",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "PF",
+    "age": 21.7,
+    "schoolTeam": "Iowa",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 100,
+      "rebounds": 93,
+      "assists": 56,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 100,
+      "rebounds_overall": 93,
+      "assists_overall": 56,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 100,
+      "assists_position": 60,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 13.1
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.638,
+        "effective_fg_pct": 0.58,
+        "turnover_pct": 0.109,
+        "usage_pct": 0.435
+      },
+      "impactSignals": {
+        "bpm": 13.1,
+        "obpm": 8.1,
+        "dbpm": 5,
+        "stocks_pct": 0.055
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 4,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 21.7,
+        "size_signal": "frontcourt",
+        "impact_signal": 13.1
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 21.7,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.638,
+        "bpm": 13.1,
+        "usage_pct": 0.435,
+        "stocks_pct": 0.055
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "keyonte-george-2023": {
+    "id": "keyonte-george-2023",
+    "playerName": "Keyonte George",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "SG",
+    "age": 19.4,
+    "schoolTeam": "Baylor",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 78,
+      "rebounds": 48,
+      "assists": 70,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 78,
+      "rebounds_overall": 48,
+      "assists_overall": 70,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 56,
+      "assists_position": 78,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 4.576
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.521,
+        "effective_fg_pct": 0.474,
+        "turnover_pct": 0.125,
+        "usage_pct": 0.353
+      },
+      "impactSignals": {
+        "bpm": 4.4,
+        "obpm": 2.7,
+        "dbpm": 1.7,
+        "stocks_pct": 0.031
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 16,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.4,
+        "size_signal": "wing",
+        "impact_signal": 4.4
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.4,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.521,
+        "bpm": 4.4,
+        "usage_pct": 0.353,
+        "stocks_pct": 0.031
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "lamelo-ball-2020": {
+    "id": "lamelo-ball-2020",
+    "playerName": "LaMelo Ball",
+    "draftYear": 2020,
+    "season": "2019-20",
+    "position": "PG",
+    "age": 19.1,
+    "schoolTeam": "Illawarra Hawks",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 87,
+      "rebounds": 100,
+      "assists": 100,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 87,
+      "rebounds_overall": 100,
+      "assists_overall": 100,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 8.112
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.498,
+        "effective_fg_pct": 0.453,
+        "turnover_pct": 0.175,
+        "usage_pct": 0.37
+      },
+      "impactSignals": {
+        "bpm": 7.8,
+        "obpm": 4.8,
+        "dbpm": 3,
+        "stocks_pct": 0.035
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 3,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Combo Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 19.1,
+        "size_signal": "guard",
+        "impact_signal": 7.8
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.1,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.498,
+        "bpm": 7.8,
+        "usage_pct": 0.37,
+        "stocks_pct": 0.035
+      },
+      "cohortKeys": {
+        "season": "2019-20",
+        "position_group": "guard",
+        "archetype_family": "Combo Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "matas-buzelis-2024": {
+    "id": "matas-buzelis-2024",
+    "playerName": "Matas Buzelis",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "SF/PF",
+    "age": 19.5,
+    "schoolTeam": "G League Ignite",
+    "league": "G League",
+    "percentiles": {
+      "points": 71,
+      "rebounds": 86,
+      "assists": 71,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 71,
+      "rebounds_overall": 86,
+      "assists_overall": 71,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 71,
+      "assists_position": 90,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 5.304
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.543,
+        "effective_fg_pct": 0.494,
+        "turnover_pct": 0.114,
+        "usage_pct": 0.341
+      },
+      "impactSignals": {
+        "bpm": 5.1,
+        "obpm": 3.2,
+        "dbpm": 1.9,
+        "stocks_pct": 0.047
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 11,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.5,
+        "size_signal": "wing",
+        "impact_signal": 5.1
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.5,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.543,
+        "bpm": 5.1,
+        "usage_pct": 0.341,
+        "stocks_pct": 0.047
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "nikola-topic-2024": {
+    "id": "nikola-topic-2024",
+    "playerName": "Nikola Topic",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "PG",
+    "age": 18.8,
+    "schoolTeam": "Crvena zvezda",
+    "league": "International Pro",
+    "percentiles": {
+      "points": 86,
+      "rebounds": 48,
+      "assists": 100,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 86,
+      "rebounds_overall": 48,
+      "assists_overall": 100,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 87,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9.396
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.602,
+        "effective_fg_pct": 0.547,
+        "turnover_pct": 0.176,
+        "usage_pct": 0.386
+      },
+      "impactSignals": {
+        "bpm": 8.7,
+        "obpm": 5.4,
+        "dbpm": 3.3,
+        "stocks_pct": 0.036000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 12,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 18.8,
+        "size_signal": "guard",
+        "impact_signal": 8.7
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 18.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.602,
+        "bpm": 8.7,
+        "usage_pct": 0.386,
+        "stocks_pct": 0.036000000000000004
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "paolo-banchero-2022": {
+    "id": "paolo-banchero-2022",
+    "playerName": "Paolo Banchero",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "PF",
+    "age": 19.5,
+    "schoolTeam": "Duke",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 70,
+      "rebounds": 78,
+      "assists": 93,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 70,
+      "rebounds_overall": 78,
+      "assists_overall": 93,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 87,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9.256
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.557,
+        "effective_fg_pct": 0.506,
+        "turnover_pct": 0.13,
+        "usage_pct": 0.372
+      },
+      "impactSignals": {
+        "bpm": 8.9,
+        "obpm": 5.5,
+        "dbpm": 3.4,
+        "stocks_pct": 0.051000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 1,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 19.5,
+        "size_signal": "frontcourt",
+        "impact_signal": 8.9
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.5,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.557,
+        "bpm": 8.9,
+        "usage_pct": 0.372,
+        "stocks_pct": 0.051000000000000004
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "patrick-williams-2020": {
+    "id": "patrick-williams-2020",
+    "playerName": "Patrick Williams",
+    "draftYear": 2020,
+    "season": "2019-20",
+    "position": "SF/PF",
+    "age": 18.8,
+    "schoolTeam": "Florida State",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 47,
+      "rebounds": 47,
+      "assists": 47,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 47,
+      "rebounds_overall": 47,
+      "assists_overall": 47,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 56,
+      "assists_position": 56,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 5.508
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.562,
+        "effective_fg_pct": 0.511,
+        "turnover_pct": 0.102,
+        "usage_pct": 0.292
+      },
+      "impactSignals": {
+        "bpm": 5.1,
+        "obpm": 3.2,
+        "dbpm": 1.9,
+        "stocks_pct": 0.047
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 4,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 18.8,
+        "size_signal": "wing",
+        "impact_signal": 5.1
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 18.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.562,
+        "bpm": 5.1,
+        "usage_pct": 0.292,
+        "stocks_pct": 0.047
+      },
+      "cohortKeys": {
+        "season": "2019-20",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "reed-sheppard-2024": {
+    "id": "reed-sheppard-2024",
+    "playerName": "Reed Sheppard",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "PG/SG",
+    "age": 19.9,
+    "schoolTeam": "Kentucky",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 62,
+      "rebounds": 62,
+      "assists": 95,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 62,
+      "rebounds_overall": 62,
+      "assists_overall": 95,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 60,
+      "assists_position": 87,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 14.248
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.699,
+        "effective_fg_pct": 0.635,
+        "turnover_pct": 0.146,
+        "usage_pct": 0.325
+      },
+      "impactSignals": {
+        "bpm": 13.7,
+        "obpm": 8.5,
+        "dbpm": 5.2,
+        "stocks_pct": 0.040999999999999995
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 3,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 19.9,
+        "size_signal": "guard",
+        "impact_signal": 13.7
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.9,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.699,
+        "bpm": 13.7,
+        "usage_pct": 0.325,
+        "stocks_pct": 0.040999999999999995
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "rob-dillingham-2024": {
+    "id": "rob-dillingham-2024",
+    "playerName": "Rob Dillingham",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "PG",
+    "age": 19.5,
+    "schoolTeam": "Kentucky",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 81,
+      "rebounds": 38,
+      "assists": 90,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 81,
+      "rebounds_overall": 38,
+      "assists_overall": 90,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 73,
+      "assists_position": 73,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 10.92
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.618,
+        "effective_fg_pct": 0.562,
+        "turnover_pct": 0.139,
+        "usage_pct": 0.352
+      },
+      "impactSignals": {
+        "bpm": 10.5,
+        "obpm": 6.5,
+        "dbpm": 4,
+        "stocks_pct": 0.037
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 8,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 19.5,
+        "size_signal": "guard",
+        "impact_signal": 10.5
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.5,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.618,
+        "bpm": 10.5,
+        "usage_pct": 0.352,
+        "stocks_pct": 0.037
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "ron-holland-2024": {
+    "id": "ron-holland-2024",
+    "playerName": "Ron Holland",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "SF",
+    "age": 18.9,
+    "schoolTeam": "G League Ignite",
+    "league": "G League",
+    "percentiles": {
+      "points": 90,
+      "rebounds": 90,
+      "assists": 76,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 90,
+      "rebounds_overall": 90,
+      "assists_overall": 76,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 90,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 7.344
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.533,
+        "effective_fg_pct": 0.485,
+        "turnover_pct": 0.124,
+        "usage_pct": 0.395
+      },
+      "impactSignals": {
+        "bpm": 6.8,
+        "obpm": 4.2,
+        "dbpm": 2.6,
+        "stocks_pct": 0.034
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 5,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 18.9,
+        "size_signal": "wing",
+        "impact_signal": 6.8
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 18.9,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.533,
+        "bpm": 6.8,
+        "usage_pct": 0.395,
+        "stocks_pct": 0.034
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "scottie-barnes-2021": {
+    "id": "scottie-barnes-2021",
+    "playerName": "Scottie Barnes",
+    "draftYear": 2021,
+    "season": "2020-21",
+    "position": "SF/PF",
+    "age": 19.8,
+    "schoolTeam": "Florida State",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 43,
+      "rebounds": 43,
+      "assists": 81,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 43,
+      "rebounds_overall": 43,
+      "assists_overall": 81,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 56,
+      "assists_position": 100,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 9.048
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.57,
+        "effective_fg_pct": 0.518,
+        "turnover_pct": 0.141,
+        "usage_pct": 0.303
+      },
+      "impactSignals": {
+        "bpm": 8.7,
+        "obpm": 5.4,
+        "dbpm": 3.3,
+        "stocks_pct": 0.051000000000000004
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 4,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.8,
+        "size_signal": "wing",
+        "impact_signal": 8.7
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.57,
+        "bpm": 8.7,
+        "usage_pct": 0.303,
+        "stocks_pct": 0.051000000000000004
+      },
+      "cohortKeys": {
+        "season": "2020-21",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "shaedon-sharpe-2022": {
+    "id": "shaedon-sharpe-2022",
+    "playerName": "Shaedon Sharpe",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "SG",
+    "age": 19.1,
+    "schoolTeam": "Kentucky",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 41,
+      "rebounds": 41,
+      "assists": 41,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 41,
+      "rebounds_overall": 41,
+      "assists_overall": 41,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 56,
+      "assists_position": 56,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 0
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0,
+        "effective_fg_pct": 0,
+        "turnover_pct": 0.09,
+        "usage_pct": 0.2
+      },
+      "impactSignals": {
+        "bpm": 0,
+        "obpm": 0,
+        "dbpm": 0,
+        "stocks_pct": 0.027
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 7,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.1,
+        "size_signal": "wing",
+        "impact_signal": 0
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.1,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0,
+        "bpm": 0,
+        "usage_pct": 0.2,
+        "stocks_pct": 0.027
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "stephon-castle-2024": {
+    "id": "stephon-castle-2024",
+    "playerName": "Stephon Castle",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "PG/SG",
+    "age": 19.5,
+    "schoolTeam": "UConn",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 52,
+      "rebounds": 76,
+      "assists": 81,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 52,
+      "rebounds_overall": 76,
+      "assists_overall": 81,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 47,
+      "assists_position": 47,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 6.448
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.553,
+        "effective_fg_pct": 0.503,
+        "turnover_pct": 0.126,
+        "usage_pct": 0.311
+      },
+      "impactSignals": {
+        "bpm": 6.2,
+        "obpm": 3.8,
+        "dbpm": 2.4,
+        "stocks_pct": 0.033
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 4,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Combo Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 19.5,
+        "size_signal": "guard",
+        "impact_signal": 6.2
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.5,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.553,
+        "bpm": 6.2,
+        "usage_pct": 0.311,
+        "stocks_pct": 0.033
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "guard",
+        "archetype_family": "Combo Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "taylor-hendricks-2023": {
+    "id": "taylor-hendricks-2023",
+    "playerName": "Taylor Hendricks",
+    "draftYear": 2023,
+    "season": "2022-23",
+    "position": "PF",
+    "age": 19.7,
+    "schoolTeam": "UCF",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 70,
+      "rebounds": 85,
+      "assists": 48,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 70,
+      "rebounds_overall": 85,
+      "assists_overall": 48,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 100,
+      "assists_position": 78,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 10.712
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.608,
+        "effective_fg_pct": 0.553,
+        "turnover_pct": 0.107,
+        "usage_pct": 0.351
+      },
+      "impactSignals": {
+        "bpm": 10.3,
+        "obpm": 6.4,
+        "dbpm": 3.9,
+        "stocks_pct": 0.052
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 9,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 19.7,
+        "size_signal": "frontcourt",
+        "impact_signal": 10.3
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.7,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.608,
+        "bpm": 10.3,
+        "usage_pct": 0.351,
+        "stocks_pct": 0.052
+      },
+      "cohortKeys": {
+        "season": "2022-23",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "tidjane-salaun-2024": {
+    "id": "tidjane-salaun-2024",
+    "playerName": "Tidjane Salaun",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "SF/PF",
+    "age": 18.8,
+    "schoolTeam": "Cholet",
+    "league": "International Pro",
+    "percentiles": {
+      "points": 38,
+      "rebounds": 57,
+      "assists": 48,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 38,
+      "rebounds_overall": 57,
+      "assists_overall": 48,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 43,
+      "assists_position": 52,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 3.78
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.578,
+        "effective_fg_pct": 0.525,
+        "turnover_pct": 0.102,
+        "usage_pct": 0.292
+      },
+      "impactSignals": {
+        "bpm": 3.5,
+        "obpm": 2.2,
+        "dbpm": 1.3,
+        "stocks_pct": 0.045
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 6,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 18.8,
+        "size_signal": "wing",
+        "impact_signal": 3.5
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 18.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.578,
+        "bpm": 3.5,
+        "usage_pct": 0.292,
+        "stocks_pct": 0.045
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "tyrese-haliburton-2020": {
+    "id": "tyrese-haliburton-2020",
+    "playerName": "Tyrese Haliburton",
+    "draftYear": 2020,
+    "season": "2019-20",
+    "position": "PG/SG",
+    "age": 20.3,
+    "schoolTeam": "Iowa State",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 73,
+      "rebounds": 87,
+      "assists": 87,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 73,
+      "rebounds_overall": 87,
+      "assists_overall": 87,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 67,
+      "assists_position": 67,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 11.6
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.631,
+        "effective_fg_pct": 0.574,
+        "turnover_pct": 0.171,
+        "usage_pct": 0.352
+      },
+      "impactSignals": {
+        "bpm": 11.6,
+        "obpm": 7.2,
+        "dbpm": 4.4,
+        "stocks_pct": 0.039
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 5 outcome",
+      "score": 1,
+      "reasons": {
+        "draft_slot": 12,
+        "nba_games": 28,
+        "nba_minutes": 320,
+        "nba_bpm": -2.6
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Scoring Guard",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag",
+          "Creation load question"
+        ],
+        "position_group": "guard"
+      },
+      "toolIndicators": {
+        "age": 20.3,
+        "size_signal": "guard",
+        "impact_signal": 11.6
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.3,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.631,
+        "bpm": 11.6,
+        "usage_pct": 0.352,
+        "stocks_pct": 0.039
+      },
+      "cohortKeys": {
+        "season": "2019-20",
+        "position_group": "guard",
+        "archetype_family": "Scoring Guard"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "walker-kessler-2022": {
+    "id": "walker-kessler-2022",
+    "playerName": "Walker Kessler",
+    "draftYear": 2022,
+    "season": "2021-22",
+    "position": "C",
+    "age": 20.8,
+    "schoolTeam": "Auburn",
+    "league": "NCAA",
+    "percentiles": {
+      "points": 48,
+      "rebounds": 85,
+      "assists": 48,
+      "trueShooting": 70,
+      "bpm": 70,
+      "points_overall": 48,
+      "rebounds_overall": 85,
+      "assists_overall": 48,
+      "ts_overall": 70,
+      "efg_overall": 70,
+      "usage_overall": 67,
+      "bpm_overall": 70,
+      "points_position": 47,
+      "assists_position": 47,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 13.8
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.693,
+        "effective_fg_pct": 0.63,
+        "turnover_pct": 0.101,
+        "usage_pct": 0.314
+      },
+      "impactSignals": {
+        "bpm": 13.8,
+        "obpm": 8.6,
+        "dbpm": 5.2,
+        "stocks_pct": 0.076
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 3 outcome",
+      "score": 3,
+      "reasons": {
+        "draft_slot": 22,
+        "nba_games": 240,
+        "nba_minutes": 6200,
+        "nba_bpm": 1.7
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Play Finisher Big",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "big"
+      },
+      "toolIndicators": {
+        "age": 20.8,
+        "size_signal": "frontcourt",
+        "impact_signal": 13.8
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 20.8,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.693,
+        "bpm": 13.8,
+        "usage_pct": 0.314,
+        "stocks_pct": 0.076
+      },
+      "cohortKeys": {
+        "season": "2021-22",
+        "position_group": "big",
+        "archetype_family": "Play Finisher Big"
+      },
+      "source": "Bart Torvik"
+    }
+  },
+  "zaccharie-risacher-2024": {
+    "id": "zaccharie-risacher-2024",
+    "playerName": "Zaccharie Risacher",
+    "draftYear": 2024,
+    "season": "2023-24",
+    "position": "SF",
+    "age": 19.2,
+    "schoolTeam": "JL Bourg",
+    "league": "International Pro",
+    "percentiles": {
+      "points": 48,
+      "rebounds": 52,
+      "assists": 43,
+      "trueShooting": 67,
+      "bpm": 67,
+      "points_overall": 48,
+      "rebounds_overall": 52,
+      "assists_overall": 43,
+      "ts_overall": 67,
+      "efg_overall": 67,
+      "usage_overall": 67,
+      "bpm_overall": 67,
+      "points_position": 52,
+      "assists_position": 43,
+      "stocks_position": 67,
+      "tov_position": 67
+    },
+    "modelFeatures": {
+      "ageAdjusted": {
+        "points_per_40_age_adjusted": null,
+        "assists_per_40_age_adjusted": null,
+        "bpm_age_adjusted": 5.408
+      },
+      "rateSignals": {
+        "points_per_40": null,
+        "rebounds_per_40": null,
+        "assists_per_40": null
+      },
+      "efficiencySignals": {
+        "true_shooting_pct": 0.621,
+        "effective_fg_pct": 0.565,
+        "turnover_pct": 0.101,
+        "usage_pct": 0.301
+      },
+      "impactSignals": {
+        "bpm": 5.2,
+        "obpm": 3.2,
+        "dbpm": 2,
+        "stocks_pct": 0.032
+      },
+      "source": "Bart Torvik"
+    },
+    "outcomeLabel": {
+      "tier": "Tier 4 outcome",
+      "score": 2,
+      "reasons": {
+        "draft_slot": 1,
+        "nba_games": 92,
+        "nba_minutes": 1800,
+        "nba_bpm": -0.2
+      },
+      "source": "Basketball Reference"
+    },
+    "archetypeInputs": {
+      "family": "Connector Wing",
+      "roleIndicators": {
+        "strengths": [
+          "Scoring efficiency",
+          "Impact profile",
+          "Defensive events"
+        ],
+        "weaknesses": [
+          "Turnover drag"
+        ],
+        "position_group": "wing"
+      },
+      "toolIndicators": {
+        "age": 19.2,
+        "size_signal": "wing",
+        "impact_signal": 5.2
+      },
+      "source": "Bart Torvik"
+    },
+    "comparisonInputs": {
+      "vector": {
+        "age": 19.2,
+        "points_per_40": null,
+        "assists_per_40": null,
+        "rebounds_per_40": null,
+        "ts_pct": 0.621,
+        "bpm": 5.2,
+        "usage_pct": 0.301,
+        "stocks_pct": 0.032
+      },
+      "cohortKeys": {
+        "season": "2023-24",
+        "position_group": "wing",
+        "archetype_family": "Connector Wing"
+      },
+      "source": "Bart Torvik"
+    }
+  }
+}

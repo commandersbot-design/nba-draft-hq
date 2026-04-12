@@ -7,3 +7,8 @@ dist
 database/*.db
 database/*.db-shm
 database/*.db-wal
+imports/upstream/bart-torvik/
+imports/upstream/basketball-reference/
+imports/upstream/collegebasketballdata/
+imports/upstream/nba-combine/
+imports/upstream/sports-reference/
