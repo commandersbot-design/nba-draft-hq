@@ -8,6 +8,172 @@ function parseJson(value, fallback = {}) {
   }
 }
 
+function roundScore(value) {
+  return Number((value || 0).toFixed(3));
+}
+
+function filled(value) {
+  return value !== null && value !== undefined && String(value).trim() !== '';
+}
+
+function completeness(values) {
+  if (!values.length) return 0;
+  const present = values.filter(filled).length;
+  return roundScore(present / values.length);
+}
+
+function buildRecordKey(recordType, row) {
+  return [
+    recordType,
+    row.source,
+    row.source_player_id || 'unknown-player',
+    row.season || 'no-season',
+    row.draft_year || 'no-draft-year',
+    row.combine_year || 'no-combine-year',
+  ].join('::');
+}
+
+function assessQuality(recordType, row, payload = {}) {
+  const sharedConfidence = (
+    (filled(row.source_player_id) ? 0.45 : 0) +
+    (filled(row.player_name) ? 0.35 : 0) +
+    ((filled(row.season) || filled(row.draft_year) || filled(row.combine_year)) ? 0.2 : 0)
+  );
+
+  let completenessFields = [];
+  if (recordType === 'season-stats') {
+    completenessFields = [
+      row.school_team,
+      row.league,
+      row.class_year,
+      row.age,
+      row.position,
+      payload.games,
+      payload.minutes,
+      payload.points,
+      payload.rebounds,
+      payload.assists,
+      payload.fgPct,
+      payload.threePct,
+      payload.ftPct,
+    ];
+  } else if (recordType === 'advanced-metrics') {
+    completenessFields = [
+      row.school_team,
+      row.league,
+      row.position,
+      payload.age,
+      payload.tsPct,
+      payload.efgPct,
+      payload.usgPct,
+      payload.astPct,
+      payload.tovPct,
+      payload.stlPct,
+      payload.blkPct,
+      payload.bpm,
+      payload.obpm,
+      payload.dbpm,
+    ];
+  } else if (recordType === 'combine-measurements') {
+    completenessFields = [
+      row.position,
+      payload.age,
+      payload.height,
+      payload.weight,
+      payload.wingspan,
+      payload.standingReach,
+      payload.maxVertical,
+      payload.laneAgility,
+      payload.shuttleRun,
+      payload.sprint,
+    ];
+  } else if (recordType === 'nba-outcomes') {
+    completenessFields = [
+      row.draft_year,
+      row.draft_slot,
+      row.nba_team,
+      payload.nbaGames,
+      payload.nbaMinutes,
+      payload.nbaPoints,
+      payload.nbaRebounds,
+      payload.nbaAssists,
+      payload.nbaBpm,
+      payload.position,
+      payload.schoolTeam,
+    ];
+  }
+
+  const completenessScore = completeness(completenessFields);
+  const matchConfidence = roundScore(sharedConfidence);
+  let promotionStatus = 'promoted';
+  let promotionReason = 'record passed identity and completeness thresholds';
+
+  if (matchConfidence < 0.8) {
+    promotionStatus = 'rejected';
+    promotionReason = 'missing stable identity fields';
+  } else if (completenessScore < 0.35) {
+    promotionStatus = 'rejected';
+    promotionReason = 'missing too many required fields';
+  } else if (completenessScore < 0.55) {
+    promotionStatus = 'review';
+    promotionReason = 'partial record promoted only after review threshold';
+  }
+
+  return {
+    matchConfidence,
+    completenessScore,
+    promotionStatus,
+    promotionReason,
+    metadata: {
+      recordType,
+      source: row.source,
+      season: row.season || null,
+      draftYear: row.draft_year || null,
+      combineYear: row.combine_year || null,
+    },
+  };
+}
+
+function upsertQualityGate(db, recordType, row, payload) {
+  const quality = assessQuality(recordType, row, payload);
+  const statement = db.prepare(`
+    INSERT INTO historical_ingestion_quality (
+      record_key, record_type, source, source_player_id, player_name, season, draft_year, combine_year,
+      match_confidence, completeness_score, promotion_status, promotion_reason, metadata_json, updated_at
+    ) VALUES (
+      @record_key, @record_type, @source, @source_player_id, @player_name, @season, @draft_year, @combine_year,
+      @match_confidence, @completeness_score, @promotion_status, @promotion_reason, @metadata_json, @updated_at
+    )
+    ON CONFLICT(record_key) DO UPDATE SET
+      player_name = excluded.player_name,
+      match_confidence = excluded.match_confidence,
+      completeness_score = excluded.completeness_score,
+      promotion_status = excluded.promotion_status,
+      promotion_reason = excluded.promotion_reason,
+      metadata_json = excluded.metadata_json,
+      updated_at = excluded.updated_at
+  `);
+
+  statement.run({
+    record_key: buildRecordKey(recordType, row),
+    record_type: recordType,
+    source: row.source,
+    source_player_id: row.source_player_id,
+    player_name: row.player_name,
+    season: row.season || null,
+    draft_year: row.draft_year || null,
+    combine_year: row.combine_year || null,
+    match_confidence: quality.matchConfidence,
+    completeness_score: quality.completenessScore,
+    promotion_status: quality.promotionStatus,
+    promotion_reason: quality.promotionReason,
+    metadata_json: JSON.stringify(quality.metadata),
+    updated_at: nowIso(),
+  });
+
+  return quality;
+}
+
 function insertOrUpdateProspectHistorical(db, payload) {
   const statement = db.prepare(`
     INSERT INTO prospects_historical (
@@ -72,8 +238,12 @@ function normalizeSeasonStats(db) {
       updated_at = excluded.updated_at
   `);
 
+  let promoted = 0;
+
   for (const row of rows) {
     const payload = parseJson(row.payload);
+    const quality = upsertQualityGate(db, 'season-stats', row, payload);
+    if (quality.promotionStatus !== 'promoted') continue;
     const prospectHistoricalId = insertOrUpdateProspectHistorical(db, {
       player_id: null,
       source_player_id: row.source_player_id,
@@ -119,9 +289,10 @@ function normalizeSeasonStats(db) {
       source_last_updated: row.source_last_updated,
       updated_at: nowIso(),
     });
+    promoted += 1;
   }
 
-  return rows.length;
+  return { scanned: rows.length, promoted };
 }
 
 function normalizeAdvancedMetrics(db) {
@@ -160,8 +331,12 @@ function normalizeAdvancedMetrics(db) {
       updated_at = excluded.updated_at
   `);
 
+  let promoted = 0;
+
   for (const row of rows) {
     const payload = parseJson(row.payload);
+    const quality = upsertQualityGate(db, 'advanced-metrics', row, payload);
+    if (quality.promotionStatus !== 'promoted') continue;
     const prospectHistoricalId = insertOrUpdateProspectHistorical(db, {
       player_id: null,
       source_player_id: row.source_player_id,
@@ -205,9 +380,10 @@ function normalizeAdvancedMetrics(db) {
       source_last_updated: row.source_last_updated,
       updated_at: nowIso(),
     });
+    promoted += 1;
   }
 
-  return rows.length;
+  return { scanned: rows.length, promoted };
 }
 
 function normalizeCombineMeasurements(db) {
@@ -242,8 +418,12 @@ function normalizeCombineMeasurements(db) {
       updated_at = excluded.updated_at
   `);
 
+  let promoted = 0;
+
   for (const row of rows) {
     const payload = parseJson(row.payload);
+    const quality = upsertQualityGate(db, 'combine-measurements', row, payload);
+    if (quality.promotionStatus !== 'promoted') continue;
     const prospectHistoricalId = insertOrUpdateProspectHistorical(db, {
       player_id: null,
       source_player_id: row.source_player_id,
@@ -283,9 +463,10 @@ function normalizeCombineMeasurements(db) {
       source_last_updated: row.source_last_updated,
       updated_at: nowIso(),
     });
+    promoted += 1;
   }
 
-  return rows.length;
+  return { scanned: rows.length, promoted };
 }
 
 function normalizeNbaOutcomes(db) {
@@ -324,9 +505,13 @@ function normalizeNbaOutcomes(db) {
       updated_at = excluded.updated_at
   `);
 
+  let promoted = 0;
+
   for (const row of rows) {
     const payload = parseJson(row.outcome_payload || row.draft_payload);
     const draftPayload = parseJson(row.draft_payload);
+    const quality = upsertQualityGate(db, 'nba-outcomes', row, payload);
+    if (quality.promotionStatus !== 'promoted') continue;
     const prospectHistoricalId = insertOrUpdateProspectHistorical(db, {
       player_id: null,
       source_player_id: row.source_player_id,
@@ -364,9 +549,10 @@ function normalizeNbaOutcomes(db) {
       source_last_updated: row.source_last_updated,
       updated_at: nowIso(),
     });
+    promoted += 1;
   }
 
-  return rows.length;
+  return { scanned: rows.length, promoted };
 }
 
 function normalizeHistoricalSources() {
@@ -374,12 +560,15 @@ function normalizeHistoricalSources() {
   const startedAt = nowIso();
 
   try {
-    let records = 0;
+    let scanned = 0;
+    let promoted = 0;
     withTransaction(db, () => {
-      records += normalizeSeasonStats(db);
-      records += normalizeAdvancedMetrics(db);
-      records += normalizeCombineMeasurements(db);
-      records += normalizeNbaOutcomes(db);
+      const seasonStats = normalizeSeasonStats(db);
+      const advanced = normalizeAdvancedMetrics(db);
+      const measurements = normalizeCombineMeasurements(db);
+      const outcomes = normalizeNbaOutcomes(db);
+      scanned += seasonStats.scanned + advanced.scanned + measurements.scanned + outcomes.scanned;
+      promoted += seasonStats.promoted + advanced.promoted + measurements.promoted + outcomes.promoted;
     });
 
     db.prepare(`
@@ -394,8 +583,8 @@ function normalizeHistoricalSources() {
       'success',
       startedAt,
       nowIso(),
-      records,
-      records,
+      scanned,
+      promoted,
       JSON.stringify({
         normalizedTables: [
           'prospects_historical',
@@ -404,10 +593,12 @@ function normalizeHistoricalSources() {
           'prospect_physical_measurements',
           'prospect_nba_outcomes',
         ],
+        qualityTable: 'historical_ingestion_quality',
+        promotionPolicy: 'only promoted rows feed normalized tables',
       }),
     );
 
-    console.log(`Normalized ${records} historical source rows into Prospera tables.`);
+    console.log(`Normalized ${promoted} promoted historical source rows from ${scanned} scanned raw rows into Prospera tables.`);
   } catch (error) {
     db.prepare(`
       INSERT INTO source_sync_log (

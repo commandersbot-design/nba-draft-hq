@@ -255,6 +255,25 @@ CREATE TABLE IF NOT EXISTS prospects_historical (
     UNIQUE(source, source_player_id, season, draft_year, combine_year)
 );
 
+CREATE TABLE IF NOT EXISTS historical_ingestion_quality (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    record_key TEXT NOT NULL UNIQUE,
+    record_type TEXT NOT NULL,
+    source TEXT NOT NULL,
+    source_player_id TEXT,
+    player_name TEXT,
+    season TEXT,
+    draft_year INTEGER,
+    combine_year INTEGER,
+    match_confidence REAL NOT NULL DEFAULT 0,
+    completeness_score REAL NOT NULL DEFAULT 0,
+    promotion_status TEXT NOT NULL CHECK(promotion_status IN ('promoted', 'review', 'rejected')),
+    promotion_reason TEXT,
+    metadata_json JSON,
+    inserted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS prospect_season_stats (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     player_id INTEGER,
@@ -489,6 +508,7 @@ CREATE INDEX IF NOT EXISTS idx_player_stats_normalized_lookup ON player_stats_no
 CREATE INDEX IF NOT EXISTS idx_historical_prospects_year_slot ON historical_prospects_raw(draft_year DESC, draft_slot ASC);
 CREATE INDEX IF NOT EXISTS idx_historical_normalized_lookup ON historical_prospects_normalized(draft_year DESC, draft_slot ASC, position_family);
 CREATE INDEX IF NOT EXISTS idx_prospects_historical_lookup ON prospects_historical(source, source_player_id, season, draft_year);
+CREATE INDEX IF NOT EXISTS idx_historical_ingestion_quality_lookup ON historical_ingestion_quality(source, record_type, promotion_status, season, draft_year, combine_year);
 CREATE INDEX IF NOT EXISTS idx_prospect_season_stats_lookup ON prospect_season_stats(source, source_player_id, season);
 CREATE INDEX IF NOT EXISTS idx_prospect_game_logs_lookup ON prospect_game_logs(source, source_player_id, season);
 CREATE INDEX IF NOT EXISTS idx_prospect_advanced_metrics_lookup ON prospect_advanced_metrics(source, source_player_id, season);

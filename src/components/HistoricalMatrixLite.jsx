@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { buildHistoricalDataset, draftSlotBand } from '../lib/historicalComps';
+import historicalCoverage from '../data/historicalCoverage.json';
 
 const COLUMN_OPTIONS = [
   { id: 'draftYear', label: 'Year' },
@@ -161,6 +162,24 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
         </div>
       </div>
 
+      <div className="board-summary board-summary-subtle">
+        <div className="summary-chip">
+          Raw {Object.values(historicalCoverage.rawCounts || {}).reduce((sum, value) => sum + Number(value || 0), 0)}
+        </div>
+        <div className="summary-chip">
+          Promoted {historicalCoverage.quality?.statuses?.promoted || 0}
+        </div>
+        <div className="summary-chip">
+          Review {historicalCoverage.quality?.statuses?.review || 0}
+        </div>
+        <div className="summary-chip">
+          Rejected {historicalCoverage.quality?.statuses?.rejected || 0}
+        </div>
+        <div className="summary-chip">
+          Classes {historicalCoverage.classWindow?.minYear || '--'}-{historicalCoverage.classWindow?.maxYear || '--'}
+        </div>
+      </div>
+
       {focusedEntry && (
         <div className="detail-section compare-future">
           <div className="detail-section-head">
@@ -255,6 +274,11 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
           <span className="stat-label">Average TS%</span>
           <strong>{overview.averageTs}</strong>
           <span className="stat-detail">Efficiency baseline for this view</span>
+        </article>
+        <article className="profile-hero-card stat-mini-card">
+          <span className="stat-label">Promoted Rows</span>
+          <strong>{historicalCoverage.quality?.statuses?.promoted || 0}</strong>
+          <span className="stat-detail">Rows trusted into normalized historical tables</span>
         </article>
       </div>
 
