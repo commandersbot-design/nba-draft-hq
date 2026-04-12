@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { TAG_OPTIONS } from '../lib/constants';
+import { buildHistoricalContext, buildHistoricalSignals, findHistoricalPrecedents } from '../lib/historicalComps';
 
 export function PlayerProfileSurface({
   prospect,
@@ -28,9 +29,18 @@ export function PlayerProfileSurface({
 
   const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
   const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
-  const comparisonAnchors = (prospect.historicalPrecedents || []).slice(0, 3);
-  const historicalContext = prospect.historicalContext;
-  const modelBreakdown = prospect.modelBreakdown;
+  const historicalPrecedents = useMemo(() => findHistoricalPrecedents(prospect), [prospect]);
+  const comparisonAnchors = historicalPrecedents.slice(0, 3);
+  const historicalContext = useMemo(() => buildHistoricalContext(prospect), [prospect]);
+  const historicalSignals = useMemo(() => buildHistoricalSignals(historicalPrecedents, historicalContext), [historicalContext, historicalPrecedents]);
+  const modelBreakdown = useMemo(() => ({
+    ...prospect.modelBreakdown,
+    historicalSignal: historicalSignals,
+    interpretationCard: {
+      ...prospect.modelBreakdown.interpretationCard,
+      historicalSignal: historicalSignals.summary,
+    },
+  }), [historicalSignals, prospect.modelBreakdown]);
 
   return (
     <div className="detail-card">
@@ -217,8 +227,8 @@ export function PlayerProfileSurface({
                 </div>
               </div>
               <p>{historicalContext.narrative}</p>
-              {prospect.historicalSignals?.summary && (
-                <p className="section-note">{prospect.historicalSignals.summary}</p>
+              {historicalSignals?.summary && (
+                <p className="section-note">{historicalSignals.summary}</p>
               )}
               <p className="section-note">{historicalContext.riskSignal}</p>
             </div>
@@ -426,13 +436,13 @@ export function PlayerProfileSurface({
             <div><strong>Defensive snapshot:</strong> {prospect.comparisonInputs.defensiveSummary || `${prospect.defenseScore} defense score`}</div>
             <div><strong>Archetype indicators:</strong> {(prospect.archetypeIndicators || []).join(', ') || 'Awaiting stat indicators'}</div>
             <div><strong>Historical percentile tags:</strong> {Object.entries(prospect.statPercentiles || {}).slice(0, 4).map(([key, value]) => `${key} ${value}`).join(' · ') || 'Awaiting percentiles'}</div>
-            <div><strong>Historical signal:</strong> {prospect.historicalSignals?.topOutcomeShare || 'Awaiting cohort signal'}</div>
+            <div><strong>Historical signal:</strong> {historicalSignals?.topOutcomeShare || 'Awaiting cohort signal'}</div>
           </div>
 
           <div className="detail-section">
             <h4>Historical Precedents</h4>
             <div className="note-preview-list">
-              {(prospect.historicalPrecedents || []).map((entry) => (
+              {historicalPrecedents.map((entry) => (
                 <article key={entry.id} className="note-preview-card">
                   <strong>{entry.name}</strong>
                   <span>{entry.draftYear} · #{entry.draftSlot} · {entry.outcomeTier}</span>

@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import { MyBoardBuilder } from './components/MyBoardBuilder';
 import { NotesWorkspace } from './components/NotesWorkspace';
-import { PlayerProfileSurface } from './components/PlayerProfileSurface';
 import { ProspectRankCard } from './components/ProspectRankCard';
 import { useLocalStorageState } from './hooks/useLocalStorageState';
 import { buildBoardExportRows, buildNotesExportRows, downloadCsv, downloadJson } from './lib/exporters';
@@ -9,6 +8,7 @@ import { APP_VIEWS, BOARD_CARD_SETTINGS, TAG_OPTIONS, VIEW_MODES } from './lib/c
 
 const CompareEngine = lazy(() => import('./components/CompareEngine').then((module) => ({ default: module.CompareEngine })));
 const HistoricalMatrixLite = lazy(() => import('./components/HistoricalMatrixLite').then((module) => ({ default: module.HistoricalMatrixLite })));
+const PlayerProfileSurface = lazy(() => import('./components/PlayerProfileSurface').then((module) => ({ default: module.PlayerProfileSurface })));
 
 const watchlistKey = 'prospera.watchlist';
 const compareKey = 'prospera.compare';
@@ -906,19 +906,21 @@ function App() {
         </section>
 
         <aside className="detail panel">
-          <PlayerProfileSurface
-            prospect={activeProspect}
-            notes={activeProspectNotes}
-            viewMode={viewMode}
+          <Suspense fallback={<div className="detail-empty"><p className="eyebrow">Player Detail</p><h3>Loading profile</h3><p>Preparing scouting context.</p></div>}>
+            <PlayerProfileSurface
+              prospect={activeProspect}
+              notes={activeProspectNotes}
+              viewMode={viewMode}
               isWatched={!!activeProspect && watchlist.includes(activeProspect.id)}
               isCompared={!!activeProspect && compareIds.includes(activeProspect.id)}
               onToggleWatchlist={toggleWatchlist}
-            onToggleCompare={toggleCompare}
-            onUpdateTier={updateTier}
-            onToggleTag={toggleTag}
-            onCreateNote={createNote}
-            onOpenHistorical={openHistorical}
-          />
+              onToggleCompare={toggleCompare}
+              onUpdateTier={updateTier}
+              onToggleTag={toggleTag}
+              onCreateNote={createNote}
+              onOpenHistorical={openHistorical}
+            />
+          </Suspense>
 
           <section className="workflow panel side-workflow">
             <div className="section-head">

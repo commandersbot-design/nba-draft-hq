@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { buildHistoricalSimilarity } from '../lib/historicalComps';
+import { buildHistoricalContext, buildHistoricalSignals, buildHistoricalSimilarity, findHistoricalPrecedents } from '../lib/historicalComps';
 
 function traitMap(prospect) {
   return Object.fromEntries(prospect.traitScores.map((trait) => [trait.name, trait]));
@@ -77,7 +77,31 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const rightTraits = traitMap(right);
   const whyLeft = buildDecisionBullets(left, right);
   const whyRight = buildDecisionBullets(right, left);
-  const historicalSimilarity = compareProspects.map((prospect) => ({
+  const historicalBundles = compareProspects.map((prospect) => {
+    const precedents = findHistoricalPrecedents(prospect);
+    const context = buildHistoricalContext(prospect);
+    const signals = buildHistoricalSignals(precedents, context);
+    return {
+      prospect: {
+        ...prospect,
+        historicalPrecedents: precedents,
+        historicalContext: context,
+        historicalSignals: signals,
+        modelBreakdown: {
+          ...prospect.modelBreakdown,
+          historicalSignal: signals,
+        },
+      },
+      precedents,
+      context,
+      signals,
+    };
+  });
+  const compareProspectsWithHistory = historicalBundles.map((entry) => entry.prospect);
+  const [leftWithHistory, rightWithHistory] = compareProspectsWithHistory;
+  const whyLeftWithHistory = buildDecisionBullets(leftWithHistory, rightWithHistory);
+  const whyRightWithHistory = buildDecisionBullets(rightWithHistory, leftWithHistory);
+  const historicalSimilarity = compareProspectsWithHistory.map((prospect) => ({
     prospect,
     similarity: buildHistoricalSimilarity(prospect, historicalMode),
   }));
@@ -85,27 +109,27 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   const rows = [
     {
       label: 'Measurements',
-      values: compareProspects.map((prospect) => `${prospect.measurementLine} / ${prospect.wingspan || '--'}`),
+      values: compareProspectsWithHistory.map((prospect) => `${prospect.measurementLine} / ${prospect.wingspan || '--'}`),
     },
     {
       label: 'Production',
-      values: compareProspects.map((prospect) => `${prospect.stats.season.points} pts / ${prospect.stats.season.rebounds} reb / ${prospect.stats.season.assists} ast`),
+      values: compareProspectsWithHistory.map((prospect) => `${prospect.stats.season.points} pts / ${prospect.stats.season.rebounds} reb / ${prospect.stats.season.assists} ast`),
     },
     {
       label: 'Efficiency',
-      values: compareProspects.map((prospect) => `TS ${prospect.stats.advanced.trueShooting || '--'} / BPM ${renderCell(prospect.stats.advanced.bpm)}`),
+      values: compareProspectsWithHistory.map((prospect) => `TS ${prospect.stats.advanced.trueShooting || '--'} / BPM ${renderCell(prospect.stats.advanced.bpm)}`),
     },
     {
       label: 'Final Score',
-      values: compareProspects.map((prospect) => prospect.modelBreakdown?.finalBoardScore || prospect.comparisonInputs.finalScore || prospect.overallComposite),
+      values: compareProspectsWithHistory.map((prospect) => prospect.modelBreakdown?.finalBoardScore || prospect.comparisonInputs.finalScore || prospect.overallComposite),
     },
     {
       label: 'Role',
-      values: compareProspects.map((prospect) => prospect.roleProjection),
+      values: compareProspectsWithHistory.map((prospect) => prospect.roleProjection),
     },
     {
       label: 'Risk',
-      values: compareProspects.map((prospect) => prospect.riskLevel),
+      values: compareProspectsWithHistory.map((prospect) => prospect.riskLevel),
     },
   ];
 
@@ -114,13 +138,13 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       <div className="section-head">
         <div>
           <p className="eyebrow">Compare</p>
-          <h3>{compareProspects.map((prospect) => prospect.name).join(' vs ')}</h3>
+          <h3>{compareProspectsWithHistory.map((prospect) => prospect.name).join(' vs ')}</h3>
         </div>
         <p className="section-meta">Built for side-by-side evaluation with expandable historical context.</p>
       </div>
 
-      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
-        {compareProspects.map((prospect) => (
+      <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
+        {compareProspectsWithHistory.map((prospect) => (
           <div key={prospect.id} className="compare-column compare-column-hero">
             <span className="stat-label">#{prospect.rank}</span>
             <h4>{prospect.name}</h4>
@@ -151,9 +175,9 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
 
       <div className="compare-grid compare-grid-emphasis">
         {rows.map((row) => (
-          <div key={row.label} className={`compare-row compare-row-${compareProspects.length}`}>
+          <div key={row.label} className={`compare-row compare-row-${compareProspectsWithHistory.length}`}>
             <span>{row.label}</span>
-            {row.values.map((value, index) => <span key={`${row.label}-${compareProspects[index].id}`}>{value}</span>)}
+            {row.values.map((value, index) => <span key={`${row.label}-${compareProspectsWithHistory[index].id}`}>{value}</span>)}
           </div>
         ))}
       </div>
@@ -162,9 +186,9 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         <h4>Trait Comparison</h4>
         <div className="trait-compare-grid">
           {left.traitScores.map((trait) => (
-            <div key={trait.name} className={`compare-row compare-row-${compareProspects.length}`}>
-              <span>{trait.name}</span>
-              {compareProspects.map((prospect) => {
+              <div key={trait.name} className={`compare-row compare-row-${compareProspectsWithHistory.length}`}>
+                <span>{trait.name}</span>
+              {compareProspectsWithHistory.map((prospect) => {
                 const traits = prospect.id === left.id ? leftTraits : prospect.id === right.id ? rightTraits : traitMap(prospect);
                 return <span key={`${trait.name}-${prospect.id}`}>{traits[trait.name]?.score}</span>;
               })}
@@ -177,19 +201,19 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         <div className="detail-section detail-section-emphasis">
           <h4>Why {left.name} over {right.name}</h4>
           <ul className="profile-list">
-            {(whyLeft.length ? whyLeft : ['Decision comes down to stylistic preference rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
+            {(whyLeftWithHistory.length ? whyLeftWithHistory : ['Decision comes down to stylistic preference rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
         <div className="detail-section detail-section-emphasis">
           <h4>Why {right.name} over {left.name}</h4>
           <ul className="profile-list">
-            {(whyRight.length ? whyRight : ['Decision comes down to role context rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
+            {(whyRightWithHistory.length ? whyRightWithHistory : ['Decision comes down to role context rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
       </div>
 
-      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
-        {compareProspects.map((prospect) => (
+      <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
+        {compareProspectsWithHistory.map((prospect) => (
           <div key={`${prospect.id}-model`} className="detail-section compare-notes-column">
             <h4>Model Breakdown</h4>
             <div className="projection-stack">
@@ -203,8 +227,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         ))}
       </div>
 
-      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
-        {compareProspects.map((prospect) => (
+      <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
+        {compareProspectsWithHistory.map((prospect) => (
           <div key={`${prospect.id}-stat-context`} className="detail-section compare-notes-column">
             <h4>Stat Context</h4>
             <div className="projection-stack">
@@ -235,7 +259,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         </div>
       </div>
 
-      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
+      <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
         {historicalSimilarity.map(({ prospect, similarity }) => (
           <div key={`${prospect.id}-historical-similarity`} className="detail-section compare-notes-column">
             <div className="detail-section-head">
@@ -267,8 +291,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         ))}
       </div>
 
-      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
-        {compareProspects.map((prospect) => (
+      <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
+        {compareProspectsWithHistory.map((prospect) => (
           <div key={`${prospect.id}-historical-context`} className="detail-section compare-notes-column">
             <h4>Historical Context</h4>
             {prospect.historicalContext ? (
@@ -289,8 +313,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         ))}
       </div>
 
-      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
-        {compareProspects.map((prospect) => {
+      <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
+        {compareProspectsWithHistory.map((prospect) => {
           const notes = notesByPlayer[prospect.id] || [];
           return (
             <div key={`${prospect.id}-notes`} className="detail-section compare-notes-column">
@@ -301,8 +325,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         })}
       </div>
 
-      <div className={`compare-sheet compare-sheet-${compareProspects.length}`}>
-        {compareProspects.map((prospect) => (
+      <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
+        {compareProspectsWithHistory.map((prospect) => (
           <div key={`${prospect.id}-historical`} className="detail-section compare-notes-column">
             <h4>Historical Anchors</h4>
             {(prospect.historicalPrecedents || []).length === 0 ? (

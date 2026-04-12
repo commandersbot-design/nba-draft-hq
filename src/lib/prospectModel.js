@@ -1,5 +1,4 @@
 import { CORE_TRAITS } from './constants';
-import { buildHistoricalContext, findHistoricalPrecedents } from './historicalComps';
 import authoredProfilesTier3 from '../data/authoredProfilesTier3.json';
 import authoredProfilesTier4 from '../data/authoredProfilesTier4';
 import authoredProfilesTier5 from '../data/authoredProfilesTier5';
@@ -528,34 +527,6 @@ function normalizeSources(prospect) {
     });
 }
 
-function buildHistoricalSignals(historicalPrecedents, historicalContext) {
-  const topPrecedent = historicalPrecedents[0] || null;
-  const topComparableTier = topPrecedent?.historicalOutcomeLabel || topPrecedent?.outcomeTier || null;
-  const topComparableFamily = topPrecedent?.archetypeFamily || topPrecedent?.comparisonInputs?.archetype_family || null;
-  const outcomeMix = Array.isArray(historicalContext?.outcomeMix) ? historicalContext.outcomeMix : [];
-  const topOutcomeShare = outcomeMix[0] ? `${outcomeMix[0].tier} ${outcomeMix[0].share}` : '--';
-  const stableShare = outcomeMix
-    .filter((entry) => entry.tier === 'Outlier' || entry.tier === 'Hit' || entry.tier === 'Tier 1 outcome' || entry.tier === 'Tier 2 outcome' || entry.tier === 'Tier 3 outcome')
-    .reduce((total, entry) => total + Number.parseInt(entry.share, 10), 0);
-  const volatileShare = outcomeMix
-    .filter((entry) => entry.tier === 'Swing' || entry.tier === 'Miss' || entry.tier === 'Tier 4 outcome' || entry.tier === 'Tier 5 outcome')
-    .reduce((total, entry) => total + Number.parseInt(entry.share, 10), 0);
-  const signal = stableShare >= 60 ? 'stable' : volatileShare >= 45 ? 'volatile' : 'mixed';
-
-  return {
-    topComparableTier,
-    topComparableFamily,
-    topComparableName: topPrecedent?.name || null,
-    topOutcomeShare,
-    stableShare,
-    volatileShare,
-    signal,
-    summary: topPrecedent
-      ? `${topPrecedent.name} anchors the closest precedent lane, with the pool leaning ${signal} overall.`
-      : historicalContext?.narrative || 'Historical context is still shallow.',
-  };
-}
-
 /**
  * Isolate derived profile fields from raw source data. When real scouting data
  * is provided in the raw prospect record, it overrides the placeholders here.
@@ -603,40 +574,7 @@ export function enrichProspects(prospects) {
     const roleProjection = firstDefined(sourceProspect.roleProjection, sourceProspect.scouting?.roleProjection, deriveRoleProjection(sourceProspect.position, sourceProspect.rank));
     const riskLevel = firstDefined(sourceProspect.riskLevel, sourceProspect.scouting?.riskLevel, deriveRiskLevel(sourceProspect.rank, sourceProspect.classYear));
     const sources = normalizeSources(sourceProspect);
-    const historicalPrecedents = findHistoricalPrecedents({
-      ...sourceProspect,
-      age,
-      roleProjection,
-      overallComposite,
-      archetype: sourceProspect.archetype,
-      position: sourceProspect.position,
-      stats: stats.value,
-    });
-    const historicalContext = buildHistoricalContext({
-      ...sourceProspect,
-      age,
-      roleProjection,
-      overallComposite,
-      archetype: sourceProspect.archetype,
-      position: sourceProspect.position,
-      rank: sourceProspect.rank,
-      stats: stats.value,
-    });
-    const historicalSignals = buildHistoricalSignals(historicalPrecedents, historicalContext);
     const autoInterpretation = buildAutoInterpretation(sourceProspect, traitData.values, pipelineStats.percentiles || {}, buildRiskFlags(sourceProspect, pipelineStats.percentiles || {}, traitData.values));
-    if (historicalSignals.signal === 'stable' && autoInterpretation.strengths.length < 3) {
-      autoInterpretation.strengths.push({
-        label: 'Historical Stability',
-        explanation: `closest precedent pool has leaned stable (${historicalSignals.topOutcomeShare})`,
-      });
-    }
-    if (historicalSignals.signal === 'volatile' && autoInterpretation.weaknesses.length < 2) {
-      autoInterpretation.weaknesses.push({
-        label: 'Outcome Volatility',
-        explanation: `closest precedent pool still carries more volatile outcomes than clean hits`,
-      });
-    }
-    autoInterpretation.summarySentence = `${autoInterpretation.summarySentence} ${historicalSignals.summary}`;
     const modelBreakdown = buildModelBreakdown(
       {
         ...sourceProspect,
@@ -646,8 +584,6 @@ export function enrichProspects(prospects) {
       pipelineStats.percentiles || {},
       autoInterpretation,
     );
-    modelBreakdown.historicalSignal = historicalSignals;
-    modelBreakdown.interpretationCard.historicalSignal = historicalSignals.summary;
 
     const realFieldCount = [
       measurements.isReal,
@@ -686,9 +622,9 @@ export function enrichProspects(prospects) {
       comparisonInputs: pipelineStats.comparisonInputs || {},
       autoInterpretation,
       modelBreakdown,
-      historicalPrecedents,
-      historicalContext,
-      historicalSignals,
+      historicalPrecedents: [],
+      historicalContext: null,
+      historicalSignals: null,
       profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],
       sources,
       dataQuality: {

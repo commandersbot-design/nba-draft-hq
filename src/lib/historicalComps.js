@@ -147,6 +147,34 @@ export function buildHistoricalContext(prospect, precedentLimit = 4) {
   };
 }
 
+export function buildHistoricalSignals(historicalPrecedents, historicalContext) {
+  const topPrecedent = historicalPrecedents[0] || null;
+  const topComparableTier = topPrecedent?.historicalOutcomeLabel || topPrecedent?.outcomeTier || null;
+  const topComparableFamily = topPrecedent?.archetypeFamily || topPrecedent?.comparisonInputs?.archetype_family || null;
+  const outcomeMix = Array.isArray(historicalContext?.outcomeMix) ? historicalContext.outcomeMix : [];
+  const topOutcomeShare = outcomeMix[0] ? `${outcomeMix[0].tier} ${outcomeMix[0].share}` : '--';
+  const stableShare = outcomeMix
+    .filter((entry) => entry.tier === 'Outlier' || entry.tier === 'Hit' || entry.tier === 'Tier 1 outcome' || entry.tier === 'Tier 2 outcome' || entry.tier === 'Tier 3 outcome')
+    .reduce((total, entry) => total + Number.parseInt(entry.share, 10), 0);
+  const volatileShare = outcomeMix
+    .filter((entry) => entry.tier === 'Swing' || entry.tier === 'Miss' || entry.tier === 'Tier 4 outcome' || entry.tier === 'Tier 5 outcome')
+    .reduce((total, entry) => total + Number.parseInt(entry.share, 10), 0);
+  const signal = stableShare >= 60 ? 'stable' : volatileShare >= 45 ? 'volatile' : 'mixed';
+
+  return {
+    topComparableTier,
+    topComparableFamily,
+    topComparableName: topPrecedent?.name || null,
+    topOutcomeShare,
+    stableShare,
+    volatileShare,
+    signal,
+    summary: topPrecedent
+      ? `${topPrecedent.name} anchors the closest precedent lane, with the pool leaning ${signal} overall.`
+      : historicalContext?.narrative || 'Historical context is still shallow.',
+  };
+}
+
 export function buildHistoricalDataset() {
   return historicalProspects.map((entry) => ({
     ...entry,
