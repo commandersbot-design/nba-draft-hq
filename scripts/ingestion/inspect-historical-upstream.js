@@ -35,6 +35,12 @@ function inferYears(row, filePath) {
   return [...new Set(matches.map((value) => Number(value)).filter((value) => Number.isFinite(value)))];
 }
 
+function range(start, end) {
+  const years = [];
+  for (let year = start; year <= end; year += 1) years.push(year);
+  return years;
+}
+
 function countFieldCoverage(rows, aliases) {
   if (!rows.length) return { present: 0, total: 0, percent: 0 };
   const present = rows.filter((row) =>
@@ -53,6 +59,8 @@ function buildSourceSummary(source) {
   const exists = fs.existsSync(directory);
   const { files, rows } = exists ? loadStructuredFiles(directory) : { files: [], rows: [] };
   const years = [...new Set(rows.flatMap((row) => inferYears(row, directory)))].sort((left, right) => left - right);
+  const expectedYears = range(2010, new Date().getFullYear());
+  const missingYears = expectedYears.filter((year) => !years.includes(year));
 
   return {
     id: source.id,
@@ -62,6 +70,8 @@ function buildSourceSummary(source) {
     fileCount: files.length,
     rowCount: rows.length,
     years,
+    expectedYears,
+    missingYears,
     coverage: {
       playerName: countFieldCoverage(rows, ['player_name', 'playerName', 'name', 'player']),
       season: countFieldCoverage(rows, ['season', 'season_year', 'year']),
@@ -81,6 +91,10 @@ function inspectHistoricalUpstream() {
     totalSources: summaries.length,
     populatedSources: summaries.filter((summary) => summary.rowCount > 0).length,
     totalRows: summaries.reduce((sum, summary) => sum + summary.rowCount, 0),
+    expectedYearRange: {
+      start: 2010,
+      end: new Date().getFullYear(),
+    },
     sources: summaries,
   };
 

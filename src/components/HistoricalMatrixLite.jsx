@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { buildHistoricalDataset, draftSlotBand } from '../lib/historicalComps';
 import historicalCoverage from '../data/historicalCoverage.json';
+import historicalSourceStatus from '../data/historicalSourceStatus.json';
 
 const COLUMN_OPTIONS = [
   { id: 'draftYear', label: 'Year' },
@@ -177,6 +178,30 @@ export function HistoricalMatrixLite({ selectedHistoricalId, onClearSelectedHist
         </div>
         <div className="summary-chip">
           Classes {historicalCoverage.classWindow?.minYear || '--'}-{historicalCoverage.classWindow?.maxYear || '--'}
+        </div>
+      </div>
+
+      <div className="detail-section">
+        <div className="detail-section-head">
+          <h4>Source Coverage</h4>
+          <span className="section-meta">
+            {historicalSourceStatus.populatedSources}/{historicalSourceStatus.totalSources} sources populated
+          </span>
+        </div>
+        <div className="historical-overview-grid">
+          {historicalSourceStatus.sources.map((source) => (
+            <article key={source.id} className="profile-hero-card stat-mini-card">
+              <span className="stat-label">{source.label}</span>
+              <strong>{source.rowCount} rows</strong>
+              <span className="stat-detail">
+                {source.fileCount} files · {source.years.length ? `${source.years[0]}-${source.years[source.years.length - 1]}` : 'No year coverage'}
+              </span>
+              <span className="stat-detail">
+                Missing years: {source.missingYears.length ? source.missingYears.slice(0, 4).join(', ') : 'none'}
+                {source.missingYears.length > 4 ? '…' : ''}
+              </span>
+            </article>
+          ))}
         </div>
       </div>
 
