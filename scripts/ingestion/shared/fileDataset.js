@@ -63,11 +63,78 @@ function parseCsv(text) {
 
 function loadJsonFile(filePath) {
   const payload = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  return Array.isArray(payload) ? payload : [];
+  return extractRowsFromJsonPayload(payload);
 }
 
 function loadCsvFile(filePath) {
   return parseCsv(fs.readFileSync(filePath, 'utf8'));
+}
+
+function loadNdjsonFile(filePath) {
+  return fs
+    .readFileSync(filePath, 'utf8')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => JSON.parse(line));
+}
+
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function looksLikeRow(value) {
+  if (!isPlainObject(value)) return false;
+  const keys = Object.keys(value);
+  if (keys.length === 0) return false;
+  return keys.some((key) =>
+    /(^id$|name|player|season|year|team|school|position|draft|combine|pts|reb|ast|bpm|usage|measure)/i.test(key),
+  );
+}
+
+function extractRowsFromJsonPayload(payload) {
+  if (Array.isArray(payload)) {
+    return payload.filter((entry) => entry != null);
+  }
+
+  if (!isPlainObject(payload)) {
+    return [];
+  }
+
+  const preferredKeys = [
+    'rows',
+    'data',
+    'results',
+    'items',
+    'records',
+    'players',
+    'prospects',
+    'seasons',
+    'games',
+    'gameLogs',
+    'advancedMetrics',
+    'draftHistory',
+    'outcomes',
+    'measurements',
+    'combine',
+  ];
+
+  const collected = [];
+  for (const key of preferredKeys) {
+    if (payload[key] !== undefined) {
+      collected.push(...extractRowsFromJsonPayload(payload[key]));
+    }
+  }
+
+  if (collected.length > 0) {
+    return collected;
+  }
+
+  if (looksLikeRow(payload)) {
+    return [payload];
+  }
+
+  return Object.values(payload).flatMap((value) => extractRowsFromJsonPayload(value));
 }
 
 function loadStructuredFiles(targetPath) {
@@ -76,13 +143,17 @@ function loadStructuredFiles(targetPath) {
   }
 
   const files = walkFiles(targetPath)
-    .filter((filePath) => /\.(json|csv)$/i.test(filePath))
+    .filter((filePath) => /\.(json|csv|jsonl|ndjson)$/i.test(filePath))
     .sort((left, right) => left.localeCompare(right));
 
   const rows = [];
   for (const filePath of files) {
     const extension = path.extname(filePath).toLowerCase();
-    const payload = extension === '.csv' ? loadCsvFile(filePath) : loadJsonFile(filePath);
+    const payload = extension === '.csv'
+      ? loadCsvFile(filePath)
+      : extension === '.jsonl' || extension === '.ndjson'
+        ? loadNdjsonFile(filePath)
+        : loadJsonFile(filePath);
     rows.push(...payload);
   }
 
