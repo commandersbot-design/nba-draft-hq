@@ -84,6 +84,7 @@ Source-specific adapters now exist for:
 - `NBA.com Stats`
 
 Package entrypoints:
+- `npm run ingest:historical:bootstrap`
 - `npm run ingest:historical:sources:sync`
 - `npm run ingest:historical:sources:normalize`
 - `npm run ingest:historical:sources`
@@ -91,6 +92,7 @@ Package entrypoints:
 - `npm run ingest:historical:full`
 
 The intended progression is now:
-1. sync source-specific raw historical data into raw tables
-2. normalize that data into Prospera historical model tables
-3. derive percentile, model-feature, outcome-label, archetype-input, and comparison-input rows
+1. bootstrap source-specific upstream files from the current historical seed pool
+2. sync source-specific raw historical data into raw tables
+3. normalize that data into Prospera historical model tables
+4. derive percentile, model-feature, outcome-label, archetype-input, and comparison-input rows
