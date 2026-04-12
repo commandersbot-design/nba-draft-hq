@@ -1,5 +1,7 @@
 const path = require('path');
 const { createConnector } = require('../connectors/base/createConnector');
+const { runCbbdFullRefresh } = require('../connectors/cbbd/run');
+const { runNbaCombineFullRefresh } = require('../connectors/nba/run');
 
 function upstreamPath(...parts) {
   return path.join(__dirname, '..', '..', '..', 'imports', 'upstream', ...parts);
@@ -20,25 +22,11 @@ const SOURCE_CATALOG = {
       snapshotDirectory: path.join('data', 'snapshots', 'cbbd'),
     },
     handlers: {
-      async fullRefresh() {
-        return {
-          status: 'blocked',
-          sourceName: 'CollegeBasketballData',
-          recordsSeen: 0,
-          recordsWritten: 0,
-          recordsRejected: 0,
-          message: 'Live CBBD fetch is scaffolded but blocked until an API key and fetch implementation are configured.',
-        };
+      async fullRefresh(context) {
+        return runCbbdFullRefresh(context);
       },
-      async incrementalRefresh() {
-        return {
-          status: 'blocked',
-          sourceName: 'CollegeBasketballData',
-          recordsSeen: 0,
-          recordsWritten: 0,
-          recordsRejected: 0,
-          message: 'Incremental CBBD sync is scaffolded but blocked until an API key and high-watermark strategy are configured.',
-        };
+      async incrementalRefresh(context) {
+        return runCbbdFullRefresh({ ...context, mode: 'incremental' });
       },
     },
   }),
@@ -55,25 +43,11 @@ const SOURCE_CATALOG = {
       snapshotDirectory: path.join('data', 'snapshots', 'nba-combine'),
     },
     handlers: {
-      async fullRefresh() {
-        return {
-          status: 'blocked',
-          sourceName: 'NBA.com Draft Combine',
-          recordsSeen: 0,
-          recordsWritten: 0,
-          recordsRejected: 0,
-          message: 'Live NBA combine fetch is scaffolded but intentionally defensive and not yet implemented against a stable endpoint.',
-        };
+      async fullRefresh(context) {
+        return runNbaCombineFullRefresh(context);
       },
-      async incrementalRefresh() {
-        return {
-          status: 'blocked',
-          sourceName: 'NBA.com Draft Combine',
-          recordsSeen: 0,
-          recordsWritten: 0,
-          recordsRejected: 0,
-          message: 'Incremental NBA combine sync is blocked until endpoint stability and cursor strategy are configured.',
-        };
+      async incrementalRefresh(context) {
+        return runNbaCombineFullRefresh({ ...context, mode: 'incremental' });
       },
     },
   }),

@@ -4,6 +4,7 @@ dist
 .DS_Store
 *.local
 .vercel
+data/snapshots/
 database/*.db
 database/*.db-shm
 database/*.db-wal

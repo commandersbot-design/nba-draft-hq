@@ -74,4 +74,8 @@ async function fetchCollegeBasketballData({ season, playerLookup }) {
   };
 }
 
-module.exports = { fetchCollegeBasketballData };
+module.exports = {
+  fetchCollegeBasketballData,
+  fetchLiveDataset,
+  getCollegeBasketballDataPayload,
+};
