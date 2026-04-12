@@ -18,7 +18,9 @@
     "ingest:historical": "npm run ingest:historical:sync && npm run ingest:historical:transform && npm run ingest:historical:export",
     "ingest:historical:sources:sync": "node scripts/ingestion/sync-historical-sources.js",
     "ingest:historical:sources:normalize": "node scripts/ingestion/normalize-historical-sources.js",
-    "ingest:historical:sources": "npm run ingest:historical:sources:sync && npm run ingest:historical:sources:normalize"
+    "ingest:historical:sources": "npm run ingest:historical:sources:sync && npm run ingest:historical:sources:normalize",
+    "ingest:historical:derived": "node scripts/ingestion/derive-historical-features.js",
+    "ingest:historical:full": "npm run ingest:historical:sources && npm run ingest:historical:derived"
   },
   "dependencies": {
     "react": "^18.2.0",

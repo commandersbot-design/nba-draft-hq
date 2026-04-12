@@ -87,8 +87,10 @@ Package entrypoints:
 - `npm run ingest:historical:sources:sync`
 - `npm run ingest:historical:sources:normalize`
 - `npm run ingest:historical:sources`
+- `npm run ingest:historical:derived`
+- `npm run ingest:historical:full`
 
 The intended progression is now:
 1. sync source-specific raw historical data into raw tables
 2. normalize that data into Prospera historical model tables
-3. add derived percentile, outcome-label, and comparison-feature logic on top
+3. derive percentile, model-feature, outcome-label, archetype-input, and comparison-input rows
