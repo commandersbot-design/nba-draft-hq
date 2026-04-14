@@ -70,11 +70,16 @@ function App() {
   const [runtime, setRuntime] = useState({
     prospects: [],
     currentMeasurements: {},
-    profileStats: {},
-    authoredProfiles: {},
-    enrichProspects: null,
+    enrichBoardProspects: null,
+    enrichProspectDetail: null,
     createEmptyStructuredNote: null,
     loaded: false,
+  });
+  const [detailRuntime, setDetailRuntime] = useState({
+    profileStats: {},
+    authoredProfiles: {},
+    loaded: false,
+    loading: false,
   });
   const [appView, setAppView] = useState('big-board');
   const [viewMode, setViewMode] = useState('peek');
@@ -110,30 +115,17 @@ function App() {
       import('./data/prospects.json'),
       import('./lib/prospectModel'),
       import('./data/currentMeasurements.json'),
-      import('./data/profileStats.json'),
-      import('./data/authoredProfilesTier3.json'),
-      import('./data/authoredProfilesTier4'),
-      import('./data/authoredProfilesTier5'),
     ]).then(([
       prospectsModule,
       modelModule,
       currentMeasurementsModule,
-      profileStatsModule,
-      authoredProfilesTier3Module,
-      authoredProfilesTier4Module,
-      authoredProfilesTier5Module,
     ]) => {
       if (!isMounted) return;
       setRuntime({
         prospects: prospectsModule.default || [],
         currentMeasurements: currentMeasurementsModule.default || {},
-        profileStats: profileStatsModule.default || {},
-        authoredProfiles: {
-          ...(authoredProfilesTier3Module.default || {}),
-          ...(authoredProfilesTier4Module.default || {}),
-          ...(authoredProfilesTier5Module.default || {}),
-        },
-        enrichProspects: modelModule.enrichProspects,
+        enrichBoardProspects: modelModule.enrichBoardProspects,
+        enrichProspectDetail: modelModule.enrichProspectDetail,
         createEmptyStructuredNote: modelModule.createEmptyStructuredNote,
         loaded: true,
       });
@@ -143,6 +135,44 @@ function App() {
       isMounted = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!runtime.loaded || detailRuntime.loaded || detailRuntime.loading) return;
+
+    const needsDetailData = !!activeId || compareIds.length > 0 || appView === 'compare';
+    if (!needsDetailData) return;
+
+    let isMounted = true;
+    setDetailRuntime((current) => ({ ...current, loading: true }));
+
+    Promise.all([
+      import('./data/profileStats.json'),
+      import('./data/authoredProfilesTier3.json'),
+      import('./data/authoredProfilesTier4'),
+      import('./data/authoredProfilesTier5'),
+    ]).then(([
+      profileStatsModule,
+      authoredProfilesTier3Module,
+      authoredProfilesTier4Module,
+      authoredProfilesTier5Module,
+    ]) => {
+      if (!isMounted) return;
+      setDetailRuntime({
+        profileStats: profileStatsModule.default || {},
+        authoredProfiles: {
+          ...(authoredProfilesTier3Module.default || {}),
+          ...(authoredProfilesTier4Module.default || {}),
+          ...(authoredProfilesTier5Module.default || {}),
+        },
+        loaded: true,
+        loading: false,
+      });
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [activeId, appView, compareIds.length, detailRuntime.loaded, detailRuntime.loading, runtime.loaded]);
 
   useEffect(() => {
     if (!runtime.loaded || runtime.prospects.length === 0) return;
@@ -157,11 +187,9 @@ function App() {
   }, [runtime.loaded, runtime.prospects, setMyBoard]);
 
   const enrichedProspects = useMemo(
-    () => (runtime.enrichProspects
-      ? runtime.enrichProspects(runtime.prospects, {
+    () => (runtime.enrichBoardProspects
+      ? runtime.enrichBoardProspects(runtime.prospects, {
         currentMeasurements: runtime.currentMeasurements,
-        profileStats: runtime.profileStats,
-        authoredProfiles: runtime.authoredProfiles,
       })
       : []
     ).map((prospect) => ({
@@ -172,10 +200,8 @@ function App() {
     [
       customTags,
       customTiers,
-      runtime.authoredProfiles,
       runtime.currentMeasurements,
-      runtime.enrichProspects,
-      runtime.profileStats,
+      runtime.enrichBoardProspects,
       runtime.prospects,
     ],
   );
@@ -253,9 +279,48 @@ function App() {
     });
   }, [bucket, enrichedProspects, leagueType, myBoard, position, query, school, sortBy, tagFilter, tierFilter, watchlist, watchlistOnly]);
 
-  const activeProspect = prospectsById[activeId] || filteredProspects[0] || null;
+  const activeProspectBase = prospectsById[activeId] || filteredProspects[0] || null;
+  const activeProspect = useMemo(
+    () => (runtime.enrichProspectDetail && activeProspectBase && detailRuntime.loaded
+      ? runtime.enrichProspectDetail(activeProspectBase, {
+        currentMeasurements: runtime.currentMeasurements,
+        profileStats: detailRuntime.profileStats,
+        authoredProfiles: detailRuntime.authoredProfiles,
+      })
+      : activeProspectBase),
+    [
+      activeProspectBase,
+      detailRuntime.authoredProfiles,
+      detailRuntime.loaded,
+      detailRuntime.profileStats,
+      runtime.currentMeasurements,
+      runtime.enrichProspectDetail,
+    ],
+  );
   const activeProspectNotes = notes.filter((note) => note.playerId === activeProspect?.id);
-  const compareProspects = compareIds.map((id) => prospectsById[id]).filter(Boolean);
+  const compareProspects = useMemo(
+    () => compareIds
+      .map((id) => prospectsById[id])
+      .filter(Boolean)
+      .map((prospect) => (
+        runtime.enrichProspectDetail && detailRuntime.loaded
+          ? runtime.enrichProspectDetail(prospect, {
+            currentMeasurements: runtime.currentMeasurements,
+            profileStats: detailRuntime.profileStats,
+            authoredProfiles: detailRuntime.authoredProfiles,
+          })
+          : prospect
+      )),
+    [
+      compareIds,
+      detailRuntime.authoredProfiles,
+      detailRuntime.loaded,
+      detailRuntime.profileStats,
+      prospectsById,
+      runtime.currentMeasurements,
+      runtime.enrichProspectDetail,
+    ],
+  );
   const watchlistProspects = watchlist.map((id) => prospectsById[id]).filter(Boolean);
   const myBoardProspects = myBoard.map((id) => prospectsById[id]).filter(Boolean);
   const selectedMode = VIEW_MODES.find((mode) => mode.id === viewMode);

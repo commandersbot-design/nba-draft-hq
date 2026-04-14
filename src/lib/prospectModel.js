@@ -537,6 +537,77 @@ function normalizeSources(prospect, profileStats = {}) {
     });
 }
 
+function buildLightweightProspect(prospect, options = {}) {
+  const currentMeasurements = options.currentMeasurements || {};
+  const measurements = normalizeMeasurements(prospect, currentMeasurements);
+  const age = firstDefined(prospect.age, prospect.bio?.age, estimatedAge(prospect.classYear, prospect.rank));
+  const traitData = normalizeTraitScores(prospect);
+  const overallComposite = firstDefined(prospect.overallComposite, prospect.scores?.overallComposite, compositeScore(traitData.values));
+  const offenseScore = firstDefined(
+    prospect.offenseScore,
+    prospect.scores?.offense,
+    Math.round((traitData.values[0].score + traitData.values[2].score + traitData.values[3].score + traitData.values[4].score) / 4),
+  );
+  const defenseScore = firstDefined(
+    prospect.defenseScore,
+    prospect.scores?.defense,
+    Math.round(traitData.values[7].score),
+  );
+  const summary = normalizeSummary(prospect, traitData.values);
+  const stats = normalizeStats(prospect, offenseScore, defenseScore, {});
+  const projection = normalizeProjection(prospect, traitData.values, offenseScore, defenseScore);
+  const roleProjection = firstDefined(prospect.roleProjection, prospect.scouting?.roleProjection, deriveRoleProjection(prospect.position, prospect.rank));
+  const riskLevel = firstDefined(prospect.riskLevel, prospect.scouting?.riskLevel, deriveRiskLevel(prospect.rank, prospect.classYear));
+  const riskFlags = buildRiskFlags({ ...prospect, age, riskLevel }, {}, traitData.values);
+  const autoInterpretation = buildAutoInterpretation({ ...prospect, age, riskLevel }, traitData.values, {}, riskFlags);
+  const modelBreakdown = buildModelBreakdown(
+    { ...prospect, rank: prospect.rank },
+    traitData.values,
+    {},
+    autoInterpretation,
+  );
+
+  return {
+    ...prospect,
+    height: measurements.value.height,
+    weight: measurements.value.weight,
+    wingspan: measurements.value.wingspan,
+    standingReach: measurements.value.standingReach,
+    measurements: measurements.value,
+    age,
+    measurementLine: measurements.value.measurementLine,
+    overallComposite,
+    offenseScore,
+    defenseScore,
+    riskLevel,
+    roleProjection,
+    traitScores: traitData.values,
+    summary: summary.value,
+    stats: stats.value,
+    projection: projection.value,
+    statCards: [],
+    statPercentiles: {},
+    statStrengths: [],
+    statWeaknesses: [],
+    archetypeIndicators: [],
+    comparisonInputs: {},
+    autoInterpretation,
+    modelBreakdown,
+    historicalPrecedents: [],
+    historicalContext: null,
+    historicalSignals: null,
+    profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],
+    sources: [],
+    dataQuality: {
+      profile: measurements.isReal || traitData.isReal || summary.isReal || projection.isReal ? 'Mixed' : 'Derived',
+      traits: sourceLabel(traitData.isReal),
+      summary: sourceLabel(summary.isReal),
+      stats: 'Deferred',
+      projection: sourceLabel(projection.isReal),
+    },
+  };
+}
+
 /**
  * Isolate derived profile fields from raw source data. When real scouting data
  * is provided in the raw prospect record, it overrides the placeholders here.
@@ -554,101 +625,104 @@ function normalizeSources(prospect, profileStats = {}) {
  *
  * @param {Array<Record<string, any>>} prospects
  */
-export function enrichProspects(prospects, options = {}) {
+export function enrichBoardProspects(prospects, options = {}) {
+  return prospects.map((prospect) => buildLightweightProspect(prospect, options));
+}
+
+export function enrichProspectDetail(prospect, options = {}) {
+  if (!prospect) return null;
+
   const currentMeasurements = options.currentMeasurements || {};
   const profileStats = options.profileStats || {};
   const authoredProfiles = options.authoredProfiles || {};
-
-  return prospects.map((prospect) => {
-    const authoredOverride = {
-      ...(measurementOverrides[prospect.id] || {}),
-      ...(authoredProfiles[prospect.id] || {}),
-    };
-    const sourceProspect = { ...prospect, ...authoredOverride };
-    const pipelineStats = profileStats[prospect.id] || {};
-    const measurements = normalizeMeasurements(sourceProspect, currentMeasurements);
-    const age = firstDefined(sourceProspect.age, sourceProspect.bio?.age, estimatedAge(sourceProspect.classYear, sourceProspect.rank));
-    const traitData = normalizeTraitScores(sourceProspect);
-    const overallComposite = firstDefined(sourceProspect.overallComposite, sourceProspect.scores?.overallComposite, compositeScore(traitData.values));
-    const offenseScore = firstDefined(
-      sourceProspect.offenseScore,
-      sourceProspect.scores?.offense,
-      Math.round((traitData.values[0].score + traitData.values[2].score + traitData.values[3].score + traitData.values[4].score) / 4),
-    );
-    const defenseScore = firstDefined(
-      sourceProspect.defenseScore,
-      sourceProspect.scores?.defense,
-      Math.round(traitData.values[7].score),
-    );
-    const summary = normalizeSummary(sourceProspect, traitData.values);
-    const stats = normalizeStats(sourceProspect, offenseScore, defenseScore, profileStats);
-    const projection = normalizeProjection(sourceProspect, traitData.values, offenseScore, defenseScore);
-    const roleProjection = firstDefined(sourceProspect.roleProjection, sourceProspect.scouting?.roleProjection, deriveRoleProjection(sourceProspect.position, sourceProspect.rank));
-    const riskLevel = firstDefined(sourceProspect.riskLevel, sourceProspect.scouting?.riskLevel, deriveRiskLevel(sourceProspect.rank, sourceProspect.classYear));
-    const sources = normalizeSources(sourceProspect, profileStats);
-    const autoInterpretation = buildAutoInterpretation(sourceProspect, traitData.values, pipelineStats.percentiles || {}, buildRiskFlags(sourceProspect, pipelineStats.percentiles || {}, traitData.values));
-    const modelBreakdown = buildModelBreakdown(
-      {
-        ...sourceProspect,
-        rank: sourceProspect.rank,
-      },
-      traitData.values,
-      pipelineStats.percentiles || {},
-      autoInterpretation,
-    );
-
-    const realFieldCount = [
-      measurements.isReal,
-      traitData.isReal,
-      summary.isReal,
-      stats.isReal,
-      projection.isReal,
-      hasText(prospect.age) || hasText(prospect.bio?.age),
-      hasText(prospect.roleProjection) || hasText(prospect.scouting?.roleProjection),
-      hasText(prospect.riskLevel) || hasText(prospect.scouting?.riskLevel),
-      sources.length > 0,
-    ].filter(Boolean).length;
-
-    return {
+  const authoredOverride = {
+    ...(measurementOverrides[prospect.id] || {}),
+    ...(authoredProfiles[prospect.id] || {}),
+  };
+  const sourceProspect = { ...prospect, ...authoredOverride };
+  const pipelineStats = profileStats[prospect.id] || {};
+  const measurements = normalizeMeasurements(sourceProspect, currentMeasurements);
+  const age = firstDefined(sourceProspect.age, sourceProspect.bio?.age, estimatedAge(sourceProspect.classYear, sourceProspect.rank));
+  const traitData = normalizeTraitScores(sourceProspect);
+  const overallComposite = firstDefined(sourceProspect.overallComposite, sourceProspect.scores?.overallComposite, compositeScore(traitData.values));
+  const offenseScore = firstDefined(
+    sourceProspect.offenseScore,
+    sourceProspect.scores?.offense,
+    Math.round((traitData.values[0].score + traitData.values[2].score + traitData.values[3].score + traitData.values[4].score) / 4),
+  );
+  const defenseScore = firstDefined(
+    sourceProspect.defenseScore,
+    sourceProspect.scores?.defense,
+    Math.round(traitData.values[7].score),
+  );
+  const summary = normalizeSummary(sourceProspect, traitData.values);
+  const stats = normalizeStats(sourceProspect, offenseScore, defenseScore, profileStats);
+  const projection = normalizeProjection(sourceProspect, traitData.values, offenseScore, defenseScore);
+  const roleProjection = firstDefined(sourceProspect.roleProjection, sourceProspect.scouting?.roleProjection, deriveRoleProjection(sourceProspect.position, sourceProspect.rank));
+  const riskLevel = firstDefined(sourceProspect.riskLevel, sourceProspect.scouting?.riskLevel, deriveRiskLevel(sourceProspect.rank, sourceProspect.classYear));
+  const sources = normalizeSources(sourceProspect, profileStats);
+  const autoInterpretation = buildAutoInterpretation(sourceProspect, traitData.values, pipelineStats.percentiles || {}, buildRiskFlags(sourceProspect, pipelineStats.percentiles || {}, traitData.values));
+  const modelBreakdown = buildModelBreakdown(
+    {
       ...sourceProspect,
-      height: measurements.value.height,
-      weight: measurements.value.weight,
-      wingspan: measurements.value.wingspan,
-      standingReach: measurements.value.standingReach,
-      measurements: measurements.value,
-      age,
-      measurementLine: measurements.value.measurementLine,
-      overallComposite,
-      offenseScore,
-      defenseScore,
-      riskLevel,
-      roleProjection,
-      traitScores: traitData.values,
-      summary: summary.value,
-      stats: stats.value,
-      projection: projection.value,
-      statCards: Array.isArray(pipelineStats.statCards) ? pipelineStats.statCards : [],
-      statPercentiles: pipelineStats.percentiles || {},
-      statStrengths: Array.isArray(pipelineStats.statStrengths) ? pipelineStats.statStrengths : [],
-      statWeaknesses: Array.isArray(pipelineStats.statWeaknesses) ? pipelineStats.statWeaknesses : [],
-      archetypeIndicators: Array.isArray(pipelineStats.archetypeIndicators) ? pipelineStats.archetypeIndicators : [],
-      comparisonInputs: pipelineStats.comparisonInputs || {},
-      autoInterpretation,
-      modelBreakdown,
-      historicalPrecedents: [],
-      historicalContext: null,
-      historicalSignals: null,
-      profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],
-      sources,
-      dataQuality: {
-        profile: realFieldCount >= 5 || pipelineStats.season ? 'Structured' : realFieldCount > 0 ? 'Mixed' : 'Derived',
-        traits: sourceLabel(traitData.isReal),
-        summary: sourceLabel(summary.isReal),
-        stats: sourceLabel(stats.isReal || !!pipelineStats.season),
-        projection: sourceLabel(projection.isReal),
-      },
-    };
-  });
+      rank: sourceProspect.rank,
+    },
+    traitData.values,
+    pipelineStats.percentiles || {},
+    autoInterpretation,
+  );
+
+  const realFieldCount = [
+    measurements.isReal,
+    traitData.isReal,
+    summary.isReal,
+    stats.isReal,
+    projection.isReal,
+    hasText(sourceProspect.age) || hasText(sourceProspect.bio?.age),
+    hasText(sourceProspect.roleProjection) || hasText(sourceProspect.scouting?.roleProjection),
+    hasText(sourceProspect.riskLevel) || hasText(sourceProspect.scouting?.riskLevel),
+    sources.length > 0,
+  ].filter(Boolean).length;
+
+  return {
+    ...sourceProspect,
+    height: measurements.value.height,
+    weight: measurements.value.weight,
+    wingspan: measurements.value.wingspan,
+    standingReach: measurements.value.standingReach,
+    measurements: measurements.value,
+    age,
+    measurementLine: measurements.value.measurementLine,
+    overallComposite,
+    offenseScore,
+    defenseScore,
+    riskLevel,
+    roleProjection,
+    traitScores: traitData.values,
+    summary: summary.value,
+    stats: stats.value,
+    projection: projection.value,
+    statCards: Array.isArray(pipelineStats.statCards) ? pipelineStats.statCards : [],
+    statPercentiles: pipelineStats.percentiles || {},
+    statStrengths: Array.isArray(pipelineStats.statStrengths) ? pipelineStats.statStrengths : [],
+    statWeaknesses: Array.isArray(pipelineStats.statWeaknesses) ? pipelineStats.statWeaknesses : [],
+    archetypeIndicators: Array.isArray(pipelineStats.archetypeIndicators) ? pipelineStats.archetypeIndicators : [],
+    comparisonInputs: pipelineStats.comparisonInputs || {},
+    autoInterpretation,
+    modelBreakdown,
+    historicalPrecedents: [],
+    historicalContext: null,
+    historicalSignals: null,
+    profileSections: ['Overview', 'Model', 'Stats', 'Comps', 'Notes'],
+    sources,
+    dataQuality: {
+      profile: realFieldCount >= 5 || pipelineStats.season ? 'Structured' : realFieldCount > 0 ? 'Mixed' : 'Derived',
+      traits: sourceLabel(traitData.isReal),
+      summary: sourceLabel(summary.isReal),
+      stats: sourceLabel(stats.isReal || !!pipelineStats.season),
+      projection: sourceLabel(projection.isReal),
+    },
+  };
 }
 
 export function createEmptyStructuredNote(playerId) {
