@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { TAG_OPTIONS } from '../lib/constants';
-import { buildHistoricalContext, buildHistoricalSignals, findHistoricalPrecedents } from '../lib/historicalComps';
 
 export function PlayerProfileSurface({
   prospect,
@@ -16,6 +15,7 @@ export function PlayerProfileSurface({
   onOpenHistorical,
 }) {
   const [activeSection, setActiveSection] = useState('Overview');
+  const [historicalHelpers, setHistoricalHelpers] = useState(null);
 
   if (!prospect) {
     return (
@@ -27,18 +27,44 @@ export function PlayerProfileSurface({
     );
   }
 
+  useEffect(() => {
+    let isMounted = true;
+
+    import('../lib/historicalComps').then((module) => {
+      if (!isMounted) return;
+      setHistoricalHelpers({
+        buildHistoricalContext: module.buildHistoricalContext,
+        buildHistoricalSignals: module.buildHistoricalSignals,
+        findHistoricalPrecedents: module.findHistoricalPrecedents,
+      });
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
   const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
-  const historicalPrecedents = useMemo(() => findHistoricalPrecedents(prospect), [prospect]);
+  const historicalPrecedents = useMemo(
+    () => (historicalHelpers ? historicalHelpers.findHistoricalPrecedents(prospect) : []),
+    [historicalHelpers, prospect],
+  );
   const comparisonAnchors = historicalPrecedents.slice(0, 3);
-  const historicalContext = useMemo(() => buildHistoricalContext(prospect), [prospect]);
-  const historicalSignals = useMemo(() => buildHistoricalSignals(historicalPrecedents, historicalContext), [historicalContext, historicalPrecedents]);
+  const historicalContext = useMemo(
+    () => (historicalHelpers ? historicalHelpers.buildHistoricalContext(prospect) : null),
+    [historicalHelpers, prospect],
+  );
+  const historicalSignals = useMemo(
+    () => (historicalHelpers && historicalContext ? historicalHelpers.buildHistoricalSignals(historicalPrecedents, historicalContext) : null),
+    [historicalContext, historicalHelpers, historicalPrecedents],
+  );
   const modelBreakdown = useMemo(() => ({
     ...prospect.modelBreakdown,
     historicalSignal: historicalSignals,
     interpretationCard: {
       ...prospect.modelBreakdown.interpretationCard,
-      historicalSignal: historicalSignals.summary,
+      historicalSignal: historicalSignals?.summary || 'Historical context loading.',
     },
   }), [historicalSignals, prospect.modelBreakdown]);
 
