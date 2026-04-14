@@ -10,6 +10,8 @@ const {
 } = require('./playerCoverageService');
 const { getPlayerSourceProvenance } = require('./provenanceService');
 const { getLatestIngestionStatus } = require('./ingestionStatusService');
+const { getResolutionQueue } = require('./resolutionQueueService');
+const { getFailedRecords } = require('./failedRecordsService');
 
 const DEBUG_PAGE_PATH = path.join(__dirname, 'platformDebugPage.html');
 
@@ -81,6 +83,18 @@ function routeRequest(request, response) {
       const source = requestUrl.searchParams.get('source') || null;
       const limit = requestUrl.searchParams.get('limit') || 10;
       return json(response, 200, getLatestIngestionStatus(db, { sourceName: source, limit }));
+    }
+
+    if (pathname === '/api/platform/resolution-queue') {
+      const source = requestUrl.searchParams.get('source') || 'NBA.com Draft Combine';
+      const limit = requestUrl.searchParams.get('limit') || 25;
+      return json(response, 200, getResolutionQueue(db, { sourceName: source, limit }));
+    }
+
+    if (pathname === '/api/platform/failed-records') {
+      const source = requestUrl.searchParams.get('source') || 'NBA.com Draft Combine';
+      const limit = requestUrl.searchParams.get('limit') || 25;
+      return json(response, 200, getFailedRecords(db, { sourceName: source, limit }));
     }
 
     return notFound(response);

@@ -166,6 +166,8 @@
             <button class="secondary" id="coveragePlayer">Player Coverage</button>
             <button class="secondary" id="provenancePlayer">Player Provenance</button>
             <button class="secondary" id="ingestionStatus">Ingestion Status</button>
+            <button class="secondary" id="resolutionQueue">Resolution Queue</button>
+            <button class="secondary" id="failedRecords">Failed Records</button>
           </div>
         </aside>
 
@@ -214,6 +216,24 @@
         if (source) params.set('source', source);
         if (limit) params.set('limit', limit);
         loadJson(`/api/platform/ingestion?${params.toString()}`);
+      });
+
+      document.getElementById('resolutionQueue').addEventListener('click', () => {
+        const source = document.getElementById('sourceName').value || 'NBA.com Draft Combine';
+        const limit = document.getElementById('limit').value;
+        const params = new URLSearchParams();
+        params.set('source', source);
+        if (limit) params.set('limit', limit);
+        loadJson(`/api/platform/resolution-queue?${params.toString()}`);
+      });
+
+      document.getElementById('failedRecords').addEventListener('click', () => {
+        const source = document.getElementById('sourceName').value || 'NBA.com Draft Combine';
+        const limit = document.getElementById('limit').value;
+        const params = new URLSearchParams();
+        params.set('source', source);
+        if (limit) params.set('limit', limit);
+        loadJson(`/api/platform/failed-records?${params.toString()}`);
       });
     </script>
   </body>
