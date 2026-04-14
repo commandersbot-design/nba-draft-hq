@@ -1,10 +1,6 @@
 import { CORE_TRAITS } from './constants';
-import authoredProfilesTier3 from '../data/authoredProfilesTier3.json';
-import authoredProfilesTier4 from '../data/authoredProfilesTier4';
-import authoredProfilesTier5 from '../data/authoredProfilesTier5';
 import measurementOverrides from '../data/measurementOverrides';
 import sourceDirectories from '../data/sourceDirectories';
-import profileStats from '../data/profileStats.json';
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -435,7 +431,7 @@ function deriveStats(prospect, offenseScore, defenseScore) {
   };
 }
 
-function normalizeStats(prospect, offenseScore, defenseScore) {
+function normalizeStats(prospect, offenseScore, defenseScore, profileStats = {}) {
   const pipelineStats = profileStats[prospect.id];
   const derivedStats = deriveStats(prospect, offenseScore, defenseScore);
   const suppliedStats = pipelineStats?.stats || prospect.stats;
@@ -521,7 +517,7 @@ function normalizeMeasurements(prospect, currentMeasurements = {}) {
   };
 }
 
-function normalizeSources(prospect) {
+function normalizeSources(prospect, profileStats = {}) {
   const pipelineStats = profileStats[prospect.id];
   const sources = [
     ...(Array.isArray(prospect.sources) ? prospect.sources : []),
@@ -560,13 +556,13 @@ function normalizeSources(prospect) {
  */
 export function enrichProspects(prospects, options = {}) {
   const currentMeasurements = options.currentMeasurements || {};
+  const profileStats = options.profileStats || {};
+  const authoredProfiles = options.authoredProfiles || {};
 
   return prospects.map((prospect) => {
     const authoredOverride = {
       ...(measurementOverrides[prospect.id] || {}),
-      ...(authoredProfilesTier3[prospect.id] || {}),
-      ...(authoredProfilesTier4[prospect.id] || {}),
-      ...(authoredProfilesTier5[prospect.id] || {}),
+      ...(authoredProfiles[prospect.id] || {}),
     };
     const sourceProspect = { ...prospect, ...authoredOverride };
     const pipelineStats = profileStats[prospect.id] || {};
@@ -585,11 +581,11 @@ export function enrichProspects(prospects, options = {}) {
       Math.round(traitData.values[7].score),
     );
     const summary = normalizeSummary(sourceProspect, traitData.values);
-    const stats = normalizeStats(sourceProspect, offenseScore, defenseScore);
+    const stats = normalizeStats(sourceProspect, offenseScore, defenseScore, profileStats);
     const projection = normalizeProjection(sourceProspect, traitData.values, offenseScore, defenseScore);
     const roleProjection = firstDefined(sourceProspect.roleProjection, sourceProspect.scouting?.roleProjection, deriveRoleProjection(sourceProspect.position, sourceProspect.rank));
     const riskLevel = firstDefined(sourceProspect.riskLevel, sourceProspect.scouting?.riskLevel, deriveRiskLevel(sourceProspect.rank, sourceProspect.classYear));
-    const sources = normalizeSources(sourceProspect);
+    const sources = normalizeSources(sourceProspect, profileStats);
     const autoInterpretation = buildAutoInterpretation(sourceProspect, traitData.values, pipelineStats.percentiles || {}, buildRiskFlags(sourceProspect, pipelineStats.percentiles || {}, traitData.values));
     const modelBreakdown = buildModelBreakdown(
       {

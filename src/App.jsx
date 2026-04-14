@@ -70,6 +70,8 @@ function App() {
   const [runtime, setRuntime] = useState({
     prospects: [],
     currentMeasurements: {},
+    profileStats: {},
+    authoredProfiles: {},
     enrichProspects: null,
     createEmptyStructuredNote: null,
     loaded: false,
@@ -108,11 +110,29 @@ function App() {
       import('./data/prospects.json'),
       import('./lib/prospectModel'),
       import('./data/currentMeasurements.json'),
-    ]).then(([prospectsModule, modelModule, currentMeasurementsModule]) => {
+      import('./data/profileStats.json'),
+      import('./data/authoredProfilesTier3.json'),
+      import('./data/authoredProfilesTier4'),
+      import('./data/authoredProfilesTier5'),
+    ]).then(([
+      prospectsModule,
+      modelModule,
+      currentMeasurementsModule,
+      profileStatsModule,
+      authoredProfilesTier3Module,
+      authoredProfilesTier4Module,
+      authoredProfilesTier5Module,
+    ]) => {
       if (!isMounted) return;
       setRuntime({
         prospects: prospectsModule.default || [],
         currentMeasurements: currentMeasurementsModule.default || {},
+        profileStats: profileStatsModule.default || {},
+        authoredProfiles: {
+          ...(authoredProfilesTier3Module.default || {}),
+          ...(authoredProfilesTier4Module.default || {}),
+          ...(authoredProfilesTier5Module.default || {}),
+        },
         enrichProspects: modelModule.enrichProspects,
         createEmptyStructuredNote: modelModule.createEmptyStructuredNote,
         loaded: true,
@@ -138,14 +158,26 @@ function App() {
 
   const enrichedProspects = useMemo(
     () => (runtime.enrichProspects
-      ? runtime.enrichProspects(runtime.prospects, { currentMeasurements: runtime.currentMeasurements })
+      ? runtime.enrichProspects(runtime.prospects, {
+        currentMeasurements: runtime.currentMeasurements,
+        profileStats: runtime.profileStats,
+        authoredProfiles: runtime.authoredProfiles,
+      })
       : []
     ).map((prospect) => ({
       ...prospect,
       tier: customTiers[prospect.id] || prospect.baseTier,
       tags: customTags[prospect.id] || prospect.tags || [],
     })),
-    [customTags, customTiers, runtime.currentMeasurements, runtime.enrichProspects, runtime.prospects],
+    [
+      customTags,
+      customTiers,
+      runtime.authoredProfiles,
+      runtime.currentMeasurements,
+      runtime.enrichProspects,
+      runtime.profileStats,
+      runtime.prospects,
+    ],
   );
 
   const prospectsById = useMemo(
