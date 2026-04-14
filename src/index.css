@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -127,12 +127,14 @@ button {
 .detail h3 {
   margin: 0;
   letter-spacing: -0.04em;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
 }
 
 .guide-brand h1 {
   font-size: clamp(2.8rem, 4vw, 4.9rem);
   font-weight: 900;
   line-height: .92;
+  text-transform: uppercase;
 }
 
 .guide-copy {
@@ -168,7 +170,7 @@ button {
 .mode-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .mode-tab,
@@ -179,12 +181,13 @@ button {
   border: 1px solid rgba(71, 85, 105, 0.72);
   background: linear-gradient(180deg, rgba(23, 32, 51, 0.92), rgba(11, 18, 32, 0.96));
   color: var(--text);
-  border-radius: 999px;
-  padding: 11px 15px;
+  border-radius: 12px;
+  padding: 12px 15px;
   font-size: 0.74rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   font-weight: 700;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+  text-transform: uppercase;
 }
 
 .mode-tab.is-active,
@@ -207,7 +210,7 @@ button {
 .eyebrow {
   margin: 0 0 8px;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.24em;
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--muted);
@@ -255,6 +258,7 @@ button {
   font-size: clamp(2.3rem, 3vw, 3.85rem);
   line-height: .94;
   margin-bottom: 18px;
+  text-transform: uppercase;
 }
 
 .hero p:not(.eyebrow) {
@@ -262,6 +266,20 @@ button {
   color: var(--text-soft);
   line-height: 1.75;
   font-size: 1rem;
+}
+
+.hero-copy {
+  position: relative;
+}
+
+.hero-copy::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 4px;
+  border-radius: 999px;
+  margin-top: 20px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
 }
 
 .hero-actions {
@@ -303,6 +321,8 @@ button {
   display: block;
   margin-bottom: 8px;
   font-size: 0.98rem;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  text-transform: uppercase;
 }
 
 .quick-start-card p {
@@ -342,7 +362,7 @@ button {
 .stat-label {
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
   font-size: 0.72rem;
   font-weight: 700;
 }
@@ -404,6 +424,8 @@ button {
 
 .discovery-card strong {
   font-size: 1rem;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  text-transform: uppercase;
 }
 
 .discovery-card span {
@@ -637,17 +659,17 @@ button {
 
 .rank-card {
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 18px;
   align-items: start;
   width: 100%;
   border: 1px solid rgba(71, 85, 105, 0.6);
-  border-radius: 24px;
+  border-radius: 18px;
   background:
     linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
     linear-gradient(180deg, rgba(15, 23, 42, 1), rgba(10, 16, 28, 1));
   color: inherit;
-  padding: 18px;
+  padding: 18px 18px 18px 20px;
   text-align: left;
   transition: border-color 140ms ease, background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
   position: relative;
@@ -658,7 +680,7 @@ button {
   content: '';
   position: absolute;
   inset: 0 auto 0 0;
-  width: 5px;
+  width: 6px;
   background: linear-gradient(180deg, rgba(16,185,129,.9), rgba(16,185,129,.2));
   opacity: .65;
 }
@@ -684,19 +706,24 @@ button {
   border-color: rgba(234, 179, 8, 0.4);
 }
 
+.rank-card.is-featured::before {
+  background: linear-gradient(180deg, rgba(234,179,8,.95), rgba(234,179,8,.25));
+}
+
 .rank-number {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 20px;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
   background: linear-gradient(180deg, rgba(16, 185, 129, 0.22), rgba(6, 46, 43, 0.82));
   border: 1px solid rgba(16, 185, 129, 0.26);
   color: #d1fae5;
   font-size: 1.25rem;
   font-weight: 900;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
 }
 
 .row-badge-featured {
@@ -720,7 +747,9 @@ button {
 }
 
 .rank-topline strong {
-  font-size: 1.05rem;
+  font-size: 1.18rem;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  text-transform: uppercase;
 }
 
 .rank-subline,
@@ -731,7 +760,10 @@ button {
 
 .rank-subline {
   margin-top: 4px;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
 }
 
 .rank-meta-line {
@@ -740,8 +772,9 @@ button {
   gap: 12px;
   margin-top: 10px;
   color: var(--muted);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .rank-description {
@@ -750,14 +783,17 @@ button {
   justify-content: space-between;
   gap: 12px;
   margin-top: 10px;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
 
 .rank-why {
   margin: 10px 0 0;
   color: var(--text-soft);
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 0.89rem;
+  max-width: 62ch;
 }
 
 .rank-why strong {
@@ -805,6 +841,8 @@ button {
   align-items: start;
   justify-content: space-between;
   gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(71,85,105,.36);
 }
 
 .detail-actions {
@@ -833,9 +871,10 @@ button {
 .detail-grid strong {
   display: block;
   color: var(--muted);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   font-size: 0.68rem;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 .detail-grid span,
@@ -862,8 +901,9 @@ button {
 .detail-section h4 {
   margin: 0 0 10px;
   font-size: 0.82rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.16em;
   color: var(--muted);
+  text-transform: uppercase;
 }
 
 .detail-section p {
@@ -907,7 +947,7 @@ button {
   gap: 8px;
   border: 1px solid var(--line-strong);
   background: var(--surface-3);
-  border-radius: 999px;
+  border-radius: 12px;
   padding: 9px 12px;
   color: var(--text-soft);
   font-size: 0.84rem;
@@ -1028,7 +1068,7 @@ button {
 .profile-spotlight {
   display: grid;
   gap: 16px;
-  padding: 18px;
+  padding: 22px;
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.98));
   border-radius: 22px;
@@ -1036,14 +1076,14 @@ button {
 
 .profile-hero-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
 }
 
 .profile-hero-card {
   border: 1px solid var(--line);
   background: var(--surface-2);
-  border-radius: 18px;
+  border-radius: 16px;
   padding: 16px;
 }
 
@@ -1054,8 +1094,9 @@ button {
 .profile-hero-card strong {
   display: block;
   margin-top: 10px;
-  font-size: 1.3rem;
+  font-size: 1.36rem;
   letter-spacing: -0.04em;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
 }
 
 .stat-card-grid {
@@ -1071,7 +1112,7 @@ button {
 .split-section {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .detail-section-emphasis {
@@ -1097,7 +1138,7 @@ button {
 .trait-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
 }
 
 .model-bar-stack {
@@ -1175,6 +1216,8 @@ button {
 .trait-topline strong {
   margin: 0;
   font-size: 0.95rem;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  text-transform: uppercase;
 }
 
 .trait-topline span {
@@ -1258,7 +1301,7 @@ button {
 .compare-sheet {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
 }
 
 .compare-sheet-3 {
@@ -1285,6 +1328,8 @@ button {
 .compare-column h4 {
   margin: 0 0 6px;
   font-size: 1rem;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  text-transform: uppercase;
 }
 
 .compare-column p {
@@ -1343,7 +1388,7 @@ button {
 .compare-row span:first-child {
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   font-size: 0.7rem;
   font-weight: 700;
 }
@@ -1532,11 +1577,12 @@ button {
 .rank-chip {
   display: inline-flex;
   align-items: center;
-  border-radius: 999px;
+  border-radius: 10px;
   padding: 7px 10px;
   font-size: 0.7rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .inline-action {
