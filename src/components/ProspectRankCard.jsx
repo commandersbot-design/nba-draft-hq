@@ -11,7 +11,9 @@ export function ProspectRankCard({
 }) {
   const topTrait = prospect.traitScores?.[0];
   const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
-  const shootingScore = prospect.traitScores.find((trait) => trait.name === 'Shooting Gravity')?.score;
+  const shootingScore = prospect.traitScores.find((trait) => trait.name === 'Shooting Pressure')?.score;
+  const topStrength = prospect.autoInterpretation?.strengths?.[0]?.label;
+  const topConcern = prospect.autoInterpretation?.weaknesses?.[0]?.label;
   const isFeatured = prospect.rank <= 5;
   const isPriority = prospect.rank <= 14;
   const hasVerifiedMeasurements = prospect.measurements?.sourceStatus === 'verified-current';
@@ -51,6 +53,7 @@ export function ProspectRankCard({
           <div className="rank-meta-line">
             {cardSettings.tier && <span>{prospect.tier}</span>}
             {cardSettings.roleProjection && <span>{prospect.roleProjection}</span>}
+            <span>{prospect.subArchetype}</span>
             <span>{prospect.overallComposite} overall</span>
             <span>{prospect.projection.stockBand}</span>
           </div>
@@ -59,9 +62,17 @@ export function ProspectRankCard({
         {(viewMode === 'peek' || viewMode === 'peruse' || viewMode === 'deep-dive') && (
           <div className="rank-description">
             {cardSettings.archetype && <span>{prospect.archetype}</span>}
+            <span>{prospect.subArchetype}</span>
             {cardSettings.traitSummary && (
               <span>{prospect.traitScores.slice(0, 2).map((trait) => `${trait.name.split(' ')[0]} ${trait.score}`).join(' / ')}</span>
             )}
+          </div>
+        )}
+
+        {viewMode !== 'skim' && (topStrength || topConcern) && (
+          <div className="rank-meta-line">
+            {topStrength && <span>Strength: {topStrength}</span>}
+            {topConcern && <span>Concern: {topConcern}</span>}
           </div>
         )}
 

@@ -1,12 +1,34 @@
 export const CORE_TRAITS = [
   'Advantage Creation',
-  'Decision Making',
-  'Passing Creation',
-  'Shooting Gravity',
-  'Off-Ball Value',
-  'Processing Speed',
+  'Advantage Conversion',
+  'Playmaking',
+  'Processing & Feel',
+  'Off-Ball Leverage',
+  'Shooting Pressure',
   'Scalability',
-  'Defensive Versatility',
+  'Defensive Range',
+];
+
+export const PRIMARY_ARCHETYPES = [
+  'Primary Creator',
+  'Secondary Creator',
+  'Connector',
+  'Play Finisher',
+  'Stretch Big',
+  'Defensive Specialist',
+];
+
+export const SIGNAL_GROUPS = [
+  'Core Overview',
+  'Pressure Creation',
+  'Scoring Efficiency',
+  'Playmaking Control',
+  'Spacing Impact',
+  'Defensive Disruption',
+  'Possession Value',
+  'Physical Translation',
+  'Impact Signals',
+  'Trajectory',
 ];
 
 export const TAG_OPTIONS = [

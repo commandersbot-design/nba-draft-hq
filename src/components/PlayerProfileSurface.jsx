@@ -17,16 +17,6 @@ export function PlayerProfileSurface({
   const [activeSection, setActiveSection] = useState('Overview');
   const [historicalHelpers, setHistoricalHelpers] = useState(null);
 
-  if (!prospect) {
-    return (
-      <div className="detail-empty">
-        <p className="eyebrow">Player Detail</p>
-        <h3>Select a prospect</h3>
-        <p>Open a row to inspect profile context, traits, projection, and notes.</p>
-      </div>
-    );
-  }
-
   useEffect(() => {
     let isMounted = true;
 
@@ -43,6 +33,16 @@ export function PlayerProfileSurface({
       isMounted = false;
     };
   }, []);
+
+  if (!prospect) {
+    return (
+      <div className="detail-empty">
+        <p className="eyebrow">Player Detail</p>
+        <h3>Select a prospect</h3>
+        <p>Open a row to inspect profile context, traits, projection, and notes.</p>
+      </div>
+    );
+  }
 
   const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
   const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
@@ -91,9 +91,9 @@ export function PlayerProfileSurface({
 
         <div className="profile-hero-grid">
           <div className="profile-hero-card profile-hero-card-main">
-            <span className="stat-label">Role Path</span>
-            <strong>{prospect.roleProjection}</strong>
-            <span className="stat-detail">{prospect.archetype}</span>
+            <span className="stat-label">Archetype</span>
+            <strong>{prospect.archetype}</strong>
+            <span className="stat-detail">{prospect.subArchetype}</span>
           </div>
           <div className="profile-hero-card">
             <span className="stat-label">Composite</span>
@@ -143,6 +143,7 @@ export function PlayerProfileSurface({
           ['Measurement Source', prospect.measurements?.sourceName || prospect.measurements?.sourceStatus || '--'],
           ['League', prospect.leagueType],
           ['Country', prospect.country],
+          ['Sub-Archetype', prospect.subArchetype],
           ['Offense', prospect.offenseScore],
           ['Defense', prospect.defenseScore],
           ['Top Trait', topTrait?.name || '--'],
@@ -282,10 +283,11 @@ export function PlayerProfileSurface({
             <div className="detail-section detail-section-emphasis">
               <h4>Interpretation Card</h4>
               <div className="projection-stack">
-                <div><strong>Swing skill:</strong> {modelBreakdown.interpretationCard.swingSkill}</div>
-                <div><strong>Summary:</strong> {modelBreakdown.interpretationCard.summarySentence}</div>
-                <div><strong>Historical read:</strong> {modelBreakdown.interpretationCard.historicalSignal}</div>
-              </div>
+              <div><strong>Swing skill:</strong> {modelBreakdown.interpretationCard.swingSkill}</div>
+              <div><strong>Summary:</strong> {modelBreakdown.interpretationCard.summarySentence}</div>
+              <div><strong>Why ranked here:</strong> {modelBreakdown.interpretationCard.whyRankedHere}</div>
+              <div><strong>Historical read:</strong> {modelBreakdown.interpretationCard.historicalSignal}</div>
+            </div>
             </div>
           </div>
 
@@ -303,6 +305,13 @@ export function PlayerProfileSurface({
                     <span>{trait.confidence}</span>
                   </div>
                   <p>{trait.note}</p>
+                  {prospect.traitEvidence?.[trait.name] && (
+                    <div className="trait-evidence">
+                      <div><strong>Strongest:</strong> {prospect.traitEvidence[trait.name].strongest}</div>
+                      <div><strong>Weakest:</strong> {prospect.traitEvidence[trait.name].weakest}</div>
+                      <div><strong>Confidence:</strong> {prospect.traitEvidence[trait.name].confidence}</div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -378,6 +387,24 @@ export function PlayerProfileSurface({
 
           <div className="detail-section">
             <h4>Statistical Context</h4>
+            <div className="signal-group-stack">
+              {(prospect.signalGroups || []).map((group) => (
+                <div key={group.key} className="detail-section detail-section-emphasis">
+                  <div className="detail-section-head">
+                    <h4>{group.label}</h4>
+                    <span className="section-meta">{group.items.length} signals</span>
+                  </div>
+                  <div className="detail-grid compact-grid">
+                    {group.items.map((item) => (
+                      <div key={`${group.key}-${item.label}`}>
+                        <strong>{item.label}</strong>
+                        <span>{item.value}{item.percentile ? ` · ${item.percentile}` : ''}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
             <div className="split-section">
               <div className="detail-grid compact-grid">
                 {Object.entries(prospect.stats.season).map(([label, value]) => (
