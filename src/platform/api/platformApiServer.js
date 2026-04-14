@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const { spawn } = require('child_process');
 const { URL } = require('url');
 const { openDatabase } = require('../../../scripts/lib/db');
 const { logError, logInfo } = require('../utils/logger');
@@ -67,6 +68,35 @@ function parsePlayerId(value) {
   return Number.isFinite(playerId) && playerId > 0 ? playerId : null;
 }
 
+function runLocalJob(scriptPath) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, [scriptPath], {
+      cwd: process.cwd(),
+      windowsHide: true,
+    });
+
+    let stdout = '';
+    let stderr = '';
+
+    child.stdout.on('data', (chunk) => {
+      stdout += chunk.toString();
+    });
+
+    child.stderr.on('data', (chunk) => {
+      stderr += chunk.toString();
+    });
+
+    child.on('error', reject);
+    child.on('close', (code) => {
+      resolve({
+        code,
+        stdout,
+        stderr,
+      });
+    });
+  });
+}
+
 async function routeRequest(request, response) {
   const requestUrl = new URL(request.url, 'http://127.0.0.1');
   const pathname = requestUrl.pathname;
@@ -101,6 +131,15 @@ async function routeRequest(request, response) {
       });
 
       return json(response, 200, payload);
+    }
+
+    if (pathname === '/api/platform/jobs/ingest-nba') {
+      if (request.method !== 'POST') {
+        return badRequest(response, 'Only POST is supported for job triggers.');
+      }
+
+      const result = await runLocalJob(path.join(process.cwd(), 'scripts', 'platform', 'run-nba-combine-connector.js'));
+      return json(response, result.code === 0 ? 200 : 500, result);
     }
 
     if (request.method !== 'GET') {

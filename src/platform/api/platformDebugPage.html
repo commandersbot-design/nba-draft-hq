@@ -121,6 +121,38 @@
         min-height: 48px;
       }
 
+      .queue {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .queue-item {
+        border: 1px solid var(--border);
+        background: var(--surface-alt);
+        padding: 12px;
+      }
+
+      .queue-item h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+      }
+
+      .queue-meta {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .candidate-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .candidate-button {
+        text-align: left;
+      }
+
       pre {
         margin: 0;
         padding: 16px;
@@ -206,6 +238,7 @@
 
             <div class="actions">
               <button class="secondary" id="createOverride">Create / Update Override</button>
+              <button class="secondary" id="rerunNba">Rerun NBA Combine</button>
             </div>
           </div>
         </aside>
@@ -213,6 +246,7 @@
         <section class="panel">
           <h2>Response</h2>
           <div id="status" class="status">Ready.</div>
+          <div id="queue" class="queue"></div>
           <pre id="output">{}</pre>
         </section>
       </div>
@@ -221,9 +255,84 @@
     <script>
       const statusEl = document.getElementById('status');
       const outputEl = document.getElementById('output');
+      const queueEl = document.getElementById('queue');
 
       function setStatus(message) {
         statusEl.textContent = message;
+      }
+
+      function clearQueue() {
+        queueEl.innerHTML = '';
+      }
+
+      function fillOverrideForm({ sourceName, externalId, playerId, notes }) {
+        document.getElementById('overrideSource').value = sourceName || '';
+        document.getElementById('overrideExternalId').value = externalId || '';
+        document.getElementById('overridePlayerId').value = playerId || '';
+        document.getElementById('overrideNotes').value = notes || '';
+        setStatus('Override form prefilled.');
+      }
+
+      function renderResolutionQueue(payload) {
+        clearQueue();
+        if (!Array.isArray(payload)) {
+          return;
+        }
+
+        payload.forEach((item) => {
+          const card = document.createElement('div');
+          card.className = 'queue-item';
+
+          const title = document.createElement('h3');
+          title.textContent = `${item.player_name} (${item.combine_year})`;
+          card.appendChild(title);
+
+          const meta = document.createElement('p');
+          meta.className = 'queue-meta';
+          meta.textContent = `${item.source_player_id} • ${item.position || 'Unknown position'} • ${item.height || 'Unknown height'} / ${item.wingspan || 'Unknown wingspan'}`;
+          card.appendChild(meta);
+
+          const useRaw = document.createElement('button');
+          useRaw.className = 'secondary candidate-button';
+          useRaw.textContent = 'Use External ID In Override Form';
+          useRaw.addEventListener('click', () => {
+            fillOverrideForm({
+              sourceName: item.source,
+              externalId: item.source_player_id,
+              playerId: '',
+              notes: `Manual override for ${item.player_name}`,
+            });
+          });
+          card.appendChild(useRaw);
+
+          const candidateList = document.createElement('div');
+          candidateList.className = 'candidate-list';
+
+          (item.candidates || []).forEach((candidate) => {
+            const button = document.createElement('button');
+            button.className = 'secondary candidate-button';
+            button.textContent = `Prefill ${candidate.name} (#${candidate.playerId}) score ${candidate.score}`;
+            button.addEventListener('click', () => {
+              fillOverrideForm({
+                sourceName: item.source,
+                externalId: item.source_player_id,
+                playerId: candidate.playerId,
+                notes: `Candidate prefill for ${item.player_name} -> ${candidate.name}`,
+              });
+            });
+            candidateList.appendChild(button);
+          });
+
+          if (!candidateList.children.length) {
+            const empty = document.createElement('p');
+            empty.className = 'queue-meta';
+            empty.textContent = 'No candidate suggestions available.';
+            candidateList.appendChild(empty);
+          }
+
+          card.appendChild(candidateList);
+          queueEl.appendChild(card);
+        });
       }
 
       async function loadJson(url) {
@@ -231,6 +340,11 @@
         const response = await fetch(url);
         const payload = await response.json();
         outputEl.textContent = JSON.stringify(payload, null, 2);
+        if (url.startsWith('/api/platform/resolution-queue')) {
+          renderResolutionQueue(payload);
+        } else {
+          clearQueue();
+        }
         setStatus(response.ok ? 'Loaded.' : `Request failed: ${response.status}`);
       }
 
@@ -245,6 +359,7 @@
         });
         const payload = await response.json();
         outputEl.textContent = JSON.stringify(payload, null, 2);
+        clearQueue();
         setStatus(response.ok ? 'Request completed.' : `Request failed: ${response.status}`);
       }
 
@@ -297,6 +412,10 @@
           confidenceOverride: document.getElementById('overrideConfidence').value,
           notes: document.getElementById('overrideNotes').value,
         });
+      });
+
+      document.getElementById('rerunNba').addEventListener('click', () => {
+        sendJson('/api/platform/jobs/ingest-nba', 'POST', {});
       });
     </script>
   </body>
