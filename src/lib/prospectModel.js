@@ -5,7 +5,6 @@ import authoredProfilesTier5 from '../data/authoredProfilesTier5';
 import measurementOverrides from '../data/measurementOverrides';
 import sourceDirectories from '../data/sourceDirectories';
 import profileStats from '../data/profileStats.json';
-import currentMeasurements from '../data/currentMeasurements.json';
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -484,7 +483,7 @@ function normalizeProjection(prospect, traits, offenseScore, defenseScore) {
   };
 }
 
-function normalizeMeasurements(prospect) {
+function normalizeMeasurements(prospect, currentMeasurements = {}) {
   const importedMeasurement = currentMeasurements[prospect.id];
   const supplied = prospect.measurements || {};
   const imported = importedMeasurement?.measurements || {};
@@ -559,7 +558,9 @@ function normalizeSources(prospect) {
  *
  * @param {Array<Record<string, any>>} prospects
  */
-export function enrichProspects(prospects) {
+export function enrichProspects(prospects, options = {}) {
+  const currentMeasurements = options.currentMeasurements || {};
+
   return prospects.map((prospect) => {
     const authoredOverride = {
       ...(measurementOverrides[prospect.id] || {}),
@@ -569,7 +570,7 @@ export function enrichProspects(prospects) {
     };
     const sourceProspect = { ...prospect, ...authoredOverride };
     const pipelineStats = profileStats[prospect.id] || {};
-    const measurements = normalizeMeasurements(sourceProspect);
+    const measurements = normalizeMeasurements(sourceProspect, currentMeasurements);
     const age = firstDefined(sourceProspect.age, sourceProspect.bio?.age, estimatedAge(sourceProspect.classYear, sourceProspect.rank));
     const traitData = normalizeTraitScores(sourceProspect);
     const overallComposite = firstDefined(sourceProspect.overallComposite, sourceProspect.scores?.overallComposite, compositeScore(traitData.values));

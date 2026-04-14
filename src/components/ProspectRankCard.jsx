@@ -14,6 +14,7 @@ export function ProspectRankCard({
   const shootingScore = prospect.traitScores.find((trait) => trait.name === 'Shooting Gravity')?.score;
   const isFeatured = prospect.rank <= 5;
   const isPriority = prospect.rank <= 14;
+  const hasVerifiedMeasurements = prospect.measurements?.sourceStatus === 'verified-current';
 
   return (
     <button
@@ -26,6 +27,7 @@ export function ProspectRankCard({
         <div className="rank-topline">
           <strong>{prospect.name}</strong>
           {isFeatured && <span className="row-badge row-badge-featured">Top Prospect</span>}
+          {hasVerifiedMeasurements && <span className="row-badge row-badge-verified">Verified meas.</span>}
           {isWatched && <span className="row-badge">Watchlist</span>}
           <span className={`risk-pill risk-${prospect.riskLevel.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{prospect.riskLevel}</span>
         </div>

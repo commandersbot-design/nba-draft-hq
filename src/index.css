@@ -611,6 +611,12 @@ button {
   border-color: rgba(212, 175, 55, 0.28);
 }
 
+.row-badge-verified {
+  color: #1d6e54;
+  background: rgba(51, 160, 120, 0.1);
+  border-color: rgba(51, 160, 120, 0.2);
+}
+
 .rank-topline,
 .prospect-title {
   display: flex;

@@ -67,7 +67,13 @@ function defaultCardSettings() {
 }
 
 function App() {
-  const [runtime, setRuntime] = useState({ prospects: [], enrichProspects: null, createEmptyStructuredNote: null, loaded: false });
+  const [runtime, setRuntime] = useState({
+    prospects: [],
+    currentMeasurements: {},
+    enrichProspects: null,
+    createEmptyStructuredNote: null,
+    loaded: false,
+  });
   const [appView, setAppView] = useState('big-board');
   const [viewMode, setViewMode] = useState('peek');
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
@@ -101,10 +107,12 @@ function App() {
     Promise.all([
       import('./data/prospects.json'),
       import('./lib/prospectModel'),
-    ]).then(([prospectsModule, modelModule]) => {
+      import('./data/currentMeasurements.json'),
+    ]).then(([prospectsModule, modelModule, currentMeasurementsModule]) => {
       if (!isMounted) return;
       setRuntime({
         prospects: prospectsModule.default || [],
+        currentMeasurements: currentMeasurementsModule.default || {},
         enrichProspects: modelModule.enrichProspects,
         createEmptyStructuredNote: modelModule.createEmptyStructuredNote,
         loaded: true,
@@ -129,12 +137,15 @@ function App() {
   }, [runtime.loaded, runtime.prospects, setMyBoard]);
 
   const enrichedProspects = useMemo(
-    () => (runtime.enrichProspects ? runtime.enrichProspects(runtime.prospects) : []).map((prospect) => ({
+    () => (runtime.enrichProspects
+      ? runtime.enrichProspects(runtime.prospects, { currentMeasurements: runtime.currentMeasurements })
+      : []
+    ).map((prospect) => ({
       ...prospect,
       tier: customTiers[prospect.id] || prospect.baseTier,
       tags: customTags[prospect.id] || prospect.tags || [],
     })),
-    [customTags, customTiers, runtime.enrichProspects, runtime.prospects],
+    [customTags, customTiers, runtime.currentMeasurements, runtime.enrichProspects, runtime.prospects],
   );
 
   const prospectsById = useMemo(
