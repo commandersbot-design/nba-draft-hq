@@ -12,6 +12,7 @@ const { getPlayerSourceProvenance } = require('./provenanceService');
 const { getLatestIngestionStatus } = require('./ingestionStatusService');
 const { getResolutionQueue } = require('./resolutionQueueService');
 const { getFailedRecords } = require('./failedRecordsService');
+const { upsertEntityResolutionOverride } = require('./overrideService');
 
 const DEBUG_PAGE_PATH = path.join(__dirname, 'platformDebugPage.html');
 
@@ -39,26 +40,73 @@ function badRequest(response, message) {
   json(response, 400, { error: message });
 }
 
+function readJsonBody(request) {
+  return new Promise((resolve, reject) => {
+    let raw = '';
+    request.on('data', (chunk) => {
+      raw += chunk;
+    });
+    request.on('end', () => {
+      if (!raw) {
+        resolve({});
+        return;
+      }
+
+      try {
+        resolve(JSON.parse(raw));
+      } catch (error) {
+        reject(new Error('Invalid JSON body.'));
+      }
+    });
+    request.on('error', reject);
+  });
+}
+
 function parsePlayerId(value) {
   const playerId = Number(value);
   return Number.isFinite(playerId) && playerId > 0 ? playerId : null;
 }
 
-function routeRequest(request, response) {
+async function routeRequest(request, response) {
   const requestUrl = new URL(request.url, 'http://127.0.0.1');
   const pathname = requestUrl.pathname;
 
-  if (request.method !== 'GET') {
-    return badRequest(response, 'Only GET is supported.');
-  }
-
   if (pathname === '/' || pathname === '/platform' || pathname === '/platform/debug') {
+    if (request.method !== 'GET') {
+      return badRequest(response, 'Only GET is supported.');
+    }
     return html(response, 200, fs.readFileSync(DEBUG_PAGE_PATH, 'utf8'));
   }
 
   const db = openDatabase();
 
   try {
+    if (pathname === '/api/platform/overrides') {
+      if (request.method !== 'POST') {
+        return badRequest(response, 'Only POST is supported for overrides.');
+      }
+
+      const body = await readJsonBody(request);
+      const playerId = parsePlayerId(body.playerId);
+      if (!playerId) {
+        return badRequest(response, 'Valid playerId is required.');
+      }
+
+      const payload = upsertEntityResolutionOverride(db, {
+        sourceName: body.sourceName,
+        externalId: body.externalId,
+        playerId,
+        confidenceOverride: Number(body.confidenceOverride ?? 1),
+        notes: body.notes || null,
+      });
+
+      return json(response, 200, payload);
+    }
+
+    if (request.method !== 'GET') {
+      return badRequest(response, 'Only GET is supported.');
+    }
+
     if (pathname === '/api/platform/coverage') {
       const playerId = parsePlayerId(requestUrl.searchParams.get('playerId'));
       if (playerId) {

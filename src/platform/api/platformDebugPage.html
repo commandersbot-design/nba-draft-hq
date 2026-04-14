@@ -93,6 +93,12 @@
         gap: 10px;
       }
 
+      .subpanel {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+      }
+
       button {
         padding: 11px 14px;
         border: 1px solid var(--border);
@@ -169,6 +175,39 @@
             <button class="secondary" id="resolutionQueue">Resolution Queue</button>
             <button class="secondary" id="failedRecords">Failed Records</button>
           </div>
+
+          <div class="subpanel">
+            <h2>Create Override</h2>
+
+            <div class="field">
+              <label for="overrideSource">Override Source</label>
+              <input id="overrideSource" type="text" value="NBA.com Draft Combine" />
+            </div>
+
+            <div class="field">
+              <label for="overrideExternalId">External ID</label>
+              <input id="overrideExternalId" type="text" placeholder="alex-sarr-2024" />
+            </div>
+
+            <div class="field">
+              <label for="overridePlayerId">Player ID</label>
+              <input id="overridePlayerId" type="number" value="1" min="1" />
+            </div>
+
+            <div class="field">
+              <label for="overrideConfidence">Confidence</label>
+              <input id="overrideConfidence" type="number" value="1" min="0" max="1" step="0.05" />
+            </div>
+
+            <div class="field">
+              <label for="overrideNotes">Notes</label>
+              <input id="overrideNotes" type="text" placeholder="Manual override from platform debug page" />
+            </div>
+
+            <div class="actions">
+              <button class="secondary" id="createOverride">Create / Update Override</button>
+            </div>
+          </div>
         </aside>
 
         <section class="panel">
@@ -193,6 +232,20 @@
         const payload = await response.json();
         outputEl.textContent = JSON.stringify(payload, null, 2);
         setStatus(response.ok ? 'Loaded.' : `Request failed: ${response.status}`);
+      }
+
+      async function sendJson(url, method, body) {
+        setStatus(`${method} ${url} ...`);
+        const response = await fetch(url, {
+          method,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+        const payload = await response.json();
+        outputEl.textContent = JSON.stringify(payload, null, 2);
+        setStatus(response.ok ? 'Request completed.' : `Request failed: ${response.status}`);
       }
 
       document.getElementById('coverageSummary').addEventListener('click', () => {
@@ -234,6 +287,16 @@
         params.set('source', source);
         if (limit) params.set('limit', limit);
         loadJson(`/api/platform/failed-records?${params.toString()}`);
+      });
+
+      document.getElementById('createOverride').addEventListener('click', () => {
+        sendJson('/api/platform/overrides', 'POST', {
+          sourceName: document.getElementById('overrideSource').value,
+          externalId: document.getElementById('overrideExternalId').value,
+          playerId: document.getElementById('overridePlayerId').value,
+          confidenceOverride: document.getElementById('overrideConfidence').value,
+          notes: document.getElementById('overrideNotes').value,
+        });
       });
     </script>
   </body>
