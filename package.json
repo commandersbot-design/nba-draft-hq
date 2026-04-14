@@ -35,7 +35,8 @@
     "inspect:coverage": "node scripts/platform/inspect-player-coverage.js",
     "inspect:provenance": "node scripts/platform/inspect-provenance.js",
     "inspect:ingestion": "node scripts/platform/inspect-ingestion-status.js",
-    "platform:api": "node scripts/platform/run-platform-api.js"
+    "platform:api": "node scripts/platform/run-platform-api.js",
+    "review:test-packets": "node --experimental-specifier-resolution=node scripts/review/generate-test-packets.mjs"
   },
   "dependencies": {
     "react": "^18.2.0",
