@@ -3,6 +3,10 @@ const path = require('path');
 const { CSV_IMPORT_SOURCES } = require('../../config/sourceCatalog');
 const { logInfo } = require('../../utils/logger');
 const { openDatabase } = require('../../../../scripts/lib/db');
+const { storeSourceRecord } = require('../../db/runStore');
+const { resolvePlayer } = require('../../normalization/entityResolver');
+const { ensureLeague, ensureSeason, ensurePlayerAlias } = require('../../normalization/cbbdNormalizer');
+const { upsertMeasurement, upsertDraftInfo, numericOrNull } = require('../../normalization/nbaCombineNormalizer');
 
 function parseCsvLine(line) {
   const result = [];
@@ -52,10 +56,129 @@ function parseCsvFile(filePath) {
   });
 }
 
-function numericOrNull(value) {
-  if (value === null || value === undefined || value === '') return null;
-  const numericValue = Number(value);
-  return Number.isFinite(numericValue) ? numericValue : null;
+function parseBirthDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) ? date : null;
+}
+
+function ageOnDraftNight(value, draftClass) {
+  const birthDate = parseBirthDate(value);
+  const draftYear = numericOrNull(draftClass);
+  if (!birthDate || !draftYear) return null;
+
+  const draftNight = new Date(Date.UTC(draftYear, 5, 26));
+  const ageMs = draftNight.getTime() - birthDate.getTime();
+  const years = ageMs / (365.25 * 24 * 60 * 60 * 1000);
+  return Number.isFinite(years) ? Number(years.toFixed(2)) : null;
+}
+
+function importCurrentMeasurements({ file }) {
+  if (!file) {
+    throw new Error('Current measurement import requires --file=<path>.');
+  }
+
+  const absolutePath = path.resolve(process.cwd(), file);
+  if (!fs.existsSync(absolutePath)) {
+    throw new Error(`CSV file not found: ${absolutePath}`);
+  }
+
+  const rows = parseCsvFile(absolutePath);
+  const db = openDatabase();
+  const leagueId = ensureLeague(db, {
+    slug: 'nba-draft',
+    name: 'NBA Draft',
+    level: 'pre-draft',
+    country: 'USA',
+  });
+
+  let written = 0;
+  let rejected = 0;
+
+  for (const row of rows) {
+    const draftClass = numericOrNull(row.draft_class);
+    const firstName = row.first_name || '';
+    const lastName = row.last_name || '';
+    const fullName = `${firstName} ${lastName}`.trim();
+    const schoolTeam = row.college || '';
+    const externalId = row.external_id || `${firstName}-${lastName}-${draftClass || 'draft'}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+    const resolution = resolvePlayer({
+      db,
+      playerName: fullName,
+      schoolTeam,
+      draftClass: draftClass || 2026,
+      sourceName: 'Combine / Pro Day Export',
+      externalId,
+    });
+
+    if (!resolution.playerId) {
+      rejected += 1;
+      continue;
+    }
+
+    const seasonId = ensureSeason(db, {
+      seasonKey: `${(draftClass || 2026) - 1}-${String(draftClass || 2026).slice(-2)}`,
+      leagueId,
+    });
+
+    const sourceRecordId = storeSourceRecord(db, {
+      sourceName: 'Combine / Pro Day Export',
+      reliabilityTier: 'manual',
+      entityType: 'manual-current-measurement',
+      externalId,
+      snapshotPath: absolutePath,
+      payload: row,
+      complianceMode: 'manual-csv',
+    });
+
+    ensurePlayerAlias(db, {
+      playerId: resolution.playerId,
+      alias: externalId,
+      source: 'Combine / Pro Day Export',
+    });
+
+    upsertMeasurement(db, {
+      playerId: resolution.playerId,
+      seasonId,
+      measurement: {
+        height: numericOrNull(row.height_inches),
+        weight: numericOrNull(row.weight_lbs),
+        wingspan: numericOrNull(row.wingspan_inches),
+        standingReach: numericOrNull(row.standing_reach_inches),
+        maxVertical: numericOrNull(row.max_vertical),
+        laneAgility: numericOrNull(row.lane_agility),
+        shuttleRun: numericOrNull(row.shuttle_run),
+        sprint: numericOrNull(row.sprint || row.three_quarter_sprint),
+      },
+      sourceRecordId,
+    });
+
+    upsertDraftInfo(db, {
+      playerId: resolution.playerId,
+      measurement: {
+        combineYear: draftClass,
+        age: ageOnDraftNight(row.birth_date, draftClass),
+      },
+      sourceRecordId,
+    });
+
+    written += 1;
+  }
+
+  db.close();
+
+  return {
+    status: rejected > 0 ? 'partial' : 'success',
+    sourceName: 'Combine / Pro Day Export',
+    recordsSeen: rows.length,
+    recordsWritten: written,
+    recordsRejected: rejected,
+    message: `Imported ${written} current measurement rows from ${path.basename(absolutePath)}.`,
+    metadata: {
+      file: absolutePath,
+    },
+  };
 }
 
 function importEntityOverrides({ file }) {
@@ -140,6 +263,10 @@ async function importVendorCsv({ source, file }) {
     return importEntityOverrides({ file });
   }
 
+  if (config.importType === 'measurements') {
+    return importCurrentMeasurements({ file });
+  }
+
   return {
     status: 'blocked',
     sourceName: config.displayName,
@@ -153,6 +280,7 @@ async function importVendorCsv({ source, file }) {
 module.exports = {
   CSV_IMPORT_SOURCES,
   importVendorCsv,
+  importCurrentMeasurements,
   parseCsvFile,
   parseCsvLine,
 };

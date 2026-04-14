@@ -297,4 +297,6 @@ module.exports = {
   feetInchesToNumber,
   normalizeNbaCombineRow,
   numericOrNull,
+  upsertDraftInfo,
+  upsertMeasurement,
 };
