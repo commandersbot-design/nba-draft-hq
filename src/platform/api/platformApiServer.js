@@ -8,6 +8,7 @@ const { logError, logInfo } = require('../utils/logger');
 const {
   getMeasurementCoverageSummary,
   getPlayerMeasurementCoverage,
+  getOverrideValidation,
 } = require('./playerCoverageService');
 const { getPlayerSourceProvenance } = require('./provenanceService');
 const { getLatestIngestionStatus } = require('./ingestionStatusService');
@@ -148,6 +149,15 @@ async function routeRequest(request, response) {
 
     if (pathname === '/api/platform/coverage') {
       const playerId = parsePlayerId(requestUrl.searchParams.get('playerId'));
+      const sourceName = requestUrl.searchParams.get('sourceName') || '';
+      const externalId = requestUrl.searchParams.get('externalId') || '';
+
+      if (sourceName && externalId) {
+        const payload = getOverrideValidation(db, { sourceName, externalId });
+        if (!payload) return notFound(response, 'Validation target not found.');
+        return json(response, 200, payload);
+      }
+
       if (playerId) {
         const payload = getPlayerMeasurementCoverage(db, playerId);
         if (!payload) return notFound(response, 'Player not found.');

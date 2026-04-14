@@ -256,6 +256,7 @@
       const statusEl = document.getElementById('status');
       const outputEl = document.getElementById('output');
       const queueEl = document.getElementById('queue');
+      let currentValidationTarget = null;
 
       function setStatus(message) {
         statusEl.textContent = message;
@@ -270,7 +271,23 @@
         document.getElementById('overrideExternalId').value = externalId || '';
         document.getElementById('overridePlayerId').value = playerId || '';
         document.getElementById('overrideNotes').value = notes || '';
+        currentValidationTarget = {
+          sourceName: sourceName || '',
+          externalId: externalId || '',
+        };
         setStatus('Override form prefilled.');
+      }
+
+      async function runValidationCheck() {
+        if (!currentValidationTarget || !currentValidationTarget.sourceName || !currentValidationTarget.externalId) {
+          setStatus('No validation target selected.');
+          return;
+        }
+
+        const params = new URLSearchParams();
+        params.set('sourceName', currentValidationTarget.sourceName);
+        params.set('externalId', currentValidationTarget.externalId);
+        await loadJson(`/api/platform/coverage?${params.toString()}`);
       }
 
       function renderResolutionQueue(payload) {
@@ -361,6 +378,7 @@
         outputEl.textContent = JSON.stringify(payload, null, 2);
         clearQueue();
         setStatus(response.ok ? 'Request completed.' : `Request failed: ${response.status}`);
+        return payload;
       }
 
       document.getElementById('coverageSummary').addEventListener('click', () => {
@@ -405,17 +423,22 @@
       });
 
       document.getElementById('createOverride').addEventListener('click', () => {
+        currentValidationTarget = {
+          sourceName: document.getElementById('overrideSource').value,
+          externalId: document.getElementById('overrideExternalId').value,
+        };
+
         sendJson('/api/platform/overrides', 'POST', {
           sourceName: document.getElementById('overrideSource').value,
           externalId: document.getElementById('overrideExternalId').value,
           playerId: document.getElementById('overridePlayerId').value,
           confidenceOverride: document.getElementById('overrideConfidence').value,
           notes: document.getElementById('overrideNotes').value,
-        });
+        }).then(() => runValidationCheck());
       });
 
       document.getElementById('rerunNba').addEventListener('click', () => {
-        sendJson('/api/platform/jobs/ingest-nba', 'POST', {});
+        sendJson('/api/platform/jobs/ingest-nba', 'POST', {}).then(() => runValidationCheck());
       });
     </script>
   </body>
