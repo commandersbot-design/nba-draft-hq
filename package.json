@@ -31,7 +31,9 @@
     "ingest:historical:full": "npm run ingest:historical:bootstrap && npm run ingest:historical:sources && npm run ingest:historical:derived && npm run ingest:historical:derived:export && npm run ingest:historical:coverage:export && npm run ingest:historical:sources:status",
     "import:csv": "node scripts/platform/import-vendor-csv.js",
     "validate:data": "node scripts/platform/validate-platform-data.js",
-    "inspect:coverage": "node scripts/platform/inspect-player-coverage.js"
+    "inspect:coverage": "node scripts/platform/inspect-player-coverage.js",
+    "inspect:provenance": "node scripts/platform/inspect-provenance.js",
+    "inspect:ingestion": "node scripts/platform/inspect-ingestion-status.js"
   },
   "dependencies": {
     "react": "^18.2.0",

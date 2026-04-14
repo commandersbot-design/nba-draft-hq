@@ -142,6 +142,7 @@ const CSV_IMPORT_SOURCES = {
   torvik: { displayName: 'Torvik Export', complianceMode: 'manual-csv', importType: 'advanced_stats' },
   combine: { displayName: 'Combine / Pro Day Export', complianceMode: 'manual-csv', importType: 'measurements' },
   scouting: { displayName: 'Hand Curated Scouting Export', complianceMode: 'manual-csv', importType: 'scouting_reports' },
+  entity_overrides: { displayName: 'Entity Resolution Overrides', complianceMode: 'manual-csv', importType: 'entity_resolution_overrides' },
 };
 
 const FUTURE_STUB_SOURCES = {
