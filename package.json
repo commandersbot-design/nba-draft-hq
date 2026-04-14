@@ -33,7 +33,8 @@
     "validate:data": "node scripts/platform/validate-platform-data.js",
     "inspect:coverage": "node scripts/platform/inspect-player-coverage.js",
     "inspect:provenance": "node scripts/platform/inspect-provenance.js",
-    "inspect:ingestion": "node scripts/platform/inspect-ingestion-status.js"
+    "inspect:ingestion": "node scripts/platform/inspect-ingestion-status.js",
+    "platform:api": "node scripts/platform/run-platform-api.js"
   },
   "dependencies": {
     "react": "^18.2.0",

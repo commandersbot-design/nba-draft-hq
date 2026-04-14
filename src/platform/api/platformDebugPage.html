@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prospera Platform Debug</title>
+    <style>
+      :root {
+        --bg: #f7f5f2;
+        --surface: #ffffff;
+        --surface-alt: #f1eee8;
+        --border: #e7e1d8;
+        --text: #111111;
+        --muted: #6b6b6b;
+        --accent: #d4af37;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: linear-gradient(180deg, #f7f5f2 0%, #f2eee7 100%);
+        color: var(--text);
+      }
+
+      .shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 20px 48px;
+      }
+
+      .hero {
+        margin-bottom: 24px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.82);
+        backdrop-filter: blur(10px);
+      }
+
+      .hero h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 20px;
+      }
+
+      .panel {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        padding: 18px;
+      }
+
+      .panel h2 {
+        margin: 0 0 14px;
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .field {
+        margin-bottom: 12px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .field input, .field select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        background: var(--surface-alt);
+        color: var(--text);
+      }
+
+      .actions {
+        display: grid;
+        gap: 10px;
+      }
+
+      button {
+        padding: 11px 14px;
+        border: 1px solid var(--border);
+        background: var(--text);
+        color: #fff;
+        cursor: pointer;
+      }
+
+      button.secondary {
+        background: var(--surface-alt);
+        color: var(--text);
+      }
+
+      .status {
+        margin-bottom: 12px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        background: #fffdf8;
+        color: var(--muted);
+        min-height: 48px;
+      }
+
+      pre {
+        margin: 0;
+        padding: 16px;
+        background: #171717;
+        color: #f3f0e8;
+        overflow: auto;
+        min-height: 420px;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <section class="hero">
+        <h1>Prospera Platform Debug</h1>
+        <p>Local-only inspection surface for ingestion status, coverage, and provenance. This sits outside the main app on purpose.</p>
+      </section>
+
+      <div class="grid">
+        <aside class="panel">
+          <h2>Queries</h2>
+
+          <div class="field">
+            <label for="playerId">Player ID</label>
+            <input id="playerId" type="number" value="1" min="1" />
+          </div>
+
+          <div class="field">
+            <label for="sourceName">Source</label>
+            <select id="sourceName">
+              <option value="">All Sources</option>
+              <option value="CollegeBasketballData">CollegeBasketballData</option>
+              <option value="NBA.com Draft Combine">NBA.com Draft Combine</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="limit">Run Limit</label>
+            <input id="limit" type="number" value="10" min="1" />
+          </div>
+
+          <div class="actions">
+            <button id="coverageSummary">Coverage Summary</button>
+            <button class="secondary" id="coveragePlayer">Player Coverage</button>
+            <button class="secondary" id="provenancePlayer">Player Provenance</button>
+            <button class="secondary" id="ingestionStatus">Ingestion Status</button>
+          </div>
+        </aside>
+
+        <section class="panel">
+          <h2>Response</h2>
+          <div id="status" class="status">Ready.</div>
+          <pre id="output">{}</pre>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const statusEl = document.getElementById('status');
+      const outputEl = document.getElementById('output');
+
+      function setStatus(message) {
+        statusEl.textContent = message;
+      }
+
+      async function loadJson(url) {
+        setStatus(`Loading ${url} ...`);
+        const response = await fetch(url);
+        const payload = await response.json();
+        outputEl.textContent = JSON.stringify(payload, null, 2);
+        setStatus(response.ok ? 'Loaded.' : `Request failed: ${response.status}`);
+      }
+
+      document.getElementById('coverageSummary').addEventListener('click', () => {
+        loadJson('/api/platform/coverage');
+      });
+
+      document.getElementById('coveragePlayer').addEventListener('click', () => {
+        const playerId = document.getElementById('playerId').value;
+        loadJson(`/api/platform/coverage?playerId=${encodeURIComponent(playerId)}`);
+      });
+
+      document.getElementById('provenancePlayer').addEventListener('click', () => {
+        const playerId = document.getElementById('playerId').value;
+        loadJson(`/api/platform/provenance/${encodeURIComponent(playerId)}`);
+      });
+
+      document.getElementById('ingestionStatus').addEventListener('click', () => {
+        const source = document.getElementById('sourceName').value;
+        const limit = document.getElementById('limit').value;
+        const params = new URLSearchParams();
+        if (source) params.set('source', source);
+        if (limit) params.set('limit', limit);
+        loadJson(`/api/platform/ingestion?${params.toString()}`);
+      });
+    </script>
+  </body>
+</html>
