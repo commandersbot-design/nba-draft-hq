@@ -1,0 +1,3002 @@
+{
+  "1": {
+    "playerId": 1,
+    "name": "AJ Dybantsa",
+    "college": "BYU",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 210,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.196Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 19.41,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "2": {
+    "playerId": 2,
+    "name": "Darryn Peterson",
+    "college": "Kansas",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 200,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.205Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 18.82,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "3": {
+    "playerId": 3,
+    "name": "Cameron Boozer",
+    "college": "Duke",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 240,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.213Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 18.94,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "4": {
+    "playerId": 4,
+    "name": "Caleb Wilson",
+    "college": "North Carolina",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 215,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.220Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "5": {
+    "playerId": 5,
+    "name": "Kingston Flemings",
+    "college": "Houston",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 190,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.228Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "6": {
+    "playerId": 6,
+    "name": "Jayden Quaintance",
+    "college": "Kentucky",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 82,
+      "weightLbs": 240,
+      "wingspanInches": 88,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.235Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "7": {
+    "playerId": 7,
+    "name": "Koa Peat",
+    "college": "Arizona",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 220,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.242Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "8": {
+    "playerId": 8,
+    "name": "Yaxel Lendeborg",
+    "college": "Michigan",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 230,
+      "wingspanInches": 85,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.250Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "9": {
+    "playerId": 9,
+    "name": "Hannes Steinbach",
+    "college": "Washington",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 245,
+      "wingspanInches": 87,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.257Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "10": {
+    "playerId": 10,
+    "name": "Mikel Brown",
+    "college": "Louisville",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 185,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.265Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 19.38,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "11": {
+    "playerId": 11,
+    "name": "Keaton Wagler",
+    "college": "Illinois",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 200,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.273Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "12": {
+    "playerId": 12,
+    "name": "Thomas Haugh",
+    "college": "Florida",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 235,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.278Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "13": {
+    "playerId": 13,
+    "name": "Labaron Philon",
+    "college": "Alabama",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 75,
+      "weightLbs": 180,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.284Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "14": {
+    "playerId": 14,
+    "name": "Patrick Ngongba",
+    "college": "Duke",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 250,
+      "wingspanInches": 90,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.289Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "15": {
+    "playerId": 15,
+    "name": "Cameron Carr",
+    "college": "Baylor",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 205,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.294Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "16": {
+    "playerId": 16,
+    "name": "Darius Acuff",
+    "college": "Arkansas",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 73,
+      "weightLbs": 175,
+      "wingspanInches": 76,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.299Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.28,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "17": {
+    "playerId": 17,
+    "name": "Braylon Mullins",
+    "college": "UConn",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 195,
+      "wingspanInches": 79,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.304Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "18": {
+    "playerId": 18,
+    "name": "Nate Ament",
+    "college": "Tennessee",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 215,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.309Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "19": {
+    "playerId": 19,
+    "name": "Joshua Jefferson",
+    "college": "Iowa St.",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 220,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.314Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "20": {
+    "playerId": 20,
+    "name": "Christian Anderson",
+    "college": "Texas Tech",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 74,
+      "weightLbs": 180,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.320Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "21": {
+    "playerId": 21,
+    "name": "Benett Stirtz",
+    "college": "Iowa",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 190,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.326Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "22": {
+    "playerId": 22,
+    "name": "Amari Allen",
+    "college": "Alabama",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 210,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.332Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "23": {
+    "playerId": 23,
+    "name": "Chris Cenac",
+    "college": "Houston",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 240,
+      "wingspanInches": 88,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.338Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 19.79,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "24": {
+    "playerId": 24,
+    "name": "Neoklis Avdalas",
+    "college": "Virginia Tech",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 205,
+      "wingspanInches": 81,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.343Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "25": {
+    "playerId": 25,
+    "name": "Tounde Yessoufou",
+    "college": "Baylor",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 215,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.347Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 18.89,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "26": {
+    "playerId": 26,
+    "name": "Karim Lopez",
+    "college": "Juventut Badalona",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 220,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.351Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "27": {
+    "playerId": 27,
+    "name": "Tyler Tanner",
+    "college": "Vanderbilt",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 71,
+      "weightLbs": 170,
+      "wingspanInches": 74,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.356Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "28": {
+    "playerId": 28,
+    "name": "Henri Veesaar",
+    "college": "North Carolina",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 84,
+      "weightLbs": 240,
+      "wingspanInches": 88,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.360Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "29": {
+    "playerId": 29,
+    "name": "Dash Daniels",
+    "college": "Melbourne United",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 200,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.364Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 19.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "30": {
+    "playerId": 30,
+    "name": "Killyan Toure",
+    "college": "Iowa St.",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 75,
+      "weightLbs": 185,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.370Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "31": {
+    "playerId": 31,
+    "name": "Dailyn Swain",
+    "college": "Texas",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 210,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.376Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "32": {
+    "playerId": 32,
+    "name": "Aday Mara",
+    "college": "Michigan",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 87,
+      "weightLbs": 260,
+      "wingspanInches": 92,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.381Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "33": {
+    "playerId": 33,
+    "name": "Brayden Burries",
+    "college": "Arizona",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 195,
+      "wingspanInches": 79,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.387Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.23,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "34": {
+    "playerId": 34,
+    "name": "Alex Karaban",
+    "college": "UConn",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 220,
+      "wingspanInches": 81,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.394Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "35": {
+    "playerId": 35,
+    "name": "Richie Saunders",
+    "college": "BYU",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 205,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.399Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 25.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "36": {
+    "playerId": 36,
+    "name": "Isaiah Evans",
+    "college": "Duke",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 200,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.403Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "37": {
+    "playerId": 37,
+    "name": "Meleek Thomas",
+    "college": "Arkansas",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 200,
+      "wingspanInches": 79,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.408Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.02,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "38": {
+    "playerId": 38,
+    "name": "Braden Smith",
+    "college": "Purdue",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 72,
+      "weightLbs": 175,
+      "wingspanInches": 74,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.413Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "39": {
+    "playerId": 39,
+    "name": "Ryan Conwell",
+    "college": "Louisville",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 195,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.418Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "40": {
+    "playerId": 40,
+    "name": "JoJo Tugler",
+    "college": "Houston",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 230,
+      "wingspanInches": 85,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.423Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "41": {
+    "playerId": 41,
+    "name": "Sergio De Larrea",
+    "college": "Valencia",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 190,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.431Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "42": {
+    "playerId": 42,
+    "name": "Dame Sarr",
+    "college": "Duke",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 210,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.438Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "43": {
+    "playerId": 43,
+    "name": "Tarris Reed",
+    "college": "UConn",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 250,
+      "wingspanInches": 89,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.443Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "44": {
+    "playerId": 44,
+    "name": "Alex Condon",
+    "college": "Florida",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 245,
+      "wingspanInches": 88,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.448Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "45": {
+    "playerId": 45,
+    "name": "Tamin Lipsey",
+    "college": "Iowa State",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 73,
+      "weightLbs": 180,
+      "wingspanInches": 76,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.456Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "46": {
+    "playerId": 46,
+    "name": "Milan Momcilovic",
+    "college": "Iowa St.",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 220,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.463Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "47": {
+    "playerId": 47,
+    "name": "Milos Uzan",
+    "college": "Houston",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 75,
+      "weightLbs": 185,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.472Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "48": {
+    "playerId": 48,
+    "name": "Johann Grunloh",
+    "college": "Virginia",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 250,
+      "wingspanInches": 89,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.479Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "49": {
+    "playerId": 49,
+    "name": "Nate Bittle",
+    "college": "Oregon",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 245,
+      "wingspanInches": 88,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.487Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "50": {
+    "playerId": 50,
+    "name": "Flory Bidunga",
+    "college": "Kansas",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 230,
+      "wingspanInches": 85,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.494Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "51": {
+    "playerId": 51,
+    "name": "Braden Huff",
+    "college": "Gonzaga",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 82,
+      "weightLbs": 240,
+      "wingspanInches": 87,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.503Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "52": {
+    "playerId": 52,
+    "name": "Morez Johnson",
+    "college": "Michigan",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 235,
+      "wingspanInches": 86,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.512Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "53": {
+    "playerId": 53,
+    "name": "Bruce Thornton",
+    "college": "Ohio State",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 74,
+      "weightLbs": 185,
+      "wingspanInches": 76,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.519Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "54": {
+    "playerId": 54,
+    "name": "Juke Harris",
+    "college": "Wake Forest",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 210,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.528Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "55": {
+    "playerId": 55,
+    "name": "Jaden Bradley",
+    "college": "Arizona",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 75,
+      "weightLbs": 190,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.536Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "56": {
+    "playerId": 56,
+    "name": "Zuby Ejiofor",
+    "college": "St. Johns",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 235,
+      "wingspanInches": 86,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.544Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "57": {
+    "playerId": 57,
+    "name": "Silas DeMary",
+    "college": "Connecticut",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 195,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.557Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "58": {
+    "playerId": 58,
+    "name": "MoMo Faye",
+    "college": "Paris Basketball",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 240,
+      "wingspanInches": 87,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.564Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "59": {
+    "playerId": 59,
+    "name": "Adam Atamna",
+    "college": "ASVEL",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 190,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.572Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 19.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "60": {
+    "playerId": 60,
+    "name": "Tomislav Ivisic",
+    "college": "Illinois",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 85,
+      "weightLbs": 260,
+      "wingspanInches": 90,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.580Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "61": {
+    "playerId": 61,
+    "name": "Kwame Evans",
+    "college": "Oregon",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 215,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.586Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "62": {
+    "playerId": 62,
+    "name": "Paul McNeil",
+    "college": "NC State",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 200,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.594Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "63": {
+    "playerId": 63,
+    "name": "Pryce Sandfort",
+    "college": "Nebraska",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 205,
+      "wingspanInches": 81,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.604Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "64": {
+    "playerId": 64,
+    "name": "Nolan Winter",
+    "college": "Wisconsin",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 84,
+      "weightLbs": 245,
+      "wingspanInches": 88,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.611Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "65": {
+    "playerId": 65,
+    "name": "JT Toppin",
+    "college": "Texas Tech",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 225,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.618Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "66": {
+    "playerId": 66,
+    "name": "D'Shayne Montgomery",
+    "college": "Dayton",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 200,
+      "wingspanInches": 79,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.638Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "67": {
+    "playerId": 67,
+    "name": "Blue Cain",
+    "college": "Georgia",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 195,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.645Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "68": {
+    "playerId": 68,
+    "name": "Andrej Stojakovic",
+    "college": "Illinois",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 210,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.650Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "69": {
+    "playerId": 69,
+    "name": "Tahaad Pettiford",
+    "college": "Auburn",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 72,
+      "weightLbs": 170,
+      "wingspanInches": 74,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.655Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 21.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "70": {
+    "playerId": 70,
+    "name": "K.J. Lewis",
+    "college": "Georgetown",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 195,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.659Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "71": {
+    "playerId": 71,
+    "name": "Baba Miller",
+    "college": "Cincinnati",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 220,
+      "wingspanInches": 86,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.664Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "72": {
+    "playerId": 72,
+    "name": "Ja'Kobi Gillespie",
+    "college": "Tennessee",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 73,
+      "weightLbs": 180,
+      "wingspanInches": 76,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.669Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.84,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "73": {
+    "playerId": 73,
+    "name": "Motiejus Krivas",
+    "college": "Arizona",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 86,
+      "weightLbs": 270,
+      "wingspanInches": 92,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.674Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "74": {
+    "playerId": 74,
+    "name": "Tyler Bilodeau",
+    "college": "UCLA",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 230,
+      "wingspanInches": 85,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.678Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "75": {
+    "playerId": 75,
+    "name": "Darrion Williams",
+    "college": "NC State",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 215,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.685Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "76": {
+    "playerId": 76,
+    "name": "Nick Martinelli",
+    "college": "Northwestern",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 205,
+      "wingspanInches": 81,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.689Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "77": {
+    "playerId": 77,
+    "name": "Cade Tyson",
+    "college": "Minnesota",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 210,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.695Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "78": {
+    "playerId": 78,
+    "name": "William Kyle",
+    "college": "Syracuse",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 240,
+      "wingspanInches": 87,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.700Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "79": {
+    "playerId": 79,
+    "name": "Keyshawn Hall",
+    "college": "Auburn",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 230,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.706Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "80": {
+    "playerId": 80,
+    "name": "Emanuel Sharp",
+    "college": "Houston",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 75,
+      "weightLbs": 190,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.711Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "81": {
+    "playerId": 81,
+    "name": "Nick Boyd",
+    "college": "Wisconsin",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 75,
+      "weightLbs": 185,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.716Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 26.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "82": {
+    "playerId": 82,
+    "name": "Donovan Dent",
+    "college": "UCLA",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 74,
+      "weightLbs": 180,
+      "wingspanInches": 76,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.720Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "83": {
+    "playerId": 83,
+    "name": "Maliq Brown",
+    "college": "Duke",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 235,
+      "wingspanInches": 86,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.724Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "84": {
+    "playerId": 84,
+    "name": "Trey Kaufman-Renn",
+    "college": "Purdue",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 245,
+      "wingspanInches": 88,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.728Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "85": {
+    "playerId": 85,
+    "name": "Tucker DeVries",
+    "college": "Indiana",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 215,
+      "wingspanInches": 82,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.732Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "86": {
+    "playerId": 86,
+    "name": "Joshua Dix",
+    "college": "Creighton",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 78,
+      "weightLbs": 200,
+      "wingspanInches": 80,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.736Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "87": {
+    "playerId": 87,
+    "name": "John Blackwell",
+    "college": "Wisconsin",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 195,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.740Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "88": {
+    "playerId": 88,
+    "name": "Otega Oweh",
+    "college": "Kentucky",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 210,
+      "wingspanInches": 81,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.744Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "89": {
+    "playerId": 89,
+    "name": "Elijah Mahi",
+    "college": "Santa Clara",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 220,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.750Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "90": {
+    "playerId": 90,
+    "name": "Lamar Wilkerson",
+    "college": "Indiana",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 200,
+      "wingspanInches": 79,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.754Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 25.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "91": {
+    "playerId": 91,
+    "name": "Kylan Boswell",
+    "college": "Illinois",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 74,
+      "weightLbs": 180,
+      "wingspanInches": 76,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.758Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "92": {
+    "playerId": 92,
+    "name": "Dillon Mitchell",
+    "college": "St. John's",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 80,
+      "weightLbs": 215,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.764Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "93": {
+    "playerId": 93,
+    "name": "Ben Henshall",
+    "college": "Perth Wildcats",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 77,
+      "weightLbs": 195,
+      "wingspanInches": 78,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.770Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "94": {
+    "playerId": 94,
+    "name": "Trevon Brazile",
+    "college": "Arkansas",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 230,
+      "wingspanInches": 86,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.776Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "95": {
+    "playerId": 95,
+    "name": "Michael Ruzic",
+    "college": "Joventut",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 250,
+      "wingspanInches": 89,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.781Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 20.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "96": {
+    "playerId": 96,
+    "name": "Michael Ajayi",
+    "college": "Butler",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 215,
+      "wingspanInches": 83,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.787Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "97": {
+    "playerId": 97,
+    "name": "Oscar Cluff",
+    "college": "Purdue",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 83,
+      "weightLbs": 255,
+      "wingspanInches": 89,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.792Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 25.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "98": {
+    "playerId": 98,
+    "name": "Jordan Burks",
+    "college": "UCF",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 81,
+      "weightLbs": 220,
+      "wingspanInches": 84,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.799Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 22.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "99": {
+    "playerId": 99,
+    "name": "Fletcher Loyer",
+    "college": "Purdue",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 76,
+      "weightLbs": 185,
+      "wingspanInches": 77,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.804Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 23.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  },
+  "100": {
+    "playerId": 100,
+    "name": "Bryce Hopkins",
+    "college": "St. John's",
+    "draftClass": 2026,
+    "measurements": {
+      "heightInches": 79,
+      "weightLbs": 230,
+      "wingspanInches": 85,
+      "standingReachInches": null,
+      "maxVertical": null,
+      "laneAgility": null,
+      "shuttleRun": null,
+      "threeQuarterSprint": null
+    },
+    "source": {
+      "name": "Combine / Pro Day Export",
+      "snapshotPath": "C:\\Users\\danud\\Desktop\\nba-draft-hq-git\\imports\\players_2026_final.csv",
+      "lastUpdated": "2026-04-14T01:27:43.809Z"
+    },
+    "draftInfo": {
+      "draftYear": 2026,
+      "ageOnDraftNight": 24.44,
+      "combineInvite": true
+    },
+    "coverage": {
+      "measurementStatus": "verified-current",
+      "wingspanStatus": "verified"
+    }
+  }
+}

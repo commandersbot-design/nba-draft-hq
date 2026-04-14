@@ -5,6 +5,7 @@ import authoredProfilesTier5 from '../data/authoredProfilesTier5';
 import measurementOverrides from '../data/measurementOverrides';
 import sourceDirectories from '../data/sourceDirectories';
 import profileStats from '../data/profileStats.json';
+import currentMeasurements from '../data/currentMeasurements.json';
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -484,13 +485,25 @@ function normalizeProjection(prospect, traits, offenseScore, defenseScore) {
 }
 
 function normalizeMeasurements(prospect) {
+  const importedMeasurement = currentMeasurements[prospect.id];
   const supplied = prospect.measurements || {};
-  const height = firstDefined(supplied.height, prospect.height, '--');
-  const weight = firstDefined(supplied.weight, prospect.weight, '');
-  const wingspan = firstDefined(supplied.wingspan, prospect.wingspan, '');
-  const standingReach = firstDefined(supplied.standingReach, prospect.standingReach, '');
-  const sourceStatus = firstDefined(supplied.sourceStatus, '');
-  const wingspanStatus = firstDefined(supplied.wingspanStatus, wingspan ? 'provided' : '');
+  const imported = importedMeasurement?.measurements || {};
+  const height = firstDefined(supplied.height, imported.heightInches ? `${Math.floor(imported.heightInches / 12)}-${imported.heightInches % 12}` : null, prospect.height, '--');
+  const weight = firstDefined(supplied.weight, imported.weightLbs, prospect.weight, '');
+  const wingspan = firstDefined(supplied.wingspan, imported.wingspanInches ? `${Math.floor(imported.wingspanInches / 12)}-${imported.wingspanInches % 12}` : null, prospect.wingspan, '');
+  const standingReach = firstDefined(supplied.standingReach, imported.standingReachInches ? `${Math.floor(imported.standingReachInches / 12)}-${imported.standingReachInches % 12}` : null, prospect.standingReach, '');
+  const sourceStatus = firstDefined(
+    supplied.sourceStatus,
+    importedMeasurement?.coverage?.measurementStatus,
+    '',
+  );
+  const wingspanStatus = firstDefined(
+    supplied.wingspanStatus,
+    importedMeasurement?.coverage?.wingspanStatus,
+    wingspan ? 'provided' : '',
+  );
+  const sourceName = firstDefined(importedMeasurement?.source?.name, supplied.sourceName, '');
+  const sourceLastUpdated = firstDefined(importedMeasurement?.source?.lastUpdated, supplied.sourceLastUpdated, '');
   const measurementLine = `${height}${weight ? ` / ${weight} lb` : ''}${wingspan ? ` / ${wingspan} ws` : ''}`;
 
   return {
@@ -501,9 +514,11 @@ function normalizeMeasurements(prospect) {
       standingReach,
       sourceStatus,
       wingspanStatus,
+      sourceName,
+      sourceLastUpdated,
       measurementLine,
     },
-    isReal: !!prospect.measurements || hasText(height) || hasText(weight) || hasText(wingspan),
+    isReal: !!prospect.measurements || !!importedMeasurement || hasText(height) || hasText(weight) || hasText(wingspan),
   };
 }
 
@@ -603,6 +618,7 @@ export function enrichProspects(prospects) {
       weight: measurements.value.weight,
       wingspan: measurements.value.wingspan,
       standingReach: measurements.value.standingReach,
+      measurements: measurements.value,
       age,
       measurementLine: measurements.value.measurementLine,
       overallComposite,

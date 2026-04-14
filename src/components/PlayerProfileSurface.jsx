@@ -114,6 +114,7 @@ export function PlayerProfileSurface({
         {[
           ['Age', prospect.age],
           ['Measurements', prospect.measurementLine],
+          ['Measurement Source', prospect.measurements?.sourceName || prospect.measurements?.sourceStatus || '--'],
           ['League', prospect.leagueType],
           ['Country', prospect.country],
           ['Offense', prospect.offenseScore],
@@ -165,6 +166,9 @@ export function PlayerProfileSurface({
                   ['Weight', prospect.weight ? `${prospect.weight} lb` : '--'],
                   ['Wingspan', prospect.wingspan || '--'],
                   ['Measurement Status', prospect.measurements?.sourceStatus || 'profile-listed'],
+                  ['Wingspan Status', prospect.measurements?.wingspanStatus || '--'],
+                  ['Verified Source', prospect.measurements?.sourceName || '--'],
+                  ['Updated', prospect.measurements?.sourceLastUpdated ? new Date(prospect.measurements.sourceLastUpdated).toLocaleDateString() : '--'],
                 ].map(([label, value]) => (
                   <div key={label}>
                     <strong>{label}</strong>
