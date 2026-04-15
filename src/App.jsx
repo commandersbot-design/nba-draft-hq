@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react';
 import { MyBoardBuilder } from './components/MyBoardBuilder';
 import { NotesWorkspace } from './components/NotesWorkspace';
 import { ProspectRankCard } from './components/ProspectRankCard';
@@ -94,6 +94,8 @@ function App() {
   const [sortBy, setSortBy] = useState('rank');
   const [watchlistOnly, setWatchlistOnly] = useState(false);
   const [activeId, setActiveId] = useState(null);
+  const [profileStageOpen, setProfileStageOpen] = useState(false);
+  const profileStageRef = useRef(null);
 
   const [watchlist, setWatchlist] = useLocalStorageState(watchlistKey, []);
   const [compareIds, setCompareIds] = useLocalStorageState(compareKey, []);
@@ -340,6 +342,15 @@ function App() {
     [notes],
   );
 
+  const openProfileStage = (id) => {
+    setActiveId(id);
+    setAppView('big-board');
+    setProfileStageOpen(true);
+    requestAnimationFrame(() => {
+      profileStageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  };
+
   const toggleWatchlist = (id) => {
     setWatchlist((current) => (
       current.includes(id) ? current.filter((entry) => entry !== id) : [...current, id]
@@ -357,6 +368,7 @@ function App() {
       if (next.length >= 2) {
         setAppView('compare');
       }
+      setProfileStageOpen(false);
       setActiveId(id);
       return next;
     });
@@ -940,7 +952,7 @@ function App() {
                     viewMode={viewMode}
                     isWatched={watchlist.includes(prospect.id)}
                     cardSettings={cardSettings}
-                    onSelect={setActiveId}
+                    onSelect={openProfileStage}
                     onToggleWatchlist={toggleWatchlist}
                     onToggleCompare={toggleCompare}
                     onQuickNote={createNote}
@@ -1006,33 +1018,40 @@ function App() {
             </Suspense>
           )}
           
-          <section className="profile-stage panel">
-            <div className="section-head">
-              <div>
-                <p className="eyebrow">Player Detail</p>
-                <h3>{activeProspect ? `${activeProspect.name} dossier` : 'Select a prospect'}</h3>
+          {profileStageOpen && (
+            <section ref={profileStageRef} className="profile-stage panel">
+              <div className="section-head">
+                <div>
+                  <p className="eyebrow">Player Detail</p>
+                  <h3>{activeProspect ? `${activeProspect.name} dossier` : 'Select a prospect'}</h3>
+                </div>
+                <div className="detail-actions">
+                  {activeProspect && (
+                    <p className="section-meta">Opened from the board as the primary review stage.</p>
+                  )}
+                  <button type="button" className="inline-action" onClick={() => setProfileStageOpen(false)}>
+                    Close Profile
+                  </button>
+                </div>
               </div>
-              {activeProspect && (
-                <p className="section-meta">Selected from the board for full-profile review, not a side preview rail.</p>
-              )}
-            </div>
 
-            <Suspense fallback={<div className="detail-empty"><p className="eyebrow">Player Detail</p><h3>Loading profile</h3><p>Preparing scouting context.</p></div>}>
-              <PlayerProfileSurface
-                prospect={activeProspect}
-                notes={activeProspectNotes}
-                viewMode={viewMode}
-                isWatched={!!activeProspect && watchlist.includes(activeProspect.id)}
-                isCompared={!!activeProspect && compareIds.includes(activeProspect.id)}
-                onToggleWatchlist={toggleWatchlist}
-                onToggleCompare={toggleCompare}
-                onUpdateTier={updateTier}
-                onToggleTag={toggleTag}
-                onCreateNote={createNote}
-                onOpenHistorical={openHistorical}
-              />
-            </Suspense>
-          </section>
+              <Suspense fallback={<div className="detail-empty"><p className="eyebrow">Player Detail</p><h3>Loading profile</h3><p>Preparing scouting context.</p></div>}>
+                <PlayerProfileSurface
+                  prospect={activeProspect}
+                  notes={activeProspectNotes}
+                  viewMode={viewMode}
+                  isWatched={!!activeProspect && watchlist.includes(activeProspect.id)}
+                  isCompared={!!activeProspect && compareIds.includes(activeProspect.id)}
+                  onToggleWatchlist={toggleWatchlist}
+                  onToggleCompare={toggleCompare}
+                  onUpdateTier={updateTier}
+                  onToggleTag={toggleTag}
+                  onCreateNote={createNote}
+                  onOpenHistorical={openHistorical}
+                />
+              </Suspense>
+            </section>
+          )}
 
           <section className="workflow panel workflow-stage">
             <div className="section-head">
@@ -1053,7 +1072,7 @@ function App() {
                   ) : (
                     watchlistProspects.map((prospect) => (
                       <div key={prospect.id} className="chip">
-                        <button type="button" className="chip-label" onClick={() => setActiveId(prospect.id)}>
+                        <button type="button" className="chip-label" onClick={() => openProfileStage(prospect.id)}>
                           #{prospect.rank} {prospect.name}
                         </button>
                         <button type="button" aria-label={`Remove ${prospect.name} from watchlist`} onClick={() => toggleWatchlist(prospect.id)}>
