@@ -351,10 +351,14 @@ function App() {
       if (current.includes(id)) {
         return current.filter((entry) => entry !== id);
       }
-      if (current.length >= 3) {
-        return [...current.slice(1), id];
+      const next = current.length >= 3
+        ? [...current.slice(1), id]
+        : [...current, id];
+      if (next.length >= 2) {
+        setAppView('compare');
       }
-      return [...current, id];
+      setActiveId(id);
+      return next;
     });
   };
 
@@ -1001,26 +1005,36 @@ function App() {
               />
             </Suspense>
           )}
-        </section>
+          
+          <section className="profile-stage panel">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Player Detail</p>
+                <h3>{activeProspect ? `${activeProspect.name} dossier` : 'Select a prospect'}</h3>
+              </div>
+              {activeProspect && (
+                <p className="section-meta">Selected from the board for full-profile review, not a side preview rail.</p>
+              )}
+            </div>
 
-        <aside className="detail panel">
-          <Suspense fallback={<div className="detail-empty"><p className="eyebrow">Player Detail</p><h3>Loading profile</h3><p>Preparing scouting context.</p></div>}>
-            <PlayerProfileSurface
-              prospect={activeProspect}
-              notes={activeProspectNotes}
-              viewMode={viewMode}
-              isWatched={!!activeProspect && watchlist.includes(activeProspect.id)}
-              isCompared={!!activeProspect && compareIds.includes(activeProspect.id)}
-              onToggleWatchlist={toggleWatchlist}
-              onToggleCompare={toggleCompare}
-              onUpdateTier={updateTier}
-              onToggleTag={toggleTag}
-              onCreateNote={createNote}
-              onOpenHistorical={openHistorical}
-            />
-          </Suspense>
+            <Suspense fallback={<div className="detail-empty"><p className="eyebrow">Player Detail</p><h3>Loading profile</h3><p>Preparing scouting context.</p></div>}>
+              <PlayerProfileSurface
+                prospect={activeProspect}
+                notes={activeProspectNotes}
+                viewMode={viewMode}
+                isWatched={!!activeProspect && watchlist.includes(activeProspect.id)}
+                isCompared={!!activeProspect && compareIds.includes(activeProspect.id)}
+                onToggleWatchlist={toggleWatchlist}
+                onToggleCompare={toggleCompare}
+                onUpdateTier={updateTier}
+                onToggleTag={toggleTag}
+                onCreateNote={createNote}
+                onOpenHistorical={openHistorical}
+              />
+            </Suspense>
+          </section>
 
-          <section className="workflow panel side-workflow">
+          <section className="workflow panel workflow-stage">
             <div className="section-head">
               <div>
                 <p className="eyebrow">Workflow</p>
@@ -1028,49 +1042,58 @@ function App() {
               </div>
             </div>
 
-            <div className="workflow-column">
-              <div className="workflow-head">
-                <h4>Watchlist</h4>
+            <div className="workflow-stage-grid">
+              <div className="workflow-column">
+                <div className="workflow-head">
+                  <h4>Watchlist</h4>
+                </div>
+                <div className="chip-list">
+                  {watchlistProspects.length === 0 ? (
+                    <p className="empty-state">Save players here as your shortlist takes shape.</p>
+                  ) : (
+                    watchlistProspects.map((prospect) => (
+                      <div key={prospect.id} className="chip">
+                        <button type="button" className="chip-label" onClick={() => setActiveId(prospect.id)}>
+                          #{prospect.rank} {prospect.name}
+                        </button>
+                        <button type="button" aria-label={`Remove ${prospect.name} from watchlist`} onClick={() => toggleWatchlist(prospect.id)}>
+                          x
+                        </button>
+                      </div>
+                    ))
+                  )}
+                </div>
               </div>
-              <div className="chip-list">
-                {watchlistProspects.length === 0 ? (
-                  <p className="empty-state">Save players here as your shortlist takes shape.</p>
-                ) : (
-                  watchlistProspects.map((prospect) => (
-                    <div key={prospect.id} className="chip">
-                      <button type="button" className="chip-label" onClick={() => setActiveId(prospect.id)}>
-                        #{prospect.rank} {prospect.name}
-                      </button>
-                      <button type="button" aria-label={`Remove ${prospect.name} from watchlist`} onClick={() => toggleWatchlist(prospect.id)}>
-                        x
-                      </button>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
 
-            <div className="workflow-column compare-stack">
-              <div className="workflow-head">
-                <h4>Compare Queue</h4>
-                <button type="button" className="text-button" onClick={() => setCompareIds([])}>Clear</button>
-              </div>
-              <div className="compare-list">
-                {compareProspects.length === 0 ? (
-                  <p className="empty-state">Queue players here to compare them side by side.</p>
-                ) : (
-                  compareProspects.map((prospect) => (
-                    <button key={prospect.id} type="button" className="compare-card" onClick={() => { setActiveId(prospect.id); setAppView('compare'); }}>
-                      <strong>#{prospect.rank} {prospect.name}</strong>
-                      <span>{prospect.position} - {prospect.school}</span>
-                      <span>{prospect.tier}</span>
-                    </button>
-                  ))
-                )}
+              <div className="workflow-column compare-stack">
+                <div className="workflow-head">
+                  <h4>Compare Queue</h4>
+                  <div className="detail-actions">
+                    {compareProspects.length >= 2 && (
+                      <button type="button" className="inline-action is-active" onClick={() => setAppView('compare')}>
+                        Open Compare
+                      </button>
+                    )}
+                    <button type="button" className="text-button" onClick={() => setCompareIds([])}>Clear</button>
+                  </div>
+                </div>
+                <div className="compare-list">
+                  {compareProspects.length === 0 ? (
+                    <p className="empty-state">Queue players here to compare them side by side.</p>
+                  ) : (
+                    compareProspects.map((prospect) => (
+                      <button key={prospect.id} type="button" className="compare-card" onClick={() => { setActiveId(prospect.id); setAppView('compare'); }}>
+                        <strong>#{prospect.rank} {prospect.name}</strong>
+                        <span>{prospect.position} - {prospect.school}</span>
+                        <span>{prospect.tier}</span>
+                      </button>
+                    ))
+                  )}
+                </div>
               </div>
             </div>
           </section>
-        </aside>
+        </section>
       </main>
     </div>
   );

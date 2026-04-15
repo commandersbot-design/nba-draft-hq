@@ -225,7 +225,7 @@ button {
 
 .guide-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.34fr) minmax(380px, 0.7fr);
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
@@ -820,14 +820,10 @@ button {
 }
 
 .detail,
-.side-workflow {
+.side-workflow,
+.profile-stage,
+.workflow-stage {
   padding: 26px;
-}
-
-.detail.panel {
-  position: sticky;
-  top: 18px;
-  align-self: start;
 }
 
 .detail-empty {
@@ -966,6 +962,12 @@ button {
 
 .compare-stack {
   margin-top: 16px;
+}
+
+.workflow-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .compare-card {
@@ -1904,6 +1906,7 @@ button {
   .split-section,
   .trait-grid,
   .compare-sheet,
+  .workflow-stage-grid,
   .note-grid,
   .my-board-row {
     grid-template-columns: 1fr;
