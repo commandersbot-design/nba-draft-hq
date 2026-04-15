@@ -650,121 +650,110 @@ function App() {
 
       <main className="guide-layout">
         <section className="left-column">
-          <section className="hero panel">
-            <div className="hero-copy">
-              <p className="eyebrow">Draft Workspace</p>
-              <h2>One place to scan, compare, and decide.</h2>
-              <p>
-                Prospera is built to move from first look to real evaluation fast. Open the board,
-                narrow the field, compare tradeoffs, and keep context attached to every player.
-              </p>
-              <div className="hero-actions">
-                <button
-                  type="button"
-                  className={`action-button${watchlistOnly ? ' is-active' : ''}`}
-                  onClick={() => setWatchlistOnly((current) => !current)}
-                >
-                  {watchlistOnly ? 'Showing watchlist only' : 'Focus watchlist'}
-                </button>
-                <button type="button" className="text-button" onClick={clearFilters}>
-                  Reset filters
-                </button>
-              </div>
-            </div>
-
-            <div className="hero-stats">
-              <article className="stat-card">
-                <span className="stat-label">Board</span>
-                <strong>{enrichedProspects.length}</strong>
-                <span className="stat-detail">Prospects with structured profile layers</span>
-              </article>
-              <article className="stat-card">
-                <span className="stat-label">Saved Players</span>
-                <strong>{watchlist.length}</strong>
-                <span className="stat-detail">Shortlist built directly from the board</span>
-              </article>
-              <article className="stat-card">
-                <span className="stat-label">Compare Queue</span>
-                <strong>{compareIds.length}</strong>
-                <span className="stat-detail">Prospects ready for side-by-side evaluation</span>
-              </article>
-              <article className="stat-card">
-                <span className="stat-label">Tagged</span>
-                <strong>{taggedCount}</strong>
-                <span className="stat-detail">Workflow labels attached across the board</span>
-              </article>
-              <article className="stat-card">
-                <span className="stat-label">International</span>
-                <strong>{internationalCount}</strong>
-                <span className="stat-detail">Prospects outside the standard NCAA pipeline</span>
-              </article>
-            </div>
-          </section>
-
-          <section className="discovery-strip panel">
-            <div className="section-head">
-              <div>
-                <p className="eyebrow">Start Exploring</p>
-                <h3>Open the board with one click</h3>
-              </div>
-              <p className="section-meta">Fast paths for new users who do not want to configure filters first.</p>
-            </div>
-            <div className="discovery-grid">
-              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('top')}>
-                <strong>Top of board</strong>
-                <span>Start with the lottery group and the clearest top-end names.</span>
-              </button>
-              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('guards')}>
-                <strong>Lead guards</strong>
-                <span>Jump straight into initiators, creators, and shot-driving guard profiles.</span>
-              </button>
-              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('wings')}>
-                <strong>Wings</strong>
-                <span>Scan the strongest wing archetypes and scalable lineup fits.</span>
-              </button>
-              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('bigs')}>
-                <strong>Bigs</strong>
-                <span>Focus on rim, frontcourt versatility, and defensive translation.</span>
-              </button>
-              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('international')}>
-                <strong>International</strong>
-                <span>See global prospects and non-NCAA development paths quickly.</span>
-              </button>
-              <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('upside')}>
-                <strong>Upside swings</strong>
-                <span>Filter toward longer-term bets and more volatile ceiling plays.</span>
-              </button>
-            </div>
-          </section>
-
-          {isFirstRun && (
-            <section className="quick-start panel">
-              <div className="section-head">
-                <div>
-                  <p className="eyebrow">Quick Start</p>
-                  <h3>Start here</h3>
+          <section className="board-command panel">
+            <div className="board-command-shell">
+              <div className="board-command-main">
+                <div className="hero-copy">
+                  <p className="eyebrow">Draft Workspace</p>
+                  <h2>One place to scan, compare, and decide.</h2>
+                  <p>
+                    Prospera is built to move from first look to real evaluation fast. Open the board,
+                    narrow the field, compare tradeoffs, and keep context attached to every player.
+                  </p>
+                  <div className="hero-actions">
+                    <button
+                      type="button"
+                      className={`action-button${watchlistOnly ? ' is-active' : ''}`}
+                      onClick={() => setWatchlistOnly((current) => !current)}
+                    >
+                      {watchlistOnly ? 'Showing watchlist only' : 'Focus watchlist'}
+                    </button>
+                    <button type="button" className="text-button" onClick={clearFilters}>
+                      Reset filters
+                    </button>
+                  </div>
                 </div>
-                <p className="section-meta">Three steps to make the board useful immediately.</p>
-              </div>
-              <div className="quick-start-grid">
-                <article className="quick-start-card">
-                  <strong>1. Scan the board</strong>
-                  <p>Use `Summary` first. It gives enough context to understand who matters without opening every profile.</p>
-                </article>
-                <article className="quick-start-card">
-                  <strong>2. Save a shortlist</strong>
-                  <p>Add players to the watchlist as you go. That turns the board into a working shortlist instead of a static ranking.</p>
-                </article>
-                <article className="quick-start-card">
-                  <strong>3. Compare before ranking</strong>
-                  <p>Queue two or three players, compare them, then move to `My Board` once the tradeoffs are clearer.</p>
-                </article>
-              </div>
-            </section>
-          )}
 
-          <section className="controls panel">
-            <div className="control-block search-block">
+                <div className="hero-stats">
+                  <article className="stat-card">
+                    <span className="stat-label">Board</span>
+                    <strong>{enrichedProspects.length}</strong>
+                    <span className="stat-detail">Prospects with structured profile layers</span>
+                  </article>
+                  <article className="stat-card">
+                    <span className="stat-label">Saved Players</span>
+                    <strong>{watchlist.length}</strong>
+                    <span className="stat-detail">Shortlist built directly from the board</span>
+                  </article>
+                  <article className="stat-card">
+                    <span className="stat-label">Compare Queue</span>
+                    <strong>{compareIds.length}</strong>
+                    <span className="stat-detail">Prospects ready for side-by-side evaluation</span>
+                  </article>
+                  <article className="stat-card">
+                    <span className="stat-label">Tagged</span>
+                    <strong>{taggedCount}</strong>
+                    <span className="stat-detail">Workflow labels attached across the board</span>
+                  </article>
+                  <article className="stat-card">
+                    <span className="stat-label">International</span>
+                    <strong>{internationalCount}</strong>
+                    <span className="stat-detail">Prospects outside the standard NCAA pipeline</span>
+                  </article>
+                </div>
+              </div>
+
+              <div className="board-command-side">
+                <div className="section-head section-head-compact">
+                  <div>
+                    <p className="eyebrow">Start Exploring</p>
+                    <h3>Open the board with one click</h3>
+                  </div>
+                </div>
+                <div className="discovery-grid">
+                  <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('top')}>
+                    <strong>Top of board</strong>
+                    <span>Start with the clearest top-end names and the first decision tier.</span>
+                  </button>
+                  <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('guards')}>
+                    <strong>Lead guards</strong>
+                    <span>Jump straight into initiators, creators, and shot-driving profiles.</span>
+                  </button>
+                  <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('wings')}>
+                    <strong>Wings</strong>
+                    <span>Scan the strongest scalable wing archetypes and lineup fits.</span>
+                  </button>
+                  <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('bigs')}>
+                    <strong>Bigs</strong>
+                    <span>Focus on rim pressure, size, and defensive translation.</span>
+                  </button>
+                  <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('international')}>
+                    <strong>International</strong>
+                    <span>See global prospects and non-NCAA development paths quickly.</span>
+                  </button>
+                  <button type="button" className="discovery-card" onClick={() => applyQuickDiscovery('upside')}>
+                    <strong>Upside swings</strong>
+                    <span>Filter toward longer-term bets and volatile ceiling outcomes.</span>
+                  </button>
+                </div>
+
+                {isFirstRun && (
+                  <div className="quick-start-inline">
+                    <article className="quick-start-card">
+                      <strong>Scan the board</strong>
+                      <p>Use `Summary` first, then save names that survive the first pass.</p>
+                    </article>
+                    <article className="quick-start-card">
+                      <strong>Compare before ranking</strong>
+                      <p>Queue two or three players before moving them into `My Board`.</p>
+                    </article>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="controls board-controls">
+              <div className="control-block search-block">
               <label htmlFor="search">Search</label>
               <input
                 id="search"
@@ -810,114 +799,115 @@ function App() {
               >
                 {showAdvancedFilters ? 'Hide advanced' : advancedFiltersActive ? 'Advanced filters active' : 'Show advanced'}
               </button>
-            </div>
-
-            <div className="saved-views-bar">
-              <div className="saved-view-controls">
-                <input
-                  className="notes-input compact-input"
-                  value={viewName}
-                  placeholder="Save current view"
-                  onChange={(event) => setViewName(event.target.value)}
-                />
-                <button
-                  type="button"
-                  className="action-button"
-                  onClick={() => {
-                    saveCurrentView(viewName);
-                    setViewName('');
-                  }}
-                >
-                  Save View
-                </button>
               </div>
 
-              <div className="preset-row">
-                {FILTER_PRESETS.map((preset) => (
-                  <button
-                    key={preset.id}
-                    type="button"
-                    className="mode-tab"
-                    onClick={() => applyViewState(preset.state)}
-                  >
-                    {preset.label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="saved-view-list">
-                {savedViews.length === 0 ? (
-                  <p className="empty-state">No saved views yet. Save a filter stack to reuse it across workspaces.</p>
-                ) : (
-                  savedViews.map((savedView) => (
-                    <div key={savedView.id} className="saved-view-card">
-                      <div>
-                        <strong>{savedView.name}</strong>
-                        <span>{new Date(savedView.createdAt).toLocaleString()}</span>
-                      </div>
-                      <div className="detail-actions">
-                        <button type="button" className="inline-action" onClick={() => loadSavedView(savedView.id)}>Load</button>
-                        <button type="button" className="inline-action" onClick={() => deleteSavedView(savedView.id)}>Delete</button>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-
-            {showAdvancedFilters && (
-              <>
-                <div className="control-block">
-                  <label htmlFor="school-filter">School</label>
-                  <select id="school-filter" value={school} onChange={(event) => setSchool(event.target.value)}>
-                    <option value="ALL">All schools</option>
-                    {schools.map((option) => <option key={option} value={option}>{option}</option>)}
-                  </select>
-                </div>
-                <div className="control-block">
-                  <label htmlFor="league-filter">League Type</label>
-                  <select id="league-filter" value={leagueType} onChange={(event) => setLeagueType(event.target.value)}>
-                    <option value="ALL">All leagues</option>
-                    {leagueTypes.map((option) => <option key={option} value={option}>{option}</option>)}
-                  </select>
-                </div>
-                <div className="control-block">
-                  <label htmlFor="bucket-filter">Board Segment</label>
-                  <select id="bucket-filter" value={bucket} onChange={(event) => setBucket(event.target.value)}>
-                    <option value="ALL">Entire board</option>
-                    <option value="Top 5">Top 5</option>
-                    <option value="Lottery">Lottery</option>
-                    <option value="First round">First round</option>
-                    <option value="Second round">Second round</option>
-                    <option value="Board depth">Board depth</option>
-                  </select>
-                </div>
-                <div className="control-block">
-                  <label htmlFor="tier-filter">Tier</label>
-                  <select id="tier-filter" value={tierFilter} onChange={(event) => setTierFilter(event.target.value)}>
-                    <option value="ALL">All tiers</option>
-                    {tiers.map((option) => <option key={option} value={option}>{option}</option>)}
-                  </select>
-                </div>
-                <div className="control-block">
-                  <label htmlFor="tag-filter">Tag</label>
-                  <select id="tag-filter" value={tagFilter} onChange={(event) => setTagFilter(event.target.value)}>
-                    <option value="ALL">All tags</option>
-                    {TAG_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
-                  </select>
-                </div>
-                <div className="control-block">
-                  <label>Saved Players</label>
+              <div className="saved-views-bar">
+                <div className="saved-view-controls">
+                  <input
+                    className="notes-input compact-input"
+                    value={viewName}
+                    placeholder="Save current view"
+                    onChange={(event) => setViewName(event.target.value)}
+                  />
                   <button
                     type="button"
-                    className={`action-button controls-toggle${watchlistOnly ? ' is-active' : ''}`}
-                    onClick={() => setWatchlistOnly((current) => !current)}
+                    className="action-button"
+                    onClick={() => {
+                      saveCurrentView(viewName);
+                      setViewName('');
+                    }}
                   >
-                    {watchlistOnly ? 'Showing saved only' : 'Show saved only'}
+                    Save View
                   </button>
                 </div>
-              </>
-            )}
+
+                <div className="preset-row">
+                  {FILTER_PRESETS.map((preset) => (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      className="mode-tab"
+                      onClick={() => applyViewState(preset.state)}
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="saved-view-list">
+                  {savedViews.length === 0 ? (
+                    <p className="empty-state">No saved views yet. Save a filter stack to reuse it across workspaces.</p>
+                  ) : (
+                    savedViews.map((savedView) => (
+                      <div key={savedView.id} className="saved-view-card">
+                        <div>
+                          <strong>{savedView.name}</strong>
+                          <span>{new Date(savedView.createdAt).toLocaleString()}</span>
+                        </div>
+                        <div className="detail-actions">
+                          <button type="button" className="inline-action" onClick={() => loadSavedView(savedView.id)}>Load</button>
+                          <button type="button" className="inline-action" onClick={() => deleteSavedView(savedView.id)}>Delete</button>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+
+              {showAdvancedFilters && (
+                <>
+                  <div className="control-block">
+                    <label htmlFor="school-filter">School</label>
+                    <select id="school-filter" value={school} onChange={(event) => setSchool(event.target.value)}>
+                      <option value="ALL">All schools</option>
+                      {schools.map((option) => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                  </div>
+                  <div className="control-block">
+                    <label htmlFor="league-filter">League Type</label>
+                    <select id="league-filter" value={leagueType} onChange={(event) => setLeagueType(event.target.value)}>
+                      <option value="ALL">All leagues</option>
+                      {leagueTypes.map((option) => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                  </div>
+                  <div className="control-block">
+                    <label htmlFor="bucket-filter">Board Segment</label>
+                    <select id="bucket-filter" value={bucket} onChange={(event) => setBucket(event.target.value)}>
+                      <option value="ALL">Entire board</option>
+                      <option value="Top 5">Top 5</option>
+                      <option value="Lottery">Lottery</option>
+                      <option value="First round">First round</option>
+                      <option value="Second round">Second round</option>
+                      <option value="Board depth">Board depth</option>
+                    </select>
+                  </div>
+                  <div className="control-block">
+                    <label htmlFor="tier-filter">Tier</label>
+                    <select id="tier-filter" value={tierFilter} onChange={(event) => setTierFilter(event.target.value)}>
+                      <option value="ALL">All tiers</option>
+                      {tiers.map((option) => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                  </div>
+                  <div className="control-block">
+                    <label htmlFor="tag-filter">Tag</label>
+                    <select id="tag-filter" value={tagFilter} onChange={(event) => setTagFilter(event.target.value)}>
+                      <option value="ALL">All tags</option>
+                      {TAG_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                  </div>
+                  <div className="control-block">
+                    <label>Saved Players</label>
+                    <button
+                      type="button"
+                      className={`action-button controls-toggle${watchlistOnly ? ' is-active' : ''}`}
+                      onClick={() => setWatchlistOnly((current) => !current)}
+                    >
+                      {watchlistOnly ? 'Showing saved only' : 'Show saved only'}
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           </section>
 
           {appView === 'big-board' && (

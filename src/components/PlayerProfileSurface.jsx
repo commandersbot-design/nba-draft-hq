@@ -50,7 +50,6 @@ export function PlayerProfileSurface({
     () => (historicalHelpers ? historicalHelpers.findHistoricalPrecedents(prospect) : []),
     [historicalHelpers, prospect],
   );
-  const comparisonAnchors = historicalPrecedents.slice(0, 3);
   const historicalContext = useMemo(
     () => (historicalHelpers ? historicalHelpers.buildHistoricalContext(prospect) : null),
     [historicalHelpers, prospect],
@@ -91,20 +90,39 @@ export function PlayerProfileSurface({
     }),
     [historicalPrecedents],
   );
+
   const keyBadges = [
     prospect.autoInterpretation?.strengths?.[0]?.label,
     prospect.autoInterpretation?.swingSkill ? `Swing: ${prospect.autoInterpretation.swingSkill}` : null,
-    prospect.measurements?.sourceStatus === 'verified' ? 'Verified measurements' : null,
+    prospect.measurements?.sourceStatus?.startsWith('verified') ? 'Verified measurements' : null,
   ].filter(Boolean);
+
+  const heroFacts = [
+    ['Age', prospect.age],
+    ['Measurements', prospect.measurementLine],
+    ['Draft Range', prospect.projection.draftRange],
+    ['League', prospect.leagueType],
+    ['Country', prospect.country],
+    ['Top Trait', topTrait?.name || '--'],
+  ];
+
+  const profileMeta = [
+    ['Measurement Source', prospect.measurements?.sourceName || prospect.measurements?.sourceStatus || '--'],
+    ['Wingspan Status', prospect.measurements?.wingspanStatus || '--'],
+    ['Offense', prospect.offenseScore],
+    ['Defense', prospect.defenseScore],
+    ['Projection', prospect.projection.bestOutcome],
+    ['Role Path', prospect.roleProjection],
+  ];
 
   return (
     <div className="detail-card">
       <div className="profile-spotlight">
         <div className="detail-top">
-          <div>
+          <div className="profile-heading">
             <p className="eyebrow">Player Profile</p>
             <h3>{prospect.name}</h3>
-            <p className="detail-meta">{prospect.position}, {prospect.school}, {prospect.classYear}</p>
+            <p className="detail-meta">{prospect.position} · {prospect.school} · {prospect.classYear}</p>
           </div>
 
           <div className="detail-actions">
@@ -118,50 +136,65 @@ export function PlayerProfileSurface({
           </div>
         </div>
 
-        <div className="profile-hero-grid">
-          <div className="profile-hero-card profile-hero-card-main">
-            <span className="stat-label">Identity</span>
-            <strong>#{prospect.rank} · {prospect.position}</strong>
-            <span className="stat-detail">{prospect.school} · {prospect.classYear}</span>
-          </div>
-          <div className="profile-hero-card profile-hero-card-main">
-            <span className="stat-label">Archetype</span>
-            <strong>{prospect.archetype}</strong>
-            <span className="stat-detail">{prospect.subArchetype}</span>
-          </div>
-          <div className="profile-hero-card">
-            <span className="stat-label">Composite</span>
-            <strong>{prospect.overallComposite}</strong>
-            <span className="stat-detail">{prospect.projection.draftRange}</span>
-          </div>
-          <div className="profile-hero-card">
-            <span className="stat-label">Risk</span>
-            <strong>{prospect.riskLevel}</strong>
-            <span className="stat-detail">{prospect.projection.stockBand}</span>
-          </div>
-          <div className="profile-hero-card">
-            <span className="stat-label">Swing Skill</span>
-            <strong>{prospect.autoInterpretation?.swingSkill || prospect.projection.swingSkill}</strong>
-            <span className="stat-detail">{prospect.projection.draftRange}</span>
-          </div>
-        </div>
-
-        {keyBadges.length > 0 && (
-          <div className="chip-list">
-            {keyBadges.map((badge) => (
-              <div key={badge} className="chip">
-                <span className="chip-label">{badge}</span>
+        <div className="profile-hero-shell">
+          <div className="profile-hero-main">
+            <div className="profile-hero-marquee">
+              <div className="profile-rank-block">
+                <span className="stat-label">Board Rank</span>
+                <strong>#{prospect.rank}</strong>
+                <span className="stat-detail">{prospect.projection.stockBand}</span>
               </div>
-            ))}
-          </div>
-        )}
 
-        <div className="highlight-section spotlight-copy">
-          <h4>Why This Player Matters</h4>
-          <p>
-            {prospect.autoInterpretation?.summarySentence || whyItMatters}
-            {topTrait ? ` ${topTrait.name} is the clearest reason this profile stays relevant on the board.` : ''}
-          </p>
+              <div className="profile-hero-summary">
+                <div className="profile-kicker-row">
+                  <span className="rank-kicker">{prospect.archetype}</span>
+                  <span className="rank-kicker">{prospect.subArchetype}</span>
+                  <span className={`risk-pill risk-${prospect.riskLevel.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{prospect.riskLevel}</span>
+                </div>
+                <h4>{prospect.autoInterpretation?.summarySentence || whyItMatters}</h4>
+                <p>{prospect.summary.synopsis}</p>
+              </div>
+            </div>
+
+            {keyBadges.length > 0 && (
+              <div className="chip-list">
+                {keyBadges.map((badge) => (
+                  <div key={badge} className="chip">
+                    <span className="chip-label">{badge}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="highlight-section spotlight-copy">
+              <h4>Why This Player Matters</h4>
+              <p>
+                {prospect.autoInterpretation?.summarySentence || whyItMatters}
+                {topTrait ? ` ${topTrait.name} is the clearest reason this profile stays relevant on the board.` : ''}
+              </p>
+            </div>
+          </div>
+
+          <div className="profile-hero-rail">
+            <div className="profile-hero-card profile-hero-card-main">
+              <span className="stat-label">Composite</span>
+              <strong>{prospect.overallComposite}</strong>
+              <span className="stat-detail">{prospect.projection.draftRange}</span>
+            </div>
+            <div className="profile-hero-card">
+              <span className="stat-label">Swing Skill</span>
+              <strong>{prospect.autoInterpretation?.swingSkill || prospect.projection.swingSkill}</strong>
+              <span className="stat-detail">{prospect.projection.medianOutcome}</span>
+            </div>
+            <div className="profile-identity-grid">
+              {heroFacts.map(([label, value]) => (
+                <div key={label}>
+                  <strong>{label}</strong>
+                  <span>{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -186,19 +219,7 @@ export function PlayerProfileSurface({
       </div>
 
       <div className="detail-grid detail-grid-primary">
-        {[
-          ['Age', prospect.age],
-          ['Measurements', prospect.measurementLine],
-          ['Measurement Source', prospect.measurements?.sourceName || prospect.measurements?.sourceStatus || '--'],
-          ['League', prospect.leagueType],
-          ['Country', prospect.country],
-          ['Tier', prospect.tier],
-          ['Sub-Archetype', prospect.subArchetype],
-          ['Offense', prospect.offenseScore],
-          ['Defense', prospect.defenseScore],
-          ['Top Trait', topTrait?.name || '--'],
-          ['Draft Range', prospect.projection.draftRange],
-        ].map(([label, value]) => (
+        {profileMeta.map(([label, value]) => (
           <div key={label}>
             <strong>{label}</strong>
             <span>{value}</span>
@@ -254,6 +275,7 @@ export function PlayerProfileSurface({
                 ))}
               </div>
             </div>
+
             <div className="detail-section">
               <h4>Comparison Anchors</h4>
               {compList.length === 0 ? (
@@ -264,7 +286,7 @@ export function PlayerProfileSurface({
                     <article key={entry.id} className="note-preview-card">
                       <strong>{entry.name}</strong>
                       <span>{entry.roleOutcome} · {entry.outcomeTier}</span>
-                      <p>{entry.archetype} · match {entry.matchScore}</p>
+                      <p>{entry.reason}</p>
                     </article>
                   ))}
                 </div>
@@ -308,9 +330,7 @@ export function PlayerProfileSurface({
                 </div>
               </div>
               <p>{historicalContext.narrative}</p>
-              {historicalSignals?.summary && (
-                <p className="section-note">{historicalSignals.summary}</p>
-              )}
+              {historicalSignals?.summary && <p className="section-note">{historicalSignals.summary}</p>}
               <p className="section-note">{historicalContext.riskSignal}</p>
             </div>
           )}
@@ -333,11 +353,11 @@ export function PlayerProfileSurface({
             <div className="detail-section detail-section-emphasis">
               <h4>Interpretation Card</h4>
               <div className="projection-stack">
-              <div><strong>Swing skill:</strong> {modelBreakdown.interpretationCard.swingSkill}</div>
-              <div><strong>Summary:</strong> {modelBreakdown.interpretationCard.summarySentence}</div>
-              <div><strong>Why ranked here:</strong> {modelBreakdown.interpretationCard.whyRankedHere}</div>
-              <div><strong>Historical read:</strong> {modelBreakdown.interpretationCard.historicalSignal}</div>
-            </div>
+                <div><strong>Swing skill:</strong> {modelBreakdown.interpretationCard.swingSkill}</div>
+                <div><strong>Summary:</strong> {modelBreakdown.interpretationCard.summarySentence}</div>
+                <div><strong>Why ranked here:</strong> {modelBreakdown.interpretationCard.whyRankedHere}</div>
+                <div><strong>Historical read:</strong> {modelBreakdown.interpretationCard.historicalSignal}</div>
+              </div>
             </div>
           </div>
 
@@ -547,22 +567,22 @@ export function PlayerProfileSurface({
             <div><strong>Historical signal:</strong> {historicalSignals?.topOutcomeShare || 'Awaiting cohort signal'}</div>
           </div>
 
-          <div className="detail-section">
-            <h4>Comp List</h4>
-            <div className="note-preview-list">
-              {compList.map((entry) => (
-                <article key={entry.id} className="note-preview-card">
-                  <strong>{entry.name}</strong>
-                  <span>{entry.draftYear} · #{entry.draftSlot} · {entry.outcomeTier}</span>
-                  <p>
-                    {entry.archetype} · {entry.roleOutcome} · {entry.pointsPerGame} PPG · {entry.trueShooting} TS · match {entry.matchScore}
-                  </p>
-                  <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
-                    Open in Historical
-                  </button>
-                </article>
-              ))}
-            </div>
+          <div className="note-preview-list">
+            {compList.map((entry) => (
+              <article key={entry.id} className="note-preview-card comp-card">
+                <div className="comp-card-top">
+                  <div>
+                    <strong>{entry.name}</strong>
+                    <span>{entry.draftYear} · #{entry.draftSlot} · {entry.outcomeTier}</span>
+                  </div>
+                  <span className="row-badge">{entry.type}</span>
+                </div>
+                <p>{entry.reason}</p>
+                <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
+                  Open in Historical
+                </button>
+              </article>
+            ))}
           </div>
         </div>
       )}
