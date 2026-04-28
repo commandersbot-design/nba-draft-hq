@@ -674,6 +674,7 @@ button {
   transition: border-color 140ms ease, background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .rank-card::before {
@@ -686,6 +687,7 @@ button {
 }
 
 .rank-card:hover,
+.rank-card:focus-visible,
 .rank-card.is-active {
   border-color: rgba(16, 185, 129, 0.46);
   background:
@@ -693,6 +695,10 @@ button {
     linear-gradient(180deg, rgba(18, 28, 44, 1), rgba(11, 18, 32, 1));
   box-shadow: 0 22px 42px rgba(0, 0, 0, 0.34);
   transform: translateY(-2px);
+}
+
+.rank-card:focus-visible {
+  outline: none;
 }
 
 .rank-card.is-priority {
@@ -750,6 +756,29 @@ button {
   font-size: 1.18rem;
   font-family: 'Space Grotesk', 'Manrope', sans-serif;
   text-transform: uppercase;
+}
+
+.rank-identity {
+  min-width: 0;
+}
+
+.rank-name-button {
+  display: grid;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  text-align: left;
+}
+
+.rank-name-button:hover strong,
+.rank-name-button:focus-visible strong {
+  color: #d1fae5;
+}
+
+.rank-name-button:focus-visible {
+  outline: none;
 }
 
 .rank-subline,
@@ -1334,6 +1363,13 @@ button {
   text-transform: uppercase;
 }
 
+.compare-column-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .compare-column p {
   margin: 0;
   color: var(--text-soft);
@@ -1387,6 +1423,12 @@ button {
   align-items: start;
 }
 
+.compare-row-2 {
+  display: grid;
+  grid-template-columns: 140px repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
 .compare-row span:first-child {
   color: var(--muted);
   text-transform: uppercase;
@@ -1395,8 +1437,7 @@ button {
   font-weight: 700;
 }
 
-.compare-row span:nth-child(2),
-.compare-row span:nth-child(3) {
+.compare-row span:not(:first-child) {
   text-align: right;
 }
 

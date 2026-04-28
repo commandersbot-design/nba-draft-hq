@@ -344,7 +344,6 @@ function App() {
 
   const openProfileStage = (id) => {
     setActiveId(id);
-    setAppView('big-board');
     setProfileStageOpen(true);
     requestAnimationFrame(() => {
       profileStageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -970,7 +969,7 @@ function App() {
               cardSettings={cardSettings}
               watchlist={watchlist}
               activeId={activeProspect?.id}
-              onSelect={setActiveId}
+              onSelect={openProfileStage}
               onToggleWatchlist={toggleWatchlist}
               onToggleCompare={toggleCompare}
               onQuickNote={createNote}
@@ -988,7 +987,12 @@ function App() {
 
           {appView === 'compare' && (
             <Suspense fallback={<section className="workspace-section panel"><p className="empty-state">Loading compare workspace…</p></section>}>
-              <CompareEngine prospects={compareProspects} notesByPlayer={notesByPlayer} onOpenHistorical={openHistorical} />
+              <CompareEngine
+                prospects={compareProspects}
+                notesByPlayer={notesByPlayer}
+                onOpenHistorical={openHistorical}
+                onOpenProfile={openProfileStage}
+              />
             </Suspense>
           )}
 

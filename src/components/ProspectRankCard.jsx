@@ -19,18 +19,39 @@ export function ProspectRankCard({
   const isPriority = prospect.rank <= 14;
   const hasVerifiedMeasurements = prospect.measurements?.sourceStatus === 'verified-current';
 
+  const handleSelect = () => onSelect(prospect.id);
+  const handleCardKeyDown = (event) => {
+    if (event.target !== event.currentTarget) return;
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleSelect();
+    }
+  };
+
   return (
-    <button
-      type="button"
+    <article
       className={`rank-card${isActive ? ' is-active' : ''}${isFeatured ? ' is-featured' : ''}${isPriority ? ' is-priority' : ''}`}
-      onClick={() => onSelect(prospect.id)}
+      role="button"
+      tabIndex={0}
+      aria-label={`Open ${prospect.name} profile`}
+      onClick={handleSelect}
+      onKeyDown={handleCardKeyDown}
     >
       <div className="rank-number">{prospect.rank}</div>
       <div className="rank-content">
         <div className="rank-topline">
           <div className="rank-identity">
-            <strong>{prospect.name}</strong>
-            <div className="rank-subline">{prospect.position} · {prospect.school}</div>
+            <button
+              type="button"
+              className="rank-name-button"
+              onClick={(event) => {
+                event.stopPropagation();
+                handleSelect();
+              }}
+            >
+              <strong>{prospect.name}</strong>
+              <span className="rank-subline">{prospect.position} / {prospect.school}</span>
+            </button>
           </div>
           <div className="rank-badges">
             {isFeatured && <span className="row-badge row-badge-featured">Top Prospect</span>}
@@ -116,10 +137,24 @@ export function ProspectRankCard({
               >
                 {isWatched ? 'Saved' : 'Save'}
               </button>
-              <button type="button" className="inline-action" onClick={(event) => { event.stopPropagation(); onToggleCompare(prospect.id); }}>
+              <button
+                type="button"
+                className="inline-action"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onToggleCompare(prospect.id);
+                }}
+              >
                 Compare
               </button>
-              <button type="button" className="inline-action" onClick={(event) => { event.stopPropagation(); onQuickNote(prospect.id); }}>
+              <button
+                type="button"
+                className="inline-action"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onQuickNote(prospect.id);
+                }}
+              >
                 Note
               </button>
             </div>
@@ -145,6 +180,6 @@ export function ProspectRankCard({
           </div>
         )}
       </div>
-    </button>
+    </article>
   );
 }

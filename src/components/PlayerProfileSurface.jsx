@@ -34,38 +34,39 @@ export function PlayerProfileSurface({
     };
   }, []);
 
-  if (!prospect) {
-    return (
-      <div className="detail-empty">
-        <p className="eyebrow">Player Detail</p>
-        <h3>Select a prospect</h3>
-        <p>Open a row to inspect profile context, traits, projection, and notes.</p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    setActiveSection('Overview');
+  }, [prospect?.id]);
 
-  const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
-  const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
   const historicalPrecedents = useMemo(
-    () => (historicalHelpers ? historicalHelpers.findHistoricalPrecedents(prospect) : []),
+    () => (historicalHelpers && prospect ? historicalHelpers.findHistoricalPrecedents(prospect) : []),
     [historicalHelpers, prospect],
   );
   const historicalContext = useMemo(
-    () => (historicalHelpers ? historicalHelpers.buildHistoricalContext(prospect) : null),
+    () => (historicalHelpers && prospect ? historicalHelpers.buildHistoricalContext(prospect) : null),
     [historicalHelpers, prospect],
   );
   const historicalSignals = useMemo(
     () => (historicalHelpers && historicalContext ? historicalHelpers.buildHistoricalSignals(historicalPrecedents, historicalContext) : null),
     [historicalContext, historicalHelpers, historicalPrecedents],
   );
-  const modelBreakdown = useMemo(() => ({
-    ...prospect.modelBreakdown,
-    historicalSignal: historicalSignals,
-    interpretationCard: {
-      ...prospect.modelBreakdown.interpretationCard,
-      historicalSignal: historicalSignals?.summary || 'Historical context loading.',
-    },
-  }), [historicalSignals, prospect.modelBreakdown]);
+  const modelBreakdown = useMemo(() => {
+    const baseModelBreakdown = prospect?.modelBreakdown || {};
+    const interpretationCard = baseModelBreakdown.interpretationCard || {};
+
+    return {
+      ...baseModelBreakdown,
+      coreTraitBars: baseModelBreakdown.coreTraitBars || [],
+      riskPanel: baseModelBreakdown.riskPanel || [],
+      historicalSignal: historicalSignals,
+      interpretationCard: {
+        strengths: interpretationCard.strengths || [],
+        weaknesses: interpretationCard.weaknesses || [],
+        ...interpretationCard,
+        historicalSignal: historicalSignals?.summary || 'Historical context loading.',
+      },
+    };
+  }, [historicalSignals, prospect]);
   const compList = useMemo(
     () => historicalPrecedents.slice(0, 6).map((entry, index) => {
       let type = 'Style match';
@@ -83,13 +84,26 @@ export function PlayerProfileSurface({
         pointsPerGame: entry.pointsPerGame,
         trueShooting: entry.trueShooting,
         matchScore: entry.matchScore,
-        reason: `${entry.archetype} · ${entry.roleOutcome} · match ${entry.matchScore}`,
+        reason: `${entry.archetype} / ${entry.roleOutcome} / match ${entry.matchScore}`,
         draftYear: entry.draftYear,
         draftSlot: entry.draftSlot,
       };
     }),
     [historicalPrecedents],
   );
+
+  if (!prospect) {
+    return (
+      <div className="detail-empty">
+        <p className="eyebrow">Player Detail</p>
+        <h3>Select a prospect</h3>
+        <p>Open a row to inspect profile context, traits, projection, and notes.</p>
+      </div>
+    );
+  }
+
+  const whyItMatters = prospect.summary?.strengths?.[0] || prospect.summary?.synopsis;
+  const topTrait = [...(prospect.traitScores || [])].sort((left, right) => right.score - left.score)[0];
 
   const keyBadges = [
     prospect.autoInterpretation?.strengths?.[0]?.label,
@@ -122,7 +136,7 @@ export function PlayerProfileSurface({
           <div className="profile-heading">
             <p className="eyebrow">Player Profile</p>
             <h3>{prospect.name}</h3>
-            <p className="detail-meta">{prospect.position} · {prospect.school} · {prospect.classYear}</p>
+            <p className="detail-meta">{prospect.position} / {prospect.school} / {prospect.classYear}</p>
           </div>
 
           <div className="detail-actions">
@@ -285,7 +299,7 @@ export function PlayerProfileSurface({
                   {compList.slice(0, 3).map((entry) => (
                     <article key={entry.id} className="note-preview-card">
                       <strong>{entry.name}</strong>
-                      <span>{entry.roleOutcome} · {entry.outcomeTier}</span>
+                      <span>{entry.roleOutcome} / {entry.outcomeTier}</span>
                       <p>{entry.reason}</p>
                     </article>
                   ))}
@@ -468,7 +482,7 @@ export function PlayerProfileSurface({
                     {group.items.map((item) => (
                       <div key={`${group.key}-${item.label}`}>
                         <strong>{item.label}</strong>
-                        <span>{item.value}{item.percentile ? ` · ${item.percentile}` : ''}</span>
+                        <span>{item.value}{item.percentile ? ` / ${item.percentile}` : ''}</span>
                       </div>
                     ))}
                   </div>
@@ -560,10 +574,10 @@ export function PlayerProfileSurface({
           <div className="projection-stack">
             <div><strong>Why ranked here:</strong> {modelBreakdown.interpretationCard.whyRankedHere}</div>
             <div><strong>Final score:</strong> {prospect.comparisonInputs.finalScore || prospect.overallComposite}</div>
-            <div><strong>Role lane:</strong> {prospect.archetype} · {prospect.subArchetype}</div>
+            <div><strong>Role lane:</strong> {prospect.archetype} / {prospect.subArchetype}</div>
             <div><strong>Swing skill:</strong> {prospect.autoInterpretation?.swingSkill || prospect.projection.swingSkill}</div>
             <div><strong>Archetype indicators:</strong> {(prospect.archetypeIndicators || []).join(', ') || 'Awaiting stat indicators'}</div>
-            <div><strong>Historical percentile tags:</strong> {Object.entries(prospect.statPercentiles || {}).slice(0, 4).map(([key, value]) => `${key} ${value}`).join(' · ') || 'Awaiting percentiles'}</div>
+            <div><strong>Historical percentile tags:</strong> {Object.entries(prospect.statPercentiles || {}).slice(0, 4).map(([key, value]) => `${key} ${value}`).join(' / ') || 'Awaiting percentiles'}</div>
             <div><strong>Historical signal:</strong> {historicalSignals?.topOutcomeShare || 'Awaiting cohort signal'}</div>
           </div>
 
@@ -573,7 +587,7 @@ export function PlayerProfileSurface({
                 <div className="comp-card-top">
                   <div>
                     <strong>{entry.name}</strong>
-                    <span>{entry.draftYear} · #{entry.draftSlot} · {entry.outcomeTier}</span>
+                    <span>{entry.draftYear} / #{entry.draftSlot} / {entry.outcomeTier}</span>
                   </div>
                   <span className="row-badge">{entry.type}</span>
                 </div>

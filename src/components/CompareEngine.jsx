@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { buildHistoricalContext, buildHistoricalSignals, buildHistoricalSimilarity, findHistoricalPrecedents } from '../lib/historicalComps';
+import {
+  buildHistoricalContext,
+  buildHistoricalSignals,
+  buildHistoricalSimilarity,
+  findHistoricalPrecedents,
+} from '../lib/historicalComps';
 
 function traitMap(prospect) {
   return Object.fromEntries(prospect.traitScores.map((trait) => [trait.name, trait]));
@@ -54,7 +59,7 @@ const HISTORICAL_MODES = [
   { id: 'position-family', label: 'Same Position Family' },
 ];
 
-export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
+export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical, onOpenProfile }) {
   const compareProspects = prospects.slice(0, 3);
   const [historicalMode, setHistoricalMode] = useState('archetype');
 
@@ -73,14 +78,11 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
   }
 
   const [left, right] = compareProspects;
-  const leftTraits = traitMap(left);
-  const rightTraits = traitMap(right);
-  const whyLeft = buildDecisionBullets(left, right);
-  const whyRight = buildDecisionBullets(right, left);
   const historicalBundles = compareProspects.map((prospect) => {
     const precedents = findHistoricalPrecedents(prospect);
     const context = buildHistoricalContext(prospect);
     const signals = buildHistoricalSignals(precedents, context);
+
     return {
       prospect: {
         ...prospect,
@@ -97,8 +99,11 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       signals,
     };
   });
+
   const compareProspectsWithHistory = historicalBundles.map((entry) => entry.prospect);
   const [leftWithHistory, rightWithHistory] = compareProspectsWithHistory;
+  const leftTraits = traitMap(leftWithHistory);
+  const rightTraits = traitMap(rightWithHistory);
   const whyLeftWithHistory = buildDecisionBullets(leftWithHistory, rightWithHistory);
   const whyRightWithHistory = buildDecisionBullets(rightWithHistory, leftWithHistory);
   const historicalSimilarity = compareProspectsWithHistory.map((prospect) => ({
@@ -113,15 +118,21 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
     },
     {
       label: 'Production',
-      values: compareProspectsWithHistory.map((prospect) => `${prospect.stats.season.points} pts / ${prospect.stats.season.rebounds} reb / ${prospect.stats.season.assists} ast`),
+      values: compareProspectsWithHistory.map(
+        (prospect) => `${prospect.stats.season.points} pts / ${prospect.stats.season.rebounds} reb / ${prospect.stats.season.assists} ast`,
+      ),
     },
     {
       label: 'Efficiency',
-      values: compareProspectsWithHistory.map((prospect) => `TS ${prospect.stats.advanced.trueShooting || '--'} / BPM ${renderCell(prospect.stats.advanced.bpm)}`),
+      values: compareProspectsWithHistory.map(
+        (prospect) => `TS ${prospect.stats.advanced.trueShooting || '--'} / BPM ${renderCell(prospect.stats.advanced.bpm)}`,
+      ),
     },
     {
       label: 'Final Score',
-      values: compareProspectsWithHistory.map((prospect) => prospect.modelBreakdown?.finalBoardScore || prospect.comparisonInputs.finalScore || prospect.overallComposite),
+      values: compareProspectsWithHistory.map(
+        (prospect) => prospect.modelBreakdown?.finalBoardScore || prospect.comparisonInputs.finalScore || prospect.overallComposite,
+      ),
     },
     {
       label: 'Role',
@@ -146,9 +157,18 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
       <div className={`compare-sheet compare-sheet-${compareProspectsWithHistory.length}`}>
         {compareProspectsWithHistory.map((prospect) => (
           <div key={prospect.id} className="compare-column compare-column-hero">
-            <span className="stat-label">#{prospect.rank}</span>
-            <h4>{prospect.name}</h4>
-            <p>{prospect.position} · {prospect.school}</p>
+            <div className="compare-column-top">
+              <div>
+                <span className="stat-label">#{prospect.rank}</span>
+                <h4>{prospect.name}</h4>
+                <p>{prospect.position} / {prospect.school}</p>
+              </div>
+              {onOpenProfile && (
+                <button type="button" className="inline-action" onClick={() => onOpenProfile(prospect.id)}>
+                  Open Profile
+                </button>
+              )}
+            </div>
             <div className="compare-hero-metrics">
               <div>
                 <strong>{prospect.modelBreakdown?.finalBoardScore || prospect.overallComposite}</strong>
@@ -177,7 +197,9 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         {rows.map((row) => (
           <div key={row.label} className={`compare-row compare-row-${compareProspectsWithHistory.length}`}>
             <span>{row.label}</span>
-            {row.values.map((value, index) => <span key={`${row.label}-${compareProspectsWithHistory[index].id}`}>{value}</span>)}
+            {row.values.map((value, index) => (
+              <span key={`${row.label}-${compareProspectsWithHistory[index].id}`}>{value}</span>
+            ))}
           </div>
         ))}
       </div>
@@ -186,10 +208,14 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         <h4>Trait Comparison</h4>
         <div className="trait-compare-grid">
           {left.traitScores.map((trait) => (
-              <div key={trait.name} className={`compare-row compare-row-${compareProspectsWithHistory.length}`}>
-                <span>{trait.name}</span>
+            <div key={trait.name} className={`compare-row compare-row-${compareProspectsWithHistory.length}`}>
+              <span>{trait.name}</span>
               {compareProspectsWithHistory.map((prospect) => {
-                const traits = prospect.id === left.id ? leftTraits : prospect.id === right.id ? rightTraits : traitMap(prospect);
+                const traits = prospect.id === leftWithHistory.id
+                  ? leftTraits
+                  : prospect.id === rightWithHistory.id
+                    ? rightTraits
+                    : traitMap(prospect);
                 return <span key={`${trait.name}-${prospect.id}`}>{traits[trait.name]?.score}</span>;
               })}
             </div>
@@ -201,13 +227,17 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
         <div className="detail-section detail-section-emphasis">
           <h4>Why {left.name} over {right.name}</h4>
           <ul className="profile-list">
-            {(whyLeftWithHistory.length ? whyLeftWithHistory : ['Decision comes down to stylistic preference rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
+            {(whyLeftWithHistory.length
+              ? whyLeftWithHistory
+              : ['Decision comes down to stylistic preference rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
         <div className="detail-section detail-section-emphasis">
           <h4>Why {right.name} over {left.name}</h4>
           <ul className="profile-list">
-            {(whyRightWithHistory.length ? whyRightWithHistory : ['Decision comes down to role context rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
+            {(whyRightWithHistory.length
+              ? whyRightWithHistory
+              : ['Decision comes down to role context rather than a clear authored edge.']).map((item) => <li key={item}>{item}</li>)}
           </ul>
         </div>
       </div>
@@ -269,7 +299,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
             <div className="projection-stack">
               <div><strong>Outcome range:</strong> {similarity.outcomeRange}</div>
               <div><strong>Most common result:</strong> {similarity.topOutcome}</div>
-              <div><strong>Outcome mix:</strong> {similarity.outcomeMix.map((entry) => `${entry.tier} ${entry.share}`).join(' · ') || '--'}</div>
+              <div><strong>Outcome mix:</strong> {similarity.outcomeMix.map((entry) => `${entry.tier} ${entry.share}`).join(' / ') || '--'}</div>
             </div>
             <div className="note-preview-list">
               {similarity.matches.length === 0 ? (
@@ -278,8 +308,8 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
                 similarity.matches.map((entry) => (
                   <article key={`${prospect.id}-${entry.id}`} className="note-preview-card">
                     <strong>{entry.name}</strong>
-                    <span>{entry.draftYear} · #{entry.draftSlot} · {entry.outcomeTier}</span>
-                    <p>{entry.roleOutcome} · {entry.archetype} · match {entry.matchScore}</p>
+                    <span>{entry.draftYear} / #{entry.draftSlot} / {entry.outcomeTier}</span>
+                    <p>{entry.roleOutcome} / {entry.archetype} / match {entry.matchScore}</p>
                     <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
                       Open cohort comp
                     </button>
@@ -299,14 +329,14 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
               <>
                 <p>{prospect.historicalContext.narrative}</p>
                 <div className="projection-stack">
-                <div><strong>Slot band:</strong> {prospect.historicalContext.draftSlotBand}</div>
-                <div><strong>Best precedent:</strong> {prospect.historicalContext.bestHistoricalOutcome}</div>
-                <div><strong>Avg BPM:</strong> {prospect.historicalContext.averageBpm}</div>
-                <div><strong>Avg TS:</strong> {prospect.historicalContext.averageTrueShooting}</div>
-                <div><strong>Pool signal:</strong> {prospect.historicalSignals?.topOutcomeShare || '--'}</div>
-              </div>
-            </>
-          ) : (
+                  <div><strong>Slot band:</strong> {prospect.historicalContext.draftSlotBand}</div>
+                  <div><strong>Best precedent:</strong> {prospect.historicalContext.bestHistoricalOutcome}</div>
+                  <div><strong>Avg BPM:</strong> {prospect.historicalContext.averageBpm}</div>
+                  <div><strong>Avg TS:</strong> {prospect.historicalContext.averageTrueShooting}</div>
+                  <div><strong>Pool signal:</strong> {prospect.historicalSignals?.topOutcomeShare || '--'}</div>
+                </div>
+              </>
+            ) : (
               <p className="empty-state">Historical context is not available yet.</p>
             )}
           </div>
@@ -319,7 +349,9 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
           return (
             <div key={`${prospect.id}-notes`} className="detail-section compare-notes-column">
               <h4>Notes Snapshot</h4>
-              {notes.length === 0 ? <p className="empty-state">No notes saved.</p> : notes.slice(0, 2).map((note) => <p key={note.id}>{note.quickSummary || note.freeform || 'Structured note'}</p>)}
+              {notes.length === 0
+                ? <p className="empty-state">No notes saved.</p>
+                : notes.slice(0, 2).map((note) => <p key={note.id}>{note.quickSummary || note.freeform || 'Structured note'}</p>)}
             </div>
           );
         })}
@@ -335,7 +367,7 @@ export function CompareEngine({ prospects, notesByPlayer, onOpenHistorical }) {
               prospect.historicalPrecedents.slice(0, 2).map((entry) => (
                 <div key={entry.id} className="compare-precedent-row">
                   <p>
-                    <strong>{entry.name}</strong> · {entry.draftYear} · {entry.roleOutcome} · {entry.outcomeTier}
+                    <strong>{entry.name}</strong> / {entry.draftYear} / {entry.roleOutcome} / {entry.outcomeTier}
                   </p>
                   <button type="button" className="inline-action" onClick={() => onOpenHistorical(entry.id)}>
                     Open
