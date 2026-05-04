@@ -19,6 +19,7 @@ import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import HISTORICAL_PROSPECTS from "../data/historicalProspects.json";
 import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
 import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
+import { ConstellationMap } from "./ConstellationMap";
 
 function getHeadshotUrl(prospect) {
   if (!prospect || !prospect.name) return null;
@@ -1058,7 +1059,7 @@ const ComparablesTab = ({ p }) => {
 };
 
 // ---------- PLAYER PROFILE PAGE ----------
-const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Comparables", "Reports", "Shot Chart", "Notes"];
+const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Comparables", "Constellation", "Reports", "Shot Chart", "Notes"];
 
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
@@ -1370,6 +1371,13 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
       {tab === "Traits" && <TraitsTab p={p} />}
       {tab === "Advantage" && <AdvantageProfile player={p} />}
       {tab === "Comparables" && <ComparablesTab p={p} />}
+      {tab === "Constellation" && (
+        <ConstellationMap
+          player={p}
+          comparables={rankComparables(p, HISTORICAL_PROSPECTS, 20)}
+          size={520}
+        />
+      )}
       {tab === "Reports" && <EmptyState label="No scouting reports filed yet." />}
       {tab === "Shot Chart" && <ShotChartTab p={p} />}
       {tab === "Notes" && <NotesTab p={p} notes={notes} onAddNote={onAddNote} onDeleteNote={onDeleteNote} />}
