@@ -17,6 +17,13 @@ import {
 } from "lucide-react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import HISTORICAL_PROSPECTS from "../data/historicalProspects.json";
+import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
+
+function getHeadshotUrl(prospect) {
+  if (!prospect || !prospect.name) return null;
+  const entry = PROSPECT_HEADSHOTS[prospect.name];
+  return entry?.headshotUrl || null;
+}
 import {
   LineChart,
   Line,
@@ -83,26 +90,72 @@ const Label = ({ children, style }) => (
   </div>
 );
 
-const PlayerImg = ({ p, size = 40 }) => (
-  <div
-    style={{
-      width: size,
-      height: size,
-      background: `linear-gradient(135deg, ${T.surface2}, ${T.surface})`,
-      border: `1px solid ${T.border}`,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      ...mono,
-      fontSize: size * 0.32,
-      letterSpacing: "0.05em",
-      color: T.cyan,
-      flexShrink: 0,
-    }}
-  >
-    {p.initials}
-  </div>
-);
+const ProspectHeadshot = ({ p, fallbackStyle, imgStyle }) => {
+  const headshotUrl = getHeadshotUrl(p);
+  const [errored, setErrored] = useState(false);
+  const showImage = headshotUrl && !errored;
+  if (showImage) {
+    return (
+      <img
+        src={headshotUrl}
+        alt={p.name}
+        loading="lazy"
+        onError={() => setErrored(true)}
+        style={imgStyle}
+      />
+    );
+  }
+  return <span style={fallbackStyle}>{p.initials}</span>;
+};
+
+const PlayerImg = ({ p, size = 40 }) => {
+  const headshotUrl = getHeadshotUrl(p);
+  const [errored, setErrored] = useState(false);
+  const showImage = headshotUrl && !errored;
+  return (
+    <div
+      style={{
+        width: size,
+        height: size,
+        background: `linear-gradient(135deg, ${T.surface2}, ${T.surface})`,
+        border: `1px solid ${T.border}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        position: "relative",
+        flexShrink: 0,
+      }}
+    >
+      {showImage ? (
+        <img
+          src={headshotUrl}
+          alt={p.name}
+          loading="lazy"
+          onError={() => setErrored(true)}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center top",
+            display: "block",
+          }}
+        />
+      ) : (
+        <span
+          style={{
+            ...mono,
+            fontSize: size * 0.32,
+            letterSpacing: "0.05em",
+            color: T.cyan,
+          }}
+        >
+          {p.initials}
+        </span>
+      )}
+    </div>
+  );
+};
 
 const MetricBar = ({ value, max = 100, color = T.cyan }) => {
   const blocks = 10;
@@ -479,19 +532,20 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
         justifyContent: "center",
         borderBottom: `1px solid ${T.border}`,
         position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div
-        style={{
+      <ProspectHeadshot
+        p={p}
+        fallbackStyle={{
           ...mono,
           fontSize: 44,
           color: isSelected ? T.cyan : T.textDim,
           letterSpacing: "0.05em",
           opacity: 0.95,
         }}
-      >
-        {p.initials}
-      </div>
+        imgStyle={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+      />
     </div>
 
     <div style={{ padding: "10px 12px" }}>
@@ -1080,14 +1134,15 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                ...mono,
-                fontSize: 56,
-                color: T.cyan,
-                letterSpacing: "0.05em",
+                overflow: "hidden",
                 boxShadow: `0 0 0 4px rgba(34, 211, 238, 0.08)`,
               }}
             >
-              {p.initials}
+              <ProspectHeadshot
+                p={p}
+                fallbackStyle={{ ...mono, fontSize: 56, color: T.cyan, letterSpacing: "0.05em" }}
+                imgStyle={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+              />
             </div>
             <div
               style={{
