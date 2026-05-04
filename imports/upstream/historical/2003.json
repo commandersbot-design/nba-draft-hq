@@ -4,13 +4,13 @@
     "name": "LeBron James",
     "draftYear": 2003,
     "draftSlot": 1,
-    "position": "Forward",
+    "position": "PF",
     "school": "Saint Vincent-Saint Mary",
     "height": "6-9",
     "age": 18.5,
-    "archetype": "",
+    "archetype": "Volume Forward Scorer",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 26.8,
     "reboundsPerGame": 7.5,
     "assistsPerGame": 7.4,
@@ -38,20 +38,22 @@
       "careerApg": 7.4,
       "careerSpg": 1.5,
       "careerBpg": 0.7
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "darko-milicic-2003",
     "name": "Darko Milicic",
     "draftYear": 2003,
     "draftSlot": 2,
-    "position": "Center",
+    "position": "C",
     "school": "KK Vrsac (Serbia)",
     "height": "7-0",
     "age": 18,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6,
     "reboundsPerGame": 4.2,
     "assistsPerGame": 0.9,
@@ -79,20 +81,22 @@
       "careerApg": 0.9,
       "careerSpg": 0.4,
       "careerBpg": 1.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "carmelo-anthony-2003",
     "name": "Carmelo Anthony",
     "draftYear": 2003,
     "draftSlot": 3,
-    "position": "Forward",
+    "position": "SF",
     "school": "Syracuse",
     "height": "6-7",
     "age": 19.1,
-    "archetype": "",
+    "archetype": "Volume Wing Scorer",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 22.5,
     "reboundsPerGame": 6.2,
     "assistsPerGame": 2.7,
@@ -120,20 +124,22 @@
       "careerApg": 2.7,
       "careerSpg": 1,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "chris-bosh-2003",
     "name": "Chris Bosh",
     "draftYear": 2003,
     "draftSlot": 4,
-    "position": "Forward",
+    "position": "PF",
     "school": "Georgia Tech",
     "height": "6-11",
     "age": 19.3,
-    "archetype": "",
+    "archetype": "Volume Forward Scorer",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 19.2,
     "reboundsPerGame": 8.5,
     "assistsPerGame": 2,
@@ -161,20 +167,22 @@
       "careerApg": 2,
       "careerSpg": 0.8,
       "careerBpg": 1
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "dwyane-wade-2003",
     "name": "Dwyane Wade",
     "draftYear": 2003,
     "draftSlot": 5,
-    "position": "Guard",
+    "position": "SG",
     "school": "Marquette",
     "height": "6-4",
     "age": 21.4,
-    "archetype": "",
+    "archetype": "Combo Guard",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 22,
     "reboundsPerGame": 4.7,
     "assistsPerGame": 5.4,
@@ -202,20 +210,22 @@
       "careerApg": 5.4,
       "careerSpg": 1.5,
       "careerBpg": 0.8
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "chris-kaman-2003",
     "name": "Chris Kaman",
     "draftYear": 2003,
     "draftSlot": 6,
-    "position": "Center",
+    "position": "C",
     "school": "Central Michigan",
     "height": "7-0",
     "age": 21.2,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 11.2,
     "reboundsPerGame": 7.6,
     "assistsPerGame": 1.3,
@@ -243,20 +253,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.4,
       "careerBpg": 1.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "kirk-hinrich-2003",
     "name": "Kirk Hinrich",
     "draftYear": 2003,
     "draftSlot": 7,
-    "position": "Guard",
+    "position": "SG",
     "school": "Kansas",
     "height": "6-4",
     "age": 22.5,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 10.9,
     "reboundsPerGame": 2.9,
     "assistsPerGame": 4.8,
@@ -284,20 +296,22 @@
       "careerApg": 4.8,
       "careerSpg": 1.1,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "t-j-ford-2003",
     "name": "T.J. Ford",
     "draftYear": 2003,
     "draftSlot": 8,
-    "position": "Guard",
+    "position": "PG",
     "school": "Texas",
     "height": "6-0",
     "age": 20.3,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 11.2,
     "reboundsPerGame": 3.1,
     "assistsPerGame": 5.8,
@@ -325,20 +339,22 @@
       "careerApg": 5.8,
       "careerSpg": 1.2,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "michael-sweetney-2003",
     "name": "Michael Sweetney",
     "draftYear": 2003,
     "draftSlot": 9,
-    "position": "Forward",
+    "position": "SF",
     "school": "Georgetown",
     "height": "6-8",
     "age": 20.7,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.5,
     "reboundsPerGame": 4.5,
     "assistsPerGame": 0.6,
@@ -366,20 +382,22 @@
       "careerApg": 0.6,
       "careerSpg": 0.3,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "jarvis-hayes-2003",
     "name": "Jarvis Hayes",
     "draftYear": 2003,
     "draftSlot": 10,
-    "position": "Forward",
+    "position": "SF",
     "school": "Georgia",
     "height": "6-8",
     "age": 21.9,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 8.3,
     "reboundsPerGame": 3.1,
     "assistsPerGame": 1.1,
@@ -407,20 +425,22 @@
       "careerApg": 1.1,
       "careerSpg": 0.7,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "mickael-pietrus-2003",
     "name": "Mickael Pietrus",
     "draftYear": 2003,
     "draftSlot": 11,
-    "position": "Forward",
+    "position": "SF",
     "school": "Elan Bearnais Pau-Orthez (France)",
     "height": "6-6",
     "age": 21.4,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 8.3,
     "reboundsPerGame": 3.1,
     "assistsPerGame": 0.8,
@@ -448,20 +468,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.7,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "nick-collison-2003",
     "name": "Nick Collison",
     "draftYear": 2003,
     "draftSlot": 12,
-    "position": "Forward-Center",
+    "position": "PF/C",
     "school": "Kansas",
     "height": "6-10",
     "age": 22.7,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.9,
     "reboundsPerGame": 5.2,
     "assistsPerGame": 1,
@@ -489,20 +511,22 @@
       "careerApg": 1,
       "careerSpg": 0.5,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "marcus-banks-2003",
     "name": "Marcus Banks",
     "draftYear": 2003,
     "draftSlot": 13,
-    "position": "Guard",
+    "position": "PG",
     "school": "Nevada-Las Vegas",
     "height": "6-2",
     "age": 21.6,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.9,
     "reboundsPerGame": 1.5,
     "assistsPerGame": 2.1,
@@ -530,20 +554,22 @@
       "careerApg": 2.1,
       "careerSpg": 0.8,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "luke-ridnour-2003",
     "name": "Luke Ridnour",
     "draftYear": 2003,
     "draftSlot": 14,
-    "position": "Guard",
+    "position": "PG",
     "school": "Oregon",
     "height": "6-2",
     "age": 22.4,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 9.3,
     "reboundsPerGame": 2.3,
     "assistsPerGame": 4.5,
@@ -571,20 +597,22 @@
       "careerApg": 4.5,
       "careerSpg": 1,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "reece-gaines-2003",
     "name": "Reece Gaines",
     "draftYear": 2003,
     "draftSlot": 15,
-    "position": "Guard",
+    "position": "SG",
     "school": "Louisville",
     "height": "6-6",
     "age": 22.5,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 1.7,
     "reboundsPerGame": 0.7,
     "assistsPerGame": 0.7,
@@ -612,20 +640,22 @@
       "careerApg": 0.7,
       "careerSpg": 0.2,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "troy-bell-2003",
     "name": "Troy Bell",
     "draftYear": 2003,
     "draftSlot": 16,
-    "position": "Guard",
+    "position": "PG",
     "school": "Boston College",
     "height": "6-1",
     "age": 22.6,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 1.8,
     "reboundsPerGame": 0.7,
     "assistsPerGame": 0.7,
@@ -653,20 +683,22 @@
       "careerApg": 0.7,
       "careerSpg": 0.2,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "zarko-cabarkapa-2003",
     "name": "Zarko Cabarkapa",
     "draftYear": 2003,
     "draftSlot": 17,
-    "position": "Forward-Center",
+    "position": "PF/C",
     "school": "KK Buducnost Podgorica (Montenegro)",
     "height": "6-11",
     "age": 22.1,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 4.3,
     "reboundsPerGame": 2.1,
     "assistsPerGame": 0.6,
@@ -694,20 +726,22 @@
       "careerApg": 0.6,
       "careerSpg": 0.2,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "david-west-2003",
     "name": "David West",
     "draftYear": 2003,
     "draftSlot": 18,
-    "position": "Forward",
+    "position": "PF",
     "school": "Xavier",
     "height": "6-9",
     "age": 22.8,
-    "archetype": "",
+    "archetype": "Two-Way Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 13.6,
     "reboundsPerGame": 6.4,
     "assistsPerGame": 2.2,
@@ -735,20 +769,22 @@
       "careerApg": 2.2,
       "careerSpg": 0.7,
       "careerBpg": 0.8
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "sasha-pavlovic-2003",
     "name": "Sasha Pavlovic",
     "draftYear": 2003,
     "draftSlot": 19,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "KK Buducnost Podgorica (Montenegro)",
     "height": "6-7",
     "age": 19.6,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 4.9,
     "reboundsPerGame": 1.8,
     "assistsPerGame": 0.9,
@@ -776,20 +812,22 @@
       "careerApg": 0.9,
       "careerSpg": 0.5,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "dahntay-jones-2003",
     "name": "Dahntay Jones",
     "draftYear": 2003,
     "draftSlot": 20,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Duke",
     "height": "6-6",
     "age": 22.5,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
     "reboundsPerGame": 1.7,
     "assistsPerGame": 0.8,
@@ -817,20 +855,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.4,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "boris-diaw-2003",
     "name": "Boris Diaw",
     "draftYear": 2003,
     "draftSlot": 21,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Elan Bearnais Pau-Orthez (France)",
     "height": "6-8",
     "age": 21.2,
-    "archetype": "",
+    "archetype": "Playmaking Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 8.6,
     "reboundsPerGame": 4.4,
     "assistsPerGame": 3.5,
@@ -858,7 +898,9 @@
       "careerApg": 3.5,
       "careerSpg": 0.6,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "zoran-planinic-2003",
@@ -869,9 +911,9 @@
     "school": "KK Cibona (Croatia)",
     "height": "",
     "age": 20.8,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.8,
     "reboundsPerGame": 1.3,
     "assistsPerGame": 1.1,
@@ -899,20 +941,22 @@
       "careerApg": 1.1,
       "careerSpg": 0.4,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "travis-outlaw-2003",
     "name": "Travis Outlaw",
     "draftYear": 2003,
     "draftSlot": 23,
-    "position": "Forward",
+    "position": "PF",
     "school": "Starkville",
     "height": "6-9",
     "age": 18.8,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 8.5,
     "reboundsPerGame": 3.2,
     "assistsPerGame": 0.8,
@@ -940,20 +984,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.5,
       "careerBpg": 0.6
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "brian-cook-2003",
     "name": "Brian Cook",
     "draftYear": 2003,
     "draftSlot": 24,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Illinois",
     "height": "6-9",
     "age": 22.6,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.5,
     "reboundsPerGame": 2.6,
     "assistsPerGame": 0.6,
@@ -981,20 +1027,22 @@
       "careerApg": 0.6,
       "careerSpg": 0.3,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "carlos-delfino-2003",
     "name": "Carlos Delfino",
     "draftYear": 2003,
     "draftSlot": 25,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Fortitudo Pallacanestro Bologna (Italy)",
     "height": "6-6",
     "age": 20.8,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 8.1,
     "reboundsPerGame": 3.6,
     "assistsPerGame": 1.7,
@@ -1022,20 +1070,22 @@
       "careerApg": 1.7,
       "careerSpg": 0.9,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "ndudi-ebi-2003",
     "name": "Ndudi Ebi",
     "draftYear": 2003,
     "draftSlot": 26,
-    "position": "Forward",
+    "position": "PF",
     "school": "Westbury Christian School",
     "height": "6-9",
     "age": 19,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.1,
     "reboundsPerGame": 1,
     "assistsPerGame": 0.2,
@@ -1063,20 +1113,22 @@
       "careerApg": 0.2,
       "careerSpg": 0.1,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "kendrick-perkins-2003",
     "name": "Kendrick Perkins",
     "draftYear": 2003,
     "draftSlot": 27,
-    "position": "Center",
+    "position": "C",
     "school": "Clifton J. Ozen",
     "height": "6-10",
     "age": 18.6,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
     "reboundsPerGame": 5.8,
     "assistsPerGame": 1,
@@ -1104,20 +1156,22 @@
       "careerApg": 1,
       "careerSpg": 0.3,
       "careerBpg": 1.2
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "leandro-barbosa-2003",
     "name": "Leandro Barbosa",
     "draftYear": 2003,
     "draftSlot": 28,
-    "position": "Guard",
+    "position": "PG",
     "school": "Associacao Bauru Basketball Team (Brazil)",
     "height": "6-3",
     "age": 20.6,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 10.6,
     "reboundsPerGame": 2,
     "assistsPerGame": 2.1,
@@ -1145,20 +1199,22 @@
       "careerApg": 2.1,
       "careerSpg": 0.8,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "josh-howard-2003",
     "name": "Josh Howard",
     "draftYear": 2003,
     "draftSlot": 29,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Wake Forest",
     "height": "6-7",
     "age": 23.2,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 14.3,
     "reboundsPerGame": 5.7,
     "assistsPerGame": 1.6,
@@ -1186,20 +1242,22 @@
       "careerApg": 1.6,
       "careerSpg": 1,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "maciej-lampe-2003",
     "name": "Maciej Lampe",
     "draftYear": 2003,
     "draftSlot": 30,
-    "position": "Forward",
+    "position": "PF",
     "school": "Madrid (ESP)",
     "height": "6-11",
     "age": 18.4,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.4,
     "reboundsPerGame": 2.2,
     "assistsPerGame": 0.3,
@@ -1227,20 +1285,22 @@
       "careerApg": 0.3,
       "careerSpg": 0.1,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "jason-kapono-2003",
     "name": "Jason Kapono",
     "draftYear": 2003,
     "draftSlot": 31,
-    "position": "Forward",
+    "position": "SF",
     "school": "California-Los Angeles",
     "height": "6-8",
     "age": 22.4,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.7,
     "reboundsPerGame": 1.7,
     "assistsPerGame": 0.8,
@@ -1268,20 +1328,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.4,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "luke-walton-2003",
     "name": "Luke Walton",
     "draftYear": 2003,
     "draftSlot": 32,
-    "position": "Forward",
+    "position": "SF",
     "school": "Arizona",
     "height": "6-8",
     "age": 23.2,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 4.7,
     "reboundsPerGame": 2.8,
     "assistsPerGame": 2.3,
@@ -1309,20 +1371,22 @@
       "careerApg": 2.3,
       "careerSpg": 0.6,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "jerome-beasley-2003",
     "name": "Jerome Beasley",
     "draftYear": 2003,
     "draftSlot": 33,
-    "position": "Forward",
+    "position": "PF",
     "school": "North Dakota",
     "height": "6-9",
     "age": 23.1,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 1,
     "reboundsPerGame": 0.5,
     "assistsPerGame": 0,
@@ -1350,7 +1414,9 @@
       "careerApg": 0,
       "careerSpg": 0,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "sofoklis-schortsanitis-2003",
@@ -1361,9 +1427,9 @@
     "school": "Iraklis Thessaloniki B.C. (Greece)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1379,7 +1445,9 @@
       "teamName": "Clippers",
       "organization": "Iraklis Thessaloniki B.C. (Greece)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "szymon-szewczyk-2003",
@@ -1390,9 +1458,9 @@
     "school": "Basketball Lowen Braunschweig (Germany)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1408,7 +1476,9 @@
       "teamName": "Bucks",
       "organization": "Basketball Lowen Braunschweig (Germany)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "mario-austin-2003",
@@ -1419,9 +1489,9 @@
     "school": "Mississippi State",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1437,20 +1507,22 @@
       "teamName": "Bulls",
       "organization": "Mississippi State",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "travis-hansen-2003",
     "name": "Travis Hansen",
     "draftYear": 2003,
     "draftSlot": 37,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Brigham Young",
     "height": "6-6",
     "age": 25.2,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3,
     "reboundsPerGame": 1.7,
     "assistsPerGame": 0.5,
@@ -1478,20 +1550,22 @@
       "careerApg": 0.5,
       "careerSpg": 0.2,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "steve-blake-2003",
     "name": "Steve Blake",
     "draftYear": 2003,
     "draftSlot": 38,
-    "position": "Guard",
+    "position": "PG",
     "school": "Maryland",
     "height": "6-3",
     "age": 23.3,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 6.5,
     "reboundsPerGame": 2.1,
     "assistsPerGame": 4,
@@ -1519,20 +1593,22 @@
       "careerApg": 4,
       "careerSpg": 0.7,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "slavko-vranes-2003",
     "name": "Slavko Vranes",
     "draftYear": 2003,
     "draftSlot": 39,
-    "position": "Center",
+    "position": "C",
     "school": "KK Buducnost Podgorica (Montenegro)",
     "height": "7-5",
     "age": 20.4,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1553,20 +1629,22 @@
       "birthdate": "1983-01-30T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "derrick-zimmerman-2003",
     "name": "Derrick Zimmerman",
     "draftYear": 2003,
     "draftSlot": 40,
-    "position": "Guard",
+    "position": "PG",
     "school": "Mississippi State",
     "height": "6-3",
     "age": 21.6,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1587,20 +1665,22 @@
       "birthdate": "1981-12-02T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "willie-green-2003",
     "name": "Willie Green",
     "draftYear": 2003,
     "draftSlot": 41,
-    "position": "Guard",
+    "position": "PG",
     "school": "Detroit Mercy",
     "height": "6-3",
     "age": 21.9,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 8.3,
     "reboundsPerGame": 1.8,
     "assistsPerGame": 1.4,
@@ -1628,20 +1708,22 @@
       "careerApg": 1.4,
       "careerSpg": 0.5,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "zaza-pachulia-2003",
     "name": "Zaza Pachulia",
     "draftYear": 2003,
     "draftSlot": 42,
-    "position": "Center",
+    "position": "C",
     "school": "Ulkerspor (Turkey)",
     "height": "6-11",
     "age": 19.4,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.8,
     "reboundsPerGame": 5.8,
     "assistsPerGame": 1.3,
@@ -1669,20 +1751,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.7,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "keith-bogans-2003",
     "name": "Keith Bogans",
     "draftYear": 2003,
     "draftSlot": 43,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Kentucky",
     "height": "6-5",
     "age": 23.1,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.3,
     "reboundsPerGame": 2.7,
     "assistsPerGame": 1.3,
@@ -1710,7 +1794,9 @@
       "careerApg": 1.3,
       "careerSpg": 0.6,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "malick-badiane-2003",
@@ -1721,9 +1807,9 @@
     "school": "TV Langen (Germany)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1739,20 +1825,22 @@
       "teamName": "Rockets",
       "organization": "TV Langen (Germany)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "matt-bonner-2003",
     "name": "Matt Bonner",
     "draftYear": 2003,
     "draftSlot": 45,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Florida",
     "height": "6-10",
     "age": 23.2,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.8,
     "reboundsPerGame": 3,
     "assistsPerGame": 0.7,
@@ -1780,7 +1868,9 @@
       "careerApg": 0.7,
       "careerSpg": 0.4,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "sani-becirovic-2003",
@@ -1791,9 +1881,9 @@
     "school": "Virtus Pallacanestro Bologna (Italy)",
     "height": "",
     "age": 22.1,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1814,20 +1904,22 @@
       "birthdate": "1981-05-19T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "mo-williams-2003",
     "name": "Mo Williams",
     "draftYear": 2003,
     "draftSlot": 47,
-    "position": "Guard",
+    "position": "PG",
     "school": "Alabama",
     "height": "6-1",
     "age": 20.5,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 13.2,
     "reboundsPerGame": 2.8,
     "assistsPerGame": 4.9,
@@ -1855,20 +1947,22 @@
       "careerApg": 4.9,
       "careerSpg": 0.9,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "james-lang-2003",
     "name": "James Lang",
     "draftYear": 2003,
     "draftSlot": 48,
-    "position": "Center",
+    "position": "C",
     "school": "Central Park Christian",
     "height": "6-10",
     "age": 19.7,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1889,20 +1983,22 @@
       "birthdate": "1983-10-17T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "james-jones-2003",
     "name": "James Jones",
     "draftYear": 2003,
     "draftSlot": 49,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Miami (FL)",
     "height": "6-8",
     "age": 22.7,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.2,
     "reboundsPerGame": 1.8,
     "assistsPerGame": 0.5,
@@ -1930,7 +2026,9 @@
       "careerApg": 0.5,
       "careerSpg": 0.3,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "paccelis-morlende-2003",
@@ -1941,9 +2039,9 @@
     "school": "JDA Dijon Basket (France)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1959,20 +2057,22 @@
       "teamName": "76ers",
       "organization": "JDA Dijon Basket (France)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "kyle-korver-2003",
     "name": "Kyle Korver",
     "draftYear": 2003,
     "draftSlot": 51,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Creighton",
     "height": "6-7",
     "age": 22.3,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 9.7,
     "reboundsPerGame": 3,
     "assistsPerGame": 1.7,
@@ -2000,7 +2100,9 @@
       "careerApg": 1.7,
       "careerSpg": 0.7,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "remon-van-de-hare-2003",
@@ -2011,9 +2113,9 @@
     "school": "FC Barcelona Basquet (Spain)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2029,7 +2131,9 @@
       "teamName": "Raptors",
       "organization": "FC Barcelona Basquet (Spain)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "tommy-smith-2003",
@@ -2040,9 +2144,9 @@
     "school": "Arizona State",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2058,7 +2162,9 @@
       "teamName": "Bulls",
       "organization": "Arizona State",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "nedzad-sinanovic-2003",
@@ -2069,9 +2175,9 @@
     "school": "HKK Brotnjo (Bosnia and Herzegovina)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2087,7 +2193,9 @@
       "teamName": "Trail Blazers",
       "organization": "HKK Brotnjo (Bosnia and Herzegovina)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "rick-rickert-2003",
@@ -2098,9 +2206,9 @@
     "school": "Minnesota",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2116,20 +2224,22 @@
       "teamName": "Timberwolves",
       "organization": "Minnesota",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "brandon-hunter-2003",
     "name": "Brandon Hunter",
     "draftYear": 2003,
     "draftSlot": 56,
-    "position": "Forward",
+    "position": "SF",
     "school": "Ohio",
     "height": "6-7",
     "age": 22.6,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.3,
     "reboundsPerGame": 2.8,
     "assistsPerGame": 0.3,
@@ -2157,7 +2267,9 @@
       "careerApg": 0.3,
       "careerSpg": 0.3,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "xue-yuyang-2003",
@@ -2168,9 +2280,9 @@
     "school": "Hong Kong Flying Dragons (China)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2186,20 +2298,22 @@
       "teamName": "Mavericks",
       "organization": "Hong Kong Flying Dragons (China)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "andreas-glyniadakis-2003",
     "name": "Andreas Glyniadakis",
     "draftYear": 2003,
     "draftSlot": 58,
-    "position": "Center",
+    "position": "C",
     "school": "A.E.K. Athens B.C. (Greece)",
     "height": "7-1",
     "age": 21.8,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2220,6 +2334,8 @@
       "birthdate": "1981-08-26T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   }
 ]

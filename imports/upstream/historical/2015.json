@@ -4,13 +4,13 @@
     "name": "Karl-Anthony Towns",
     "draftYear": 2015,
     "draftSlot": 1,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Kentucky",
     "height": "7-0",
     "age": 19.6,
-    "archetype": "",
+    "archetype": "Volume Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 22.8,
     "reboundsPerGame": 11.1,
     "assistsPerGame": 3.1,
@@ -38,20 +38,22 @@
       "careerApg": 3.1,
       "careerSpg": 0.8,
       "careerBpg": 1.1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "d-angelo-russell-2015",
     "name": "D'Angelo Russell",
     "draftYear": 2015,
     "draftSlot": 2,
-    "position": "Guard",
+    "position": "PG",
     "school": "Ohio State",
     "height": "6-3",
     "age": 19.3,
-    "archetype": "",
+    "archetype": "Combo Guard",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 17,
     "reboundsPerGame": 3.3,
     "assistsPerGame": 5.6,
@@ -79,20 +81,22 @@
       "careerApg": 5.6,
       "careerSpg": 1,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "jahlil-okafor-2015",
     "name": "Jahlil Okafor",
     "draftYear": 2015,
     "draftSlot": 3,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Duke",
     "height": "6-10",
     "age": 19.5,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 10.3,
     "reboundsPerGame": 4.7,
     "assistsPerGame": 0.9,
@@ -120,20 +124,22 @@
       "careerApg": 0.9,
       "careerSpg": 0.3,
       "careerBpg": 0.8
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "kristaps-porzingis-2015",
     "name": "Kristaps Porziņģis",
     "draftYear": 2015,
     "draftSlot": 4,
-    "position": "Forward-Center",
+    "position": "PF/C",
     "school": "CB Sevilla (Spain)",
     "height": "7-2",
     "age": 19.9,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 19.5,
     "reboundsPerGame": 7.6,
     "assistsPerGame": 1.9,
@@ -161,20 +167,22 @@
       "careerApg": 1.9,
       "careerSpg": 0.7,
       "careerBpg": 1.8
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "mario-hezonja-2015",
     "name": "Mario Hezonja",
     "draftYear": 2015,
     "draftSlot": 5,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "FC Barcelona Basquet (Spain)",
     "height": "6-8",
     "age": 20.3,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.9,
     "reboundsPerGame": 3.1,
     "assistsPerGame": 1.3,
@@ -202,20 +210,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.7,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "willie-cauley-stein-2015",
     "name": "Willie Cauley-Stein",
     "draftYear": 2015,
     "draftSlot": 6,
-    "position": "Center",
+    "position": "C",
     "school": "Kentucky",
     "height": "7-0",
     "age": 21.8,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 8.7,
     "reboundsPerGame": 5.9,
     "assistsPerGame": 1.4,
@@ -243,20 +253,22 @@
       "careerApg": 1.4,
       "careerSpg": 0.8,
       "careerBpg": 0.8
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "emmanuel-mudiay-2015",
     "name": "Emmanuel Mudiay",
     "draftYear": 2015,
     "draftSlot": 7,
-    "position": "Guard",
+    "position": "PG",
     "school": "Guangdong Southern Tigers (China)",
     "height": "6-3",
     "age": 19.3,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 10.9,
     "reboundsPerGame": 2.9,
     "assistsPerGame": 3.8,
@@ -284,20 +296,22 @@
       "careerApg": 3.8,
       "careerSpg": 0.7,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "stanley-johnson-2015",
     "name": "Stanley Johnson",
     "draftYear": 2015,
     "draftSlot": 8,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Arizona",
     "height": "6-6",
     "age": 19.1,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.2,
     "reboundsPerGame": 3.1,
     "assistsPerGame": 1.5,
@@ -325,20 +339,22 @@
       "careerApg": 1.5,
       "careerSpg": 0.9,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "frank-kaminsky-2015",
     "name": "Frank Kaminsky",
     "draftYear": 2015,
     "draftSlot": 9,
-    "position": "Forward-Center",
+    "position": "PF/C",
     "school": "Wisconsin",
     "height": "7-0",
     "age": 22.2,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 8.8,
     "reboundsPerGame": 3.8,
     "assistsPerGame": 1.6,
@@ -366,20 +382,22 @@
       "careerApg": 1.6,
       "careerSpg": 0.4,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "justise-winslow-2015",
     "name": "Justise Winslow",
     "draftYear": 2015,
     "draftSlot": 10,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Duke",
     "height": "6-6",
     "age": 19.2,
-    "archetype": "",
+    "archetype": "Two-Way Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 8.2,
     "reboundsPerGame": 5.1,
     "assistsPerGame": 2.6,
@@ -407,20 +425,22 @@
       "careerApg": 2.6,
       "careerSpg": 0.9,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "myles-turner-2015",
     "name": "Myles Turner",
     "draftYear": 2015,
     "draftSlot": 11,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Texas",
     "height": "6-11",
     "age": 19.3,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 13.9,
     "reboundsPerGame": 6.6,
     "assistsPerGame": 1.3,
@@ -448,20 +468,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.7,
       "careerBpg": 2.1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "trey-lyles-2015",
     "name": "Trey Lyles",
     "draftYear": 2015,
     "draftSlot": 12,
-    "position": "Forward",
+    "position": "PF",
     "school": "Kentucky",
     "height": "6-9",
     "age": 19.6,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 7.6,
     "reboundsPerGame": 4.3,
     "assistsPerGame": 1.1,
@@ -489,20 +511,22 @@
       "careerApg": 1.1,
       "careerSpg": 0.4,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "devin-booker-2015",
     "name": "Devin Booker",
     "draftYear": 2015,
     "draftSlot": 13,
-    "position": "Guard",
+    "position": "SG",
     "school": "Kentucky",
     "height": "6-5",
     "age": 18.6,
-    "archetype": "",
+    "archetype": "Combo Guard",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 24.6,
     "reboundsPerGame": 4,
     "assistsPerGame": 5.3,
@@ -530,20 +554,22 @@
       "careerApg": 5.3,
       "careerSpg": 0.9,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "cameron-payne-2015",
     "name": "Cameron Payne",
     "draftYear": 2015,
     "draftSlot": 14,
-    "position": "Guard",
+    "position": "PG",
     "school": "Murray State",
     "height": "6-2",
     "age": 20.9,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 7.7,
     "reboundsPerGame": 2,
     "assistsPerGame": 3.2,
@@ -571,20 +597,22 @@
       "careerApg": 3.2,
       "careerSpg": 0.7,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "kelly-oubre-jr-2015",
     "name": "Kelly Oubre Jr.",
     "draftYear": 2015,
     "draftSlot": 15,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Kansas",
     "height": "6-8",
     "age": 19.5,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 13.3,
     "reboundsPerGame": 4.7,
     "assistsPerGame": 1.2,
@@ -612,20 +640,22 @@
       "careerApg": 1.2,
       "careerSpg": 1.1,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "terry-rozier-2015",
     "name": "Terry Rozier",
     "draftYear": 2015,
     "draftSlot": 16,
-    "position": "Guard",
+    "position": "PG",
     "school": "Louisville",
     "height": "6-1",
     "age": 21.3,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 13.9,
     "reboundsPerGame": 3.9,
     "assistsPerGame": 3.5,
@@ -653,20 +683,22 @@
       "careerApg": 3.5,
       "careerSpg": 0.9,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "rashad-vaughn-2015",
     "name": "Rashad Vaughn",
     "draftYear": 2015,
     "draftSlot": 17,
-    "position": "Guard",
+    "position": "SG",
     "school": "Nevada-Las Vegas",
     "height": "6-6",
     "age": 18.9,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3,
     "reboundsPerGame": 1.1,
     "assistsPerGame": 0.5,
@@ -694,20 +726,22 @@
       "careerApg": 0.5,
       "careerSpg": 0.4,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "sam-dekker-2015",
     "name": "Sam Dekker",
     "draftYear": 2015,
     "draftSlot": 18,
-    "position": "Forward",
+    "position": "SF",
     "school": "Wisconsin",
     "height": "6-8",
     "age": 21.1,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
     "reboundsPerGame": 3,
     "assistsPerGame": 0.8,
@@ -735,20 +769,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.5,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "jerian-grant-2015",
     "name": "Jerian Grant",
     "draftYear": 2015,
     "draftSlot": 19,
-    "position": "Guard",
+    "position": "SG",
     "school": "Notre Dame",
     "height": "6-4",
     "age": 22.7,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.1,
     "reboundsPerGame": 1.9,
     "assistsPerGame": 2.9,
@@ -776,20 +812,22 @@
       "careerApg": 2.9,
       "careerSpg": 0.7,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "delon-wright-2015",
     "name": "Delon Wright",
     "draftYear": 2015,
     "draftSlot": 20,
-    "position": "Guard",
+    "position": "SG",
     "school": "Utah",
     "height": "6-5",
     "age": 23.2,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.7,
     "reboundsPerGame": 3,
     "assistsPerGame": 3,
@@ -817,20 +855,22 @@
       "careerApg": 3,
       "careerSpg": 1.2,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "justin-anderson-2015",
     "name": "Justin Anderson",
     "draftYear": 2015,
     "draftSlot": 21,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Virginia",
     "height": "6-5",
     "age": 21.6,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.3,
     "reboundsPerGame": 2.6,
     "assistsPerGame": 0.8,
@@ -858,20 +898,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.4,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "bobby-portis-2015",
     "name": "Bobby Portis",
     "draftYear": 2015,
     "draftSlot": 22,
-    "position": "Forward",
+    "position": "PF",
     "school": "Arkansas",
     "height": "6-9",
     "age": 20.4,
-    "archetype": "",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 12.1,
     "reboundsPerGame": 7.1,
     "assistsPerGame": 1.3,
@@ -899,20 +941,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.6,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "rondae-hollis-jefferson-2015",
     "name": "Rondae Hollis-Jefferson",
     "draftYear": 2015,
     "draftSlot": 23,
-    "position": "Forward",
+    "position": "SF",
     "school": "Arizona",
     "height": "6-6",
     "age": 20.5,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 9,
     "reboundsPerGame": 5.5,
     "assistsPerGame": 1.9,
@@ -940,20 +984,22 @@
       "careerApg": 1.9,
       "careerSpg": 0.9,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "tyus-jones-2015",
     "name": "Tyus Jones",
     "draftYear": 2015,
     "draftSlot": 24,
-    "position": "Guard",
+    "position": "PG",
     "school": "Duke",
     "height": "6-0",
     "age": 19.1,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 7.3,
     "reboundsPerGame": 1.9,
     "assistsPerGame": 4.2,
@@ -981,20 +1027,22 @@
       "careerApg": 4.2,
       "careerSpg": 0.9,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "jarell-martin-2015",
     "name": "Jarell Martin",
     "draftYear": 2015,
     "draftSlot": 25,
-    "position": "Forward",
+    "position": "PF",
     "school": "Louisiana State",
     "height": "6-10",
     "age": 21.1,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
     "reboundsPerGame": 3.5,
     "assistsPerGame": 0.6,
@@ -1022,7 +1070,9 @@
       "careerApg": 0.6,
       "careerSpg": 0.4,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "nikola-milutinov-2015",
@@ -1033,9 +1083,9 @@
     "school": "KK Partizan (Serbia)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1051,20 +1101,22 @@
       "teamName": "Spurs",
       "organization": "KK Partizan (Serbia)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "larry-nance-jr-2015",
     "name": "Larry Nance Jr.",
     "draftYear": 2015,
     "draftSlot": 27,
-    "position": "Forward-Center",
+    "position": "PF/C",
     "school": "Wyoming",
     "height": "6-6",
     "age": 22.5,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 7.5,
     "reboundsPerGame": 5.9,
     "assistsPerGame": 1.8,
@@ -1092,20 +1144,22 @@
       "careerApg": 1.8,
       "careerSpg": 1.1,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "rj-hunter-2015",
     "name": "RJ Hunter",
     "draftYear": 2015,
     "draftSlot": 28,
-    "position": "Guard",
+    "position": "SG",
     "school": "Georgia State",
     "height": "6-5",
     "age": 21.7,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3,
     "reboundsPerGame": 1,
     "assistsPerGame": 0.4,
@@ -1133,20 +1187,22 @@
       "careerApg": 0.4,
       "careerSpg": 0.4,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "chris-mccullough-2015",
     "name": "Chris McCullough",
     "draftYear": 2015,
     "draftSlot": 29,
-    "position": "Forward",
+    "position": "PF",
     "school": "Syracuse",
     "height": "6-9",
     "age": 20.4,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.3,
     "reboundsPerGame": 1.9,
     "assistsPerGame": 0.3,
@@ -1174,20 +1230,22 @@
       "careerApg": 0.3,
       "careerSpg": 0.5,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "kevon-looney-2015",
     "name": "Kevon Looney",
     "draftYear": 2015,
     "draftSlot": 30,
-    "position": "Forward",
+    "position": "PF",
     "school": "California-Los Angeles",
     "height": "6-9",
     "age": 19.4,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 4.9,
     "reboundsPerGame": 5.7,
     "assistsPerGame": 1.6,
@@ -1215,20 +1273,22 @@
       "careerApg": 1.6,
       "careerSpg": 0.5,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "cedi-osman-2015",
     "name": "Cedi Osman",
     "draftYear": 2015,
     "draftSlot": 31,
-    "position": "Forward",
+    "position": "SF",
     "school": "Anadolu Efes S.K. (Turkey)",
     "height": "6-7",
     "age": 20.2,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 9.3,
     "reboundsPerGame": 3,
     "assistsPerGame": 2,
@@ -1256,20 +1316,22 @@
       "careerApg": 2,
       "careerSpg": 0.7,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "montrezl-harrell-2015",
     "name": "Montrezl Harrell",
     "draftYear": 2015,
     "draftSlot": 32,
-    "position": "Forward-Center",
+    "position": "PF/C",
     "school": "Louisville",
     "height": "6-7",
     "age": 21.4,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 12.1,
     "reboundsPerGame": 5,
     "assistsPerGame": 1.3,
@@ -1297,20 +1359,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.5,
       "careerBpg": 0.8
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "jordan-mickey-2015",
     "name": "Jordan Mickey",
     "draftYear": 2015,
     "draftSlot": 33,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Louisiana State",
     "height": "6-8",
     "age": 21,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.4,
     "reboundsPerGame": 2,
     "assistsPerGame": 0.3,
@@ -1338,20 +1402,22 @@
       "careerApg": 0.3,
       "careerSpg": 0.1,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "anthony-brown-2015",
     "name": "Anthony Brown",
     "draftYear": 2015,
     "draftSlot": 34,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Stanford",
     "height": "6-7",
     "age": 22.7,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.9,
     "reboundsPerGame": 2.5,
     "assistsPerGame": 0.7,
@@ -1379,20 +1445,22 @@
       "careerApg": 0.7,
       "careerSpg": 0.5,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "willy-hernangomez-2015",
     "name": "Willy Hernangomez",
     "draftYear": 2015,
     "draftSlot": 35,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "CB Sevilla (Spain)",
     "height": "6-11",
     "age": 21.1,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 7.3,
     "reboundsPerGame": 5.8,
     "assistsPerGame": 1.1,
@@ -1420,20 +1488,22 @@
       "careerApg": 1.1,
       "careerSpg": 0.4,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "rakeem-christmas-2015",
     "name": "Rakeem Christmas",
     "draftYear": 2015,
     "draftSlot": 36,
-    "position": "Forward",
+    "position": "PF",
     "school": "Syracuse",
     "height": "6-9",
     "age": 23.6,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.1,
     "reboundsPerGame": 1.9,
     "assistsPerGame": 0.1,
@@ -1461,20 +1531,22 @@
       "careerApg": 0.1,
       "careerSpg": 0.1,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "richaun-holmes-2015",
     "name": "Richaun Holmes",
     "draftYear": 2015,
     "draftSlot": 37,
-    "position": "Forward",
+    "position": "PF",
     "school": "Bowling Green",
     "height": "6-9",
     "age": 21.7,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 8.5,
     "reboundsPerGame": 5.3,
     "assistsPerGame": 1,
@@ -1502,20 +1574,22 @@
       "careerApg": 1,
       "careerSpg": 0.5,
       "careerBpg": 0.9
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "darrun-hilliard-2015",
     "name": "Darrun Hilliard",
     "draftYear": 2015,
     "draftSlot": 38,
-    "position": "Guard",
+    "position": "SG",
     "school": "Villanova",
     "height": "6-6",
     "age": 22.2,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.2,
     "reboundsPerGame": 0.9,
     "assistsPerGame": 0.8,
@@ -1543,7 +1617,9 @@
       "careerApg": 0.8,
       "careerSpg": 0.2,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "juan-pablo-vaulet-2015",
@@ -1554,9 +1630,9 @@
     "school": "Bahia Basket (Argentina)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1572,20 +1648,22 @@
       "teamName": "Hornets",
       "organization": "Bahia Basket (Argentina)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "josh-richardson-2015",
     "name": "Josh Richardson",
     "draftYear": 2015,
     "draftSlot": 40,
-    "position": "Guard",
+    "position": "SG",
     "school": "Tennessee",
     "height": "6-5",
     "age": 21.8,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 11.5,
     "reboundsPerGame": 3,
     "assistsPerGame": 2.6,
@@ -1613,20 +1691,22 @@
       "careerApg": 2.6,
       "careerSpg": 1,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "pat-connaughton-2015",
     "name": "Pat Connaughton",
     "draftYear": 2015,
     "draftSlot": 41,
-    "position": "Guard",
+    "position": "SG",
     "school": "Notre Dame",
     "height": "6-5",
     "age": 22.5,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.8,
     "reboundsPerGame": 3.3,
     "assistsPerGame": 1.3,
@@ -1654,7 +1734,9 @@
       "careerApg": 1.3,
       "careerSpg": 0.5,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "olivier-hanlan-2015",
@@ -1665,9 +1747,9 @@
     "school": "Boston College",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1683,20 +1765,22 @@
       "teamName": "Jazz",
       "organization": "Boston College",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "joe-young-2015",
     "name": "Joe Young",
     "draftYear": 2015,
     "draftSlot": 43,
-    "position": "Guard",
+    "position": "PG",
     "school": "Oregon",
     "height": "6-2",
     "age": 23,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.4,
     "reboundsPerGame": 1,
     "assistsPerGame": 0.9,
@@ -1724,20 +1808,22 @@
       "careerApg": 0.9,
       "careerSpg": 0.3,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "andrew-harrison-2015",
     "name": "Andrew Harrison",
     "draftYear": 2015,
     "draftSlot": 44,
-    "position": "Guard",
+    "position": "SG",
     "school": "Kentucky",
     "height": "6-6",
     "age": 20.7,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 7,
     "reboundsPerGame": 2,
     "assistsPerGame": 2.8,
@@ -1765,7 +1851,9 @@
       "careerApg": 2.8,
       "careerSpg": 0.7,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "marcus-thornton-2015",
@@ -1776,9 +1864,9 @@
     "school": "William & Mary",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1794,20 +1882,22 @@
       "teamName": "Celtics",
       "organization": "William & Mary",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "norman-powell-2015",
     "name": "Norman Powell",
     "draftYear": 2015,
     "draftSlot": 46,
-    "position": "Guard",
+    "position": "PG",
     "school": "California-Los Angeles",
     "height": "6-3",
     "age": 22.1,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 14,
     "reboundsPerGame": 2.7,
     "assistsPerGame": 1.6,
@@ -1835,7 +1925,9 @@
       "careerApg": 1.6,
       "careerSpg": 0.8,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "arturas-gudaitis-2015",
@@ -1846,9 +1938,9 @@
     "school": "BC Zalgiris (Lithuania)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1864,20 +1956,22 @@
       "teamName": "76ers",
       "organization": "BC Zalgiris (Lithuania)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "dakari-johnson-2015",
     "name": "Dakari Johnson",
     "draftYear": 2015,
     "draftSlot": 48,
-    "position": "Center",
+    "position": "C",
     "school": "Kentucky",
     "height": "7-0",
     "age": 19.8,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 1.8,
     "reboundsPerGame": 1.1,
     "assistsPerGame": 0.3,
@@ -1905,7 +1999,9 @@
       "careerApg": 0.3,
       "careerSpg": 0.2,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "aaron-white-2015",
@@ -1916,9 +2012,9 @@
     "school": "Iowa",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1934,7 +2030,9 @@
       "teamName": "Wizards",
       "organization": "Iowa",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "marcus-eriksson-2015",
@@ -1945,9 +2043,9 @@
     "school": "FC Barcelona Basquet (Spain)",
     "height": "",
     "age": 21.6,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1968,7 +2066,9 @@
       "birthdate": "1993-12-05T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "tyler-harvey-2015",
@@ -1979,9 +2079,9 @@
     "school": "Eastern Washington",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1997,7 +2097,9 @@
       "teamName": "Magic",
       "organization": "Eastern Washington",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "satnam-singh-2015",
@@ -2008,9 +2110,9 @@
     "school": "IMG Academy",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2026,7 +2128,9 @@
       "teamName": "Mavericks",
       "organization": "IMG Academy",
       "organizationType": "High School"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "sir-dominic-pointer-2015",
@@ -2037,9 +2141,9 @@
     "school": "St. John's (NY)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2055,7 +2159,9 @@
       "teamName": "Cavaliers",
       "organization": "St. John's (NY)",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "daniel-diez-2015",
@@ -2066,9 +2172,9 @@
     "school": "San Sebastian Gipuzkoa BC (Spain)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2084,7 +2190,9 @@
       "teamName": "Jazz",
       "organization": "San Sebastian Gipuzkoa BC (Spain)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "cady-lalanne-2015",
@@ -2095,9 +2203,9 @@
     "school": "Massachusetts",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2113,20 +2221,22 @@
       "teamName": "Spurs",
       "organization": "Massachusetts",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "branden-dawson-2015",
     "name": "Branden Dawson",
     "draftYear": 2015,
     "draftSlot": 56,
-    "position": "Forward",
+    "position": "SF",
     "school": "Michigan State",
     "height": "6-6",
     "age": 22.4,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 0.8,
     "reboundsPerGame": 0.7,
     "assistsPerGame": 0,
@@ -2154,7 +2264,9 @@
       "careerApg": 0,
       "careerSpg": 0,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "nikola-radicevic-2015",
@@ -2165,9 +2277,9 @@
     "school": "CB Sevilla (Spain)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2183,7 +2295,9 @@
       "teamName": "Nuggets",
       "organization": "CB Sevilla (Spain)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "jp-tokoto-2015",
@@ -2194,9 +2308,9 @@
     "school": "North Carolina",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2212,7 +2326,9 @@
       "teamName": "76ers",
       "organization": "North Carolina",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "dimitrios-agravanis-2015",
@@ -2223,9 +2339,9 @@
     "school": "Olympiacos B.C. (Greece)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2241,7 +2357,9 @@
       "teamName": "Hawks",
       "organization": "Olympiacos B.C. (Greece)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "luka-mitrovic-2015",
@@ -2252,9 +2370,9 @@
     "school": "Red Star Belgrade (Serbia)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2270,6 +2388,8 @@
       "teamName": "76ers",
       "organization": "Red Star Belgrade (Serbia)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   }
 ]

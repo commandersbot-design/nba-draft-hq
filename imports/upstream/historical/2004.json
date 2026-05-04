@@ -4,13 +4,13 @@
     "name": "Dwight Howard",
     "draftYear": 2004,
     "draftSlot": 1,
-    "position": "Center-Forward",
+    "position": "PF/C",
     "school": "Southwest Atlanta Christian Academy",
     "height": "6-10",
     "age": 18.5,
-    "archetype": "",
+    "archetype": "Defensive Anchor",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 15.7,
     "reboundsPerGame": 11.8,
     "assistsPerGame": 1.3,
@@ -38,20 +38,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.9,
       "careerBpg": 1.8
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "emeka-okafor-2004",
     "name": "Emeka Okafor",
     "draftYear": 2004,
     "draftSlot": 2,
-    "position": "Center",
+    "position": "C",
     "school": "Connecticut",
     "height": "6-10",
     "age": 21.7,
-    "archetype": "",
+    "archetype": "Defensive Anchor",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 12,
     "reboundsPerGame": 9.7,
     "assistsPerGame": 0.8,
@@ -79,20 +81,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.7,
       "careerBpg": 1.6
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "ben-gordon-2004",
     "name": "Ben Gordon",
     "draftYear": 2004,
     "draftSlot": 3,
-    "position": "Guard",
+    "position": "PG",
     "school": "Connecticut",
     "height": "6-3",
     "age": 21.2,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 14.9,
     "reboundsPerGame": 2.5,
     "assistsPerGame": 2.5,
@@ -120,20 +124,22 @@
       "careerApg": 2.5,
       "careerSpg": 0.7,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "shaun-livingston-2004",
     "name": "Shaun Livingston",
     "draftYear": 2004,
     "draftSlot": 4,
-    "position": "Guard",
+    "position": "SG",
     "school": "Peoria",
     "height": "6-7",
     "age": 18.8,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.3,
     "reboundsPerGame": 2.4,
     "assistsPerGame": 3,
@@ -161,20 +167,22 @@
       "careerApg": 3,
       "careerSpg": 0.7,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "devin-harris-2004",
     "name": "Devin Harris",
     "draftYear": 2004,
     "draftSlot": 5,
-    "position": "Guard",
+    "position": "PG",
     "school": "Wisconsin",
     "height": "6-3",
     "age": 21.3,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 10.8,
     "reboundsPerGame": 2.2,
     "assistsPerGame": 3.9,
@@ -202,20 +210,22 @@
       "careerApg": 3.9,
       "careerSpg": 1,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "josh-childress-2004",
     "name": "Josh Childress",
     "draftYear": 2004,
     "draftSlot": 6,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Stanford",
     "height": "6-8",
     "age": 21,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 9.1,
     "reboundsPerGame": 4.7,
     "assistsPerGame": 1.6,
@@ -243,20 +253,22 @@
       "careerApg": 1.6,
       "careerSpg": 0.9,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "luol-deng-2004",
     "name": "Luol Deng",
     "draftYear": 2004,
     "draftSlot": 7,
-    "position": "Forward",
+    "position": "PF",
     "school": "Duke",
     "height": "6-9",
     "age": 19.2,
-    "archetype": "",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 14.8,
     "reboundsPerGame": 6.1,
     "assistsPerGame": 2.3,
@@ -284,20 +296,22 @@
       "careerApg": 2.3,
       "careerSpg": 1,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "rafael-araujo-2004",
     "name": "Rafael Araujo",
     "draftYear": 2004,
     "draftSlot": 8,
-    "position": "Center",
+    "position": "C",
     "school": "Brigham Young",
     "height": "6-11",
     "age": 23.9,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.8,
     "reboundsPerGame": 2.8,
     "assistsPerGame": 0.3,
@@ -325,20 +339,22 @@
       "careerApg": 0.3,
       "careerSpg": 0.4,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "andre-iguodala-2004",
     "name": "Andre Iguodala",
     "draftYear": 2004,
     "draftSlot": 9,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Arizona",
     "height": "6-6",
     "age": 20.4,
-    "archetype": "",
+    "archetype": "Switchblade Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 11.3,
     "reboundsPerGame": 4.9,
     "assistsPerGame": 4.2,
@@ -366,20 +382,22 @@
       "careerApg": 4.2,
       "careerSpg": 1.4,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "luke-jackson-2004",
     "name": "Luke Jackson",
     "draftYear": 2004,
     "draftSlot": 10,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Oregon",
     "height": "6-7",
     "age": 22.6,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.5,
     "reboundsPerGame": 1.2,
     "assistsPerGame": 0.8,
@@ -407,20 +425,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.3,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "andris-biedrins-2004",
     "name": "Andris Biedrins",
     "draftYear": 2004,
     "draftSlot": 11,
-    "position": "Center",
+    "position": "C",
     "school": "BK Skonto (Latvia)",
     "height": "7-0",
     "age": 18.2,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.3,
     "reboundsPerGame": 7,
     "assistsPerGame": 0.9,
@@ -448,20 +468,22 @@
       "careerApg": 0.9,
       "careerSpg": 0.6,
       "careerBpg": 1.1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "robert-swift-2004",
     "name": "Robert Swift",
     "draftYear": 2004,
     "draftSlot": 12,
-    "position": "Center",
+    "position": "C",
     "school": "Bakersfield",
     "height": "7-1",
     "age": 18.6,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 4.3,
     "reboundsPerGame": 3.9,
     "assistsPerGame": 0.2,
@@ -489,20 +511,22 @@
       "careerApg": 0.2,
       "careerSpg": 0.3,
       "careerBpg": 0.9
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "sebastian-telfair-2004",
     "name": "Sebastian Telfair",
     "draftYear": 2004,
     "draftSlot": 13,
-    "position": "Guard",
+    "position": "PG",
     "school": "Abraham Lincoln",
     "height": "6-0",
     "age": 19,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 7.4,
     "reboundsPerGame": 1.6,
     "assistsPerGame": 3.5,
@@ -530,20 +554,22 @@
       "careerApg": 3.5,
       "careerSpg": 0.7,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "kris-humphries-2004",
     "name": "Kris Humphries",
     "draftYear": 2004,
     "draftSlot": 14,
-    "position": "Forward",
+    "position": "PF",
     "school": "Minnesota",
     "height": "6-9",
     "age": 19.4,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.7,
     "reboundsPerGame": 5.4,
     "assistsPerGame": 0.7,
@@ -571,20 +597,22 @@
       "careerApg": 0.7,
       "careerSpg": 0.4,
       "careerBpg": 0.6
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "al-jefferson-2004",
     "name": "Al Jefferson",
     "draftYear": 2004,
     "draftSlot": 15,
-    "position": "Center",
+    "position": "C",
     "school": "Prentiss",
     "height": "6-10",
     "age": 19.5,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 15.7,
     "reboundsPerGame": 8.4,
     "assistsPerGame": 1.5,
@@ -612,20 +640,22 @@
       "careerApg": 1.5,
       "careerSpg": 0.7,
       "careerBpg": 1.2
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "kirk-snyder-2004",
     "name": "Kirk Snyder",
     "draftYear": 2004,
     "draftSlot": 16,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "Nevada-Reno",
     "height": "6-6",
     "age": 21.1,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 6.3,
     "reboundsPerGame": 2.3,
     "assistsPerGame": 1.1,
@@ -653,20 +683,22 @@
       "careerApg": 1.1,
       "careerSpg": 0.4,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "josh-smith-2004",
     "name": "Josh Smith",
     "draftYear": 2004,
     "draftSlot": 17,
-    "position": "Forward",
+    "position": "PF",
     "school": "Oak Hill Academy",
     "height": "6-9",
     "age": 18.6,
-    "archetype": "",
+    "archetype": "Connector Four",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Star",
     "pointsPerGame": 14.5,
     "reboundsPerGame": 7.4,
     "assistsPerGame": 3.1,
@@ -694,20 +726,22 @@
       "careerApg": 3.1,
       "careerSpg": 1.2,
       "careerBpg": 1.9
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "jr-smith-2004",
     "name": "JR Smith",
     "draftYear": 2004,
     "draftSlot": 18,
-    "position": "Guard",
+    "position": "SG",
     "school": "Saint Benedict's Preparatory School",
     "height": "6-6",
     "age": 18.8,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 12.4,
     "reboundsPerGame": 3.1,
     "assistsPerGame": 2.1,
@@ -735,20 +769,22 @@
       "careerApg": 2.1,
       "careerSpg": 1,
       "careerBpg": 0.2
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "dorell-wright-2004",
     "name": "Dorell Wright",
     "draftYear": 2004,
     "draftSlot": 19,
-    "position": "Forward-Guard",
+    "position": "SF/SG",
     "school": "South Kent School",
     "height": "6-9",
     "age": 18.6,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 8.4,
     "reboundsPerGame": 3.8,
     "assistsPerGame": 1.5,
@@ -776,20 +812,22 @@
       "careerApg": 1.5,
       "careerSpg": 0.8,
       "careerBpg": 0.5
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "jameer-nelson-2004",
     "name": "Jameer Nelson",
     "draftYear": 2004,
     "draftSlot": 20,
-    "position": "Guard",
+    "position": "PG",
     "school": "Saint Joseph's",
     "height": "6-0",
     "age": 22.4,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 11.3,
     "reboundsPerGame": 3,
     "assistsPerGame": 5.1,
@@ -817,20 +855,22 @@
       "careerApg": 5.1,
       "careerSpg": 0.9,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "pavel-podkolzin-2004",
     "name": "Pavel Podkolzin",
     "draftYear": 2004,
     "draftSlot": 21,
-    "position": "Center",
+    "position": "C",
     "school": "Pallacanestro Varese (Italy)",
     "height": "7-5",
     "age": 19.4,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -851,7 +891,9 @@
       "birthdate": "1985-01-15T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 2
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "viktor-khryapa-2004",
@@ -862,9 +904,9 @@
     "school": "PBC CSKA Moscow (Russia)",
     "height": "",
     "age": 21.9,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 4.5,
     "reboundsPerGame": 3.4,
     "assistsPerGame": 1,
@@ -892,20 +934,22 @@
       "careerApg": 1,
       "careerSpg": 0.6,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "sergei-monia-2004",
     "name": "Sergei Monia",
     "draftYear": 2004,
     "draftSlot": 23,
-    "position": "Forward",
+    "position": "SF",
     "school": "PBC CSKA Moscow (Russia)",
     "height": "6-8",
     "age": 21.2,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -926,20 +970,22 @@
       "birthdate": "1983-04-15T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "delonte-west-2004",
     "name": "Delonte West",
     "draftYear": 2004,
     "draftSlot": 24,
-    "position": "Guard",
+    "position": "PG",
     "school": "Saint Joseph's",
     "height": "6-3",
     "age": 20.9,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 9.7,
     "reboundsPerGame": 2.9,
     "assistsPerGame": 3.6,
@@ -967,20 +1013,22 @@
       "careerApg": 3.6,
       "careerSpg": 1.1,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "tony-allen-2004",
     "name": "Tony Allen",
     "draftYear": 2004,
     "draftSlot": 25,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Oklahoma State",
     "height": "6-4",
     "age": 22.5,
-    "archetype": "",
+    "archetype": "Switchblade Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 8.1,
     "reboundsPerGame": 3.5,
     "assistsPerGame": 1.3,
@@ -1008,20 +1056,22 @@
       "careerApg": 1.3,
       "careerSpg": 1.4,
       "careerBpg": 0.4
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "kevin-martin-2004",
     "name": "Kevin Martin",
     "draftYear": 2004,
     "draftSlot": 26,
-    "position": "Guard",
+    "position": "SG",
     "school": "Western Carolina",
     "height": "6-7",
     "age": 21.4,
-    "archetype": "",
+    "archetype": "Microwave Scorer",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 17.4,
     "reboundsPerGame": 3.2,
     "assistsPerGame": 1.9,
@@ -1049,20 +1099,22 @@
       "careerApg": 1.9,
       "careerSpg": 0.9,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "sasha-vujacic-2004",
     "name": "Sasha Vujacic",
     "draftYear": 2004,
     "draftSlot": 27,
-    "position": "Guard",
+    "position": "SG",
     "school": "Pallalcesto Amatori Udine (Italy)",
     "height": "6-7",
     "age": 20.3,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 5.3,
     "reboundsPerGame": 1.9,
     "assistsPerGame": 1.3,
@@ -1090,20 +1142,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.6,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "beno-udrih-2004",
     "name": "Beno Udrih",
     "draftYear": 2004,
     "draftSlot": 28,
-    "position": "Guard",
+    "position": "PG",
     "school": "Olimpia Milano (Italy)",
     "height": "6-3",
     "age": 22,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Swing",
     "pointsPerGame": 8.4,
     "reboundsPerGame": 2.1,
     "assistsPerGame": 3.4,
@@ -1131,20 +1185,22 @@
       "careerApg": 3.4,
       "careerSpg": 0.7,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "david-harrison-2004",
     "name": "David Harrison",
     "draftYear": 2004,
     "draftSlot": 29,
-    "position": "Center",
+    "position": "C",
     "school": "Colorado",
     "height": "7-0",
     "age": 21.9,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 5,
     "reboundsPerGame": 2.9,
     "assistsPerGame": 0.2,
@@ -1172,20 +1228,22 @@
       "careerApg": 0.2,
       "careerSpg": 0.3,
       "careerBpg": 1
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "anderson-varejao-2004",
     "name": "Anderson Varejao",
     "draftYear": 2004,
     "draftSlot": 30,
-    "position": "Forward",
+    "position": "PF",
     "school": "FC Barcelona Basquet (Spain)",
     "height": "6-11",
     "age": 21.7,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 7.2,
     "reboundsPerGame": 7.2,
     "assistsPerGame": 1.2,
@@ -1213,20 +1271,22 @@
       "careerApg": 1.2,
       "careerSpg": 0.8,
       "careerBpg": 0.6
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "jackson-vroman-2004",
     "name": "Jackson Vroman",
     "draftYear": 2004,
     "draftSlot": 31,
-    "position": "Forward-Center",
+    "position": "PF/C",
     "school": "Iowa State",
     "height": "6-10",
     "age": 23.1,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.3,
     "reboundsPerGame": 3,
     "assistsPerGame": 0.6,
@@ -1254,20 +1314,22 @@
       "careerApg": 0.6,
       "careerSpg": 0.4,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "peter-john-ramos-2004",
     "name": "Peter John Ramos",
     "draftYear": 2004,
     "draftSlot": 32,
-    "position": "Center",
+    "position": "C",
     "school": "Criollos de Caguas (Puerto Rico)",
     "height": "7-3",
     "age": 19.1,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1288,20 +1350,22 @@
       "birthdate": "1985-05-23T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 2
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "lionel-chalmers-2004",
     "name": "Lionel Chalmers",
     "draftYear": 2004,
     "draftSlot": 33,
-    "position": "Guard",
+    "position": "PG",
     "school": "Xavier",
     "height": "6-0",
     "age": 23.6,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.1,
     "reboundsPerGame": 0.9,
     "assistsPerGame": 1.4,
@@ -1329,20 +1393,22 @@
       "careerApg": 1.4,
       "careerSpg": 0.4,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "donta-smith-2004",
     "name": "Donta Smith",
     "draftYear": 2004,
     "draftSlot": 34,
-    "position": "Guard",
+    "position": "SG",
     "school": "Southeastern Illinois",
     "height": "6-7",
     "age": 20.6,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.7,
     "reboundsPerGame": 1.1,
     "assistsPerGame": 0.8,
@@ -1370,20 +1436,22 @@
       "careerApg": 0.8,
       "careerSpg": 0.5,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "andre-emmett-2004",
     "name": "Andre Emmett",
     "draftYear": 2004,
     "draftSlot": 35,
-    "position": "Guard",
+    "position": "SG",
     "school": "Texas Tech",
     "height": "6-5",
     "age": 21.8,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1404,20 +1472,22 @@
       "birthdate": "1982-08-27T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 3
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "antonio-burks-2004",
     "name": "Antonio Burks",
     "draftYear": 2004,
     "draftSlot": 36,
-    "position": "Guard",
+    "position": "PG",
     "school": "Memphis",
     "height": "6-0",
     "age": 24.3,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.3,
     "reboundsPerGame": 0.6,
     "assistsPerGame": 1.3,
@@ -1445,20 +1515,22 @@
       "careerApg": 1.3,
       "careerSpg": 0.4,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "royal-ivey-2004",
     "name": "Royal Ivey",
     "draftYear": 2004,
     "draftSlot": 37,
-    "position": "Guard",
+    "position": "SG",
     "school": "Brigham Young",
     "height": "6-4",
     "age": 22.5,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.3,
     "reboundsPerGame": 1.1,
     "assistsPerGame": 1,
@@ -1486,20 +1558,22 @@
       "careerApg": 1,
       "careerSpg": 0.5,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "chris-duhon-2004",
     "name": "Chris Duhon",
     "draftYear": 2004,
     "draftSlot": 38,
-    "position": "Guard",
+    "position": "PG",
     "school": "Duke",
     "height": "6-1",
     "age": 21.8,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 6.5,
     "reboundsPerGame": 2.3,
     "assistsPerGame": 4.4,
@@ -1527,7 +1601,9 @@
       "careerApg": 4.4,
       "careerSpg": 0.8,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "albert-miralles-2004",
@@ -1538,9 +1614,9 @@
     "school": "Roseto Sharks (Italy)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1556,20 +1632,22 @@
       "teamName": "Raptors",
       "organization": "Roseto Sharks (Italy)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "justin-reed-2004",
     "name": "Justin Reed",
     "draftYear": 2004,
     "draftSlot": 40,
-    "position": "Forward",
+    "position": "SF",
     "school": "Mississippi",
     "height": "6-8",
     "age": 22.4,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 3.5,
     "reboundsPerGame": 1.4,
     "assistsPerGame": 0.5,
@@ -1597,7 +1675,9 @@
       "careerApg": 0.5,
       "careerSpg": 0.2,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "david-young-2004",
@@ -1608,9 +1688,9 @@
     "school": "North Carolina Central",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1626,7 +1706,9 @@
       "teamName": "SuperSonics",
       "organization": "North Carolina Central",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "viktor-sanikidze-2004",
@@ -1637,9 +1719,9 @@
     "school": "JDA Dijon Basket (France)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1655,20 +1737,22 @@
       "teamName": "Hawks",
       "organization": "JDA Dijon Basket (France)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "trevor-ariza-2004",
     "name": "Trevor Ariza",
     "draftYear": 2004,
     "draftSlot": 43,
-    "position": "Forward",
+    "position": "SF",
     "school": "California-Los Angeles",
     "height": "6-8",
     "age": 19,
-    "archetype": "",
+    "archetype": "Switchblade Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Hit",
     "pointsPerGame": 10.4,
     "reboundsPerGame": 4.8,
     "assistsPerGame": 2.1,
@@ -1696,7 +1780,9 @@
       "careerApg": 2.1,
       "careerSpg": 1.5,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "tim-pickett-2004",
@@ -1707,9 +1793,9 @@
     "school": "Florida State",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1725,20 +1811,22 @@
       "teamName": "Hornets",
       "organization": "Florida State",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "bernard-robinson-2004",
     "name": "Bernard Robinson",
     "draftYear": 2004,
     "draftSlot": 45,
-    "position": "Guard-Forward",
+    "position": "SF/SG",
     "school": "Michigan",
     "height": "6-6",
     "age": 23.5,
-    "archetype": "",
+    "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 4.5,
     "reboundsPerGame": 2.5,
     "assistsPerGame": 1,
@@ -1766,20 +1854,22 @@
       "careerApg": 1,
       "careerSpg": 0.9,
       "careerBpg": 0.1
-    }
+    },
+    "positionFamily": "Wing",
+    "archetypeFamily": "Wing"
   },
   {
     "id": "ha-ha-2004",
     "name": "Ha Ha",
     "draftYear": 2004,
     "draftSlot": 46,
-    "position": "Center",
+    "position": "C",
     "school": "Yonsei (KOR)",
     "height": "7-3",
     "age": 18.9,
-    "archetype": "",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 1.5,
     "reboundsPerGame": 1.5,
     "assistsPerGame": 0.1,
@@ -1807,20 +1897,22 @@
       "careerApg": 0.1,
       "careerSpg": 0.1,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "pape-sow-2004",
     "name": "Pape Sow",
     "draftYear": 2004,
     "draftSlot": 47,
-    "position": "Forward",
+    "position": "PF",
     "school": "Cal State-Fullerton",
     "height": "6-10",
     "age": 22.6,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.9,
     "reboundsPerGame": 2.8,
     "assistsPerGame": 0.2,
@@ -1848,7 +1940,9 @@
       "careerApg": 0.2,
       "careerSpg": 0.4,
       "careerBpg": 0.3
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "ricky-minard-2004",
@@ -1859,9 +1953,9 @@
     "school": "Morehead State",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1877,7 +1971,9 @@
       "teamName": "Kings",
       "organization": "Morehead State",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "sergei-lishouk-2004",
@@ -1888,9 +1984,9 @@
     "school": "Miami (FL)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1906,20 +2002,22 @@
       "teamName": "Grizzlies",
       "organization": "Miami (FL)",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "vassilis-spanoulis-2004",
     "name": "Vassilis Spanoulis",
     "draftYear": 2004,
     "draftSlot": 50,
-    "position": "Guard",
+    "position": "SG",
     "school": "Maroussi B.C. (Greece)",
     "height": "6-4",
     "age": 21.9,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.7,
     "reboundsPerGame": 0.7,
     "assistsPerGame": 0.9,
@@ -1947,7 +2045,9 @@
       "careerApg": 0.9,
       "careerSpg": 0.2,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "christian-drejer-2004",
@@ -1958,9 +2058,9 @@
     "school": "FC Barcelona Basquet (Spain)",
     "height": "",
     "age": 21.5,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -1981,7 +2081,9 @@
       "birthdate": "1982-12-08T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "romain-sato-2004",
@@ -1992,9 +2094,9 @@
     "school": "Xavier",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2010,20 +2112,22 @@
       "teamName": "Spurs",
       "organization": "Xavier",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "matt-freije-2004",
     "name": "Matt Freije",
     "draftYear": 2004,
     "draftSlot": 53,
-    "position": "Forward",
+    "position": "PF",
     "school": "Vanderbilt",
     "height": "6-9",
     "age": 22.7,
-    "archetype": "",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2044,7 +2148,9 @@
       "birthdate": "1981-10-02T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 3
-    }
+    },
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "rickey-paulding-2004",
@@ -2055,9 +2161,9 @@
     "school": "Missouri",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2073,20 +2179,22 @@
       "teamName": "Pistons",
       "organization": "Missouri",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "luis-flores-2004",
     "name": "Luis Flores",
     "draftYear": 2004,
     "draftSlot": 55,
-    "position": "Guard",
+    "position": "PG",
     "school": "Manhattan",
     "height": "6-2",
     "age": 23.2,
-    "archetype": "",
+    "archetype": "Floor General",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": 2.2,
     "reboundsPerGame": 0.2,
     "assistsPerGame": 0.7,
@@ -2114,7 +2222,9 @@
       "careerApg": 0.7,
       "careerSpg": 0.1,
       "careerBpg": 0
-    }
+    },
+    "positionFamily": "Guard",
+    "archetypeFamily": "Guard"
   },
   {
     "id": "marcus-douthit-2004",
@@ -2125,9 +2235,9 @@
     "school": "Providence",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2143,7 +2253,9 @@
       "teamName": "Lakers",
       "organization": "Providence",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "sergei-karaulov-2004",
@@ -2154,9 +2266,9 @@
     "school": "Sakha-Yakutia Yakutsk (Russia)",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2172,7 +2284,9 @@
       "teamName": "Spurs",
       "organization": "Sakha-Yakutia Yakutsk (Russia)",
       "organizationType": "Other Team/Club"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "blake-stepp-2004",
@@ -2183,9 +2297,9 @@
     "school": "Gonzaga",
     "height": "",
     "age": null,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2201,7 +2315,9 @@
       "teamName": "Timberwolves",
       "organization": "Gonzaga",
       "organizationType": "College/University"
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   },
   {
     "id": "rashad-wright-2004",
@@ -2212,9 +2328,9 @@
     "school": "Georgia",
     "height": "",
     "age": 22.3,
-    "archetype": "",
+    "archetype": "Unclassified",
     "roleOutcome": "",
-    "outcomeTier": "",
+    "outcomeTier": "Bust",
     "pointsPerGame": null,
     "reboundsPerGame": null,
     "assistsPerGame": null,
@@ -2235,6 +2351,8 @@
       "birthdate": "1982-03-17T00:00:00",
       "draftedTeam": "",
       "seasonsActive": 1
-    }
+    },
+    "positionFamily": null,
+    "archetypeFamily": "Unknown"
   }
 ]
