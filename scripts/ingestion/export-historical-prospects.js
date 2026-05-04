@@ -79,7 +79,7 @@ function exportHistoricalProspects() {
       percentiles: JSON.parse(row.percentileJson || '{}'),
       comparisonInputs: JSON.parse(row.comparisonInputsJson || '{}'),
     }))
-    .filter((entry) => entry.id && entry.name && entry.draftYear && entry.position)
+    .filter((entry) => entry.id && entry.name && entry.draftYear)
     .sort((left, right) => {
       if (right.draftYear !== left.draftYear) return right.draftYear - left.draftYear;
       if (left.draftSlot !== right.draftSlot) return left.draftSlot - right.draftSlot;

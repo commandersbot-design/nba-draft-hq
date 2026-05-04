@@ -2824,7 +2824,7 @@ const HistoricalPage = () => {
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <Label>Archive · 2020–2024</Label>
+        <Label>Archive{years.length > 0 ? ` · ${years[years.length - 1]}–${years[0]}` : ''}</Label>
         <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
           Historical
         </h1>
