@@ -868,8 +868,142 @@ const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, re
   );
 };
 
+// ---------- COMPARABLES HELPERS ----------
+function positionFamily(pos) {
+  if (!pos) return null;
+  const upper = String(pos).toUpperCase().trim();
+  if (/CENTER|^C$|^C\/|^C-|F-C|^FC$/.test(upper)) return "Big";
+  if (/^PF$|FORWARD-CENTER|^F$|^F-/.test(upper) && !/GUARD/.test(upper)) return "Forward";
+  if (/^SF$|^GF$|FORWARD-GUARD|^F-G/.test(upper)) return "Wing";
+  if (/^PG$|^SG$|^G$|GUARD/.test(upper)) return "Guard";
+  if (/FORWARD/.test(upper)) return "Forward";
+  return null;
+}
+
+function heightToInches(height) {
+  if (!height) return null;
+  const match = String(height).match(/(\d+)[\s'\-]+(\d+)/);
+  if (!match) return null;
+  const feet = Number(match[1]);
+  const inches = Number(match[2]);
+  if (!Number.isFinite(feet) || !Number.isFinite(inches)) return null;
+  return feet * 12 + inches;
+}
+
+function archetypeOverlap(a, b) {
+  if (!a || !b) return 0;
+  const aWords = new Set(a.toLowerCase().split(/\s+/));
+  const bWords = b.toLowerCase().split(/\s+/);
+  let hits = 0;
+  for (const word of bWords) if (aWords.has(word)) hits++;
+  return hits;
+}
+
+function scoreComparable(current, historical) {
+  let score = 0;
+  const reasons = [];
+  const currentFam = positionFamily(current.pos) || positionFamily(current.pos2);
+  const histFam = positionFamily(historical.position) || (historical.positionFamily ? historical.positionFamily[0].toUpperCase() + historical.positionFamily.slice(1) : null);
+  if (currentFam && histFam && currentFam === histFam) {
+    score += 50;
+    reasons.push(`${currentFam} fit`);
+  }
+  const currentH = heightToInches(current.height);
+  const histH = heightToInches(historical.height);
+  if (currentH != null && histH != null) {
+    const delta = Math.abs(currentH - histH);
+    if (delta === 0) { score += 20; reasons.push("exact height"); }
+    else if (delta <= 1) { score += 15; reasons.push(`±${delta}" height`); }
+    else if (delta <= 2) { score += 10; reasons.push(`±${delta}" height`); }
+    else if (delta <= 3) { score += 5; }
+    else if (delta > 5) { score -= 10; }
+  }
+  const archHits = archetypeOverlap(current.archetype, historical.archetype);
+  if (archHits >= 2) { score += 30; reasons.push("archetype match"); }
+  else if (archHits === 1) { score += 12; reasons.push("archetype overlap"); }
+  if (historical.outcomeTier === "Outlier" || historical.outcomeTier === "Star") {
+    score += 5;
+    reasons.push("star outcome");
+  }
+  if (current.age != null && historical.age != null) {
+    const ageDelta = Math.abs(current.age - historical.age);
+    if (ageDelta <= 0.5) score += 6;
+    else if (ageDelta <= 1.0) score += 3;
+  }
+  return { score, reasons };
+}
+
+function rankComparables(current, historicalSet, limit = 5) {
+  const scored = historicalSet
+    .map((historical) => ({ historical, ...scoreComparable(current, historical) }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score);
+  return scored.slice(0, limit);
+}
+
+const ComparablesTab = ({ p }) => {
+  const matches = useMemo(() => rankComparables(p, HISTORICAL_PROSPECTS, 6), [p]);
+  if (matches.length === 0) {
+    return <EmptyState label="No historical comparables found yet — enrichment may still be in progress." />;
+  }
+  return (
+    <div style={{ display: "grid", gap: 12 }}>
+      <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.14em", marginBottom: 4 }}>
+        TOP {matches.length} HISTORICAL COMPARABLES · WEIGHTED BY POSITION FIT, HEIGHT, ARCHETYPE OVERLAP, AND OUTCOME
+      </div>
+      {matches.map(({ historical, score, reasons }) => {
+        const tierColor = OUTCOME_TIER_COLORS[historical.outcomeTier] || T.textMute;
+        return (
+          <div key={historical.id} style={{ background: T.card, border: `1px solid ${T.border}`, borderLeft: `3px solid ${tierColor}` }}>
+            <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "44px 1fr auto", gap: 12, alignItems: "center" }}>
+              <div style={{ ...mono, fontSize: 11, color: T.cyan, lineHeight: 1.2 }}>
+                <div>{historical.draftYear}</div>
+                <div>#{String(historical.draftSlot).padStart(2, "0")}</div>
+              </div>
+              <div style={{ minWidth: 0 }}>
+                <div style={{ fontSize: 14, color: T.text, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{historical.name}</div>
+                <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 3 }}>
+                  {historical.school?.toUpperCase() || "—"} · {historical.position || "—"} · {historical.height || "—"}
+                </div>
+                {historical.archetype && (
+                  <div style={{ ...mono, fontSize: 9, color: T.textDim, letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase" }}>
+                    {historical.archetype}
+                  </div>
+                )}
+              </div>
+              <div style={{ display: "grid", gap: 4, justifyItems: "end" }}>
+                <div style={{ ...mono, fontSize: 18, color: T.cyan, fontWeight: 700, lineHeight: 1 }}>{score}</div>
+                <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>SIM SCORE</div>
+              </div>
+            </div>
+            {(reasons.length > 0 || historical.outcomeTier) && (
+              <div style={{ display: "flex", gap: 6, padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, flexWrap: "wrap", alignItems: "center" }}>
+                {historical.outcomeTier && (
+                  <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: tierColor, border: `1px solid ${tierColor}`, padding: "2px 6px", textTransform: "uppercase" }}>
+                    {historical.outcomeTier}
+                  </span>
+                )}
+                {reasons.map((reason, i) => (
+                  <span key={i} style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: T.textDim, padding: "2px 6px", border: `1px solid ${T.borderSoft}`, textTransform: "uppercase" }}>
+                    {reason}
+                  </span>
+                ))}
+              </div>
+            )}
+            {historical.notes && (
+              <div style={{ padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, fontSize: 11, color: T.textDim, lineHeight: 1.5, fontStyle: "italic" }}>
+                "{historical.notes}"
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 // ---------- PLAYER PROFILE PAGE ----------
-const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Traits", "Reports", "Shot Chart", "Notes"];
+const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Traits", "Comparables", "Reports", "Shot Chart", "Notes"];
 
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
@@ -1178,6 +1312,7 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
         />
       )}
       {tab === "Traits" && <TraitsTab p={p} />}
+      {tab === "Comparables" && <ComparablesTab p={p} />}
       {tab === "Reports" && <EmptyState label="No scouting reports filed yet." />}
       {tab === "Shot Chart" && <ShotChartTab p={p} />}
       {tab === "Notes" && <NotesTab p={p} notes={notes} onAddNote={onAddNote} onDeleteNote={onDeleteNote} />}
