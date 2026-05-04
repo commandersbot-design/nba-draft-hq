@@ -16,6 +16,7 @@ import {
   GitCompare,
 } from "lucide-react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
+import HISTORICAL_PROSPECTS from "../data/historicalProspects.json";
 import {
   LineChart,
   Line,
@@ -2780,6 +2781,208 @@ const CompareColumn = ({ p, onOpenProfile, onRemove }) => {
   );
 };
 
+// ---------- HISTORICAL PAGE ----------
+const OUTCOME_TIER_COLORS = {
+  Outlier: T.cyan,
+  Star: T.cyan,
+  Swing: T.warn,
+  Rotation: T.blue,
+  Bust: T.danger,
+};
+
+const HistoricalPage = () => {
+  const [yearFilter, setYearFilter] = useState("ALL");
+  const [posFilter, setPosFilter] = useState("ALL");
+  const [outcomeFilter, setOutcomeFilter] = useState("ALL");
+  const [query, setQuery] = useState("");
+
+  const years = useMemo(
+    () => [...new Set(HISTORICAL_PROSPECTS.map((p) => p.draftYear))].sort((a, b) => b - a),
+    []
+  );
+  const positionFamilies = useMemo(
+    () => [...new Set(HISTORICAL_PROSPECTS.map((p) => p.positionFamily).filter(Boolean))].sort(),
+    []
+  );
+  const outcomeTiers = useMemo(
+    () => [...new Set(HISTORICAL_PROSPECTS.map((p) => p.outcomeTier).filter(Boolean))].sort(),
+    []
+  );
+
+  const lowered = query.trim().toLowerCase();
+  const filtered = HISTORICAL_PROSPECTS.filter((p) => {
+    if (yearFilter !== "ALL" && p.draftYear !== Number(yearFilter)) return false;
+    if (posFilter !== "ALL" && p.positionFamily !== posFilter) return false;
+    if (outcomeFilter !== "ALL" && p.outcomeTier !== outcomeFilter) return false;
+    if (lowered) {
+      const haystack = [p.name, p.school, p.position, p.archetype, p.roleOutcome].join(" ").toLowerCase();
+      if (!haystack.includes(lowered)) return false;
+    }
+    return true;
+  });
+
+  return (
+    <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
+      <div style={{ marginBottom: 20 }}>
+        <Label>Archive · 2020–2024</Label>
+        <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+          Historical
+        </h1>
+        <div style={{ fontSize: 13, color: T.textDim }}>
+          {filtered.length} of {HISTORICAL_PROSPECTS.length} prospects across {years.length} draft classes
+        </div>
+      </div>
+
+      <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center", background: T.surface, border: `1px solid ${T.border}`, padding: "8px 12px" }}>
+        <Search size={14} color={T.textMute} />
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search name, school, archetype…"
+          style={{
+            flex: 1,
+            background: "transparent",
+            border: "none",
+            outline: "none",
+            color: T.text,
+            fontSize: 13,
+            minWidth: 0,
+          }}
+        />
+      </div>
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 18, flexWrap: "wrap" }}>
+        <FilterSelect label="Year" value={yearFilter} onChange={setYearFilter} options={[["ALL", "All years"], ...years.map((y) => [String(y), String(y)])]} />
+        <FilterSelect label="Position" value={posFilter} onChange={setPosFilter} options={[["ALL", "All positions"], ...positionFamilies.map((p) => [p, p])]} />
+        <FilterSelect label="Outcome" value={outcomeFilter} onChange={setOutcomeFilter} options={[["ALL", "All outcomes"], ...outcomeTiers.map((o) => [o, o])]} />
+      </div>
+
+      <div style={{ display: "grid", gap: 10 }}>
+        {filtered.length === 0 ? (
+          <EmptyState label="No historical records match the current filters." />
+        ) : (
+          filtered.map((p) => <HistoricalCard key={p.id} p={p} />)
+        )}
+      </div>
+    </div>
+  );
+};
+
+const FilterSelect = ({ label, value, onChange, options }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 8, background: T.surface, border: `1px solid ${T.border}`, padding: "6px 10px" }}>
+    <Label style={{ fontSize: 9 }}>{label}</Label>
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      style={{
+        ...mono,
+        fontSize: 11,
+        letterSpacing: "0.06em",
+        color: value === "ALL" ? T.textDim : T.cyan,
+        background: T.surface2,
+        border: `1px solid ${T.border}`,
+        padding: "4px 8px",
+        cursor: "pointer",
+      }}
+    >
+      {options.map(([v, l]) => (
+        <option key={v} value={v}>{l}</option>
+      ))}
+    </select>
+  </div>
+);
+
+const HistoricalCard = ({ p }) => {
+  const tierColor = OUTCOME_TIER_COLORS[p.outcomeTier] || T.textMute;
+  const initials = p.name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  return (
+    <div style={{ background: T.card, border: `1px solid ${T.border}`, borderLeft: `3px solid ${tierColor}` }}>
+      <div style={{ padding: "14px 16px", display: "grid", gridTemplateColumns: "44px 56px 1fr auto", gap: 12, alignItems: "center" }}>
+        <div
+          style={{
+            width: 44,
+            height: 44,
+            background: `linear-gradient(135deg, ${T.surface2}, ${T.surface})`,
+            border: `1px solid ${T.border}`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            ...mono,
+            fontSize: 14,
+            color: T.cyan,
+            letterSpacing: "0.05em",
+          }}
+        >
+          {initials}
+        </div>
+        <div>
+          <div style={{ ...mono, fontSize: 11, color: T.textMute, letterSpacing: "0.12em" }}>{p.draftYear}</div>
+          <div style={{ ...mono, fontSize: 13, color: T.cyan, letterSpacing: "0.05em" }}>#{String(p.draftSlot).padStart(2, "0")}</div>
+        </div>
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontSize: 15, color: T.text, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+          <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 3 }}>
+            {p.school?.toUpperCase()} · {p.position} · {p.height}
+          </div>
+          <div style={{ display: "flex", gap: 6, marginTop: 6, flexWrap: "wrap" }}>
+            <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: tierColor, border: `1px solid ${tierColor}`, padding: "2px 6px", textTransform: "uppercase" }}>
+              {p.outcomeTier}
+            </span>
+            <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: T.textDim, border: `1px solid ${T.borderSoft}`, padding: "2px 6px", textTransform: "uppercase" }}>
+              {p.archetype}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", borderTop: `1px solid ${T.borderSoft}` }}>
+        {[
+          ["PPG", p.pointsPerGame],
+          ["RPG", p.reboundsPerGame],
+          ["APG", p.assistsPerGame],
+          ["TS%", p.trueShooting],
+          ["BPM", p.bpm?.toFixed?.(1) ?? p.bpm],
+        ].map(([k, v], i) => (
+          <div
+            key={k}
+            style={{
+              padding: "10px 12px",
+              borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
+            }}
+          >
+            <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
+            <div style={{ ...mono, fontSize: 13, color: T.text, marginTop: 4 }}>{v ?? "—"}</div>
+          </div>
+        ))}
+      </div>
+
+      {p.notes && (
+        <div style={{ padding: "10px 16px", borderTop: `1px solid ${T.borderSoft}`, fontSize: 12, color: T.textDim, lineHeight: 1.55, fontStyle: "italic" }}>
+          "{p.notes}"
+        </div>
+      )}
+
+      <div style={{ padding: "10px 16px", borderTop: `1px solid ${T.borderSoft}`, display: "flex", gap: 14, flexWrap: "wrap" }}>
+        <span style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em" }}>
+          ROLE: <span style={{ color: T.text }}>{p.roleOutcome || "—"}</span>
+        </span>
+        <span style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em" }}>
+          ERA: <span style={{ color: T.text }}>{p.eraBucket || "—"}</span>
+        </span>
+        <span style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em" }}>
+          SLOT: <span style={{ color: T.text }}>{p.draftSlotBand || "—"}</span>
+        </span>
+      </div>
+    </div>
+  );
+};
+
 // ---------- MAIN ----------
 export default function ProsperaApp() {
   const [route, setRoute] = useState("Dashboard");
@@ -3039,15 +3242,7 @@ export default function ProsperaApp() {
               onDeleteNote={deleteNote}
             />
           )}
-          {route === "Historical" && (
-            <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
-              <Label>Archive</Label>
-              <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 24px", fontWeight: 700, letterSpacing: "-0.02em" }}>
-                Historical
-              </h1>
-              <EmptyState label="Find comparables across prior draft classes." />
-            </div>
-          )}
+          {route === "Historical" && <HistoricalPage />}
           {route === "Reports" && (
             <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
               <Label>Generated</Label>
