@@ -18,6 +18,7 @@ import {
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import HISTORICAL_PROSPECTS from "../data/historicalProspects.json";
 import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
+import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
 
 function getHeadshotUrl(prospect) {
   if (!prospect || !prospect.name) return null;
@@ -1057,7 +1058,7 @@ const ComparablesTab = ({ p }) => {
 };
 
 // ---------- PLAYER PROFILE PAGE ----------
-const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Traits", "Comparables", "Reports", "Shot Chart", "Notes"];
+const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Comparables", "Reports", "Shot Chart", "Notes"];
 
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
@@ -1367,6 +1368,7 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
         />
       )}
       {tab === "Traits" && <TraitsTab p={p} />}
+      {tab === "Advantage" && <AdvantageProfile player={p} />}
       {tab === "Comparables" && <ComparablesTab p={p} />}
       {tab === "Reports" && <EmptyState label="No scouting reports filed yet." />}
       {tab === "Shot Chart" && <ShotChartTab p={p} />}
@@ -2879,11 +2881,19 @@ const ComparePage = ({ compareIds = [], onRemoveCompare, onClearCompare, onOpenP
       {players.length === 0 ? (
         <EmptyState label="Add prospects from the Big Board to start a comparison." />
       ) : (
-        <div style={{ overflowX: "auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, minmax(260px, 1fr))`, gap: 12, minWidth: cols * 260 }}>
-            {players.map((p) => (
-              <CompareColumn key={p.id} p={p} onOpenProfile={onOpenProfile} onRemove={() => onRemoveCompare?.(p.id)} />
-            ))}
+        <div style={{ display: "grid", gap: 16 }}>
+          {players.length === 2 && (
+            <AdvantageComparison
+              playerA={{ ...players[0], color: "#534AB7" }}
+              playerB={{ ...players[1], color: "#1D9E75" }}
+            />
+          )}
+          <div style={{ overflowX: "auto" }}>
+            <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, minmax(260px, 1fr))`, gap: 12, minWidth: cols * 260 }}>
+              {players.map((p) => (
+                <CompareColumn key={p.id} p={p} onOpenProfile={onOpenProfile} onRemove={() => onRemoveCompare?.(p.id)} />
+              ))}
+            </div>
           </div>
         </div>
       )}
