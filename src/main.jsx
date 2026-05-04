@@ -13,6 +13,8 @@ if (!root) {
         <App />
       </React.StrictMode>,
     )
+    const loading = document.getElementById('loading')
+    if (loading) loading.style.display = 'none'
     console.log('App rendered successfully')
   } catch (error) {
     console.error('Error rendering app:', error)

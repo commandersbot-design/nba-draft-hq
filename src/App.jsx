@@ -9,6 +9,21 @@ import { APP_VIEWS, BOARD_CARD_SETTINGS, TAG_OPTIONS, VIEW_MODES } from './lib/c
 const CompareEngine = lazy(() => import('./components/CompareEngine').then((module) => ({ default: module.CompareEngine })));
 const HistoricalMatrixLite = lazy(() => import('./components/HistoricalMatrixLite').then((module) => ({ default: module.HistoricalMatrixLite })));
 const PlayerProfileSurface = lazy(() => import('./components/PlayerProfileSurface').then((module) => ({ default: module.PlayerProfileSurface })));
+const ScoutingTerminal = lazy(() => import('./components/ScoutingTerminal'));
+
+function shouldShowTerminal() {
+  if (typeof window === 'undefined') return true;
+  const params = new URLSearchParams(window.location.search);
+  return params.get('classic') !== '1';
+}
+
+function setTerminalParam(on) {
+  if (typeof window === 'undefined') return;
+  const url = new URL(window.location.href);
+  if (on) url.searchParams.delete('classic');
+  else url.searchParams.set('classic', '1');
+  window.history.replaceState({}, '', url.toString());
+}
 
 const watchlistKey = 'prospera.watchlist';
 const compareKey = 'prospera.compare';
@@ -67,6 +82,20 @@ function defaultCardSettings() {
 }
 
 function App() {
+  const [showTerminal, setShowTerminal] = useState(shouldShowTerminal);
+
+  if (showTerminal) {
+    return (
+      <Suspense fallback={<div style={{ padding: 24, color: '#94A3B8', background: '#050A12', minHeight: '100vh' }}>Loading scouting terminal…</div>}>
+        <ScoutingTerminal />
+      </Suspense>
+    );
+  }
+
+  return <ClassicApp onOpenTerminal={() => { setTerminalParam(true); setShowTerminal(true); }} />;
+}
+
+function ClassicApp({ onOpenTerminal }) {
   const [runtime, setRuntime] = useState({
     prospects: [],
     currentMeasurements: {},
@@ -620,6 +649,14 @@ function App() {
         <div className="guide-meta">
           <span className="pill pill-live">Tier 1</span>
           <span className="topbar-note">Profiles, board builder, compare, notes, and historical context.</span>
+          <button
+            type="button"
+            className="action-button"
+            onClick={onOpenTerminal}
+            style={{ marginLeft: 12 }}
+          >
+            Try Scouting Terminal →
+          </button>
         </div>
       </header>
 
