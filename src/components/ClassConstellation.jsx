@@ -132,26 +132,90 @@ const ZONES = [
   },
 ];
 
-// Build archetype -> zone index lookup
-const ARCHETYPE_TO_ZONE = (() => {
+// Build archetype -> zone index lookup, but only for SPECIFIC archetypes.
+// The seed data labels most prospects "Lead Creator" generically, so we
+// can't trust that for zone routing — use position + traits instead.
+const SPECIFIC_ARCHETYPE_TO_ZONE = (() => {
   const map = new Map();
   ZONES.forEach((zone, idx) => {
-    for (const arche of zone.archetypes) map.set(arche, idx);
+    for (const arche of zone.archetypes) {
+      // Skip the catch-all "Lead Creator" so it falls through to trait routing
+      if (arche === "Lead Creator") continue;
+      map.set(arche, idx);
+    }
   });
   return map;
 })();
 
+const ZONE_ID_TO_INDEX = (() => {
+  const map = new Map();
+  ZONES.forEach((zone, idx) => map.set(zone.id, idx));
+  return map;
+})();
+
+function zoneByKey(id) { return ZONE_ID_TO_INDEX.get(id) ?? 6; }
+
 function zoneIndexFor(prospect) {
   if (!prospect) return null;
-  const found = ARCHETYPE_TO_ZONE.get(prospect.archetype);
-  if (found != null) return found;
-  // Fallback: position-based bucket so we never lose a prospect
+
+  // 1. If the prospect has a SPECIFIC archetype name, use that zone
+  if (prospect.archetype && SPECIFIC_ARCHETYPE_TO_ZONE.has(prospect.archetype)) {
+    return SPECIFIC_ARCHETYPE_TO_ZONE.get(prospect.archetype);
+  }
+
+  // 2. Otherwise route by position family + traits9 profile (the meaningful signal)
   const pos = String(prospect.pos || "").toUpperCase();
-  if (/^PG|^SG|^G/.test(pos)) return 0;       // Architects
-  if (/^SF|GF|F-G/.test(pos)) return 6;       // Two-Way Wings
-  if (/^PF|^F$/.test(pos)) return 9;           // Stretchers
-  if (/^C/.test(pos)) return 8;                // Anchors
-  return 6;
+  const t = prospect.traits9 || {};
+  const ac = Number(t["Advantage Creation"]) || 0;
+  const dm = Number(t["Decision Making"]) || 0;
+  const pc = Number(t["Passing Creation"]) || 0;
+  const sg = Number(t["Shooting Gravity"]) || 0;
+  const ob = Number(t["Off-Ball Value"]) || 0;
+  const ps = Number(t["Processing Speed"]) || 0;
+  const sc = Number(t["Scalability"]) || 0;
+  const dv = Number(t["Defensive Versatility"]) || 0;
+
+  // GUARDS
+  if (/^PG/.test(pos) || pos === "G") {
+    if (pc >= 7 && dm >= 7) return zoneByKey("architects");
+    if (ac >= 7 && sg >= 6) return zoneByKey("hunters");
+    if (sg >= 7 && pc < 6) return zoneByKey("snipers");
+    if (dv >= 6 && sc >= 6 && ac < 7) return zoneByKey("lockdown");
+    return zoneByKey("architects");
+  }
+  if (/^SG/.test(pos)) {
+    if (sg >= 7 && ob >= 6) return zoneByKey("snipers");
+    if (ac >= 7 && pc >= 6) return zoneByKey("hunters");
+    if (sg >= 6 && dv >= 6) return zoneByKey("specialists");
+    if (ac >= 7) return zoneByKey("hunters");
+    return zoneByKey("snipers");
+  }
+  // WINGS
+  if (/^SF|GF|F-G/.test(pos)) {
+    if (dv >= 7 && sc >= 7) return zoneByKey("two-way-wings");
+    if (sg >= 7 && ob >= 6 && ac < 7) return zoneByKey("snipers");
+    if (sg >= 6 && dv >= 6 && ac < 7) return zoneByKey("specialists");
+    if (ac >= 7 && sg < 6) return zoneByKey("hammers");
+    if (ob >= 7 && pc >= 6 && ac < 7) return zoneByKey("connectors");
+    return zoneByKey("two-way-wings");
+  }
+  // FORWARDS (4)
+  if (/^PF|^F$/.test(pos)) {
+    if (sc >= 7 && dv >= 6 && ac >= 6) return zoneByKey("two-way-wings");
+    if (sg >= 6 && ob >= 6) return zoneByKey("stretchers");
+    if (pc >= 6 && ob >= 6) return zoneByKey("connectors");
+    if (dv >= 7) return zoneByKey("anchors");
+    return zoneByKey("connectors");
+  }
+  // BIGS (5)
+  if (/^C/.test(pos) || /CENTER/.test(pos)) {
+    if (sg >= 6 && ob >= 5) return zoneByKey("stretchers");
+    if (dv >= 7 && sc >= 6) return zoneByKey("anchors");
+    if (pc >= 6) return zoneByKey("stretchers");
+    return zoneByKey("anchors");
+  }
+
+  return zoneByKey("two-way-wings");
 }
 
 function tierKey(prospect) {
