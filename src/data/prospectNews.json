@@ -1,0 +1,134 @@
+{
+  "_README": "Player news feed displayed in the top ticker bar.  Edit this file to add news. Render order is timestamp DESC. Items older than 14 days are automatically hidden by useProspectNewsFeed unless `pinned: true`. Movement deltas continue to be sourced from PROSPECTS[*].movement and merged in by the hook — don't duplicate them here.",
+  "_kinds": {
+    "performance": "Box-score line / scrimmage standout — neutral signal",
+    "injury":      "Health update — show prefix INJ, color = warn or danger by severity",
+    "transfer":    "Decision news (commit, transfer, agent signed, declared) — purple prefix",
+    "news":        "Generic story — neutral prefix",
+    "workout":     "Combine / pre-draft team workout — cyan prefix"
+  },
+  "items": [
+    {
+      "id": "n-2026-05-05-001",
+      "prospectId": "p1",
+      "kind": "workout",
+      "headline": "Set for Spurs workout this week",
+      "timestamp": "2026-05-05T12:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-05-002",
+      "prospectId": "p3",
+      "kind": "performance",
+      "headline": "Posted 26 / 13 / 5 in spring scrimmage",
+      "timestamp": "2026-05-04T22:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-04-003",
+      "prospectId": "p2",
+      "kind": "transfer",
+      "headline": "Officially declares for the 2026 NBA Draft",
+      "timestamp": "2026-05-04T18:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-04-004",
+      "prospectId": "p16",
+      "kind": "injury",
+      "headline": "Day-to-day with right ankle sprain — expected back next week",
+      "severity": "minor",
+      "timestamp": "2026-05-04T15:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-03-005",
+      "prospectId": "p5",
+      "kind": "workout",
+      "headline": "Strong showing at Pacers workout — pull-up shot the standout",
+      "timestamp": "2026-05-03T20:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-03-006",
+      "prospectId": "p4",
+      "kind": "news",
+      "headline": "Hires Klutch Sports for representation",
+      "timestamp": "2026-05-03T14:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-02-007",
+      "prospectId": "p8",
+      "kind": "performance",
+      "headline": "Combine measurements — 6'9\", 7'2\" wingspan, 38\" max vert",
+      "timestamp": "2026-05-02T19:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-02-008",
+      "prospectId": "p10",
+      "kind": "transfer",
+      "headline": "Withdraws from draft, returns to Louisville",
+      "timestamp": "2026-05-02T11:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-01-009",
+      "prospectId": "p18",
+      "kind": "workout",
+      "headline": "Cleared 38.5 max vert at combine — top mark of the day",
+      "timestamp": "2026-05-01T22:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-05-01-010",
+      "prospectId": "p36",
+      "kind": "performance",
+      "headline": "Hit 8 of 11 from three at G League Elite Camp",
+      "timestamp": "2026-05-01T20:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-04-30-011",
+      "prospectId": "p33",
+      "kind": "news",
+      "headline": "Drawing top-10 buzz after closed pro day",
+      "timestamp": "2026-04-30T16:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-04-30-012",
+      "prospectId": "p23",
+      "kind": "injury",
+      "headline": "Cleared from minor knee tendinitis — full participation",
+      "severity": "cleared",
+      "timestamp": "2026-04-30T13:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-04-29-013",
+      "prospectId": "p11",
+      "kind": "workout",
+      "headline": "Confirmed for Wizards, Hornets, and Pelicans workouts",
+      "timestamp": "2026-04-29T17:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-04-29-014",
+      "prospectId": "p13",
+      "kind": "performance",
+      "headline": "16 / 8 / 5 with 3 steals at SEC Tournament finale",
+      "timestamp": "2026-04-29T15:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": "n-2026-04-28-015",
+      "prospectId": "p26",
+      "kind": "news",
+      "headline": "International scouts split on translation — wide range in mocks",
+      "timestamp": "2026-04-28T10:00:00Z",
+      "sourceUrl": ""
+    }
+  ]
+}

@@ -16,6 +16,7 @@ import {
   GitCompare,
 } from "lucide-react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
+import { useProspectNewsFeed, formatRelativeTime } from "../hooks/useProspectNewsFeed";
 import HISTORICAL_PROSPECTS_RAW from "../data/historicalProspects.json";
 import HISTORICAL_ADVANCED_STATS from "../data/historicalAdvancedStats.json";
 import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
@@ -303,36 +304,40 @@ const FlagDot = ({ lvl }) => {
 // ---------- TOP NAV ----------
 const NAV_ITEMS = ["Big Board", "My Board", "Deep Dives", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
-// PROSPERA TICKER · slim band above the main nav showing live prospect rank
-// movement (▲/▼ deltas from the last update). Pure brand element — feels
-// like a financial command center and tells visitors at a glance "this is
-// a live, opinion-having product, not a static dashboard." Click any item
-// to jump straight to that prospect's profile.
+// PROSPERA TICKER · slim band above the main nav.
+// Multi-source unified feed: hand-authored news from prospectNews.json
+// merged with synthetic movement items derived from PROSPECTS[*].movement.
+// Click any item to jump straight to that prospect's profile.
 //
-// Display order: prospects with non-zero `movement` field, sorted by
-// magnitude descending (biggest movers first). The CSS marquee animation
-// is defined as `prospera-ticker-scroll` in the global stylesheet block.
+// Visual language by kind:
+//   movement    — ▲ orange (up) / ▼ gold (down) + delta ("AJ DYBANTSA ▲ 1")
+//   workout     — cyan "WO" prefix ("LP · WO · Set for Spurs workout")
+//   performance — orange "PERF" prefix
+//   injury      — danger "INJ" prefix (color shifts by severity)
+//   transfer    — purple "DEC" prefix (decision/declaration)
+//   news        — neutral "NEWS" prefix
 //
-// FUTURE: replace movement-only feed with a unified news feed. Target shape:
-//   { id, prospectId, kind: "movement"|"injury"|"performance"|"transfer"|"news",
-//     headline, prefix, color, severity, timestamp, sourceUrl }
-// kind=movement keeps the current ▲/▼ + delta render. kind=injury renders
-// red-cross glyph + "OUT vs OPP". kind=performance renders box score line.
-// Render order = newest first (timestamp desc), with a soft fade for items
-// older than 24h. Wire the data via a `useProspectNewsFeed()` hook backed by
-// either a static JSON manifest or a polled API endpoint. The marquee CSS
-// + click-to-profile interaction stay identical.
+// The marquee CSS animation `prospera-ticker-scroll` is defined in the
+// global style block. Honors prefers-reduced-motion.
+//
+// Adding news: edit src/data/prospectNews.json — items older than 14 days
+// are auto-hidden by useProspectNewsFeed unless `pinned: true`. The hook
+// reads timestamps and sorts newest-first; movements always sit last.
+const TICKER_KIND_META = {
+  movement:    { prefix: null,   colorVar: "var(--prospera-cyan)" },
+  workout:     { prefix: "WO",   colorVar: "var(--prospera-signal)" },
+  performance: { prefix: "PERF", colorVar: "var(--prospera-cyan)" },
+  injury:      { prefix: "INJ",  colorVar: "var(--prospera-danger)" },
+  transfer:    { prefix: "DEC",  colorVar: "var(--prospera-purple)" },
+  news:        { prefix: "NEWS", colorVar: "var(--prospera-text-dim)" },
+};
+
 const ProsperaTicker = ({ prospects, onOpenProfile }) => {
-  const movers = useMemo(() => {
-    return prospects
-      .filter((p) => p.movement && p.movement !== "" && p.movement !== "0")
-      .map((p) => ({ ...p, _delta: parseInt(p.movement, 10) || 0 }))
-      .sort((a, b) => Math.abs(b._delta) - Math.abs(a._delta));
-  }, [prospects]);
-  if (movers.length === 0) return null;
-  // Duplicate the row so the marquee loop stays full when the first set
-  // scrolls off-screen.
-  const items = [...movers, ...movers];
+  const feed = useProspectNewsFeed(prospects, { staleDays: 14, max: 50 });
+  if (feed.length === 0) return null;
+  // Duplicate the row so the marquee loop stays full as the first copy
+  // scrolls off-screen. Keys include the index so duplicates don't collide.
+  const loop = [...feed, ...feed];
   return (
     <div
       style={{
@@ -360,8 +365,9 @@ const ProsperaTicker = ({ prospects, onOpenProfile }) => {
           fontWeight: 800,
           textTransform: "uppercase",
         }}
+        title={`${feed.length} live updates`}
       >
-        ⬢ Live · Movement
+        ⬢ Live Wire
       </div>
       <div
         style={{
@@ -374,27 +380,31 @@ const ProsperaTicker = ({ prospects, onOpenProfile }) => {
         }}
       >
         <div
+          className="prospera-ticker-marquee"
           style={{
             display: "flex",
-            gap: 32,
+            gap: 28,
             paddingLeft: 24,
-            animation: "prospera-ticker-scroll 60s linear infinite",
+            animation: "prospera-ticker-scroll 90s linear infinite",
             whiteSpace: "nowrap",
           }}
         >
-          {items.map((p, idx) => {
-            const isUp = p._delta > 0;
-            const arrow = isUp ? "▲" : "▼";
-            const arrowColor = isUp ? T.cyan : T.tickerGold;
+          {loop.map((item, idx) => {
+            const meta = TICKER_KIND_META[item.kind] || TICKER_KIND_META.news;
+            const p = item.prospect;
+            const tooltip = item.kind === "movement"
+              ? `${p.name} moved ${item.delta > 0 ? "up" : "down"} ${Math.abs(item.delta)} on the board`
+              : `${p.name} · ${formatRelativeTime(item.timestamp)}`;
             return (
               <button
-                key={`${p.id}-${idx}`}
+                key={`${item.id}-${idx}`}
                 type="button"
+                title={tooltip}
                 onClick={() => onOpenProfile?.(p.id)}
                 style={{
                   ...mono,
                   fontSize: 10,
-                  letterSpacing: "0.10em",
+                  letterSpacing: "0.08em",
                   color: T.text,
                   background: "transparent",
                   border: "none",
@@ -408,9 +418,34 @@ const ProsperaTicker = ({ prospects, onOpenProfile }) => {
               >
                 <span style={{ color: T.textMute }}>#{p.rank}</span>
                 <span style={{ color: T.text, fontWeight: 600 }}>{p.last}</span>
-                <span style={{ color: arrowColor, fontWeight: 700 }}>
-                  {arrow} {Math.abs(p._delta)}
-                </span>
+
+                {item.kind === "movement" ? (
+                  <span style={{ color: item.delta > 0 ? T.cyan : T.tickerGold, fontWeight: 700 }}>
+                    {item.delta > 0 ? "▲" : "▼"} {Math.abs(item.delta)}
+                  </span>
+                ) : (
+                  <>
+                    {meta.prefix && (
+                      <span
+                        style={{
+                          color: meta.colorVar,
+                          fontWeight: 700,
+                          letterSpacing: "0.14em",
+                          fontSize: 9,
+                          padding: "1px 4px",
+                          border: `1px solid ${meta.colorVar}`,
+                          borderRadius: 2,
+                          opacity: 0.85,
+                        }}
+                      >
+                        {meta.prefix}
+                      </span>
+                    )}
+                    <span style={{ color: T.textDim, textTransform: "none", letterSpacing: "0.02em", fontSize: 11 }}>
+                      {item.headline}
+                    </span>
+                  </>
+                )}
               </button>
             );
           })}
