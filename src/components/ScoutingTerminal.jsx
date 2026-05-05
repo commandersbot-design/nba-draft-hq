@@ -41,6 +41,22 @@ function getArchetypeMeta(archetypeName) {
   return ARCHETYPE_BY_NAME.get(archetypeName) || null;
 }
 
+// Returns a color used as the leading "family bar" on every prospect row
+// (Big Board + My Board). Uniques → brand purple, Star tier → orange,
+// everything else maps from position family. This is the PROSPERA visual
+// signature on board surfaces.
+function familyBarColor(p) {
+  const archetypeMeta = ARCHETYPE_BY_NAME.get(p.archetype) || null;
+  const isUnique = archetypeMeta?.tier === "Unique";
+  if (isUnique) return "#A855F7"; // purple
+  if (archetypeMeta?.tier === "Star") return "#F97316"; // brand orange
+  const pos = String(p.pos || "");
+  const pos2 = String(p.pos2 || "");
+  if (pos.includes("PG") || pos2.includes("PG") || pos.includes("SG") || pos2.includes("SG")) return "#3B82F6"; // guard → blue
+  if (pos.includes("SF") || pos2.includes("SF") || pos.includes("PF") || pos2.includes("PF")) return "#10B981"; // wing → green
+  return "#F59E0B"; // big → amber
+}
+
 function isUniqueArchetype(archetypeName) {
   const meta = getArchetypeMeta(archetypeName);
   return Boolean(meta && meta.tier === "Unique");
@@ -304,6 +320,16 @@ const NAV_ITEMS = ["Big Board", "My Board", "Deep Dives", "Mock Draft", "Class M
 // Display order: prospects with non-zero `movement` field, sorted by
 // magnitude descending (biggest movers first). The CSS marquee animation
 // is defined as `prospera-ticker-scroll` in the global stylesheet block.
+//
+// FUTURE: replace movement-only feed with a unified news feed. Target shape:
+//   { id, prospectId, kind: "movement"|"injury"|"performance"|"transfer"|"news",
+//     headline, prefix, color, severity, timestamp, sourceUrl }
+// kind=movement keeps the current ▲/▼ + delta render. kind=injury renders
+// red-cross glyph + "OUT vs OPP". kind=performance renders box score line.
+// Render order = newest first (timestamp desc), with a soft fade for items
+// older than 24h. Wire the data via a `useProspectNewsFeed()` hook backed by
+// either a static JSON manifest or a polled API endpoint. The marquee CSS
+// + click-to-profile interaction stay identical.
 const ProsperaTicker = ({ prospects, onOpenProfile }) => {
   const movers = useMemo(() => {
     return prospects
@@ -1733,7 +1759,7 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
             }}
           >
             <Label>{k}</Label>
-            <div style={{ ...mono, fontSize: 16, color: T.text, marginTop: 4 }}>{v ?? "—"}</div>
+            <div style={{ ...mono, fontSize: 18, color: T.text, marginTop: 4, fontWeight: 600 }}>{v ?? "—"}</div>
           </div>
         ))}
       </div>
@@ -2339,7 +2365,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
               key={k}
               style={{
                 display: "grid",
-                gridTemplateColumns: "120px 1fr 36px",
+                gridTemplateColumns: "120px 1fr 44px",
                 gap: 12,
                 alignItems: "center",
               }}
@@ -2348,7 +2374,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
                 {k.toUpperCase()}
               </span>
               <MetricBar value={v} />
-              <span style={{ ...mono, fontSize: 12, color: T.text, textAlign: "right" }}>{v}</span>
+              <span style={{ ...mono, fontSize: 14, color: T.text, textAlign: "right", fontWeight: 600 }}>{v}</span>
             </div>
           ))}
         </div>
@@ -2484,7 +2510,7 @@ const TraitsTab = ({ p }) => {
                 <div key={k}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, gap: 8, flexWrap: "wrap" }}>
                     <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ fontSize: 13, color: T.text }}>{k}</span>
+                      <span style={{ fontSize: 14, color: T.text, fontWeight: 500 }}>{k}</span>
                       {ovr && (
                         <span
                           title={`Scout override: was ${ovr.system}/10, set to ${ovr.scout}/10`}
@@ -2512,7 +2538,7 @@ const TraitsTab = ({ p }) => {
                           {ovr.system}/10
                         </span>
                       )}
-                      <span style={{ ...mono, fontSize: 12, color: T.cyan }}>{v} / 10</span>
+                      <span style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700 }}>{v} / 10</span>
                     </span>
                   </div>
                   <MetricBar value={v * 10} />
@@ -2533,8 +2559,8 @@ const TraitsTab = ({ p }) => {
             {Object.entries(p.traits || {}).map(([k, v]) => (
               <div key={k}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-                  <span style={{ fontSize: 12, color: T.textDim }}>{k}</span>
-                  <span style={{ ...mono, fontSize: 11, color: T.cyan }}>{v}</span>
+                  <span style={{ fontSize: 13, color: T.textDim, fontWeight: 500 }}>{k}</span>
+                  <span style={{ ...mono, fontSize: 13, color: T.cyan, fontWeight: 700 }}>{v}</span>
                 </div>
                 <MetricBar value={v} />
               </div>
@@ -3102,13 +3128,30 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
         </button>
       </div>
 
+      {/* Family-bar legend — keyed to the colored leading bar on every row */}
+      <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 10, flexWrap: "wrap", ...mono, fontSize: 9, letterSpacing: "0.14em", color: T.textMute, textTransform: "uppercase" }}>
+        <span>Family Bar:</span>
+        {[
+          ["#A855F7", "Unique"],
+          ["#F97316", "Star Tier"],
+          ["#3B82F6", "Guard"],
+          ["#10B981", "Wing"],
+          ["#F59E0B", "Big"],
+        ].map(([color, label]) => (
+          <span key={label} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <span style={{ display: "inline-block", width: 4, height: 12, background: color }} />
+            {label}
+          </span>
+        ))}
+      </div>
+
       <div style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
         <div style={{ minWidth: 720 }}>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "60px 1fr 80px 70px 90px 70px 80px",
-              padding: "10px 16px",
+              padding: "10px 16px 10px 22px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
             }}
@@ -3127,51 +3170,39 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
           {rows.map((p) => {
             const isWatched = watchlist.includes(p.id);
             const isCompared = compareIds.includes(p.id);
-            const archetypeMeta = getArchetypeMeta(p.archetype);
-            // Archetype-family bar colors → distinct PROSPERA visual rhythm.
-            // Uniques get the brand purple; Star → cyan-secondary; everything
-            // else maps from position family. This makes the Big Board itself
-            // a distinctive surface (not just another dark table).
-            const isUnique = isUniqueArchetype(p.archetype);
-            const fam = positionFamily(p.pos) || positionFamily(p.pos2);
-            const familyBar = isUnique
-              ? T.purple
-              : archetypeMeta?.tier === "Star"
-                ? T.cyan
-                : fam === "guard"
-                  ? "#3B82F6"
-                  : fam === "wing"
-                    ? "#10B981"
-                    : "#F59E0B";
+            const familyBar = familyBarColor(p);
             return (
               <div
                 key={p.id}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "60px 1fr 80px 70px 90px 70px 80px",
-                  padding: "12px 16px",
+                  padding: "12px 16px 12px 22px",
                   borderBottom: `1px solid ${T.borderSoft}`,
-                  borderLeft: `3px solid ${familyBar}`,
+                  // box-shadow inset draws inside the row's box, so a parent
+                  // border or overflow:auto wrapper can't hide it. 5px reads
+                  // clearly without changing the column geometry.
+                  boxShadow: `inset 5px 0 0 ${familyBar}`,
                   alignItems: "center",
                   transition: "background 0.12s",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249, 115, 22, 0.04)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 13, color: T.cyan, cursor: "pointer" }}>{String(p.rank).padStart(2, "0")}</div>
+                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 15, color: T.cyan, fontWeight: 600, cursor: "pointer" }}>{String(p.rank).padStart(2, "0")}</div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, cursor: "pointer" }}>
                   <PlayerImg p={p} size={32} />
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: 13, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+                    <div style={{ fontSize: 14, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
                     <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {p.archetype?.toUpperCase() || "—"}
                     </div>
                   </div>
                 </div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 11, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 11, color: T.textDim, cursor: "pointer" }}>{p.cls || "—"}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 11, color: T.textDim, cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school?.split(" ")[0]}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600, cursor: "pointer" }}><ScoreCell prospect={p} /></div>
+                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
+                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.cls || "—"}</div>
+                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school?.split(" ")[0]}</div>
+                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700, cursor: "pointer" }}><ScoreCell prospect={p} /></div>
                 <div style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
                   <button
                     type="button"
@@ -3380,6 +3411,7 @@ const MyBoardPage = ({
         </div>
         {orderedPlayers.map((p, i) => {
           const isDragging = draggingIndex === i;
+          const familyBar = familyBarColor(p);
           return (
             <div
               key={p.id}
@@ -3403,8 +3435,9 @@ const MyBoardPage = ({
               style={{
                 display: "grid",
                 gridTemplateColumns: "44px 56px 1fr 70px 70px 60px",
-                padding: "10px 14px",
+                padding: "10px 14px 10px 20px",
                 borderBottom: `1px solid ${T.borderSoft}`,
+                boxShadow: `inset 5px 0 0 ${familyBar}`,
                 alignItems: "center",
                 background: isDragging ? "rgba(249, 115, 22, 0.06)" : "transparent",
                 opacity: isDragging ? 0.5 : 1,
@@ -3790,8 +3823,8 @@ const NbaAdvancedStrip = ({ nbaAdv }) => {
               borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
             }}
           >
-            <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
-            <div style={{ ...mono, fontSize: 12, color: v != null ? T.text : T.textMute, marginTop: 3 }}>{v ?? "—"}</div>
+            <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
+            <div style={{ ...mono, fontSize: 14, color: v != null ? T.text : T.textMute, marginTop: 3, fontWeight: 600 }}>{v ?? "—"}</div>
           </div>
         ))}
       </div>
@@ -3824,8 +3857,8 @@ const CbbAdvancedStrip = ({ cbbAdv }) => {
               borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
             }}
           >
-            <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
-            <div style={{ ...mono, fontSize: 12, color: v != null ? T.text : T.textMute, marginTop: 3 }}>{v ?? "—"}</div>
+            <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
+            <div style={{ ...mono, fontSize: 14, color: v != null ? T.text : T.textMute, marginTop: 3, fontWeight: 600 }}>{v ?? "—"}</div>
           </div>
         ))}
       </div>
@@ -3855,9 +3888,9 @@ const CompactAdvancedChips = ({ nbaAdv, cbbAdv }) => {
         Career
       </span>
       {chips.map(([label, val]) => (
-        <span key={label} style={{ ...mono, fontSize: 10, color: T.textDim, letterSpacing: "0.06em" }}>
-          <span style={{ color: T.textMute }}>{label}</span>{' '}
-          <span style={{ color: T.text }}>{val}</span>
+        <span key={label} style={{ ...mono, fontSize: 12, color: T.textDim, letterSpacing: "0.06em" }}>
+          <span style={{ color: T.textMute, fontSize: 10 }}>{label}</span>{' '}
+          <span style={{ color: T.text, fontWeight: 600 }}>{val}</span>
         </span>
       ))}
     </div>
@@ -3977,8 +4010,8 @@ const HistoricalCard = ({ p, rateMode = "per-game" }) => {
                 borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
               }}
             >
-              <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
-              <div style={{ ...mono, fontSize: 13, color: v != null ? T.text : T.textMute, marginTop: 4 }}>{v ?? "—"}</div>
+              <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
+              <div style={{ ...mono, fontSize: 15, color: v != null ? T.text : T.textMute, marginTop: 4, fontWeight: 600 }}>{v ?? "—"}</div>
             </div>
           ))}
         </div>
