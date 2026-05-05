@@ -13,26 +13,22 @@ const ARCHETYPE_BY_KEY = (() => {
   return map;
 })();
 
-// ---------- DESIGN TOKENS (locked to existing terminal palette) ----------
-// Per spec: NO new hex values. Every semantic need maps to an existing token
-// from the terminal's T palette. Above-baseline = cyan (positive accent).
-// Below-baseline = warn (caution accent). Bands + fades use rgba derivatives
-// of the same hexes so they stay color-faithful.
+// ---------- DESIGN TOKENS (mirror the spec) ----------
 const A = {
-  positive: "#22D3EE",                                // T.cyan
-  positiveBand: "rgba(34, 211, 238, 0.18)",
-  positiveFade: "rgba(34, 211, 238, 0.45)",
-  negative: "#F59E0B",                                // T.warn
-  negativeBand: "rgba(245, 158, 11, 0.18)",
-  negativeFade: "rgba(245, 158, 11, 0.45)",
-  rule: "#1F2937",                                    // T.border
+  positive: "#1D9E75",
+  positiveBand: "rgba(29, 158, 117, 0.18)",
+  positiveFade: "rgba(29, 158, 117, 0.45)",
+  negative: "#D85A30",
+  negativeBand: "rgba(216, 90, 48, 0.18)",
+  negativeFade: "rgba(216, 90, 48, 0.45)",
+  rule: "#1F2937",
   ruleSoft: "rgba(31, 41, 55, 0.6)",
   surface: "rgba(17, 24, 39, 0.72)",
-  text: "#E2E8F0",                                    // T.text
-  textDim: "#94A3B8",                                 // T.textDim
-  textMute: "#64748B",                                // T.textMute
-  neutral: "rgba(100, 116, 139, 0.4)",                // textMute @40%
-  baseline: "#1F2937",                                // T.border
+  text: "#E2E8F0",
+  textDim: "#94A3B8",
+  textMute: "#64748B",
+  neutral: "#475569",
+  baseline: "#334155",
 };
 
 const mono = {
@@ -291,7 +287,7 @@ const PlayerHeaderCard = ({ player, mirror = false }) => {
         style={{
           width: 38,
           height: 38,
-          background: player?.color || "#22D3EE",
+          background: player?.color || "#534AB7",
           color: "#fff",
           ...mono,
           fontSize: 13,
@@ -600,8 +596,8 @@ export const AdvantageComparison = ({ playerA, playerB }) => {
     );
   }
 
-  const colorA = playerA.color || "#22D3EE"; // T.cyan
-  const colorB = playerB.color || "#A855F7"; // T.purple
+  const colorA = playerA.color || "#534AB7";
+  const colorB = playerB.color || "#1D9E75";
   const scoreA = profileA.translate[scope];
   const scoreB = profileB.translate[scope];
 
