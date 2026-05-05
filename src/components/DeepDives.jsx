@@ -78,6 +78,14 @@ const OUTCOME_TIERS = [
   { value: "Bust",    label: "Bust" },
 ];
 
+const OUTCOME_TIER_COLORS = {
+  Legend: "#A855F7", // purple — generational
+  Star:   T.cyan,    // cyan — All-Star track
+  Hit:    T.positive, // green — solid starter
+  Swing:  T.warn,    // amber — boom/bust
+  Bust:   T.danger,  // red — washed
+};
+
 const POSITIONS = ["PG", "SG", "SF", "PF", "C"];
 
 // ---------- TEMPLATE ----------
@@ -826,6 +834,8 @@ function DeepDiveCard({ prospect, deepDive, onClick }) {
   const status = STATUSES.find((s) => s.value === deepDive.status);
   const stance = BUY_SELL.find((s) => s.value === deepDive.buyHoldSell);
   const conf = CONFIDENCE.find((c) => c.value === deepDive.confidence);
+  const ceilingColor = deepDive.ceilingTier ? OUTCOME_TIER_COLORS[deepDive.ceilingTier] : null;
+  const floorColor = deepDive.floorTier ? OUTCOME_TIER_COLORS[deepDive.floorTier] : null;
   return (
     <button
       type="button"
@@ -881,6 +891,35 @@ function DeepDiveCard({ prospect, deepDive, onClick }) {
           {conf && (
             <span style={{ ...mono, fontSize: 8, letterSpacing: "0.14em", color: conf.color, border: `1px solid ${conf.color}`, padding: "2px 6px", textTransform: "uppercase" }}>
               Conf · {conf.label}
+            </span>
+          )}
+          {(ceilingColor || floorColor) && (
+            <span
+              title={`Ceiling: ${deepDive.ceilingTier || "—"} · Floor: ${deepDive.floorTier || "—"}`}
+              style={{
+                ...mono,
+                fontSize: 8,
+                letterSpacing: "0.14em",
+                color: T.textDim,
+                border: `1px solid ${T.borderSoft}`,
+                padding: "2px 6px",
+                textTransform: "uppercase",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
+              {ceilingColor ? (
+                <span style={{ color: ceilingColor, fontWeight: 600 }}>↑ {deepDive.ceilingTier}</span>
+              ) : (
+                <span style={{ color: T.textMute }}>↑ —</span>
+              )}
+              <span style={{ color: T.textMute }}>/</span>
+              {floorColor ? (
+                <span style={{ color: floorColor, fontWeight: 600 }}>↓ {deepDive.floorTier}</span>
+              ) : (
+                <span style={{ color: T.textMute }}>↓ —</span>
+              )}
             </span>
           )}
         </div>

@@ -22,6 +22,8 @@ const HIST_PROSPECTS_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'his
 
 const NBA_FILE = path.join(STATHEAD_DIR, 'stathead-nba-advanced-careers.csv');
 const CBB_FILE = path.join(STATHEAD_DIR, 'stathead-cbb-advanced-careers.csv');
+const NBA_PER100_FILE = path.join(STATHEAD_DIR, 'stathead-nba-per100-careers.csv');
+const NBA_PER36_FILE = path.join(STATHEAD_DIR, 'stathead-nba-per36-careers.csv');
 
 // ---------- CSV PARSER ----------
 function parseLine(line) {
@@ -137,6 +139,36 @@ function extractNbaAdvanced(row) {
   };
 }
 
+// Per-100 / per-36 share the same column layout (only differ in scale).
+// We extract the counting line + 3PT splits for the historical card's
+// "career rate line" display.
+// Sports Reference stores shooting percentages as decimals (".422").
+// Convert to percent scale (42.2) so the UI doesn't have to special-case.
+function decimalToPct(v) {
+  const n = toNum(v);
+  if (n == null) return null;
+  return Math.round(n * 1000) / 10;
+}
+
+function extractNbaPerStats(row) {
+  return {
+    pts: toNum(row.PTS),
+    reb: toNum(row.TRB),
+    ast: toNum(row.AST),
+    stl: toNum(row.STL),
+    blk: toNum(row.BLK),
+    tov: toNum(row.TOV),
+    fga: toNum(row.FGA),
+    threePMade: toNum(row['3P']),
+    threePAtt: toNum(row['3PA']),
+    threePct: decimalToPct(row['3P%']),
+    ftAtt: toNum(row.FTA),
+    ftPct: decimalToPct(row['FT%']),
+    tsPct: decimalToPct(row['TS%']),
+    efgPct: decimalToPct(row['eFG%']),
+  };
+}
+
 function extractCbbAdvanced(row) {
   return {
     g: toNum(row.G),
@@ -185,10 +217,18 @@ function main() {
 
   const { rows: nbaRows } = parseCsv(fs.readFileSync(NBA_FILE, 'utf8'));
   const { rows: cbbRows } = parseCsv(fs.readFileSync(CBB_FILE, 'utf8'));
-  console.log(`Loaded ${nbaRows.length} NBA advanced rows, ${cbbRows.length} CBB advanced rows.`);
+  const per100Rows = fs.existsSync(NBA_PER100_FILE)
+    ? parseCsv(fs.readFileSync(NBA_PER100_FILE, 'utf8')).rows
+    : [];
+  const per36Rows = fs.existsSync(NBA_PER36_FILE)
+    ? parseCsv(fs.readFileSync(NBA_PER36_FILE, 'utf8')).rows
+    : [];
+  console.log(`Loaded ${nbaRows.length} NBA advanced rows, ${cbbRows.length} CBB advanced rows, ${per100Rows.length} per-100 rows, ${per36Rows.length} per-36 rows.`);
 
   const nbaByKey = buildKeyedMap(nbaRows);
   const cbbByKey = buildKeyedMap(cbbRows);
+  const per100ByKey = buildKeyedMap(per100Rows);
+  const per36ByKey = buildKeyedMap(per36Rows);
 
   const historicalProspects = JSON.parse(fs.readFileSync(HIST_PROSPECTS_PATH, 'utf8'));
   const sidecar = {};
@@ -198,11 +238,15 @@ function main() {
   const missingNba = [];
   const missingCbb = [];
 
+  let per100Hits = 0;
+  let per36Hits = 0;
   for (const p of historicalProspects) {
     const key = `${normalizeName(p.name)}|${p.draftYear}`;
     const nbaRow = nbaByKey.get(key);
     const cbbRow = cbbByKey.get(key);
-    if (!nbaRow && !cbbRow) {
+    const per100Row = per100ByKey.get(key);
+    const per36Row = per36ByKey.get(key);
+    if (!nbaRow && !cbbRow && !per100Row && !per36Row) {
       missingNba.push(p.name);
       missingCbb.push(p.name);
       continue;
@@ -220,6 +264,14 @@ function main() {
     } else {
       missingCbb.push(p.name);
     }
+    if (per100Row) {
+      entry.nbaPer100 = extractNbaPerStats(per100Row);
+      per100Hits++;
+    }
+    if (per36Row) {
+      entry.nbaPer36 = extractNbaPerStats(per36Row);
+      per36Hits++;
+    }
     if (nbaRow && cbbRow) bothHits++;
     sidecar[p.id] = entry;
   }
@@ -231,6 +283,8 @@ function main() {
   console.log(`Historical prospects total: ${historicalProspects.length}`);
   console.log(`NBA advanced matched:       ${nbaHits} (${((nbaHits / historicalProspects.length) * 100).toFixed(1)}%)`);
   console.log(`CBB advanced matched:       ${cbbHits} (${((cbbHits / historicalProspects.length) * 100).toFixed(1)}%)`);
+  console.log(`NBA per-100 matched:        ${per100Hits} (${((per100Hits / historicalProspects.length) * 100).toFixed(1)}%)`);
+  console.log(`NBA per-36 matched:         ${per36Hits} (${((per36Hits / historicalProspects.length) * 100).toFixed(1)}%)`);
   console.log(`Both NBA + CBB matched:     ${bothHits} (${((bothHits / historicalProspects.length) * 100).toFixed(1)}%)`);
   console.log('==============================');
   console.log('');

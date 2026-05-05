@@ -1032,6 +1032,90 @@ function archetypeOverlap(a, b) {
   return hits;
 }
 
+// ---------- CBB rate-stat profile matching ----------
+// Bridge: a 2026 prospect's traits9 grades imply a college rate-stat profile
+// (high AC implies high USG, high PC implies high AST%, etc.). We compare
+// those implied ranges against the historical's ACTUAL CBB rate stats.
+//
+// Each rule fires only when (a) we have the historical's CBB rate-stat
+// (~74% of the archive), (b) the modern prospect has the relevant trait
+// grade, and (c) both fall in matching tiers. Rules are deliberately
+// conservative — total max contribution ~30, vs. position fit at +50 —
+// so position/height stay the dominant signals.
+function cbbProfileMatch(current, historical) {
+  const cbb = historical.cbbAdv;
+  if (!cbb) return { score: 0, reasons: [] };
+  const t = current.traits9 || {};
+  const ac = t["Advantage Creation"];
+  const pc = t["Passing Creation"];
+  const dv = t["Defensive Versatility"];
+  const sg = t["Shooting Gravity"];
+  const fam = positionFamily(current.pos) || positionFamily(current.pos2);
+  let score = 0;
+  const reasons = [];
+
+  // ---- USG% matching ----
+  // Implied tiers: AC>=7 → high (>=27), AC 5-6 → mid (22-27), AC<=4 → low (<=20)
+  const usg = cbb.usgPct;
+  if (usg != null && ac != null) {
+    if (ac >= 7 && usg >= 27) {
+      score += 8; reasons.push("creator-volume match");
+    } else if (ac >= 5 && ac <= 6 && usg >= 22 && usg < 28) {
+      score += 5; reasons.push("secondary-creator match");
+    } else if (ac <= 4 && usg <= 20) {
+      score += 4; reasons.push("off-ball-volume match");
+    }
+  }
+
+  // ---- AST% matching ----
+  // Implied: PC>=7 → primary playmaker (>=22), PC 5-6 → secondary (12-22), PC<=4 → low (<=12)
+  const ast = cbb.astPct;
+  if (ast != null && pc != null) {
+    if (pc >= 7 && ast >= 22) {
+      score += 8; reasons.push("primary-playmaker match");
+    } else if (pc >= 5 && pc <= 6 && ast >= 12 && ast < 22) {
+      score += 4; reasons.push("secondary-playmaker match");
+    } else if (pc <= 4 && ast < 12) {
+      score += 3; reasons.push("low-creation match");
+    }
+  }
+
+  // ---- TRB% matching, position-aware ----
+  const trb = cbb.trbPct;
+  if (trb != null && fam) {
+    if (fam === "big" && trb >= 15) {
+      score += 4; reasons.push("elite-rebounder match");
+    } else if (fam === "wing" && trb >= 8 && trb < 15) {
+      score += 3; reasons.push("wing-rebounder match");
+    } else if (fam === "guard" && trb < 8) {
+      score += 2; // no need to flag — guards aren't expected to rebound
+    }
+  }
+
+  // ---- Defensive playmaking ----
+  // STL% >= 2.5 + DV >= 7 → defensive-playmaker match
+  const stl = cbb.stlPct;
+  if (stl != null && dv != null && dv >= 7 && stl >= 2.5) {
+    score += 4; reasons.push("defensive-playmaker match");
+  }
+
+  // ---- Rim protection (bigs only) ----
+  const blk = cbb.blkPct;
+  if (blk != null && fam === "big" && dv != null && dv >= 7 && blk >= 5) {
+    score += 6; reasons.push("rim-protector match");
+  }
+
+  // ---- Spacing ----
+  // High SG (≥7) + historical's college ORtg ≥ 115 (efficient profile) is a
+  // weak proxy for spacing translation since the CBB-adv file has no 3PT%.
+  const ortg = cbb.ortg;
+  if (sg != null && sg >= 7 && ortg != null && ortg >= 118) {
+    score += 3; reasons.push("efficient-volume match");
+  }
+
+  return { score, reasons };
+}
+
 function scoreComparable(current, historical) {
   let score = 0;
   const reasons = [];
@@ -1063,6 +1147,10 @@ function scoreComparable(current, historical) {
     if (ageDelta <= 0.5) score += 6;
     else if (ageDelta <= 1.0) score += 3;
   }
+  // CBB rate-stat profile boost
+  const profile = cbbProfileMatch(current, historical);
+  score += profile.score;
+  for (const r of profile.reasons) reasons.push(r);
   return { score, reasons };
 }
 
@@ -1082,7 +1170,7 @@ const ComparablesTab = ({ p }) => {
   return (
     <div style={{ display: "grid", gap: 12 }}>
       <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.14em", marginBottom: 4 }}>
-        TOP {matches.length} HISTORICAL COMPARABLES · WEIGHTED BY POSITION FIT, HEIGHT, ARCHETYPE OVERLAP, AND OUTCOME
+        TOP {matches.length} HISTORICAL COMPARABLES · POSITION · HEIGHT · ARCHETYPE · CBB RATE-STAT PROFILE
       </div>
       {matches.map(({ historical, score, reasons }) => {
         const tierColor = OUTCOME_TIER_COLORS[historical.outcomeTier] || T.textMute;
@@ -1116,11 +1204,30 @@ const ComparablesTab = ({ p }) => {
                     {historical.outcomeTier}
                   </span>
                 )}
-                {reasons.map((reason, i) => (
-                  <span key={i} style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: T.textDim, padding: "2px 6px", border: `1px solid ${T.borderSoft}`, textTransform: "uppercase" }}>
-                    {reason}
-                  </span>
-                ))}
+                {reasons.map((reason, i) => {
+                  // Profile-match reasons (creator-volume, primary-playmaker, rim-protector,
+                  // etc.) all contain a hyphen, distinguishing them from legacy
+                  // reasons like "guard fit" / "archetype match" / "exact height".
+                  const isProfileMatch = reason.includes("-");
+                  return (
+                    <span
+                      key={i}
+                      title={isProfileMatch ? "CBB rate-stat profile match" : "Position / archetype / outcome signal"}
+                      style={{
+                        ...mono,
+                        fontSize: 9,
+                        letterSpacing: "0.12em",
+                        color: isProfileMatch ? T.cyan : T.textDim,
+                        padding: "2px 6px",
+                        border: `1px solid ${isProfileMatch ? T.cyan : T.borderSoft}`,
+                        background: isProfileMatch ? "rgba(34, 211, 238, 0.06)" : "transparent",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {reason}
+                    </span>
+                  );
+                })}
               </div>
             )}
             <CompactAdvancedChips nbaAdv={historical.nbaAdv} cbbAdv={historical.cbbAdv} />
@@ -1459,54 +1566,84 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
         ))}
       </div>
 
-      {/* SCOUT OVERRIDES BANNER */}
-      {p.__scoutOverrides?.any && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            background: "rgba(34, 211, 238, 0.06)",
-            border: `1px solid rgba(34, 211, 238, 0.4)`,
-            borderLeft: `3px solid ${T.cyan}`,
-            padding: "10px 14px",
-            marginBottom: 16,
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.cyan, textTransform: "uppercase", fontWeight: 600 }}>
-            Scout View Active
-          </div>
-          <div style={{ fontSize: 12, color: T.textDim, lineHeight: 1.5 }}>
-            {Object.keys(p.__scoutOverrides.traits).length > 0 && (
-              <span>{Object.keys(p.__scoutOverrides.traits).length} trait override{Object.keys(p.__scoutOverrides.traits).length === 1 ? "" : "s"}</span>
-            )}
-            {Object.keys(p.__scoutOverrides.traits).length > 0 && Object.keys(p.__scoutOverrides.risks).length > 0 && <span style={{ color: T.textMute }}> · </span>}
-            {Object.keys(p.__scoutOverrides.risks).length > 0 && (
-              <span>{Object.keys(p.__scoutOverrides.risks).length} risk override{Object.keys(p.__scoutOverrides.risks).length === 1 ? "" : "s"}</span>
-            )}
-            <span style={{ color: T.textMute, marginLeft: 6 }}>applied to system values</span>
-          </div>
-          <span style={{ flex: 1 }} />
-          <button
-            type="button"
-            onClick={() => setTab("Traits")}
+      {/* SCOUT OVERRIDES BANNER (also shows ceiling/floor tier from deep dive) */}
+      {(p.__scoutOverrides?.any || p.__scoutOverrides?.ceilingTier || p.__scoutOverrides?.floorTier) && (() => {
+        const ceilTier = p.__scoutOverrides?.ceilingTier;
+        const floorTier = p.__scoutOverrides?.floorTier;
+        const ceilColor = ceilTier ? OUTCOME_TIER_COLORS[ceilTier] || T.cyan : null;
+        const floorColor = floorTier ? OUTCOME_TIER_COLORS[floorTier] || T.warn : null;
+        const traitCount = Object.keys(p.__scoutOverrides?.traits || {}).length;
+        const riskCount = Object.keys(p.__scoutOverrides?.risks || {}).length;
+        return (
+          <div
             style={{
-              ...mono,
-              fontSize: 9,
-              letterSpacing: "0.14em",
-              color: T.cyan,
-              background: "transparent",
-              border: `1px solid ${T.cyan}`,
-              padding: "4px 9px",
-              cursor: "pointer",
-              textTransform: "uppercase",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              background: "rgba(34, 211, 238, 0.06)",
+              border: `1px solid rgba(34, 211, 238, 0.4)`,
+              borderLeft: `3px solid ${T.cyan}`,
+              padding: "10px 14px",
+              marginBottom: 16,
+              flexWrap: "wrap",
             }}
           >
-            View in Traits
-          </button>
-        </div>
-      )}
+            <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.cyan, textTransform: "uppercase", fontWeight: 600 }}>
+              Scout View Active
+            </div>
+            {(traitCount > 0 || riskCount > 0) && (
+              <div style={{ fontSize: 12, color: T.textDim, lineHeight: 1.5 }}>
+                {traitCount > 0 && (
+                  <span>{traitCount} trait override{traitCount === 1 ? "" : "s"}</span>
+                )}
+                {traitCount > 0 && riskCount > 0 && <span style={{ color: T.textMute }}> · </span>}
+                {riskCount > 0 && (
+                  <span>{riskCount} risk override{riskCount === 1 ? "" : "s"}</span>
+                )}
+                <span style={{ color: T.textMute, marginLeft: 6 }}>applied to system values</span>
+              </div>
+            )}
+            {(ceilTier || floorTier) && (
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                {ceilTier && (
+                  <span
+                    title="Your ceiling assignment"
+                    style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: ceilColor, border: `1px solid ${ceilColor}`, background: "rgba(255,255,255,0.02)", padding: "2px 7px", textTransform: "uppercase", fontWeight: 600 }}
+                  >
+                    Ceil ↑ {ceilTier}
+                  </span>
+                )}
+                {floorTier && (
+                  <span
+                    title="Your floor assignment"
+                    style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: floorColor, border: `1px solid ${floorColor}`, background: "rgba(255,255,255,0.02)", padding: "2px 7px", textTransform: "uppercase", fontWeight: 600 }}
+                  >
+                    Floor ↓ {floorTier}
+                  </span>
+                )}
+              </div>
+            )}
+            <span style={{ flex: 1 }} />
+            <button
+              type="button"
+              onClick={() => setTab("Traits")}
+              style={{
+                ...mono,
+                fontSize: 9,
+                letterSpacing: "0.14em",
+                color: T.cyan,
+                background: "transparent",
+                border: `1px solid ${T.cyan}`,
+                padding: "4px 9px",
+                cursor: "pointer",
+                textTransform: "uppercase",
+              }}
+            >
+              View in Traits
+            </button>
+          </div>
+        );
+      })()}
 
       {/* TABS */}
       <div
@@ -3255,6 +3392,7 @@ const HistoricalPage = () => {
   const [posFilter, setPosFilter] = useState("ALL");
   const [outcomeFilter, setOutcomeFilter] = useState("ALL");
   const [query, setQuery] = useState("");
+  const [rateMode, setRateMode] = useState("per-game");
 
   const years = useMemo(
     () => [...new Set(HISTORICAL_PROSPECTS.map((p) => p.draftYear))].sort((a, b) => b - a),
@@ -3322,17 +3460,51 @@ const HistoricalPage = () => {
         />
       </div>
 
-      <div style={{ display: "flex", gap: 8, marginBottom: 18, flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
         <FilterSelect label="Year" value={yearFilter} onChange={setYearFilter} options={[["ALL", "All years"], ...years.map((y) => [String(y), String(y)])]} />
         <FilterSelect label="Position" value={posFilter} onChange={setPosFilter} options={[["ALL", "All positions"], ...positionFamilies.map((p) => [p, p])]} />
         <FilterSelect label="Outcome" value={outcomeFilter} onChange={setOutcomeFilter} options={[["ALL", "All outcomes"], ...outcomeTiers.map((o) => [o, o])]} />
+      </div>
+
+      {/* Rate mode toggle — flips counting strip on every card between PG / Per-36 / Per-100 */}
+      <div style={{ display: "flex", gap: 4, marginBottom: 18, flexWrap: "wrap", alignItems: "center" }}>
+        <span style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em", textTransform: "uppercase", marginRight: 4 }}>
+          Rate
+        </span>
+        {[
+          ["per-game", "Per Game"],
+          ["per-36", "Per 36"],
+          ["per-100", "Per 100"],
+        ].map(([val, label]) => {
+          const active = rateMode === val;
+          return (
+            <button
+              key={val}
+              type="button"
+              onClick={() => setRateMode(val)}
+              style={{
+                ...mono,
+                fontSize: 10,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: active ? T.cyan : T.textDim,
+                background: active ? "rgba(34, 211, 238, 0.08)" : "transparent",
+                border: `1px solid ${active ? T.cyan : T.border}`,
+                padding: "4px 9px",
+                cursor: "pointer",
+              }}
+            >
+              {label}
+            </button>
+          );
+        })}
       </div>
 
       <div style={{ display: "grid", gap: 10 }}>
         {filtered.length === 0 ? (
           <EmptyState label="No historical records match the current filters." />
         ) : (
-          filtered.map((p) => <HistoricalCard key={p.id} p={p} />)
+          filtered.map((p) => <HistoricalCard key={p.id} p={p} rateMode={rateMode} />)
         )}
       </div>
 
@@ -3467,8 +3639,51 @@ const CompactAdvancedChips = ({ nbaAdv, cbbAdv }) => {
   );
 };
 
-const HistoricalCard = ({ p }) => {
+// Pick the right counting-stat strip for the current rateMode and fall back
+// to per-game numbers from historicalProspects.json if per-36/per-100 isn't
+// available for this player (only ~14% of the archive lacks it).
+function buildStatsStripCells(p, rateMode) {
+  if (rateMode === "per-36" && p.nbaPer36) {
+    const s = p.nbaPer36;
+    return {
+      label: "Per 36 Min",
+      cells: [
+        ["PTS", s.pts != null ? s.pts.toFixed(1) : null],
+        ["REB", s.reb != null ? s.reb.toFixed(1) : null],
+        ["AST", s.ast != null ? s.ast.toFixed(1) : null],
+        ["TS%", s.tsPct != null ? `${s.tsPct.toFixed(1)}%` : null],
+        ["3P%", s.threePct != null ? `${s.threePct.toFixed(1)}%` : null],
+      ],
+    };
+  }
+  if (rateMode === "per-100" && p.nbaPer100) {
+    const s = p.nbaPer100;
+    return {
+      label: "Per 100 Possessions",
+      cells: [
+        ["PTS", s.pts != null ? s.pts.toFixed(1) : null],
+        ["REB", s.reb != null ? s.reb.toFixed(1) : null],
+        ["AST", s.ast != null ? s.ast.toFixed(1) : null],
+        ["TS%", s.tsPct != null ? `${s.tsPct.toFixed(1)}%` : null],
+        ["3P%", s.threePct != null ? `${s.threePct.toFixed(1)}%` : null],
+      ],
+    };
+  }
+  return {
+    label: "Per Game",
+    cells: [
+      ["PPG", p.pointsPerGame],
+      ["RPG", p.reboundsPerGame],
+      ["APG", p.assistsPerGame],
+      ["TS%", p.trueShooting],
+      ["BPM", p.bpm?.toFixed?.(1) ?? p.bpm],
+    ],
+  };
+}
+
+const HistoricalCard = ({ p, rateMode = "per-game" }) => {
   const tierColor = OUTCOME_TIER_COLORS[p.outcomeTier] || T.textMute;
+  const { label: stripLabel, cells: stripCells } = buildStatsStripCells(p, rateMode);
   const initials = p.name
     .split(/\s+/)
     .filter(Boolean)
@@ -3524,25 +3739,24 @@ const HistoricalCard = ({ p }) => {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", borderTop: `1px solid ${T.borderSoft}` }}>
-        {[
-          ["PPG", p.pointsPerGame],
-          ["RPG", p.reboundsPerGame],
-          ["APG", p.assistsPerGame],
-          ["TS%", p.trueShooting],
-          ["BPM", p.bpm?.toFixed?.(1) ?? p.bpm],
-        ].map(([k, v], i) => (
-          <div
-            key={k}
-            style={{
-              padding: "10px 12px",
-              borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
-            }}
-          >
-            <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
-            <div style={{ ...mono, fontSize: 13, color: T.text, marginTop: 4 }}>{v ?? "—"}</div>
-          </div>
-        ))}
+      <div style={{ borderTop: `1px solid ${T.borderSoft}` }}>
+        <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.16em", padding: "6px 16px 0", textTransform: "uppercase", opacity: 0.85 }}>
+          NBA Career · {stripLabel}
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", paddingTop: 4 }}>
+          {stripCells.map(([k, v], i) => (
+            <div
+              key={k}
+              style={{
+                padding: "8px 12px",
+                borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
+              }}
+            >
+              <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
+              <div style={{ ...mono, fontSize: 13, color: v != null ? T.text : T.textMute, marginTop: 4 }}>{v ?? "—"}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <NbaAdvancedStrip nbaAdv={p.nbaAdv} />
