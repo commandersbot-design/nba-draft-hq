@@ -1,0 +1,358 @@
+{
+  "schema": "anchor-scores-v1",
+  "notes": "Each archetype has a prototype profile across 9 traits (0-100). Authored scores can override; unauthored prospects auto-classify by nearest-neighbor distance to these anchors. Uniques are reserved for specific historical players and never auto-assigned.",
+  "traitOrder": ["initiate", "extend", "close", "space", "connect", "contain", "disrupt", "switch", "transition"],
+  "archetypes": [
+    {
+      "key": "lead-initiator",
+      "name": "Lead Initiator",
+      "tier": "Star",
+      "positionFamily": "Guard",
+      "exemplars": ["Trae Young", "Tyrese Haliburton", "Chris Paul"],
+      "anchorScores": {"initiate": 78, "extend": 78, "close": 65, "space": 55, "connect": 65, "contain": 50, "disrupt": 50, "switch": 45, "transition": 75},
+      "notes": "High-usage primary creator with playmaking ceiling. Pulls strings on every possession."
+    },
+    {
+      "key": "iq-lead",
+      "name": "IQ Lead",
+      "tier": "Role",
+      "positionFamily": "Guard",
+      "exemplars": ["Mike Conley", "Ricky Rubio", "Tyus Jones"],
+      "anchorScores": {"initiate": 60, "extend": 78, "close": 60, "space": 60, "connect": 70, "contain": 60, "disrupt": 55, "switch": 50, "transition": 65},
+      "notes": "Pure playmaker with low-mistake feel. Reads defenses, controls tempo."
+    },
+    {
+      "key": "bench-scoring-guard",
+      "name": "Bench Scoring Guard",
+      "tier": "Specialist",
+      "positionFamily": "Guard",
+      "exemplars": ["Jamal Crawford", "Lou Williams", "Jordan Clarkson"],
+      "anchorScores": {"initiate": 70, "extend": 50, "close": 78, "space": 65, "connect": 50, "contain": 45, "disrupt": 50, "switch": 40, "transition": 65},
+      "notes": "Microwave scoring off the bench. Creates own shot, lower playmaking footprint."
+    },
+    {
+      "key": "volume-lead-guard",
+      "name": "Volume Lead Guard",
+      "tier": "Star",
+      "positionFamily": "Guard",
+      "exemplars": ["Donovan Mitchell", "CJ McCollum", "Devin Booker"],
+      "anchorScores": {"initiate": 80, "extend": 65, "close": 75, "space": 60, "connect": 55, "contain": 50, "disrupt": 50, "switch": 45, "transition": 70},
+      "notes": "High-usage scoring guard. Creates own shot, secondary playmaking."
+    },
+    {
+      "key": "poa-defender",
+      "name": "POA Defender",
+      "tier": "Specialist",
+      "positionFamily": "Guard",
+      "exemplars": ["Marcus Smart", "Gary Payton II", "Patrick Beverley"],
+      "anchorScores": {"initiate": 50, "extend": 50, "close": 55, "space": 55, "connect": 60, "contain": 80, "disrupt": 70, "switch": 65, "transition": 70},
+      "notes": "Point-of-attack defender with secondary offense."
+    },
+    {
+      "key": "high-usage-lead",
+      "name": "High-Usage Lead",
+      "tier": "Star",
+      "positionFamily": "Guard",
+      "exemplars": ["Damian Lillard", "Russell Westbrook"],
+      "anchorScores": {"initiate": 82, "extend": 60, "close": 78, "space": 60, "connect": 50, "contain": 50, "disrupt": 50, "switch": 40, "transition": 75},
+      "notes": "Maximum usage, scoring-heavy primary. Pull-up gravity, downhill threat."
+    },
+    {
+      "key": "spot-up-specialist",
+      "name": "Spot-Up Specialist",
+      "tier": "Specialist",
+      "positionFamily": "Guard",
+      "exemplars": ["JJ Redick", "Kyle Korver"],
+      "anchorScores": {"initiate": 40, "extend": 50, "close": 70, "space": 78, "connect": 65, "contain": 50, "disrupt": 50, "switch": 45, "transition": 60},
+      "notes": "Off-ball shooting threat. Movement and spot-up gravity."
+    },
+    {
+      "key": "two-way-wing",
+      "name": "Two-Way Wing",
+      "tier": "Star",
+      "positionFamily": "Wing",
+      "exemplars": ["Mikal Bridges", "OG Anunoby", "Jimmy Butler"],
+      "anchorScores": {"initiate": 60, "extend": 60, "close": 70, "space": 65, "connect": 65, "contain": 75, "disrupt": 65, "switch": 70, "transition": 70},
+      "notes": "Balanced both ends. Switches across positions, scores within structure."
+    },
+    {
+      "key": "off-ball-wing",
+      "name": "Off-Ball Wing",
+      "tier": "Role",
+      "positionFamily": "Wing",
+      "exemplars": ["Buddy Hield", "Duncan Robinson"],
+      "anchorScores": {"initiate": 45, "extend": 55, "close": 70, "space": 75, "connect": 70, "contain": 60, "disrupt": 55, "switch": 60, "transition": 65},
+      "notes": "Off-ball scoring wing. Movement, secondary actions, lower on-ball gravity."
+    },
+    {
+      "key": "movement-shooter",
+      "name": "Movement Shooter",
+      "tier": "Star",
+      "positionFamily": "Wing",
+      "exemplars": ["Klay Thompson", "Khris Middleton"],
+      "anchorScores": {"initiate": 50, "extend": 50, "close": 75, "space": 80, "connect": 60, "contain": 60, "disrupt": 50, "switch": 55, "transition": 65},
+      "notes": "Elite off-ball shooter with mid-range. Plays within actions, secondary defense."
+    },
+    {
+      "key": "connector",
+      "name": "Connector",
+      "tier": "Role",
+      "positionFamily": "Wing",
+      "exemplars": ["Josh Hart", "Royce O'Neale", "Dorian Finney-Smith"],
+      "anchorScores": {"initiate": 40, "extend": 70, "close": 55, "space": 65, "connect": 78, "contain": 65, "disrupt": 60, "switch": 65, "transition": 65},
+      "notes": "Low-usage glue piece. Reads, cuts, connects actions, plays defense."
+    },
+    {
+      "key": "three-and-d",
+      "name": "3-and-D",
+      "tier": "Role",
+      "positionFamily": "Wing",
+      "exemplars": ["Robert Covington", "PJ Tucker", "Trevor Ariza"],
+      "anchorScores": {"initiate": 35, "extend": 40, "close": 60, "space": 80, "connect": 60, "contain": 75, "disrupt": 60, "switch": 65, "transition": 60},
+      "notes": "Corner shooting + perimeter defense. Replaceable star prototype."
+    },
+    {
+      "key": "off-ball-wing-scorer",
+      "name": "Off-Ball Wing Scorer",
+      "tier": "Role",
+      "positionFamily": "Wing",
+      "exemplars": ["Bradley Beal", "RJ Barrett", "Andrew Wiggins"],
+      "anchorScores": {"initiate": 65, "extend": 55, "close": 78, "space": 65, "connect": 55, "contain": 60, "disrupt": 55, "switch": 55, "transition": 75},
+      "notes": "Athletic scoring wing with secondary creation. Lower on-ball burden."
+    },
+    {
+      "key": "stretch-four",
+      "name": "Stretch Four",
+      "tier": "Role",
+      "positionFamily": "Forward",
+      "exemplars": ["Kevin Love", "Tobias Harris", "Lauri Markkanen"],
+      "anchorScores": {"initiate": 50, "extend": 55, "close": 70, "space": 78, "connect": 65, "contain": 60, "disrupt": 60, "switch": 55, "transition": 60},
+      "notes": "Floor-spacing forward. Shooting + rebounding mix."
+    },
+    {
+      "key": "connector-four",
+      "name": "Connector Four",
+      "tier": "Role",
+      "positionFamily": "Forward",
+      "exemplars": ["Aaron Gordon", "Draymond Green", "Trevor Ariza"],
+      "anchorScores": {"initiate": 50, "extend": 75, "close": 60, "space": 60, "connect": 78, "contain": 65, "disrupt": 65, "switch": 70, "transition": 65},
+      "notes": "Point-forward / glue four. Passes, connects, defends multiple positions."
+    },
+    {
+      "key": "versatile-forward",
+      "name": "Versatile Forward",
+      "tier": "Star",
+      "positionFamily": "Forward",
+      "exemplars": ["Pascal Siakam", "Brandon Ingram", "Brandon Miller"],
+      "anchorScores": {"initiate": 65, "extend": 65, "close": 70, "space": 65, "connect": 65, "contain": 70, "disrupt": 65, "switch": 75, "transition": 70},
+      "notes": "Multi-modal forward. Can shift roles based on lineup."
+    },
+    {
+      "key": "combo-forward",
+      "name": "Combo Forward",
+      "tier": "Role",
+      "positionFamily": "Forward",
+      "exemplars": ["DeMar DeRozan", "Tobias Harris"],
+      "anchorScores": {"initiate": 70, "extend": 60, "close": 78, "space": 65, "connect": 60, "contain": 60, "disrupt": 55, "switch": 60, "transition": 65},
+      "notes": "Offense-first combo wing/forward. Mid-range scoring, mixed defense."
+    },
+    {
+      "key": "floor-spacing-big",
+      "name": "Floor-Spacing Big",
+      "tier": "Role",
+      "positionFamily": "Big",
+      "exemplars": ["Brook Lopez", "Myles Turner"],
+      "anchorScores": {"initiate": 40, "extend": 50, "close": 70, "space": 78, "connect": 60, "contain": 60, "disrupt": 65, "switch": 50, "transition": 55},
+      "notes": "Stretch big with rim protection. Shoots + holds the line."
+    },
+    {
+      "key": "pick-and-pop-big",
+      "name": "Pick-and-Pop Big",
+      "tier": "Role",
+      "positionFamily": "Big",
+      "exemplars": ["Karl-Anthony Towns", "Kelly Olynyk"],
+      "anchorScores": {"initiate": 40, "extend": 60, "close": 75, "space": 75, "connect": 65, "contain": 60, "disrupt": 65, "switch": 50, "transition": 55},
+      "notes": "Mid-range and three-point shooter at the 5. Sets actions, pops to space."
+    },
+    {
+      "key": "rim-running-big",
+      "name": "Rim-Running Big",
+      "tier": "Role",
+      "positionFamily": "Big",
+      "exemplars": ["Jarrett Allen", "Clint Capela", "Mitchell Robinson"],
+      "anchorScores": {"initiate": 30, "extend": 40, "close": 75, "space": 35, "connect": 60, "contain": 65, "disrupt": 70, "switch": 55, "transition": 75},
+      "notes": "Athletic vertical-spacing big. Lobs, rim protection, transition."
+    },
+    {
+      "key": "rim-protector",
+      "name": "Rim Protector",
+      "tier": "Specialist",
+      "positionFamily": "Big",
+      "exemplars": ["Rudy Gobert", "Walker Kessler", "Hassan Whiteside"],
+      "anchorScores": {"initiate": 25, "extend": 35, "close": 60, "space": 30, "connect": 50, "contain": 80, "disrupt": 80, "switch": 50, "transition": 60},
+      "notes": "Defensive anchor. Drop coverage, vertical contests, rebounding."
+    },
+    {
+      "key": "switching-big",
+      "name": "Switching Big",
+      "tier": "Role",
+      "positionFamily": "Big",
+      "exemplars": ["Jaren Jackson Jr.", "Onyeka Okongwu"],
+      "anchorScores": {"initiate": 50, "extend": 60, "close": 65, "space": 55, "connect": 65, "contain": 75, "disrupt": 65, "switch": 80, "transition": 70},
+      "notes": "Modern mobile big. Switches 1-5, secondary scoring."
+    },
+    {
+      "key": "skilled-center",
+      "name": "Skilled Center",
+      "tier": "Star",
+      "positionFamily": "Big",
+      "exemplars": ["Domantas Sabonis", "Al Horford", "Marc Gasol"],
+      "anchorScores": {"initiate": 55, "extend": 75, "close": 75, "space": 60, "connect": 75, "contain": 65, "disrupt": 65, "switch": 60, "transition": 60},
+      "notes": "Hub center. Passes from the elbow, scores at the rim, anchors defense."
+    },
+    {
+      "key": "the-totality",
+      "name": "THE TOTALITY",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["LeBron James"],
+      "anchorScores": {"initiate": 95, "extend": 90, "close": 90, "space": 75, "connect": 85, "contain": 80, "disrupt": 75, "switch": 85, "transition": 95},
+      "notes": "Generational physical anomaly. Position-less primary creator with all-time longevity."
+    },
+    {
+      "key": "the-singularity",
+      "name": "THE SINGULARITY",
+      "tier": "Unique",
+      "positionFamily": "Guard",
+      "exemplars": ["Stephen Curry"],
+      "anchorScores": {"initiate": 90, "extend": 80, "close": 85, "space": 99, "connect": 75, "contain": 50, "disrupt": 50, "switch": 55, "transition": 85},
+      "notes": "Historic shooting volume. System-bender; gravity warps the entire defense."
+    },
+    {
+      "key": "the-reaper",
+      "name": "THE REAPER",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["Kevin Durant"],
+      "anchorScores": {"initiate": 90, "extend": 70, "close": 95, "space": 90, "connect": 65, "contain": 65, "disrupt": 65, "switch": 75, "transition": 80},
+      "notes": "Height + skill anomaly. Unguardable mid-range and three-level shot-making."
+    },
+    {
+      "key": "two-way-terminator",
+      "name": "Two-Way Terminator",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["Kawhi Leonard"],
+      "anchorScores": {"initiate": 80, "extend": 65, "close": 85, "space": 75, "connect": 65, "contain": 90, "disrupt": 80, "switch": 80, "transition": 75},
+      "notes": "Apex two-way wing. Wins games on both ends, locks down primary scorers."
+    },
+    {
+      "key": "universal-big",
+      "name": "Universal Big",
+      "tier": "Unique",
+      "positionFamily": "Big",
+      "exemplars": ["Bam Adebayo"],
+      "anchorScores": {"initiate": 60, "extend": 75, "close": 70, "space": 60, "connect": 75, "contain": 85, "disrupt": 75, "switch": 90, "transition": 80},
+      "notes": "Switchable, passing big. Defends 1-5, point-center."
+    },
+    {
+      "key": "rim-pressure-titan",
+      "name": "Rim Pressure Titan",
+      "tier": "Unique",
+      "positionFamily": "Forward",
+      "exemplars": ["Giannis Antetokounmpo"],
+      "anchorScores": {"initiate": 90, "extend": 70, "close": 90, "space": 50, "connect": 75, "contain": 75, "disrupt": 80, "switch": 80, "transition": 90},
+      "notes": "Frame + mobility combo. Downhill freight train; rim gravity warps defenses."
+    },
+    {
+      "key": "offensive-nexus",
+      "name": "Offensive Nexus",
+      "tier": "Unique",
+      "positionFamily": "Big",
+      "exemplars": ["Nikola Jokić"],
+      "anchorScores": {"initiate": 85, "extend": 95, "close": 85, "space": 75, "connect": 90, "contain": 50, "disrupt": 70, "switch": 50, "transition": 70},
+      "notes": "Passing center; offensive system runs through him. MVP-tier offensive engine."
+    },
+    {
+      "key": "tempo-manipulator",
+      "name": "Tempo Manipulator",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["Luka Dončić"],
+      "anchorScores": {"initiate": 95, "extend": 90, "close": 88, "space": 75, "connect": 75, "contain": 50, "disrupt": 60, "switch": 55, "transition": 80},
+      "notes": "Pace and rhythm controller. Bends defenses through change-of-speed."
+    },
+    {
+      "key": "slithery-creator",
+      "name": "Slithery Creator",
+      "tier": "Unique",
+      "positionFamily": "Guard",
+      "exemplars": ["Shai Gilgeous-Alexander"],
+      "anchorScores": {"initiate": 95, "extend": 75, "close": 90, "space": 65, "connect": 60, "contain": 70, "disrupt": 70, "switch": 65, "transition": 80},
+      "notes": "Footwork-driven creator. Mid-range surgeon, plus-defender at the point of attack."
+    },
+    {
+      "key": "two-way-anchor",
+      "name": "Two-Way Anchor",
+      "tier": "Unique",
+      "positionFamily": "Big",
+      "exemplars": ["Anthony Davis"],
+      "anchorScores": {"initiate": 70, "extend": 60, "close": 80, "space": 65, "connect": 65, "contain": 90, "disrupt": 90, "switch": 75, "transition": 80},
+      "notes": "Defensive anchor with offensive star tier. Length and mobility at the 4/5."
+    },
+    {
+      "key": "interior-dominator",
+      "name": "Interior Dominator",
+      "tier": "Unique",
+      "positionFamily": "Big",
+      "exemplars": ["Joel Embiid"],
+      "anchorScores": {"initiate": 80, "extend": 70, "close": 90, "space": 75, "connect": 60, "contain": 80, "disrupt": 85, "switch": 60, "transition": 65},
+      "notes": "Skill + power + mobility at the 5. Post hub with shooting and rim protection."
+    },
+    {
+      "key": "hammer-wing",
+      "name": "Hammer Wing",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["Jaylen Brown"],
+      "anchorScores": {"initiate": 80, "extend": 60, "close": 85, "space": 70, "connect": 60, "contain": 75, "disrupt": 65, "switch": 70, "transition": 80},
+      "notes": "Downhill physical force. On-ball + off-ball threat with two-way upside."
+    },
+    {
+      "key": "silken-apex",
+      "name": "Silken Apex",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["Paul George"],
+      "anchorScores": {"initiate": 75, "extend": 70, "close": 80, "space": 75, "connect": 70, "contain": 80, "disrupt": 75, "switch": 75, "transition": 75},
+      "notes": "Effortless two-way creation. Smooth offense, prime athleticism, plus-defense."
+    },
+    {
+      "key": "vertical-phenom",
+      "name": "Vertical Phenom",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["Anthony Edwards"],
+      "anchorScores": {"initiate": 85, "extend": 65, "close": 88, "space": 70, "connect": 60, "contain": 70, "disrupt": 65, "switch": 65, "transition": 90},
+      "notes": "Star pop + downhill detonation. Pull-up gravity with two-way ceiling."
+    },
+    {
+      "key": "three-level-apex",
+      "name": "Three-Level Apex",
+      "tier": "Unique",
+      "positionFamily": "Wing",
+      "exemplars": ["Jayson Tatum"],
+      "anchorScores": {"initiate": 80, "extend": 70, "close": 88, "space": 80, "connect": 65, "contain": 70, "disrupt": 65, "switch": 70, "transition": 70},
+      "notes": "6-9 wing with full scoring tree. Length + skill three-level scoring."
+    },
+    {
+      "key": "iso-surgeon",
+      "name": "Iso Surgeon",
+      "tier": "Unique",
+      "positionFamily": "Forward",
+      "exemplars": ["Carmelo Anthony"],
+      "anchorScores": {"initiate": 80, "extend": 60, "close": 92, "space": 70, "connect": 55, "contain": 55, "disrupt": 55, "switch": 50, "transition": 65},
+      "notes": "Footwork master. Mid-range architect; isolation scoring legend."
+    }
+  ]
+}

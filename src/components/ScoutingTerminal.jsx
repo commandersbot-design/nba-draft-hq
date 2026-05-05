@@ -18,6 +18,22 @@ import {
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import HISTORICAL_PROSPECTS from "../data/historicalProspects.json";
 import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
+import ARCHETYPE_CATALOG from "../data/archetypeCatalog.json";
+
+const ARCHETYPE_BY_NAME = (() => {
+  const map = new Map();
+  for (const arch of ARCHETYPE_CATALOG.archetypes || []) map.set(arch.name, arch);
+  return map;
+})();
+
+function getArchetypeMeta(archetypeName) {
+  return ARCHETYPE_BY_NAME.get(archetypeName) || null;
+}
+
+function isUniqueArchetype(archetypeName) {
+  const meta = getArchetypeMeta(archetypeName);
+  return Boolean(meta && meta.tier === "Unique");
+}
 import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
 import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
@@ -1023,8 +1039,8 @@ const ComparablesTab = ({ p }) => {
                   {historical.school?.toUpperCase() || "—"} · {historical.position || "—"} · {historical.height || "—"}
                 </div>
                 {historical.archetype && (
-                  <div style={{ ...mono, fontSize: 9, color: T.textDim, letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase" }}>
-                    {historical.archetype}
+                  <div style={{ ...mono, fontSize: 9, color: isUniqueArchetype(historical.archetype) ? T.purple : T.textDim, letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase", fontWeight: isUniqueArchetype(historical.archetype) ? 600 : 400 }}>
+                    {isUniqueArchetype(historical.archetype) ? `★ ${historical.archetype}` : historical.archetype}
                   </div>
                 )}
               </div>
@@ -3147,9 +3163,17 @@ const HistoricalCard = ({ p }) => {
             <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: tierColor, border: `1px solid ${tierColor}`, padding: "2px 6px", textTransform: "uppercase" }}>
               {p.outcomeTier}
             </span>
-            <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: T.textDim, border: `1px solid ${T.borderSoft}`, padding: "2px 6px", textTransform: "uppercase" }}>
-              {p.archetype}
-            </span>
+            {p.archetype && (
+              isUniqueArchetype(p.archetype) ? (
+                <span style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: T.purple, background: "rgba(168, 85, 247, 0.08)", border: `1px solid ${T.purple}`, padding: "2px 6px", textTransform: "uppercase", fontWeight: 600 }}>
+                  ★ {p.archetype}
+                </span>
+              ) : (
+                <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: T.textDim, border: `1px solid ${T.borderSoft}`, padding: "2px 6px", textTransform: "uppercase" }}>
+                  {p.archetype}
+                </span>
+              )
+            )}
           </div>
         </div>
       </div>

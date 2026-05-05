@@ -8,7 +8,7 @@
     "school": "Duke",
     "height": "6-9",
     "age": 18.5,
-    "archetype": "Two-Way Forward",
+    "archetype": "Versatile Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 21,
@@ -90,7 +90,8 @@
       "draftTeam": "DAL",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Star"
   },
   {
     "id": "dylan-harper-2025",
@@ -101,7 +102,7 @@
     "school": "Rutgers",
     "height": "6-5",
     "age": 19.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 11.8,
@@ -183,7 +184,8 @@
       "draftTeam": "SAS",
       "college": "Rutgers",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "vj-edgecombe-2025",
@@ -194,7 +196,7 @@
     "school": "Baylor",
     "height": "6-4",
     "age": 19.9,
-    "archetype": "Combo Guard",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 16,
@@ -253,7 +255,8 @@
       "draftTeam": "PHI",
       "college": "Baylor",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kon-knueppel-2025",
@@ -264,7 +267,7 @@
     "school": "Duke",
     "height": "6-6",
     "age": 19.9,
-    "archetype": "Primary Creator",
+    "archetype": "Off-Ball Wing Scorer",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 18.5,
@@ -346,7 +349,8 @@
       "draftTeam": "CHA",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ace-bailey-2025",
@@ -357,7 +361,7 @@
     "school": "Rutgers",
     "height": "6-9",
     "age": 18.9,
-    "archetype": "Stretch Four",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 13.8,
@@ -416,7 +420,8 @@
       "draftTeam": "UTA",
       "college": "Rutgers",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "tre-johnson-2025",
@@ -427,7 +432,7 @@
     "school": "Texas",
     "height": "6-5",
     "age": 19.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 12.2,
@@ -509,7 +514,8 @@
       "draftTeam": "WAS",
       "college": "Texas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jeremiah-fears-2025",
@@ -520,7 +526,7 @@
     "school": "Oklahoma",
     "height": "6-3",
     "age": 18.7,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 14.3,
@@ -602,7 +608,8 @@
       "draftTeam": "NOH",
       "college": "Oklahoma",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "egor-demin-2025",
@@ -613,7 +620,7 @@
     "school": "Brigham Young",
     "height": "6-8",
     "age": 19.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 10.3,
@@ -668,7 +675,8 @@
       "draftTeam": "NJN",
       "draftCollege": "Brigham Young",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "collin-murray-boyles-2025",
@@ -679,7 +687,7 @@
     "school": "South Carolina",
     "height": "6-7",
     "age": 20,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.5,
@@ -761,7 +769,8 @@
       "draftTeam": "TOR",
       "college": "South Carolina",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "khaman-maluach-2025",
@@ -772,7 +781,7 @@
     "school": "Duke",
     "height": "7-1",
     "age": 18.8,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3,
@@ -854,7 +863,8 @@
       "draftTeam": "HOU",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "cedric-coward-2025",
@@ -865,7 +875,7 @@
     "school": "Washington State",
     "height": "6-5",
     "age": 21.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 13.6,
@@ -947,7 +957,8 @@
       "draftTeam": "POR",
       "college": "Washington State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "noa-essengue-2025",
@@ -958,7 +969,7 @@
     "school": "Ratiopharm Ulm (Germany)",
     "height": "6-8",
     "age": 18.5,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 0,
@@ -1017,7 +1028,8 @@
       "draftTeam": "CHI",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "derik-queen-2025",
@@ -1028,7 +1040,7 @@
     "school": "Maryland",
     "height": "6-9",
     "age": 20.5,
-    "archetype": "Playmaking Big",
+    "archetype": "Switching Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 11.7,
@@ -1110,7 +1122,8 @@
       "draftTeam": "ATL",
       "college": "Maryland",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "carter-bryant-2025",
@@ -1121,7 +1134,7 @@
     "school": "Arizona",
     "height": "6-6",
     "age": 19.6,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.2,
@@ -1203,7 +1216,8 @@
       "draftTeam": "SAS",
       "college": "Arizona",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "thomas-sorber-2025",
@@ -1214,7 +1228,7 @@
     "school": "Georgetown",
     "height": "6-9",
     "age": 19.5,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -1262,7 +1276,8 @@
       "draftTeam": "OKC",
       "draftCollege": "Georgetown",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "yang-hansen-2025",
@@ -1273,7 +1288,7 @@
     "school": "Qingdao (China)",
     "height": "7-1",
     "age": 20,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.2,
@@ -1332,7 +1347,8 @@
       "draftTeam": "MEM",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "joan-beringer-2025",
@@ -1343,7 +1359,7 @@
     "school": "Cedevita Olimpija (Slovenia)",
     "height": "6-11",
     "age": 18.6,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.9,
@@ -1402,7 +1418,8 @@
       "draftTeam": "MIN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "walter-clayton-jr-2025",
@@ -1413,7 +1430,7 @@
     "school": "Florida",
     "height": "6-4",
     "age": 22.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 7.8,
@@ -1495,7 +1512,8 @@
       "draftTeam": "WAS",
       "college": "Florida",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "nolan-traore-2025",
@@ -1506,7 +1524,7 @@
     "school": "Saint-Quentin BB (France)",
     "height": "6-3",
     "age": 19.1,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 8.9,
@@ -1565,7 +1583,8 @@
       "draftTeam": "NJN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kasparas-jakucionis-2025",
@@ -1576,7 +1595,7 @@
     "school": "Illinois",
     "height": "6-5",
     "age": 19.1,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 6.2,
@@ -1658,7 +1677,8 @@
       "draftTeam": "MIA",
       "college": "Illinois",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "will-riley-2025",
@@ -1669,7 +1689,7 @@
     "school": "Illinois",
     "height": "6-9",
     "age": 19.4,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 10.3,
@@ -1751,7 +1771,8 @@
       "draftTeam": "UTA",
       "college": "Illinois",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "drake-powell-2025",
@@ -1762,7 +1783,7 @@
     "school": "North Carolina",
     "height": "6-5",
     "age": 19.8,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 6.5,
@@ -1844,7 +1865,8 @@
       "draftTeam": "ATL",
       "college": "North Carolina",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "asa-newell-2025",
@@ -1855,7 +1877,7 @@
     "school": "Georgia",
     "height": "6-10",
     "age": 19.7,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 5.2,
@@ -1937,7 +1959,8 @@
       "draftTeam": "IND",
       "college": "Georgia",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "nique-clifford-2025",
@@ -1948,7 +1971,7 @@
     "school": "Colorado State",
     "height": "6-5",
     "age": 23.4,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 8.6,
@@ -2030,7 +2053,8 @@
       "draftTeam": "OKC",
       "college": "Colorado State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jase-richardson-2025",
@@ -2041,7 +2065,7 @@
     "school": "Michigan State",
     "height": "6-1",
     "age": 19.7,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.4,
@@ -2123,7 +2147,8 @@
       "draftTeam": "ORL",
       "college": "Michigan State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ben-saraf-2025",
@@ -2134,7 +2159,7 @@
     "school": "Ratiopharm Ulm (Germany)",
     "height": "6-6",
     "age": 19.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 7.5,
@@ -2193,7 +2218,8 @@
       "draftTeam": "NJN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "danny-wolf-2025",
@@ -2204,7 +2230,7 @@
     "school": "Michigan",
     "height": "6-11",
     "age": 21.1,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 8.9,
@@ -2286,7 +2312,8 @@
       "draftTeam": "NJN",
       "college": "Michigan",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "hugo-gonzalez-2025",
@@ -2297,7 +2324,7 @@
     "school": "Real Madrid Baloncesto (Spain)",
     "height": "6-6",
     "age": 19.4,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.9,
@@ -2356,7 +2383,8 @@
       "draftTeam": "BOS",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "liam-mcneeley-2025",
@@ -2367,7 +2395,7 @@
     "school": "Connecticut",
     "height": "6-7",
     "age": 19.7,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.3,
@@ -2449,7 +2477,8 @@
       "draftTeam": "PHO",
       "college": "Connecticut",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "yanic-konan-niederhauser-2025",
@@ -2460,7 +2489,7 @@
     "school": "Penn State",
     "height": "6-11",
     "age": 22.3,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.3,
@@ -2542,7 +2571,8 @@
       "draftTeam": "LAC",
       "college": "Penn State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rasheer-fleming-2025",
@@ -2553,7 +2583,7 @@
     "school": "Saint Joseph's",
     "height": "6-9",
     "age": 21,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.3,
@@ -2635,7 +2665,8 @@
       "draftTeam": "MIN",
       "college": "Saint Joseph's",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "noah-penda-2025",
@@ -2646,7 +2677,7 @@
     "school": "Le Mans Sarthe Basket (France)",
     "height": "6-7",
     "age": 20.5,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.8,
@@ -2705,7 +2736,8 @@
       "draftTeam": "BOS",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "sion-james-2025",
@@ -2716,7 +2748,7 @@
     "school": "Duke",
     "height": "6-5",
     "age": 22.6,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
@@ -2798,7 +2830,8 @@
       "draftTeam": "CHA",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ryan-kalkbrenner-2025",
@@ -2809,7 +2842,7 @@
     "school": "Creighton",
     "height": "7-1",
     "age": 23.4,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.6,
@@ -2891,7 +2924,8 @@
       "draftTeam": "CHA",
       "college": "Creighton",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "johni-broome-2025",
@@ -2902,7 +2936,7 @@
     "school": "Auburn",
     "height": "6-9",
     "age": 22.9,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 0.9,
@@ -2984,7 +3018,8 @@
       "draftTeam": "PHI",
       "college": "Auburn",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "adou-thiero-2025",
@@ -2995,7 +3030,7 @@
     "school": "Arkansas",
     "height": "6-7",
     "age": 21.1,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.9,
@@ -3077,7 +3112,8 @@
       "draftTeam": "NJN",
       "college": "Arkansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "chaz-lanier-2025",
@@ -3088,7 +3124,7 @@
     "school": "Tennessee",
     "height": "6-3",
     "age": 23.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.4,
@@ -3170,7 +3206,8 @@
       "draftTeam": "DET",
       "college": "Tennessee",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kam-jones-2025",
@@ -3181,7 +3218,7 @@
     "school": "Marquette",
     "height": "6-4",
     "age": 23.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.4,
@@ -3240,7 +3277,8 @@
       "draftTeam": "SAS",
       "college": "Marquette",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "alijah-martin-2025",
@@ -3251,7 +3289,7 @@
     "school": "Florida",
     "height": "6-2",
     "age": 23.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.2,
@@ -3333,7 +3371,8 @@
       "draftTeam": "TOR",
       "college": "Florida",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "micah-peavy-2025",
@@ -3344,7 +3383,7 @@
     "school": "Georgetown",
     "height": "6-7",
     "age": 23.9,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.3,
@@ -3426,7 +3465,8 @@
       "draftTeam": "WAS",
       "college": "Georgetown",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "koby-brea-2025",
@@ -3437,7 +3477,7 @@
     "school": "Kentucky",
     "height": "6-5",
     "age": 22.6,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.8,
@@ -3519,7 +3559,8 @@
       "draftTeam": "GSW",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "maxime-raynaud-2025",
@@ -3530,7 +3571,7 @@
     "school": "Stanford",
     "height": "7-1",
     "age": 22.2,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 12.5,
@@ -3612,7 +3653,8 @@
       "draftTeam": "SAC",
       "college": "Stanford",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jamir-watkins-2025",
@@ -3623,7 +3665,7 @@
     "school": "Florida State",
     "height": "6-6",
     "age": 24,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 7.4,
@@ -3705,7 +3747,8 @@
       "draftTeam": "UTA",
       "college": "Florida State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "brooks-barnhizer-2025",
@@ -3716,7 +3759,7 @@
     "school": "Northwestern",
     "height": "6-5",
     "age": 23.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.7,
@@ -3798,7 +3841,8 @@
       "draftTeam": "OKC",
       "college": "Northwestern",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rocco-zikarsky-2025",
@@ -3809,7 +3853,7 @@
     "school": "Brisbane (Australia)",
     "height": "7-3",
     "age": 19,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.8,
@@ -3868,7 +3912,8 @@
       "draftTeam": "CHI",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "amari-williams-2025",
@@ -3879,7 +3924,7 @@
     "school": "Kentucky",
     "height": "6-11",
     "age": 23.4,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.4,
@@ -3961,7 +4006,8 @@
       "draftTeam": "ORL",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "bogoljub-markovic-2025",
@@ -3997,7 +4043,8 @@
       "seasonsActive": 0
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "javon-small-2025",
@@ -4008,7 +4055,7 @@
     "school": "West Virginia",
     "height": "6-1",
     "age": 22.5,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 9.7,
@@ -4090,7 +4137,8 @@
       "draftTeam": "MEM",
       "college": "West Virginia",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "tyrese-proctor-2025",
@@ -4101,7 +4149,7 @@
     "school": "Duke",
     "height": "6-4",
     "age": 21.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 5.4,
@@ -4183,7 +4231,8 @@
       "draftTeam": "CLE",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kobe-sanders-2025",
@@ -4194,7 +4243,7 @@
     "school": "Nevada-Reno",
     "height": "6-8",
     "age": 23.1,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 7.3,
@@ -4276,7 +4325,8 @@
       "draftTeam": "NYK",
       "college": "Nevada",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "mohamed-diawara-2025",
@@ -4287,7 +4337,7 @@
     "school": "Cholet Basket (France)",
     "height": "6-9",
     "age": 20.2,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.6,
@@ -4346,7 +4396,8 @@
       "draftTeam": "LAC",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "alex-toohey-2025",
@@ -4382,7 +4433,8 @@
       "seasonsActive": 0
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "john-tonje-2025",
@@ -4393,7 +4445,7 @@
     "school": "Wisconsin",
     "height": "6-4",
     "age": 24.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.5,
@@ -4475,7 +4527,8 @@
       "draftTeam": "UTA",
       "college": "Wisconsin",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "taelon-peter-2025",
@@ -4486,7 +4539,7 @@
     "school": "Liberty",
     "height": "6-3",
     "age": 23.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.5,
@@ -4568,7 +4621,8 @@
       "draftTeam": "IND",
       "college": "Liberty",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "lachlan-olbrich-2025",
@@ -4579,7 +4633,7 @@
     "school": "Illawarra (Australia)",
     "height": "6-8",
     "age": 21.5,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.4,
@@ -4661,7 +4715,8 @@
       "draftTeam": "LAL",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "will-richard-2025",
@@ -4672,7 +4727,7 @@
     "school": "Florida",
     "height": "6-3",
     "age": 22.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 6.4,
@@ -4754,7 +4809,8 @@
       "draftTeam": "MEM",
       "college": "Florida",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "max-shulga-2025",
@@ -4765,7 +4821,7 @@
     "school": "Virginia Commonwealth",
     "height": "6-4",
     "age": 23,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 0.6,
@@ -4847,7 +4903,8 @@
       "draftTeam": "ORL",
       "college": "VCU",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "saliou-niang-2025",
@@ -4883,7 +4940,8 @@
       "seasonsActive": 0
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "jahmai-mashack-2025",
@@ -4894,7 +4952,7 @@
     "school": "Tennessee",
     "height": "6-4",
     "age": 22.6,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 6.2,
@@ -4976,6 +5034,7 @@
       "draftTeam": "HOU",
       "college": "Tennessee",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   }
 ]

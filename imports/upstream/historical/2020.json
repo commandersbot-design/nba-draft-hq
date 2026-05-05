@@ -7,7 +7,7 @@
     "school": "Georgia",
     "height": "6-5",
     "age": 18.9,
-    "archetype": "Microwave Scorer",
+    "archetype": "Vertical Phenom",
     "roleOutcome": "Primary scoring wing",
     "outcomeTier": "Star",
     "pointsPerGame": 19.1,
@@ -68,7 +68,8 @@
       "draftTeam": "MIN",
       "college": "Georgia",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Unique"
   },
   {
     "id": "lamelo-ball-2020",
@@ -116,7 +117,8 @@
       "draftTeam": "CHA",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Star"
   },
   {
     "id": "tyrese-haliburton-2020",
@@ -126,7 +128,7 @@
     "school": "Iowa State",
     "height": "6-5",
     "age": 20.3,
-    "archetype": "Two-Way Wing",
+    "archetype": "Movement Shooter",
     "roleOutcome": "Lead guard connector",
     "outcomeTier": "Hit",
     "pointsPerGame": 15.2,
@@ -187,7 +189,8 @@
       "draftTeam": "SAC",
       "college": "Iowa State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Star"
   },
   {
     "id": "patrick-williams-2020",
@@ -197,7 +200,7 @@
     "school": "Florida State",
     "height": "6-8",
     "age": 18.8,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "Defensive combo forward",
     "outcomeTier": "Swing",
     "pointsPerGame": 9.2,
@@ -258,7 +261,8 @@
       "draftTeam": "CHI",
       "college": "Florida State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "isaac-okoro-2020",
@@ -268,7 +272,7 @@
     "school": "Auburn",
     "height": "6-6",
     "age": 19.3,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "Defense-first wing",
     "outcomeTier": "Swing",
     "pointsPerGame": 12.9,
@@ -329,6 +333,7 @@
       "draftTeam": "CLE",
       "college": "Auburn",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   }
 ]

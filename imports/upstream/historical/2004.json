@@ -8,7 +8,7 @@
     "school": "Southwest Atlanta Christian Academy",
     "height": "6-10",
     "age": 18.5,
-    "archetype": "Defensive Anchor",
+    "archetype": "Rim Protector",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 15.7,
@@ -67,7 +67,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "emeka-okafor-2004",
@@ -78,7 +79,7 @@
     "school": "Connecticut",
     "height": "6-10",
     "age": 21.7,
-    "archetype": "Defensive Anchor",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 12,
@@ -160,7 +161,8 @@
       "draftTeam": "CHA",
       "college": "Connecticut",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ben-gordon-2004",
@@ -171,7 +173,7 @@
     "school": "Connecticut",
     "height": "6-3",
     "age": 21.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 14.9,
@@ -253,7 +255,8 @@
       "draftTeam": "CHI",
       "college": "Connecticut",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "shaun-livingston-2004",
@@ -264,7 +267,7 @@
     "school": "Peoria",
     "height": "6-7",
     "age": 18.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.3,
@@ -323,7 +326,8 @@
       "draftTeam": "LAC",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "devin-harris-2004",
@@ -334,7 +338,7 @@
     "school": "Wisconsin",
     "height": "6-3",
     "age": 21.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 10.8,
@@ -416,7 +420,8 @@
       "draftTeam": "WAS",
       "draftCollege": "Wisconsin",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "josh-childress-2004",
@@ -427,7 +432,7 @@
     "school": "Stanford",
     "height": "6-8",
     "age": 21,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 9.1,
@@ -509,7 +514,8 @@
       "draftTeam": "ATL",
       "college": "Stanford",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "luol-deng-2004",
@@ -520,7 +526,7 @@
     "school": "Duke",
     "height": "6-9",
     "age": 19.2,
-    "archetype": "Stretch Four",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 14.8,
@@ -602,7 +608,8 @@
       "draftTeam": "PHO",
       "draftCollege": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rafael-araujo-2004",
@@ -613,7 +620,7 @@
     "school": "Brigham Young",
     "height": "6-11",
     "age": 23.9,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.8,
@@ -695,7 +702,8 @@
       "draftTeam": "TOR",
       "college": "Brigham Young",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "andre-iguodala-2004",
@@ -706,7 +714,7 @@
     "school": "Arizona",
     "height": "6-6",
     "age": 20.4,
-    "archetype": "Switchblade Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 11.3,
@@ -788,7 +796,8 @@
       "draftTeam": "PHI",
       "draftCollege": "Arizona",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "luke-jackson-2004",
@@ -799,7 +808,7 @@
     "school": "Oregon",
     "height": "6-7",
     "age": 22.6,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.5,
@@ -881,7 +890,8 @@
       "draftTeam": "CLE",
       "college": "Oregon",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "andris-biedrins-2004",
@@ -892,7 +902,7 @@
     "school": "BK Skonto (Latvia)",
     "height": "7-0",
     "age": 18.2,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 6.3,
@@ -951,7 +961,8 @@
       "draftTeam": "GSW",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "robert-swift-2004",
@@ -962,7 +973,7 @@
     "school": "Bakersfield",
     "height": "7-1",
     "age": 18.6,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.3,
@@ -1021,7 +1032,8 @@
       "draftTeam": "OKC",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "sebastian-telfair-2004",
@@ -1032,7 +1044,7 @@
     "school": "Abraham Lincoln",
     "height": "6-0",
     "age": 19,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.4,
@@ -1091,7 +1103,8 @@
       "draftTeam": "POR",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kris-humphries-2004",
@@ -1102,7 +1115,7 @@
     "school": "Minnesota",
     "height": "6-9",
     "age": 19.4,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 6.7,
@@ -1161,7 +1174,8 @@
       "draftTeam": "UTA",
       "college": "Minnesota",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "al-jefferson-2004",
@@ -1172,7 +1186,7 @@
     "school": "Prentiss",
     "height": "6-10",
     "age": 19.5,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 15.7,
@@ -1231,7 +1245,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kirk-snyder-2004",
@@ -1242,7 +1257,7 @@
     "school": "Nevada-Reno",
     "height": "6-6",
     "age": 21.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.3,
@@ -1324,7 +1339,8 @@
       "draftTeam": "UTA",
       "college": "Nevada",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "josh-smith-2004",
@@ -1335,7 +1351,7 @@
     "school": "Oak Hill Academy",
     "height": "6-9",
     "age": 18.6,
-    "archetype": "Connector Four",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 14.5,
@@ -1394,7 +1410,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jr-smith-2004",
@@ -1405,7 +1422,7 @@
     "school": "Saint Benedict's Preparatory School",
     "height": "6-6",
     "age": 18.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 12.4,
@@ -1437,7 +1454,8 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "archetypeTier": "Role"
   },
   {
     "id": "dorell-wright-2004",
@@ -1448,7 +1466,7 @@
     "school": "South Kent School",
     "height": "6-9",
     "age": 18.6,
-    "archetype": "Traditional Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.4,
@@ -1507,7 +1525,8 @@
       "draftTeam": "MIA",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jameer-nelson-2004",
@@ -1518,7 +1537,7 @@
     "school": "Saint Joseph's",
     "height": "6-0",
     "age": 22.4,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 11.3,
@@ -1600,7 +1619,8 @@
       "draftTeam": "DEN",
       "draftCollege": "Saint Joseph's",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "pavel-podkolzin-2004",
@@ -1611,7 +1631,7 @@
     "school": "Pallacanestro Varese (Italy)",
     "height": "7-5",
     "age": 19.4,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -1663,7 +1683,8 @@
       "draftTeam": "UTA",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "viktor-khryapa-2004",
@@ -1733,7 +1754,8 @@
       "draftTeam": "NJN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "sergei-monia-2004",
@@ -1744,7 +1766,7 @@
     "school": "PBC CSKA Moscow (Russia)",
     "height": "6-8",
     "age": 21.2,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -1796,7 +1818,8 @@
       "draftTeam": "POR",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "delonte-west-2004",
@@ -1807,7 +1830,7 @@
     "school": "Saint Joseph's",
     "height": "6-3",
     "age": 20.9,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 9.7,
@@ -1889,7 +1912,8 @@
       "draftTeam": "BOS",
       "college": "Saint Joseph's",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "tony-allen-2004",
@@ -1900,7 +1924,7 @@
     "school": "Oklahoma State",
     "height": "6-4",
     "age": 22.5,
-    "archetype": "Switchblade Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 8.1,
@@ -1982,7 +2006,8 @@
       "draftTeam": "BOS",
       "college": "Oklahoma State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kevin-martin-2004",
@@ -1993,7 +2018,7 @@
     "school": "Western Carolina",
     "height": "6-7",
     "age": 21.4,
-    "archetype": "Microwave Scorer",
+    "archetype": "Bench Scoring Guard",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 17.4,
@@ -2052,7 +2077,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "sasha-vujacic-2004",
@@ -2063,7 +2089,7 @@
     "school": "Pallalcesto Amatori Udine (Italy)",
     "height": "6-7",
     "age": 20.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.3,
@@ -2122,7 +2148,8 @@
       "draftTeam": "LAL",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "beno-udrih-2004",
@@ -2133,7 +2160,7 @@
     "school": "Olimpia Milano (Italy)",
     "height": "6-3",
     "age": 22,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 8.4,
@@ -2192,7 +2219,8 @@
       "draftTeam": "SAS",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "david-harrison-2004",
@@ -2203,7 +2231,7 @@
     "school": "Colorado",
     "height": "7-0",
     "age": 21.9,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5,
@@ -2285,7 +2313,8 @@
       "draftTeam": "IND",
       "college": "Colorado",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "anderson-varejao-2004",
@@ -2296,7 +2325,7 @@
     "school": "FC Barcelona Basquet (Spain)",
     "height": "6-11",
     "age": 21.7,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 7.2,
@@ -2355,7 +2384,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jackson-vroman-2004",
@@ -2366,7 +2396,7 @@
     "school": "Iowa State",
     "height": "6-10",
     "age": 23.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.3,
@@ -2425,7 +2455,8 @@
       "draftTeam": "CHI",
       "college": "Iowa State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "peter-john-ramos-2004",
@@ -2436,7 +2467,7 @@
     "school": "Criollos de Caguas (Puerto Rico)",
     "height": "7-3",
     "age": 19.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -2488,7 +2519,8 @@
       "draftTeam": "WAS",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "lionel-chalmers-2004",
@@ -2499,7 +2531,7 @@
     "school": "Xavier",
     "height": "6-0",
     "age": 23.6,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.1,
@@ -2581,7 +2613,8 @@
       "draftTeam": "LAC",
       "college": "Xavier",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "donta-smith-2004",
@@ -2592,7 +2625,7 @@
     "school": "Southeastern Illinois",
     "height": "6-7",
     "age": 20.6,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.7,
@@ -2651,7 +2684,8 @@
       "draftTeam": "ATL",
       "college": "Southeastern Illinois College",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "andre-emmett-2004",
@@ -2662,7 +2696,7 @@
     "school": "Texas Tech",
     "height": "6-5",
     "age": 21.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -2737,7 +2771,8 @@
       "draftTeam": "OKC",
       "college": "Texas Tech",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "antonio-burks-2004",
@@ -2748,7 +2783,7 @@
     "school": "Memphis",
     "height": "6-0",
     "age": 24.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.3,
@@ -2830,7 +2865,8 @@
       "draftTeam": "ORL",
       "college": "Memphis",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "royal-ivey-2004",
@@ -2841,7 +2877,7 @@
     "school": "Brigham Young",
     "height": "6-4",
     "age": 22.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 3.3,
@@ -2923,7 +2959,8 @@
       "draftTeam": "ATL",
       "college": "Texas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "chris-duhon-2004",
@@ -2934,7 +2971,7 @@
     "school": "Duke",
     "height": "6-1",
     "age": 21.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.5,
@@ -3016,7 +3053,8 @@
       "draftTeam": "CHI",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "albert-miralles-2004",
@@ -3047,7 +3085,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "justin-reed-2004",
@@ -3058,7 +3097,7 @@
     "school": "Mississippi",
     "height": "6-8",
     "age": 22.4,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.5,
@@ -3140,7 +3179,8 @@
       "draftTeam": "BOS",
       "college": "Ole Miss",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "david-young-2004",
@@ -3171,7 +3211,8 @@
       "organizationType": "College/University"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "viktor-sanikidze-2004",
@@ -3202,7 +3243,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "trevor-ariza-2004",
@@ -3213,7 +3255,7 @@
     "school": "California-Los Angeles",
     "height": "6-8",
     "age": 19,
-    "archetype": "Switchblade Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 10.4,
@@ -3272,7 +3314,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "tim-pickett-2004",
@@ -3303,7 +3346,8 @@
       "organizationType": "College/University"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "bernard-robinson-2004",
@@ -3314,7 +3358,7 @@
     "school": "Michigan",
     "height": "6-6",
     "age": 23.5,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.5,
@@ -3373,7 +3417,8 @@
       "draftTeam": "CHA",
       "college": "Michigan",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ha-ha-2004",
@@ -3384,7 +3429,7 @@
     "school": "Yonsei (KOR)",
     "height": "7-3",
     "age": 18.9,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.5,
@@ -3416,7 +3461,8 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "archetypeTier": "Role"
   },
   {
     "id": "pape-sow-2004",
@@ -3427,7 +3473,7 @@
     "school": "Cal State-Fullerton",
     "height": "6-10",
     "age": 22.6,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.9,
@@ -3486,7 +3532,8 @@
       "draftTeam": "MIA",
       "college": "Cal State Fullerton",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ricky-minard-2004",
@@ -3517,7 +3564,8 @@
       "organizationType": "College/University"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "sergei-lishouk-2004",
@@ -3548,7 +3596,8 @@
       "organizationType": "College/University"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "vassilis-spanoulis-2004",
@@ -3559,7 +3608,7 @@
     "school": "Maroussi B.C. (Greece)",
     "height": "6-4",
     "age": 21.9,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.7,
@@ -3618,7 +3667,8 @@
       "draftTeam": "DAL",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "christian-drejer-2004",
@@ -3677,7 +3727,8 @@
       "draftTeam": "NJN",
       "draftCollege": "Florida",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "romain-sato-2004",
@@ -3731,7 +3782,8 @@
       "draftTeam": "SAS",
       "draftCollege": "Xavier",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "matt-freije-2004",
@@ -3742,7 +3794,7 @@
     "school": "Vanderbilt",
     "height": "6-9",
     "age": 22.7,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -3817,7 +3869,8 @@
       "draftTeam": "MIA",
       "college": "Vanderbilt",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rickey-paulding-2004",
@@ -3871,7 +3924,8 @@
       "draftTeam": "DET",
       "draftCollege": "Missouri",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "luis-flores-2004",
@@ -3882,7 +3936,7 @@
     "school": "Manhattan",
     "height": "6-2",
     "age": 23.2,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.2,
@@ -3964,7 +4018,8 @@
       "draftTeam": "HOU",
       "college": "Manhattan",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "marcus-douthit-2004",
@@ -4018,7 +4073,8 @@
       "draftTeam": "LAL",
       "draftCollege": "Providence",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "sergei-karaulov-2004",
@@ -4049,7 +4105,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "blake-stepp-2004",
@@ -4103,7 +4160,8 @@
       "draftTeam": "MIN",
       "draftCollege": "Gonzaga",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "rashad-wright-2004",
@@ -4162,6 +4220,7 @@
       "draftTeam": "IND",
       "draftCollege": "Georgia",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   }
 ]

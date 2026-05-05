@@ -9,6 +9,30 @@ const fs = require('fs');
 const path = require('path');
 
 const HIST_DIR = path.join(__dirname, '..', '..', 'imports', 'upstream', 'historical');
+const CATALOG_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'archetypeCatalog.json');
+
+let CATALOG = null;
+function loadCatalog() {
+  if (CATALOG) return CATALOG;
+  CATALOG = JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf8'));
+  return CATALOG;
+}
+
+// Build a name -> Unique archetype lookup so historical players hardcoded as
+// Uniques get their special name no matter what the heuristic would say.
+let UNIQUE_LOOKUP = null;
+function getUniqueLookup() {
+  if (UNIQUE_LOOKUP) return UNIQUE_LOOKUP;
+  const cat = loadCatalog();
+  UNIQUE_LOOKUP = new Map();
+  for (const arch of cat.archetypes) {
+    if (arch.tier !== 'Unique') continue;
+    for (const name of arch.exemplars || []) {
+      UNIQUE_LOOKUP.set(name.toLowerCase().trim(), arch);
+    }
+  }
+  return UNIQUE_LOOKUP;
+}
 
 function parseArgs(argv) {
   const args = { force: false, from: 2000, to: 2025 };
@@ -142,41 +166,70 @@ function classifyOutcome(prospect) {
 }
 
 // ---------- ARCHETYPE ----------
+// Pick a Set C / Star archetype from the catalog by stat-profile heuristic.
+// Uniques are excluded here — they're assigned by hardcoded name lookup before
+// this function runs.
 function classifyArchetype(prospect, positionFamily) {
+  const cat = loadCatalog();
   const ppg = prospect.pointsPerGame ?? Number(prospect.nbaStats?.careerPpg) ?? 0;
   const rpg = prospect.reboundsPerGame ?? Number(prospect.nbaStats?.careerRpg) ?? 0;
   const apg = prospect.assistsPerGame ?? Number(prospect.nbaStats?.careerApg) ?? 0;
   const spg = Number(prospect.nbaStats?.careerSpg) || 0;
   const bpg = Number(prospect.nbaStats?.careerBpg) || 0;
+  const tsPct = prospect.srNbaStats?.tsPct ?? null;
+  const threePct = prospect.srNbaStats?.threePct ?? null;
+  const ws = Number(prospect.srNbaStats?.winShares) || 0;
+
+  // Helper to fetch an archetype name by key (asserts presence)
+  const named = (key) => {
+    const a = cat.archetypes.find((x) => x.key === key);
+    return a ? a.name : 'Unclassified';
+  };
 
   if (positionFamily === 'Guard') {
-    if (apg >= 6) return 'Lead Initiator';
-    if (apg >= 4 && ppg >= 15) return 'Combo Guard';
-    if (ppg >= 17) return 'Microwave Scorer';
-    if (spg >= 1.4) return 'Tenacious Defender';
-    return 'Floor General';
+    // Star-tier playmakers
+    if (apg >= 6 && ppg >= 16) return named('lead-initiator');
+    if (apg >= 6) return named('iq-lead');
+    // Star-tier scorers
+    if (ppg >= 22 && ws >= 50) return named('high-usage-lead');
+    if (ppg >= 18 && apg >= 4) return named('volume-lead-guard');
+    if (ppg >= 17 && apg < 4) return named('bench-scoring-guard');
+    // Defenders + specialists
+    if (spg >= 1.5 && ppg < 14) return named('poa-defender');
+    if (threePct != null && threePct >= 38 && ppg < 12) return named('spot-up-specialist');
+    return named('iq-lead');
   }
+
   if (positionFamily === 'Wing') {
-    if (ppg >= 18 && apg >= 3) return 'Primary Creator';
-    if (ppg >= 16) return 'Volume Wing Scorer';
-    if (rpg >= 5 && apg >= 2) return 'Two-Way Wing';
-    if (spg >= 1.2) return 'Switchblade Wing';
-    return 'Athletic Wing';
+    if (ppg >= 22 && ws >= 60) return named('off-ball-wing-scorer'); // high-usage scoring wing
+    if (ppg >= 17 && apg >= 3 && spg >= 1.0) return named('two-way-wing');
+    if (ppg >= 17 && apg >= 3) return named('off-ball-wing-scorer');
+    if (threePct != null && threePct >= 38 && spg >= 1.0) return named('three-and-d');
+    if (ppg >= 13 && (threePct != null && threePct >= 36)) return named('movement-shooter');
+    if (apg >= 3 && rpg >= 4) return named('connector');
+    if (ppg >= 14) return named('off-ball-wing');
+    return named('connector');
   }
+
   if (positionFamily === 'Forward') {
-    if (ppg >= 18 && rpg >= 7) return 'Volume Forward Scorer';
-    if (rpg >= 7 && apg >= 2) return 'Connector Four';
-    if (rpg >= 6 && bpg >= 0.7) return 'Two-Way Forward';
-    if (ppg >= 12) return 'Stretch Four';
-    return 'Combo Forward';
+    if (ppg >= 18 && (apg >= 3 || spg >= 1.0)) return named('versatile-forward');
+    if (ppg >= 16 && rpg >= 6 && (threePct != null && threePct >= 32)) return named('combo-forward');
+    if (rpg >= 8 && apg >= 2) return named('connector-four');
+    if (threePct != null && threePct >= 35) return named('stretch-four');
+    if (ppg >= 14) return named('combo-forward');
+    return named('connector-four');
   }
+
   if (positionFamily === 'Big') {
-    if (bpg >= 1.5 && rpg >= 8) return 'Defensive Anchor';
-    if (ppg >= 16 && rpg >= 8) return 'Volume Big';
-    if (rpg >= 9) return 'Rebounding Big';
-    if (apg >= 2.5) return 'Playmaking Big';
-    return 'Traditional Big';
+    if (apg >= 4 && ppg >= 15) return named('skilled-center');
+    if (bpg >= 1.8 && rpg >= 8) return named('rim-protector');
+    if (threePct != null && threePct >= 35) return named('floor-spacing-big');
+    if (apg >= 2 && ppg >= 12 && (threePct == null || threePct < 32)) return named('pick-and-pop-big');
+    if (rpg >= 9 && bpg >= 1.0) return named('rim-running-big');
+    if (rpg >= 7 && spg >= 0.8) return named('switching-big');
+    return named('rim-running-big');
   }
+
   return 'Unclassified';
 }
 
@@ -198,15 +251,31 @@ function classifyProspect(prospect, force) {
   let outcomeTier = prospect.outcomeTier;
   if (force || !outcomeTier) outcomeTier = classifyOutcome(prospect);
 
+  // Hardcoded Unique override: certain players always get their special archetype.
+  const uniqueLookup = getUniqueLookup();
+  const uniqueHit = uniqueLookup.get(String(prospect.name || '').toLowerCase().trim());
+
   let archetype = prospect.archetype;
-  if (force || !archetype) archetype = classifyArchetype(prospect, positionFamily);
+  let archetypeTier = prospect.archetypeTier || null;
+  if (uniqueHit) {
+    archetype = uniqueHit.name;
+    archetypeTier = 'Unique';
+    // Force outcome to Star for Uniques — these are all generational players.
+    if (outcomeTier !== 'Star') outcomeTier = 'Star';
+  } else if (force || !archetype) {
+    archetype = classifyArchetype(prospect, positionFamily);
+    // Look up the tier for the chosen archetype
+    const cat = loadCatalog();
+    const matched = cat.archetypes.find((a) => a.name === archetype);
+    archetypeTier = matched ? matched.tier : null;
+  }
 
   let archetypeFamily = prospect.archetypeFamily;
   if (force || !archetypeFamily) {
     archetypeFamily = positionFamily || 'Unknown';
   }
 
-  return { ...prospect, position, positionFamily, archetype, archetypeFamily, outcomeTier };
+  return { ...prospect, position, positionFamily, archetype, archetypeFamily, archetypeTier, outcomeTier };
 }
 
 // ---------- DRIVER ----------

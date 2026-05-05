@@ -8,7 +8,7 @@
     "school": "Memphis",
     "height": "6-3",
     "age": 19.7,
-    "archetype": "Combo Guard",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 17.4,
@@ -90,7 +90,8 @@
       "draftTeam": "CHI",
       "college": "Memphis",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "michael-beasley-2008",
@@ -101,7 +102,7 @@
     "school": "Kansas State",
     "height": "6-9",
     "age": 19.5,
-    "archetype": "Stretch Four",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 12.4,
@@ -183,7 +184,8 @@
       "draftTeam": "MIA",
       "college": "Kansas State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "o-j-mayo-2008",
@@ -194,7 +196,7 @@
     "school": "Southern California",
     "height": "6-5",
     "age": 20.6,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 13.8,
@@ -276,7 +278,8 @@
       "draftTeam": "MIN",
       "college": "Southern California",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "russell-westbrook-2008",
@@ -369,7 +372,8 @@
       "draftTeam": "OKC",
       "draftCollege": "UCLA",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Star"
   },
   {
     "id": "kevin-love-2008",
@@ -380,7 +384,7 @@
     "school": "California-Los Angeles",
     "height": "6-10",
     "age": 19.8,
-    "archetype": "Rebounding Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 15.8,
@@ -462,7 +466,8 @@
       "draftTeam": "MEM",
       "draftCollege": "UCLA",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "danilo-gallinari-2008",
@@ -532,7 +537,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "eric-gordon-2008",
@@ -543,7 +549,7 @@
     "school": "Indiana",
     "height": "6-3",
     "age": 19.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 15.2,
@@ -625,7 +631,8 @@
       "draftTeam": "LAC",
       "college": "Indiana",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "joe-alexander-2008",
@@ -636,7 +643,7 @@
     "school": "West Virginia",
     "height": "6-8",
     "age": 21.5,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.2,
@@ -718,7 +725,8 @@
       "draftTeam": "MIL",
       "college": "West Virginia",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "d-j-augustin-2008",
@@ -729,7 +737,7 @@
     "school": "Texas",
     "height": "5-11",
     "age": 20.6,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 9.5,
@@ -811,7 +819,8 @@
       "draftTeam": "CHA",
       "draftCollege": "Texas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "brook-lopez-2008",
@@ -822,7 +831,7 @@
     "school": "Stanford",
     "height": "7-1",
     "age": 20.2,
-    "archetype": "Traditional Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 15.4,
@@ -904,7 +913,8 @@
       "draftTeam": "NJN",
       "draftCollege": "Stanford",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jerryd-bayless-2008",
@@ -915,7 +925,7 @@
     "school": "Arizona",
     "height": "6-3",
     "age": 19.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.4,
@@ -997,7 +1007,8 @@
       "draftTeam": "IND",
       "college": "Arizona",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jason-thompson-2008",
@@ -1008,7 +1019,7 @@
     "school": "Rider",
     "height": "6-11",
     "age": 21.9,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.9,
@@ -1090,7 +1101,8 @@
       "draftTeam": "SAC",
       "college": "Rider",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "brandon-rush-2008",
@@ -1101,7 +1113,7 @@
     "school": "Kansas",
     "height": "6-6",
     "age": 23,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.8,
@@ -1183,7 +1195,8 @@
       "draftTeam": "POR",
       "college": "Kansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "anthony-randolph-2008",
@@ -1276,7 +1289,8 @@
       "draftTeam": "GSW",
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "robin-lopez-2008",
@@ -1287,7 +1301,7 @@
     "school": "Stanford",
     "height": "7-1",
     "age": 20.2,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 8.4,
@@ -1369,7 +1383,8 @@
       "draftTeam": "PHO",
       "draftCollege": "Stanford",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "marreese-speights-2008",
@@ -1380,7 +1395,7 @@
     "school": "Florida",
     "height": "6-10",
     "age": 20.9,
-    "archetype": "Traditional Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.9,
@@ -1462,7 +1477,8 @@
       "draftTeam": "PHI",
       "college": "Florida",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "roy-hibbert-2008",
@@ -1473,7 +1489,7 @@
     "school": "Georgetown",
     "height": "7-2",
     "age": 21.5,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 10,
@@ -1555,7 +1571,8 @@
       "draftTeam": "TOR",
       "college": "Georgetown",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "javale-mcgee-2008",
@@ -1566,7 +1583,7 @@
     "school": "Nevada-Reno",
     "height": "7-0",
     "age": 20.4,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 7.6,
@@ -1648,7 +1665,8 @@
       "draftTeam": "WAS",
       "college": "Nevada",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jj-hickson-2008",
@@ -1659,7 +1677,7 @@
     "school": "North Carolina State",
     "height": "6-9",
     "age": 19.8,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 9.5,
@@ -1691,7 +1709,8 @@
       "careerBpg": 0.6
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "archetypeTier": "Role"
   },
   {
     "id": "alexis-ajinca-2008",
@@ -1702,7 +1721,7 @@
     "school": "Hyeres-Toulon Var Basket (France)",
     "height": "7-2",
     "age": 20.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.3,
@@ -1761,7 +1780,8 @@
       "draftTeam": "CHA",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ryan-anderson-2008",
@@ -1854,7 +1874,8 @@
       "draftTeam": "NJN",
       "draftCollege": "California",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "courtney-lee-2008",
@@ -1865,7 +1886,7 @@
     "school": "Western Kentucky",
     "height": "6-5",
     "age": 22.7,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 9.6,
@@ -1947,7 +1968,8 @@
       "draftTeam": "ORL",
       "college": "Western Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "kosta-koufos-2008",
@@ -1958,7 +1980,7 @@
     "school": "Ohio State",
     "height": "7-0",
     "age": 19.3,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.7,
@@ -2040,7 +2062,8 @@
       "draftTeam": "UTA",
       "college": "Ohio State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "serge-ibaka-2008",
@@ -2051,7 +2074,7 @@
     "school": "CB L'Hospitalet (Spain)",
     "height": "6-11",
     "age": 18.8,
-    "archetype": "Two-Way Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 12,
@@ -2110,7 +2133,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "nicolas-batum-2008",
@@ -2121,7 +2145,7 @@
     "school": "Le Mans Sarthe Basket (France)",
     "height": "6-7",
     "age": 19.5,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 9.6,
@@ -2180,7 +2204,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "george-hill-2008",
@@ -2191,7 +2216,7 @@
     "school": "IUPUI",
     "height": "6-4",
     "age": 22.1,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 10.4,
@@ -2273,7 +2298,8 @@
       "draftTeam": "SAS",
       "draftCollege": "IUPUI",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "darrell-arthur-2008",
@@ -2284,7 +2310,7 @@
     "school": "Kansas",
     "height": "6-9",
     "age": 20.3,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.5,
@@ -2366,7 +2392,8 @@
       "draftTeam": "NOH",
       "college": "Kansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "donte-greene-2008",
@@ -2377,7 +2404,7 @@
     "school": "Syracuse",
     "height": "6-11",
     "age": 20.3,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.1,
@@ -2459,7 +2486,8 @@
       "draftTeam": "MEM",
       "college": "Syracuse",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "dj-white-2008",
@@ -2470,7 +2498,7 @@
     "school": "Indiana",
     "height": "6-9",
     "age": 21.8,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.9,
@@ -2502,7 +2530,8 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Forward",
-    "archetypeFamily": "Forward"
+    "archetypeFamily": "Forward",
+    "archetypeTier": "Role"
   },
   {
     "id": "j-r-giddens-2008",
@@ -2513,7 +2542,7 @@
     "school": "New Mexico",
     "height": "6-5",
     "age": 23.4,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.9,
@@ -2595,7 +2624,8 @@
       "draftTeam": "BOS",
       "college": "New Mexico",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "nikola-pekovic-2008",
@@ -2606,7 +2636,7 @@
     "school": "KK Partizan (Serbia)",
     "height": "6-11",
     "age": 22.5,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 12.6,
@@ -2665,7 +2695,8 @@
       "draftTeam": "MIN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "walter-sharpe-2008",
@@ -2676,7 +2707,7 @@
     "school": "Alabama-Birmingham",
     "height": "6-9",
     "age": 21.9,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1,
@@ -2758,7 +2789,8 @@
       "draftTeam": "OKC",
       "college": "UAB",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "joey-dorsey-2008",
@@ -2851,7 +2883,8 @@
       "draftTeam": "POR",
       "college": "Memphis",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "mario-chalmers-2008",
@@ -2862,7 +2895,7 @@
     "school": "Kansas",
     "height": "6-2",
     "age": 22.1,
-    "archetype": "Tenacious Defender",
+    "archetype": "POA Defender",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 8.9,
@@ -2944,7 +2977,8 @@
       "draftTeam": "MIN",
       "college": "Kansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "deandre-jordan-2008",
@@ -2955,7 +2989,7 @@
     "school": "Texas A&M",
     "height": "6-11",
     "age": 19.9,
-    "archetype": "Rebounding Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 8.5,
@@ -3037,7 +3071,8 @@
       "draftTeam": "LAC",
       "draftCollege": "Texas A&M",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "omer-asik-2008",
@@ -3048,7 +3083,7 @@
     "school": "Fenerbahce S.K. (Turkey)",
     "height": "7-0",
     "age": 22,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.3,
@@ -3080,7 +3115,8 @@
       "careerBpg": 0.7
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "archetypeTier": "Role"
   },
   {
     "id": "luc-mbah-a-moute-2008",
@@ -3091,7 +3127,7 @@
     "school": "California-Los Angeles",
     "height": "6-8",
     "age": 21.8,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.4,
@@ -3150,7 +3186,8 @@
       "draftTeam": "MIL",
       "college": "UCLA",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kyle-weaver-2008",
@@ -3161,7 +3198,7 @@
     "school": "Washington State",
     "height": "6-6",
     "age": 22.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 5,
@@ -3243,7 +3280,8 @@
       "draftTeam": "CHA",
       "college": "Washington State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "sonny-weems-2008",
@@ -3254,7 +3292,7 @@
     "school": "Arkansas",
     "height": "6-6",
     "age": 22,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 6.5,
@@ -3336,7 +3374,8 @@
       "draftTeam": "CHI",
       "college": "Arkansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "chris-douglas-roberts-2008",
@@ -3347,7 +3386,7 @@
     "school": "Memphis",
     "height": "6-7",
     "age": 21.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.1,
@@ -3429,7 +3468,8 @@
       "draftTeam": "NJN",
       "college": "Memphis",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "nathan-jawai-2008",
@@ -3440,7 +3480,7 @@
     "school": "Cairns Taipans (Australia)",
     "height": "6-10",
     "age": 21.7,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.8,
@@ -3499,7 +3539,8 @@
       "draftTeam": "IND",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "sean-singletary-2008",
@@ -3510,7 +3551,7 @@
     "school": "Virginia",
     "height": "6-0",
     "age": 22.8,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.4,
@@ -3592,7 +3633,8 @@
       "draftTeam": "SAC",
       "college": "Virginia",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "patrick-ewing-2008",
@@ -3603,7 +3645,7 @@
     "school": "Georgetown",
     "height": "6-8",
     "age": 24.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 0.4,
@@ -3662,7 +3704,8 @@
       "draftTeam": "SAC",
       "college": "Georgetown",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ante-tomic-2008",
@@ -3698,7 +3741,8 @@
       "seasonsActive": 1
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "goran-dragic-2008",
@@ -3709,7 +3753,7 @@
     "school": "KK Olimpija (Slovenia)",
     "height": "6-4",
     "age": 22.1,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 13.3,
@@ -3768,7 +3812,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "trent-plaisted-2008",
@@ -3822,7 +3867,8 @@
       "draftTeam": "OKC",
       "draftCollege": "Brigham Young",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "henry-walker-2008",
@@ -3833,7 +3879,7 @@
     "school": "Kansas State",
     "height": "6-6",
     "age": 20.7,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6,
@@ -3915,7 +3961,8 @@
       "draftTeam": "WAS",
       "college": "Kansas State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "malik-hairston-2008",
@@ -3926,7 +3973,7 @@
     "school": "Oregon",
     "height": "6-6",
     "age": 21.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.4,
@@ -4008,7 +4055,8 @@
       "draftTeam": "PHO",
       "college": "Oregon",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "richard-hendrix-2008",
@@ -4062,7 +4110,8 @@
       "draftTeam": "GSW",
       "draftCollege": "Alabama",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "devon-hardin-2008",
@@ -4116,7 +4165,8 @@
       "draftTeam": "OKC",
       "draftCollege": "California",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "shan-foster-2008",
@@ -4170,7 +4220,8 @@
       "draftTeam": "DAL",
       "draftCollege": "Vanderbilt",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "darnell-jackson-2008",
@@ -4181,7 +4232,7 @@
     "school": "Kansas",
     "height": "6-9",
     "age": 22.6,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.2,
@@ -4263,7 +4314,8 @@
       "draftTeam": "MIA",
       "college": "Kansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "tadija-dragicevic-2008",
@@ -4294,7 +4346,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "maarty-leunen-2008",
@@ -4348,7 +4401,8 @@
       "draftTeam": "HOU",
       "draftCollege": "Oregon",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "mike-taylor-2008",
@@ -4359,7 +4413,7 @@
     "school": "Idaho Stampede (D-League)",
     "height": "6-2",
     "age": 22.4,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 5.7,
@@ -4441,7 +4495,8 @@
       "draftTeam": "POR",
       "college": "Iowa State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "sasha-kaun-2008",
@@ -4452,7 +4507,7 @@
     "school": "Kansas",
     "height": "6-11",
     "age": 23.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 0.9,
@@ -4534,7 +4589,8 @@
       "draftTeam": "OKC",
       "college": "Kansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "james-gist-2008",
@@ -4588,7 +4644,8 @@
       "draftTeam": "SAS",
       "draftCollege": "Maryland",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "joe-crawford-2008",
@@ -4599,7 +4656,7 @@
     "school": "Kentucky",
     "height": "6-5",
     "age": 22,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.5,
@@ -4681,7 +4738,8 @@
       "draftTeam": "LAL",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "deron-washington-2008",
@@ -4735,7 +4793,8 @@
       "draftTeam": "DET",
       "draftCollege": "Virginia Tech",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "semih-erden-2008",
@@ -4746,7 +4805,7 @@
     "school": "Fenerbahce S.K. (Turkey)",
     "height": "7-0",
     "age": 21.9,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.8,
@@ -4805,6 +4864,7 @@
       "draftTeam": "BOS",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   }
 ]

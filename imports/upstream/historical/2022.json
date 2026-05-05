@@ -7,7 +7,7 @@
     "school": "Duke",
     "height": "6-10",
     "age": 19.5,
-    "archetype": "Connector Four",
+    "archetype": "Combo Forward",
     "roleOutcome": "Primary forward scorer",
     "outcomeTier": "Hit",
     "pointsPerGame": 17.2,
@@ -68,7 +68,8 @@
       "draftTeam": "ORL",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "chet-holmgren-2022",
@@ -78,7 +79,7 @@
     "school": "Gonzaga",
     "height": "7-0",
     "age": 20.1,
-    "archetype": "Rebounding Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "Defensive cheat code",
     "outcomeTier": "Hit",
     "pointsPerGame": 14.1,
@@ -139,7 +140,8 @@
       "draftTeam": "OKC",
       "college": "Gonzaga",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jabari-smith-jr-2022",
@@ -149,7 +151,7 @@
     "school": "Auburn",
     "height": "6-10",
     "age": 19,
-    "archetype": "Connector Four",
+    "archetype": "Combo Forward",
     "roleOutcome": "Stretch forward defender",
     "outcomeTier": "Bust",
     "pointsPerGame": 16.9,
@@ -210,7 +212,8 @@
       "draftTeam": "SAC",
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jaden-ivey-2022",
@@ -220,7 +223,7 @@
     "school": "Purdue",
     "height": "6-4",
     "age": 20.2,
-    "archetype": "Volume Wing Scorer",
+    "archetype": "Off-Ball Wing Scorer",
     "roleOutcome": "Downhill combo guard",
     "outcomeTier": "Swing",
     "pointsPerGame": 17.3,
@@ -281,7 +284,8 @@
       "draftTeam": "DET",
       "college": "Purdue",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "keegan-murray-2022",
@@ -291,7 +295,7 @@
     "school": "Iowa",
     "height": "6-8",
     "age": 21.7,
-    "archetype": "Volume Forward Scorer",
+    "archetype": "Combo Forward",
     "roleOutcome": "Scalable scoring forward",
     "outcomeTier": "Swing",
     "pointsPerGame": 23.5,
@@ -352,7 +356,8 @@
       "draftTeam": "SAC",
       "college": "Iowa",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "bennedict-mathurin-2022",
@@ -362,7 +367,7 @@
     "school": "Arizona",
     "height": "6-6",
     "age": 20.1,
-    "archetype": "Volume Wing Scorer",
+    "archetype": "Off-Ball Wing",
     "roleOutcome": "Scoring wing finisher",
     "outcomeTier": "Swing",
     "pointsPerGame": 17.7,
@@ -423,7 +428,8 @@
       "draftTeam": "IND",
       "college": "Arizona",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "shaedon-sharpe-2022",
@@ -433,7 +439,7 @@
     "school": "Kentucky",
     "height": "6-6",
     "age": 19.1,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "Explosive scoring bet",
     "outcomeTier": "Swing",
     "pointsPerGame": 0,
@@ -471,7 +477,8 @@
       "draftTeam": "POR",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jalen-williams-2022",
@@ -481,7 +488,7 @@
     "school": "Santa Clara",
     "height": "6-6",
     "age": 21.2,
-    "archetype": "Primary Creator",
+    "archetype": "Off-Ball Wing Scorer",
     "roleOutcome": "Two-way connector star",
     "outcomeTier": "Hit",
     "pointsPerGame": 18,
@@ -542,7 +549,8 @@
       "draftTeam": "OKC",
       "college": "Santa Clara",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "walker-kessler-2022",
@@ -552,7 +560,7 @@
     "school": "Auburn",
     "height": "7-1",
     "age": 20.8,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "Specialist anchor",
     "outcomeTier": "Swing",
     "pointsPerGame": 11.4,
@@ -613,6 +621,7 @@
       "draftTeam": "MEM",
       "college": "Auburn",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   }
 ]

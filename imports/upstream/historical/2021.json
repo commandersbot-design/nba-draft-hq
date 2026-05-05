@@ -7,7 +7,7 @@
     "school": "G League Ignite",
     "height": "6-5",
     "age": 19.4,
-    "archetype": "Microwave Scorer",
+    "archetype": "Bench Scoring Guard",
     "roleOutcome": "Volume scoring guard",
     "outcomeTier": "Swing",
     "pointsPerGame": 17.9,
@@ -45,7 +45,8 @@
       "draftTeam": "HOU",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "cade-cunningham-2021",
@@ -55,7 +56,7 @@
     "school": "Oklahoma State",
     "height": "6-6",
     "age": 19.6,
-    "archetype": "Primary Creator",
+    "archetype": "Off-Ball Wing Scorer",
     "roleOutcome": "Primary creator",
     "outcomeTier": "Hit",
     "pointsPerGame": 20.1,
@@ -116,7 +117,8 @@
       "draftTeam": "DET",
       "college": "Oklahoma State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "evan-mobley-2021",
@@ -126,7 +128,7 @@
     "school": "USC",
     "height": "7-0",
     "age": 20,
-    "archetype": "Volume Big",
+    "archetype": "Pick-and-Pop Big",
     "roleOutcome": "Two-way anchor",
     "outcomeTier": "Hit",
     "pointsPerGame": 16.4,
@@ -187,7 +189,8 @@
       "draftTeam": "CLE",
       "college": "Southern California",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "scottie-barnes-2021",
@@ -197,7 +200,7 @@
     "school": "Florida State",
     "height": "6-8",
     "age": 19.8,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "Two-way connective forward",
     "outcomeTier": "Hit",
     "pointsPerGame": 10.3,
@@ -258,7 +261,8 @@
       "draftTeam": "TOR",
       "college": "Florida State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jalen-suggs-2021",
@@ -268,7 +272,7 @@
     "school": "Gonzaga",
     "height": "6-4",
     "age": 20.1,
-    "archetype": "Two-Way Wing",
+    "archetype": "Connector",
     "roleOutcome": "Two-way combo guard",
     "outcomeTier": "Swing",
     "pointsPerGame": 14.4,
@@ -329,7 +333,8 @@
       "draftTeam": "ORL",
       "college": "Gonzaga",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "franz-wagner-2021",
@@ -339,7 +344,7 @@
     "school": "Michigan",
     "height": "6-9",
     "age": 19.8,
-    "archetype": "Two-Way Wing",
+    "archetype": "Connector",
     "roleOutcome": "Large two-way scoring wing",
     "outcomeTier": "Swing",
     "pointsPerGame": 12.5,
@@ -400,7 +405,8 @@
       "draftTeam": "ORL",
       "college": "Michigan",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "josh-giddey-2021",
@@ -448,6 +454,7 @@
       "draftTeam": "OKC",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   }
 ]

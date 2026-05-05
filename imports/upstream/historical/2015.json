@@ -8,7 +8,7 @@
     "school": "Kentucky",
     "height": "7-0",
     "age": 19.6,
-    "archetype": "Volume Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 22.8,
@@ -90,7 +90,8 @@
       "draftTeam": "MIN",
       "draftCollege": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "d-angelo-russell-2015",
@@ -101,7 +102,7 @@
     "school": "Ohio State",
     "height": "6-3",
     "age": 19.3,
-    "archetype": "Combo Guard",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 17,
@@ -183,7 +184,8 @@
       "draftTeam": "LAL",
       "college": "Ohio State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jahlil-okafor-2015",
@@ -194,7 +196,7 @@
     "school": "Duke",
     "height": "6-10",
     "age": 19.5,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 10.3,
@@ -276,7 +278,8 @@
       "draftTeam": "PHI",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kristaps-porzingis-2015",
@@ -287,7 +290,7 @@
     "school": "CB Sevilla (Spain)",
     "height": "7-2",
     "age": 19.9,
-    "archetype": "Traditional Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 19.5,
@@ -346,7 +349,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "mario-hezonja-2015",
@@ -357,7 +361,7 @@
     "school": "FC Barcelona Basquet (Spain)",
     "height": "6-8",
     "age": 20.3,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.9,
@@ -416,7 +420,8 @@
       "draftTeam": "ORL",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "willie-cauley-stein-2015",
@@ -427,7 +432,7 @@
     "school": "Kentucky",
     "height": "7-0",
     "age": 21.8,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.7,
@@ -509,7 +514,8 @@
       "draftTeam": "SAC",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "emmanuel-mudiay-2015",
@@ -520,7 +526,7 @@
     "school": "Guangdong Southern Tigers (China)",
     "height": "6-3",
     "age": 19.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 10.9,
@@ -579,7 +585,8 @@
       "draftTeam": "DEN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "stanley-johnson-2015",
@@ -590,7 +597,7 @@
     "school": "Arizona",
     "height": "6-6",
     "age": 19.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.2,
@@ -672,7 +679,8 @@
       "draftTeam": "DET",
       "college": "Arizona",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "frank-kaminsky-2015",
@@ -683,7 +691,7 @@
     "school": "Wisconsin",
     "height": "7-0",
     "age": 22.2,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.8,
@@ -765,7 +773,8 @@
       "draftTeam": "CHA",
       "college": "Wisconsin",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "justise-winslow-2015",
@@ -776,7 +785,7 @@
     "school": "Duke",
     "height": "6-6",
     "age": 19.2,
-    "archetype": "Two-Way Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.2,
@@ -858,7 +867,8 @@
       "draftTeam": "MIA",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "myles-turner-2015",
@@ -869,7 +879,7 @@
     "school": "Texas",
     "height": "6-11",
     "age": 19.3,
-    "archetype": "Traditional Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 13.9,
@@ -951,7 +961,8 @@
       "draftTeam": "IND",
       "draftCollege": "Texas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "trey-lyles-2015",
@@ -962,7 +973,7 @@
     "school": "Kentucky",
     "height": "6-9",
     "age": 19.6,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.6,
@@ -1044,7 +1055,8 @@
       "draftTeam": "UTA",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "devin-booker-2015",
@@ -1055,7 +1067,7 @@
     "school": "Kentucky",
     "height": "6-5",
     "age": 18.6,
-    "archetype": "Combo Guard",
+    "archetype": "High-Usage Lead",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 24.6,
@@ -1137,7 +1149,8 @@
       "draftTeam": "PHO",
       "draftCollege": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Star"
   },
   {
     "id": "cameron-payne-2015",
@@ -1148,7 +1161,7 @@
     "school": "Murray State",
     "height": "6-2",
     "age": 20.9,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.7,
@@ -1230,7 +1243,8 @@
       "draftTeam": "OKC",
       "college": "Murray State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kelly-oubre-jr-2015",
@@ -1241,7 +1255,7 @@
     "school": "Kansas",
     "height": "6-8",
     "age": 19.5,
-    "archetype": "Stretch Four",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 13.3,
@@ -1323,7 +1337,8 @@
       "draftTeam": "ATL",
       "college": "Kansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "terry-rozier-2015",
@@ -1334,7 +1349,7 @@
     "school": "Louisville",
     "height": "6-1",
     "age": 21.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 13.9,
@@ -1416,7 +1431,8 @@
       "draftTeam": "BOS",
       "college": "Louisville",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rashad-vaughn-2015",
@@ -1427,7 +1443,7 @@
     "school": "Nevada-Las Vegas",
     "height": "6-6",
     "age": 18.9,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3,
@@ -1509,7 +1525,8 @@
       "draftTeam": "MIL",
       "college": "UNLV",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "sam-dekker-2015",
@@ -1520,7 +1537,7 @@
     "school": "Wisconsin",
     "height": "6-8",
     "age": 21.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
@@ -1602,7 +1619,8 @@
       "draftTeam": "HOU",
       "college": "Wisconsin",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jerian-grant-2015",
@@ -1613,7 +1631,7 @@
     "school": "Notre Dame",
     "height": "6-4",
     "age": 22.7,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.1,
@@ -1695,7 +1713,8 @@
       "draftTeam": "WAS",
       "college": "Notre Dame",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "delon-wright-2015",
@@ -1706,7 +1725,7 @@
     "school": "Utah",
     "height": "6-5",
     "age": 23.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.7,
@@ -1788,7 +1807,8 @@
       "draftTeam": "TOR",
       "college": "Utah",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "justin-anderson-2015",
@@ -1799,7 +1819,7 @@
     "school": "Virginia",
     "height": "6-5",
     "age": 21.6,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.3,
@@ -1881,7 +1901,8 @@
       "draftTeam": "DAL",
       "college": "Virginia",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "bobby-portis-2015",
@@ -1974,7 +1995,8 @@
       "draftTeam": "CHI",
       "college": "Arkansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rondae-hollis-jefferson-2015",
@@ -1985,7 +2007,7 @@
     "school": "Arizona",
     "height": "6-6",
     "age": 20.5,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 9,
@@ -2067,7 +2089,8 @@
       "draftTeam": "POR",
       "college": "Arizona",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "tyus-jones-2015",
@@ -2078,7 +2101,7 @@
     "school": "Duke",
     "height": "6-0",
     "age": 19.1,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 7.3,
@@ -2160,7 +2183,8 @@
       "draftTeam": "CLE",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jarell-martin-2015",
@@ -2171,7 +2195,7 @@
     "school": "Louisiana State",
     "height": "6-10",
     "age": 21.1,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
@@ -2253,7 +2277,8 @@
       "draftTeam": "MEM",
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "nikola-milutinov-2015",
@@ -2284,7 +2309,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "larry-nance-jr-2015",
@@ -2295,7 +2321,7 @@
     "school": "Wyoming",
     "height": "6-6",
     "age": 22.5,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 7.5,
@@ -2377,7 +2403,8 @@
       "draftTeam": "LAL",
       "college": "Wyoming",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rj-hunter-2015",
@@ -2388,7 +2415,7 @@
     "school": "Georgia State",
     "height": "6-5",
     "age": 21.7,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3,
@@ -2420,7 +2447,8 @@
       "careerBpg": 0.1
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "archetypeTier": "Role"
   },
   {
     "id": "chris-mccullough-2015",
@@ -2431,7 +2459,7 @@
     "school": "Syracuse",
     "height": "6-9",
     "age": 20.4,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.3,
@@ -2513,7 +2541,8 @@
       "draftTeam": "NJN",
       "college": "Syracuse",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kevon-looney-2015",
@@ -2524,7 +2553,7 @@
     "school": "California-Los Angeles",
     "height": "6-9",
     "age": 19.4,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 4.9,
@@ -2606,7 +2635,8 @@
       "draftTeam": "GSW",
       "college": "UCLA",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "cedi-osman-2015",
@@ -2617,7 +2647,7 @@
     "school": "Anadolu Efes S.K. (Turkey)",
     "height": "6-7",
     "age": 20.2,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 9.3,
@@ -2676,7 +2706,8 @@
       "draftTeam": "MIN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "montrezl-harrell-2015",
@@ -2687,7 +2718,7 @@
     "school": "Louisville",
     "height": "6-7",
     "age": 21.4,
-    "archetype": "Stretch Four",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 12.1,
@@ -2769,7 +2800,8 @@
       "draftTeam": "HOU",
       "college": "Louisville",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jordan-mickey-2015",
@@ -2780,7 +2812,7 @@
     "school": "Louisiana State",
     "height": "6-8",
     "age": 21,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.4,
@@ -2862,7 +2894,8 @@
       "draftTeam": "BOS",
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "anthony-brown-2015",
@@ -2873,7 +2906,7 @@
     "school": "Stanford",
     "height": "6-7",
     "age": 22.7,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.9,
@@ -2955,7 +2988,8 @@
       "draftTeam": "LAL",
       "college": "Stanford",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "willy-hernangomez-2015",
@@ -2966,7 +3000,7 @@
     "school": "CB Sevilla (Spain)",
     "height": "6-11",
     "age": 21.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.3,
@@ -3025,7 +3059,8 @@
       "draftTeam": "PHI",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "rakeem-christmas-2015",
@@ -3036,7 +3071,7 @@
     "school": "Syracuse",
     "height": "6-9",
     "age": 23.6,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.1,
@@ -3118,7 +3153,8 @@
       "draftTeam": "MIN",
       "college": "Syracuse",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "richaun-holmes-2015",
@@ -3129,7 +3165,7 @@
     "school": "Bowling Green",
     "height": "6-9",
     "age": 21.7,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 8.5,
@@ -3211,7 +3247,8 @@
       "draftTeam": "PHI",
       "college": "Bowling Green",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "darrun-hilliard-2015",
@@ -3222,7 +3259,7 @@
     "school": "Villanova",
     "height": "6-6",
     "age": 22.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.2,
@@ -3304,7 +3341,8 @@
       "draftTeam": "DET",
       "college": "Villanova",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "juan-pablo-vaulet-2015",
@@ -3335,7 +3373,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "josh-richardson-2015",
@@ -3346,7 +3385,7 @@
     "school": "Tennessee",
     "height": "6-5",
     "age": 21.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 11.5,
@@ -3428,7 +3467,8 @@
       "draftTeam": "MIA",
       "college": "Tennessee",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "pat-connaughton-2015",
@@ -3439,7 +3479,7 @@
     "school": "Notre Dame",
     "height": "6-5",
     "age": 22.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.8,
@@ -3521,7 +3561,8 @@
       "draftTeam": "NJN",
       "college": "Notre Dame",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "olivier-hanlan-2015",
@@ -3575,7 +3616,8 @@
       "draftTeam": "UTA",
       "draftCollege": "Boston College",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "joe-young-2015",
@@ -3586,7 +3628,7 @@
     "school": "Oregon",
     "height": "6-2",
     "age": 23,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.4,
@@ -3668,7 +3710,8 @@
       "draftTeam": "IND",
       "college": "Oregon",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "andrew-harrison-2015",
@@ -3679,7 +3722,7 @@
     "school": "Kentucky",
     "height": "6-6",
     "age": 20.7,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7,
@@ -3761,7 +3804,8 @@
       "draftTeam": "PHO",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "marcus-thornton-2015",
@@ -3842,7 +3886,8 @@
       "draftTeam": "MIA",
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "norman-powell-2015",
@@ -3853,7 +3898,7 @@
     "school": "California-Los Angeles",
     "height": "6-3",
     "age": 22.1,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 14,
@@ -3935,7 +3980,8 @@
       "draftTeam": "MIL",
       "college": "UCLA",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "arturas-gudaitis-2015",
@@ -3966,7 +4012,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "dakari-johnson-2015",
@@ -3977,7 +4024,7 @@
     "school": "Kentucky",
     "height": "7-0",
     "age": 19.8,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.8,
@@ -4059,7 +4106,8 @@
       "draftTeam": "OKC",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "aaron-white-2015",
@@ -4113,7 +4161,8 @@
       "draftTeam": "WAS",
       "draftCollege": "Iowa",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "marcus-eriksson-2015",
@@ -4149,7 +4198,8 @@
       "seasonsActive": 1
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "tyler-harvey-2015",
@@ -4203,7 +4253,8 @@
       "draftTeam": "ORL",
       "draftCollege": "Eastern Washington",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "satnam-singh-2015",
@@ -4234,7 +4285,8 @@
       "organizationType": "High School"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "sir-dominic-pointer-2015",
@@ -4288,7 +4340,8 @@
       "draftTeam": "CLE",
       "draftCollege": "St. John's (NY)",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "daniel-diez-2015",
@@ -4319,7 +4372,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "cady-lalanne-2015",
@@ -4373,7 +4427,8 @@
       "draftTeam": "SAS",
       "draftCollege": "Massachusetts",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "branden-dawson-2015",
@@ -4384,7 +4439,7 @@
     "school": "Michigan State",
     "height": "6-6",
     "age": 22.4,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 0.8,
@@ -4466,7 +4521,8 @@
       "draftTeam": "NOH",
       "college": "Michigan State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "nikola-radicevic-2015",
@@ -4497,7 +4553,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "jp-tokoto-2015",
@@ -4528,7 +4585,8 @@
       "organizationType": "College/University"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "dimitrios-agravanis-2015",
@@ -4559,7 +4617,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "luka-mitrovic-2015",
@@ -4590,6 +4649,7 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   }
 ]

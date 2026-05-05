@@ -7,7 +7,7 @@
     "school": "OTE",
     "height": "6-7",
     "age": 20.2,
-    "archetype": "Stretch Four",
+    "archetype": "Combo Forward",
     "roleOutcome": "Advantage driver",
     "outcomeTier": "Swing",
     "pointsPerGame": 16.4,
@@ -45,7 +45,8 @@
       "draftTeam": "HOU",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "ausar-thompson-2023",
@@ -55,7 +56,7 @@
     "school": "OTE",
     "height": "6-7",
     "age": 20.2,
-    "archetype": "Connector Four",
+    "archetype": "Combo Forward",
     "roleOutcome": "Two-way wing connector",
     "outcomeTier": "Swing",
     "pointsPerGame": 16.3,
@@ -93,7 +94,8 @@
       "draftTeam": "DET",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "brandon-miller-2023",
@@ -103,7 +105,7 @@
     "school": "Alabama",
     "height": "6-9",
     "age": 20.6,
-    "archetype": "Volume Wing Scorer",
+    "archetype": "Movement Shooter",
     "roleOutcome": "Scoring wing",
     "outcomeTier": "Swing",
     "pointsPerGame": 18.8,
@@ -164,7 +166,8 @@
       "draftTeam": "CHA",
       "college": "Alabama",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Star"
   },
   {
     "id": "anthony-black-2023",
@@ -174,7 +177,7 @@
     "school": "Arkansas",
     "height": "6-7",
     "age": 19.3,
-    "archetype": "Stretch Four",
+    "archetype": "Connector Four",
     "roleOutcome": "Big connector guard",
     "outcomeTier": "Swing",
     "pointsPerGame": 12.8,
@@ -235,7 +238,8 @@
       "draftTeam": "ORL",
       "college": "Arkansas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "taylor-hendricks-2023",
@@ -306,7 +310,8 @@
       "draftTeam": "UTA",
       "college": "UCF",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jarace-walker-2023",
@@ -316,7 +321,7 @@
     "school": "Houston",
     "height": "6-8",
     "age": 19.8,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "Defensive playmaking forward",
     "outcomeTier": "Bust",
     "pointsPerGame": 11.2,
@@ -377,7 +382,8 @@
       "draftTeam": "WAS",
       "college": "Houston",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "cason-wallace-2023",
@@ -387,7 +393,7 @@
     "school": "Kentucky",
     "height": "6-4",
     "age": 19.5,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "Two-way connector guard",
     "outcomeTier": "Swing",
     "pointsPerGame": 11.7,
@@ -448,7 +454,8 @@
       "draftTeam": "DAL",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "dereck-lively-2023",
@@ -458,7 +465,7 @@
     "school": "Duke",
     "height": "7-1",
     "age": 19.3,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "Rim-running anchor",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.2,
@@ -519,7 +526,8 @@
       "draftTeam": "OKC",
       "college": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "keyonte-george-2023",
@@ -529,7 +537,7 @@
     "school": "Baylor",
     "height": "6-4",
     "age": 19.4,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "On-ball scoring guard",
     "outcomeTier": "Swing",
     "pointsPerGame": 15.3,
@@ -590,6 +598,7 @@
       "draftTeam": "UTA",
       "college": "Baylor",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   }
 ]

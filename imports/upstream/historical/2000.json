@@ -8,7 +8,7 @@
     "school": "Cincinnati",
     "height": "6-9",
     "age": 22.5,
-    "archetype": "Two-Way Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 12.3,
@@ -90,7 +90,8 @@
       "draftTeam": "NJN",
       "draftCollege": "Cincinnati",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "stromile-swift-2000",
@@ -101,7 +102,7 @@
     "school": "Louisiana State",
     "height": "6-10",
     "age": 20.6,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 8.4,
@@ -183,7 +184,8 @@
       "draftTeam": "MEM",
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "darius-miles-2000",
@@ -194,7 +196,7 @@
     "school": "East St. Louis",
     "height": "6-9",
     "age": 18.7,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 10.1,
@@ -253,7 +255,8 @@
       "draftTeam": "LAC",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "marcus-fizer-2000",
@@ -346,7 +349,8 @@
       "draftTeam": "CHI",
       "college": "Iowa State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "mike-miller-2000",
@@ -357,7 +361,7 @@
     "school": "Florida",
     "height": "6-8",
     "age": 20.3,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 10.6,
@@ -439,7 +443,8 @@
       "draftTeam": "ORL",
       "draftCollege": "Florida",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "dermarr-johnson-2000",
@@ -450,7 +455,7 @@
     "school": "Cincinnati",
     "height": "6-9",
     "age": 20.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.2,
@@ -532,7 +537,8 @@
       "draftTeam": "ATL",
       "college": "Cincinnati",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "chris-mihm-2000",
@@ -543,7 +549,7 @@
     "school": "Texas",
     "height": "7-0",
     "age": 20.9,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.5,
@@ -625,7 +631,8 @@
       "draftTeam": "CHI",
       "college": "Texas",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jamal-crawford-2000",
@@ -636,7 +643,7 @@
     "school": "Michigan",
     "height": "6-5",
     "age": 20.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 14.6,
@@ -695,7 +702,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "joel-przybilla-2000",
@@ -706,7 +714,7 @@
     "school": "Minnesota",
     "height": "7-1",
     "age": 20.7,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 3.9,
@@ -788,7 +796,8 @@
       "draftTeam": "HOU",
       "college": "Minnesota",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "keyon-dooling-2000",
@@ -799,7 +808,7 @@
     "school": "Missouri",
     "height": "6-3",
     "age": 20.1,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7,
@@ -881,7 +890,8 @@
       "draftTeam": "ORL",
       "college": "Missouri",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jerome-moiso-2000",
@@ -892,7 +902,7 @@
     "school": "California-Los Angeles",
     "height": "6-10",
     "age": 22,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.7,
@@ -974,7 +984,8 @@
       "draftTeam": "BOS",
       "college": "UCLA",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "etan-thomas-2000",
@@ -985,7 +996,7 @@
     "school": "Syracuse",
     "height": "6-10",
     "age": 22.2,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.7,
@@ -1067,7 +1078,8 @@
       "draftTeam": "DAL",
       "college": "Syracuse",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "courtney-alexander-2000",
@@ -1078,7 +1090,7 @@
     "school": "Fresno State",
     "height": "6-5",
     "age": 23.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 9,
@@ -1160,7 +1172,8 @@
       "draftTeam": "ORL",
       "college": "Fresno State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "mateen-cleaves-2000",
@@ -1171,7 +1184,7 @@
     "school": "Michigan State",
     "height": "6-2",
     "age": 22.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.6,
@@ -1253,7 +1266,8 @@
       "draftTeam": "DET",
       "college": "Michigan State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jason-collier-2000",
@@ -1264,7 +1278,7 @@
     "school": "Georgia Tech",
     "height": "7-0",
     "age": 22.8,
-    "archetype": "Traditional Big",
+    "archetype": "Floor-Spacing Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 5.6,
@@ -1346,7 +1360,8 @@
       "draftTeam": "MIL",
       "college": "Georgia Tech",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "hedo-turkoglu-2000",
@@ -1357,7 +1372,7 @@
     "school": "Anadolu Efes S.K. (Turkey)",
     "height": "6-10",
     "age": 21.3,
-    "archetype": "Combo Forward",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 11.1,
@@ -1416,7 +1431,8 @@
       "draftTeam": null,
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "desmond-mason-2000",
@@ -1427,7 +1443,7 @@
     "school": "Oklahoma State",
     "height": "6-5",
     "age": 22.7,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 12.1,
@@ -1509,7 +1525,8 @@
       "draftTeam": "OKC",
       "college": "Oklahoma State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "quentin-richardson-2000",
@@ -1520,7 +1537,7 @@
     "school": "DePaul",
     "height": "6-6",
     "age": 20.2,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 10.3,
@@ -1602,7 +1619,8 @@
       "draftTeam": "LAC",
       "college": "DePaul",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jamaal-magloire-2000",
@@ -1613,7 +1631,7 @@
     "school": "Kentucky",
     "height": "6-11",
     "age": 22.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 7.2,
@@ -1695,7 +1713,8 @@
       "draftTeam": "CHA",
       "college": "Kentucky",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "speedy-claxton-2000",
@@ -1706,7 +1725,7 @@
     "school": "Hofstra",
     "height": "5-11",
     "age": 22.1,
-    "archetype": "Tenacious Defender",
+    "archetype": "POA Defender",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 9.3,
@@ -1788,7 +1807,8 @@
       "draftTeam": "PHI",
       "college": "Hofstra",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "morris-peterson-2000",
@@ -1799,7 +1819,7 @@
     "school": "Michigan State",
     "height": "6-7",
     "age": 22.8,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 10.7,
@@ -1881,7 +1901,8 @@
       "draftTeam": "TOR",
       "college": "Michigan State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "donnell-harvey-2000",
@@ -1892,7 +1913,7 @@
     "school": "Florida",
     "height": "6-8",
     "age": 19.8,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.6,
@@ -1974,7 +1995,8 @@
       "draftTeam": "NYK",
       "college": "Florida",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "deshawn-stevenson-2000",
@@ -1985,7 +2007,7 @@
     "school": "Washington Union",
     "height": "6-5",
     "age": 19.2,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.2,
@@ -2044,7 +2066,8 @@
       "draftTeam": "UTA",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "dalibor-bagaric-2000",
@@ -2055,7 +2078,7 @@
     "school": "KK Dubrava (Croatia)",
     "height": "7-1",
     "age": 20,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.6,
@@ -2114,7 +2137,8 @@
       "draftTeam": "CHI",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jake-tsakalidis-2000",
@@ -2125,7 +2149,7 @@
     "school": "A.E.K. Athens B.C. (Greece)",
     "height": "7-2",
     "age": 21,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 4.8,
@@ -2184,7 +2208,8 @@
       "draftTeam": "PHO",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "mamadou-n-diaye-2000",
@@ -2195,7 +2220,7 @@
     "school": "Auburn",
     "height": "7-0",
     "age": 25,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.8,
@@ -2277,7 +2302,8 @@
       "draftTeam": "DEN",
       "college": "Auburn",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "primoz-brezec-2000",
@@ -2288,7 +2314,7 @@
     "school": "KK Olimpija (Slovenia)",
     "height": "7-1",
     "age": 20.7,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.2,
@@ -2347,7 +2373,8 @@
       "draftTeam": "IND",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "erick-barkley-2000",
@@ -2358,7 +2385,7 @@
     "school": "St. John's (NY)",
     "height": "6-1",
     "age": 22.3,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.9,
@@ -2440,7 +2467,8 @@
       "draftTeam": "POR",
       "college": "St. John's (NY)",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "mark-madsen-2000",
@@ -2451,7 +2479,7 @@
     "school": "Stanford",
     "height": "6-9",
     "age": 24.4,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 2.2,
@@ -2533,7 +2561,8 @@
       "draftTeam": "LAL",
       "college": "Stanford",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "marko-jaric-2000",
@@ -2544,7 +2573,7 @@
     "school": "Fortitudo Pallacanestro Bologna (Italy)",
     "height": "6-7",
     "age": 21.5,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.1,
@@ -2603,7 +2632,8 @@
       "draftTeam": "LAC",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "dan-langhi-2000",
@@ -2614,7 +2644,7 @@
     "school": "Vanderbilt",
     "height": "6-11",
     "age": 22.6,
-    "archetype": "Combo Forward",
+    "archetype": "Connector Four",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3,
@@ -2696,7 +2726,8 @@
       "draftTeam": "DAL",
       "college": "Vanderbilt",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "a-j-guyton-2000",
@@ -2707,7 +2738,7 @@
     "school": "Indiana",
     "height": "6-2",
     "age": 22.4,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 5.5,
@@ -2789,7 +2820,8 @@
       "draftTeam": "CHI",
       "college": "Indiana",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jake-voskuhl-2000",
@@ -2800,7 +2832,7 @@
     "school": "Connecticut",
     "height": "6-11",
     "age": 22.6,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 4,
@@ -2882,7 +2914,8 @@
       "draftTeam": "CHI",
       "college": "Connecticut",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "khalid-el-amin-2000",
@@ -2893,7 +2926,7 @@
     "school": "Connecticut",
     "height": "5-10",
     "age": 21.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 6.3,
@@ -2975,7 +3008,8 @@
       "draftTeam": "CHI",
       "college": "Connecticut",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "mike-smith-2000",
@@ -2986,7 +3020,7 @@
     "school": "Louisiana-Monroe",
     "height": "6-8",
     "age": 24.2,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3,
@@ -3045,7 +3079,8 @@
       "draftTeam": "WAS",
       "college": "Louisiana–Monroe",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "soumaila-samake-2000",
@@ -3056,7 +3091,7 @@
     "school": "Cincinnati Stuff (IBL)",
     "height": "6-10",
     "age": 22.3,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.4,
@@ -3115,7 +3150,8 @@
       "draftTeam": "NJN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "eddie-house-2000",
@@ -3126,7 +3162,7 @@
     "school": "Arizona State",
     "height": "6-1",
     "age": 22.1,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.5,
@@ -3185,7 +3221,8 @@
       "draftTeam": "MIA",
       "college": "Arizona State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "eduardo-najera-2000",
@@ -3196,7 +3233,7 @@
     "school": "Oklahoma",
     "height": "6-8",
     "age": 24,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 4.9,
@@ -3278,7 +3315,8 @@
       "draftTeam": "HOU",
       "college": "Oklahoma",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "lavor-postell-2000",
@@ -3289,7 +3327,7 @@
     "school": "St. John's (NY)",
     "height": "6-5",
     "age": 22.3,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.2,
@@ -3371,7 +3409,8 @@
       "draftTeam": "NYK",
       "college": "St. John's (NY)",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "hanno-mottola-2000",
@@ -3382,7 +3421,7 @@
     "school": "Utah",
     "height": "6-11",
     "age": 23.8,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.6,
@@ -3464,7 +3503,8 @@
       "draftTeam": "ATL",
       "college": "Utah",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "chris-carrawell-2000",
@@ -3518,7 +3558,8 @@
       "draftTeam": "SAS",
       "draftCollege": "Duke",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "olumide-oyedeji-2000",
@@ -3588,7 +3629,8 @@
       "draftTeam": "OKC",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "michael-redd-2000",
@@ -3599,7 +3641,7 @@
     "school": "Ohio State",
     "height": "6-6",
     "age": 20.8,
-    "archetype": "Microwave Scorer",
+    "archetype": "Bench Scoring Guard",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 19,
@@ -3681,7 +3723,8 @@
       "draftTeam": "MIL",
       "draftCollege": "Ohio State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "brian-cardinal-2000",
@@ -3692,7 +3735,7 @@
     "school": "Purdue",
     "height": "6-8",
     "age": 23.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 4.6,
@@ -3774,7 +3817,8 @@
       "draftTeam": "DET",
       "college": "Purdue",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jabari-smith-2000",
@@ -3785,7 +3829,7 @@
     "school": "Louisiana State",
     "height": "6-11",
     "age": 23.4,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3,
@@ -3867,7 +3911,8 @@
       "draftTeam": "SAC",
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "deeandre-hulett-2000",
@@ -3898,7 +3943,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "josip-sesar-2000",
@@ -3929,7 +3975,8 @@
       "organizationType": "Other Team/Club"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "mark-karcher-2000",
@@ -3983,7 +4030,8 @@
       "draftTeam": "PHI",
       "draftCollege": "Temple",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "jason-hart-2000",
@@ -3994,7 +4042,7 @@
     "school": "Syracuse",
     "height": "6-3",
     "age": 22.2,
-    "archetype": "Floor General",
+    "archetype": "IQ Lead",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 4.8,
@@ -4076,7 +4124,8 @@
       "draftTeam": "MIL",
       "college": "Syracuse",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "kaniel-dickens-2000",
@@ -4087,7 +4136,7 @@
     "school": "Idaho",
     "height": "6-8",
     "age": 21.9,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -4139,7 +4188,8 @@
       "draftTeam": "UTA",
       "college": "Idaho",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "igor-rakocevic-2000",
@@ -4150,7 +4200,7 @@
     "school": "Red Star Belgrade (Serbia)",
     "height": "6-2",
     "age": 22.2,
-    "archetype": "Floor General",
+    "archetype": "Spot-Up Specialist",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1.9,
@@ -4209,7 +4259,8 @@
       "draftTeam": "MIN",
       "college": null,
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Specialist"
   },
   {
     "id": "ernest-brown-2000",
@@ -4220,7 +4271,7 @@
     "school": "Indian Hills Community College",
     "height": "7-0",
     "age": 21.1,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 1,
@@ -4279,7 +4330,8 @@
       "draftTeam": "MIA",
       "college": "Indian Hills Community College",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "dan-mcclintock-2000",
@@ -4290,7 +4342,7 @@
     "school": "Northern Arizona",
     "height": "7-0",
     "age": 23.2,
-    "archetype": "Traditional Big",
+    "archetype": "Rim-Running Big",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3,
@@ -4372,7 +4424,8 @@
       "draftTeam": "DEN",
       "college": "Northern Arizona",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "cory-hightower-2000",
@@ -4403,7 +4456,8 @@
       "organizationType": "College/University"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "chris-porter-2000",
@@ -4414,7 +4468,7 @@
     "school": "Auburn",
     "height": "6-7",
     "age": 22.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Connector",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 8.6,
@@ -4496,7 +4550,8 @@
       "draftTeam": "GSW",
       "college": "Auburn",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": "Role"
   },
   {
     "id": "jaquay-walls-2000",
@@ -4527,7 +4582,8 @@
       "organizationType": "College/University"
     },
     "positionFamily": null,
-    "archetypeFamily": "Unknown"
+    "archetypeFamily": "Unknown",
+    "archetypeTier": null
   },
   {
     "id": "scoonie-penn-2000",
@@ -4581,7 +4637,8 @@
       "draftTeam": "ATL",
       "draftCollege": "Ohio State",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   },
   {
     "id": "pete-mickeal-2000",
@@ -4635,6 +4692,7 @@
       "draftTeam": "DAL",
       "draftCollege": "Cincinnati",
       "source": "sports-reference / stathead"
-    }
+    },
+    "archetypeTier": null
   }
 ]
