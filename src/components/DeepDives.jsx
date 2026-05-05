@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { Plus, X, Search, Download, Edit3, ChevronDown, ChevronRight, FileText, Clock } from "lucide-react";
+import { Plus, X, Search, Download, Edit3, ChevronDown, ChevronRight, FileText, Clock, BookOpen, Check } from "lucide-react";
+import SCOUT_TRAIT_LIBRARY from "../data/scoutTraitLibrary.json";
 
 // PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
 // DeepDives uses translucent surfaces (overlays the page bg), so we map
@@ -277,10 +278,228 @@ function TextArea({ value, onChange, rows = 4, placeholder }) {
   );
 }
 
-function BulletList({ items, onChange, placeholder }) {
+// Maps a prospect's listed position string to the position-family code used
+// by the trait library (G / W / F / B). Items tagged "ALL" always show.
+function positionFamilyCode(pos, pos2) {
+  const all = `${pos || ""} ${pos2 || ""}`.toUpperCase();
+  if (all.includes("PG") || all.includes("SG")) return "G";
+  if (all.includes("SF")) return "W";
+  if (all.includes("PF")) return "F";
+  if (all.includes("C"))  return "B";
+  return null;
+}
+
+// Floating panel that opens from a BulletList's "+ from library" button.
+// Filters the trait library by polarity (positive | negative | swing) and
+// optionally by position family. Search box narrows further. Clicking an
+// item adds it to the parent list and flashes a checkmark; the picker
+// stays open so you can rapid-fire add several items, then ✕ to close.
+function TraitLibraryPicker({ open, onClose, polarity, positionFamily, existing = [], onPick }) {
+  const [query, setQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [recentlyPicked, setRecentlyPicked] = useState([]);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return (SCOUT_TRAIT_LIBRARY.items || [])
+      .filter((item) => item.polarity === polarity)
+      .filter((item) => {
+        if (!positionFamily) return true;
+        if (!item.positions || item.positions.length === 0) return true;
+        return item.positions.includes("ALL") || item.positions.includes(positionFamily);
+      })
+      .filter((item) => activeCategory === "ALL" || item.category === activeCategory)
+      .filter((item) => !q || item.text.toLowerCase().includes(q));
+  }, [polarity, positionFamily, activeCategory, query]);
+
+  const usedCategories = useMemo(() => {
+    const cats = new Set();
+    for (const item of SCOUT_TRAIT_LIBRARY.items) {
+      if (item.polarity !== polarity) continue;
+      if (positionFamily && item.positions && !item.positions.includes("ALL") && !item.positions.includes(positionFamily)) continue;
+      cats.add(item.category);
+    }
+    return Array.from(cats);
+  }, [polarity, positionFamily]);
+
+  if (!open) return null;
+
+  const polarityLabel = polarity === "positive" ? "STRENGTHS" : polarity === "negative" ? "WEAKNESSES" : "SWING FACTORS";
+  const accent = polarity === "positive" ? T.cyan : polarity === "negative" ? T.warn : T.signal;
+  const existingSet = new Set(existing);
+
+  const pickItem = (item) => {
+    onPick(item.text);
+    setRecentlyPicked((prev) => [...prev, item.id]);
+  };
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(5, 10, 18, 0.78)",
+        zIndex: 90,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 20,
+      }}
+      onClick={onClose}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: T.surface2,
+          border: `1px solid ${T.border}`,
+          borderLeft: `3px solid ${accent}`,
+          width: "min(720px, 100%)",
+          maxHeight: "85vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {/* Header */}
+        <div style={{ padding: "12px 16px", borderBottom: `1px solid ${T.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>
+            <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase" }}>
+              Trait Library
+            </div>
+            <div style={{ fontSize: 14, color: accent, fontWeight: 700, marginTop: 2, letterSpacing: "0.04em" }}>
+              {polarityLabel}
+              {positionFamily && <span style={{ ...mono, fontSize: 11, color: T.textMute, marginLeft: 8, fontWeight: 500 }}>· filtered to {positionFamily}</span>}
+            </div>
+          </div>
+          <button type="button" onClick={onClose} style={{ background: "transparent", border: "none", color: T.textMute, cursor: "pointer", padding: 4, display: "flex" }}>
+            <X size={14} />
+          </button>
+        </div>
+
+        {/* Search */}
+        <div style={{ padding: "10px 16px", borderBottom: `1px solid ${T.borderSoft}`, display: "flex", alignItems: "center", gap: 8 }}>
+          <Search size={13} color={T.textMute} />
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Filter by keyword…"
+            autoFocus
+            style={{ flex: 1, background: "transparent", border: "none", outline: "none", color: T.text, fontSize: 13 }}
+          />
+          {query && (
+            <button type="button" onClick={() => setQuery("")} style={{ background: "transparent", border: "none", color: T.textMute, cursor: "pointer", padding: 0, display: "flex" }}>
+              <X size={11} />
+            </button>
+          )}
+        </div>
+
+        {/* Category chips */}
+        <div style={{ padding: "8px 14px", borderBottom: `1px solid ${T.borderSoft}`, display: "flex", flexWrap: "wrap", gap: 4 }}>
+          {[["ALL", "All"]].concat(
+            (SCOUT_TRAIT_LIBRARY.categories || [])
+              .filter((c) => usedCategories.includes(c.id))
+              .map((c) => [c.id, c.label])
+          ).map(([id, label]) => {
+            const active = activeCategory === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setActiveCategory(id)}
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: active ? T.bg : T.textDim,
+                  background: active ? accent : "transparent",
+                  border: `1px solid ${active ? accent : T.border}`,
+                  padding: "3px 8px",
+                  cursor: "pointer",
+                  fontWeight: active ? 700 : 500,
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Items list */}
+        <div style={{ flex: 1, overflowY: "auto" }}>
+          {filtered.length === 0 ? (
+            <div style={{ padding: 32, textAlign: "center", ...mono, fontSize: 11, color: T.textMute, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+              No matches · Try clearing the filters
+            </div>
+          ) : (
+            filtered.map((item) => {
+              const wasPicked = recentlyPicked.includes(item.id);
+              const alreadyOnList = existingSet.has(item.text);
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => pickItem(item)}
+                  disabled={alreadyOnList}
+                  style={{
+                    width: "100%",
+                    textAlign: "left",
+                    padding: "10px 16px",
+                    background: wasPicked ? "var(--prospera-accent-bg-soft)" : "transparent",
+                    border: "none",
+                    borderBottom: `1px solid ${T.borderSoft}`,
+                    color: alreadyOnList ? T.textMute : T.text,
+                    fontSize: 13,
+                    cursor: alreadyOnList ? "not-allowed" : "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    opacity: alreadyOnList ? 0.55 : 1,
+                  }}
+                  onMouseEnter={(e) => { if (!alreadyOnList) e.currentTarget.style.background = "var(--prospera-accent-bg-soft)"; }}
+                  onMouseLeave={(e) => { if (!alreadyOnList && !wasPicked) e.currentTarget.style.background = "transparent"; }}
+                >
+                  {wasPicked || alreadyOnList ? <Check size={13} color={accent} /> : <Plus size={13} color={T.textMute} />}
+                  <span style={{ flex: 1, lineHeight: 1.45 }}>{item.text}</span>
+                  <span style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                    {(SCOUT_TRAIT_LIBRARY.categories.find((c) => c.id === item.category) || {}).label || item.category}
+                  </span>
+                </button>
+              );
+            })
+          )}
+        </div>
+
+        {/* Footer */}
+        <div style={{ padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, display: "flex", justifyContent: "space-between", alignItems: "center", ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+          <span>
+            {filtered.length} of {SCOUT_TRAIT_LIBRARY.items.filter((i) => i.polarity === polarity).length} shown
+            {recentlyPicked.length > 0 && <span style={{ color: accent, marginLeft: 8 }}>· {recentlyPicked.length} added</span>}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            style={{ ...mono, fontSize: 10, letterSpacing: "0.14em", color: T.text, background: "transparent", border: `1px solid ${T.border}`, padding: "4px 10px", cursor: "pointer", textTransform: "uppercase" }}
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BulletList({ items, onChange, placeholder, polarity, positionFamily }) {
+  const [pickerOpen, setPickerOpen] = useState(false);
   const setItem = (i, val) => onChange(items.map((it, idx) => (idx === i ? val : it)));
   const remove = (i) => onChange(items.filter((_, idx) => idx !== i));
   const add = () => onChange([...items, ""]);
+  // De-duped: filter empty trailing inputs before appending so library picks
+  // don't pile up below blank rows the user opened earlier.
+  const addFromLibrary = (text) => {
+    const cleaned = items.filter((s) => s.trim() !== "");
+    if (cleaned.includes(text)) return;
+    onChange([...cleaned, text]);
+  };
   return (
     <div style={{ display: "grid", gap: 6 }}>
       {items.map((item, i) => (
@@ -309,24 +528,58 @@ function BulletList({ items, onChange, placeholder }) {
           </button>
         </div>
       ))}
-      <button
-        type="button"
-        onClick={add}
-        style={{
-          ...mono,
-          fontSize: 10,
-          letterSpacing: "0.12em",
-          color: T.textDim,
-          background: "transparent",
-          border: `1px dashed ${T.border}`,
-          padding: "5px 10px",
-          cursor: "pointer",
-          textTransform: "uppercase",
-          width: "fit-content",
-        }}
-      >
-        + Add bullet
-      </button>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+        <button
+          type="button"
+          onClick={add}
+          style={{
+            ...mono,
+            fontSize: 10,
+            letterSpacing: "0.12em",
+            color: T.textDim,
+            background: "transparent",
+            border: `1px dashed ${T.border}`,
+            padding: "5px 10px",
+            cursor: "pointer",
+            textTransform: "uppercase",
+          }}
+        >
+          + Add bullet
+        </button>
+        {polarity && (
+          <button
+            type="button"
+            onClick={() => setPickerOpen(true)}
+            title="Pick from the scout trait library instead of typing"
+            style={{
+              ...mono,
+              fontSize: 10,
+              letterSpacing: "0.12em",
+              color: T.cyan,
+              background: "var(--prospera-accent-bg-soft)",
+              border: `1px solid ${T.cyan}`,
+              padding: "5px 10px",
+              cursor: "pointer",
+              textTransform: "uppercase",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            <BookOpen size={11} /> From library
+          </button>
+        )}
+      </div>
+      {polarity && (
+        <TraitLibraryPicker
+          open={pickerOpen}
+          onClose={() => setPickerOpen(false)}
+          polarity={polarity}
+          positionFamily={positionFamily}
+          existing={items}
+          onPick={addFromLibrary}
+        />
+      )}
     </div>
   );
 }
@@ -678,18 +931,39 @@ function DeepDiveForm({ prospect, deepDive, onChange, onClose, onDelete }) {
         <TextArea value={deepDive.story} onChange={(v) => update({ story: v })} rows={6} placeholder="Open the dossier..." />
       </div>
 
+      {/* Strengths / Weaknesses / Swing Factors — each list gets a "+ from
+          library" button that opens TraitLibraryPicker filtered by polarity
+          and the prospect's position family. Click to add, no typing needed. */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14 }} className="prospera-eval-grid">
         <div>
           <FieldLabel>Strengths</FieldLabel>
-          <BulletList items={deepDive.strengths} onChange={setStrengths} placeholder="What translates" />
+          <BulletList
+            items={deepDive.strengths}
+            onChange={setStrengths}
+            placeholder="What translates"
+            polarity="positive"
+            positionFamily={positionFamilyCode(prospect?.pos, prospect?.pos2)}
+          />
         </div>
         <div>
           <FieldLabel>Weaknesses</FieldLabel>
-          <BulletList items={deepDive.weaknesses} onChange={setWeaknesses} placeholder="What concerns you" />
+          <BulletList
+            items={deepDive.weaknesses}
+            onChange={setWeaknesses}
+            placeholder="What concerns you"
+            polarity="negative"
+            positionFamily={positionFamilyCode(prospect?.pos, prospect?.pos2)}
+          />
         </div>
         <div>
           <FieldLabel>Swing Factors</FieldLabel>
-          <BulletList items={deepDive.swingFactors} onChange={setSwings} placeholder="What determines ceiling" />
+          <BulletList
+            items={deepDive.swingFactors}
+            onChange={setSwings}
+            placeholder="What determines ceiling"
+            polarity="swing"
+            positionFamily={positionFamilyCode(prospect?.pos, prospect?.pos2)}
+          />
         </div>
       </div>
 

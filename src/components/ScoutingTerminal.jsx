@@ -21,6 +21,7 @@ import HISTORICAL_PROSPECTS_RAW from "../data/historicalProspects.json";
 import HISTORICAL_ADVANCED_STATS from "../data/historicalAdvancedStats.json";
 import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
 import ARCHETYPE_CATALOG from "../data/archetypeCatalog.json";
+import PROFILE_STATS from "../data/profileStats.json";
 
 // Merge the career advanced sidecar (NBA + CBB rate stats from Sports Reference)
 // into each historical prospect at module load. This keeps the JSON file the
@@ -56,6 +57,55 @@ function familyBarColor(p) {
   if (pos.includes("PG") || pos2.includes("PG") || pos.includes("SG") || pos2.includes("SG")) return "#3B82F6"; // guard → blue
   if (pos.includes("SF") || pos2.includes("SF") || pos.includes("PF") || pos2.includes("PF")) return "#10B981"; // wing → green
   return "#F59E0B"; // big → amber
+}
+
+// Lookup key into profileStats.json — matches the file's slug convention:
+// lowercase, remove anything that isn't a letter or digit.
+function profileStatsKey(name) {
+  return String(name || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+// Look up the rich per-prospect stats blob from profileStats.json. Returns null
+// if no record exists (for international prospects without NCAA data, etc.).
+function getProspectStats(prospect) {
+  if (!prospect?.name) return null;
+  return PROFILE_STATS[profileStatsKey(prospect.name)] || null;
+}
+
+// Derive a counting line scaled to N minutes (per-36) or N possessions (per-100).
+// Pace is unknown for college rosters, so per-100 uses a 70-poss approximation
+// that matches typical NCAA pace; flagged in the UI as "approx" so users
+// don't read the exact decimals as gospel.
+function deriveScaledLine(season, n) {
+  if (!season || !season.minutes || season.minutes <= 0) return null;
+  const factor = n / season.minutes;
+  const scale = (v) => (typeof v === "number" ? Math.round(v * factor * 10) / 10 : null);
+  return {
+    pts: scale(season.points),
+    reb: scale(season.rebounds),
+    ast: scale(season.assists),
+    stl: scale(season.steals),
+    blk: scale(season.blocks),
+    tov: scale(season.turnovers),
+  };
+}
+
+// Per-100 approximation. Multiplies per-36 by ~100/70 (typical NCAA pace);
+// adequate accuracy for cross-prospect comparison, not a "real" per-100.
+function derivePer100Approx(season) {
+  if (!season || !season.minutes) return null;
+  const per36 = deriveScaledLine(season, 36);
+  if (!per36) return null;
+  const k = 100 / 70;
+  const scale = (v) => (typeof v === "number" ? Math.round(v * k * 10) / 10 : null);
+  return {
+    pts: scale(per36.pts),
+    reb: scale(per36.reb),
+    ast: scale(per36.ast),
+    stl: scale(per36.stl),
+    blk: scale(per36.blk),
+    tov: scale(per36.tov),
+  };
 }
 
 function isUniqueArchetype(archetypeName) {
@@ -1934,6 +1984,14 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
 // ---------- PROSPECT STATS TAB ----------
 const ProspectStatsTab = ({ p }) => {
   const { displayScore } = useCustomWeights();
+  // PG / 36 / 100 toggle for the season counting line. Default to per-game
+  // since that's what scouts cite first; per-36 is the comp-friendly view;
+  // per-100 is approximated from a 70-possession NCAA pace (flagged in UI).
+  const [rateMode, setRateMode] = useState("per-game");
+  const realStats = getProspectStats(p);
+  const season = realStats?.stats?.season || null;
+  const adv = realStats?.stats?.advanced || null;
+
   if (p.statsSource === "NONE") {
     return (
       <div style={{ display: "grid", gap: 20 }}>
@@ -1967,6 +2025,68 @@ const ProspectStatsTab = ({ p }) => {
     AGE: p.age != null ? p.age : "—",
   };
 
+  // Build the active counting line based on rateMode toggle
+  let countingLineLabel = "Per Game";
+  let countingLineApprox = false;
+  let countingLineCells = null;
+  if (season) {
+    if (rateMode === "per-36") {
+      countingLineLabel = "Per 36 Min";
+      const d = deriveScaledLine(season, 36);
+      countingLineCells = d ? {
+        PTS: d.pts ?? "—",
+        REB: d.reb ?? "—",
+        AST: d.ast ?? "—",
+        STL: d.stl ?? "—",
+        BLK: d.blk ?? "—",
+        TOV: d.tov ?? "—",
+      } : null;
+    } else if (rateMode === "per-100") {
+      countingLineLabel = "Per 100 Possessions";
+      countingLineApprox = true;
+      const d = derivePer100Approx(season);
+      countingLineCells = d ? {
+        PTS: d.pts ?? "—",
+        REB: d.reb ?? "—",
+        AST: d.ast ?? "—",
+        STL: d.stl ?? "—",
+        BLK: d.blk ?? "—",
+        TOV: d.tov ?? "—",
+      } : null;
+    } else {
+      countingLineCells = {
+        PPG: season.points != null ? season.points : "—",
+        RPG: season.rebounds != null ? season.rebounds : "—",
+        APG: season.assists != null ? season.assists : "—",
+        SPG: season.steals != null ? season.steals : "—",
+        BPG: season.blocks != null ? season.blocks : "—",
+        TOV: season.turnovers != null ? season.turnovers : "—",
+      };
+    }
+  }
+
+  // Build the Advanced metrics table (TS%, eFG%, USG%, AST%, TOV%, ORtg, DRtg, BPM, REB%)
+  const advancedTable = adv ? {
+    "TS%": adv.trueShooting ?? "—",
+    "eFG%": adv.efgPct ?? "—",
+    "USG%": adv.usage ?? "—",
+    "AST%": adv.assistRate ?? "—",
+    "TOV%": adv.turnoverRate ?? "—",
+    "REB%": adv.reboundRate ?? "—",
+    "ORtg": adv.ortg != null ? adv.ortg : "—",
+    "DRtg": adv.drtg != null ? adv.drtg : "—",
+    "BPM": adv.bpm != null ? (adv.bpm > 0 ? `+${adv.bpm}` : adv.bpm) : "—",
+  } : null;
+
+  // Shooting splits (FG / 3P / FT)
+  const shootingTable = adv ? {
+    "FG%": adv.fgPct != null ? `${(adv.fgPct * 100).toFixed(1)}%` : "—",
+    "3P%": adv.threePct != null ? `${(adv.threePct * 100).toFixed(1)}%` : "—",
+    "FT%": adv.ftPct != null ? `${(adv.ftPct * 100).toFixed(1)}%` : "—",
+    "MIN/G": season?.minutes != null ? season.minutes : "—",
+    "GP": season?.games != null ? season.games : "—",
+  } : null;
+
   return (
     <div style={{ display: "grid", gap: 20 }}>
       {/* Stat Profile from traits */}
@@ -1975,10 +2095,67 @@ const ProspectStatsTab = ({ p }) => {
         <StatProfilePanelFromTraits title="Defensive Profile" traits9={p.traits9} subset={["Defensive Versatility","Scalability","Processing Speed","Decision Making"]} color={T.blue} />
       </div>
 
-      {/* Advanced metrics from real score data */}
+      {/* Real season stats — counting line with PG/36/100 toggle */}
+      {countingLineCells && (
+        <div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10, flexWrap: "wrap", gap: 10 }}>
+            <h2 style={{ ...mono, fontSize: 13, letterSpacing: "0.18em", color: T.text, margin: 0, fontWeight: 600 }}>
+              {realStats?.season ? `${realStats.season} SEASON` : "SEASON"}
+            </h2>
+            <div style={{ display: "flex", gap: 4 }}>
+              {[
+                ["per-game", "Per Game"],
+                ["per-36", "Per 36"],
+                ["per-100", "Per 100"],
+              ].map(([val, label]) => {
+                const active = rateMode === val;
+                return (
+                  <button
+                    key={val}
+                    type="button"
+                    onClick={() => setRateMode(val)}
+                    style={{
+                      ...mono,
+                      fontSize: 10,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: active ? T.cyan : T.textDim,
+                      background: active ? "var(--prospera-accent-bg)" : "transparent",
+                      border: `1px solid ${active ? T.cyan : T.border}`,
+                      padding: "4px 9px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <AdvancedTable
+            title={`${countingLineLabel}${countingLineApprox ? " · approx (NCAA pace)" : ""}`}
+            data={countingLineCells}
+          />
+        </div>
+      )}
+
+      {/* Real advanced metrics from profileStats */}
+      {advancedTable && (
+        <div>
+          <h2 style={{ ...mono, fontSize: 13, letterSpacing: "0.18em", color: T.text, margin: "0 0 10px", fontWeight: 600 }}>
+            ADVANCED METRICS
+          </h2>
+          <div style={{ display: "grid", gap: 10 }}>
+            <AdvancedTable title="Efficiency · Usage · Impact" data={advancedTable} />
+            {shootingTable && <AdvancedTable title="Shooting Splits" data={shootingTable} />}
+          </div>
+        </div>
+      )}
+
+      {/* Model output / measurements / 5-bucket */}
       <div>
-        <h2 style={{ ...mono, fontSize: 13, letterSpacing: "0.18em", color: T.text, textAlign: "center", margin: "16px 0 14px", fontWeight: 600 }}>
-          ADVANCED METRICS
+        <h2 style={{ ...mono, fontSize: 13, letterSpacing: "0.18em", color: T.text, margin: "0 0 10px", fontWeight: 600 }}>
+          MODEL & PROFILE
         </h2>
         <div style={{ display: "grid", gap: 10 }}>
           <AdvancedTable title="Core Overview" data={coreOverview} />
@@ -1993,11 +2170,13 @@ const ProspectStatsTab = ({ p }) => {
         <SWPanel title="Weaknesses" items={weaknesses} color={T.danger} icon={TrendingDown} />
       </div>
 
-      {/* Per-game stats not yet ingested */}
-      <div>
-        <Label style={{ marginBottom: 10 }}>Game Log</Label>
-        <EmptyState label="Per-game stats not yet ingested for this prospect." compact />
-      </div>
+      {/* If no profileStats record, show the empty state */}
+      {!realStats && (
+        <div>
+          <Label style={{ marginBottom: 10 }}>Game Log</Label>
+          <EmptyState label="Per-game stats not yet ingested for this prospect." compact />
+        </div>
+      )}
     </div>
   );
 };
@@ -2061,35 +2240,72 @@ const StatProfilePanel = ({ title, rows, color }) => (
   </div>
 );
 
+// Higher-density spec sheet block. Values are the read; labels recede.
+// Visual hierarchy:
+//   - Title bar gets a 3px brand-orange leading rule (Prospera signature)
+//   - Each cell: 9px mute label TOP, oversized 24px value BELOW
+//   - Cells separated by tinted panels alternating subtly so the row reads
+//     as data-cells rather than a flat strip
 const AdvancedTable = ({ title, data }) => {
   if (!data) return null;
   const entries = Object.entries(data);
   return (
-    <div style={{ background: T.surface, border: `1px solid ${T.border}` }}>
+    <div style={{ background: T.surface, border: `1px solid ${T.border}`, boxShadow: `inset 3px 0 0 ${T.cyan}` }}>
       <div
         style={{
-          padding: "8px 14px",
+          padding: "10px 14px 10px 18px",
           borderBottom: `1px solid ${T.border}`,
           background: T.surface2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
-        <Label>{title}</Label>
+        <Label style={{ color: T.cyan, letterSpacing: "0.16em", fontWeight: 700 }}>{title}</Label>
+        <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
+          {entries.length} {entries.length === 1 ? "FIELD" : "FIELDS"}
+        </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${entries.length}, 1fr)` }}>
-        {entries.map(([k, v], i) => (
-          <div
-            key={k}
-            style={{
-              padding: "12px 14px",
-              borderRight: i < entries.length - 1 ? `1px solid ${T.borderSoft}` : "none",
-            }}
-          >
-            <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em" }}>{k}</div>
-            <div style={{ ...mono, fontSize: 16, color: T.text, marginTop: 4 }}>
-              {typeof v === "number" && v < 1 && v > 0 ? v.toFixed(3) : v}
+        {entries.map(([k, v], i) => {
+          const isFirst = i === 0;
+          return (
+            <div
+              key={k}
+              style={{
+                padding: "16px 18px",
+                borderRight: i < entries.length - 1 ? `1px solid ${T.borderSoft}` : "none",
+                paddingLeft: isFirst ? 18 : 18,
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  color: T.textMute,
+                  letterSpacing: "0.16em",
+                  fontWeight: 600,
+                }}
+              >
+                {k}
+              </div>
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 24,
+                  color: T.text,
+                  marginTop: 8,
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.05,
+                }}
+              >
+                {typeof v === "number" && v < 1 && v > 0 ? v.toFixed(3) : v}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
