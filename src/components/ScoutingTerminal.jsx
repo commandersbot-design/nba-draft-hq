@@ -16,9 +16,20 @@ import {
   GitCompare,
 } from "lucide-react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
-import HISTORICAL_PROSPECTS from "../data/historicalProspects.json";
+import HISTORICAL_PROSPECTS_RAW from "../data/historicalProspects.json";
+import HISTORICAL_ADVANCED_STATS from "../data/historicalAdvancedStats.json";
 import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
 import ARCHETYPE_CATALOG from "../data/archetypeCatalog.json";
+
+// Merge the career advanced sidecar (NBA + CBB rate stats from Sports Reference)
+// into each historical prospect at module load. This keeps the JSON file the
+// single source of truth for the existing fields and lets the advanced sidecar
+// be regenerated independently via scripts/ingestion/enrich-historical-advanced.js.
+const HISTORICAL_PROSPECTS = HISTORICAL_PROSPECTS_RAW.map((entry) => ({
+  ...entry,
+  nbaAdv: HISTORICAL_ADVANCED_STATS[entry.id]?.nbaAdv || null,
+  cbbAdv: HISTORICAL_ADVANCED_STATS[entry.id]?.cbbAdv || null,
+}));
 
 const ARCHETYPE_BY_NAME = (() => {
   const map = new Map();
@@ -1112,6 +1123,7 @@ const ComparablesTab = ({ p }) => {
                 ))}
               </div>
             )}
+            <CompactAdvancedChips nbaAdv={historical.nbaAdv} cbbAdv={historical.cbbAdv} />
             {historical.notes && (
               <div style={{ padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, fontSize: 11, color: T.textDim, lineHeight: 1.5, fontStyle: "italic" }}>
                 "{historical.notes}"
@@ -3279,6 +3291,17 @@ const HistoricalPage = () => {
         <div style={{ fontSize: 13, color: T.textDim }}>
           {filtered.length} of {HISTORICAL_PROSPECTS.length} prospects across {years.length} draft classes
         </div>
+        {(() => {
+          const nba = HISTORICAL_PROSPECTS.filter((p) => p.nbaAdv).length;
+          const cbb = HISTORICAL_PROSPECTS.filter((p) => p.cbbAdv).length;
+          if (nba === 0 && cbb === 0) return null;
+          return (
+            <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em", marginTop: 8, textTransform: "uppercase", display: "flex", gap: 14, flexWrap: "wrap" }}>
+              <span>NBA Adv · {nba} ({Math.round((nba / HISTORICAL_PROSPECTS.length) * 100)}%)</span>
+              <span>CBB Adv · {cbb} ({Math.round((cbb / HISTORICAL_PROSPECTS.length) * 100)}%)</span>
+            </div>
+          );
+        })()}
       </div>
 
       <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center", background: T.surface, border: `1px solid ${T.border}`, padding: "8px 12px" }}>
@@ -3343,6 +3366,106 @@ const FilterSelect = ({ label, value, onChange, options }) => (
     </select>
   </div>
 );
+
+// Career NBA advanced stats strip — shown only when sidecar data is available.
+// Source: stathead-nba-advanced-careers.csv ingested via enrich-historical-advanced.js
+const NbaAdvancedStrip = ({ nbaAdv }) => {
+  if (!nbaAdv) return null;
+  const cells = [
+    ["VORP", nbaAdv.vorp != null ? nbaAdv.vorp.toFixed(1) : null],
+    ["BPM", nbaAdv.bpm != null ? (nbaAdv.bpm > 0 ? `+${nbaAdv.bpm.toFixed(1)}` : nbaAdv.bpm.toFixed(1)) : null],
+    ["PER", nbaAdv.per != null ? nbaAdv.per.toFixed(1) : null],
+    ["USG%", nbaAdv.usgPct != null ? nbaAdv.usgPct.toFixed(1) : null],
+    ["AST%", nbaAdv.astPct != null ? nbaAdv.astPct.toFixed(1) : null],
+  ];
+  if (cells.every(([, v]) => v == null)) return null;
+  return (
+    <div style={{ borderTop: `1px solid ${T.borderSoft}` }}>
+      <div style={{ ...mono, fontSize: 8, color: T.cyan, letterSpacing: "0.16em", padding: "6px 16px 0", textTransform: "uppercase", opacity: 0.85 }}>
+        NBA Career · Advanced
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", paddingTop: 4 }}>
+        {cells.map(([k, v], i) => (
+          <div
+            key={k}
+            style={{
+              padding: "8px 12px",
+              borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
+            }}
+          >
+            <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
+            <div style={{ ...mono, fontSize: 12, color: v != null ? T.text : T.textMute, marginTop: 3 }}>{v ?? "—"}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// College career advanced stats strip — only renders when CBB sidecar matched.
+const CbbAdvancedStrip = ({ cbbAdv }) => {
+  if (!cbbAdv) return null;
+  const cells = [
+    ["USG%", cbbAdv.usgPct != null ? cbbAdv.usgPct.toFixed(1) : null],
+    ["AST%", cbbAdv.astPct != null ? cbbAdv.astPct.toFixed(1) : null],
+    ["TRB%", cbbAdv.trbPct != null ? cbbAdv.trbPct.toFixed(1) : null],
+    ["BPM", cbbAdv.bpm != null ? (cbbAdv.bpm > 0 ? `+${cbbAdv.bpm.toFixed(1)}` : cbbAdv.bpm.toFixed(1)) : null],
+    ["ORtg", cbbAdv.ortg != null ? cbbAdv.ortg : null],
+  ];
+  if (cells.every(([, v]) => v == null)) return null;
+  return (
+    <div style={{ borderTop: `1px solid ${T.borderSoft}` }}>
+      <div style={{ ...mono, fontSize: 8, color: T.warn, letterSpacing: "0.16em", padding: "6px 16px 0", textTransform: "uppercase", opacity: 0.85 }}>
+        College Career · Advanced
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", paddingTop: 4 }}>
+        {cells.map(([k, v], i) => (
+          <div
+            key={k}
+            style={{
+              padding: "8px 12px",
+              borderRight: i < 4 ? `1px solid ${T.borderSoft}` : "none",
+            }}
+          >
+            <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>{k}</div>
+            <div style={{ ...mono, fontSize: 12, color: v != null ? T.text : T.textMute, marginTop: 3 }}>{v ?? "—"}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Compact one-line advanced strip used inside the comparables list on the
+// player profile, where vertical room is tighter.
+const CompactAdvancedChips = ({ nbaAdv, cbbAdv }) => {
+  const chips = [];
+  if (nbaAdv) {
+    if (nbaAdv.vorp != null) chips.push(["VORP", nbaAdv.vorp.toFixed(1)]);
+    if (nbaAdv.bpm != null) chips.push(["BPM", nbaAdv.bpm > 0 ? `+${nbaAdv.bpm.toFixed(1)}` : nbaAdv.bpm.toFixed(1)]);
+    if (nbaAdv.usgPct != null) chips.push(["USG", `${nbaAdv.usgPct.toFixed(0)}%`]);
+    if (nbaAdv.astPct != null) chips.push(["AST", `${nbaAdv.astPct.toFixed(0)}%`]);
+  }
+  if (chips.length === 0 && cbbAdv) {
+    if (cbbAdv.usgPct != null) chips.push(["CBB USG", `${cbbAdv.usgPct.toFixed(0)}%`]);
+    if (cbbAdv.astPct != null) chips.push(["CBB AST", `${cbbAdv.astPct.toFixed(0)}%`]);
+    if (cbbAdv.bpm != null) chips.push(["CBB BPM", cbbAdv.bpm > 0 ? `+${cbbAdv.bpm.toFixed(1)}` : cbbAdv.bpm.toFixed(1)]);
+  }
+  if (chips.length === 0) return null;
+  return (
+    <div style={{ padding: "6px 16px", borderTop: `1px solid ${T.borderSoft}`, display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+      <span style={{ ...mono, fontSize: 8, color: T.cyan, letterSpacing: "0.16em", textTransform: "uppercase", opacity: 0.85 }}>
+        Career
+      </span>
+      {chips.map(([label, val]) => (
+        <span key={label} style={{ ...mono, fontSize: 10, color: T.textDim, letterSpacing: "0.06em" }}>
+          <span style={{ color: T.textMute }}>{label}</span>{' '}
+          <span style={{ color: T.text }}>{val}</span>
+        </span>
+      ))}
+    </div>
+  );
+};
 
 const HistoricalCard = ({ p }) => {
   const tierColor = OUTCOME_TIER_COLORS[p.outcomeTier] || T.textMute;
@@ -3421,6 +3544,9 @@ const HistoricalCard = ({ p }) => {
           </div>
         ))}
       </div>
+
+      <NbaAdvancedStrip nbaAdv={p.nbaAdv} />
+      <CbbAdvancedStrip cbbAdv={p.cbbAdv} />
 
       {p.notes && (
         <div style={{ padding: "10px 16px", borderTop: `1px solid ${T.borderSoft}`, fontSize: 12, color: T.textDim, lineHeight: 1.55, fontStyle: "italic" }}>

@@ -1,5 +1,6 @@
 import historicalProspects from '../data/historicalProspects.json';
 import historicalDerived from '../data/historicalDerived.json';
+import historicalAdvancedStats from '../data/historicalAdvancedStats.json';
 
 export function positionFamily(position) {
   if (String(position).includes('PG')) return 'guard';
@@ -195,6 +196,8 @@ export function buildHistoricalDataset() {
     },
     historicalOutcomeLabel: historicalDerived[entry.id]?.outcomeLabel?.tier || null,
     modelFeatures: historicalDerived[entry.id]?.modelFeatures || null,
+    nbaAdv: historicalAdvancedStats[entry.id]?.nbaAdv || null,
+    cbbAdv: historicalAdvancedStats[entry.id]?.cbbAdv || null,
   }));
 }
 
