@@ -1,4 +1,17 @@
 import React, { useState, useMemo } from "react";
+import ARCHETYPE_CATALOG from "../data/archetypeCatalog.json";
+
+// Archetype lookup helpers
+const ARCHETYPE_BY_NAME = (() => {
+  const map = new Map();
+  for (const a of ARCHETYPE_CATALOG.archetypes || []) map.set(a.name, a);
+  return map;
+})();
+const ARCHETYPE_BY_KEY = (() => {
+  const map = new Map();
+  for (const a of ARCHETYPE_CATALOG.archetypes || []) map.set(a.key, a);
+  return map;
+})();
 
 // ---------- DESIGN TOKENS (mirror the spec) ----------
 const A = {
@@ -77,6 +90,42 @@ function efficient(score, threshold = 58) {
   return score >= threshold;
 }
 
+// Map legacy / informal archetype names used in the inlined 2026 prospects
+// onto the canonical catalog keys. New prospects should be authored with
+// catalog names directly.
+const ARCHETYPE_ALIASES = {
+  "Lead Creator": "lead-initiator",
+  "Switchblade Wing": "two-way-wing",
+  "Two-Way Wing": "two-way-wing",
+  "Shot Maker": "movement-shooter",
+  "Defensive Anchor": "rim-protector",
+  "Pressure Valve Wing": "off-ball-wing-scorer",
+  "Volume Wing Scorer": "off-ball-wing-scorer",
+  "Floor General": "iq-lead",
+  "Mismatch Cartographer": "versatile-forward",
+};
+
+// Match a prospect to a catalog archetype. Tries:
+//   1. Exact name match against the canonical catalog
+//   2. Alias mapping for legacy/informal archetype labels
+function findCatalogArchetype(prospect) {
+  if (!prospect?.archetype) return null;
+  if (ARCHETYPE_BY_NAME.has(prospect.archetype)) return ARCHETYPE_BY_NAME.get(prospect.archetype);
+  const aliasKey = ARCHETYPE_ALIASES[prospect.archetype];
+  if (aliasKey && ARCHETYPE_BY_KEY.has(aliasKey)) return ARCHETYPE_BY_KEY.get(aliasKey);
+  return null;
+}
+
+// Blend catalog anchor scores with the prospect's actual trait grades so a
+// player with a Switchblade Wing archetype but unusually high Initiate skews
+// their Initiate score above the prototype.
+function blendWithAnchors(traitName, traitGrade, anchor) {
+  if (anchor == null) return traitGrade;
+  if (traitGrade == null) return anchor;
+  // 60/40 blend toward the actual trait when present
+  return Math.round(traitGrade * 0.6 + anchor * 0.4);
+}
+
 export function deriveAdvantageProfile(prospect) {
   if (!prospect) return null;
   if (prospect.advantageProfile) return prospect.advantageProfile;
@@ -91,15 +140,30 @@ export function deriveAdvantageProfile(prospect) {
   const dv = asScore(t, "Defensive Versatility");
   if ([ac, dm, pc, sg, ob, ps, sc, dv].some((v) => v == null)) return null;
 
-  const initiate = ac;
-  const extend = Math.round((pc + dm) / 2);
-  const close = sg;
-  const space = Math.round(sg * 0.55 + ob * 0.45);
-  const connect = Math.round(ob * 0.7 + ps * 0.3);
-  const contain = dv;
-  const disrupt = Math.round(dv * 0.7 + ps * 0.3);
-  const switchScore = Math.round(sc * 0.5 + dv * 0.5);
-  const transition = Math.round(ac * 0.5 + ob * 0.5);
+  // Map 8 actual traits to the 9-trait advantage taxonomy.
+  const traitGrades = {
+    initiate: ac,
+    extend: Math.round((pc + dm) / 2),
+    close: sg,
+    space: Math.round(sg * 0.55 + ob * 0.45),
+    connect: Math.round(ob * 0.7 + ps * 0.3),
+    contain: dv,
+    disrupt: Math.round(dv * 0.7 + ps * 0.3),
+    switch: Math.round(sc * 0.5 + dv * 0.5),
+    transition: Math.round(ac * 0.5 + ob * 0.5),
+  };
+
+  // If we have a catalog archetype, blend its anchor scores with the prospect's
+  // actual trait grades. This gives better differentiation than raw derivation.
+  const archetypeMeta = findCatalogArchetype(prospect);
+  const finalTraits = {};
+  for (const key of Object.keys(traitGrades)) {
+    if (archetypeMeta?.anchorScores?.[key] != null) {
+      finalTraits[key] = blendWithAnchors(key, traitGrades[key], archetypeMeta.anchorScores[key]);
+    } else {
+      finalTraits[key] = traitGrades[key];
+    }
+  }
 
   const baseScore = prospect.score != null ? Math.round(prospect.score) : Math.round((ac + sg + sc) / 3);
   const translateScore = clamp(baseScore);
@@ -114,19 +178,23 @@ export function deriveAdvantageProfile(prospect) {
   });
 
   return {
-    archetype: prospect.archetype || "Unknown",
+    archetype: archetypeMeta?.name || prospect.archetype || "Unknown",
+    archetypeKey: archetypeMeta?.key || null,
+    archetypeTier: archetypeMeta?.tier || null,
+    archetypeNotes: archetypeMeta?.notes || null,
+    archetypeExemplars: archetypeMeta?.exemplars || [],
     derived: true,
     translate: { archetype: translateScore, absolute: translateScore },
     traits: {
-      initiate: offTrait(initiate),
-      extend: offTrait(extend),
-      close: offTrait(close),
-      space: offTrait(space),
-      connect: offTrait(connect),
-      contain: defTrait(contain),
-      disrupt: defTrait(disrupt),
-      switch: defTrait(switchScore),
-      transition: offTrait(transition),
+      initiate: offTrait(finalTraits.initiate),
+      extend: offTrait(finalTraits.extend),
+      close: offTrait(finalTraits.close),
+      space: offTrait(finalTraits.space),
+      connect: offTrait(finalTraits.connect),
+      contain: defTrait(finalTraits.contain),
+      disrupt: defTrait(finalTraits.disrupt),
+      switch: defTrait(finalTraits.switch),
+      transition: offTrait(finalTraits.transition),
     },
   };
 }
@@ -832,6 +900,25 @@ export const AdvantageProfile = ({ player }) => {
       ))}
 
       <Legend />
+
+      {(profile.archetypeExemplars?.length > 0 || profile.archetypeNotes) && (
+        <div style={{ marginTop: 14, padding: "10px 12px", background: "rgba(15, 23, 42, 0.4)", border: `1px solid ${A.ruleSoft}` }}>
+          <div style={{ ...mono, fontSize: 9, color: A.textMute, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 6 }}>
+            Archetype · {profile.archetype}{profile.archetypeTier ? ` · ${profile.archetypeTier}` : ""}
+          </div>
+          {profile.archetypeExemplars?.length > 0 && (
+            <div style={{ fontSize: 11, color: A.textDim, marginBottom: 4 }}>
+              <span style={{ color: A.textMute }}>NBA exemplars: </span>
+              {profile.archetypeExemplars.join(" · ")}
+            </div>
+          )}
+          {profile.archetypeNotes && (
+            <div style={{ fontSize: 11, color: A.textDim, lineHeight: 1.5, fontStyle: "italic" }}>
+              {profile.archetypeNotes}
+            </div>
+          )}
+        </div>
+      )}
 
       {profile.derived && (
         <div style={{ ...mono, fontSize: 9, color: A.textMute, letterSpacing: "0.12em", marginTop: 14, textAlign: "center", textTransform: "uppercase" }}>
