@@ -12,8 +12,15 @@ const path = require('path');
 const STATHEAD_DIR = path.join(__dirname, '..', '..', 'imports', 'upstream', 'stathead');
 const HIST_DIR = path.join(__dirname, '..', '..', 'imports', 'upstream', 'historical');
 
-const CBB_PATH = path.join(STATHEAD_DIR, 'stathead-cbb-seasons.csv');
-const NBA_PATH = path.join(STATHEAD_DIR, 'stathead-nba-early-career.csv');
+// Anything matching these prefixes is loaded; you can paginate Stathead
+// queries and drop the resulting CSVs in alongside the originals.
+function listCsvs(prefix) {
+  if (!fs.existsSync(STATHEAD_DIR)) return [];
+  return fs.readdirSync(STATHEAD_DIR)
+    .filter((name) => name.toLowerCase().startsWith(prefix) && name.toLowerCase().endsWith('.csv'))
+    .map((name) => path.join(STATHEAD_DIR, name))
+    .sort();
+}
 
 // ---------- CSV PARSER (handles SR header lines + quoted fields) ----------
 function parseCsv(text) {
@@ -105,6 +112,11 @@ function buildCbbRow(row) {
     bpm: toNumber(row.BPM),
     gameScore: toNumber(row.GmSc),
     srSlug: row['Player-additional'] || null,
+    draftYear: toNumber(row['Draft Year']),
+    draftRound: toNumber(row.Round),
+    draftPick: toNumber(row.Pick),
+    draftTeam: row['Draft Team'] || null,
+    draftCollege: row['Draft College'] || row.College || null,
     source: 'sports-reference / stathead',
   };
 }
@@ -134,24 +146,36 @@ function buildNbaRow(row) {
     pos: row.Pos || '',
     teams: row.Team || '',
     srSlug: row['Player-additional'] || null,
+    draftYear: toNumber(row['Draft Year']),
+    draftRound: toNumber(row.Round),
+    draftPick: toNumber(row.Pick),
+    draftTeam: row['Draft Team'] || null,
+    college: row.College || null,
     source: 'sports-reference / stathead',
   };
 }
 
 // ---------- DRIVER ----------
-function loadCsv(file, builder) {
-  if (!fs.existsSync(file)) {
-    console.log(`SKIP ${path.basename(file)} (not found)`);
+function loadCsvs(prefix, builder) {
+  const files = listCsvs(prefix);
+  if (files.length === 0) {
+    console.log(`SKIP ${prefix}*.csv (none found)`);
     return new Map();
   }
-  const { rows } = parseCsv(fs.readFileSync(file, 'utf8'));
   const map = new Map();
-  for (const row of rows) {
-    const key = normalizeName(row.Player);
-    if (!key) continue;
-    map.set(key, builder(row));
+  let totalRows = 0;
+  for (const file of files) {
+    const { rows } = parseCsv(fs.readFileSync(file, 'utf8'));
+    for (const row of rows) {
+      const key = normalizeName(row.Player);
+      if (!key) continue;
+      // Last-write-wins; later files (alphabetically after) override earlier
+      map.set(key, builder(row));
+    }
+    console.log(`  + ${path.basename(file)}: ${rows.length} rows`);
+    totalRows += rows.length;
   }
-  console.log(`Loaded ${rows.length} rows from ${path.basename(file)}`);
+  console.log(`Loaded ${totalRows} rows from ${files.length} ${prefix}*.csv file(s)`);
   return map;
 }
 
@@ -173,8 +197,8 @@ function processYear(year, cbbMap, nbaMap) {
 }
 
 function main() {
-  const cbbMap = loadCsv(CBB_PATH, buildCbbRow);
-  const nbaMap = loadCsv(NBA_PATH, buildNbaRow);
+  const cbbMap = loadCsvs('stathead-cbb', buildCbbRow);
+  const nbaMap = loadCsvs('stathead-nba', buildNbaRow);
   let totalHits = 0;
   let totalRecords = 0;
   for (let year = 2000; year <= 2025; year++) {
