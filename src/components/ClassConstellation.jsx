@@ -17,44 +17,147 @@ const mono = {
   fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
 };
 
-// Tier color map. Falls back to cyan if a prospect has no tier.
 const TIER_COLORS = {
-  "Tier 1": "#22D3EE", // cyan — Franchise / Star
-  "Tier 2": "#3B82F6", // blue — All-Star
-  "Tier 3": "#10B981", // green — Starter
-  "Tier 4": "#F59E0B", // amber — Rotation
-  "Tier 5": "#64748B", // gray — Developmental
-  Star: "#22D3EE",
-  Hit: "#3B82F6",
-  Swing: "#F59E0B",
-  Bust: "#64748B",
+  "Tier 1": "#22D3EE",
+  "Tier 2": "#3B82F6",
+  "Tier 3": "#10B981",
+  "Tier 4": "#F59E0B",
+  "Tier 5": "#64748B",
 };
 
-const QUADRANTS = [
-  { id: "Guard", label: "Guards", center: -Math.PI / 2, tint: "rgba(34, 211, 238, 0.05)" },     // 12 o'clock — cyan
-  { id: "Wing", label: "Wings", center: 0, tint: "rgba(59, 130, 246, 0.05)" },                  // 3 o'clock — blue
-  { id: "Forward", label: "Forwards", center: Math.PI / 2, tint: "rgba(168, 85, 247, 0.05)" }, // 6 o'clock — purple
-  { id: "Big", label: "Bigs", center: Math.PI, tint: "rgba(16, 185, 129, 0.05)" },              // 9 o'clock — green
+// ---------- ZONES ----------
+// 10 evocative archetype-driven zones. Each prospect is placed into the zone
+// matching their archetype (legacy or catalog name). Zone ordering walks the
+// dial clockwise from 12 o'clock so adjacent zones are stylistic neighbors.
+const ZONES = [
+  {
+    id: "architects",
+    label: "Architects",
+    blurb: "Primary creators · lead playmakers",
+    tint: "rgba(34, 211, 238, 0.06)",
+    archetypes: [
+      "Lead Initiator", "IQ Lead", "Floor General",
+      "THE TOTALITY", "Tempo Manipulator", "Offensive Nexus",
+    ],
+  },
+  {
+    id: "hunters",
+    label: "Hunters",
+    blurb: "High-usage iso scorers",
+    tint: "rgba(168, 85, 247, 0.06)",
+    archetypes: [
+      "Volume Lead Guard", "High-Usage Lead", "Bench Scoring Guard",
+      "Iso Surgeon", "Slithery Creator", "THE REAPER",
+      "Lead Creator", // legacy
+    ],
+  },
+  {
+    id: "snipers",
+    label: "Snipers",
+    blurb: "Pull-up + movement shooters",
+    tint: "rgba(59, 130, 246, 0.06)",
+    archetypes: [
+      "Movement Shooter", "Spot-Up Specialist",
+      "THE SINGULARITY", "Shot Maker", // legacy
+    ],
+  },
+  {
+    id: "specialists",
+    label: "Specialists",
+    blurb: "3-and-D · catch-and-shoot wings",
+    tint: "rgba(16, 185, 129, 0.06)",
+    archetypes: [
+      "3-and-D", "Off-Ball Wing",
+    ],
+  },
+  {
+    id: "connectors",
+    label: "Connectors",
+    blurb: "Glue · passing wings · cutters",
+    tint: "rgba(245, 158, 11, 0.06)",
+    archetypes: [
+      "Connector", "Connector Four",
+    ],
+  },
+  {
+    id: "hammers",
+    label: "Hammers",
+    blurb: "Athletic finishers · downhill drivers",
+    tint: "rgba(216, 90, 48, 0.06)",
+    archetypes: [
+      "Off-Ball Wing Scorer", "Hammer Wing", "Vertical Phenom",
+      "Pressure Valve Wing", "Volume Wing Scorer", // legacy
+    ],
+  },
+  {
+    id: "two-way-wings",
+    label: "Two-Way Wings",
+    blurb: "Multi-modal wings · star versatility",
+    tint: "rgba(34, 211, 238, 0.06)",
+    archetypes: [
+      "Two-Way Wing", "Combo Forward", "Versatile Forward",
+      "Three-Level Apex", "Silken Apex", "Two-Way Terminator",
+      "Switchblade Wing", "Mismatch Cartographer", // legacy
+    ],
+  },
+  {
+    id: "lockdown",
+    label: "Lockdown",
+    blurb: "Point-of-attack defenders",
+    tint: "rgba(168, 85, 247, 0.06)",
+    archetypes: [
+      "POA Defender",
+    ],
+  },
+  {
+    id: "anchors",
+    label: "Anchors",
+    blurb: "Rim protection · defensive bigs",
+    tint: "rgba(59, 130, 246, 0.06)",
+    archetypes: [
+      "Rim Protector", "Switching Big", "Universal Big",
+      "Two-Way Anchor", "Rim Pressure Titan", "Interior Dominator",
+      "Defensive Anchor", // legacy
+    ],
+  },
+  {
+    id: "stretchers",
+    label: "Stretchers",
+    blurb: "Floor-spacing bigs · stretch fours",
+    tint: "rgba(16, 185, 129, 0.06)",
+    archetypes: [
+      "Stretch Four", "Floor-Spacing Big", "Pick-and-Pop Big",
+      "Rim-Running Big", "Skilled Center",
+    ],
+  },
 ];
 
-// Map a prospect's pos string to a quadrant id.
-function positionFamily(pos) {
-  if (!pos) return "Wing";
-  const upper = String(pos).toUpperCase().trim();
-  if (/^PG$|^SG$|^G$/.test(upper) || /GUARD/.test(upper)) return "Guard";
-  if (/^SF$|^GF$|^F-G$|^G-F$/.test(upper)) return "Wing";
-  if (/^PF$|FORWARD-CENTER|^F$/.test(upper)) return "Forward";
-  if (/^C$|CENTER|F-C/.test(upper)) return "Big";
-  if (/FORWARD/.test(upper)) return "Forward";
-  return "Wing";
+// Build archetype -> zone index lookup
+const ARCHETYPE_TO_ZONE = (() => {
+  const map = new Map();
+  ZONES.forEach((zone, idx) => {
+    for (const arche of zone.archetypes) map.set(arche, idx);
+  });
+  return map;
+})();
+
+function zoneIndexFor(prospect) {
+  if (!prospect) return null;
+  const found = ARCHETYPE_TO_ZONE.get(prospect.archetype);
+  if (found != null) return found;
+  // Fallback: position-based bucket so we never lose a prospect
+  const pos = String(prospect.pos || "").toUpperCase();
+  if (/^PG|^SG|^G/.test(pos)) return 0;       // Architects
+  if (/^SF|GF|F-G/.test(pos)) return 6;       // Two-Way Wings
+  if (/^PF|^F$/.test(pos)) return 9;           // Stretchers
+  if (/^C/.test(pos)) return 8;                // Anchors
+  return 6;
 }
 
 function tierKey(prospect) {
   const tier = prospect.tier || prospect.baseTier || "";
-  // Match "Tier 1 - ..." style
   const match = String(tier).match(/Tier\s+(\d)/);
-  if (match) return `Tier ${match[1]}`;
-  return null;
+  return match ? `Tier ${match[1]}` : null;
 }
 
 function colorForProspect(prospect) {
@@ -62,54 +165,45 @@ function colorForProspect(prospect) {
   return (key && TIER_COLORS[key]) || C.cyan;
 }
 
-// Deterministic pseudo-random in [0,1) seeded by a player id and a salt.
-// We need stable layout across renders without storing positions.
+// Deterministic pseudo-random
 function seededRandom(id, salt) {
   let h = salt >>> 0;
   const str = String(id);
-  for (let i = 0; i < str.length; i++) {
-    h = ((h << 5) - h + str.charCodeAt(i)) | 0;
-  }
-  // Mix
+  for (let i = 0; i < str.length; i++) h = ((h << 5) - h + str.charCodeAt(i)) | 0;
   h = ((h ^ (h >>> 16)) * 0x85ebca6b) | 0;
   h = ((h ^ (h >>> 13)) * 0xc2b2ae35) | 0;
   h = (h ^ (h >>> 16)) >>> 0;
   return (h % 100000) / 100000;
 }
 
-// Layout prospects as a galaxy of clusters. Each position family gets a
-// quadrant with its own arc. Radius is driven by score (better players ride
-// the outer rim) with random scatter, and angle is decoupled from rank so the
-// quadrant fills as a cloud rather than tracing a curve.
 function layoutProspects(prospects, half, available) {
   if (!prospects.length) return [];
-  const grouped = new Map();
+  const grouped = ZONES.map(() => []);
   for (const p of prospects) {
-    const fam = positionFamily(p.pos);
-    if (!grouped.has(fam)) grouped.set(fam, []);
-    grouped.get(fam).push(p);
+    const zoneIdx = zoneIndexFor(p);
+    if (zoneIdx != null) grouped[zoneIdx].push(p);
   }
 
   const placed = [];
-  for (const quadrant of QUADRANTS) {
-    const list = grouped.get(quadrant.id) || [];
-    const arc = (Math.PI / 2) * 0.85;     // 76.5° usable (leaves padding between quadrants)
-    const minRadius = 60;                 // inner edge of the quadrant cloud
-    const maxRadius = available - 8;      // outer edge
+  const zoneCount = ZONES.length;
+  const arcPerZone = (Math.PI * 2) / zoneCount;
 
-    // Score range within this quadrant for normalization. Falling back to a
-    // sensible default keeps quadrants with sparse data from collapsing.
+  ZONES.forEach((zone, zoneIdx) => {
+    const list = grouped[zoneIdx] || [];
+    if (list.length === 0) return;
+    // Center this zone at angle, leaving small gap between zones
+    const centerAngle = -Math.PI / 2 + zoneIdx * arcPerZone + arcPerZone / 2;
+    const usableArc = arcPerZone * 0.85;
+    const minRadius = 70;
+    const maxRadius = available - 8;
+
     const scores = list.map((p) => p.score ?? p.scores?.overallComposite ?? 50);
-    const scoreMin = scores.length ? Math.min(...scores) : 40;
-    const scoreMax = scores.length ? Math.max(...scores) : 90;
+    const scoreMin = Math.min(...scores);
+    const scoreMax = Math.max(...scores);
     const scoreSpan = Math.max(8, scoreMax - scoreMin);
 
     list.forEach((p) => {
       const score = p.score ?? p.scores?.overallComposite ?? 50;
-      // Density bias: scoreT^0.55 is concave, so high scores stay near the
-      // rim (small scoreT distance from 1) while low scores compress toward
-      // center. Top-tier players also get reduced jitter so they cluster
-      // tightly on the outer ring.
       const rawT = Math.max(0, Math.min(1, (score - scoreMin) / scoreSpan));
       const scoreT = Math.pow(rawT, 0.55);
       const tier = tierKey(p);
@@ -119,11 +213,9 @@ function layoutProspects(prospects, half, available) {
       const radiusT = Math.max(0, Math.min(1, scoreT + radialJitter));
       const radius = minRadius + radiusT * (maxRadius - minRadius);
 
-      // Angle: independent of rank/score. Pure pseudo-random within the arc.
-      const angleT = seededRandom(p.id, 17) - 0.5; // -0.5..0.5
-      const angle = quadrant.center + angleT * arc;
+      const angleT = seededRandom(p.id, 17) - 0.5;
+      const angle = centerAngle + angleT * usableArc;
 
-      // Size scales harder for top tiers so they read as anchors of the cluster.
       const sizeBase = Math.max(0, Math.min(1, (score - 50) / 40));
       const sizeT = isTopTier ? Math.min(1, sizeBase * 1.2 + 0.15) : sizeBase;
       const r = 4 + sizeT * 11;
@@ -133,13 +225,12 @@ function layoutProspects(prospects, half, available) {
         y: half + Math.sin(angle) * radius,
         r,
         color: colorForProspect(p),
-        quadrant: quadrant.id,
+        zoneIdx,
       });
     });
-  }
+  });
 
-  // Resolve overlaps with a few relaxation passes — push any pair that's too
-  // close apart along the line between them.
+  // Resolve overlaps
   const minSep = 14;
   for (let pass = 0; pass < 4; pass++) {
     for (let i = 0; i < placed.length; i++) {
@@ -152,12 +243,10 @@ function layoutProspects(prospects, half, available) {
         const want = Math.max(minSep, a.r + b.r + 4);
         if (dist < want) {
           const push = (want - dist) / 2;
-          const nx = dx / dist;
-          const ny = dy / dist;
-          a.x -= nx * push;
-          a.y -= ny * push;
-          b.x += nx * push;
-          b.y += ny * push;
+          a.x -= (dx / dist) * push;
+          a.y -= (dy / dist) * push;
+          b.x += (dx / dist) * push;
+          b.y += (dy / dist) * push;
         }
       }
     }
@@ -165,14 +254,17 @@ function layoutProspects(prospects, half, available) {
   return placed;
 }
 
-export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }) => {
+// ---------- COMPONENT ----------
+export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }) => {
   const [hoveredId, setHoveredId] = useState(null);
-  const [activeFilter, setActiveFilter] = useState("ALL");
+  const [zoneFilter, setZoneFilter] = useState("ALL");
+  const [connectionMode, setConnectionMode] = useState("off"); // off | school | archetype
 
   const filteredProspects = useMemo(() => {
-    if (activeFilter === "ALL") return prospects;
-    return prospects.filter((p) => positionFamily(p.pos) === activeFilter);
-  }, [prospects, activeFilter]);
+    if (zoneFilter === "ALL") return prospects;
+    const targetZone = ZONES.findIndex((z) => z.id === zoneFilter);
+    return prospects.filter((p) => zoneIndexFor(p) === targetZone);
+  }, [prospects, zoneFilter]);
 
   const half = size / 2;
   const available = half - 30;
@@ -180,6 +272,29 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }
   const hovered = hoveredId ? placed.find((p) => p.prospect.id === hoveredId) : null;
 
   const ringRadii = [available, available * 0.66, available * 0.33];
+
+  // Compute connection edges based on mode
+  const connections = useMemo(() => {
+    if (connectionMode === "off") return [];
+    const edges = [];
+    for (let i = 0; i < placed.length; i++) {
+      for (let j = i + 1; j < placed.length; j++) {
+        const a = placed[i];
+        const b = placed[j];
+        let connect = false;
+        if (connectionMode === "school") {
+          const aSchool = a.prospect.school;
+          const bSchool = b.prospect.school;
+          if (aSchool && bSchool && aSchool === bSchool) connect = true;
+        } else if (connectionMode === "archetype") {
+          if (a.prospect.archetype && a.prospect.archetype === b.prospect.archetype) connect = true;
+        }
+        if (connect) edges.push({ a, b });
+      }
+    }
+    return edges;
+  }, [placed, connectionMode]);
+
   const tierTotals = useMemo(() => {
     const totals = {};
     for (const p of prospects) {
@@ -189,6 +304,15 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }
     return totals;
   }, [prospects]);
 
+  const zoneCounts = useMemo(() => {
+    const counts = ZONES.map(() => 0);
+    for (const p of prospects) {
+      const z = zoneIndexFor(p);
+      if (z != null) counts[z]++;
+    }
+    return counts;
+  }, [prospects]);
+
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
       <div style={{ marginBottom: 18, display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}>
@@ -196,31 +320,75 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }
           <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: C.textMute, textTransform: "uppercase" }}>Prospera Lens</div>
           <h1 style={{ fontSize: 32, color: C.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>Class Map</h1>
           <div style={{ fontSize: 13, color: C.textDim }}>
-            All {prospects.length} prospects · sized by overall score · colored by board tier
+            {prospects.length} prospects · 10 archetype zones · sized by overall score · colored by board tier
           </div>
         </div>
-        <div style={{ display: "flex", gap: 4 }}>
-          {["ALL", "Guard", "Wing", "Forward", "Big"].map((tab) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActiveFilter(tab)}
-              style={{
-                ...mono,
-                fontSize: 10,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: activeFilter === tab ? C.cyan : C.textDim,
-                background: activeFilter === tab ? "rgba(34, 211, 238, 0.1)" : "transparent",
-                border: `1px solid ${activeFilter === tab ? C.cyan : C.border}`,
-                padding: "6px 10px",
-                cursor: "pointer",
-              }}
-            >
-              {tab === "ALL" ? "All Positions" : tab + "s"}
-            </button>
-          ))}
+        <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+          <div style={{ display: "flex", gap: 4 }}>
+            <span style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: C.textMute, alignSelf: "center", marginRight: 4 }}>CONNECT:</span>
+            {[["off", "Off"], ["school", "School"], ["archetype", "Archetype"]].map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setConnectionMode(id)}
+                style={{
+                  ...mono,
+                  fontSize: 10,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: connectionMode === id ? C.cyan : C.textDim,
+                  background: connectionMode === id ? "rgba(34, 211, 238, 0.1)" : "transparent",
+                  border: `1px solid ${connectionMode === id ? C.cyan : C.border}`,
+                  padding: "4px 8px",
+                  cursor: "pointer",
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Zone filter strip */}
+      <div style={{ display: "flex", gap: 4, marginBottom: 14, flexWrap: "wrap" }}>
+        <button
+          type="button"
+          onClick={() => setZoneFilter("ALL")}
+          style={{
+            ...mono,
+            fontSize: 10,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: zoneFilter === "ALL" ? C.cyan : C.textDim,
+            background: zoneFilter === "ALL" ? "rgba(34, 211, 238, 0.08)" : "transparent",
+            border: `1px solid ${zoneFilter === "ALL" ? C.cyan : C.border}`,
+            padding: "5px 9px",
+            cursor: "pointer",
+          }}
+        >
+          All Zones · {prospects.length}
+        </button>
+        {ZONES.map((zone, idx) => (
+          <button
+            key={zone.id}
+            type="button"
+            onClick={() => setZoneFilter(zone.id)}
+            style={{
+              ...mono,
+              fontSize: 10,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: zoneFilter === zone.id ? C.cyan : C.textDim,
+              background: zoneFilter === zone.id ? "rgba(34, 211, 238, 0.08)" : "transparent",
+              border: `1px solid ${zoneFilter === zone.id ? C.cyan : C.border}`,
+              padding: "5px 9px",
+              cursor: "pointer",
+            }}
+          >
+            {zone.label} · {zoneCounts[idx]}
+          </button>
+        ))}
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: 16, alignItems: "start" }} className="prospera-eval-grid">
@@ -233,59 +401,66 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }
             aria-label="Class constellation map"
             onMouseLeave={() => setHoveredId(null)}
           >
-            {/* quadrant tint wedges (faint background wash per zone) */}
-            {QUADRANTS.map((q) => {
-              const arc = (Math.PI / 2) * 0.85;
-              const start = q.center - arc / 2;
-              const end = q.center + arc / 2;
+            {/* zone tint wedges */}
+            {ZONES.map((zone, idx) => {
+              const arcPerZone = (Math.PI * 2) / ZONES.length;
+              const start = -Math.PI / 2 + idx * arcPerZone + arcPerZone * 0.075;
+              const end = -Math.PI / 2 + (idx + 1) * arcPerZone - arcPerZone * 0.075;
               const x1 = half + Math.cos(start) * available;
               const y1 = half + Math.sin(start) * available;
               const x2 = half + Math.cos(end) * available;
               const y2 = half + Math.sin(end) * available;
-              const d = `M ${half} ${half} L ${x1} ${y1} A ${available} ${available} 0 0 1 ${x2} ${y2} Z`;
-              return <path key={q.id} d={d} fill={q.tint} />;
+              const largeArc = (end - start) > Math.PI ? 1 : 0;
+              const d = `M ${half} ${half} L ${x1} ${y1} A ${available} ${available} 0 ${largeArc} 1 ${x2} ${y2} Z`;
+              return <path key={zone.id} d={d} fill={zone.tint} />;
             })}
 
             {/* radial rings */}
             {ringRadii.map((r, i) => (
               <circle key={i} cx={half} cy={half} r={r} fill="none" stroke={i === 0 ? C.borderSoft : C.ringMute} strokeWidth={1} strokeDasharray={i === 0 ? "2 4" : "1 4"} />
             ))}
-            {/* quadrant separators (cross at 45° offsets) */}
-            {[Math.PI / 4, 3 * Math.PI / 4, 5 * Math.PI / 4, 7 * Math.PI / 4].map((a) => (
-              <line
-                key={a}
-                x1={half + Math.cos(a) * 30}
-                y1={half + Math.sin(a) * 30}
-                x2={half + Math.cos(a) * available}
-                y2={half + Math.sin(a) * available}
-                stroke={C.ringMute}
-                strokeWidth={1}
-                strokeDasharray="2 6"
-              />
-            ))}
-            {/* quadrant labels */}
-            {QUADRANTS.map((q) => {
-              const lx = half + Math.cos(q.center) * (available + 16);
-              const ly = half + Math.sin(q.center) * (available + 16);
+
+            {/* zone labels */}
+            {ZONES.map((zone, idx) => {
+              const arcPerZone = (Math.PI * 2) / ZONES.length;
+              const angle = -Math.PI / 2 + idx * arcPerZone + arcPerZone / 2;
+              const lx = half + Math.cos(angle) * (available + 18);
+              const ly = half + Math.sin(angle) * (available + 18);
               return (
                 <text
-                  key={q.id}
+                  key={zone.id}
                   x={lx}
                   y={ly}
-                  fill={C.textMute}
+                  fill={C.textDim}
                   fontFamily={mono.fontFamily}
                   fontSize={11}
+                  fontWeight={600}
                   textAnchor="middle"
                   dominantBaseline="middle"
                   letterSpacing="0.16em"
                   style={{ textTransform: "uppercase" }}
                 >
-                  {q.label}
+                  {zone.label}
                 </text>
               );
             })}
+
+            {/* connection lines */}
+            {connections.map((edge, i) => (
+              <line
+                key={i}
+                x1={edge.a.x}
+                y1={edge.a.y}
+                x2={edge.b.x}
+                y2={edge.b.y}
+                stroke="rgba(34, 211, 238, 0.18)"
+                strokeWidth={0.7}
+              />
+            ))}
+
             {/* center marker */}
             <circle cx={half} cy={half} r={3} fill={C.borderSoft} />
+
             {/* prospect nodes */}
             {placed.map((node) => {
               const isHovered = hoveredId === node.prospect.id;
@@ -340,6 +515,9 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }
                     {hovered.prospect.archetype}
                   </div>
                 )}
+                <div style={{ ...mono, fontSize: 9, color: C.textMute, letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase" }}>
+                  Zone: {ZONES[hovered.zoneIdx]?.label || "—"}
+                </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 10, paddingTop: 10, borderTop: `1px solid ${C.borderSoft}` }}>
                   <div>
                     <div style={{ ...mono, fontSize: 9, color: C.textMute, letterSpacing: "0.12em" }}>BOARD</div>
@@ -387,7 +565,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }
               Reading the Map
             </div>
             <div style={{ fontSize: 11, color: C.textDim, lineHeight: 1.55 }}>
-              Outer ring = top of the class. Inner ring = deeper bench. Quadrants split by position family. Star size scales with overall score.
+              10 zones grouped by play-style archetype, walking clockwise from Architects at 12 o'clock. Closer to the rim = higher overall score. Star size scales with score; top-tier players sit on the outer ring. Toggle <span style={{ color: C.cyan }}>CONNECT</span> to draw lines between prospects sharing a school or archetype.
             </div>
           </div>
         </div>
