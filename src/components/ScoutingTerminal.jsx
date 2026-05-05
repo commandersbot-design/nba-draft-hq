@@ -1130,13 +1130,53 @@ const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Co
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
 
-const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNote, customTier = "", customTags = [], onSetCustomTier, onToggleCustomTag }) => {
+const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAddNote, onDeleteNote, customTier = "", customTags = [], onSetCustomTier, onToggleCustomTag }) => {
   const [tab, setTab] = useState("Prospect Stats");
   const { displayScore, active: weightsActive } = useCustomWeights();
-  const p = useMemo(
-    () => ({ ...rawP, tier: customTier || rawP.tier, customTags }),
-    [rawP, customTier, customTags]
-  );
+  const p = useMemo(() => {
+    // Merge scout overrides from the deep dive (if present) into the prospect.
+    // Downstream consumers (TraitsTab, AdvantageProfile, StatProfilePanelFromTraits, etc.)
+    // read from p.traits9 / p.risks directly, so merging here makes overrides
+    // flow through the whole profile without per-component plumbing.
+    const traitOverrides = deepDive?.traitOverrides || {};
+    const riskOverrides = deepDive?.riskOverrides || {};
+    const traits9Base = rawP.traits9 || {};
+    const risksBase = rawP.risks || {};
+    const traits9Merged = { ...traits9Base };
+    const risksMerged = { ...risksBase };
+    const overriddenTraits = {};
+    const overriddenRisks = {};
+    for (const [k, v] of Object.entries(traitOverrides)) {
+      if (v == null || v === "") continue;
+      const sys = traits9Base[k] ?? null;
+      if (sys != null && Number(v) === Number(sys)) continue;
+      traits9Merged[k] = Number(v);
+      overriddenTraits[k] = { scout: Number(v), system: sys };
+    }
+    for (const [k, v] of Object.entries(riskOverrides)) {
+      if (v == null || v === "") continue;
+      const sys = risksBase[k] ?? null;
+      if (sys != null && Number(v) === Number(sys)) continue;
+      risksMerged[k] = Number(v);
+      overriddenRisks[k] = { scout: Number(v), system: sys };
+    }
+    return {
+      ...rawP,
+      tier: customTier || rawP.tier,
+      customTags,
+      traits9: traits9Merged,
+      risks: risksMerged,
+      __scoutOverrides: {
+        traits: overriddenTraits,
+        risks: overriddenRisks,
+        any: Object.keys(overriddenTraits).length + Object.keys(overriddenRisks).length > 0,
+        ceilingTier: deepDive?.ceilingTier || null,
+        floorTier: deepDive?.floorTier || null,
+        stance: deepDive?.buyHoldSell || null,
+        confidence: deepDive?.confidence || null,
+      },
+    };
+  }, [rawP, customTier, customTags, deepDive]);
   return (
     <div style={{ padding: "20px 28px 60px", maxWidth: 1400, margin: "0 auto" }}>
       <button
@@ -1406,6 +1446,55 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
           </div>
         ))}
       </div>
+
+      {/* SCOUT OVERRIDES BANNER */}
+      {p.__scoutOverrides?.any && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            background: "rgba(34, 211, 238, 0.06)",
+            border: `1px solid rgba(34, 211, 238, 0.4)`,
+            borderLeft: `3px solid ${T.cyan}`,
+            padding: "10px 14px",
+            marginBottom: 16,
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.cyan, textTransform: "uppercase", fontWeight: 600 }}>
+            Scout View Active
+          </div>
+          <div style={{ fontSize: 12, color: T.textDim, lineHeight: 1.5 }}>
+            {Object.keys(p.__scoutOverrides.traits).length > 0 && (
+              <span>{Object.keys(p.__scoutOverrides.traits).length} trait override{Object.keys(p.__scoutOverrides.traits).length === 1 ? "" : "s"}</span>
+            )}
+            {Object.keys(p.__scoutOverrides.traits).length > 0 && Object.keys(p.__scoutOverrides.risks).length > 0 && <span style={{ color: T.textMute }}> · </span>}
+            {Object.keys(p.__scoutOverrides.risks).length > 0 && (
+              <span>{Object.keys(p.__scoutOverrides.risks).length} risk override{Object.keys(p.__scoutOverrides.risks).length === 1 ? "" : "s"}</span>
+            )}
+            <span style={{ color: T.textMute, marginLeft: 6 }}>applied to system values</span>
+          </div>
+          <span style={{ flex: 1 }} />
+          <button
+            type="button"
+            onClick={() => setTab("Traits")}
+            style={{
+              ...mono,
+              fontSize: 9,
+              letterSpacing: "0.14em",
+              color: T.cyan,
+              background: "transparent",
+              border: `1px solid ${T.cyan}`,
+              padding: "4px 9px",
+              cursor: "pointer",
+              textTransform: "uppercase",
+            }}
+          >
+            View in Traits
+          </button>
+        </div>
+      )}
 
       {/* TABS */}
       <div
@@ -2055,8 +2144,11 @@ const Section = ({ title, children }) => (
 
 const TraitsTab = ({ p }) => {
   const { displayScore } = useCustomWeights();
-  const flaggedRisks = Object.entries(p.risks || {}).filter(([, v]) => v === 1);
-  const cleanRisks = Object.entries(p.risks || {}).filter(([, v]) => v === 0);
+  // Risks treat 0=Clean, 1=Watch, 2=Real Risk, 3=Critical (deep dive scale)
+  // Legacy data uses 0/1 (clean/flagged). Anything >=1 is "flagged" for the panel.
+  const flaggedRisks = Object.entries(p.risks || {}).filter(([, v]) => Number(v) >= 1);
+  const cleanRisks = Object.entries(p.risks || {}).filter(([, v]) => Number(v) === 0);
+  const overrides = p.__scoutOverrides || { traits: {}, risks: {} };
   return (
     <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 16 }} className="prospera-eval-grid">
       <div style={{ display: "grid", gap: 16 }}>
@@ -2065,15 +2157,47 @@ const TraitsTab = ({ p }) => {
             FULL EVALUATION TAXONOMY · 1–10 SCALE
           </div>
           <div style={{ display: "grid", gap: 14 }}>
-            {Object.entries(p.traits9 || {}).map(([k, v]) => (
-              <div key={k}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                  <span style={{ fontSize: 13, color: T.text }}>{k}</span>
-                  <span style={{ ...mono, fontSize: 12, color: T.cyan }}>{v} / 10</span>
+            {Object.entries(p.traits9 || {}).map(([k, v]) => {
+              const ovr = overrides.traits[k];
+              return (
+                <div key={k}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, gap: 8, flexWrap: "wrap" }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      <span style={{ fontSize: 13, color: T.text }}>{k}</span>
+                      {ovr && (
+                        <span
+                          title={`Scout override: was ${ovr.system}/10, set to ${ovr.scout}/10`}
+                          style={{
+                            ...mono,
+                            fontSize: 8,
+                            letterSpacing: "0.14em",
+                            color: T.cyan,
+                            border: `1px solid ${T.cyan}`,
+                            padding: "1px 5px",
+                            textTransform: "uppercase",
+                            fontWeight: 600,
+                          }}
+                        >
+                          Scout
+                        </span>
+                      )}
+                    </span>
+                    <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      {ovr && ovr.system != null && (
+                        <span
+                          style={{ ...mono, fontSize: 10, color: T.textMute, textDecoration: "line-through" }}
+                          title="Original system value"
+                        >
+                          {ovr.system}/10
+                        </span>
+                      )}
+                      <span style={{ ...mono, fontSize: 12, color: T.cyan }}>{v} / 10</span>
+                    </span>
+                  </div>
+                  <MetricBar value={v * 10} />
                 </div>
-                <MetricBar value={v * 10} />
-              </div>
-            ))}
+              );
+            })}
             {Object.keys(p.traits9 || {}).length === 0 && (
               <div style={{ fontSize: 12, color: T.textMute }}>No trait evaluation on file.</div>
             )}
@@ -2107,14 +2231,37 @@ const TraitsTab = ({ p }) => {
             {flaggedRisks.length === 0 && (
               <div style={{ fontSize: 12, color: T.textMute }}>No active risks flagged.</div>
             )}
-            {flaggedRisks.map(([k]) => (
-              <div key={k} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", borderTop: `1px solid ${T.borderSoft}`, borderRight: `1px solid ${T.borderSoft}`, borderBottom: `1px solid ${T.borderSoft}`, borderLeft: `2px solid ${T.warn}` }}>
-                <AlertTriangle size={12} color={T.warn} />
-                <span style={{ fontSize: 12, color: T.text }}>{k}</span>
-                <span style={{ flex: 1 }} />
-                <span style={{ ...mono, fontSize: 9, color: T.warn, letterSpacing: "0.1em" }}>FLAGGED</span>
-              </div>
-            ))}
+            {flaggedRisks.map(([k, val]) => {
+              const ovr = overrides.risks[k];
+              const sev = Number(val);
+              const sevColor = sev >= 3 ? T.danger : sev >= 2 ? T.warn : T.cyan;
+              const sevLabel = sev >= 3 ? "CRITICAL" : sev >= 2 ? "REAL RISK" : "WATCH";
+              return (
+                <div key={k} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", borderTop: `1px solid ${T.borderSoft}`, borderRight: `1px solid ${T.borderSoft}`, borderBottom: `1px solid ${T.borderSoft}`, borderLeft: `2px solid ${sevColor}`, flexWrap: "wrap" }}>
+                  <AlertTriangle size={12} color={sevColor} />
+                  <span style={{ fontSize: 12, color: T.text }}>{k}</span>
+                  {ovr && (
+                    <span
+                      title={`Scout override: was ${ovr.system ?? "—"}, set to ${ovr.scout}`}
+                      style={{
+                        ...mono,
+                        fontSize: 8,
+                        letterSpacing: "0.14em",
+                        color: T.cyan,
+                        border: `1px solid ${T.cyan}`,
+                        padding: "1px 5px",
+                        textTransform: "uppercase",
+                        fontWeight: 600,
+                      }}
+                    >
+                      Scout
+                    </span>
+                  )}
+                  <span style={{ flex: 1 }} />
+                  <span style={{ ...mono, fontSize: 9, color: sevColor, letterSpacing: "0.1em" }}>{sevLabel}</span>
+                </div>
+              );
+            })}
           </div>
           {cleanRisks.length > 0 && (
             <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${T.borderSoft}` }}>
@@ -3607,6 +3754,7 @@ function ProsperaAppInner() {
           {route === "Player" && profilePlayer && (
             <PlayerProfilePage
               p={profilePlayer}
+              deepDive={deepDives[profilePlayer.id] || null}
               onBack={() => setRoute("Big Board")}
               notes={notesByPlayer[profilePlayer.id] || []}
               onAddNote={addNote}
