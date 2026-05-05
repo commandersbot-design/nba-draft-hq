@@ -38,6 +38,15 @@ import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
 import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
 import { MockDraftPage } from "./MockDraft";
+import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
+
+const DEFAULT_MOCK_DRAFT_TEAMS = (() => {
+  const next = Array(60).fill(null);
+  (DRAFT_CONTEXT.defaultOrder || []).forEach((entry) => {
+    if (entry.pick - 1 < 60) next[entry.pick - 1] = entry.team;
+  });
+  return next;
+})();
 
 function getHeadshotUrl(prospect) {
   if (!prospect || !prospect.name) return null;
@@ -3240,6 +3249,7 @@ export default function ProsperaApp() {
   const [customTags, setCustomTags] = useLocalStorageState("prospera.terminal.custom-tags", {});
   const [savedViews, setSavedViews] = useLocalStorageState("prospera.terminal.saved-views", []);
   const [mockDraftPicks, setMockDraftPicks] = useLocalStorageState("prospera.terminal.mock-draft", Array(60).fill(null));
+  const [mockDraftTeams, setMockDraftTeams] = useLocalStorageState("prospera.terminal.mock-draft-teams", DEFAULT_MOCK_DRAFT_TEAMS);
 
   const saveView = (name, state) => {
     const trimmed = String(name || "").trim();
@@ -3474,6 +3484,8 @@ export default function ProsperaApp() {
               prospects={PROSPECTS}
               picks={mockDraftPicks}
               setPicks={setMockDraftPicks}
+              teamSlots={mockDraftTeams}
+              setTeamSlots={setMockDraftTeams}
               onOpenProfile={onOpenProfile}
             />
           )}

@@ -1,5 +1,11 @@
 import React, { useState, useMemo } from "react";
 import { Search, Download, RefreshCw, X, ArrowDown, Plus } from "lucide-react";
+import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
+
+const TEAMS = DRAFT_CONTEXT.teams;
+const NEEDS = DRAFT_CONTEXT.needs;
+const DEFAULT_ORDER = DRAFT_CONTEXT.defaultOrder;
+const TEAM_OPTIONS = Object.keys(TEAMS).sort();
 
 const T = {
   bg: "#050A12",
@@ -45,7 +51,7 @@ function downloadText(filename, content) {
   URL.revokeObjectURL(url);
 }
 
-export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }) => {
+export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setTeamSlots, onOpenProfile }) => {
   const [query, setQuery] = useState("");
   const [showRound2, setShowRound2] = useState(false);
 
@@ -96,8 +102,24 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }
 
   const reset = () => setPicks(Array(TOTAL_PICKS).fill(null));
 
+  const resetTeamOrder = () => {
+    const next = Array(TOTAL_PICKS).fill(null);
+    DEFAULT_ORDER.forEach((entry) => {
+      if (entry.pick - 1 < TOTAL_PICKS) next[entry.pick - 1] = entry.team;
+    });
+    setTeamSlots(next);
+  };
+
+  const setTeamForSlot = (slotIndex, team) => {
+    setTeamSlots((curr) => {
+      const next = [...curr];
+      next[slotIndex] = team || null;
+      return next;
+    });
+  };
+
   const exportText = () => {
-    const lines = ["PROSPERA MOCK DRAFT", "==================="];
+    const lines = ["PROSPERA MOCK DRAFT · 2026", "=========================="];
     let lastRound = "";
     picks.forEach((id, idx) => {
       const round = roundLabel(idx);
@@ -106,11 +128,13 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }
         lines.push(`-- ${round.toUpperCase()} --`);
         lastRound = round;
       }
+      const team = teamSlots[idx];
+      const teamLabel = team ? ` (${TEAMS[team]?.name || team})` : "";
       const p = id ? prospects.find((x) => x.id === id) : null;
       if (p) {
-        lines.push(`${String(idx + 1).padStart(2, "0")}. ${p.name} · ${p.school || "—"} · ${p.pos || "—"} · ${p.score?.toFixed(1) || "—"}`);
+        lines.push(`${String(idx + 1).padStart(2, "0")}.${teamLabel} ${p.name} · ${p.school || "—"} · ${p.pos || "—"} · ${p.score?.toFixed(1) || "—"}`);
       } else {
-        lines.push(`${String(idx + 1).padStart(2, "0")}. (empty)`);
+        lines.push(`${String(idx + 1).padStart(2, "0")}.${teamLabel} (empty)`);
       }
     });
     downloadText(`prospera-mock-draft-${new Date().toISOString().slice(0, 10)}.txt`, lines.join("\n"));
@@ -132,6 +156,9 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <button type="button" onClick={autoFill} style={pillBtn(T.cyan)}>
             <ArrowDown size={11} /> AUTO-FILL FROM BIG BOARD
+          </button>
+          <button type="button" onClick={resetTeamOrder} style={pillBtn(T.textDim)}>
+            <RefreshCw size={11} /> LOAD 2026 ORDER
           </button>
           <button type="button" onClick={exportText} style={pillBtn(T.cyan)} disabled={filledCount === 0}>
             <Download size={11} /> EXPORT
@@ -219,12 +246,16 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }
             const p = id ? prospects.find((x) => x.id === id) : null;
             const isLottery = idx < 14;
             const isRound2 = idx >= ROUND_1_PICKS;
+            const team = teamSlots[idx];
+            const teamMeta = team ? TEAMS[team] : null;
+            const teamNeeds = team ? NEEDS[team] || [] : [];
+            const accent = teamMeta?.color || (isLottery ? T.cyan : T.border);
             return (
               <div
                 key={idx}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "60px 1fr 60px 28px",
+                  gridTemplateColumns: "56px 110px 1fr 60px 28px",
                   gap: 10,
                   alignItems: "center",
                   padding: "10px 12px",
@@ -232,7 +263,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }
                   borderTop: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
                   borderRight: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
                   borderBottom: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
-                  borderLeft: `2px solid ${isLottery ? T.cyan : isRound2 ? T.borderSoft : T.border}`,
+                  borderLeft: `3px solid ${accent}`,
                 }}
               >
                 <div style={{ ...mono, fontSize: 11, color: T.textDim, letterSpacing: "0.12em" }}>
@@ -243,6 +274,37 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }
                     {isRound2 ? "R2" : isLottery ? "LOTTO" : "R1"}
                   </div>
                 </div>
+
+                {/* Team selector + needs */}
+                <div style={{ minWidth: 0 }}>
+                  <select
+                    value={team || ""}
+                    onChange={(e) => setTeamForSlot(idx, e.target.value)}
+                    style={{
+                      ...mono,
+                      fontSize: 11,
+                      letterSpacing: "0.06em",
+                      color: team ? T.text : T.textMute,
+                      background: T.surface2,
+                      border: `1px solid ${T.border}`,
+                      padding: "3px 4px",
+                      width: "100%",
+                      maxWidth: 100,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <option value="">—</option>
+                    {TEAM_OPTIONS.map((abbr) => (
+                      <option key={abbr} value={abbr}>{abbr}</option>
+                    ))}
+                  </select>
+                  {teamNeeds.length > 0 && (
+                    <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.1em", marginTop: 4, lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {teamNeeds.slice(0, 2).join(" · ")}
+                    </div>
+                  )}
+                </div>
+
                 {p ? (
                   <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
                     <div style={{ minWidth: 0, flex: 1 }}>
@@ -254,7 +316,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, onOpenProfile }
                         {p.name}
                       </button>
                       <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {p.school?.toUpperCase() || "—"} · {p.pos || "—"} · #{p.rank}
+                        {p.school?.toUpperCase() || "—"} · {p.pos || "—"} · {(p.archetype || "—")}
                       </div>
                     </div>
                   </div>
