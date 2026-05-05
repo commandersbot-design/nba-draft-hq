@@ -213,7 +213,7 @@ const FlagDot = ({ lvl }) => {
 };
 
 // ---------- TOP NAV ----------
-const NAV_ITEMS = ["Big Board", "My Board", "Class Map", "Dashboard", "Compare", "Notes", "Historical", "Reports"];
+const NAV_ITEMS = ["Big Board", "My Board", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
 const TopNav = ({ active, setActive, onMenu }) => (
   <div
@@ -1027,7 +1027,7 @@ const ComparablesTab = ({ p }) => {
       {matches.map(({ historical, score, reasons }) => {
         const tierColor = OUTCOME_TIER_COLORS[historical.outcomeTier] || T.textMute;
         return (
-          <div key={historical.id} style={{ background: T.card, border: `1px solid ${T.border}`, borderLeft: `3px solid ${tierColor}` }}>
+          <div key={historical.id} style={{ background: T.card, borderTop: `1px solid ${T.border}`, borderRight: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, borderLeft: `3px solid ${tierColor}` }}>
             <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "44px 1fr auto", gap: 12, alignItems: "center" }}>
               <div style={{ ...mono, fontSize: 11, color: T.cyan, lineHeight: 1.2 }}>
                 <div>{historical.draftYear}</div>
@@ -1076,7 +1076,7 @@ const ComparablesTab = ({ p }) => {
 };
 
 // ---------- PLAYER PROFILE PAGE ----------
-const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Comparables", "Constellation", "Reports", "Shot Chart", "Notes"];
+const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Comparables", "Constellation", "Shot Chart", "Notes"];
 
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
@@ -1395,7 +1395,6 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
           size={520}
         />
       )}
-      {tab === "Reports" && <EmptyState label="No scouting reports filed yet." />}
       {tab === "Shot Chart" && <ShotChartTab p={p} />}
       {tab === "Notes" && <NotesTab p={p} notes={notes} onAddNote={onAddNote} onDeleteNote={onDeleteNote} />}
     </div>
@@ -2039,7 +2038,7 @@ const TraitsTab = ({ p }) => {
               <div style={{ fontSize: 12, color: T.textMute }}>No active risks flagged.</div>
             )}
             {flaggedRisks.map(([k]) => (
-              <div key={k} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", border: `1px solid ${T.borderSoft}`, borderLeft: `2px solid ${T.warn}` }}>
+              <div key={k} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", borderTop: `1px solid ${T.borderSoft}`, borderRight: `1px solid ${T.borderSoft}`, borderBottom: `1px solid ${T.borderSoft}`, borderLeft: `2px solid ${T.warn}` }}>
                 <AlertTriangle size={12} color={T.warn} />
                 <span style={{ fontSize: 12, color: T.text }}>{k}</span>
                 <span style={{ flex: 1 }} />
@@ -2104,7 +2103,9 @@ const NotesTab = ({ p, notes = [], onAddNote, onDeleteNote }) => {
                 style={{
                   padding: 12,
                   background: T.surface2,
-                  border: `1px solid ${T.borderSoft}`,
+                  borderTop: `1px solid ${T.borderSoft}`,
+                  borderRight: `1px solid ${T.borderSoft}`,
+                  borderBottom: `1px solid ${T.borderSoft}`,
                   borderLeft: `2px solid ${T.cyan}`,
                   position: "relative",
                 }}
@@ -2289,7 +2290,9 @@ const NotesWorkspacePage = ({ notes = {}, onSelectPlayer, onDeleteNote }) => {
                     style={{
                       padding: 12,
                       background: T.surface2,
-                      border: `1px solid ${T.borderSoft}`,
+                      borderTop: `1px solid ${T.borderSoft}`,
+                      borderRight: `1px solid ${T.borderSoft}`,
+                      borderBottom: `1px solid ${T.borderSoft}`,
                       borderLeft: `2px solid ${T.cyan}`,
                       position: "relative",
                     }}
@@ -3131,7 +3134,7 @@ const HistoricalCard = ({ p }) => {
     .slice(0, 2)
     .toUpperCase();
   return (
-    <div style={{ background: T.card, border: `1px solid ${T.border}`, borderLeft: `3px solid ${tierColor}` }}>
+    <div style={{ background: T.card, borderTop: `1px solid ${T.border}`, borderRight: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, borderLeft: `3px solid ${tierColor}` }}>
       <div style={{ padding: "14px 16px", display: "grid", gridTemplateColumns: "44px 56px 1fr auto", gap: 12, alignItems: "center" }}>
         <div
           style={{
@@ -3483,15 +3486,6 @@ export default function ProsperaApp() {
             />
           )}
           {route === "Historical" && <HistoricalPage />}
-          {route === "Reports" && (
-            <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
-              <Label>Generated</Label>
-              <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 24px", fontWeight: 700, letterSpacing: "-0.02em" }}>
-                Reports
-              </h1>
-              <EmptyState label="No reports generated yet." />
-            </div>
-          )}
           {route === "Player" && profilePlayer && (
             <PlayerProfilePage
               p={profilePlayer}

@@ -31,10 +31,10 @@ const TIER_COLORS = {
 };
 
 const QUADRANTS = [
-  { id: "Guard", label: "Guards", center: -Math.PI / 2 }, // 12 o'clock
-  { id: "Wing", label: "Wings", center: 0 },             // 3 o'clock
-  { id: "Forward", label: "Forwards", center: Math.PI / 2 }, // 6 o'clock
-  { id: "Big", label: "Bigs", center: Math.PI },          // 9 o'clock
+  { id: "Guard", label: "Guards", center: -Math.PI / 2, tint: "rgba(34, 211, 238, 0.05)" },     // 12 o'clock — cyan
+  { id: "Wing", label: "Wings", center: 0, tint: "rgba(59, 130, 246, 0.05)" },                  // 3 o'clock — blue
+  { id: "Forward", label: "Forwards", center: Math.PI / 2, tint: "rgba(168, 85, 247, 0.05)" }, // 6 o'clock — purple
+  { id: "Big", label: "Bigs", center: Math.PI, tint: "rgba(16, 185, 129, 0.05)" },              // 9 o'clock — green
 ];
 
 // Map a prospect's pos string to a quadrant id.
@@ -106,9 +106,16 @@ function layoutProspects(prospects, half, available) {
 
     list.forEach((p) => {
       const score = p.score ?? p.scores?.overallComposite ?? 50;
-      // Outer rim for high score, inner for low. Add scatter so the cloud has depth.
-      const scoreT = Math.max(0, Math.min(1, (score - scoreMin) / scoreSpan));
-      const radialJitter = (seededRandom(p.id, 91) - 0.5) * 0.35;
+      // Density bias: scoreT^0.55 is concave, so high scores stay near the
+      // rim (small scoreT distance from 1) while low scores compress toward
+      // center. Top-tier players also get reduced jitter so they cluster
+      // tightly on the outer ring.
+      const rawT = Math.max(0, Math.min(1, (score - scoreMin) / scoreSpan));
+      const scoreT = Math.pow(rawT, 0.55);
+      const tier = tierKey(p);
+      const isTopTier = tier === "Tier 1" || tier === "Tier 2";
+      const jitterScale = isTopTier ? 0.15 : 0.32;
+      const radialJitter = (seededRandom(p.id, 91) - 0.5) * jitterScale;
       const radiusT = Math.max(0, Math.min(1, scoreT + radialJitter));
       const radius = minRadius + radiusT * (maxRadius - minRadius);
 
@@ -116,8 +123,10 @@ function layoutProspects(prospects, half, available) {
       const angleT = seededRandom(p.id, 17) - 0.5; // -0.5..0.5
       const angle = quadrant.center + angleT * arc;
 
-      const sizeT = Math.max(0, Math.min(1, (score - 50) / 40));
-      const r = 4 + sizeT * 10;
+      // Size scales harder for top tiers so they read as anchors of the cluster.
+      const sizeBase = Math.max(0, Math.min(1, (score - 50) / 40));
+      const sizeT = isTopTier ? Math.min(1, sizeBase * 1.2 + 0.15) : sizeBase;
+      const r = 4 + sizeT * 11;
       placed.push({
         prospect: p,
         x: half + Math.cos(angle) * radius,
@@ -224,6 +233,19 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 640 }
             aria-label="Class constellation map"
             onMouseLeave={() => setHoveredId(null)}
           >
+            {/* quadrant tint wedges (faint background wash per zone) */}
+            {QUADRANTS.map((q) => {
+              const arc = (Math.PI / 2) * 0.85;
+              const start = q.center - arc / 2;
+              const end = q.center + arc / 2;
+              const x1 = half + Math.cos(start) * available;
+              const y1 = half + Math.sin(start) * available;
+              const x2 = half + Math.cos(end) * available;
+              const y2 = half + Math.sin(end) * available;
+              const d = `M ${half} ${half} L ${x1} ${y1} A ${available} ${available} 0 0 1 ${x2} ${y2} Z`;
+              return <path key={q.id} d={d} fill={q.tint} />;
+            })}
+
             {/* radial rings */}
             {ringRadii.map((r, i) => (
               <circle key={i} cx={half} cy={half} r={r} fill="none" stroke={i === 0 ? C.borderSoft : C.ringMute} strokeWidth={1} strokeDasharray={i === 0 ? "2 4" : "1 4"} />
