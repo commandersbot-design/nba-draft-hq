@@ -37,6 +37,7 @@ function isUniqueArchetype(archetypeName) {
 import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
 import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
+import { MockDraftPage } from "./MockDraft";
 
 function getHeadshotUrl(prospect) {
   if (!prospect || !prospect.name) return null;
@@ -213,7 +214,7 @@ const FlagDot = ({ lvl }) => {
 };
 
 // ---------- TOP NAV ----------
-const NAV_ITEMS = ["Big Board", "My Board", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
+const NAV_ITEMS = ["Big Board", "My Board", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
 const TopNav = ({ active, setActive, onMenu }) => (
   <div
@@ -3238,6 +3239,7 @@ export default function ProsperaApp() {
   const [customTiers, setCustomTiers] = useLocalStorageState("prospera.terminal.custom-tiers", {});
   const [customTags, setCustomTags] = useLocalStorageState("prospera.terminal.custom-tags", {});
   const [savedViews, setSavedViews] = useLocalStorageState("prospera.terminal.saved-views", []);
+  const [mockDraftPicks, setMockDraftPicks] = useLocalStorageState("prospera.terminal.mock-draft", Array(60).fill(null));
 
   const saveView = (name, state) => {
     const trimmed = String(name || "").trim();
@@ -3466,6 +3468,14 @@ export default function ProsperaApp() {
           )}
           {route === "Class Map" && (
             <ClassConstellation prospects={PROSPECTS} onOpenProfile={onOpenProfile} />
+          )}
+          {route === "Mock Draft" && (
+            <MockDraftPage
+              prospects={PROSPECTS}
+              picks={mockDraftPicks}
+              setPicks={setMockDraftPicks}
+              onOpenProfile={onOpenProfile}
+            />
           )}
           {route === "Compare" && (
             <ComparePage
