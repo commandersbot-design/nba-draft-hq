@@ -497,5 +497,33 @@
     "espnId": "s:40~l:41~a:5176240",
     "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5176240/magoon-gwath",
     "subtitle": "San Diego State Aztecs"
+  },
+  "Darius Acuff": {
+    "headshotUrl": "https://arkansasrazorbacks.com/wp-content/uploads/2025/09/Darius-Acuff-Jr.-Mug-MBB-2025-26-5820-e1758565443835.jpg",
+    "source": "manual / official roster"
+  },
+  "Mikel Brown": {
+    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fgocards.com%2Fimages%2F2025%2F9%2F22%2FMikel_Brown_Jr._-_Cropped.png&width=180",
+    "source": "manual / official roster"
+  },
+  "Labaron Philon": {
+    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Frolltide.com%2Fimages%2F2025%2F8%2F27%2FPhilon_Labaron_2025_web.JPG&width=180",
+    "source": "manual / official roster"
+  },
+  "Chris Cenac": {
+    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fuhcougars.com%2Fimages%2F2025%2F8%2F30%2FCenac_Jr_eXMJO.jpg&width=180",
+    "source": "manual / official roster"
+  },
+  "Dash Daniels": {
+    "headshotUrl": "https://cdn.prod.website-files.com/689d925d97d31acf23d2722a/691bc971574be3713a4fd709_6ebe2df8e9d645238c718c26af5c6cc7.webp",
+    "source": "manual / official roster"
+  },
+  "Morez Johnson": {
+    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fmgoblue.com%2Fimages%2F2025%2F7%2F28%2F21-Morez-Johnson-Jr_vD0Hr.jpg&width=180",
+    "source": "manual / official roster"
+  },
+  "Tarris Reed": {
+    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fuconnhuskies.com%2Fimages%2F2025%2F7%2F31%2FTR25_WBG.png&width=180",
+    "source": "manual / official roster"
   }
 }
