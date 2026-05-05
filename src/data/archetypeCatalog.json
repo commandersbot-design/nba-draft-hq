@@ -353,6 +353,15 @@
       "exemplars": ["Carmelo Anthony"],
       "anchorScores": {"initiate": 80, "extend": 60, "close": 92, "space": 70, "connect": 55, "contain": 55, "disrupt": 55, "switch": 50, "transition": 65},
       "notes": "Footwork master. Mid-range architect; isolation scoring legend."
+    },
+    {
+      "key": "step-back-maestro",
+      "name": "Step-Back Maestro",
+      "tier": "Unique",
+      "positionFamily": "Guard",
+      "exemplars": ["James Harden"],
+      "anchorScores": {"initiate": 95, "extend": 85, "close": 95, "space": 80, "connect": 65, "contain": 50, "disrupt": 60, "switch": 50, "transition": 75},
+      "notes": "Heliocentric primary. Step-back gravity, elite playmaking burden, MVP-tier offensive engineering."
     }
   ]
 }

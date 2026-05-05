@@ -125,6 +125,9 @@ function classifyOutcome(prospect) {
     const ws = Number(sr.winShares) || 0;
     const allStar = Number(sr.allStarSelections) || 0;
     const games = Number(sr.games) || 0;
+    // LEGEND tier: HOF-locked, generational longevity. Either career WS ≥ 100
+    // or 8+ All-Star nods (clear Hall of Fame trajectory) qualifies.
+    if (ws >= 100 || allStar >= 8) return 'Legend';
     if (allStar >= 3) return 'Star';
     if (ws >= 80) return 'Star';
     if (allStar >= 1) return 'Hit';      // any All-Star nod ⇒ at least Hit
@@ -260,8 +263,8 @@ function classifyProspect(prospect, force) {
   if (uniqueHit) {
     archetype = uniqueHit.name;
     archetypeTier = 'Unique';
-    // Force outcome to Star for Uniques — these are all generational players.
-    if (outcomeTier !== 'Star') outcomeTier = 'Star';
+    // Uniques are at minimum Star; Legend is allowed (HOF-locks should keep it).
+    if (outcomeTier !== 'Star' && outcomeTier !== 'Legend') outcomeTier = 'Star';
   } else if (force || !archetype) {
     archetype = classifyArchetype(prospect, positionFamily);
     // Look up the tier for the chosen archetype

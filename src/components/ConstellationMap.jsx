@@ -20,6 +20,7 @@ const mono = {
 };
 
 const OUTCOME_COLORS = {
+  Legend: "#FBBF24",   // gold — HOF tier (WS ≥ 100 or 8+ All-Stars)
   Star: "#22D3EE",     // cyan
   Outlier: "#22D3EE",  // alias used by the seed dataset
   Hit: "#3B82F6",      // blue
@@ -27,7 +28,7 @@ const OUTCOME_COLORS = {
   Bust: "#64748B",     // muted gray
 };
 
-const OUTCOME_LABELS = ["Star", "Hit", "Swing", "Bust"];
+const OUTCOME_LABELS = ["Legend", "Star", "Hit", "Swing", "Bust"];
 
 // ---------- LAYOUT MATH ----------
 const YEAR_MIN = 2000;

@@ -3021,11 +3021,13 @@ const CompareColumn = ({ p, onOpenProfile, onRemove }) => {
 
 // ---------- HISTORICAL PAGE ----------
 const OUTCOME_TIER_COLORS = {
+  Legend: "#FBBF24",  // gold — HOF-tier (WS ≥ 100 or 8+ All-Stars)
   Outlier: T.cyan,
   Star: T.cyan,
+  Hit: "#3B82F6",     // blue
   Swing: T.warn,
   Rotation: T.blue,
-  Bust: T.danger,
+  Bust: "#64748B",    // muted gray (was T.danger which was too red)
 };
 
 const HistoricalPage = () => {
