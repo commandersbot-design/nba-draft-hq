@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from "react";
 
-// Tokens are kept local so this component stays self-contained even when
-// imported elsewhere later.
+// PROSPERA · Signal Orange identity. The "ring" tones intentionally stay
+// cyan to give the per-prospect Constellation Map a distinct data-viz palette
+// that doesn't compete with the brand chrome.
 const C = {
   bg: "#050A12",
   surface: "rgba(15, 23, 42, 0.6)",
@@ -10,7 +11,7 @@ const C = {
   text: "#E2E8F0",
   textDim: "#94A3B8",
   textMute: "#64748B",
-  cyan: "#22D3EE",
+  cyan: "#F97316",
   ringSoft: "rgba(34, 211, 238, 0.08)",
   ringMute: "rgba(148, 163, 184, 0.16)",
 };

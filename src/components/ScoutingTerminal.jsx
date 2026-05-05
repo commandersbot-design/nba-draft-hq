@@ -77,6 +77,12 @@ import {
 } from "recharts";
 
 // ---------- THEME TOKENS ----------
+// PROSPERA · Signal Orange identity system
+//   Primary brand accent: Bloomberg-orange #F97316 (signal — "this matters,
+//   this is data, this is the brand"). Cyan is demoted to the `signal` token
+//   used only as a "clickable hint" cue on interactive secondary affordances.
+//   Gold (`tickerGold`) is used in the top ticker bar so that movement
+//   notifications never collide with the primary signal color.
 const T = {
   bg: "#050A12",
   surface: "#0A0F1C",
@@ -87,12 +93,29 @@ const T = {
   text: "#E2E8F0",
   textDim: "#94A3B8",
   textMute: "#64748B",
-  cyan: "#22D3EE",
+  // PRIMARY ACCENT — was #22D3EE cyan; now Bloomberg-orange. ~140 existing
+  // references inherit the new color automatically.
+  cyan: "#F97316",
+  // Lighter orange for highlights / hover emphasis.
+  accentBright: "#FB923C",
+  accentBg: "rgba(249, 115, 22, 0.08)",
+  accentBorder: "rgba(249, 115, 22, 0.4)",
+  // Original cyan, retained as the SECONDARY token. Use only for "click hint"
+  // affordances (compare buttons, edit pencils) so the primary brand color
+  // doesn't get muddied with interactivity cues.
+  signal: "#22D3EE",
+  signalDim: "rgba(34, 211, 238, 0.4)",
+  // Gold reserved for the top ticker bar's movement readout (prospect rank
+  // changes). Distinct from both orange and cyan.
+  tickerGold: "#FBBF24",
   blue: "#3B82F6",
   warn: "#F59E0B",
   danger: "#EF4444",
   purple: "#A855F7",
+  positive: "#10B981",
   grid: "rgba(59, 130, 246, 0.08)",
+  // Faint dot-grid for hero backgrounds (Bloomberg trader aesthetic).
+  dotGrid: "rgba(249, 115, 22, 0.06)",
 };
 
 const mono = {
@@ -272,6 +295,113 @@ const FlagDot = ({ lvl }) => {
 // ---------- TOP NAV ----------
 const NAV_ITEMS = ["Big Board", "My Board", "Deep Dives", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
+// PROSPERA TICKER · slim band above the main nav showing live prospect rank
+// movement (▲/▼ deltas from the last update). Pure brand element — feels
+// like a financial command center and tells visitors at a glance "this is
+// a live, opinion-having product, not a static dashboard." Click any item
+// to jump straight to that prospect's profile.
+//
+// Display order: prospects with non-zero `movement` field, sorted by
+// magnitude descending (biggest movers first). The CSS marquee animation
+// is defined as `prospera-ticker-scroll` in the global stylesheet block.
+const ProsperaTicker = ({ prospects, onOpenProfile }) => {
+  const movers = useMemo(() => {
+    return prospects
+      .filter((p) => p.movement && p.movement !== "" && p.movement !== "0")
+      .map((p) => ({ ...p, _delta: parseInt(p.movement, 10) || 0 }))
+      .sort((a, b) => Math.abs(b._delta) - Math.abs(a._delta));
+  }, [prospects]);
+  if (movers.length === 0) return null;
+  // Duplicate the row so the marquee loop stays full when the first set
+  // scrolls off-screen.
+  const items = [...movers, ...movers];
+  return (
+    <div
+      style={{
+        background: T.surface,
+        borderBottom: `1px solid ${T.border}`,
+        height: 26,
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          flexShrink: 0,
+          padding: "0 12px",
+          background: T.cyan,
+          color: T.bg,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          ...mono,
+          fontSize: 9,
+          letterSpacing: "0.20em",
+          fontWeight: 800,
+          textTransform: "uppercase",
+        }}
+      >
+        ⬢ Live · Movement
+      </div>
+      <div
+        style={{
+          flex: 1,
+          overflow: "hidden",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          maskImage: "linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%)",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: 32,
+            paddingLeft: 24,
+            animation: "prospera-ticker-scroll 60s linear infinite",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {items.map((p, idx) => {
+            const isUp = p._delta > 0;
+            const arrow = isUp ? "▲" : "▼";
+            const arrowColor = isUp ? T.cyan : T.tickerGold;
+            return (
+              <button
+                key={`${p.id}-${idx}`}
+                type="button"
+                onClick={() => onOpenProfile?.(p.id)}
+                style={{
+                  ...mono,
+                  fontSize: 10,
+                  letterSpacing: "0.10em",
+                  color: T.text,
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  textTransform: "uppercase",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: 0,
+                }}
+              >
+                <span style={{ color: T.textMute }}>#{p.rank}</span>
+                <span style={{ color: T.text, fontWeight: 600 }}>{p.last}</span>
+                <span style={{ color: arrowColor, fontWeight: 700 }}>
+                  {arrow} {Math.abs(p._delta)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => (
   <div
     className="prospera-topbar"
@@ -303,25 +433,65 @@ const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => 
       <Menu size={18} />
     </button>
 
-    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-      <div
-        style={{
-          width: 22,
-          height: 22,
-          background: T.cyan,
-          clipPath: "polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%)",
-        }}
-      />
-      <div
-        style={{
-          ...mono,
-          fontSize: 13,
-          letterSpacing: "0.22em",
-          color: T.text,
-          fontWeight: 600,
-        }}
-      >
-        PROSPERA
+    {/* PROSPERA wordmark · "P" glyph in orange with vertical signal stripe.
+        The stripe-and-letterform combination is intentional brand DNA — every
+        page that wants to feel "Prospera native" can echo the same orange
+        rule. Don't replace the wordmark with an image; the typographic mark
+        stays sharp at any DPI. */}
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div style={{ display: "flex", alignItems: "stretch", gap: 8 }}>
+        {/* The "scout's pen mark" — vertical stripe in primary signal */}
+        <div style={{ width: 3, alignSelf: "stretch", background: T.cyan }} />
+        {/* Custom P-glyph constructed from a single rounded rect */}
+        <div
+          style={{
+            position: "relative",
+            width: 24,
+            height: 24,
+            border: `2px solid ${T.cyan}`,
+            borderRadius: "3px 3px 3px 0",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: 0,
+              width: "60%",
+              height: 2,
+              background: T.cyan,
+              transform: "translateY(-50%)",
+            }}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
+        <div
+          style={{
+            ...mono,
+            fontSize: 14,
+            letterSpacing: "0.32em",
+            color: T.text,
+            fontWeight: 800,
+            textShadow: `0 0 18px rgba(249, 115, 22, 0.18)`,
+          }}
+        >
+          PROSPERA
+        </div>
+        <div
+          className="prospera-brand-tagline"
+          style={{
+            ...mono,
+            fontSize: 8,
+            letterSpacing: "0.24em",
+            color: T.cyan,
+            fontWeight: 600,
+            marginTop: 4,
+            opacity: 0.9,
+          }}
+        >
+          DRAFT INTELLIGENCE
+        </div>
       </div>
       <div
         className="prospera-brand-version"
@@ -370,7 +540,7 @@ const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => 
         type="button"
         onClick={onOpenWeights}
         style={{
-          background: weightsActive ? "rgba(34, 211, 238, 0.12)" : T.surface2,
+          background: weightsActive ? "rgba(249, 115, 22, 0.12)" : T.surface2,
           border: `1px solid ${weightsActive ? T.cyan : T.border}`,
           color: weightsActive ? T.cyan : T.textDim,
           padding: "6px 10px",
@@ -476,7 +646,7 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
               alignItems: "center",
               gap: 12,
               padding: "8px 16px",
-              background: isActive ? "rgba(34, 211, 238, 0.08)" : "transparent",
+              background: isActive ? "rgba(249, 115, 22, 0.08)" : "transparent",
               borderTop: "none",
               borderRight: "none",
               borderBottom: "none",
@@ -486,7 +656,7 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
               transition: "background 0.12s",
             }}
             onMouseEnter={(e) => {
-              if (!isActive) e.currentTarget.style.background = "rgba(34, 211, 238, 0.03)";
+              if (!isActive) e.currentTarget.style.background = "rgba(249, 115, 22, 0.03)";
             }}
             onMouseLeave={(e) => {
               if (!isActive) e.currentTarget.style.background = "transparent";
@@ -559,7 +729,7 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
       position: "relative",
     }}
     onMouseEnter={(e) => {
-      if (!isSelected) e.currentTarget.style.borderColor = "rgba(34, 211, 238, 0.5)";
+      if (!isSelected) e.currentTarget.style.borderColor = "rgba(249, 115, 22, 0.5)";
     }}
     onMouseLeave={(e) => {
       if (!isSelected) e.currentTarget.style.borderColor = T.border;
@@ -602,7 +772,7 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
       style={{
         height: 124,
         background: `
-          linear-gradient(180deg, rgba(34, 211, 238, 0.06), transparent 60%),
+          linear-gradient(180deg, rgba(249, 115, 22, 0.06), transparent 60%),
           linear-gradient(135deg, ${T.surface2}, ${T.surface})
         `,
         display: "flex",
@@ -943,7 +1113,7 @@ const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, re
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               padding: "10px 24px",
-              background: view === v ? "rgba(34, 211, 238, 0.08)" : "transparent",
+              background: view === v ? "rgba(249, 115, 22, 0.08)" : "transparent",
               color: view === v ? T.cyan : T.textDim,
               border: "none",
               borderRight: `1px solid ${T.border}`,
@@ -1220,7 +1390,7 @@ const ComparablesTab = ({ p }) => {
                         color: isProfileMatch ? T.cyan : T.textDim,
                         padding: "2px 6px",
                         border: `1px solid ${isProfileMatch ? T.cyan : T.borderSoft}`,
-                        background: isProfileMatch ? "rgba(34, 211, 238, 0.06)" : "transparent",
+                        background: isProfileMatch ? "rgba(249, 115, 22, 0.06)" : "transparent",
                         textTransform: "uppercase",
                       }}
                     >
@@ -1318,7 +1488,8 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
         <ChevronLeft size={14} /> RETURN TO BIG BOARD
       </button>
 
-      {/* HERO */}
+      {/* HERO · Signal Orange identity. Dot-grid background gives the
+          "trader workstation" feel; corner ticks echo the brand glyph. */}
       <div
         style={{
           background: T.card,
@@ -1327,12 +1498,13 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
           position: "relative",
           marginBottom: 16,
           backgroundImage: `
-            linear-gradient(135deg, transparent 0%, rgba(34, 211, 238, 0.04) 100%),
-            radial-gradient(ellipse at top right, rgba(59, 130, 246, 0.06), transparent 60%)
+            radial-gradient(circle, ${T.dotGrid} 1px, transparent 1px),
+            linear-gradient(135deg, transparent 0%, rgba(249, 115, 22, 0.03) 100%)
           `,
+          backgroundSize: "16px 16px, 100% 100%",
         }}
       >
-        {/* Cyan corner accents */}
+        {/* Corner ticks in the brand accent */}
         {[
           { top: 0, left: 0, borderTop: `2px solid ${T.cyan}`, borderLeft: `2px solid ${T.cyan}` },
           { top: 0, right: 0, borderTop: `2px solid ${T.cyan}`, borderRight: `2px solid ${T.cyan}` },
@@ -1363,7 +1535,7 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                boxShadow: `0 0 0 4px rgba(34, 211, 238, 0.08)`,
+                boxShadow: `0 0 0 4px rgba(249, 115, 22, 0.08)`,
               }}
             >
               <ProspectHeadshot
@@ -1411,8 +1583,8 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
                   fontSize: 10,
                   letterSpacing: "0.14em",
                   color: T.cyan,
-                  background: "rgba(34, 211, 238, 0.08)",
-                  border: `1px solid rgba(34, 211, 238, 0.3)`,
+                  background: "rgba(249, 115, 22, 0.08)",
+                  border: `1px solid rgba(249, 115, 22, 0.3)`,
                   padding: "3px 8px",
                 }}
               >
@@ -1580,8 +1752,8 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
               display: "flex",
               alignItems: "center",
               gap: 12,
-              background: "rgba(34, 211, 238, 0.06)",
-              border: `1px solid rgba(34, 211, 238, 0.4)`,
+              background: "rgba(249, 115, 22, 0.06)",
+              border: `1px solid rgba(249, 115, 22, 0.4)`,
               borderLeft: `3px solid ${T.cyan}`,
               padding: "10px 14px",
               marginBottom: 16,
@@ -2140,7 +2312,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       color: active ? T.cyan : T.textDim,
-                      background: active ? "rgba(34, 211, 238, 0.08)" : "transparent",
+                      background: active ? "rgba(249, 115, 22, 0.08)" : "transparent",
                       border: `1px solid ${active ? T.cyan : T.border}`,
                       padding: "5px 9px",
                       cursor: "pointer",
@@ -2196,7 +2368,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
                 color: T.textDim,
                 padding: "8px 12px",
                 borderLeft: `2px solid ${T.cyan}`,
-                background: "rgba(34, 211, 238, 0.03)",
+                background: "rgba(249, 115, 22, 0.03)",
               }}
             >
               {s}
@@ -2255,7 +2427,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
             color: T.cyan,
             padding: "14px 12px",
             border: `1px solid ${T.cyan}`,
-            background: "rgba(34, 211, 238, 0.04)",
+            background: "rgba(249, 115, 22, 0.04)",
             textAlign: "center",
           }}
         >
@@ -2702,6 +2874,8 @@ const Row = ({ k, v }) => (
   </div>
 );
 
+// PROSPERA empty state — brand glyph above the message, signature line below.
+// Personality without taking up real estate. Used everywhere there's no data.
 const EmptyState = ({ label, compact }) => (
   <div
     style={{
@@ -2713,9 +2887,43 @@ const EmptyState = ({ label, compact }) => (
       fontSize: 11,
       color: T.textMute,
       letterSpacing: "0.14em",
+      position: "relative",
     }}
   >
-    {label.toUpperCase()}
+    {!compact && (
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>
+        <div style={{ display: "flex", alignItems: "stretch", gap: 8, opacity: 0.6 }}>
+          <div style={{ width: 2, alignSelf: "stretch", background: T.cyan }} />
+          <div
+            style={{
+              position: "relative",
+              width: 20,
+              height: 20,
+              border: `2px solid ${T.cyan}`,
+              borderRadius: "3px 3px 3px 0",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: 0,
+                width: "60%",
+                height: 2,
+                background: T.cyan,
+                transform: "translateY(-50%)",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    )}
+    <div>{label.toUpperCase()}</div>
+    {!compact && (
+      <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.24em", marginTop: 14, opacity: 0.65 }}>
+        — PROSPERA · DRAFT INTELLIGENCE —
+      </div>
+    )}
   </div>
 );
 
@@ -2859,7 +3067,7 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
             fontSize: 11,
             letterSpacing: "0.12em",
             color: watchOnly ? T.cyan : T.textDim,
-            background: watchOnly ? "rgba(34, 211, 238, 0.08)" : "transparent",
+            background: watchOnly ? "rgba(249, 115, 22, 0.08)" : "transparent",
             border: `1px solid ${watchOnly ? T.cyan : T.border}`,
             padding: "8px 12px",
             cursor: "pointer",
@@ -2919,6 +3127,22 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
           {rows.map((p) => {
             const isWatched = watchlist.includes(p.id);
             const isCompared = compareIds.includes(p.id);
+            const archetypeMeta = getArchetypeMeta(p.archetype);
+            // Archetype-family bar colors → distinct PROSPERA visual rhythm.
+            // Uniques get the brand purple; Star → cyan-secondary; everything
+            // else maps from position family. This makes the Big Board itself
+            // a distinctive surface (not just another dark table).
+            const isUnique = isUniqueArchetype(p.archetype);
+            const fam = positionFamily(p.pos) || positionFamily(p.pos2);
+            const familyBar = isUnique
+              ? T.purple
+              : archetypeMeta?.tier === "Star"
+                ? T.cyan
+                : fam === "guard"
+                  ? "#3B82F6"
+                  : fam === "wing"
+                    ? "#10B981"
+                    : "#F59E0B";
             return (
               <div
                 key={p.id}
@@ -2927,10 +3151,11 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
                   gridTemplateColumns: "60px 1fr 80px 70px 90px 70px 80px",
                   padding: "12px 16px",
                   borderBottom: `1px solid ${T.borderSoft}`,
+                  borderLeft: `3px solid ${familyBar}`,
                   alignItems: "center",
                   transition: "background 0.12s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(34, 211, 238, 0.04)")}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249, 115, 22, 0.04)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 13, color: T.cyan, cursor: "pointer" }}>{String(p.rank).padStart(2, "0")}</div>
@@ -3181,7 +3406,7 @@ const MyBoardPage = ({
                 padding: "10px 14px",
                 borderBottom: `1px solid ${T.borderSoft}`,
                 alignItems: "center",
-                background: isDragging ? "rgba(34, 211, 238, 0.06)" : "transparent",
+                background: isDragging ? "rgba(249, 115, 22, 0.06)" : "transparent",
                 opacity: isDragging ? 0.5 : 1,
                 cursor: "grab",
               }}
@@ -3488,7 +3713,7 @@ const HistoricalPage = () => {
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: active ? T.cyan : T.textDim,
-                background: active ? "rgba(34, 211, 238, 0.08)" : "transparent",
+                background: active ? "rgba(249, 115, 22, 0.08)" : "transparent",
                 border: `1px solid ${active ? T.cyan : T.border}`,
                 padding: "4px 9px",
                 cursor: "pointer",
@@ -3961,6 +4186,13 @@ function ProsperaAppInner() {
     >
       <style>{`
         html, body { overflow-x: hidden; }
+        @keyframes prospera-ticker-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .prospera-ticker-marquee { animation: none !important; }
+        }
         @media (max-width: 880px) {
           .prospera-rail { display: ${railOpen ? "block" : "none"} !important; position: fixed !important; left: 0; top: 52px; z-index: 40; height: calc(100vh - 52px) !important; box-shadow: 0 0 40px rgba(0,0,0,0.6); }
           .prospera-mobile-only { display: inline-flex !important; }
@@ -3984,6 +4216,7 @@ function ProsperaAppInner() {
         ::-webkit-scrollbar-thumb:hover { background: ${T.cyan}; }
       `}</style>
 
+      <ProsperaTicker prospects={PROSPECTS} onOpenProfile={onOpenProfile} />
       <TopNav
         active={route === "Player" ? "Big Board" : route}
         setActive={setRoute}

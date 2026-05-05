@@ -1,5 +1,9 @@
 import React, { useMemo, useState } from "react";
 
+// PROSPERA · Signal Orange identity. The "ring" tones intentionally stay
+// cyan to give the Class Map a distinct data-viz palette that doesn't
+// compete with the brand chrome. Filter pills + active states flow from
+// `cyan` (Bloomberg-orange) so they feel like the rest of the product.
 const C = {
   bg: "#050A12",
   surface: "rgba(15, 23, 42, 0.6)",
@@ -8,7 +12,7 @@ const C = {
   text: "#E2E8F0",
   textDim: "#94A3B8",
   textMute: "#64748B",
-  cyan: "#22D3EE",
+  cyan: "#F97316",
   ringMute: "rgba(148, 163, 184, 0.18)",
   ringSoft: "rgba(34, 211, 238, 0.06)",
 };
@@ -401,7 +405,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: connectionMode === id ? C.cyan : C.textDim,
-                  background: connectionMode === id ? "rgba(34, 211, 238, 0.1)" : "transparent",
+                  background: connectionMode === id ? "rgba(249, 115, 22, 0.1)" : "transparent",
                   border: `1px solid ${connectionMode === id ? C.cyan : C.border}`,
                   padding: "4px 8px",
                   cursor: "pointer",
@@ -425,7 +429,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }
             letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: zoneFilter === "ALL" ? C.cyan : C.textDim,
-            background: zoneFilter === "ALL" ? "rgba(34, 211, 238, 0.08)" : "transparent",
+            background: zoneFilter === "ALL" ? "rgba(249, 115, 22, 0.08)" : "transparent",
             border: `1px solid ${zoneFilter === "ALL" ? C.cyan : C.border}`,
             padding: "5px 9px",
             cursor: "pointer",
@@ -444,7 +448,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: zoneFilter === zone.id ? C.cyan : C.textDim,
-              background: zoneFilter === zone.id ? "rgba(34, 211, 238, 0.08)" : "transparent",
+              background: zoneFilter === zone.id ? "rgba(249, 115, 22, 0.08)" : "transparent",
               border: `1px solid ${zoneFilter === zone.id ? C.cyan : C.border}`,
               padding: "5px 9px",
               cursor: "pointer",

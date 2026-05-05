@@ -1,6 +1,10 @@
 import React, { useMemo, useState } from "react";
 import { Plus, X, Search, Download, Edit3, ChevronDown, ChevronRight, FileText, Clock } from "lucide-react";
 
+// PROSPERA · Signal Orange identity — see ScoutingTerminal T tokens for
+// the canonical reference. cyan key holds the new orange accent so existing
+// references inherit it; signal token retains the original cyan for
+// "click here / interactive" cues only.
 const T = {
   bg: "#050A12",
   surface: "rgba(15, 23, 42, 0.6)",
@@ -10,7 +14,10 @@ const T = {
   text: "#E2E8F0",
   textDim: "#94A3B8",
   textMute: "#64748B",
-  cyan: "#22D3EE",
+  cyan: "#F97316",
+  accentBright: "#FB923C",
+  accentBg: "rgba(249, 115, 22, 0.08)",
+  signal: "#22D3EE",
   blue: "#3B82F6",
   warn: "#F59E0B",
   danger: "#EF4444",
@@ -339,7 +346,7 @@ function ObservationsList({ observations, onChange }) {
           fontSize: 10,
           letterSpacing: "0.12em",
           color: T.cyan,
-          background: "rgba(34, 211, 238, 0.06)",
+          background: "rgba(249, 115, 22, 0.06)",
           border: `1px solid ${T.cyan}`,
           padding: "5px 10px",
           cursor: "pointer",
@@ -1068,7 +1075,7 @@ export const DeepDivesPage = ({ prospects = [], deepDives = {}, setDeepDives, on
           <button
             type="button"
             onClick={() => setShowPicker(true)}
-            style={{ ...mono, fontSize: 11, letterSpacing: "0.12em", color: T.cyan, background: "rgba(34, 211, 238, 0.08)", border: `1px solid ${T.cyan}`, padding: "6px 12px", cursor: "pointer", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}
+            style={{ ...mono, fontSize: 11, letterSpacing: "0.12em", color: T.cyan, background: "rgba(249, 115, 22, 0.08)", border: `1px solid ${T.cyan}`, padding: "6px 12px", cursor: "pointer", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}
           >
             <Plus size={11} /> New Deep Dive
           </button>
@@ -1092,7 +1099,7 @@ export const DeepDivesPage = ({ prospects = [], deepDives = {}, setDeepDives, on
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: isActive ? T.cyan : T.textDim,
-                background: isActive ? "rgba(34, 211, 238, 0.08)" : "transparent",
+                background: isActive ? "rgba(249, 115, 22, 0.08)" : "transparent",
                 border: `1px solid ${isActive ? T.cyan : T.border}`,
                 padding: "5px 9px",
                 cursor: "pointer",
@@ -1161,7 +1168,7 @@ export const DeepDivesPage = ({ prospects = [], deepDives = {}, setDeepDives, on
                       cursor: "pointer",
                       textAlign: "left",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(34, 211, 238, 0.04)")}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249, 115, 22, 0.04)")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   >
                     <div style={{ ...mono, fontSize: 12, color: T.cyan }}>#{String(p.rank).padStart(2, "0")}</div>

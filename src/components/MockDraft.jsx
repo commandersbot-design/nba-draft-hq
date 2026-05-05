@@ -73,6 +73,7 @@ function describeLotteryShift(team, standingsOrder, lotteryOrder) {
   return { team, from: standingsIdx + 1, to: lotteryIdx + 1, dir: "flat", shift: 0 };
 }
 
+// PROSPERA · Signal Orange identity (see ScoutingTerminal for canonical T).
 const T = {
   bg: "#050A12",
   surface: "rgba(15, 23, 42, 0.6)",
@@ -82,7 +83,9 @@ const T = {
   text: "#E2E8F0",
   textDim: "#94A3B8",
   textMute: "#64748B",
-  cyan: "#22D3EE",
+  cyan: "#F97316",
+  accentBg: "rgba(249, 115, 22, 0.08)",
+  signal: "#22D3EE",
   warn: "#F59E0B",
 };
 
@@ -433,7 +436,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                     transition: "background 0.12s",
                   }}
                   onMouseEnter={(e) => {
-                    if (nextEmptySlot >= 0) e.currentTarget.style.background = "rgba(34, 211, 238, 0.04)";
+                    if (nextEmptySlot >= 0) e.currentTarget.style.background = "rgba(249, 115, 22, 0.04)";
                   }}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                 >
@@ -472,7 +475,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                   gap: 10,
                   alignItems: "center",
                   padding: "10px 12px",
-                  background: p ? "rgba(34, 211, 238, 0.04)" : T.surface,
+                  background: p ? "rgba(249, 115, 22, 0.04)" : T.surface,
                   borderTop: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
                   borderRight: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
                   borderBottom: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
