@@ -2981,8 +2981,8 @@ const ComparePage = ({ compareIds = [], onRemoveCompare, onClearCompare, onOpenP
         <div style={{ display: "grid", gap: 16 }}>
           {players.length === 2 && (
             <AdvantageComparison
-              playerA={{ ...players[0], color: "#534AB7" }}
-              playerB={{ ...players[1], color: "#1D9E75" }}
+              playerA={{ ...players[0], color: T.cyan }}
+              playerB={{ ...players[1], color: T.purple }}
             />
           )}
           <div style={{ overflowX: "auto" }}>
