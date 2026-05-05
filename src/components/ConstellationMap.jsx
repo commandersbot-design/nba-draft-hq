@@ -1,19 +1,19 @@
 import React, { useMemo, useState } from "react";
 
-// PROSPERA · Signal Orange identity. The "ring" tones intentionally stay
-// cyan to give the per-prospect Constellation Map a distinct data-viz palette
-// that doesn't compete with the brand chrome.
+// PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
+// `ringSoft` stays cyan-tinted as a data-viz layer that doesn't compete with
+// brand chrome.
 const C = {
-  bg: "#050A12",
-  surface: "rgba(15, 23, 42, 0.6)",
-  border: "#1F2937",
-  borderSoft: "rgba(31, 41, 55, 0.6)",
-  text: "#E2E8F0",
-  textDim: "#94A3B8",
-  textMute: "#64748B",
-  cyan: "#F97316",
-  ringSoft: "rgba(34, 211, 238, 0.08)",
-  ringMute: "rgba(148, 163, 184, 0.16)",
+  bg:         "var(--prospera-bg)",
+  surface:    "var(--prospera-surface-translucent)",
+  border:     "var(--prospera-border)",
+  borderSoft: "var(--prospera-border-soft)",
+  text:       "var(--prospera-text)",
+  textDim:    "var(--prospera-text-dim)",
+  textMute:   "var(--prospera-text-mute)",
+  cyan:       "var(--prospera-cyan)",
+  ringSoft:   "var(--prospera-data-ring-strong)",
+  ringMute:   "rgba(148, 163, 184, 0.16)",
 };
 
 const mono = {

@@ -93,45 +93,37 @@ import {
 } from "recharts";
 
 // ---------- THEME TOKENS ----------
-// PROSPERA · Signal Orange identity system
-//   Primary brand accent: Bloomberg-orange #F97316 (signal — "this matters,
-//   this is data, this is the brand"). Cyan is demoted to the `signal` token
-//   used only as a "clickable hint" cue on interactive secondary affordances.
-//   Gold (`tickerGold`) is used in the top ticker bar so that movement
-//   notifications never collide with the primary signal color.
+// PROSPERA · Signal Orange identity tokens.
+// All values come from `src/styles/tokens.css` (`--prospera-*` namespace).
+// To change a color, edit tokens.css — every component re-reads on next paint.
+// This object is just a JS-friendly shorthand for the CSS variables so existing
+// inline-style consumers (`color: T.cyan`) keep working without refactor.
 const T = {
-  bg: "#050A12",
-  surface: "#0A0F1C",
-  surface2: "#0F172A",
-  card: "rgba(17, 24, 39, 0.72)",
-  border: "#1F2937",
-  borderSoft: "rgba(31, 41, 55, 0.6)",
-  text: "#E2E8F0",
-  textDim: "#94A3B8",
-  textMute: "#64748B",
-  // PRIMARY ACCENT — was #22D3EE cyan; now Bloomberg-orange. ~140 existing
-  // references inherit the new color automatically.
-  cyan: "#F97316",
-  // Lighter orange for highlights / hover emphasis.
-  accentBright: "#FB923C",
-  accentBg: "rgba(249, 115, 22, 0.08)",
-  accentBorder: "rgba(249, 115, 22, 0.4)",
-  // Original cyan, retained as the SECONDARY token. Use only for "click hint"
-  // affordances (compare buttons, edit pencils) so the primary brand color
-  // doesn't get muddied with interactivity cues.
-  signal: "#22D3EE",
-  signalDim: "rgba(34, 211, 238, 0.4)",
-  // Gold reserved for the top ticker bar's movement readout (prospect rank
-  // changes). Distinct from both orange and cyan.
-  tickerGold: "#FBBF24",
-  blue: "#3B82F6",
-  warn: "#F59E0B",
-  danger: "#EF4444",
-  purple: "#A855F7",
-  positive: "#10B981",
-  grid: "rgba(59, 130, 246, 0.08)",
-  // Faint dot-grid for hero backgrounds (Bloomberg trader aesthetic).
-  dotGrid: "rgba(249, 115, 22, 0.06)",
+  bg:           "var(--prospera-bg)",
+  surface:      "var(--prospera-surface)",
+  surface2:     "var(--prospera-surface-2)",
+  card:         "var(--prospera-card)",
+  border:       "var(--prospera-border)",
+  borderSoft:   "var(--prospera-border-soft)",
+  text:         "var(--prospera-text)",
+  textDim:      "var(--prospera-text-dim)",
+  textMute:     "var(--prospera-text-mute)",
+  // PRIMARY ACCENT (Bloomberg-orange) — flips by editing tokens.css.
+  cyan:         "var(--prospera-cyan)",
+  accentBright: "var(--prospera-accent-bright)",
+  accentBg:     "var(--prospera-accent-bg)",
+  accentBorder: "var(--prospera-accent-border)",
+  // SECONDARY accent — original cyan, click-hint only.
+  signal:       "var(--prospera-signal)",
+  signalDim:    "var(--prospera-signal-dim)",
+  tickerGold:   "var(--prospera-ticker-gold)",
+  blue:         "var(--prospera-blue)",
+  warn:         "var(--prospera-warn)",
+  danger:       "var(--prospera-danger)",
+  purple:       "var(--prospera-purple)",
+  positive:     "var(--prospera-positive)",
+  grid:         "var(--prospera-grid)",
+  dotGrid:      "var(--prospera-dot-grid)",
 };
 
 const mono = {
@@ -499,7 +491,7 @@ const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => 
             letterSpacing: "0.32em",
             color: T.text,
             fontWeight: 800,
-            textShadow: `0 0 18px rgba(249, 115, 22, 0.18)`,
+            textShadow: `0 0 18px var(--prospera-accent-bg-stripe)`,
           }}
         >
           PROSPERA
@@ -566,7 +558,7 @@ const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => 
         type="button"
         onClick={onOpenWeights}
         style={{
-          background: weightsActive ? "rgba(249, 115, 22, 0.12)" : T.surface2,
+          background: weightsActive ? "var(--prospera-accent-bg-strong)" : T.surface2,
           border: `1px solid ${weightsActive ? T.cyan : T.border}`,
           color: weightsActive ? T.cyan : T.textDim,
           padding: "6px 10px",
@@ -672,7 +664,7 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
               alignItems: "center",
               gap: 12,
               padding: "8px 16px",
-              background: isActive ? "rgba(249, 115, 22, 0.08)" : "transparent",
+              background: isActive ? "var(--prospera-accent-bg)" : "transparent",
               borderTop: "none",
               borderRight: "none",
               borderBottom: "none",
@@ -682,7 +674,7 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
               transition: "background 0.12s",
             }}
             onMouseEnter={(e) => {
-              if (!isActive) e.currentTarget.style.background = "rgba(249, 115, 22, 0.03)";
+              if (!isActive) e.currentTarget.style.background = "var(--prospera-accent-bg-faint)";
             }}
             onMouseLeave={(e) => {
               if (!isActive) e.currentTarget.style.background = "transparent";
@@ -755,7 +747,7 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
       position: "relative",
     }}
     onMouseEnter={(e) => {
-      if (!isSelected) e.currentTarget.style.borderColor = "rgba(249, 115, 22, 0.5)";
+      if (!isSelected) e.currentTarget.style.borderColor = "var(--prospera-accent-border-strong)";
     }}
     onMouseLeave={(e) => {
       if (!isSelected) e.currentTarget.style.borderColor = T.border;
@@ -798,7 +790,7 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
       style={{
         height: 124,
         background: `
-          linear-gradient(180deg, rgba(249, 115, 22, 0.06), transparent 60%),
+          linear-gradient(180deg, var(--prospera-accent-bg-mid), transparent 60%),
           linear-gradient(135deg, ${T.surface2}, ${T.surface})
         `,
         display: "flex",
@@ -1139,7 +1131,7 @@ const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, re
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               padding: "10px 24px",
-              background: view === v ? "rgba(249, 115, 22, 0.08)" : "transparent",
+              background: view === v ? "var(--prospera-accent-bg)" : "transparent",
               color: view === v ? T.cyan : T.textDim,
               border: "none",
               borderRight: `1px solid ${T.border}`,
@@ -1416,7 +1408,7 @@ const ComparablesTab = ({ p }) => {
                         color: isProfileMatch ? T.cyan : T.textDim,
                         padding: "2px 6px",
                         border: `1px solid ${isProfileMatch ? T.cyan : T.borderSoft}`,
-                        background: isProfileMatch ? "rgba(249, 115, 22, 0.06)" : "transparent",
+                        background: isProfileMatch ? "var(--prospera-accent-bg-mid)" : "transparent",
                         textTransform: "uppercase",
                       }}
                     >
@@ -1525,7 +1517,7 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
           marginBottom: 16,
           backgroundImage: `
             radial-gradient(circle, ${T.dotGrid} 1px, transparent 1px),
-            linear-gradient(135deg, transparent 0%, rgba(249, 115, 22, 0.03) 100%)
+            linear-gradient(135deg, transparent 0%, var(--prospera-accent-bg-faint) 100%)
           `,
           backgroundSize: "16px 16px, 100% 100%",
         }}
@@ -1561,7 +1553,7 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                boxShadow: `0 0 0 4px rgba(249, 115, 22, 0.08)`,
+                boxShadow: `0 0 0 4px var(--prospera-accent-bg)`,
               }}
             >
               <ProspectHeadshot
@@ -1609,8 +1601,8 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
                   fontSize: 10,
                   letterSpacing: "0.14em",
                   color: T.cyan,
-                  background: "rgba(249, 115, 22, 0.08)",
-                  border: `1px solid rgba(249, 115, 22, 0.3)`,
+                  background: "var(--prospera-accent-bg)",
+                  border: `1px solid var(--prospera-accent-border-faint)`,
                   padding: "3px 8px",
                 }}
               >
@@ -1778,8 +1770,8 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
               display: "flex",
               alignItems: "center",
               gap: 12,
-              background: "rgba(249, 115, 22, 0.06)",
-              border: `1px solid rgba(249, 115, 22, 0.4)`,
+              background: "var(--prospera-accent-bg-mid)",
+              border: `1px solid var(--prospera-accent-border)`,
               borderLeft: `3px solid ${T.cyan}`,
               padding: "10px 14px",
               marginBottom: 16,
@@ -2338,7 +2330,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       color: active ? T.cyan : T.textDim,
-                      background: active ? "rgba(249, 115, 22, 0.08)" : "transparent",
+                      background: active ? "var(--prospera-accent-bg)" : "transparent",
                       border: `1px solid ${active ? T.cyan : T.border}`,
                       padding: "5px 9px",
                       cursor: "pointer",
@@ -2394,7 +2386,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
                 color: T.textDim,
                 padding: "8px 12px",
                 borderLeft: `2px solid ${T.cyan}`,
-                background: "rgba(249, 115, 22, 0.03)",
+                background: "var(--prospera-accent-bg-faint)",
               }}
             >
               {s}
@@ -2453,7 +2445,7 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
             color: T.cyan,
             padding: "14px 12px",
             border: `1px solid ${T.cyan}`,
-            background: "rgba(249, 115, 22, 0.04)",
+            background: "var(--prospera-accent-bg-soft)",
             textAlign: "center",
           }}
         >
@@ -3093,7 +3085,7 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
             fontSize: 11,
             letterSpacing: "0.12em",
             color: watchOnly ? T.cyan : T.textDim,
-            background: watchOnly ? "rgba(249, 115, 22, 0.08)" : "transparent",
+            background: watchOnly ? "var(--prospera-accent-bg)" : "transparent",
             border: `1px solid ${watchOnly ? T.cyan : T.border}`,
             padding: "8px 12px",
             cursor: "pointer",
@@ -3186,7 +3178,7 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
                   alignItems: "center",
                   transition: "background 0.12s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249, 115, 22, 0.04)")}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 15, color: T.cyan, fontWeight: 600, cursor: "pointer" }}>{String(p.rank).padStart(2, "0")}</div>
@@ -3439,7 +3431,7 @@ const MyBoardPage = ({
                 borderBottom: `1px solid ${T.borderSoft}`,
                 boxShadow: `inset 5px 0 0 ${familyBar}`,
                 alignItems: "center",
-                background: isDragging ? "rgba(249, 115, 22, 0.06)" : "transparent",
+                background: isDragging ? "var(--prospera-accent-bg-mid)" : "transparent",
                 opacity: isDragging ? 0.5 : 1,
                 cursor: "grab",
               }}
@@ -3746,7 +3738,7 @@ const HistoricalPage = () => {
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: active ? T.cyan : T.textDim,
-                background: active ? "rgba(249, 115, 22, 0.08)" : "transparent",
+                background: active ? "var(--prospera-accent-bg)" : "transparent",
                 border: `1px solid ${active ? T.cyan : T.border}`,
                 padding: "4px 9px",
                 cursor: "pointer",

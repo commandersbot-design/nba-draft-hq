@@ -1,20 +1,19 @@
 import React, { useMemo, useState } from "react";
 
-// PROSPERA · Signal Orange identity. The "ring" tones intentionally stay
-// cyan to give the Class Map a distinct data-viz palette that doesn't
-// compete with the brand chrome. Filter pills + active states flow from
-// `cyan` (Bloomberg-orange) so they feel like the rest of the product.
+// PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
+// `ringSoft` stays cyan-tinted to give the Class Map a distinct data-viz
+// palette that doesn't compete with brand chrome.
 const C = {
-  bg: "#050A12",
-  surface: "rgba(15, 23, 42, 0.6)",
-  border: "#1F2937",
-  borderSoft: "rgba(31, 41, 55, 0.6)",
-  text: "#E2E8F0",
-  textDim: "#94A3B8",
-  textMute: "#64748B",
-  cyan: "#F97316",
-  ringMute: "rgba(148, 163, 184, 0.18)",
-  ringSoft: "rgba(34, 211, 238, 0.06)",
+  bg:         "var(--prospera-bg)",
+  surface:    "var(--prospera-surface-translucent)",
+  border:     "var(--prospera-border)",
+  borderSoft: "var(--prospera-border-soft)",
+  text:       "var(--prospera-text)",
+  textDim:    "var(--prospera-text-dim)",
+  textMute:   "var(--prospera-text-mute)",
+  cyan:       "var(--prospera-cyan)",
+  ringMute:   "rgba(148, 163, 184, 0.18)",
+  ringSoft:   "var(--prospera-data-ring)",
 };
 
 const mono = {
@@ -38,7 +37,7 @@ const ZONES = [
     id: "architects",
     label: "Architects",
     blurb: "Primary creators · lead playmakers",
-    tint: "rgba(34, 211, 238, 0.06)",
+    tint: "var(--prospera-data-ring)",
     archetypes: [
       "Lead Initiator", "IQ Lead", "Floor General",
       "THE TOTALITY", "Tempo Manipulator", "Offensive Nexus",
@@ -97,7 +96,7 @@ const ZONES = [
     id: "two-way-wings",
     label: "Two-Way Wings",
     blurb: "Multi-modal wings · star versatility",
-    tint: "rgba(34, 211, 238, 0.06)",
+    tint: "var(--prospera-data-ring)",
     archetypes: [
       "Two-Way Wing", "Combo Forward", "Versatile Forward",
       "Three-Level Apex", "Silken Apex", "Two-Way Terminator",
@@ -405,7 +404,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: connectionMode === id ? C.cyan : C.textDim,
-                  background: connectionMode === id ? "rgba(249, 115, 22, 0.1)" : "transparent",
+                  background: connectionMode === id ? "var(--prospera-accent-bg-10)" : "transparent",
                   border: `1px solid ${connectionMode === id ? C.cyan : C.border}`,
                   padding: "4px 8px",
                   cursor: "pointer",
@@ -429,7 +428,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }
             letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: zoneFilter === "ALL" ? C.cyan : C.textDim,
-            background: zoneFilter === "ALL" ? "rgba(249, 115, 22, 0.08)" : "transparent",
+            background: zoneFilter === "ALL" ? "var(--prospera-accent-bg)" : "transparent",
             border: `1px solid ${zoneFilter === "ALL" ? C.cyan : C.border}`,
             padding: "5px 9px",
             cursor: "pointer",
@@ -448,7 +447,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: zoneFilter === zone.id ? C.cyan : C.textDim,
-              background: zoneFilter === zone.id ? "rgba(249, 115, 22, 0.08)" : "transparent",
+              background: zoneFilter === zone.id ? "var(--prospera-accent-bg)" : "transparent",
               border: `1px solid ${zoneFilter === zone.id ? C.cyan : C.border}`,
               padding: "5px 9px",
               cursor: "pointer",
@@ -521,7 +520,7 @@ export const ClassConstellation = ({ prospects = [], onOpenProfile, size = 720 }
                 y1={edge.a.y}
                 x2={edge.b.x}
                 y2={edge.b.y}
-                stroke="rgba(34, 211, 238, 0.18)"
+                stroke="var(--prospera-data-stroke)"
                 strokeWidth={0.7}
               />
             ))}

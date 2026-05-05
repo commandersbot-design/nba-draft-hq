@@ -73,20 +73,20 @@ function describeLotteryShift(team, standingsOrder, lotteryOrder) {
   return { team, from: standingsIdx + 1, to: lotteryIdx + 1, dir: "flat", shift: 0 };
 }
 
-// PROSPERA · Signal Orange identity (see ScoutingTerminal for canonical T).
+// PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
 const T = {
-  bg: "#050A12",
-  surface: "rgba(15, 23, 42, 0.6)",
-  surface2: "rgba(10, 15, 28, 0.92)",
-  border: "#1F2937",
-  borderSoft: "rgba(31, 41, 55, 0.6)",
-  text: "#E2E8F0",
-  textDim: "#94A3B8",
-  textMute: "#64748B",
-  cyan: "#F97316",
-  accentBg: "rgba(249, 115, 22, 0.08)",
-  signal: "#22D3EE",
-  warn: "#F59E0B",
+  bg:         "var(--prospera-bg)",
+  surface:    "var(--prospera-surface-translucent)",
+  surface2:   "var(--prospera-surface-2-translucent)",
+  border:     "var(--prospera-border)",
+  borderSoft: "var(--prospera-border-soft)",
+  text:       "var(--prospera-text)",
+  textDim:    "var(--prospera-text-dim)",
+  textMute:   "var(--prospera-text-mute)",
+  cyan:       "var(--prospera-cyan)",
+  accentBg:   "var(--prospera-accent-bg)",
+  signal:     "var(--prospera-signal)",
+  warn:       "var(--prospera-warn)",
 };
 
 const mono = {
@@ -436,7 +436,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                     transition: "background 0.12s",
                   }}
                   onMouseEnter={(e) => {
-                    if (nextEmptySlot >= 0) e.currentTarget.style.background = "rgba(249, 115, 22, 0.04)";
+                    if (nextEmptySlot >= 0) e.currentTarget.style.background = "var(--prospera-accent-bg-soft)";
                   }}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                 >
@@ -475,7 +475,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                   gap: 10,
                   alignItems: "center",
                   padding: "10px 12px",
-                  background: p ? "rgba(249, 115, 22, 0.04)" : T.surface,
+                  background: p ? "var(--prospera-accent-bg-soft)" : T.surface,
                   borderTop: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
                   borderRight: `1px solid ${isRound2 ? T.borderSoft : T.border}`,
                   borderBottom: `1px solid ${isRound2 ? T.borderSoft : T.border}`,

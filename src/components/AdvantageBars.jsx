@@ -13,22 +13,24 @@ const ARCHETYPE_BY_KEY = (() => {
   return map;
 })();
 
-// ---------- DESIGN TOKENS (mirror the spec) ----------
+// PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
+// AdvantageBars uses its own green/coral palette (not the brand orange) so
+// "above baseline" doesn't visually conflate with "this is the brand."
 const A = {
-  positive: "#1D9E75",
-  positiveBand: "rgba(29, 158, 117, 0.18)",
-  positiveFade: "rgba(29, 158, 117, 0.45)",
-  negative: "#D85A30",
-  negativeBand: "rgba(216, 90, 48, 0.18)",
-  negativeFade: "rgba(216, 90, 48, 0.45)",
-  rule: "#1F2937",
-  ruleSoft: "rgba(31, 41, 55, 0.6)",
-  surface: "rgba(17, 24, 39, 0.72)",
-  text: "#E2E8F0",
-  textDim: "#94A3B8",
-  textMute: "#64748B",
-  neutral: "#475569",
-  baseline: "#334155",
+  positive:     "var(--prospera-advantage-positive)",
+  positiveBand: "var(--prospera-advantage-positive-band)",
+  positiveFade: "var(--prospera-advantage-positive-fade)",
+  negative:     "var(--prospera-advantage-negative)",
+  negativeBand: "var(--prospera-advantage-negative-band)",
+  negativeFade: "var(--prospera-advantage-negative-fade)",
+  rule:         "var(--prospera-border)",
+  ruleSoft:     "var(--prospera-border-soft)",
+  surface:      "var(--prospera-card)",
+  text:         "var(--prospera-text)",
+  textDim:      "var(--prospera-text-dim)",
+  textMute:     "var(--prospera-text-mute)",
+  neutral:      "var(--prospera-advantage-neutral)",
+  baseline:     "var(--prospera-advantage-baseline)",
 };
 
 const mono = {
@@ -210,7 +212,7 @@ const Pill = ({ active, onClick, children }) => (
       letterSpacing: "0.12em",
       textTransform: "uppercase",
       padding: "5px 10px",
-      background: active ? "rgba(249, 115, 22, 0.1)" : "transparent",
+      background: active ? "var(--prospera-accent-bg-10)" : "transparent",
       color: active ? "#22D3EE" : A.textDim,
       border: `1px solid ${active ? "#22D3EE" : A.rule}`,
       cursor: "pointer",
@@ -235,7 +237,7 @@ const ToggleGroup = ({ label, value, onChange, options }) => (
             letterSpacing: "0.12em",
             textTransform: "uppercase",
             padding: "5px 10px",
-            background: value === opt.value ? "rgba(249, 115, 22, 0.12)" : "transparent",
+            background: value === opt.value ? "var(--prospera-accent-bg-strong)" : "transparent",
             color: value === opt.value ? "#22D3EE" : A.textDim,
             border: "none",
             borderLeft: i === 0 ? "none" : `1px solid ${A.rule}`,

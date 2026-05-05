@@ -1,27 +1,26 @@
 import React, { useMemo, useState } from "react";
 import { Plus, X, Search, Download, Edit3, ChevronDown, ChevronRight, FileText, Clock } from "lucide-react";
 
-// PROSPERA · Signal Orange identity — see ScoutingTerminal T tokens for
-// the canonical reference. cyan key holds the new orange accent so existing
-// references inherit it; signal token retains the original cyan for
-// "click here / interactive" cues only.
+// PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
+// DeepDives uses translucent surfaces (overlays the page bg), so we map
+// surface/surface2 to the translucent variants.
 const T = {
-  bg: "#050A12",
-  surface: "rgba(15, 23, 42, 0.6)",
-  surface2: "rgba(10, 15, 28, 0.92)",
-  border: "#1F2937",
-  borderSoft: "rgba(31, 41, 55, 0.6)",
-  text: "#E2E8F0",
-  textDim: "#94A3B8",
-  textMute: "#64748B",
-  cyan: "#F97316",
-  accentBright: "#FB923C",
-  accentBg: "rgba(249, 115, 22, 0.08)",
-  signal: "#22D3EE",
-  blue: "#3B82F6",
-  warn: "#F59E0B",
-  danger: "#EF4444",
-  positive: "#10B981",
+  bg:           "var(--prospera-bg)",
+  surface:      "var(--prospera-surface-translucent)",
+  surface2:     "var(--prospera-surface-2-translucent)",
+  border:       "var(--prospera-border)",
+  borderSoft:   "var(--prospera-border-soft)",
+  text:         "var(--prospera-text)",
+  textDim:      "var(--prospera-text-dim)",
+  textMute:     "var(--prospera-text-mute)",
+  cyan:         "var(--prospera-cyan)",
+  accentBright: "var(--prospera-accent-bright)",
+  accentBg:     "var(--prospera-accent-bg)",
+  signal:       "var(--prospera-signal)",
+  blue:         "var(--prospera-blue)",
+  warn:         "var(--prospera-warn)",
+  danger:       "var(--prospera-danger)",
+  positive:     "var(--prospera-positive)",
 };
 
 const mono = {
@@ -346,7 +345,7 @@ function ObservationsList({ observations, onChange }) {
           fontSize: 10,
           letterSpacing: "0.12em",
           color: T.cyan,
-          background: "rgba(249, 115, 22, 0.06)",
+          background: "var(--prospera-accent-bg-mid)",
           border: `1px solid ${T.cyan}`,
           padding: "5px 10px",
           cursor: "pointer",
@@ -1075,7 +1074,7 @@ export const DeepDivesPage = ({ prospects = [], deepDives = {}, setDeepDives, on
           <button
             type="button"
             onClick={() => setShowPicker(true)}
-            style={{ ...mono, fontSize: 11, letterSpacing: "0.12em", color: T.cyan, background: "rgba(249, 115, 22, 0.08)", border: `1px solid ${T.cyan}`, padding: "6px 12px", cursor: "pointer", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}
+            style={{ ...mono, fontSize: 11, letterSpacing: "0.12em", color: T.cyan, background: "var(--prospera-accent-bg)", border: `1px solid ${T.cyan}`, padding: "6px 12px", cursor: "pointer", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}
           >
             <Plus size={11} /> New Deep Dive
           </button>
@@ -1099,7 +1098,7 @@ export const DeepDivesPage = ({ prospects = [], deepDives = {}, setDeepDives, on
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: isActive ? T.cyan : T.textDim,
-                background: isActive ? "rgba(249, 115, 22, 0.08)" : "transparent",
+                background: isActive ? "var(--prospera-accent-bg)" : "transparent",
                 border: `1px solid ${isActive ? T.cyan : T.border}`,
                 padding: "5px 9px",
                 cursor: "pointer",
@@ -1168,7 +1167,7 @@ export const DeepDivesPage = ({ prospects = [], deepDives = {}, setDeepDives, on
                       cursor: "pointer",
                       textAlign: "left",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249, 115, 22, 0.04)")}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   >
                     <div style={{ ...mono, fontSize: 12, color: T.cyan }}>#{String(p.rank).padStart(2, "0")}</div>

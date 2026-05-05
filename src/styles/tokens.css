@@ -1,0 +1,93 @@
+/* PROSPERA · Signal Orange identity tokens
+ *
+ * Single source of truth for every color used by the dark scout terminal
+ * (the default app shell at `/`, NOT the classic UI behind `?classic=1`
+ * which keeps its own `--surface`, `--accent`, etc. tokens in index.css).
+ *
+ * Future palette swaps: change values here once and every component
+ * reading `var(--prospera-*)` updates without code edits. The original
+ * cyan-primary look that we replaced lives in commented-out form below
+ * each value so reverting is a one-line edit.
+ *
+ * Naming convention: --prospera-<role>[-<variant>]
+ *   role     = bg | surface | border | text | <accent name>
+ *   variant  = bright | dim | bg | border (for translucent variants)
+ *
+ * Inline JSX consumers read these via the `T` object in each component
+ * (e.g., src/components/ScoutingTerminal.jsx) which assigns
+ * `cyan: "var(--prospera-cyan)"` so the rest of the file stays unchanged.
+ */
+
+:root {
+  /* === SURFACES =========================================================== */
+  --prospera-bg:        #050A12;            /* page background — near-black blue */
+  --prospera-surface:   #0A0F1C;            /* primary card surface */
+  --prospera-surface-2: #0F172A;            /* nested surface (input, table head) */
+  --prospera-card:      rgba(17, 24, 39, 0.72); /* translucent card on hero */
+  --prospera-surface-translucent:    rgba(15, 23, 42, 0.6);  /* deep dive surface */
+  --prospera-surface-2-translucent:  rgba(10, 15, 28, 0.92); /* deep dive surface-2 */
+  --prospera-surface-cw:             rgba(15, 23, 42, 0.92); /* CustomWeights drawer */
+  --prospera-surface-solid:          #0A0F1C;                 /* CustomWeights solid bg */
+
+  /* === LINES ============================================================== */
+  --prospera-border:        #1F2937;
+  --prospera-border-soft:   rgba(31, 41, 55, 0.6);
+
+  /* === TEXT TIERS ========================================================= */
+  --prospera-text:       #E2E8F0;   /* primary readable */
+  --prospera-text-dim:   #94A3B8;   /* secondary captions */
+  --prospera-text-mute:  #64748B;   /* tertiary labels, disabled */
+
+  /* === PRIMARY ACCENT — Bloomberg-orange ================================== */
+  /* The brand. Used for: wordmark, score numbers, tab active, primary CTA,
+   * focus rings, all "this is the brand" chrome. To revert to original
+   * cyan, change to #22D3EE and the related `accent-bright` to #67E8F9. */
+  --prospera-cyan:           #F97316;       /* (orig: #22D3EE) */
+  --prospera-accent-bright:  #FB923C;       /* hover lighten (orig: #67E8F9) */
+  --prospera-accent-bg-faint:    rgba(249, 115, 22, 0.03); /* whisper */
+  --prospera-accent-bg-soft:     rgba(249, 115, 22, 0.04); /* hover */
+  --prospera-accent-bg-mid:      rgba(249, 115, 22, 0.06); /* card surface */
+  --prospera-accent-bg:          rgba(249, 115, 22, 0.08); /* default translucent */
+  --prospera-accent-bg-10:       rgba(249, 115, 22, 0.1);  /* toggled */
+  --prospera-accent-bg-strong:   rgba(249, 115, 22, 0.12); /* selected */
+  --prospera-accent-bg-stripe:   rgba(249, 115, 22, 0.18); /* SVG stripe stroke */
+  --prospera-accent-border-faint:rgba(249, 115, 22, 0.3);
+  --prospera-accent-border:      rgba(249, 115, 22, 0.4);
+  --prospera-accent-border-strong: rgba(249, 115, 22, 0.5);
+
+  /* === SECONDARY ACCENT — kept cyan for "click hint" cues only =========== */
+  --prospera-signal:      #22D3EE;
+  --prospera-signal-dim:  rgba(34, 211, 238, 0.4);
+
+  /* === Constellation Map data-viz cyans — intentionally NOT brand-tinted
+         so the radial maps read as "data layer" rather than "brand chrome." */
+  --prospera-data-ring:        rgba(34, 211, 238, 0.06); /* zone tint, faint ring */
+  --prospera-data-ring-strong: rgba(34, 211, 238, 0.08); /* per-prospect map ring */
+  --prospera-data-stroke:      rgba(34, 211, 238, 0.18); /* SVG connection line */
+
+  /* === DATA-VIZ palette (intentionally NOT brand-tinted so charts read
+         as data, not chrome) ============================================== */
+  --prospera-blue:    #3B82F6;     /* guard family bar, secondary line */
+  --prospera-purple:  #A855F7;     /* unique archetype, secondary chart line */
+  --prospera-positive: #10B981;    /* wing family bar, "Hit" tier badge */
+  --prospera-warn:    #F59E0B;     /* big family bar, "Swing" tier */
+  --prospera-danger:  #EF4444;     /* "Bust" / critical-risk only */
+
+  /* === SIGNATURE ELEMENTS ================================================ */
+  --prospera-ticker-gold: #FBBF24; /* downward-movement arrow in ticker bar */
+  --prospera-grid:        rgba(59, 130, 246, 0.08); /* page-bg subtle grid */
+  --prospera-dot-grid:    rgba(249, 115, 22, 0.06); /* hero dot-grid texture */
+
+  /* === ADVANTAGE BARS data-viz palette ===================================
+     Lives separately from the brand accent because the bars communicate
+     "above/below baseline" — using the brand orange would conflate
+     "this is positive" with "this is the brand." Green / coral instead. */
+  --prospera-advantage-positive:        #1D9E75;
+  --prospera-advantage-positive-band:   rgba(29, 158, 117, 0.18);
+  --prospera-advantage-positive-fade:   rgba(29, 158, 117, 0.45);
+  --prospera-advantage-negative:        #D85A30;
+  --prospera-advantage-negative-band:   rgba(216, 90, 48, 0.18);
+  --prospera-advantage-negative-fade:   rgba(216, 90, 48, 0.45);
+  --prospera-advantage-neutral:         #475569;
+  --prospera-advantage-baseline:        #334155;
+}

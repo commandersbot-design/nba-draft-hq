@@ -3,20 +3,20 @@ import { X, RefreshCw } from "lucide-react";
 import { deriveAdvantageProfile } from "./AdvantageBars";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
-// PROSPERA · Signal Orange identity (see ScoutingTerminal for canonical T).
+// PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
 const T = {
-  bg: "#050A12",
-  surface: "rgba(15, 23, 42, 0.92)",
-  surfaceSolid: "#0A0F1C",
-  border: "#1F2937",
-  borderSoft: "rgba(31, 41, 55, 0.6)",
-  text: "#E2E8F0",
-  textDim: "#94A3B8",
-  textMute: "#64748B",
-  cyan: "#F97316",
-  accentBg: "rgba(249, 115, 22, 0.08)",
-  signal: "#22D3EE",
-  warn: "#F59E0B",
+  bg:           "var(--prospera-bg)",
+  surface:      "var(--prospera-surface-cw)",
+  surfaceSolid: "var(--prospera-surface-solid)",
+  border:       "var(--prospera-border)",
+  borderSoft:   "var(--prospera-border-soft)",
+  text:         "var(--prospera-text)",
+  textDim:      "var(--prospera-text-dim)",
+  textMute:     "var(--prospera-text-mute)",
+  cyan:         "var(--prospera-cyan)",
+  accentBg:     "var(--prospera-accent-bg)",
+  signal:       "var(--prospera-signal)",
+  warn:         "var(--prospera-warn)",
 };
 
 const mono = {
