@@ -20,6 +20,7 @@ import HISTORICAL_PROSPECTS from "../data/historicalProspects.json";
 import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
 import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
 import { ConstellationMap } from "./ConstellationMap";
+import { ClassConstellation } from "./ClassConstellation";
 
 function getHeadshotUrl(prospect) {
   if (!prospect || !prospect.name) return null;
@@ -196,7 +197,7 @@ const FlagDot = ({ lvl }) => {
 };
 
 // ---------- TOP NAV ----------
-const NAV_ITEMS = ["Big Board", "My Board", "Dashboard", "Compare", "Notes", "Historical", "Reports"];
+const NAV_ITEMS = ["Big Board", "My Board", "Class Map", "Dashboard", "Compare", "Notes", "Historical", "Reports"];
 
 const TopNav = ({ active, setActive, onMenu }) => (
   <div
@@ -3435,6 +3436,9 @@ export default function ProsperaApp() {
               onDeleteBoard={deleteSavedBoard}
               onOpenProfile={onOpenProfile}
             />
+          )}
+          {route === "Class Map" && (
+            <ClassConstellation prospects={PROSPECTS} onOpenProfile={onOpenProfile} />
           )}
           {route === "Compare" && (
             <ComparePage
