@@ -39,6 +39,7 @@ import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
 import { MockDraftPage } from "./MockDraft";
 import { CustomWeightsProvider, CustomWeightsDrawer, useCustomWeights, ScoreCell } from "./CustomWeights";
+import { DeepDivesPage } from "./DeepDives";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
 
 const DEFAULT_MOCK_DRAFT_TEAMS = (() => {
@@ -258,7 +259,7 @@ const FlagDot = ({ lvl }) => {
 };
 
 // ---------- TOP NAV ----------
-const NAV_ITEMS = ["Big Board", "My Board", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
+const NAV_ITEMS = ["Big Board", "My Board", "Deep Dives", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
 const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => (
   <div
@@ -3322,6 +3323,7 @@ function ProsperaAppInner() {
   const [savedViews, setSavedViews] = useLocalStorageState("prospera.terminal.saved-views", []);
   const [mockDraftPicks, setMockDraftPicks] = useLocalStorageState("prospera.terminal.mock-draft", Array(60).fill(null));
   const [mockDraftTeams, setMockDraftTeams] = useLocalStorageState("prospera.terminal.mock-draft-teams", DEFAULT_MOCK_DRAFT_TEAMS);
+  const [deepDives, setDeepDives] = useLocalStorageState("prospera.terminal.deep-dives", {});
 
   const saveView = (name, state) => {
     const trimmed = String(name || "").trim();
@@ -3572,6 +3574,14 @@ function ProsperaAppInner() {
               setPicks={setMockDraftPicks}
               teamSlots={mockDraftTeams}
               setTeamSlots={setMockDraftTeams}
+              onOpenProfile={onOpenProfile}
+            />
+          )}
+          {route === "Deep Dives" && (
+            <DeepDivesPage
+              prospects={PROSPECTS}
+              deepDives={deepDives}
+              setDeepDives={setDeepDives}
               onOpenProfile={onOpenProfile}
             />
           )}
