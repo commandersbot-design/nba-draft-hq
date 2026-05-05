@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Search, Download, RefreshCw, X, ArrowDown, Plus, Dices } from "lucide-react";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
+import { useCustomWeights, ScoreCell } from "./CustomWeights";
 
 const TEAMS = DRAFT_CONTEXT.teams;
 const NEEDS = DRAFT_CONTEXT.needs;
@@ -121,6 +122,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
   const [showRound2, setShowRound2] = useState(false);
   const [lotteryResult, setLotteryResult] = useState(null);
   const [showOdds, setShowOdds] = useState(false);
+  const { displayScore, active: weightsActive } = useCustomWeights();
 
   // Available prospects = those not already drafted
   const draftedIds = useMemo(() => new Set(picks.filter(Boolean)), [picks]);
@@ -224,7 +226,8 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
       const teamLabel = team ? ` (${TEAMS[team]?.name || team})` : "";
       const p = id ? prospects.find((x) => x.id === id) : null;
       if (p) {
-        lines.push(`${String(idx + 1).padStart(2, "0")}.${teamLabel} ${p.name} · ${p.school || "—"} · ${p.pos || "—"} · ${p.score?.toFixed(1) || "—"}`);
+        const scoreStr = weightsActive && displayScore(p) != null ? displayScore(p).toFixed(1) : "—";
+        lines.push(`${String(idx + 1).padStart(2, "0")}.${teamLabel} ${p.name} · ${p.school || "—"} · ${p.pos || "—"} · ${scoreStr}`);
       } else {
         lines.push(`${String(idx + 1).padStart(2, "0")}.${teamLabel} (empty)`);
       }
@@ -441,7 +444,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                       {p.school?.split(" ")[0] || "—"} · {p.pos || "—"}
                     </div>
                   </div>
-                  <div style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600, textAlign: "right" }}>{p.score?.toFixed(1) || "—"}</div>
+                  <div style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600, textAlign: "right" }}><ScoreCell prospect={p} /></div>
                   <Plus size={13} color={nextEmptySlot < 0 ? T.textMute : T.textDim} />
                 </button>
               ))
@@ -541,7 +544,7 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                   </div>
                 )}
                 <div style={{ ...mono, fontSize: 12, color: p ? T.cyan : T.textMute, fontWeight: 600, textAlign: "right" }}>
-                  {p?.score?.toFixed(1) ?? "—"}
+                  {p ? <ScoreCell prospect={p} /> : "—"}
                 </div>
                 <button
                   type="button"

@@ -38,6 +38,7 @@ import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
 import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
 import { MockDraftPage } from "./MockDraft";
+import { CustomWeightsProvider, CustomWeightsDrawer, useCustomWeights, ScoreCell } from "./CustomWeights";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
 
 const DEFAULT_MOCK_DRAFT_TEAMS = (() => {
@@ -225,7 +226,7 @@ const FlagDot = ({ lvl }) => {
 // ---------- TOP NAV ----------
 const NAV_ITEMS = ["Big Board", "My Board", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
-const TopNav = ({ active, setActive, onMenu }) => (
+const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => (
   <div
     className="prospera-topbar"
     style={{
@@ -320,22 +321,24 @@ const TopNav = ({ active, setActive, onMenu }) => (
 
     <div className="prospera-desktop-only" style={{ display: "flex", alignItems: "center", gap: 12 }}>
       <button
+        type="button"
+        onClick={onOpenWeights}
         style={{
-          background: T.surface2,
-          border: `1px solid ${T.border}`,
-          color: T.textDim,
+          background: weightsActive ? "rgba(34, 211, 238, 0.12)" : T.surface2,
+          border: `1px solid ${weightsActive ? T.cyan : T.border}`,
+          color: weightsActive ? T.cyan : T.textDim,
           padding: "6px 10px",
           display: "flex",
           alignItems: "center",
-          gap: 8,
+          gap: 6,
           cursor: "pointer",
           ...mono,
           fontSize: 11,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
         }}
       >
-        <Search size={12} />
-        SEARCH
-        <span style={{ color: T.textMute, marginLeft: 12 }}>⌘K</span>
+        ⚖ WEIGHTS{weightsActive ? " · ON" : ""}
       </button>
       <div
         style={{
@@ -485,7 +488,7 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
                 color: isActive ? T.cyan : T.textMute,
               }}
             >
-              {p.score != null ? p.score.toFixed(1) : "—"}
+              <ScoreCell prospect={p} />
             </div>
           </button>
         );
@@ -546,7 +549,7 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
         zIndex: 2,
       }}
     >
-      {p.score?.toFixed(1) ?? "—"}
+      <ScoreCell prospect={p} />
     </div>
 
     <div
@@ -610,6 +613,7 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
 
 // ---------- SELECTED PROSPECT DASHBOARD CARD ----------
 const DashboardCard = ({ p, onOpen, onRemove }) => {
+  const { displayScore } = useCustomWeights();
   if (!p) return null;
   return (
     <div
@@ -703,7 +707,7 @@ const DashboardCard = ({ p, onOpen, onRemove }) => {
       ) : (
         <div style={{ padding: 16, display: "grid", gap: 16 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-            <ScorePanel title="Board Score" value={p.score} sub={p.tier} color={T.cyan} />
+            <ScorePanel title="Personal Score" value={displayScore(p)} sub={displayScore(p) != null ? p.tier : "Set custom weights"} color={T.cyan} />
             <ScorePanel title="Trait Score" value={p.weightedTraitScore} sub={p.percentile ? `${p.percentile}th pct` : "—"} color={T.blue} />
           </div>
 
@@ -1093,6 +1097,7 @@ const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Start
 
 const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNote, customTier = "", customTags = [], onSetCustomTier, onToggleCustomTag }) => {
   const [tab, setTab] = useState("Prospect Stats");
+  const { displayScore, active: weightsActive } = useCustomWeights();
   const p = useMemo(
     () => ({ ...rawP, tier: customTier || rawP.tier, customTags }),
     [rawP, customTier, customTags]
@@ -1288,20 +1293,37 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
             }}
             className="prospera-hero-score"
           >
-            <Label>Prospera Score</Label>
-            <div
-              style={{
-                ...mono,
-                fontSize: 56,
-                color: T.cyan,
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                lineHeight: 1,
-                marginTop: 8,
-              }}
-            >
-              {p.score != null ? p.score.toFixed(1) : "—"}
-            </div>
+            <Label>{weightsActive ? "Personal Score" : "Tier"}</Label>
+            {weightsActive ? (
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 56,
+                  color: T.cyan,
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1,
+                  marginTop: 8,
+                }}
+              >
+                {displayScore(p) != null ? displayScore(p).toFixed(1) : "—"}
+              </div>
+            ) : (
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 22,
+                  color: T.cyan,
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                  lineHeight: 1.2,
+                  marginTop: 8,
+                  textTransform: "uppercase",
+                }}
+              >
+                {p.tier || "—"}
+              </div>
+            )}
             <div
               style={{
                 ...mono,
@@ -1413,6 +1435,7 @@ const PlayerProfilePage = ({ p: rawP, onBack, notes = [], onAddNote, onDeleteNot
 
 // ---------- PROSPECT STATS TAB ----------
 const ProspectStatsTab = ({ p }) => {
+  const { displayScore } = useCustomWeights();
   if (p.statsSource === "NONE") {
     return (
       <div style={{ display: "grid", gap: 20 }}>
@@ -1430,9 +1453,10 @@ const ProspectStatsTab = ({ p }) => {
   const strengths = sortedTraits.slice(0, 4).map(([k, v]) => ({ k, v: `${v}/10` }));
   const weaknesses = sortedTraits.slice(-3).reverse().map(([k, v]) => ({ k, v: `${v}/10` }));
 
-  // Build "advanced" tables from score data (real)
+  // Build "advanced" tables — Personal Score replaces the static Prospera Score
+  const personal = displayScore(p);
   const coreOverview = {
-    "BOARD SCORE": p.score != null ? p.score.toFixed(1) : "—",
+    "PERSONAL": personal != null ? personal.toFixed(1) : "—",
     TIER: p.tier ? p.tier.split(" - ")[0] : "—",
     PCTILE: p.percentile != null ? `${p.percentile}` : "—",
     RANK: `#${p.rank}`,
@@ -1995,6 +2019,7 @@ const Section = ({ title, children }) => (
 );
 
 const TraitsTab = ({ p }) => {
+  const { displayScore } = useCustomWeights();
   const flaggedRisks = Object.entries(p.risks || {}).filter(([, v]) => v === 1);
   const cleanRisks = Object.entries(p.risks || {}).filter(([, v]) => v === 0);
   return (
@@ -2074,7 +2099,7 @@ const TraitsTab = ({ p }) => {
           <Section title="Model Output">
             <div style={{ display: "grid", gap: 10 }}>
               <Row k="Tier" v={p.tier} />
-              <Row k="Final Score" v={p.score?.toFixed(2) ?? "—"} />
+              <Row k="Personal Score" v={displayScore(p) != null ? displayScore(p).toFixed(2) : "—"} />
               <Row k="Weighted Trait" v={p.weightedTraitScore?.toFixed(2) ?? "—"} />
               <Row k="Risk Penalty" v={p.riskPenalty?.toFixed(2) ?? "—"} />
               <Row k="Percentile" v={p.percentile != null ? `${p.percentile}` : "—"} />
@@ -2590,7 +2615,7 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 11, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 11, color: T.textDim, cursor: "pointer" }}>{p.cls || "—"}</div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 11, color: T.textDim, cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school?.split(" ")[0]}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600, cursor: "pointer" }}>{p.score?.toFixed(1) || "—"}</div>
+                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600, cursor: "pointer" }}><ScoreCell prospect={p} /></div>
                 <div style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
                   <button
                     type="button"
@@ -2843,7 +2868,7 @@ const MyBoardPage = ({
               </div>
               <div style={{ ...mono, fontSize: 11, color: T.textDim }}>{p.pos}</div>
               <div style={{ ...mono, fontSize: 11, color: T.textMute }}>#{String(p.rank).padStart(2, "0")}</div>
-              <div style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600 }}>{p.score?.toFixed(1) || "—"}</div>
+              <div style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600 }}><ScoreCell prospect={p} /></div>
             </div>
           );
         })}
@@ -2940,6 +2965,7 @@ const ComparePage = ({ compareIds = [], onRemoveCompare, onClearCompare, onOpenP
 };
 
 const CompareColumn = ({ p, onOpenProfile, onRemove }) => {
+  const { displayScore } = useCustomWeights();
   const flagged = Object.entries(p.risks || {}).filter(([, v]) => v === 1);
   return (
     <div style={{ background: T.card, border: `1px solid ${T.border}`, display: "flex", flexDirection: "column" }}>
@@ -2972,7 +2998,7 @@ const CompareColumn = ({ p, onOpenProfile, onRemove }) => {
 
       <div style={{ padding: 14, display: "grid", gap: 14 }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-          <ScorePanel title="Board" value={p.score} sub={p.tier} color={T.cyan} />
+          <ScorePanel title="Personal" value={displayScore(p)} sub={p.tier} color={T.cyan} />
           <ScorePanel title="Trait" value={p.weightedTraitScore} sub={p.percentile != null ? `${p.percentile}th pct` : "—"} color={T.blue} />
         </div>
 
@@ -3237,6 +3263,16 @@ const HistoricalCard = ({ p }) => {
 
 // ---------- MAIN ----------
 export default function ProsperaApp() {
+  return (
+    <CustomWeightsProvider>
+      <ProsperaAppInner />
+    </CustomWeightsProvider>
+  );
+}
+
+function ProsperaAppInner() {
+  const [weightsDrawerOpen, setWeightsDrawerOpen] = useState(false);
+  const customWeights = useCustomWeights();
   const [route, setRoute] = useState("Dashboard");
   const [selectedId, setSelectedId] = useState("p1");
   const [dashSelected, setDashSelected] = useState(["p1", "p2"]);
@@ -3425,7 +3461,21 @@ export default function ProsperaApp() {
         ::-webkit-scrollbar-thumb:hover { background: ${T.cyan}; }
       `}</style>
 
-      <TopNav active={route === "Player" ? "Big Board" : route} setActive={setRoute} onMenu={() => setRailOpen(!railOpen)} />
+      <TopNav
+        active={route === "Player" ? "Big Board" : route}
+        setActive={setRoute}
+        onMenu={() => setRailOpen(!railOpen)}
+        onOpenWeights={() => setWeightsDrawerOpen(true)}
+        weightsActive={customWeights.active}
+      />
+      <CustomWeightsDrawer
+        open={weightsDrawerOpen}
+        onClose={() => setWeightsDrawerOpen(false)}
+        weights={customWeights.weights}
+        setWeights={customWeights.setWeights}
+        active={customWeights.active}
+        setActive={customWeights.setActive}
+      />
 
       <div style={{ display: "flex" }}>
         <BigBoardRail
