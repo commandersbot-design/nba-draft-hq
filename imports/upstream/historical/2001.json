@@ -68,7 +68,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2003-04",
+      "age": 22,
+      "team": "WAS",
+      "games": 74,
+      "pointsPerGame": 10.9,
+      "reboundsPerGame": 7.4,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.7,
+      "impactScore": 17.9
+    },
+    "peak3": {
+      "seasons": [
+        "2003-04",
+        "2004-05",
+        "2005-06"
+      ],
+      "avgImpact": 14.2,
+      "pointsPerGame": 8.4,
+      "reboundsPerGame": 6.3,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.6,
+      "fgPct": 0.5,
+      "threePct": 0.2,
+      "games": 188
+    },
+    "seasonsCount": 12
   },
   {
     "id": "tyson-chandler-2001",
@@ -139,7 +168,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 25,
+      "team": "NOH",
+      "games": 79,
+      "pointsPerGame": 11.8,
+      "reboundsPerGame": 11.7,
+      "assistsPerGame": 1,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 1.1,
+      "impactScore": 21.2
+    },
+    "peak3": {
+      "seasons": [
+        "2006-07",
+        "2007-08",
+        "2008-09"
+      ],
+      "avgImpact": 18.6,
+      "pointsPerGame": 10,
+      "reboundsPerGame": 10.9,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 1.4,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 197
+    },
+    "seasonsCount": 20
   },
   {
     "id": "pau-gasol-2001",
@@ -210,7 +268,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2005-06",
+      "age": 25,
+      "team": "MEM",
+      "games": 80,
+      "pointsPerGame": 20.4,
+      "reboundsPerGame": 8.9,
+      "assistsPerGame": 4.6,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 1.9,
+      "impactScore": 32.2
+    },
+    "peak3": {
+      "seasons": [
+        "2005-06",
+        "2006-07",
+        "2007-08"
+      ],
+      "avgImpact": 30.9,
+      "pointsPerGame": 20,
+      "reboundsPerGame": 9.2,
+      "assistsPerGame": 3.7,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 1.8,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 178
+    },
+    "seasonsCount": 21
   },
   {
     "id": "eddy-curry-2001",
@@ -281,7 +368,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2006-07",
+      "age": 24,
+      "team": "NYK",
+      "games": 81,
+      "pointsPerGame": 19.5,
+      "reboundsPerGame": 7,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.5,
+      "impactScore": 25.4
+    },
+    "peak3": {
+      "seasons": [
+        "2004-05",
+        "2005-06",
+        "2006-07"
+      ],
+      "avgImpact": 21.4,
+      "pointsPerGame": 16.4,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.7,
+      "fgPct": 0.6,
+      "threePct": 0.3,
+      "games": 216
+    },
+    "seasonsCount": 7
   },
   {
     "id": "jason-richardson-2001",
@@ -375,7 +491,36 @@
       "draftCollege": "Michigan State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Specialist"
+    "archetypeTier": "Specialist",
+    "peakSeason": {
+      "season": "2005-06",
+      "age": 25,
+      "team": "GSW",
+      "games": 75,
+      "pointsPerGame": 23.2,
+      "reboundsPerGame": 5.8,
+      "assistsPerGame": 3.1,
+      "stealsPerGame": 1.3,
+      "blocksPerGame": 0.5,
+      "impactScore": 31
+    },
+    "peak3": {
+      "seasons": [
+        "2003-04",
+        "2004-05",
+        "2005-06"
+      ],
+      "avgImpact": 29.5,
+      "pointsPerGame": 21.2,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 3.3,
+      "stealsPerGame": 1.3,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 225
+    },
+    "seasonsCount": 15
   },
   {
     "id": "shane-battier-2001",
@@ -469,7 +614,36 @@
       "draftCollege": "Duke",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 23,
+      "team": "MEM",
+      "games": 78,
+      "pointsPerGame": 14.4,
+      "reboundsPerGame": 5.4,
+      "assistsPerGame": 2.8,
+      "stealsPerGame": 1.6,
+      "blocksPerGame": 1,
+      "impactScore": 21.5
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2002-03",
+        "2003-04"
+      ],
+      "avgImpact": 16.2,
+      "pointsPerGame": 10.9,
+      "reboundsPerGame": 4.5,
+      "assistsPerGame": 1.8,
+      "stealsPerGame": 1.4,
+      "blocksPerGame": 0.9,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 235
+    },
+    "seasonsCount": 15
   },
   {
     "id": "eddie-griffin-2001",
@@ -540,7 +714,36 @@
       "college": "Seton Hall",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2002-03",
+      "age": 21,
+      "team": "HOU",
+      "games": 77,
+      "pointsPerGame": 8.6,
+      "reboundsPerGame": 6,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 1.4,
+      "impactScore": 14.1
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2002-03",
+        "2004-05"
+      ],
+      "avgImpact": 13.6,
+      "pointsPerGame": 8.3,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 1.6,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 220
+    },
+    "seasonsCount": 4
   },
   {
     "id": "desagana-diop-2001",
@@ -611,7 +814,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 26,
+      "team": "DAL",
+      "games": 52,
+      "pointsPerGame": 3,
+      "reboundsPerGame": 5.2,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 1.2,
+      "impactScore": 7.2
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2007-08",
+        "2007-08"
+      ],
+      "avgImpact": 6.8,
+      "pointsPerGame": 2.8,
+      "reboundsPerGame": 4.9,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 1.1,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 158
+    },
+    "seasonsCount": 14
   },
   {
     "id": "rodney-white-2001",
@@ -705,7 +937,36 @@
       "college": "Charlotte",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2002-03",
+      "age": 23,
+      "team": "DEN",
+      "games": 72,
+      "pointsPerGame": 9,
+      "reboundsPerGame": 3,
+      "assistsPerGame": 1.7,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.4,
+      "impactScore": 13.1
+    },
+    "peak3": {
+      "seasons": [
+        "2002-03",
+        "2003-04",
+        "2004-05"
+      ],
+      "avgImpact": 10.4,
+      "pointsPerGame": 7.4,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 186
+    },
+    "seasonsCount": 4
   },
   {
     "id": "joe-johnson-2001",
@@ -799,7 +1060,36 @@
       "draftCollege": "Arkansas",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2006-07",
+      "age": 26,
+      "team": "ATL",
+      "games": 57,
+      "pointsPerGame": 25,
+      "reboundsPerGame": 4.2,
+      "assistsPerGame": 4.4,
+      "stealsPerGame": 1.1,
+      "blocksPerGame": 0.2,
+      "impactScore": 33.2
+    },
+    "peak3": {
+      "seasons": [
+        "2006-07",
+        "2007-08",
+        "2008-09"
+      ],
+      "avgImpact": 32.2,
+      "pointsPerGame": 22.7,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 5.3,
+      "stealsPerGame": 1.1,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 218
+    },
+    "seasonsCount": 23
   },
   {
     "id": "kedrick-brown-2001",
@@ -870,7 +1160,36 @@
       "college": "Okaloosa-Walton College",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2003-04",
+      "age": 23,
+      "team": "BOS",
+      "games": 21,
+      "pointsPerGame": 5.2,
+      "reboundsPerGame": 3.2,
+      "assistsPerGame": 1.2,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.1,
+      "impactScore": 8.9
+    },
+    "peak3": {
+      "seasons": [
+        "2003-04",
+        "2003-04",
+        "2003-04"
+      ],
+      "avgImpact": 8.6,
+      "pointsPerGame": 5.3,
+      "reboundsPerGame": 2.7,
+      "assistsPerGame": 1.2,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 110
+    },
+    "seasonsCount": 5
   },
   {
     "id": "vladimir-radmanovic-2001",
@@ -941,7 +1260,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2003-04",
+      "age": 23,
+      "team": "SEA",
+      "games": 77,
+      "pointsPerGame": 12,
+      "reboundsPerGame": 5.3,
+      "assistsPerGame": 1.8,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.5,
+      "impactScore": 17.9
+    },
+    "peak3": {
+      "seasons": [
+        "2002-03",
+        "2003-04",
+        "2004-05"
+      ],
+      "avgImpact": 16.5,
+      "pointsPerGame": 11.3,
+      "reboundsPerGame": 4.8,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 212
+    },
+    "seasonsCount": 17
   },
   {
     "id": "richard-jefferson-2001",
@@ -1035,7 +1383,36 @@
       "draftCollege": "Arizona",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2004-05",
+      "age": 25,
+      "team": "NJN",
+      "games": 33,
+      "pointsPerGame": 22.2,
+      "reboundsPerGame": 7.3,
+      "assistsPerGame": 4,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.5,
+      "impactScore": 32.1
+    },
+    "peak3": {
+      "seasons": [
+        "2003-04",
+        "2004-05",
+        "2005-06"
+      ],
+      "avgImpact": 29.3,
+      "pointsPerGame": 20.1,
+      "reboundsPerGame": 6.6,
+      "assistsPerGame": 3.9,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 193
+    },
+    "seasonsCount": 19
   },
   {
     "id": "troy-murphy-2001",
@@ -1129,7 +1506,36 @@
       "draftCollege": "Notre Dame",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 29,
+      "team": "IND",
+      "games": 73,
+      "pointsPerGame": 14.3,
+      "reboundsPerGame": 11.8,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.5,
+      "impactScore": 25.4
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2008-09",
+        "2009-10"
+      ],
+      "avgImpact": 23.2,
+      "pointsPerGame": 13.7,
+      "reboundsPerGame": 9.7,
+      "assistsPerGame": 2.2,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 220
+    },
+    "seasonsCount": 13
   },
   {
     "id": "steven-hunter-2001",
@@ -1223,7 +1629,36 @@
       "college": "DePaul",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2006-07",
+      "age": 25,
+      "team": "PHI",
+      "games": 70,
+      "pointsPerGame": 6.4,
+      "reboundsPerGame": 4.8,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 1.1,
+      "impactScore": 10.2
+    },
+    "peak3": {
+      "seasons": [
+        "2004-05",
+        "2005-06",
+        "2006-07"
+      ],
+      "avgImpact": 8.8,
+      "pointsPerGame": 5.7,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 1.2,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 215
+    },
+    "seasonsCount": 7
   },
   {
     "id": "kirk-haston-2001",
@@ -1317,7 +1752,10 @@
       "college": "Indiana",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "michael-bradley-2001",
@@ -1411,7 +1849,36 @@
       "college": "Villanova",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2002-03",
+      "age": 24,
+      "team": "TOR",
+      "games": 67,
+      "pointsPerGame": 5,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 1,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.5,
+      "impactScore": 10.5
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2002-03",
+        "2005-06"
+      ],
+      "avgImpact": 5.3,
+      "pointsPerGame": 2.6,
+      "reboundsPerGame": 3.1,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.5,
+      "threePct": 0.1,
+      "games": 139
+    },
+    "seasonsCount": 3
   },
   {
     "id": "jason-collins-2001",
@@ -1505,7 +1972,36 @@
       "college": "Stanford",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2004-05",
+      "age": 26,
+      "team": "NJN",
+      "games": 80,
+      "pointsPerGame": 6.4,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 1.3,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.9,
+      "impactScore": 12.2
+    },
+    "peak3": {
+      "seasons": [
+        "2002-03",
+        "2003-04",
+        "2004-05"
+      ],
+      "avgImpact": 11.4,
+      "pointsPerGame": 6,
+      "reboundsPerGame": 5.2,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.7,
+      "fgPct": 0.4,
+      "threePct": 0.1,
+      "games": 239
+    },
+    "seasonsCount": 16
   },
   {
     "id": "zach-randolph-2001",
@@ -1599,7 +2095,36 @@
       "draftCollege": "Michigan State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2006-07",
+      "age": 25,
+      "team": "POR",
+      "games": 68,
+      "pointsPerGame": 23.6,
+      "reboundsPerGame": 10.1,
+      "assistsPerGame": 2.2,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.2,
+      "impactScore": 33.3
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 30.9,
+      "pointsPerGame": 20.6,
+      "reboundsPerGame": 11.3,
+      "assistsPerGame": 2,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 206
+    },
+    "seasonsCount": 18
   },
   {
     "id": "brendan-haywood-2001",
@@ -1693,7 +2218,36 @@
       "college": "North Carolina",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 30,
+      "team": "WAS",
+      "games": 49,
+      "pointsPerGame": 9.8,
+      "reboundsPerGame": 10.3,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 2.1,
+      "impactScore": 17.5
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2009-10",
+        "2009-10"
+      ],
+      "avgImpact": 16.2,
+      "pointsPerGame": 9.5,
+      "reboundsPerGame": 8.3,
+      "assistsPerGame": 0.7,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 1.9,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 157
+    },
+    "seasonsCount": 14
   },
   {
     "id": "joseph-forte-2001",
@@ -1787,7 +2341,10 @@
       "college": "North Carolina",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "jeryl-sasser-2001",
@@ -1858,7 +2415,34 @@
       "college": "SMU",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2002-03",
+      "age": 24,
+      "team": "ORL",
+      "games": 75,
+      "pointsPerGame": 2.6,
+      "reboundsPerGame": 2.5,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.2,
+      "impactScore": 5.4
+    },
+    "peak3": {
+      "seasons": [
+        "2002-03"
+      ],
+      "avgImpact": 5.4,
+      "pointsPerGame": 2.6,
+      "reboundsPerGame": 2.5,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.3,
+      "threePct": 0.3,
+      "games": 75
+    },
+    "seasonsCount": 1
   },
   {
     "id": "brandon-armstrong-2001",
@@ -1952,7 +2536,35 @@
       "college": "Pepperdine",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2003-04",
+      "age": 24,
+      "team": "NJN",
+      "games": 56,
+      "pointsPerGame": 2.7,
+      "reboundsPerGame": 0.8,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0,
+      "impactScore": 3.6
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2003-04"
+      ],
+      "avgImpact": 3,
+      "pointsPerGame": 2.3,
+      "reboundsPerGame": 0.7,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0,
+      "fgPct": 0.3,
+      "threePct": 0.3,
+      "games": 91
+    },
+    "seasonsCount": 2
   },
   {
     "id": "raul-lopez-2001",
@@ -2023,7 +2635,35 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2003-04",
+      "age": 24,
+      "team": "UTA",
+      "games": 82,
+      "pointsPerGame": 7,
+      "reboundsPerGame": 1.9,
+      "assistsPerGame": 3.7,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0,
+      "impactScore": 12.8
+    },
+    "peak3": {
+      "seasons": [
+        "2003-04",
+        "2004-05"
+      ],
+      "avgImpact": 11.8,
+      "pointsPerGame": 6.1,
+      "reboundsPerGame": 1.6,
+      "assistsPerGame": 3.9,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 113
+    },
+    "seasonsCount": 2
   },
   {
     "id": "gerald-wallace-2001",
@@ -2094,7 +2734,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 25,
+      "team": "CHA",
+      "games": 62,
+      "pointsPerGame": 19.4,
+      "reboundsPerGame": 6,
+      "assistsPerGame": 3.5,
+      "stealsPerGame": 2.1,
+      "blocksPerGame": 0.9,
+      "impactScore": 27.8
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2008-09",
+        "2009-10"
+      ],
+      "avgImpact": 26.9,
+      "pointsPerGame": 18.1,
+      "reboundsPerGame": 7.9,
+      "assistsPerGame": 2.8,
+      "stealsPerGame": 1.8,
+      "blocksPerGame": 1,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 209
+    },
+    "seasonsCount": 17
   },
   {
     "id": "samuel-dalembert-2001",
@@ -2188,7 +2857,36 @@
       "draftCollege": "Seton Hall",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 28,
+      "team": "PHI",
+      "games": 82,
+      "pointsPerGame": 10.5,
+      "reboundsPerGame": 10.4,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 2.3,
+      "impactScore": 18.4
+    },
+    "peak3": {
+      "seasons": [
+        "2005-06",
+        "2006-07",
+        "2007-08"
+      ],
+      "avgImpact": 16.6,
+      "pointsPerGame": 9.5,
+      "reboundsPerGame": 9.2,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 2.2,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 230
+    },
+    "seasonsCount": 13
   },
   {
     "id": "jamaal-tinsley-2001",
@@ -2282,7 +2980,36 @@
       "college": "Iowa State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2004-05",
+      "age": 27,
+      "team": "IND",
+      "games": 40,
+      "pointsPerGame": 15.4,
+      "reboundsPerGame": 4,
+      "assistsPerGame": 6.4,
+      "stealsPerGame": 2,
+      "blocksPerGame": 0.3,
+      "impactScore": 25.9
+    },
+    "peak3": {
+      "seasons": [
+        "2004-05",
+        "2005-06",
+        "2006-07"
+      ],
+      "avgImpact": 22.3,
+      "pointsPerGame": 12.5,
+      "reboundsPerGame": 3.5,
+      "assistsPerGame": 6.1,
+      "stealsPerGame": 1.6,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 154
+    },
+    "seasonsCount": 10
   },
   {
     "id": "tony-parker-2001",
@@ -2353,7 +3080,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 27,
+      "team": "SAS",
+      "games": 72,
+      "pointsPerGame": 22,
+      "reboundsPerGame": 3.1,
+      "assistsPerGame": 6.9,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.1,
+      "impactScore": 32.5
+    },
+    "peak3": {
+      "seasons": [
+        "2010-11",
+        "2011-12",
+        "2012-13"
+      ],
+      "avgImpact": 29.6,
+      "pointsPerGame": 18.7,
+      "reboundsPerGame": 3,
+      "assistsPerGame": 7.3,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 204
+    },
+    "seasonsCount": 18
   },
   {
     "id": "trenton-hassell-2001",
@@ -2424,7 +3180,36 @@
       "college": "Austin Peay",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2005-06",
+      "age": 27,
+      "team": "MIN",
+      "games": 77,
+      "pointsPerGame": 9.2,
+      "reboundsPerGame": 2.8,
+      "assistsPerGame": 2.6,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.4,
+      "impactScore": 14.3
+    },
+    "peak3": {
+      "seasons": [
+        "2004-05",
+        "2005-06",
+        "2006-07"
+      ],
+      "avgImpact": 12.3,
+      "pointsPerGame": 7.5,
+      "reboundsPerGame": 2.9,
+      "assistsPerGame": 2.3,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.5,
+      "threePct": 0.2,
+      "games": 235
+    },
+    "seasonsCount": 11
   },
   {
     "id": "gilbert-arenas-2001",
@@ -2518,7 +3303,36 @@
       "draftCollege": "Arizona",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Star"
+    "archetypeTier": "Star",
+    "peakSeason": {
+      "season": "2005-06",
+      "age": 24,
+      "team": "WAS",
+      "games": 80,
+      "pointsPerGame": 29.3,
+      "reboundsPerGame": 3.5,
+      "assistsPerGame": 6.1,
+      "stealsPerGame": 2,
+      "blocksPerGame": 0.3,
+      "impactScore": 39.1
+    },
+    "peak3": {
+      "seasons": [
+        "2004-05",
+        "2005-06",
+        "2006-07"
+      ],
+      "avgImpact": 37.6,
+      "pointsPerGame": 27.7,
+      "reboundsPerGame": 4.3,
+      "assistsPerGame": 5.7,
+      "stealsPerGame": 1.9,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 234
+    },
+    "seasonsCount": 10
   },
   {
     "id": "omar-cook-2001",
@@ -2589,7 +3403,10 @@
       "college": "St. John's (NY)",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "will-solomon-2001",
@@ -2660,7 +3477,36 @@
       "college": "Clemson",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 30,
+      "team": "TOR",
+      "games": 39,
+      "pointsPerGame": 4.9,
+      "reboundsPerGame": 1.1,
+      "assistsPerGame": 3.2,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.1,
+      "impactScore": 9.5
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2008-09",
+        "2008-09"
+      ],
+      "avgImpact": 8.7,
+      "pointsPerGame": 5,
+      "reboundsPerGame": 1.1,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 154
+    },
+    "seasonsCount": 3
   },
   {
     "id": "terence-morris-2001",
@@ -2754,7 +3600,36 @@
       "college": "Maryland",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 23,
+      "team": "HOU",
+      "games": 68,
+      "pointsPerGame": 3.8,
+      "reboundsPerGame": 3.1,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.4,
+      "impactScore": 7.1
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2002-03",
+        "2005-06"
+      ],
+      "avgImpact": 5.4,
+      "pointsPerGame": 3,
+      "reboundsPerGame": 2.5,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.1,
+      "games": 139
+    },
+    "seasonsCount": 3
   },
   {
     "id": "brian-scalabrine-2001",
@@ -2848,7 +3723,36 @@
       "college": "Southern California",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2004-05",
+      "age": 27,
+      "team": "NJN",
+      "games": 54,
+      "pointsPerGame": 6.3,
+      "reboundsPerGame": 4.5,
+      "assistsPerGame": 1.6,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.3,
+      "impactScore": 11.4
+    },
+    "peak3": {
+      "seasons": [
+        "2002-03",
+        "2003-04",
+        "2004-05"
+      ],
+      "avgImpact": 7.8,
+      "pointsPerGame": 4.3,
+      "reboundsPerGame": 3.1,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 182
+    },
+    "seasonsCount": 10
   },
   {
     "id": "jeff-trepagnier-2001",
@@ -2942,7 +3846,10 @@
       "college": "Southern California",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Specialist"
+    "archetypeTier": "Specialist",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "damone-brown-2001",
@@ -3036,7 +3943,10 @@
       "college": "Syracuse",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "mehmet-okur-2001",
@@ -3107,7 +4017,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2005-06",
+      "age": 27,
+      "team": "UTA",
+      "games": 82,
+      "pointsPerGame": 18,
+      "reboundsPerGame": 9.1,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.9,
+      "impactScore": 27.2
+    },
+    "peak3": {
+      "seasons": [
+        "2005-06",
+        "2006-07",
+        "2007-08"
+      ],
+      "avgImpact": 24.9,
+      "pointsPerGame": 16.7,
+      "reboundsPerGame": 8,
+      "assistsPerGame": 2.1,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.6,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 234
+    },
+    "seasonsCount": 8
   },
   {
     "id": "michael-wright-2001",
@@ -3162,7 +4101,10 @@
       "draftCollege": "Arizona",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "earl-watson-2001",
@@ -3256,7 +4198,36 @@
       "college": "UCLA",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 29,
+      "team": "SEA",
+      "games": 78,
+      "pointsPerGame": 10.7,
+      "reboundsPerGame": 2.9,
+      "assistsPerGame": 6.8,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.1,
+      "impactScore": 20.9
+    },
+    "peak3": {
+      "seasons": [
+        "2006-07",
+        "2007-08",
+        "2008-09"
+      ],
+      "avgImpact": 18.1,
+      "pointsPerGame": 8.9,
+      "reboundsPerGame": 2.7,
+      "assistsPerGame": 6.1,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 223
+    },
+    "seasonsCount": 15
   },
   {
     "id": "jamison-brewer-2001",
@@ -3350,7 +4321,10 @@
       "college": "Auburn",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "bobby-simmons-2001",
@@ -3444,7 +4418,36 @@
       "college": "DePaul",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2004-05",
+      "age": 25,
+      "team": "LAC",
+      "games": 75,
+      "pointsPerGame": 16.4,
+      "reboundsPerGame": 5.9,
+      "assistsPerGame": 2.7,
+      "stealsPerGame": 1.4,
+      "blocksPerGame": 0.2,
+      "impactScore": 23.8
+    },
+    "peak3": {
+      "seasons": [
+        "2003-04",
+        "2004-05",
+        "2005-06"
+      ],
+      "avgImpact": 18.7,
+      "pointsPerGame": 12.5,
+      "reboundsPerGame": 5,
+      "assistsPerGame": 2.2,
+      "stealsPerGame": 1.1,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 206
+    },
+    "seasonsCount": 9
   },
   {
     "id": "eric-chenowith-2001",
@@ -3499,7 +4502,10 @@
       "draftCollege": "Kansas",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "kyle-hill-2001",
@@ -3554,7 +4560,10 @@
       "draftCollege": "Eastern Illinois",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "sean-lampley-2001",
@@ -3648,7 +4657,34 @@
       "college": "California",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2002-03",
+      "age": 23,
+      "team": "MIA",
+      "games": 35,
+      "pointsPerGame": 4.8,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.1,
+      "impactScore": 7.6
+    },
+    "peak3": {
+      "seasons": [
+        "2002-03"
+      ],
+      "avgImpact": 7.6,
+      "pointsPerGame": 4.8,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0,
+      "games": 35
+    },
+    "seasonsCount": 1
   },
   {
     "id": "loren-woods-2001",
@@ -3742,7 +4778,36 @@
       "college": "Arizona",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2004-05",
+      "age": 27,
+      "team": "TOR",
+      "games": 45,
+      "pointsPerGame": 3.9,
+      "reboundsPerGame": 4.9,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.9,
+      "impactScore": 7.8
+    },
+    "peak3": {
+      "seasons": [
+        "2003-04",
+        "2004-05",
+        "2005-06"
+      ],
+      "avgImpact": 6.4,
+      "pointsPerGame": 3.1,
+      "reboundsPerGame": 4.2,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.8,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 110
+    },
+    "seasonsCount": 5
   },
   {
     "id": "ousmane-cisse-2001",
@@ -3774,7 +4839,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "antonis-fotsis-2001",
@@ -3845,7 +4913,34 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 21,
+      "team": "MEM",
+      "games": 28,
+      "pointsPerGame": 3.9,
+      "reboundsPerGame": 2.2,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.4,
+      "impactScore": 5.9
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02"
+      ],
+      "avgImpact": 5.9,
+      "pointsPerGame": 3.9,
+      "reboundsPerGame": 2.2,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 28
+    },
+    "seasonsCount": 1
   },
   {
     "id": "ken-johnson-2001",
@@ -3939,7 +5034,10 @@
       "college": "Ohio State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "ruben-boumtje-boumtje-2001",
@@ -4033,7 +5131,34 @@
       "college": "Georgetown",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 24,
+      "team": "POR",
+      "games": 33,
+      "pointsPerGame": 1.2,
+      "reboundsPerGame": 1.7,
+      "assistsPerGame": 0.1,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.5,
+      "impactScore": 2.5
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02"
+      ],
+      "avgImpact": 2.5,
+      "pointsPerGame": 1.2,
+      "reboundsPerGame": 1.7,
+      "assistsPerGame": 0.1,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.4,
+      "threePct": 0,
+      "games": 33
+    },
+    "seasonsCount": 1
   },
   {
     "id": "alton-ford-2001",
@@ -4104,7 +5229,34 @@
       "college": "Houston",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 21,
+      "team": "PHX",
+      "games": 53,
+      "pointsPerGame": 3.1,
+      "reboundsPerGame": 2,
+      "assistsPerGame": 0.1,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.1,
+      "impactScore": 4.6
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02"
+      ],
+      "avgImpact": 4.6,
+      "pointsPerGame": 3.1,
+      "reboundsPerGame": 2,
+      "assistsPerGame": 0.1,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 53
+    },
+    "seasonsCount": 1
   },
   {
     "id": "andre-hutson-2001",
@@ -4164,7 +5316,10 @@
       "draftCollege": "Michigan State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "jarron-collins-2001",
@@ -4258,7 +5413,36 @@
       "college": "Stanford",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 23,
+      "team": "UTA",
+      "games": 70,
+      "pointsPerGame": 6.4,
+      "reboundsPerGame": 4.2,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.3,
+      "impactScore": 10.3
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2002-03",
+        "2003-04"
+      ],
+      "avgImpact": 9.4,
+      "pointsPerGame": 6,
+      "reboundsPerGame": 3.6,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 173
+    },
+    "seasonsCount": 11
   },
   {
     "id": "kenny-satterfield-2001",
@@ -4352,7 +5536,36 @@
       "college": "Cincinnati",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 21,
+      "team": "DEN",
+      "games": 36,
+      "pointsPerGame": 5.3,
+      "reboundsPerGame": 1.4,
+      "assistsPerGame": 3,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0,
+      "impactScore": 9.9
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02",
+        "2002-03",
+        "2002-03"
+      ],
+      "avgImpact": 8.6,
+      "pointsPerGame": 4.8,
+      "reboundsPerGame": 1.4,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.3,
+      "threePct": 0.2,
+      "games": 97
+    },
+    "seasonsCount": 3
   },
   {
     "id": "maurice-jeffers-2001",
@@ -4407,7 +5620,10 @@
       "draftCollege": "Saint Louis",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "robertas-javtokas-2001",
@@ -4439,7 +5655,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "alvin-jones-2001",
@@ -4533,7 +5752,34 @@
       "college": "Georgia Tech",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2001-02",
+      "age": 23,
+      "team": "PHI",
+      "games": 23,
+      "pointsPerGame": 1.1,
+      "reboundsPerGame": 1.6,
+      "assistsPerGame": 0.1,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.4,
+      "impactScore": 2.3
+    },
+    "peak3": {
+      "seasons": [
+        "2001-02"
+      ],
+      "avgImpact": 2.3,
+      "pointsPerGame": 1.1,
+      "reboundsPerGame": 1.6,
+      "assistsPerGame": 0.1,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.4,
+      "threePct": 0,
+      "games": 23
+    },
+    "seasonsCount": 1
   },
   {
     "id": "bryan-bracey-2001",
@@ -4588,6 +5834,9 @@
       "draftCollege": "Oregon",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   }
 ]

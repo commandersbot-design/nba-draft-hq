@@ -91,7 +91,36 @@
       "college": "Ohio State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 22,
+      "team": "POR",
+      "games": 21,
+      "pointsPerGame": 11.1,
+      "reboundsPerGame": 8.5,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 2.3,
+      "impactScore": 18.1
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2013-14"
+      ],
+      "avgImpact": 12.3,
+      "pointsPerGame": 7.6,
+      "reboundsPerGame": 5.9,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 1.3,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 105
+    },
+    "seasonsCount": 3
   },
   {
     "id": "kevin-durant-2007",
@@ -185,7 +214,36 @@
       "draftCollege": "Texas",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Unique"
+    "archetypeTier": "Unique",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 25,
+      "team": "OKC",
+      "games": 81,
+      "pointsPerGame": 32,
+      "reboundsPerGame": 7.4,
+      "assistsPerGame": 5.5,
+      "stealsPerGame": 1.3,
+      "blocksPerGame": 0.7,
+      "impactScore": 43.8
+    },
+    "peak3": {
+      "seasons": [
+        "2021-22",
+        "2022-23",
+        "2022-23"
+      ],
+      "avgImpact": 41.1,
+      "pointsPerGame": 29.6,
+      "reboundsPerGame": 6.9,
+      "assistsPerGame": 5.6,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 1.3,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 141
+    },
+    "seasonsCount": 19
   },
   {
     "id": "al-horford-2007",
@@ -279,7 +337,36 @@
       "draftCollege": "Florida",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2012-13",
+      "age": 27,
+      "team": "ATL",
+      "games": 74,
+      "pointsPerGame": 17.4,
+      "reboundsPerGame": 10.2,
+      "assistsPerGame": 3.2,
+      "stealsPerGame": 1.1,
+      "blocksPerGame": 1.1,
+      "impactScore": 28.4
+    },
+    "peak3": {
+      "seasons": [
+        "2010-11",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 27.3,
+      "pointsPerGame": 17.1,
+      "reboundsPerGame": 9.3,
+      "assistsPerGame": 3.1,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 1.2,
+      "fgPct": 0.6,
+      "threePct": 0.5,
+      "games": 180
+    },
+    "seasonsCount": 18
   },
   {
     "id": "mike-conley-2007",
@@ -373,7 +460,36 @@
       "draftCollege": "Ohio State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2018-19",
+      "age": 31,
+      "team": "MEM",
+      "games": 70,
+      "pointsPerGame": 21.1,
+      "reboundsPerGame": 3.4,
+      "assistsPerGame": 6.4,
+      "stealsPerGame": 1.3,
+      "blocksPerGame": 0.3,
+      "impactScore": 31.2
+    },
+    "peak3": {
+      "seasons": [
+        "2015-16",
+        "2016-17",
+        "2018-19"
+      ],
+      "avgImpact": 28.8,
+      "pointsPerGame": 19,
+      "reboundsPerGame": 3.3,
+      "assistsPerGame": 6.3,
+      "stealsPerGame": 1.3,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 195
+    },
+    "seasonsCount": 20
   },
   {
     "id": "jeff-green-2007",
@@ -467,7 +583,36 @@
       "draftCollege": "Georgetown",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 22,
+      "team": "OKC",
+      "games": 78,
+      "pointsPerGame": 16.5,
+      "reboundsPerGame": 6.7,
+      "assistsPerGame": 2,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.4,
+      "impactScore": 23.6
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 22,
+      "pointsPerGame": 15.6,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 1.8,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.6,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 209
+    },
+    "seasonsCount": 25
   },
   {
     "id": "yi-jianlian-2007",
@@ -538,7 +683,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 22,
+      "team": "NJN",
+      "games": 52,
+      "pointsPerGame": 12,
+      "reboundsPerGame": 7.2,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 1,
+      "impactScore": 18.1
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2008-09",
+        "2009-10"
+      ],
+      "avgImpact": 14.9,
+      "pointsPerGame": 9.7,
+      "reboundsPerGame": 5.9,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.8,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 179
+    },
+    "seasonsCount": 5
   },
   {
     "id": "corey-brewer-2007",
@@ -632,7 +806,36 @@
       "college": "Florida",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 24,
+      "team": "MIN",
+      "games": 82,
+      "pointsPerGame": 13,
+      "reboundsPerGame": 3.4,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 1.4,
+      "blocksPerGame": 0.4,
+      "impactScore": 18.3
+    },
+    "peak3": {
+      "seasons": [
+        "2014-15",
+        "2014-15",
+        "2014-15"
+      ],
+      "avgImpact": 16.8,
+      "pointsPerGame": 11.3,
+      "reboundsPerGame": 3.7,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 1.6,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.2,
+      "games": 160
+    },
+    "seasonsCount": 18
   },
   {
     "id": "brandan-wright-2007",
@@ -726,7 +929,36 @@
       "college": "North Carolina",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 26,
+      "team": "DAL",
+      "games": 58,
+      "pointsPerGame": 9.1,
+      "reboundsPerGame": 4.2,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.9,
+      "impactScore": 12.6
+    },
+    "peak3": {
+      "seasons": [
+        "2012-13",
+        "2013-14",
+        "2014-15"
+      ],
+      "avgImpact": 12.3,
+      "pointsPerGame": 8.8,
+      "reboundsPerGame": 4.1,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 1.2,
+      "fgPct": 0.7,
+      "threePct": 0,
+      "games": 149
+    },
+    "seasonsCount": 13
   },
   {
     "id": "joakim-noah-2007",
@@ -820,7 +1052,36 @@
       "draftCollege": "Florida",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 29,
+      "team": "CHI",
+      "games": 80,
+      "pointsPerGame": 12.6,
+      "reboundsPerGame": 11.3,
+      "assistsPerGame": 5.4,
+      "stealsPerGame": 1.2,
+      "blocksPerGame": 1.5,
+      "impactScore": 27
+    },
+    "peak3": {
+      "seasons": [
+        "2011-12",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 23.8,
+      "pointsPerGame": 11.6,
+      "reboundsPerGame": 10.7,
+      "assistsPerGame": 4,
+      "stealsPerGame": 1,
+      "blocksPerGame": 1.7,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 210
+    },
+    "seasonsCount": 11
   },
   {
     "id": "spencer-hawes-2007",
@@ -914,7 +1175,36 @@
       "college": "Washington",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 26,
+      "team": "PHI",
+      "games": 53,
+      "pointsPerGame": 13,
+      "reboundsPerGame": 8.5,
+      "assistsPerGame": 3.3,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 1.3,
+      "impactScore": 22.9
+    },
+    "peak3": {
+      "seasons": [
+        "2013-14",
+        "2013-14",
+        "2013-14"
+      ],
+      "avgImpact": 22.4,
+      "pointsPerGame": 13.2,
+      "reboundsPerGame": 8.2,
+      "assistsPerGame": 2.9,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 1.2,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 160
+    },
+    "seasonsCount": 13
   },
   {
     "id": "acie-law-2007",
@@ -1008,7 +1298,36 @@
       "college": "Texas A&M",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2010-11",
+      "age": 26,
+      "team": "GSW",
+      "games": 40,
+      "pointsPerGame": 5.1,
+      "reboundsPerGame": 1.3,
+      "assistsPerGame": 1.8,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0,
+      "impactScore": 8.2
+    },
+    "peak3": {
+      "seasons": [
+        "2009-10",
+        "2010-11",
+        "2010-11"
+      ],
+      "avgImpact": 7,
+      "pointsPerGame": 4.5,
+      "reboundsPerGame": 1.1,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0,
+      "fgPct": 0.5,
+      "threePct": 0.2,
+      "games": 117
+    },
+    "seasonsCount": 5
   },
   {
     "id": "thaddeus-young-2007",
@@ -1102,7 +1421,36 @@
       "draftCollege": "Georgia Tech",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 26,
+      "team": "PHI",
+      "games": 79,
+      "pointsPerGame": 17.9,
+      "reboundsPerGame": 6,
+      "assistsPerGame": 2.3,
+      "stealsPerGame": 2.1,
+      "blocksPerGame": 0.5,
+      "impactScore": 24.9
+    },
+    "peak3": {
+      "seasons": [
+        "2012-13",
+        "2013-14",
+        "2014-15"
+      ],
+      "avgImpact": 22.7,
+      "pointsPerGame": 15.7,
+      "reboundsPerGame": 6.2,
+      "assistsPerGame": 2.2,
+      "stealsPerGame": 1.9,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0.2,
+      "games": 203
+    },
+    "seasonsCount": 22
   },
   {
     "id": "julian-wright-2007",
@@ -1196,7 +1544,36 @@
       "college": "Kansas",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 22,
+      "team": "NOH",
+      "games": 54,
+      "pointsPerGame": 4.4,
+      "reboundsPerGame": 2.8,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.4,
+      "impactScore": 7.3
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 6.6,
+      "pointsPerGame": 3.9,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.5,
+      "threePct": 0.2,
+      "games": 174
+    },
+    "seasonsCount": 4
   },
   {
     "id": "al-thornton-2007",
@@ -1290,7 +1667,36 @@
       "college": "Florida State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 25,
+      "team": "LAC",
+      "games": 71,
+      "pointsPerGame": 16.8,
+      "reboundsPerGame": 5.2,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.9,
+      "impactScore": 22.2
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2008-09",
+        "2009-10"
+      ],
+      "avgImpact": 18.1,
+      "pointsPerGame": 13.4,
+      "reboundsPerGame": 4.5,
+      "assistsPerGame": 1.3,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.6,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 201
+    },
+    "seasonsCount": 8
   },
   {
     "id": "rodney-stuckey-2007",
@@ -1384,7 +1790,36 @@
       "college": "Eastern Washington",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 24,
+      "team": "DET",
+      "games": 73,
+      "pointsPerGame": 16.6,
+      "reboundsPerGame": 3.8,
+      "assistsPerGame": 4.8,
+      "stealsPerGame": 1.4,
+      "blocksPerGame": 0.2,
+      "impactScore": 25
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 23.6,
+      "pointsPerGame": 15.2,
+      "reboundsPerGame": 3.5,
+      "assistsPerGame": 5,
+      "stealsPerGame": 1.2,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 222
+    },
+    "seasonsCount": 10
   },
   {
     "id": "nick-young-2007",
@@ -1478,7 +1913,36 @@
       "college": "Southern California",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 29,
+      "team": "LAL",
+      "games": 64,
+      "pointsPerGame": 17.9,
+      "reboundsPerGame": 2.6,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.2,
+      "impactScore": 21.5
+    },
+    "peak3": {
+      "seasons": [
+        "2011-12",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 17.4,
+      "pointsPerGame": 14.2,
+      "reboundsPerGame": 2.3,
+      "assistsPerGame": 1.3,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 185
+    },
+    "seasonsCount": 13
   },
   {
     "id": "sean-williams-2007",
@@ -1572,7 +2036,36 @@
       "college": "Boston College",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 21,
+      "team": "NJN",
+      "games": 73,
+      "pointsPerGame": 5.6,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 1.5,
+      "impactScore": 9.2
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2008-09",
+        "2009-10"
+      ],
+      "avgImpact": 6,
+      "pointsPerGame": 3.5,
+      "reboundsPerGame": 3,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 1.1,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 126
+    },
+    "seasonsCount": 3
   },
   {
     "id": "marco-belinelli-2007",
@@ -1643,7 +2136,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 32,
+      "team": "PHI",
+      "games": 28,
+      "pointsPerGame": 13.6,
+      "reboundsPerGame": 1.8,
+      "assistsPerGame": 1.6,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.3,
+      "impactScore": 16.8
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2017-18",
+        "2017-18"
+      ],
+      "avgImpact": 15.9,
+      "pointsPerGame": 12.4,
+      "reboundsPerGame": 1.9,
+      "assistsPerGame": 1.8,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 160
+    },
+    "seasonsCount": 15
   },
   {
     "id": "javaris-crittenton-2007",
@@ -1737,7 +2259,36 @@
       "college": "Georgia Tech",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 20,
+      "team": "MEM",
+      "games": 28,
+      "pointsPerGame": 7.4,
+      "reboundsPerGame": 3.2,
+      "assistsPerGame": 1.2,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.1,
+      "impactScore": 11.1
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2007-08",
+        "2008-09"
+      ],
+      "avgImpact": 10,
+      "pointsPerGame": 6.1,
+      "reboundsPerGame": 2.8,
+      "assistsPerGame": 1.6,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.2,
+      "games": 134
+    },
+    "seasonsCount": 5
   },
   {
     "id": "jason-smith-2007",
@@ -1831,7 +2382,36 @@
       "college": "Colorado State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 28,
+      "team": "NOP",
+      "games": 31,
+      "pointsPerGame": 9.7,
+      "reboundsPerGame": 5.8,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.9,
+      "impactScore": 14.8
+    },
+    "peak3": {
+      "seasons": [
+        "2011-12",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 13.6,
+      "pointsPerGame": 9.3,
+      "reboundsPerGame": 4.8,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.9,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 122
+    },
+    "seasonsCount": 11
   },
   {
     "id": "daequan-cook-2007",
@@ -1925,7 +2505,36 @@
       "college": "Ohio State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 21,
+      "team": "MIA",
+      "games": 59,
+      "pointsPerGame": 8.8,
+      "reboundsPerGame": 3,
+      "assistsPerGame": 1.3,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "impactScore": 12.5
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2008-09",
+        "2009-10"
+      ],
+      "avgImpact": 10.6,
+      "pointsPerGame": 7.6,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 179
+    },
+    "seasonsCount": 7
   },
   {
     "id": "jared-dudley-2007",
@@ -2019,7 +2628,36 @@
       "college": "Boston College",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2011-12",
+      "age": 26,
+      "team": "PHX",
+      "games": 65,
+      "pointsPerGame": 12.7,
+      "reboundsPerGame": 4.6,
+      "assistsPerGame": 1.7,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.3,
+      "impactScore": 18
+    },
+    "peak3": {
+      "seasons": [
+        "2010-11",
+        "2011-12",
+        "2012-13"
+      ],
+      "avgImpact": 16.3,
+      "pointsPerGame": 11.4,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 1.9,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 226
+    },
+    "seasonsCount": 15
   },
   {
     "id": "wilson-chandler-2007",
@@ -2113,7 +2751,36 @@
       "college": "DePaul",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 30,
+      "team": "DEN",
+      "games": 71,
+      "pointsPerGame": 15.7,
+      "reboundsPerGame": 6.5,
+      "assistsPerGame": 2,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.4,
+      "impactScore": 22.7
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 21.6,
+      "pointsPerGame": 15.4,
+      "reboundsPerGame": 5.6,
+      "assistsPerGame": 2,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 1,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 198
+    },
+    "seasonsCount": 14
   },
   {
     "id": "rudy-fernandez-2007",
@@ -2184,7 +2851,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 24,
+      "team": "POR",
+      "games": 78,
+      "pointsPerGame": 10.4,
+      "reboundsPerGame": 2.7,
+      "assistsPerGame": 2,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.2,
+      "impactScore": 14.7
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 13.4,
+      "pointsPerGame": 9,
+      "reboundsPerGame": 2.5,
+      "assistsPerGame": 2.2,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 218
+    },
+    "seasonsCount": 4
   },
   {
     "id": "morris-almond-2007",
@@ -2278,7 +2974,34 @@
       "college": "Rice",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 24,
+      "team": "UTA",
+      "games": 25,
+      "pointsPerGame": 3.7,
+      "reboundsPerGame": 1.4,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.2,
+      "impactScore": 5
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09"
+      ],
+      "avgImpact": 5,
+      "pointsPerGame": 3.7,
+      "reboundsPerGame": 1.4,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 25
+    },
+    "seasonsCount": 1
   },
   {
     "id": "aaron-brooks-2007",
@@ -2372,7 +3095,36 @@
       "college": "Oregon",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 25,
+      "team": "HOU",
+      "games": 82,
+      "pointsPerGame": 19.6,
+      "reboundsPerGame": 2.6,
+      "assistsPerGame": 5.3,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.2,
+      "impactScore": 27.8
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 20.4,
+      "pointsPerGame": 14.1,
+      "reboundsPerGame": 2,
+      "assistsPerGame": 4,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 196
+    },
+    "seasonsCount": 15
   },
   {
     "id": "arron-afflalo-2007",
@@ -2466,7 +3218,36 @@
       "college": "UCLA",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Specialist"
+    "archetypeTier": "Specialist",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 28,
+      "team": "ORL",
+      "games": 73,
+      "pointsPerGame": 18.2,
+      "reboundsPerGame": 3.6,
+      "assistsPerGame": 3.4,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0,
+      "impactScore": 24.8
+    },
+    "peak3": {
+      "seasons": [
+        "2011-12",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 22.7,
+      "pointsPerGame": 16.6,
+      "reboundsPerGame": 3.5,
+      "assistsPerGame": 3,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 199
+    },
+    "seasonsCount": 13
   },
   {
     "id": "tiago-splitter-2007",
@@ -2537,7 +3318,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2012-13",
+      "age": 28,
+      "team": "SAS",
+      "games": 81,
+      "pointsPerGame": 10.3,
+      "reboundsPerGame": 6.4,
+      "assistsPerGame": 1.6,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.8,
+      "impactScore": 16.7
+    },
+    "peak3": {
+      "seasons": [
+        "2011-12",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 15.1,
+      "pointsPerGame": 9.3,
+      "reboundsPerGame": 5.9,
+      "assistsPerGame": 1.4,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.7,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 199
+    },
+    "seasonsCount": 6
   },
   {
     "id": "alando-tucker-2007",
@@ -2631,7 +3441,34 @@
       "college": "Wisconsin",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 25,
+      "team": "PHX",
+      "games": 30,
+      "pointsPerGame": 4.6,
+      "reboundsPerGame": 1,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0,
+      "impactScore": 5.8
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09"
+      ],
+      "avgImpact": 5.8,
+      "pointsPerGame": 4.6,
+      "reboundsPerGame": 1,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 30
+    },
+    "seasonsCount": 1
   },
   {
     "id": "petteri-koponen-2007",
@@ -2663,7 +3500,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "carl-landry-2007",
@@ -2757,7 +3597,36 @@
       "college": "Purdue",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 26,
+      "team": "SAC",
+      "games": 28,
+      "pointsPerGame": 18,
+      "reboundsPerGame": 6.5,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.6,
+      "impactScore": 23.6
+    },
+    "peak3": {
+      "seasons": [
+        "2009-10",
+        "2009-10",
+        "2009-10"
+      ],
+      "avgImpact": 22.1,
+      "pointsPerGame": 17,
+      "reboundsPerGame": 6,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.8,
+      "fgPct": 0.5,
+      "threePct": 0.2,
+      "games": 160
+    },
+    "seasonsCount": 12
   },
   {
     "id": "gabe-pruitt-2007",
@@ -2851,7 +3720,34 @@
       "college": "Southern California",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 23,
+      "team": "BOS",
+      "games": 47,
+      "pointsPerGame": 2,
+      "reboundsPerGame": 0.9,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.1,
+      "impactScore": 3.6
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09"
+      ],
+      "avgImpact": 3.6,
+      "pointsPerGame": 2,
+      "reboundsPerGame": 0.9,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.3,
+      "threePct": 0.3,
+      "games": 47
+    },
+    "seasonsCount": 1
   },
   {
     "id": "marcus-williams-2007",
@@ -2945,7 +3841,10 @@
       "college": "Arizona",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "nick-fazekas-2007",
@@ -3039,7 +3938,35 @@
       "college": "Nevada",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 23,
+      "team": "LAC",
+      "games": 22,
+      "pointsPerGame": 4.7,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.5,
+      "impactScore": 8
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08",
+        "2007-08"
+      ],
+      "avgImpact": 7.5,
+      "pointsPerGame": 4.4,
+      "reboundsPerGame": 3.7,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 48
+    },
+    "seasonsCount": 2
   },
   {
     "id": "glen-davis-2007",
@@ -3133,7 +4060,36 @@
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2012-13",
+      "age": 27,
+      "team": "ORL",
+      "games": 34,
+      "pointsPerGame": 15.1,
+      "reboundsPerGame": 7.2,
+      "assistsPerGame": 2.1,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.6,
+      "impactScore": 22.7
+    },
+    "peak3": {
+      "seasons": [
+        "2011-12",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 18.4,
+      "pointsPerGame": 12.2,
+      "reboundsPerGame": 6.3,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.4,
+      "threePct": 0.2,
+      "games": 140
+    },
+    "seasonsCount": 10
   },
   {
     "id": "jermareo-davidson-2007",
@@ -3227,7 +4183,34 @@
       "college": "Alabama",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 23,
+      "team": "CHA",
+      "games": 38,
+      "pointsPerGame": 3.2,
+      "reboundsPerGame": 1.6,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.4,
+      "impactScore": 4.7
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08"
+      ],
+      "avgImpact": 4.7,
+      "pointsPerGame": 3.2,
+      "reboundsPerGame": 1.6,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.4,
+      "threePct": 0,
+      "games": 38
+    },
+    "seasonsCount": 1
   },
   {
     "id": "josh-mcroberts-2007",
@@ -3321,7 +4304,36 @@
       "college": "Duke",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2012-13",
+      "age": 26,
+      "team": "CHA",
+      "games": 26,
+      "pointsPerGame": 9.3,
+      "reboundsPerGame": 7.2,
+      "assistsPerGame": 2.7,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.6,
+      "impactScore": 17.6
+    },
+    "peak3": {
+      "seasons": [
+        "2012-13",
+        "2012-13",
+        "2013-14"
+      ],
+      "avgImpact": 15.5,
+      "pointsPerGame": 7.9,
+      "reboundsPerGame": 5.6,
+      "assistsPerGame": 3,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 171
+    },
+    "seasonsCount": 10
   },
   {
     "id": "kyrylo-fesenko-2007",
@@ -3392,7 +4404,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2009-10",
+      "age": 23,
+      "team": "UTA",
+      "games": 49,
+      "pointsPerGame": 2.6,
+      "reboundsPerGame": 1.8,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.4,
+      "impactScore": 4.2
+    },
+    "peak3": {
+      "seasons": [
+        "2008-09",
+        "2009-10",
+        "2010-11"
+      ],
+      "avgImpact": 3.9,
+      "pointsPerGame": 2.3,
+      "reboundsPerGame": 1.9,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 123
+    },
+    "seasonsCount": 3
   },
   {
     "id": "stanko-barac-2007",
@@ -3424,7 +4465,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "sun-sun-2007",
@@ -3468,7 +4512,10 @@
     },
     "positionFamily": "Guard",
     "archetypeFamily": "Guard",
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "chris-richard-2007",
@@ -3562,7 +4609,34 @@
       "college": "Florida",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 23,
+      "team": "MIN",
+      "games": 52,
+      "pointsPerGame": 1.9,
+      "reboundsPerGame": 2.6,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.2,
+      "impactScore": 4.1
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08"
+      ],
+      "avgImpact": 4.1,
+      "pointsPerGame": 1.9,
+      "reboundsPerGame": 2.6,
+      "assistsPerGame": 0.3,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 52
+    },
+    "seasonsCount": 1
   },
   {
     "id": "derrick-byars-2007",
@@ -3656,7 +4730,10 @@
       "college": "Vanderbilt",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "adam-haluska-2007",
@@ -3711,7 +4788,10 @@
       "draftCollege": "Iowa",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "reyshawn-terry-2007",
@@ -3766,7 +4846,10 @@
       "draftCollege": "North Carolina",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "jared-jordan-2007",
@@ -3821,7 +4904,10 @@
       "draftCollege": "Marist",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "stephane-lasme-2007",
@@ -3915,7 +5001,10 @@
       "college": "Massachusetts",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "dominic-mcguire-2007",
@@ -4009,7 +5098,36 @@
       "college": "Fresno State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2008-09",
+      "age": 23,
+      "team": "WAS",
+      "games": 79,
+      "pointsPerGame": 4.5,
+      "reboundsPerGame": 5.4,
+      "assistsPerGame": 2.5,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.9,
+      "impactScore": 11.3
+    },
+    "peak3": {
+      "seasons": [
+        "2010-11",
+        "2011-12",
+        "2012-13"
+      ],
+      "avgImpact": 6.7,
+      "pointsPerGame": 2.9,
+      "reboundsPerGame": 3.5,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.4,
+      "threePct": 0,
+      "games": 142
+    },
+    "seasonsCount": 7
   },
   {
     "id": "marc-gasol-2007",
@@ -4080,7 +5198,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 32,
+      "team": "MEM",
+      "games": 74,
+      "pointsPerGame": 19.5,
+      "reboundsPerGame": 6.3,
+      "assistsPerGame": 4.6,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 1.3,
+      "impactScore": 29.4
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18",
+        "2018-19"
+      ],
+      "avgImpact": 28.2,
+      "pointsPerGame": 17.5,
+      "reboundsPerGame": 7.7,
+      "assistsPerGame": 4.5,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 1.3,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 200
+    },
+    "seasonsCount": 15
   },
   {
     "id": "aaron-gray-2007",
@@ -4174,7 +5321,36 @@
       "college": "Pittsburgh",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2011-12",
+      "age": 27,
+      "team": "TOR",
+      "games": 49,
+      "pointsPerGame": 3.9,
+      "reboundsPerGame": 5.7,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.3,
+      "impactScore": 8.6
+    },
+    "peak3": {
+      "seasons": [
+        "2009-10",
+        "2010-11",
+        "2011-12"
+      ],
+      "avgImpact": 7.2,
+      "pointsPerGame": 3.4,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 122
+    },
+    "seasonsCount": 9
   },
   {
     "id": "renaldas-seibutis-2007",
@@ -4206,7 +5382,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "jameson-curry-2007",
@@ -4300,7 +5479,10 @@
       "college": "Oklahoma State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "taurean-green-2007",
@@ -4394,7 +5576,10 @@
       "college": "Florida",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "demetris-nichols-2007",
@@ -4488,7 +5673,10 @@
       "college": "Syracuse",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "brad-newley-2007",
@@ -4525,7 +5713,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "herbert-hill-2007",
@@ -4585,7 +5776,10 @@
       "draftCollege": "Providence",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "ramon-sessions-2007",
@@ -4679,7 +5873,36 @@
       "college": "Nevada",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2013-14",
+      "age": 28,
+      "team": "MIL",
+      "games": 28,
+      "pointsPerGame": 15.8,
+      "reboundsPerGame": 3.1,
+      "assistsPerGame": 4.8,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.1,
+      "impactScore": 23.7
+    },
+    "peak3": {
+      "seasons": [
+        "2011-12",
+        "2011-12",
+        "2012-13"
+      ],
+      "avgImpact": 21.3,
+      "pointsPerGame": 12.8,
+      "reboundsPerGame": 3.3,
+      "assistsPerGame": 5.2,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 148
+    },
+    "seasonsCount": 16
   },
   {
     "id": "sammy-mejia-2007",
@@ -4734,7 +5957,10 @@
       "draftCollege": "DePaul",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "giorgos-printezis-2007",
@@ -4766,7 +5992,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "dj-strawberry-2007",
@@ -4810,7 +6039,34 @@
     },
     "positionFamily": "Guard",
     "archetypeFamily": "Guard",
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2007-08",
+      "age": 23,
+      "team": "PHX",
+      "games": 33,
+      "pointsPerGame": 2.2,
+      "reboundsPerGame": 0.8,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "impactScore": 3.8
+    },
+    "peak3": {
+      "seasons": [
+        "2007-08"
+      ],
+      "avgImpact": 3.8,
+      "pointsPerGame": 2.2,
+      "reboundsPerGame": 0.8,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.3,
+      "threePct": 0.2,
+      "games": 33
+    },
+    "seasonsCount": 1
   },
   {
     "id": "milovan-rakovic-2007",
@@ -4842,6 +6098,9 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   }
 ]

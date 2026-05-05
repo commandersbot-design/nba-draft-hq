@@ -91,7 +91,36 @@
       "college": "Louisiana State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2018-19",
+      "age": 22,
+      "team": "PHI",
+      "games": 79,
+      "pointsPerGame": 16.9,
+      "reboundsPerGame": 8.8,
+      "assistsPerGame": 7.7,
+      "stealsPerGame": 1.4,
+      "blocksPerGame": 0.8,
+      "impactScore": 32.3
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 31.7,
+      "pointsPerGame": 16.4,
+      "reboundsPerGame": 8.2,
+      "assistsPerGame": 8,
+      "stealsPerGame": 1.7,
+      "blocksPerGame": 0.8,
+      "fgPct": 0.6,
+      "threePct": 0.1,
+      "games": 217
+    },
+    "seasonsCount": 7
   },
   {
     "id": "brandon-ingram-2016",
@@ -185,7 +214,36 @@
       "college": "Duke",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2022-23",
+      "age": 25,
+      "team": "NOP",
+      "games": 45,
+      "pointsPerGame": 24.7,
+      "reboundsPerGame": 5.5,
+      "assistsPerGame": 5.8,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.4,
+      "impactScore": 35.5
+    },
+    "peak3": {
+      "seasons": [
+        "2020-21",
+        "2021-22",
+        "2022-23"
+      ],
+      "avgImpact": 34,
+      "pointsPerGame": 23.7,
+      "reboundsPerGame": 5.4,
+      "assistsPerGame": 5.4,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 161
+    },
+    "seasonsCount": 9
   },
   {
     "id": "jaylen-brown-2016",
@@ -279,7 +337,36 @@
       "draftCollege": "California",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Unique"
+    "archetypeTier": "Unique",
+    "peakSeason": {
+      "season": "2025-26",
+      "age": 29,
+      "team": "BOS",
+      "games": 71,
+      "pointsPerGame": 28.7,
+      "reboundsPerGame": 6.9,
+      "assistsPerGame": 5.1,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.4,
+      "impactScore": 39.7
+    },
+    "peak3": {
+      "seasons": [
+        "2023-24",
+        "2024-25",
+        "2025-26"
+      ],
+      "avgImpact": 34.2,
+      "pointsPerGame": 24.6,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 4.4,
+      "stealsPerGame": 1.1,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 204
+    },
+    "seasonsCount": 10
   },
   {
     "id": "dragan-bender-2016",
@@ -350,7 +437,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 20,
+      "team": "PHX",
+      "games": 82,
+      "pointsPerGame": 6.5,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 1.6,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.6,
+      "impactScore": 11.5
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18",
+        "2018-19"
+      ],
+      "avgImpact": 8.8,
+      "pointsPerGame": 5,
+      "reboundsPerGame": 3.6,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 171
+    },
+    "seasonsCount": 3
   },
   {
     "id": "kris-dunn-2016",
@@ -444,7 +560,36 @@
       "college": "Providence",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Specialist"
+    "archetypeTier": "Specialist",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 24,
+      "team": "CHI",
+      "games": 52,
+      "pointsPerGame": 13.4,
+      "reboundsPerGame": 4.3,
+      "assistsPerGame": 6,
+      "stealsPerGame": 2,
+      "blocksPerGame": 0.5,
+      "impactScore": 23.6
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 19.6,
+      "pointsPerGame": 10.7,
+      "reboundsPerGame": 4,
+      "assistsPerGame": 5.1,
+      "stealsPerGame": 1.8,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 149
+    },
+    "seasonsCount": 8
   },
   {
     "id": "buddy-hield-2016",
@@ -538,7 +683,36 @@
       "college": "Oklahoma",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2021-22",
+      "age": 29,
+      "team": "IND",
+      "games": 26,
+      "pointsPerGame": 18.2,
+      "reboundsPerGame": 5.1,
+      "assistsPerGame": 4.8,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.4,
+      "impactScore": 27.5
+    },
+    "peak3": {
+      "seasons": [
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "avgImpact": 25.8,
+      "pointsPerGame": 18.8,
+      "reboundsPerGame": 4.8,
+      "assistsPerGame": 3,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 225
+    },
+    "seasonsCount": 17
   },
   {
     "id": "jamal-murray-2016",
@@ -632,7 +806,36 @@
       "draftCollege": "Kentucky",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Star"
+    "archetypeTier": "Star",
+    "peakSeason": {
+      "season": "2025-26",
+      "age": 29,
+      "team": "DEN",
+      "games": 75,
+      "pointsPerGame": 25.4,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 7.1,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.4,
+      "impactScore": 37
+    },
+    "peak3": {
+      "seasons": [
+        "2023-24",
+        "2024-25",
+        "2025-26"
+      ],
+      "avgImpact": 33.4,
+      "pointsPerGame": 22.7,
+      "reboundsPerGame": 4.1,
+      "assistsPerGame": 6.5,
+      "stealsPerGame": 1.1,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 201
+    },
+    "seasonsCount": 9
   },
   {
     "id": "marquese-chriss-2016",
@@ -726,7 +929,36 @@
       "college": "Washington",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2019-20",
+      "age": 22,
+      "team": "GSW",
+      "games": 59,
+      "pointsPerGame": 9.3,
+      "reboundsPerGame": 6.2,
+      "assistsPerGame": 1.9,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 1.1,
+      "impactScore": 15.9
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18",
+        "2018-19"
+      ],
+      "avgImpact": 11.8,
+      "pointsPerGame": 7.5,
+      "reboundsPerGame": 4.6,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.7,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 181
+    },
+    "seasonsCount": 6
   },
   {
     "id": "jakob-poeltl-2016",
@@ -820,7 +1052,36 @@
       "draftCollege": "Utah",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2024-25",
+      "age": 29,
+      "team": "TOR",
+      "games": 57,
+      "pointsPerGame": 14.5,
+      "reboundsPerGame": 9.6,
+      "assistsPerGame": 2.8,
+      "stealsPerGame": 1.2,
+      "blocksPerGame": 1.2,
+      "impactScore": 24.6
+    },
+    "peak3": {
+      "seasons": [
+        "2021-22",
+        "2022-23",
+        "2022-23"
+      ],
+      "avgImpact": 22.5,
+      "pointsPerGame": 12.9,
+      "reboundsPerGame": 9.1,
+      "assistsPerGame": 2.7,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 1.4,
+      "fgPct": 0.6,
+      "threePct": 0.3,
+      "games": 140
+    },
+    "seasonsCount": 12
   },
   {
     "id": "thon-maker-2016",
@@ -891,7 +1152,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2018-19",
+      "age": 22,
+      "team": "DET",
+      "games": 29,
+      "pointsPerGame": 5.5,
+      "reboundsPerGame": 3.7,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 1.1,
+      "impactScore": 9.2
+    },
+    "peak3": {
+      "seasons": [
+        "2018-19",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 8.3,
+      "pointsPerGame": 5.1,
+      "reboundsPerGame": 3.2,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.9,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 153
+    },
+    "seasonsCount": 6
   },
   {
     "id": "domantas-sabonis-2016",
@@ -985,7 +1275,36 @@
       "draftCollege": "Gonzaga",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Star"
+    "archetypeTier": "Star",
+    "peakSeason": {
+      "season": "2023-24",
+      "age": 28,
+      "team": "SAC",
+      "games": 82,
+      "pointsPerGame": 19.4,
+      "reboundsPerGame": 13.7,
+      "assistsPerGame": 8.2,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.6,
+      "impactScore": 38.8
+    },
+    "peak3": {
+      "seasons": [
+        "2022-23",
+        "2023-24",
+        "2024-25"
+      ],
+      "avgImpact": 37.1,
+      "pointsPerGame": 19.2,
+      "reboundsPerGame": 13.3,
+      "assistsPerGame": 7.2,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.6,
+      "threePct": 0.4,
+      "games": 231
+    },
+    "seasonsCount": 10
   },
   {
     "id": "taurean-prince-2016",
@@ -1079,7 +1398,36 @@
       "college": "Baylor",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 24,
+      "team": "ATL",
+      "games": 82,
+      "pointsPerGame": 14.1,
+      "reboundsPerGame": 4.7,
+      "assistsPerGame": 2.6,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.5,
+      "impactScore": 20.5
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 19.2,
+      "pointsPerGame": 13.2,
+      "reboundsPerGame": 4.8,
+      "assistsPerGame": 2.2,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 201
+    },
+    "seasonsCount": 11
   },
   {
     "id": "georgios-papagiannis-2016",
@@ -1150,7 +1498,34 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 19,
+      "team": "SAC",
+      "games": 22,
+      "pointsPerGame": 5.6,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.8,
+      "impactScore": 9.4
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17"
+      ],
+      "avgImpact": 9.4,
+      "pointsPerGame": 5.6,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0.8,
+      "fgPct": 0.5,
+      "threePct": 0,
+      "games": 22
+    },
+    "seasonsCount": 1
   },
   {
     "id": "denzel-valentine-2016",
@@ -1244,7 +1619,36 @@
       "college": "Michigan State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 24,
+      "team": "CHI",
+      "games": 77,
+      "pointsPerGame": 10.2,
+      "reboundsPerGame": 5.1,
+      "assistsPerGame": 3.2,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.1,
+      "impactScore": 17.6
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2019-20",
+        "2020-21"
+      ],
+      "avgImpact": 12.7,
+      "pointsPerGame": 7.8,
+      "reboundsPerGame": 3.5,
+      "assistsPerGame": 2,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 175
+    },
+    "seasonsCount": 6
   },
   {
     "id": "juancho-hernangomez-2016",
@@ -1315,7 +1719,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2020-21",
+      "age": 25,
+      "team": "MIN",
+      "games": 52,
+      "pointsPerGame": 7.2,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 0.7,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.1,
+      "impactScore": 10.8
+    },
+    "peak3": {
+      "seasons": [
+        "2019-20",
+        "2019-20",
+        "2020-21"
+      ],
+      "avgImpact": 8.8,
+      "pointsPerGame": 5.4,
+      "reboundsPerGame": 3.6,
+      "assistsPerGame": 0.7,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 134
+    },
+    "seasonsCount": 8
   },
   {
     "id": "guerschon-yabusele-2016",
@@ -1386,7 +1819,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2024-25",
+      "age": 29,
+      "team": "PHI",
+      "games": 70,
+      "pointsPerGame": 11,
+      "reboundsPerGame": 5.6,
+      "assistsPerGame": 2.1,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.3,
+      "impactScore": 17.4
+    },
+    "peak3": {
+      "seasons": [
+        "2024-25",
+        "2025-26",
+        "2025-26"
+      ],
+      "avgImpact": 12.7,
+      "pointsPerGame": 7.9,
+      "reboundsPerGame": 4.5,
+      "assistsPerGame": 1.4,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 137
+    },
+    "seasonsCount": 6
   },
   {
     "id": "wade-baldwin-iv-2016",
@@ -1480,7 +1942,34 @@
       "college": "Vanderbilt",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 21,
+      "team": "MEM",
+      "games": 33,
+      "pointsPerGame": 3.2,
+      "reboundsPerGame": 1.4,
+      "assistsPerGame": 1.8,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.2,
+      "impactScore": 6.3
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17"
+      ],
+      "avgImpact": 6.3,
+      "pointsPerGame": 3.2,
+      "reboundsPerGame": 1.4,
+      "assistsPerGame": 1.8,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.3,
+      "threePct": 0.1,
+      "games": 33
+    },
+    "seasonsCount": 1
   },
   {
     "id": "henry-ellenson-2016",
@@ -1574,7 +2063,34 @@
       "college": "Marquette",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 21,
+      "team": "DET",
+      "games": 38,
+      "pointsPerGame": 4,
+      "reboundsPerGame": 2.1,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0,
+      "impactScore": 6.1
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18"
+      ],
+      "avgImpact": 6.1,
+      "pointsPerGame": 4,
+      "reboundsPerGame": 2.1,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.1,
+      "blocksPerGame": 0,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 38
+    },
+    "seasonsCount": 1
   },
   {
     "id": "malik-beasley-2016",
@@ -1668,7 +2184,36 @@
       "college": "Florida State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Specialist"
+    "archetypeTier": "Specialist",
+    "peakSeason": {
+      "season": "2020-21",
+      "age": 24,
+      "team": "MIN",
+      "games": 37,
+      "pointsPerGame": 19.6,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.2,
+      "impactScore": 25.6
+    },
+    "peak3": {
+      "seasons": [
+        "2020-21",
+        "2021-22",
+        "2022-23"
+      ],
+      "avgImpact": 19.8,
+      "pointsPerGame": 15,
+      "reboundsPerGame": 3.6,
+      "assistsPerGame": 1.9,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 171
+    },
+    "seasonsCount": 12
   },
   {
     "id": "caris-levert-2016",
@@ -1762,7 +2307,36 @@
       "college": "Michigan",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2020-21",
+      "age": 26,
+      "team": "IND",
+      "games": 35,
+      "pointsPerGame": 20.7,
+      "reboundsPerGame": 4.6,
+      "assistsPerGame": 4.9,
+      "stealsPerGame": 1.5,
+      "blocksPerGame": 0.7,
+      "impactScore": 29.8
+    },
+    "peak3": {
+      "seasons": [
+        "2019-20",
+        "2020-21",
+        "2020-21"
+      ],
+      "avgImpact": 28.8,
+      "pointsPerGame": 19.9,
+      "reboundsPerGame": 4.5,
+      "assistsPerGame": 4.8,
+      "stealsPerGame": 1.4,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 127
+    },
+    "seasonsCount": 14
   },
   {
     "id": "deandre-bembry-2016",
@@ -1856,7 +2430,36 @@
       "college": "Saint Joseph's",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2018-19",
+      "age": 24,
+      "team": "ATL",
+      "games": 82,
+      "pointsPerGame": 8.4,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 2.5,
+      "stealsPerGame": 1.3,
+      "blocksPerGame": 0.5,
+      "impactScore": 14.5
+    },
+    "peak3": {
+      "seasons": [
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "avgImpact": 11.8,
+      "pointsPerGame": 6.6,
+      "reboundsPerGame": 3.6,
+      "assistsPerGame": 2.2,
+      "stealsPerGame": 1.2,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 176
+    },
+    "seasonsCount": 7
   },
   {
     "id": "malachi-richardson-2016",
@@ -1950,7 +2553,36 @@
       "college": "Syracuse",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 22,
+      "team": "SAC",
+      "games": 25,
+      "pointsPerGame": 3.5,
+      "reboundsPerGame": 1.3,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0,
+      "impactScore": 5
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18",
+        "2017-18"
+      ],
+      "avgImpact": 4.9,
+      "pointsPerGame": 3.5,
+      "reboundsPerGame": 1.2,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 73
+    },
+    "seasonsCount": 4
   },
   {
     "id": "ante-zizic-2016",
@@ -2021,7 +2653,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2018-19",
+      "age": 22,
+      "team": "CLE",
+      "games": 59,
+      "pointsPerGame": 7.8,
+      "reboundsPerGame": 5.4,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.4,
+      "impactScore": 12.7
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 8.3,
+      "pointsPerGame": 5.3,
+      "reboundsPerGame": 3.4,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 113
+    },
+    "seasonsCount": 3
   },
   {
     "id": "timothe-luwawu-cabarrot-2016",
@@ -2092,7 +2753,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2019-20",
+      "age": 25,
+      "team": "BKN",
+      "games": 47,
+      "pointsPerGame": 7.8,
+      "reboundsPerGame": 2.7,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.1,
+      "impactScore": 10.4
+    },
+    "peak3": {
+      "seasons": [
+        "2018-19",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 8.9,
+      "pointsPerGame": 6.4,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 126
+    },
+    "seasonsCount": 8
   },
   {
     "id": "brice-johnson-2016",
@@ -2186,7 +2876,10 @@
       "college": "North Carolina",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "furkan-korkmaz-2016",
@@ -2257,7 +2950,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2019-20",
+      "age": 22,
+      "team": "PHI",
+      "games": 72,
+      "pointsPerGame": 9.8,
+      "reboundsPerGame": 2.3,
+      "assistsPerGame": 1.1,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.2,
+      "impactScore": 12.7
+    },
+    "peak3": {
+      "seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22"
+      ],
+      "avgImpact": 12.3,
+      "pointsPerGame": 8.8,
+      "reboundsPerGame": 2.3,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.4,
+      "games": 194
+    },
+    "seasonsCount": 6
   },
   {
     "id": "pascal-siakam-2016",
@@ -2351,7 +3073,36 @@
       "draftCollege": "New Mexico State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2022-23",
+      "age": 29,
+      "team": "TOR",
+      "games": 71,
+      "pointsPerGame": 24.2,
+      "reboundsPerGame": 7.8,
+      "assistsPerGame": 5.8,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.5,
+      "impactScore": 36.6
+    },
+    "peak3": {
+      "seasons": [
+        "2021-22",
+        "2022-23",
+        "2023-24"
+      ],
+      "avgImpact": 34.7,
+      "pointsPerGame": 23.1,
+      "reboundsPerGame": 7.5,
+      "assistsPerGame": 5.3,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 178
+    },
+    "seasonsCount": 12
   },
   {
     "id": "skal-labissiere-2016",
@@ -2445,7 +3196,36 @@
       "college": "Kentucky",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 22,
+      "team": "SAC",
+      "games": 60,
+      "pointsPerGame": 8.7,
+      "reboundsPerGame": 4.8,
+      "assistsPerGame": 1.2,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.8,
+      "impactScore": 13.5
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18",
+        "2018-19"
+      ],
+      "avgImpact": 10.6,
+      "pointsPerGame": 6.8,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 115
+    },
+    "seasonsCount": 4
   },
   {
     "id": "dejounte-murray-2016",
@@ -2539,7 +3319,36 @@
       "college": "Washington",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2021-22",
+      "age": 25,
+      "team": "SAS",
+      "games": 68,
+      "pointsPerGame": 21.1,
+      "reboundsPerGame": 8.3,
+      "assistsPerGame": 9.2,
+      "stealsPerGame": 2,
+      "blocksPerGame": 0.3,
+      "impactScore": 38
+    },
+    "peak3": {
+      "seasons": [
+        "2021-22",
+        "2022-23",
+        "2023-24"
+      ],
+      "avgImpact": 34.5,
+      "pointsPerGame": 21.4,
+      "reboundsPerGame": 6.3,
+      "assistsPerGame": 7.2,
+      "stealsPerGame": 1.6,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 220
+    },
+    "seasonsCount": 8
   },
   {
     "id": "damian-jones-2016",
@@ -2633,7 +3442,36 @@
       "college": "Vanderbilt",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2021-22",
+      "age": 27,
+      "team": "SAC",
+      "games": 56,
+      "pointsPerGame": 8.1,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 1.2,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.8,
+      "impactScore": 12.6
+    },
+    "peak3": {
+      "seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22"
+      ],
+      "avgImpact": 9.7,
+      "pointsPerGame": 6.1,
+      "reboundsPerGame": 3.7,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.7,
+      "fgPct": 0.7,
+      "threePct": 0.3,
+      "games": 150
+    },
+    "seasonsCount": 7
   },
   {
     "id": "deyonta-davis-2016",
@@ -2727,7 +3565,35 @@
       "college": "Michigan State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 21,
+      "team": "MEM",
+      "games": 62,
+      "pointsPerGame": 5.8,
+      "reboundsPerGame": 4,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.6,
+      "impactScore": 9.3
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18"
+      ],
+      "avgImpact": 6.1,
+      "pointsPerGame": 3.7,
+      "reboundsPerGame": 2.9,
+      "assistsPerGame": 0.4,
+      "stealsPerGame": 0.2,
+      "blocksPerGame": 0.6,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 98
+    },
+    "seasonsCount": 2
   },
   {
     "id": "ivica-zubac-2016",
@@ -2798,7 +3664,36 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2024-25",
+      "age": 28,
+      "team": "LAC",
+      "games": 80,
+      "pointsPerGame": 16.8,
+      "reboundsPerGame": 12.6,
+      "assistsPerGame": 2.7,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 1.1,
+      "impactScore": 28.9
+    },
+    "peak3": {
+      "seasons": [
+        "2024-25",
+        "2025-26",
+        "2025-26"
+      ],
+      "avgImpact": 25.9,
+      "pointsPerGame": 15.1,
+      "reboundsPerGame": 11.4,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.9,
+      "fgPct": 0.6,
+      "threePct": 0,
+      "games": 171
+    },
+    "seasonsCount": 13
   },
   {
     "id": "cheick-diallo-2016",
@@ -2892,7 +3787,36 @@
       "college": "Kansas",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2018-19",
+      "age": 22,
+      "team": "NOP",
+      "games": 64,
+      "pointsPerGame": 6,
+      "reboundsPerGame": 5.2,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.5,
+      "blocksPerGame": 0.5,
+      "impactScore": 10.2
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 8.6,
+      "pointsPerGame": 5.2,
+      "reboundsPerGame": 4,
+      "assistsPerGame": 0.5,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.6,
+      "threePct": 0.2,
+      "games": 163
+    },
+    "seasonsCount": 3
   },
   {
     "id": "tyler-ulis-2016",
@@ -2986,7 +3910,35 @@
       "college": "Kentucky",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 22,
+      "team": "PHX",
+      "games": 71,
+      "pointsPerGame": 7.8,
+      "reboundsPerGame": 1.8,
+      "assistsPerGame": 4.4,
+      "stealsPerGame": 1,
+      "blocksPerGame": 0.1,
+      "impactScore": 14.3
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18"
+      ],
+      "avgImpact": 13.6,
+      "pointsPerGame": 7.6,
+      "reboundsPerGame": 1.7,
+      "assistsPerGame": 4.1,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 132
+    },
+    "seasonsCount": 2
   },
   {
     "id": "rade-zagorac-2016",
@@ -3018,7 +3970,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "malcolm-brogdon-2016",
@@ -3112,7 +4067,36 @@
       "college": "Virginia",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2020-21",
+      "age": 28,
+      "team": "IND",
+      "games": 56,
+      "pointsPerGame": 21.2,
+      "reboundsPerGame": 5.3,
+      "assistsPerGame": 5.9,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.3,
+      "impactScore": 32
+    },
+    "peak3": {
+      "seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22"
+      ],
+      "avgImpact": 30.1,
+      "pointsPerGame": 18.9,
+      "reboundsPerGame": 5.1,
+      "assistsPerGame": 6.3,
+      "stealsPerGame": 0.8,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 146
+    },
+    "seasonsCount": 9
   },
   {
     "id": "chinanu-onuaku-2016",
@@ -3206,7 +4190,10 @@
       "college": "Louisville",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "patrick-mccaw-2016",
@@ -3300,7 +4287,36 @@
       "college": "UNLV",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2019-20",
+      "age": 24,
+      "team": "TOR",
+      "games": 37,
+      "pointsPerGame": 4.6,
+      "reboundsPerGame": 2.3,
+      "assistsPerGame": 2.1,
+      "stealsPerGame": 1.1,
+      "blocksPerGame": 0.1,
+      "impactScore": 8.7
+    },
+    "peak3": {
+      "seasons": [
+        "2018-19",
+        "2018-19",
+        "2019-20"
+      ],
+      "avgImpact": 6.3,
+      "pointsPerGame": 3.3,
+      "reboundsPerGame": 1.9,
+      "assistsPerGame": 1.4,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.1,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 92
+    },
+    "seasonsCount": 5
   },
   {
     "id": "david-michineau-2016",
@@ -3332,7 +4348,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "diamond-stone-2016",
@@ -3426,7 +4445,10 @@
       "college": "Maryland",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "stephen-zimmerman-2016",
@@ -3520,7 +4542,10 @@
       "college": "UNLV",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "isaiah-whitehead-2016",
@@ -3614,7 +4639,34 @@
       "college": "Seton Hall",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 22,
+      "team": "BKN",
+      "games": 73,
+      "pointsPerGame": 7.4,
+      "reboundsPerGame": 2.5,
+      "assistsPerGame": 2.6,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.5,
+      "impactScore": 12.3
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17"
+      ],
+      "avgImpact": 12.3,
+      "pointsPerGame": 7.4,
+      "reboundsPerGame": 2.5,
+      "assistsPerGame": 2.6,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.5,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 73
+    },
+    "seasonsCount": 1
   },
   {
     "id": "zhou-qi-2016",
@@ -3685,7 +4737,10 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "isaia-cordinier-2016",
@@ -3717,7 +4772,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "demetrius-jackson-2016",
@@ -3811,7 +4869,10 @@
       "college": "Notre Dame",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "aj-hammons-2016",
@@ -3855,7 +4916,34 @@
     },
     "positionFamily": "Big",
     "archetypeFamily": "Big",
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 24,
+      "team": "DAL",
+      "games": 22,
+      "pointsPerGame": 2.2,
+      "reboundsPerGame": 1.6,
+      "assistsPerGame": 0.2,
+      "stealsPerGame": 0,
+      "blocksPerGame": 0.6,
+      "impactScore": 3.6
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17"
+      ],
+      "avgImpact": 3.6,
+      "pointsPerGame": 2.2,
+      "reboundsPerGame": 1.6,
+      "assistsPerGame": 0.2,
+      "stealsPerGame": 0,
+      "blocksPerGame": 0.6,
+      "fgPct": 0.4,
+      "threePct": 0.5,
+      "games": 22
+    },
+    "seasonsCount": 1
   },
   {
     "id": "jake-layman-2016",
@@ -3949,7 +5037,36 @@
       "college": "Maryland",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2019-20",
+      "age": 26,
+      "team": "MIN",
+      "games": 23,
+      "pointsPerGame": 9.1,
+      "reboundsPerGame": 2.5,
+      "assistsPerGame": 0.7,
+      "stealsPerGame": 0.7,
+      "blocksPerGame": 0.4,
+      "impactScore": 11.7
+    },
+    "peak3": {
+      "seasons": [
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "avgImpact": 9.7,
+      "pointsPerGame": 7.3,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 0.7,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.5,
+      "threePct": 0.3,
+      "games": 139
+    },
+    "seasonsCount": 6
   },
   {
     "id": "paul-zipser-2016",
@@ -4020,7 +5137,35 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 23,
+      "team": "CHI",
+      "games": 44,
+      "pointsPerGame": 5.5,
+      "reboundsPerGame": 2.8,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.3,
+      "blocksPerGame": 0.4,
+      "impactScore": 8.4
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17",
+        "2017-18"
+      ],
+      "avgImpact": 7.6,
+      "pointsPerGame": 4.8,
+      "reboundsPerGame": 2.6,
+      "assistsPerGame": 0.9,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.4,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 98
+    },
+    "seasonsCount": 2
   },
   {
     "id": "michael-gbinije-2016",
@@ -4114,7 +5259,10 @@
       "college": "Syracuse",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "georges-niang-2016",
@@ -4208,7 +5356,36 @@
       "college": "Iowa State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2024-25",
+      "age": 32,
+      "team": "ATL",
+      "games": 28,
+      "pointsPerGame": 12.1,
+      "reboundsPerGame": 3,
+      "assistsPerGame": 1.6,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.3,
+      "impactScore": 16.1
+    },
+    "peak3": {
+      "seasons": [
+        "2024-25",
+        "2024-25",
+        "2024-25"
+      ],
+      "avgImpact": 14.3,
+      "pointsPerGame": 10.2,
+      "reboundsPerGame": 3.4,
+      "assistsPerGame": 1.4,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 158
+    },
+    "seasonsCount": 10
   },
   {
     "id": "ben-bentil-2016",
@@ -4295,7 +5472,10 @@
       "college": "Providence",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "joel-bolomboy-2016",
@@ -4389,7 +5569,10 @@
       "college": "Weber State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "petr-cornelie-2016",
@@ -4453,7 +5636,10 @@
       "college": null,
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "kay-felder-2016",
@@ -4547,7 +5733,34 @@
       "college": "Oakland",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2016-17",
+      "age": 22,
+      "team": "CLE",
+      "games": 42,
+      "pointsPerGame": 4,
+      "reboundsPerGame": 1,
+      "assistsPerGame": 1.4,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "impactScore": 6.4
+    },
+    "peak3": {
+      "seasons": [
+        "2016-17"
+      ],
+      "avgImpact": 6.4,
+      "pointsPerGame": 4,
+      "reboundsPerGame": 1,
+      "assistsPerGame": 1.4,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.2,
+      "fgPct": 0.4,
+      "threePct": 0.3,
+      "games": 42
+    },
+    "seasonsCount": 1
   },
   {
     "id": "marcus-paige-2016",
@@ -4641,7 +5854,10 @@
       "college": "North Carolina",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "daniel-hamilton-2016",
@@ -4735,7 +5951,10 @@
       "college": "Connecticut",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "wang-zhelin-2016",
@@ -4767,7 +5986,10 @@
     },
     "positionFamily": null,
     "archetypeFamily": "Unknown",
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "abdel-nader-2016",
@@ -4861,7 +6083,36 @@
       "college": "Iowa State",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2020-21",
+      "age": 27,
+      "team": "PHX",
+      "games": 24,
+      "pointsPerGame": 6.7,
+      "reboundsPerGame": 2.6,
+      "assistsPerGame": 0.8,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.4,
+      "impactScore": 9.5
+    },
+    "peak3": {
+      "seasons": [
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "avgImpact": 7.9,
+      "pointsPerGame": 5.7,
+      "reboundsPerGame": 2.1,
+      "assistsPerGame": 0.6,
+      "stealsPerGame": 0.4,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.5,
+      "threePct": 0.4,
+      "games": 140
+    },
+    "seasonsCount": 4
   },
   {
     "id": "isaiah-cousins-2016",
@@ -4916,7 +6167,10 @@
       "draftCollege": "Oklahoma",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": null
+    "archetypeTier": null,
+    "peakSeason": null,
+    "peak3": null,
+    "seasonsCount": 0
   },
   {
     "id": "tyrone-wallace-2016",
@@ -5010,6 +6264,34 @@
       "college": "California",
       "source": "sports-reference / stathead"
     },
-    "archetypeTier": "Role"
+    "archetypeTier": "Role",
+    "peakSeason": {
+      "season": "2017-18",
+      "age": 24,
+      "team": "LAC",
+      "games": 30,
+      "pointsPerGame": 9.7,
+      "reboundsPerGame": 3.5,
+      "assistsPerGame": 2.4,
+      "stealsPerGame": 0.9,
+      "blocksPerGame": 0.4,
+      "impactScore": 15
+    },
+    "peak3": {
+      "seasons": [
+        "2017-18",
+        "2018-19"
+      ],
+      "avgImpact": 10.2,
+      "pointsPerGame": 6.6,
+      "reboundsPerGame": 2.6,
+      "assistsPerGame": 1.5,
+      "stealsPerGame": 0.6,
+      "blocksPerGame": 0.3,
+      "fgPct": 0.4,
+      "threePct": 0.2,
+      "games": 92
+    },
+    "seasonsCount": 2
   }
 ]
