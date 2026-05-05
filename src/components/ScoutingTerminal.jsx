@@ -3072,6 +3072,10 @@ const HistoricalPage = () => {
           filtered.map((p) => <HistoricalCard key={p.id} p={p} />)
         )}
       </div>
+
+      <div style={{ marginTop: 24, paddingTop: 14, borderTop: `1px solid ${T.borderSoft}`, ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em", textTransform: "uppercase", lineHeight: 1.6 }}>
+        Sources · Draft order, NBA career stats: <a href="https://www.nba.com/stats" target="_blank" rel="noopener noreferrer" style={{ color: T.textDim, textDecoration: "none" }}>stats.nba.com</a>{" "}· Win Shares, All-Star selections, college totals: <a href="https://stathead.com/basketball/" target="_blank" rel="noopener noreferrer" style={{ color: T.textDim, textDecoration: "none" }}>Sports Reference / Stathead</a>{" "}· Photos: <a href="https://www.espn.com" target="_blank" rel="noopener noreferrer" style={{ color: T.textDim, textDecoration: "none" }}>ESPN</a>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@
     "name": "Anthony Davis",
     "draftYear": 2012,
     "draftSlot": 1,
-    "position": "PF/C",
+    "position": "C",
     "school": "Kentucky",
     "height": "6-10",
     "age": 19.3,
@@ -40,7 +40,29 @@
       "careerBpg": 2.3
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2025-26",
+      "ageRange": "19-32",
+      "games": 807,
+      "minutes": 27741,
+      "pointsTotal": 19385,
+      "winShares": 120.1,
+      "allStarSelections": 10,
+      "pointsPerGame": 24,
+      "reboundsPerGame": 10.7,
+      "assistsPerGame": 2.6,
+      "fgPct": 52.2,
+      "threePct": 29.5,
+      "ftPct": 79.3,
+      "tsPct": 59.1,
+      "efgPct": 53.6,
+      "pos": "F-C",
+      "teams": "DALLALNOHNOP",
+      "srSlug": "davisan02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "michael-kidd-gilchrist-2012",
@@ -126,7 +148,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2025-26",
+      "ageRange": "19-32",
+      "games": 807,
+      "minutes": 27681,
+      "pointsTotal": 17306,
+      "winShares": 58.4,
+      "allStarSelections": 3,
+      "pointsPerGame": 21.4,
+      "reboundsPerGame": 4,
+      "assistsPerGame": 4.3,
+      "fgPct": 46.4,
+      "threePct": 37.6,
+      "ftPct": 82.1,
+      "tsPct": 56.8,
+      "efgPct": 52.7,
+      "pos": "G",
+      "teams": "LACPHOWAS",
+      "srSlug": "bealbr01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "dion-waiters-2012",
@@ -255,7 +299,29 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2024-25",
+      "ageRange": "22-34",
+      "games": 900,
+      "minutes": 32614,
+      "pointsTotal": 22598,
+      "winShares": 118.4,
+      "allStarSelections": 9,
+      "pointsPerGame": 25.1,
+      "reboundsPerGame": 4.3,
+      "assistsPerGame": 6.7,
+      "fgPct": 43.9,
+      "threePct": 37.1,
+      "ftPct": 89.9,
+      "tsPct": 59,
+      "efgPct": 52.3,
+      "pos": "G",
+      "teams": "MILPOR",
+      "srSlug": "lillada01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "harrison-barnes-2012",
@@ -298,18 +364,40 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2025-26",
+      "ageRange": "20-33",
+      "games": 1070,
+      "minutes": 33015,
+      "pointsTotal": 14572,
+      "winShares": 66.4,
+      "allStarSelections": 0,
+      "pointsPerGame": 13.6,
+      "reboundsPerGame": 4.6,
+      "assistsPerGame": 1.8,
+      "fgPct": 46,
+      "threePct": 38.5,
+      "ftPct": 81.1,
+      "tsPct": 57.6,
+      "efgPct": 53,
+      "pos": "F",
+      "teams": "DALGSWSACSAS",
+      "srSlug": "barneha02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "terrence-ross-2012",
     "name": "Terrence Ross",
     "draftYear": 2012,
     "draftSlot": 8,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Washington",
     "height": "6-7",
     "age": 21.4,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 11,
@@ -340,8 +428,8 @@
       "careerSpg": 0.8,
       "careerBpg": 0.3
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "andre-drummond-2012",
@@ -354,7 +442,7 @@
     "age": 18.9,
     "archetype": "Rebounding Big",
     "roleOutcome": "",
-    "outcomeTier": "Hit",
+    "outcomeTier": "Star",
     "pointsPerGame": 12.1,
     "reboundsPerGame": 11.9,
     "assistsPerGame": 1.2,
@@ -384,7 +472,29 @@
       "careerBpg": 1.2
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2025-26",
+      "ageRange": "19-32",
+      "games": 967,
+      "minutes": 25451,
+      "pointsTotal": 11696,
+      "winShares": 80,
+      "allStarSelections": 2,
+      "pointsPerGame": 12.1,
+      "reboundsPerGame": 11.9,
+      "assistsPerGame": 1.2,
+      "fgPct": 53.9,
+      "threePct": 21.7,
+      "ftPct": 48.9,
+      "tsPct": 54.4,
+      "efgPct": 54.2,
+      "pos": "C",
+      "teams": "BRKCHICLEDETLALPHI",
+      "srSlug": "drumman01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "austin-rivers-2012",
@@ -434,7 +544,7 @@
     "name": "Meyers Leonard",
     "draftYear": 2012,
     "draftSlot": 11,
-    "position": "PF/C",
+    "position": "C",
     "school": "Illinois",
     "height": "7-0",
     "age": 20.3,
@@ -477,7 +587,7 @@
     "name": "Jeremy Lamb",
     "draftYear": 2012,
     "draftSlot": 12,
-    "position": "SF/SG",
+    "position": "SF",
     "school": "Connecticut",
     "height": "6-5",
     "age": 20.1,
@@ -563,7 +673,7 @@
     "name": "John Henson",
     "draftYear": 2012,
     "draftSlot": 14,
-    "position": "PF/C",
+    "position": "C",
     "school": "North Carolina",
     "height": "6-9",
     "age": 21.5,
@@ -606,11 +716,11 @@
     "name": "Maurice Harkless",
     "draftYear": 2012,
     "draftSlot": 15,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "St. John's (NY)",
     "height": "6-7",
     "age": 19.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 6.9,
@@ -641,8 +751,8 @@
       "careerSpg": 0.9,
       "careerBpg": 0.6
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "royce-white-2012",
@@ -692,7 +802,7 @@
     "name": "Tyler Zeller",
     "draftYear": 2012,
     "draftSlot": 17,
-    "position": "PF/C",
+    "position": "C",
     "school": "North Carolina",
     "height": "6-11",
     "age": 22.4,
@@ -814,14 +924,32 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Forward",
-    "archetypeFamily": "Forward"
+    "archetypeFamily": "Forward",
+    "cbbStats": {
+      "fromSeason": "2008-09",
+      "toSeason": "2011-12",
+      "games": 123,
+      "minutes": 3672,
+      "pointsTotal": 2103,
+      "pointsPerGame": 17.1,
+      "reboundsPerGame": 7.2,
+      "assistsPerGame": 0.7,
+      "fgPct": 57.5,
+      "threePct": 38.2,
+      "ftPct": 72,
+      "tsPct": 61.6,
+      "bpm": 3.7,
+      "gameScore": 13,
+      "srSlug": "andrew-nicholson-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "evan-fournier-2012",
     "name": "Evan Fournier",
     "draftYear": 2012,
     "draftSlot": 20,
-    "position": "SF/SG",
+    "position": "SF",
     "school": "Poitiers Basket 86 (France)",
     "height": "6-6",
     "age": 19.7,
@@ -864,7 +992,7 @@
     "name": "Jared Sullinger",
     "draftYear": 2012,
     "draftSlot": 21,
-    "position": "PF/C",
+    "position": "C",
     "school": "Ohio State",
     "height": "6-9",
     "age": 20.3,
@@ -1472,7 +1600,7 @@
     "age": 22.3,
     "archetype": "Two-Way Wing",
     "roleOutcome": "",
-    "outcomeTier": "Hit",
+    "outcomeTier": "Star",
     "pointsPerGame": 8.7,
     "reboundsPerGame": 6.8,
     "assistsPerGame": 5.6,
@@ -1502,7 +1630,29 @@
       "careerBpg": 1
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2025-26",
+      "ageRange": "22-35",
+      "games": 949,
+      "minutes": 27151,
+      "pointsTotal": 8235,
+      "winShares": 66.3,
+      "allStarSelections": 4,
+      "pointsPerGame": 8.7,
+      "reboundsPerGame": 6.8,
+      "assistsPerGame": 5.6,
+      "fgPct": 44.7,
+      "threePct": 32.1,
+      "ftPct": 71,
+      "tsPct": 54.1,
+      "efgPct": 50.9,
+      "pos": "F",
+      "teams": "GSW",
+      "srSlug": "greendr01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "orlando-johnson-2012",
@@ -1545,7 +1695,25 @@
       "careerBpg": 0.1
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "cbbStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2011-12",
+      "games": 124,
+      "minutes": 3878,
+      "pointsTotal": 2208,
+      "pointsPerGame": 17.8,
+      "reboundsPerGame": 5.6,
+      "assistsPerGame": 2.6,
+      "fgPct": 45.7,
+      "threePct": 39.1,
+      "ftPct": 72,
+      "tsPct": 56.6,
+      "bpm": 3.8,
+      "gameScore": 12.4,
+      "srSlug": "orlando-johnson-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "quincy-acy-2012",
@@ -1674,7 +1842,29 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2025-26",
+      "ageRange": "21-34",
+      "games": 839,
+      "minutes": 25262,
+      "pointsTotal": 13541,
+      "winShares": 58.2,
+      "allStarSelections": 3,
+      "pointsPerGame": 16.1,
+      "reboundsPerGame": 4.7,
+      "assistsPerGame": 3.9,
+      "fgPct": 45.8,
+      "threePct": 38.5,
+      "ftPct": 87.8,
+      "tsPct": 57.2,
+      "efgPct": 52.7,
+      "pos": "F-G",
+      "teams": "DALDETMILWAS",
+      "srSlug": "middlkh01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "will-barton-2012",
@@ -2068,7 +2258,7 @@
     "name": "Kyle O'Quinn",
     "draftYear": 2012,
     "draftSlot": 49,
-    "position": "PF/C",
+    "position": "C",
     "school": "Norfolk State",
     "height": "6-9",
     "age": 22.2,
@@ -2228,7 +2418,7 @@
     "name": "Furkan Aldemir",
     "draftYear": 2012,
     "draftSlot": 53,
-    "position": "PF/C",
+    "position": "C",
     "school": "Galatasaray S.K. (Turkey)",
     "height": "6-10",
     "age": 20.9,

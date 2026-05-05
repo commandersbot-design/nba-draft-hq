@@ -95,6 +95,21 @@ function normalizePosition(rawPosition, heightInches) {
 //   Swing   : platoon / fringe rotation; could have broken either way
 //   Bust    : sub-rotation / never stuck
 function classifyOutcome(prospect) {
+  // Sports Reference stats are the gold-standard signal when present.
+  const sr = prospect.srNbaStats || null;
+  if (sr) {
+    const ws = Number(sr.winShares) || 0;
+    const allStar = Number(sr.allStarSelections) || 0;
+    const games = Number(sr.games) || 0;
+    if (allStar >= 3) return 'Star';
+    if (ws >= 80) return 'Star';
+    if (allStar >= 1) return 'Hit';      // any All-Star nod ⇒ at least Hit
+    if (ws >= 30) return 'Hit';
+    if (ws >= 10 || games >= 400) return 'Swing';
+    if (ws >= 3 || games >= 200) return 'Swing';
+    return 'Bust';
+  }
+
   const career = prospect.nbaStats || {};
   const games = Number(career.careerGames) || 0;
   // careerMinutes from NBA stats is per-game (MPG), not totals — use games only.

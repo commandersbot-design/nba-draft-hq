@@ -4,11 +4,11 @@
     "name": "Ben Simmons",
     "draftYear": 2016,
     "draftSlot": 1,
-    "position": "SF/SG",
+    "position": "C",
     "school": "Louisiana State",
     "height": "6-10",
     "age": 19.9,
-    "archetype": "Two-Way Wing",
+    "archetype": "Playmaking Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 13.1,
@@ -39,8 +39,8 @@
       "careerSpg": 1.5,
       "careerBpg": 0.7
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Big",
+    "archetypeFamily": "Big"
   },
   {
     "id": "brandon-ingram-2016",
@@ -90,7 +90,7 @@
     "name": "Jaylen Brown",
     "draftYear": 2016,
     "draftSlot": 3,
-    "position": "SF/SG",
+    "position": "SF",
     "school": "California",
     "height": "6-6",
     "age": 19.7,
@@ -126,7 +126,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2016-17",
+      "toSeason": "2025-26",
+      "ageRange": "20-29",
+      "games": 674,
+      "minutes": 20908,
+      "pointsTotal": 13474,
+      "winShares": 47.5,
+      "allStarSelections": 5,
+      "pointsPerGame": 20,
+      "reboundsPerGame": 5.5,
+      "assistsPerGame": 2.9,
+      "fgPct": 47.8,
+      "threePct": 35.8,
+      "ftPct": 73.9,
+      "tsPct": 57.1,
+      "efgPct": 53.9,
+      "pos": "F-G",
+      "teams": "BOS",
+      "srSlug": "brownja02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "dragan-bender-2016",
@@ -255,7 +277,25 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "cbbStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2015-16",
+      "games": 132,
+      "minutes": 4182,
+      "pointsTotal": 2291,
+      "pointsPerGame": 17.4,
+      "reboundsPerGame": 5,
+      "assistsPerGame": 1.9,
+      "fgPct": 44.8,
+      "threePct": 39,
+      "ftPct": 83.6,
+      "tsPct": 58.4,
+      "bpm": 9.4,
+      "gameScore": 12.2,
+      "srSlug": "buddy-hield-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "jamal-murray-2016",
@@ -268,7 +308,7 @@
     "age": 19.3,
     "archetype": "Combo Guard",
     "roleOutcome": "",
-    "outcomeTier": "Star",
+    "outcomeTier": "Hit",
     "pointsPerGame": 18.9,
     "reboundsPerGame": 3.8,
     "assistsPerGame": 5,
@@ -298,7 +338,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2016-17",
+      "toSeason": "2025-26",
+      "ageRange": "19-28",
+      "games": 611,
+      "minutes": 19448,
+      "pointsTotal": 11528,
+      "winShares": 47.6,
+      "allStarSelections": 1,
+      "pointsPerGame": 18.9,
+      "reboundsPerGame": 3.8,
+      "assistsPerGame": 5,
+      "fgPct": 45.9,
+      "threePct": 39,
+      "ftPct": 87.4,
+      "tsPct": 57.5,
+      "efgPct": 53.5,
+      "pos": "G",
+      "teams": "DEN",
+      "srSlug": "murraja01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "marquese-chriss-2016",
@@ -384,14 +446,36 @@
       "careerBpg": 1.2
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2016-17",
+      "toSeason": "2025-26",
+      "ageRange": "21-30",
+      "games": 641,
+      "minutes": 14469,
+      "pointsTotal": 5804,
+      "winShares": 48.5,
+      "allStarSelections": 0,
+      "pointsPerGame": 9.1,
+      "reboundsPerGame": 7,
+      "assistsPerGame": 1.8,
+      "fgPct": 63.6,
+      "threePct": 42.9,
+      "ftPct": 55.9,
+      "tsPct": 63.6,
+      "efgPct": 63.6,
+      "pos": "C",
+      "teams": "SASTOR",
+      "srSlug": "poeltja01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "thon-maker-2016",
     "name": "Thon Maker",
     "draftYear": 2016,
     "draftSlot": 10,
-    "position": "PF/C",
+    "position": "C",
     "school": "",
     "height": "7-0",
     "age": 19.3,
@@ -434,7 +518,7 @@
     "name": "Domantas Sabonis",
     "draftYear": 2016,
     "draftSlot": 11,
-    "position": "PF/C",
+    "position": "C",
     "school": "Gonzaga",
     "height": "6-10",
     "age": 20.1,
@@ -470,7 +554,29 @@
       "careerBpg": 0.5
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2016-17",
+      "toSeason": "2025-26",
+      "ageRange": "20-29",
+      "games": 665,
+      "minutes": 20463,
+      "pointsTotal": 10702,
+      "winShares": 71,
+      "allStarSelections": 3,
+      "pointsPerGame": 16.1,
+      "reboundsPerGame": 10.7,
+      "assistsPerGame": 4.9,
+      "fgPct": 55.9,
+      "threePct": 34.2,
+      "ftPct": 72.9,
+      "tsPct": 61.5,
+      "efgPct": 58,
+      "pos": "C-F",
+      "teams": "INDOKCSAC",
+      "srSlug": "sabondo01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "taurean-prince-2016",
@@ -735,7 +841,7 @@
     "name": "Henry Ellenson",
     "draftYear": 2016,
     "draftSlot": 18,
-    "position": "PF/C",
+    "position": "C",
     "school": "Marquette",
     "height": "6-10",
     "age": 19.4,
@@ -864,7 +970,7 @@
     "name": "DeAndre' Bembry",
     "draftYear": 2016,
     "draftSlot": 21,
-    "position": "SF/SG",
+    "position": "SF",
     "school": "Saint Joseph's",
     "height": "6-5",
     "age": 22,
@@ -993,11 +1099,11 @@
     "name": "Timothe Luwawu-Cabarrot",
     "draftYear": 2016,
     "draftSlot": 24,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "KK Mega Vizura",
     "height": "6-7",
     "age": 21.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.9,
@@ -1028,8 +1134,8 @@
       "careerSpg": 0.4,
       "careerBpg": 0.1
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "brice-johnson-2016",
@@ -1079,11 +1185,11 @@
     "name": "Furkan Korkmaz",
     "draftYear": 2016,
     "draftSlot": 26,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Anadolu Efes S.K. (Turkey)",
     "height": "6-7",
     "age": 18.9,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 6.8,
@@ -1114,8 +1220,8 @@
       "careerSpg": 0.5,
       "careerBpg": 0.1
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "pascal-siakam-2016",
@@ -1158,14 +1264,36 @@
       "careerBpg": 0.6
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2016-17",
+      "toSeason": "2025-26",
+      "ageRange": "22-31",
+      "games": 691,
+      "minutes": 21694,
+      "pointsTotal": 12810,
+      "winShares": 58.1,
+      "allStarSelections": 4,
+      "pointsPerGame": 18.5,
+      "reboundsPerGame": 6.6,
+      "assistsPerGame": 3.6,
+      "fgPct": 49.7,
+      "threePct": 34.2,
+      "ftPct": 75.4,
+      "tsPct": 57.5,
+      "efgPct": 53.7,
+      "pos": "F-C",
+      "teams": "INDTOR",
+      "srSlug": "siakapa01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "skal-labissiere-2016",
     "name": "Skal Labissiere",
     "draftYear": 2016,
     "draftSlot": 28,
-    "position": "PF/C",
+    "position": "C",
     "school": "Kentucky",
     "height": "6-10",
     "age": 20.3,
@@ -1294,7 +1422,7 @@
     "name": "Deyonta Davis",
     "draftYear": 2016,
     "draftSlot": 31,
-    "position": "PF/C",
+    "position": "C",
     "school": "Michigan State",
     "height": "6-11",
     "age": 19.6,
@@ -1373,18 +1501,40 @@
       "careerBpg": 1
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2016-17",
+      "toSeason": "2025-26",
+      "ageRange": "19-28",
+      "games": 632,
+      "minutes": 14880,
+      "pointsTotal": 6630,
+      "winShares": 55.5,
+      "allStarSelections": 0,
+      "pointsPerGame": 10.5,
+      "reboundsPerGame": 8.3,
+      "assistsPerGame": 1.4,
+      "fgPct": 61.4,
+      "threePct": 8.3,
+      "ftPct": 72.5,
+      "tsPct": 64.2,
+      "efgPct": 61.4,
+      "pos": "C",
+      "teams": "INDLACLAL",
+      "srSlug": "zubaciv01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "cheick-diallo-2016",
     "name": "Cheick Diallo",
     "draftYear": 2016,
     "draftSlot": 33,
-    "position": "PF/C",
+    "position": "PF",
     "school": "Kansas",
     "height": "6-8",
     "age": 19.8,
-    "archetype": "Traditional Big",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.2,
@@ -1415,8 +1565,8 @@
       "careerSpg": 0.3,
       "careerBpg": 0.4
     },
-    "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "tyler-ulis-2016",
@@ -1786,7 +1936,7 @@
     "name": "Zhou Qi",
     "draftYear": 2016,
     "draftSlot": 43,
-    "position": "PF/C",
+    "position": "C",
     "school": "Xinjiang Guanghui",
     "height": "7-1",
     "age": 20.4,
@@ -2032,11 +2182,11 @@
     "name": "Michael Gbinije",
     "draftYear": 2016,
     "draftSlot": 49,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Syracuse",
     "height": "6-7",
     "age": 24.1,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 0.4,
@@ -2067,8 +2217,8 @@
       "careerSpg": 0,
       "careerBpg": 0
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "georges-niang-2016",
@@ -2111,7 +2261,25 @@
       "careerBpg": 0.1
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "cbbStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2015-16",
+      "games": 138,
+      "minutes": 4110,
+      "pointsTotal": 2228,
+      "pointsPerGame": 16.1,
+      "reboundsPerGame": 5.2,
+      "assistsPerGame": 3.1,
+      "fgPct": 50,
+      "threePct": 37.5,
+      "ftPct": 76.3,
+      "tsPct": 58.3,
+      "bpm": 6.4,
+      "gameScore": 11.3,
+      "srSlug": "georges-niang-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "ben-bentil-2016",
@@ -2154,7 +2322,7 @@
     "name": "Joel Bolomboy",
     "draftYear": 2016,
     "draftSlot": 52,
-    "position": "PF/C",
+    "position": "C",
     "school": "Weber State",
     "height": "6-9",
     "age": 22.4,
@@ -2319,11 +2487,11 @@
     "name": "Daniel Hamilton",
     "draftYear": 2016,
     "draftSlot": 56,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Connecticut",
     "height": "6-7",
     "age": 20.9,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 2.8,
@@ -2354,8 +2522,8 @@
       "careerSpg": 0.3,
       "careerBpg": 0
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "wang-zhelin-2016",

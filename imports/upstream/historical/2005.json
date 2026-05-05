@@ -40,7 +40,29 @@
       "careerBpg": 1.5
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2018-19",
+      "ageRange": "21-34",
+      "games": 706,
+      "minutes": 19862,
+      "pointsTotal": 6808,
+      "winShares": 50.6,
+      "allStarSelections": 0,
+      "pointsPerGame": 9.6,
+      "reboundsPerGame": 8.7,
+      "assistsPerGame": 2.2,
+      "fgPct": 53.5,
+      "threePct": 12,
+      "ftPct": 55.7,
+      "tsPct": 54.5,
+      "efgPct": 53.5,
+      "pos": "C",
+      "teams": "CLEDALGSWLALMIL",
+      "srSlug": "bogutan01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "marvin-williams-2005",
@@ -83,7 +105,29 @@
       "careerBpg": 0.5
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2019-20",
+      "ageRange": "19-33",
+      "games": 1072,
+      "minutes": 30159,
+      "pointsTotal": 10965,
+      "winShares": 65.1,
+      "allStarSelections": 0,
+      "pointsPerGame": 10.2,
+      "reboundsPerGame": 5.2,
+      "assistsPerGame": 1.3,
+      "fgPct": 44.3,
+      "threePct": 36.1,
+      "ftPct": 80.8,
+      "tsPct": 54.8,
+      "efgPct": 50.2,
+      "pos": "F",
+      "teams": "ATLCHOMILUTA",
+      "srSlug": "willima02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "deron-williams-2005",
@@ -126,7 +170,29 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2016-17",
+      "ageRange": "21-32",
+      "games": 845,
+      "minutes": 28865,
+      "pointsTotal": 13804,
+      "winShares": 77.3,
+      "allStarSelections": 3,
+      "pointsPerGame": 16.3,
+      "reboundsPerGame": 3.1,
+      "assistsPerGame": 8.1,
+      "fgPct": 44.5,
+      "threePct": 35.7,
+      "ftPct": 82.2,
+      "tsPct": 55.2,
+      "efgPct": 49.8,
+      "pos": "G",
+      "teams": "BRKCLEDALNJNUTA",
+      "srSlug": "willide01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "chris-paul-2005",
@@ -169,7 +235,29 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2025-26",
+      "ageRange": "20-40",
+      "games": 1370,
+      "minutes": 45836,
+      "pointsTotal": 23058,
+      "winShares": 215.2,
+      "allStarSelections": 12,
+      "pointsPerGame": 16.8,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 9.2,
+      "fgPct": 46.9,
+      "threePct": 37,
+      "ftPct": 87,
+      "tsPct": 58,
+      "efgPct": 52.3,
+      "pos": "G",
+      "teams": "GSWHOULACNOHNOKOKCPHOSAS",
+      "srSlug": "paulch01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "raymond-felton-2005",
@@ -219,11 +307,11 @@
     "name": "Martell Webster",
     "draftYear": 2005,
     "draftSlot": 6,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Seattle Preparatory School",
     "height": "6-7",
     "age": 18.6,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 8.7,
@@ -254,8 +342,8 @@
       "careerSpg": 0.5,
       "careerBpg": 0.3
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "charlie-villanueva-2005",
@@ -305,7 +393,7 @@
     "name": "Channing Frye",
     "draftYear": 2005,
     "draftSlot": 8,
-    "position": "PF/C",
+    "position": "C",
     "school": "Arizona",
     "height": "7-0",
     "age": 22.1,
@@ -508,7 +596,7 @@
     "name": "Sean May",
     "draftYear": 2005,
     "draftSlot": 13,
-    "position": "PF/C",
+    "position": "C",
     "school": "North Carolina",
     "height": "6-9",
     "age": 21.2,
@@ -594,11 +682,11 @@
     "name": "Antoine Wright",
     "draftYear": 2005,
     "draftSlot": 15,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Texas A&M",
     "height": "6-7",
     "age": 21.4,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.4,
@@ -629,8 +717,8 @@
       "careerSpg": 0.5,
       "careerBpg": 0.2
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "joey-graham-2005",
@@ -680,13 +768,13 @@
     "name": "Danny Granger",
     "draftYear": 2005,
     "draftSlot": 17,
-    "position": "SF/SG",
+    "position": "C",
     "school": "New Mexico",
     "height": "6-9",
     "age": 22.2,
-    "archetype": "Volume Wing Scorer",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "Star",
+    "outcomeTier": "Hit",
     "pointsPerGame": 16.8,
     "reboundsPerGame": 4.9,
     "assistsPerGame": 1.9,
@@ -715,19 +803,41 @@
       "careerSpg": 1,
       "careerBpg": 0.8
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Big",
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2014-15",
+      "ageRange": "22-31",
+      "games": 586,
+      "minutes": 18487,
+      "pointsTotal": 9855,
+      "winShares": 48.5,
+      "allStarSelections": 1,
+      "pointsPerGame": 16.8,
+      "reboundsPerGame": 4.9,
+      "assistsPerGame": 1.9,
+      "fgPct": 43.4,
+      "threePct": 38,
+      "ftPct": 84.8,
+      "tsPct": 56,
+      "efgPct": 50,
+      "pos": "F",
+      "teams": "INDLACMIA",
+      "srSlug": "grangda01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "gerald-green-2005",
     "name": "Gerald Green",
     "draftYear": 2005,
     "draftSlot": 18,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Gulf Shores Academy",
     "height": "6-7",
     "age": 19.4,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 9.7,
@@ -758,8 +868,8 @@
       "careerSpg": 0.5,
       "careerBpg": 0.3
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "hakim-warrick-2005",
@@ -938,11 +1048,11 @@
     "name": "Francisco Garcia",
     "draftYear": 2005,
     "draftSlot": 23,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Louisville",
     "height": "6-7",
     "age": 23.5,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 7.9,
@@ -973,8 +1083,8 @@
       "careerSpg": 0.8,
       "careerBpg": 0.7
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "luther-head-2005",
@@ -1239,13 +1349,13 @@
     "name": "David Lee",
     "draftYear": 2005,
     "draftSlot": 30,
-    "position": "PF/C",
+    "position": "C",
     "school": "Florida",
     "height": "6-9",
     "age": 22.2,
     "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "Star",
+    "outcomeTier": "Hit",
     "pointsPerGame": 13.5,
     "reboundsPerGame": 8.8,
     "assistsPerGame": 2.2,
@@ -1275,7 +1385,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2016-17",
+      "ageRange": "22-33",
+      "games": 829,
+      "minutes": 24293,
+      "pointsTotal": 11232,
+      "winShares": 76,
+      "allStarSelections": 2,
+      "pointsPerGame": 13.5,
+      "reboundsPerGame": 8.8,
+      "assistsPerGame": 2.2,
+      "fgPct": 53.5,
+      "threePct": 3.4,
+      "ftPct": 77.2,
+      "tsPct": 57.7,
+      "efgPct": 53.6,
+      "pos": "F-C",
+      "teams": "BOSDALGSWNYKSAS",
+      "srSlug": "leeda02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "salim-stoudamire-2005",
@@ -1521,7 +1653,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Forward",
-    "archetypeFamily": "Forward"
+    "archetypeFamily": "Forward",
+    "srNbaStats": {
+      "fromSeason": "2006-07",
+      "toSeason": "2020-21",
+      "ageRange": "19-33",
+      "games": 825,
+      "minutes": 18957,
+      "pointsTotal": 8364,
+      "winShares": 48.8,
+      "allStarSelections": 0,
+      "pointsPerGame": 10.1,
+      "reboundsPerGame": 5.6,
+      "assistsPerGame": 1.1,
+      "fgPct": 44.3,
+      "threePct": 36.7,
+      "ftPct": 77.7,
+      "tsPct": 54,
+      "efgPct": 50.6,
+      "pos": "F",
+      "teams": "ATLDETMILOKCORLPHIUTA",
+      "srSlug": "ilyaser01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "ronny-turiaf-2005",
@@ -1908,7 +2062,29 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2021-22",
+      "ageRange": "19-35",
+      "games": 1123,
+      "minutes": 27104,
+      "pointsTotal": 15593,
+      "winShares": 65.7,
+      "allStarSelections": 0,
+      "pointsPerGame": 13.9,
+      "reboundsPerGame": 2.2,
+      "assistsPerGame": 3.4,
+      "fgPct": 41.9,
+      "threePct": 35.1,
+      "ftPct": 84.2,
+      "tsPct": 55.1,
+      "efgPct": 47.9,
+      "pos": "G",
+      "teams": "ATLHOULACLALPHITOR",
+      "srSlug": "willilo02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "erazem-lorbek-2005",
@@ -2037,7 +2213,7 @@
     "name": "Andray Blatche",
     "draftYear": 2005,
     "draftSlot": 49,
-    "position": "PF/C",
+    "position": "C",
     "school": "South Kent School",
     "height": "6-11",
     "age": 18.8,
@@ -2233,11 +2409,11 @@
     "name": "Dijon Thompson",
     "draftYear": 2005,
     "draftSlot": 54,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "California-Los Angeles",
     "height": "6-8",
     "age": 22.3,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": null,
@@ -2261,8 +2437,8 @@
       "draftedTeam": "",
       "seasonsActive": 2
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "lawrence-roberts-2005",
@@ -2312,13 +2488,13 @@
     "name": "Amir Johnson",
     "draftYear": 2005,
     "draftSlot": 56,
-    "position": "PF/C",
+    "position": "C",
     "school": "Westchester",
     "height": "6-9",
     "age": 18.2,
     "archetype": "Traditional Big",
     "roleOutcome": "",
-    "outcomeTier": "Swing",
+    "outcomeTier": "Hit",
     "pointsPerGame": 7,
     "reboundsPerGame": 5.4,
     "assistsPerGame": 1.2,
@@ -2348,7 +2524,29 @@
       "careerBpg": 1
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2005-06",
+      "toSeason": "2018-19",
+      "ageRange": "18-31",
+      "games": 870,
+      "minutes": 18323,
+      "pointsTotal": 6102,
+      "winShares": 55.3,
+      "allStarSelections": 0,
+      "pointsPerGame": 7,
+      "reboundsPerGame": 5.4,
+      "assistsPerGame": 1.2,
+      "fgPct": 57,
+      "threePct": 33.2,
+      "ftPct": 67.3,
+      "tsPct": 60.2,
+      "efgPct": 58.2,
+      "pos": "F-C",
+      "teams": "BOSDETPHITOR",
+      "srSlug": "johnsam01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "marcin-gortat-2005",
@@ -2391,7 +2589,29 @@
       "careerBpg": 1.1
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2018-19",
+      "ageRange": "23-34",
+      "games": 806,
+      "minutes": 20691,
+      "pointsTotal": 7951,
+      "winShares": 61.3,
+      "allStarSelections": 0,
+      "pointsPerGame": 9.9,
+      "reboundsPerGame": 7.9,
+      "assistsPerGame": 1.1,
+      "fgPct": 55.1,
+      "threePct": 15,
+      "ftPct": 68,
+      "tsPct": 57.5,
+      "efgPct": 55.2,
+      "pos": "C-F",
+      "teams": "LACORLPHOWAS",
+      "srSlug": "gortama01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "uros-slokar-2005",

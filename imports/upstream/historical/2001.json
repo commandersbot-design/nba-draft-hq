@@ -53,7 +53,7 @@
     "age": 18.7,
     "archetype": "Rebounding Big",
     "roleOutcome": "",
-    "outcomeTier": "Hit",
+    "outcomeTier": "Star",
     "pointsPerGame": 8.2,
     "reboundsPerGame": 9,
     "assistsPerGame": 0.8,
@@ -83,14 +83,36 @@
       "careerBpg": 1.2
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2019-20",
+      "ageRange": "19-37",
+      "games": 1160,
+      "minutes": 31617,
+      "pointsTotal": 9509,
+      "winShares": 102.1,
+      "allStarSelections": 1,
+      "pointsPerGame": 8.2,
+      "reboundsPerGame": 9,
+      "assistsPerGame": 0.8,
+      "fgPct": 59.7,
+      "threePct": 0,
+      "ftPct": 64.4,
+      "tsPct": 62.6,
+      "efgPct": 59.7,
+      "pos": "C",
+      "teams": "CHACHIDALHOULALNOHNOKNYKPHO",
+      "srSlug": "chandty01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "pau-gasol-2001",
     "name": "Pau Gasol",
     "draftYear": 2001,
     "draftSlot": 3,
-    "position": "PF/C",
+    "position": "C",
     "school": "FC Barcelona Basquet (Spain)",
     "height": "7-0",
     "age": 21,
@@ -126,7 +148,29 @@
       "careerBpg": 1.6
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2018-19",
+      "ageRange": "21-38",
+      "games": 1226,
+      "minutes": 41001,
+      "pointsTotal": 20894,
+      "winShares": 144.1,
+      "allStarSelections": 6,
+      "pointsPerGame": 17,
+      "reboundsPerGame": 9.2,
+      "assistsPerGame": 3.2,
+      "fgPct": 50.7,
+      "threePct": 36.8,
+      "ftPct": 75.3,
+      "tsPct": 56.5,
+      "efgPct": 51.3,
+      "pos": "C-F",
+      "teams": "CHILALMEMMILSAS",
+      "srSlug": "gasolpa01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "eddy-curry-2001",
@@ -182,7 +226,7 @@
     "age": 20.4,
     "archetype": "Microwave Scorer",
     "roleOutcome": "",
-    "outcomeTier": "Star",
+    "outcomeTier": "Hit",
     "pointsPerGame": 17.1,
     "reboundsPerGame": 5,
     "assistsPerGame": 2.7,
@@ -212,7 +256,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2014-15",
+      "ageRange": "21-34",
+      "games": 857,
+      "minutes": 29241,
+      "pointsTotal": 14644,
+      "winShares": 59.1,
+      "allStarSelections": 0,
+      "pointsPerGame": 17.1,
+      "reboundsPerGame": 5,
+      "assistsPerGame": 2.7,
+      "fgPct": 43.8,
+      "threePct": 37,
+      "ftPct": 70.7,
+      "tsPct": 52.8,
+      "efgPct": 50.2,
+      "pos": "G",
+      "teams": "CHAGSWORLPHIPHO",
+      "srSlug": "richaja01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "shane-battier-2001",
@@ -255,7 +321,29 @@
       "careerBpg": 0.9
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2013-14",
+      "ageRange": "23-35",
+      "games": 977,
+      "minutes": 30004,
+      "pointsTotal": 8408,
+      "winShares": 75.7,
+      "allStarSelections": 0,
+      "pointsPerGame": 8.6,
+      "reboundsPerGame": 4.2,
+      "assistsPerGame": 1.8,
+      "fgPct": 43.7,
+      "threePct": 38.4,
+      "ftPct": 74.3,
+      "tsPct": 55.9,
+      "efgPct": 52.9,
+      "pos": "F",
+      "teams": "HOUMEMMIA",
+      "srSlug": "battish01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "eddie-griffin-2001",
@@ -391,11 +479,11 @@
     "name": "Joe Johnson",
     "draftYear": 2001,
     "draftSlot": 10,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Arkansas",
     "height": "6-7",
     "age": 20,
-    "archetype": "Volume Wing Scorer",
+    "archetype": "Stretch Four",
     "roleOutcome": "",
     "outcomeTier": "Star",
     "pointsPerGame": 16,
@@ -426,19 +514,41 @@
       "careerSpg": 0.8,
       "careerBpg": 0.2
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2021-22",
+      "ageRange": "20-40",
+      "games": 1277,
+      "minutes": 44236,
+      "pointsTotal": 20407,
+      "winShares": 82.9,
+      "allStarSelections": 7,
+      "pointsPerGame": 16,
+      "reboundsPerGame": 4,
+      "assistsPerGame": 3.9,
+      "fgPct": 44.1,
+      "threePct": 37.1,
+      "ftPct": 80.2,
+      "tsPct": 53,
+      "efgPct": 49.7,
+      "pos": "G-F",
+      "teams": "ATLBOSBRKHOUMIAPHOUTA",
+      "srSlug": "johnsjo02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "kedrick-brown-2001",
     "name": "Kedrick Brown",
     "draftYear": 2001,
     "draftSlot": 11,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Northwest Florida State",
     "height": "6-7",
     "age": 20.3,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 3.6,
@@ -469,8 +579,8 @@
       "careerSpg": 0.6,
       "careerBpg": 0.2
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "vladimir-radmanovic-2001",
@@ -526,7 +636,7 @@
     "age": 21,
     "archetype": "Athletic Wing",
     "roleOutcome": "",
-    "outcomeTier": "Hit",
+    "outcomeTier": "Star",
     "pointsPerGame": 12.6,
     "reboundsPerGame": 4,
     "assistsPerGame": 2,
@@ -556,14 +666,36 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2017-18",
+      "ageRange": "21-37",
+      "games": 1181,
+      "minutes": 34293,
+      "pointsTotal": 14904,
+      "winShares": 83,
+      "allStarSelections": 0,
+      "pointsPerGame": 12.6,
+      "reboundsPerGame": 4,
+      "assistsPerGame": 2,
+      "fgPct": 46.4,
+      "threePct": 37.6,
+      "ftPct": 76.8,
+      "tsPct": 56.7,
+      "efgPct": 51.1,
+      "pos": "F",
+      "teams": "CLEDALDENGSWMILNJNSASUTA",
+      "srSlug": "jefferi01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "troy-murphy-2001",
     "name": "Troy Murphy",
     "draftYear": 2001,
     "draftSlot": 14,
-    "position": "PF/C",
+    "position": "C",
     "school": "Notre Dame",
     "height": "6-11",
     "age": 21.1,
@@ -599,7 +731,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2012-13",
+      "ageRange": "21-32",
+      "games": 729,
+      "minutes": 19921,
+      "pointsTotal": 7860,
+      "winShares": 50.3,
+      "allStarSelections": 0,
+      "pointsPerGame": 10.8,
+      "reboundsPerGame": 7.8,
+      "assistsPerGame": 1.5,
+      "fgPct": 44.5,
+      "threePct": 38.8,
+      "ftPct": 78.5,
+      "tsPct": 54.1,
+      "efgPct": 49.3,
+      "pos": "F-C",
+      "teams": "BOSDALGSWINDLALNJN",
+      "srSlug": "murphtr01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "steven-hunter-2001",
@@ -814,7 +968,29 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Forward",
-    "archetypeFamily": "Forward"
+    "archetypeFamily": "Forward",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2017-18",
+      "ageRange": "20-36",
+      "games": 1116,
+      "minutes": 34616,
+      "pointsTotal": 18578,
+      "winShares": 81.1,
+      "allStarSelections": 2,
+      "pointsPerGame": 16.6,
+      "reboundsPerGame": 9.1,
+      "assistsPerGame": 1.8,
+      "fgPct": 47.1,
+      "threePct": 27.3,
+      "ftPct": 76.4,
+      "tsPct": 52.2,
+      "efgPct": 47.8,
+      "pos": "F-C",
+      "teams": "LACMEMNYKPORSAC",
+      "srSlug": "randoza01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "brendan-haywood-2001",
@@ -1072,7 +1248,29 @@
       "careerBpg": 0.8
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2014-15",
+      "ageRange": "19-32",
+      "games": 832,
+      "minutes": 24731,
+      "pointsTotal": 9933,
+      "winShares": 59.7,
+      "allStarSelections": 1,
+      "pointsPerGame": 11.9,
+      "reboundsPerGame": 5.8,
+      "assistsPerGame": 2.1,
+      "fgPct": 46.9,
+      "threePct": 31.2,
+      "ftPct": 70.9,
+      "tsPct": 54.9,
+      "efgPct": 49.6,
+      "pos": "F",
+      "teams": "BOSBRKCHANJNPORSAC",
+      "srSlug": "wallage01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "samuel-dalembert-2001",
@@ -1115,7 +1313,29 @@
       "careerBpg": 1.7
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2014-15",
+      "ageRange": "20-33",
+      "games": 886,
+      "minutes": 21646,
+      "pointsTotal": 6814,
+      "winShares": 51.3,
+      "allStarSelections": 0,
+      "pointsPerGame": 7.7,
+      "reboundsPerGame": 7.8,
+      "assistsPerGame": 0.5,
+      "fgPct": 52.1,
+      "threePct": 8.3,
+      "ftPct": 70.6,
+      "tsPct": 55.5,
+      "efgPct": 52.1,
+      "pos": "C",
+      "teams": "DALHOUMILNYKPHISAC",
+      "srSlug": "dalemsa01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "jamaal-tinsley-2001",
@@ -1201,14 +1421,36 @@
       "careerBpg": 0.1
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2018-19",
+      "ageRange": "19-36",
+      "games": 1254,
+      "minutes": 38279,
+      "pointsTotal": 19473,
+      "winShares": 111.3,
+      "allStarSelections": 6,
+      "pointsPerGame": 15.5,
+      "reboundsPerGame": 2.7,
+      "assistsPerGame": 5.6,
+      "fgPct": 49.1,
+      "threePct": 32.4,
+      "ftPct": 75.1,
+      "tsPct": 54.6,
+      "efgPct": 50.8,
+      "pos": "G",
+      "teams": "CHOSAS",
+      "srSlug": "parketo01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "trenton-hassell-2001",
     "name": "Trenton Hassell",
     "draftYear": 2001,
     "draftSlot": 29,
-    "position": "SF/SG",
+    "position": "SF",
     "school": "Austin Peay",
     "height": "6-5",
     "age": 22.3,
@@ -1287,7 +1529,29 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2001-02",
+      "toSeason": "2011-12",
+      "ageRange": "20-30",
+      "games": 552,
+      "minutes": 19351,
+      "pointsTotal": 11402,
+      "winShares": 51.3,
+      "allStarSelections": 3,
+      "pointsPerGame": 20.7,
+      "reboundsPerGame": 3.9,
+      "assistsPerGame": 5.3,
+      "fgPct": 42.1,
+      "threePct": 35.1,
+      "ftPct": 80.3,
+      "tsPct": 54.7,
+      "efgPct": 48.2,
+      "pos": "G",
+      "teams": "GSWMEMORLWAS",
+      "srSlug": "arenagi01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "omar-cook-2001",
@@ -1588,7 +1852,29 @@
       "careerBpg": 0.7
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2011-12",
+      "ageRange": "23-32",
+      "games": 634,
+      "minutes": 18429,
+      "pointsTotal": 8561,
+      "winShares": 54.7,
+      "allStarSelections": 1,
+      "pointsPerGame": 13.5,
+      "reboundsPerGame": 7,
+      "assistsPerGame": 1.7,
+      "fgPct": 45.8,
+      "threePct": 37.5,
+      "ftPct": 79.7,
+      "tsPct": 55.8,
+      "efgPct": 50.3,
+      "pos": "C-F",
+      "teams": "DETNJNUTA",
+      "srSlug": "okurme01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "michael-wright-2001",
@@ -1977,7 +2263,7 @@
     "name": "Ken Johnson",
     "draftYear": 2001,
     "draftSlot": 48,
-    "position": "PF/C",
+    "position": "C",
     "school": "Ohio State",
     "height": "6-10",
     "age": 23.4,

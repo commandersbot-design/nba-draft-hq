@@ -40,7 +40,29 @@
       "careerBpg": 1.9
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2010-11",
+      "ageRange": "22-30",
+      "games": 486,
+      "minutes": 15818,
+      "pointsTotal": 9247,
+      "winShares": 65.9,
+      "allStarSelections": 8,
+      "pointsPerGame": 19,
+      "reboundsPerGame": 9.2,
+      "assistsPerGame": 1.6,
+      "fgPct": 52.4,
+      "threePct": 20,
+      "ftPct": 83.3,
+      "tsPct": 59.6,
+      "efgPct": 52.5,
+      "pos": "C",
+      "teams": "HOU",
+      "srSlug": "mingya01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "jay-williams-2002",
@@ -90,11 +112,11 @@
     "name": "Mike Dunleavy",
     "draftYear": 2002,
     "draftSlot": 3,
-    "position": "SF/SG",
+    "position": "C",
     "school": "Duke",
     "height": "6-9",
     "age": 21.8,
-    "archetype": "Athletic Wing",
+    "archetype": "Traditional Big",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 11.2,
@@ -125,8 +147,30 @@
       "careerSpg": 0.7,
       "careerBpg": 0.3
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Big",
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2016-17",
+      "ageRange": "22-36",
+      "games": 986,
+      "minutes": 27340,
+      "pointsTotal": 11048,
+      "winShares": 58.5,
+      "allStarSelections": 0,
+      "pointsPerGame": 11.2,
+      "reboundsPerGame": 4.3,
+      "assistsPerGame": 2.2,
+      "fgPct": 44.1,
+      "threePct": 37.7,
+      "ftPct": 80.3,
+      "tsPct": 55.5,
+      "efgPct": 51.4,
+      "pos": "F-G",
+      "teams": "ATLCHICLEGSWINDMIL",
+      "srSlug": "dunlemi02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "drew-gooden-2002",
@@ -262,7 +306,7 @@
     "name": "Nene",
     "draftYear": 2002,
     "draftSlot": 7,
-    "position": "PF/C",
+    "position": "C",
     "school": "CR Vasco da Gama (Brazil)",
     "height": "6-11",
     "age": 19.8,
@@ -298,14 +342,36 @@
       "careerBpg": 0.7
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2018-19",
+      "ageRange": "20-36",
+      "games": 965,
+      "minutes": 25237,
+      "pointsTotal": 10909,
+      "winShares": 73.3,
+      "allStarSelections": 0,
+      "pointsPerGame": 11.3,
+      "reboundsPerGame": 6,
+      "assistsPerGame": 1.8,
+      "fgPct": 54.8,
+      "threePct": 13.2,
+      "ftPct": 66,
+      "tsPct": 58.5,
+      "efgPct": 54.8,
+      "pos": "F-C",
+      "teams": "DENHOUWAS",
+      "srSlug": "hilarne01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "chris-wilcox-2002",
     "name": "Chris Wilcox",
     "draftYear": 2002,
     "draftSlot": 8,
-    "position": "PF/C",
+    "position": "C",
     "school": "Maryland",
     "height": "6-10",
     "age": 19.8,
@@ -348,7 +414,7 @@
     "name": "Amar'e Stoudemire",
     "draftYear": 2002,
     "draftSlot": 9,
-    "position": "PF/C",
+    "position": "C",
     "school": "Cypress Creek",
     "height": "6-10",
     "age": 19.6,
@@ -384,7 +450,29 @@
       "careerBpg": 1.2
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2015-16",
+      "ageRange": "20-33",
+      "games": 846,
+      "minutes": 26254,
+      "pointsTotal": 15994,
+      "winShares": 92.5,
+      "allStarSelections": 6,
+      "pointsPerGame": 18.9,
+      "reboundsPerGame": 7.8,
+      "assistsPerGame": 1.2,
+      "fgPct": 53.7,
+      "threePct": 23.6,
+      "ftPct": 76.1,
+      "tsPct": 59.7,
+      "efgPct": 53.8,
+      "pos": "F-C",
+      "teams": "DALMIANYKPHO",
+      "srSlug": "stoudam01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "caron-butler-2002",
@@ -427,7 +515,29 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2015-16",
+      "ageRange": "22-35",
+      "games": 881,
+      "minutes": 28333,
+      "pointsTotal": 12430,
+      "winShares": 50.9,
+      "allStarSelections": 2,
+      "pointsPerGame": 14.1,
+      "reboundsPerGame": 5,
+      "assistsPerGame": 2.3,
+      "fgPct": 43.4,
+      "threePct": 34.8,
+      "ftPct": 84.7,
+      "tsPct": 52.3,
+      "efgPct": 46.9,
+      "pos": "F",
+      "teams": "DALDETLACLALMIAMILOKCSACWAS",
+      "srSlug": "butleca01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "jared-jeffries-2002",
@@ -477,7 +587,7 @@
     "name": "Melvin Ely",
     "draftYear": 2002,
     "draftSlot": 12,
-    "position": "PF/C",
+    "position": "C",
     "school": "Fresno State",
     "height": "6-10",
     "age": 24.1,
@@ -864,11 +974,11 @@
     "name": "Qyntel Woods",
     "draftYear": 2002,
     "draftSlot": 21,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Northeast Mississippi Community College",
     "height": "6-8",
     "age": 21.4,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Bust",
     "pointsPerGame": 4.1,
@@ -899,8 +1009,8 @@
       "careerSpg": 0.4,
       "careerBpg": 0.2
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "casey-jacobsen-2002",
@@ -986,7 +1096,29 @@
       "careerBpg": 0.5
     },
     "positionFamily": "Forward",
-    "archetypeFamily": "Forward"
+    "archetypeFamily": "Forward",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2015-16",
+      "ageRange": "22-35",
+      "games": 1017,
+      "minutes": 31576,
+      "pointsTotal": 11272,
+      "winShares": 63.1,
+      "allStarSelections": 0,
+      "pointsPerGame": 11.1,
+      "reboundsPerGame": 4.3,
+      "assistsPerGame": 2.4,
+      "fgPct": 45.5,
+      "threePct": 36.7,
+      "ftPct": 75.6,
+      "tsPct": 51.3,
+      "efgPct": 48.3,
+      "pos": "F",
+      "teams": "BOSDETMEMMIN",
+      "srSlug": "princta01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "nenad-krstic-2002",
@@ -1447,7 +1579,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Forward",
-    "archetypeFamily": "Forward"
+    "archetypeFamily": "Forward",
+    "srNbaStats": {
+      "fromSeason": "2002-03",
+      "toSeason": "2014-15",
+      "ageRange": "21-33",
+      "games": 861,
+      "minutes": 26901,
+      "pointsTotal": 13976,
+      "winShares": 80.3,
+      "allStarSelections": 2,
+      "pointsPerGame": 16.2,
+      "reboundsPerGame": 9.5,
+      "assistsPerGame": 2.2,
+      "fgPct": 52.1,
+      "threePct": 7.1,
+      "ftPct": 72.2,
+      "tsPct": 55.4,
+      "efgPct": 52.1,
+      "pos": "F-C",
+      "teams": "CHICLELALUTA",
+      "srSlug": "boozeca01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "milos-vujanic-2002",
@@ -1884,7 +2038,7 @@
     "name": "Jamal Sampson",
     "draftYear": 2002,
     "draftSlot": 46,
-    "position": "PF/C",
+    "position": "C",
     "school": "California",
     "height": "6-11",
     "age": 19.1,
@@ -2259,7 +2413,29 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Forward",
-    "archetypeFamily": "Forward"
+    "archetypeFamily": "Forward",
+    "srNbaStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2016-17",
+      "ageRange": "27-36",
+      "games": 743,
+      "minutes": 19001,
+      "pointsTotal": 8882,
+      "winShares": 45.7,
+      "allStarSelections": 0,
+      "pointsPerGame": 12,
+      "reboundsPerGame": 6.7,
+      "assistsPerGame": 1.6,
+      "fgPct": 49.3,
+      "threePct": 33.9,
+      "ftPct": 74,
+      "tsPct": 53.5,
+      "efgPct": 49.9,
+      "pos": "F",
+      "teams": "BRKHOUINDPHOTOR",
+      "srSlug": "scolalu01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "randy-holcomb-2002",

@@ -40,7 +40,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2024-25",
+      "ageRange": "19-32",
+      "games": 779,
+      "minutes": 26879,
+      "pointsTotal": 18433,
+      "winShares": 91,
+      "allStarSelections": 9,
+      "pointsPerGame": 23.7,
+      "reboundsPerGame": 4.1,
+      "assistsPerGame": 5.6,
+      "fgPct": 47.4,
+      "threePct": 39.4,
+      "ftPct": 88.8,
+      "tsPct": 58.4,
+      "efgPct": 54,
+      "pos": "G",
+      "teams": "BOSBRKCLEDAL",
+      "srSlug": "irvinky01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "derrick-williams-2011",
@@ -126,14 +148,36 @@
       "careerBpg": 0.5
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2021-22",
+      "ageRange": "19-29",
+      "games": 748,
+      "minutes": 16101,
+      "pointsTotal": 8349,
+      "winShares": 52.8,
+      "allStarSelections": 0,
+      "pointsPerGame": 11.2,
+      "reboundsPerGame": 7.8,
+      "assistsPerGame": 0.9,
+      "fgPct": 54.8,
+      "threePct": 28.9,
+      "ftPct": 77.7,
+      "tsPct": 59,
+      "efgPct": 55.1,
+      "pos": "C",
+      "teams": "BOSNYKOKCPORUTA",
+      "srSlug": "kanteen01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "tristan-thompson-2011",
     "name": "Tristan Thompson",
     "draftYear": 2011,
     "draftSlot": 4,
-    "position": "PF/C",
+    "position": "C",
     "school": "Texas",
     "height": "6-9",
     "age": 20.3,
@@ -169,7 +213,29 @@
       "careerBpg": 0.6
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2024-25",
+      "ageRange": "20-33",
+      "games": 819,
+      "minutes": 20433,
+      "pointsTotal": 6822,
+      "winShares": 49.3,
+      "allStarSelections": 0,
+      "pointsPerGame": 8.3,
+      "reboundsPerGame": 7.8,
+      "assistsPerGame": 1,
+      "fgPct": 52,
+      "threePct": 23.8,
+      "ftPct": 59.2,
+      "tsPct": 54.4,
+      "efgPct": 52.1,
+      "pos": "F-C",
+      "teams": "BOSCHICLEINDSAC",
+      "srSlug": "thomptr01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "jonas-valanciunas-2011",
@@ -182,7 +248,7 @@
     "age": 19.1,
     "archetype": "Rebounding Big",
     "roleOutcome": "",
-    "outcomeTier": "Hit",
+    "outcomeTier": "Star",
     "pointsPerGame": 12.8,
     "reboundsPerGame": 9,
     "assistsPerGame": 1.4,
@@ -212,7 +278,29 @@
       "careerBpg": 0.9
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2012-13",
+      "toSeason": "2025-26",
+      "ageRange": "20-33",
+      "games": 1002,
+      "minutes": 24429,
+      "pointsTotal": 12846,
+      "winShares": 87.6,
+      "allStarSelections": 0,
+      "pointsPerGame": 12.8,
+      "reboundsPerGame": 9,
+      "assistsPerGame": 1.4,
+      "fgPct": 56.1,
+      "threePct": 34,
+      "ftPct": 79.3,
+      "tsPct": 61.6,
+      "efgPct": 57.5,
+      "pos": "C",
+      "teams": "DENMEMNOPSACTORWAS",
+      "srSlug": "valanjo01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "jan-vesely-2011",
@@ -384,7 +472,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2022-23",
+      "ageRange": "21-32",
+      "games": 750,
+      "minutes": 24810,
+      "pointsTotal": 14486,
+      "winShares": 59.8,
+      "allStarSelections": 4,
+      "pointsPerGame": 19.3,
+      "reboundsPerGame": 3.8,
+      "assistsPerGame": 5.3,
+      "fgPct": 41.8,
+      "threePct": 36,
+      "ftPct": 84,
+      "tsPct": 53.9,
+      "efgPct": 48.8,
+      "pos": "G",
+      "teams": "BOSCHACHODALNYK",
+      "srSlug": "walkeke02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "jimmer-fredette-2011",
@@ -427,7 +537,25 @@
       "careerBpg": 0
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "cbbStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2010-11",
+      "games": 138,
+      "minutes": 4092,
+      "pointsTotal": 2582,
+      "pointsPerGame": 18.7,
+      "reboundsPerGame": 2.7,
+      "assistsPerGame": 3.7,
+      "fgPct": 45.4,
+      "threePct": 39.4,
+      "ftPct": 88.2,
+      "tsPct": 59.5,
+      "bpm": 3.4,
+      "gameScore": 13.4,
+      "srSlug": "jimmer-fredette-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "klay-thompson-2011",
@@ -470,7 +598,29 @@
       "careerBpg": 0.5
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2025-26",
+      "ageRange": "21-35",
+      "games": 934,
+      "minutes": 29306,
+      "pointsTotal": 17346,
+      "winShares": 57.6,
+      "allStarSelections": 5,
+      "pointsPerGame": 18.6,
+      "reboundsPerGame": 3.4,
+      "assistsPerGame": 2.2,
+      "fgPct": 44.8,
+      "threePct": 40.9,
+      "ftPct": 85.8,
+      "tsPct": 57.1,
+      "efgPct": 54.8,
+      "pos": "G-F",
+      "teams": "DALGSW",
+      "srSlug": "thompkl01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "alec-burks-2011",
@@ -642,7 +792,29 @@
       "careerBpg": 0.6
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2025-26",
+      "ageRange": "20-34",
+      "games": 798,
+      "minutes": 25368,
+      "pointsTotal": 16546,
+      "winShares": 111.9,
+      "allStarSelections": 7,
+      "pointsPerGame": 20.7,
+      "reboundsPerGame": 6.4,
+      "assistsPerGame": 3.1,
+      "fgPct": 49.9,
+      "threePct": 39.1,
+      "ftPct": 86.3,
+      "tsPct": 60.7,
+      "efgPct": 55.6,
+      "pos": "F",
+      "teams": "LACSASTOR",
+      "srSlug": "leonaka01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "nikola-vucevic-2011",
@@ -685,7 +857,29 @@
       "careerBpg": 0.9
     },
     "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "archetypeFamily": "Big",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2025-26",
+      "ageRange": "21-35",
+      "games": 1036,
+      "minutes": 32321,
+      "pointsTotal": 17684,
+      "winShares": 84.3,
+      "allStarSelections": 2,
+      "pointsPerGame": 17.1,
+      "reboundsPerGame": 10.3,
+      "assistsPerGame": 2.9,
+      "fgPct": 49.7,
+      "threePct": 35,
+      "ftPct": 77.3,
+      "tsPct": 55,
+      "efgPct": 53,
+      "pos": "C",
+      "teams": "BOSCHIORLPHI",
+      "srSlug": "vucevni01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "iman-shumpert-2011",
@@ -814,14 +1008,36 @@
       "careerBpg": 0.5
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2025-26",
+      "ageRange": "19-33",
+      "games": 1033,
+      "minutes": 32474,
+      "pointsTotal": 16440,
+      "winShares": 80.6,
+      "allStarSelections": 0,
+      "pointsPerGame": 15.9,
+      "reboundsPerGame": 6.1,
+      "assistsPerGame": 2.4,
+      "fgPct": 47.8,
+      "threePct": 36.6,
+      "ftPct": 83.8,
+      "tsPct": 56.9,
+      "efgPct": 53.1,
+      "pos": "F",
+      "teams": "DETLACMILORLPHI",
+      "srSlug": "harrito02",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "donatas-motiejunas-2011",
     "name": "Donatas Motiejunas",
     "draftYear": 2011,
     "draftSlot": 20,
-    "position": "PF/C",
+    "position": "C",
     "school": "Universo Treviso Basket (Italy)",
     "height": "7-0",
     "age": 20.8,
@@ -907,11 +1123,11 @@
     "name": "Kenneth Faried",
     "draftYear": 2011,
     "draftSlot": 22,
-    "position": "PF/C",
+    "position": "PF",
     "school": "Morehead State",
     "height": "6-8",
     "age": 21.6,
-    "archetype": "Traditional Big",
+    "archetype": "Two-Way Forward",
     "roleOutcome": "",
     "outcomeTier": "Hit",
     "pointsPerGame": 11.4,
@@ -942,8 +1158,8 @@
       "careerSpg": 0.7,
       "careerBpg": 0.8
     },
-    "positionFamily": "Big",
-    "archetypeFamily": "Big"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "nikola-mirotic-2011",
@@ -1079,11 +1295,11 @@
     "name": "Jordan Hamilton",
     "draftYear": 2011,
     "draftSlot": 26,
-    "position": "SF/SG",
+    "position": "PF",
     "school": "Texas",
     "height": "6-7",
     "age": 20.7,
-    "archetype": "Athletic Wing",
+    "archetype": "Combo Forward",
     "roleOutcome": "",
     "outcomeTier": "Swing",
     "pointsPerGame": 5.9,
@@ -1114,8 +1330,8 @@
       "careerSpg": 0.5,
       "careerBpg": 0.2
     },
-    "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "positionFamily": "Forward",
+    "archetypeFamily": "Forward"
   },
   {
     "id": "jajuan-johnson-2011",
@@ -1287,7 +1503,29 @@
       "careerBpg": 0.4
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2025-26",
+      "ageRange": "22-36",
+      "games": 907,
+      "minutes": 29972,
+      "pointsTotal": 16658,
+      "winShares": 129.4,
+      "allStarSelections": 6,
+      "pointsPerGame": 18.4,
+      "reboundsPerGame": 5.4,
+      "assistsPerGame": 4.4,
+      "fgPct": 47.4,
+      "threePct": 33,
+      "ftPct": 84.4,
+      "tsPct": 59.2,
+      "efgPct": 50.5,
+      "pos": "F-G",
+      "teams": "CHIGSWMIAMINPHI",
+      "srSlug": "butleji01",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "bojan-bogdanovic-2011",
@@ -1416,7 +1654,25 @@
       "careerBpg": 0.3
     },
     "positionFamily": "Wing",
-    "archetypeFamily": "Wing"
+    "archetypeFamily": "Wing",
+    "cbbStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2010-11",
+      "games": 146,
+      "minutes": 4808,
+      "pointsTotal": 2358,
+      "pointsPerGame": 16.2,
+      "reboundsPerGame": 6.9,
+      "assistsPerGame": 2,
+      "fgPct": 43.6,
+      "threePct": 36.3,
+      "ftPct": 77,
+      "tsPct": 54.9,
+      "bpm": 1.7,
+      "gameScore": 12,
+      "srSlug": "kyle-singler-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "shelvin-mack-2011",
@@ -1889,14 +2145,32 @@
       "careerBpg": 0.1
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "cbbStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2010-11",
+      "games": 128,
+      "minutes": 4592,
+      "pointsTotal": 2513,
+      "pointsPerGame": 19.6,
+      "reboundsPerGame": 4.3,
+      "assistsPerGame": 3.8,
+      "fgPct": 45.6,
+      "threePct": 38.2,
+      "ftPct": 81.1,
+      "tsPct": 56.3,
+      "bpm": 2.5,
+      "gameScore": 14.1,
+      "srSlug": "charles-jenkins-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "josh-harrellson-2011",
     "name": "Josh Harrellson",
     "draftYear": 2011,
     "draftSlot": 45,
-    "position": "PF/C",
+    "position": "C",
     "school": "Kentucky",
     "height": "6-10",
     "age": 22.4,
@@ -1975,7 +2249,25 @@
       "careerBpg": 0
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "cbbStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2010-11",
+      "games": 139,
+      "minutes": 4553,
+      "pointsTotal": 2556,
+      "pointsPerGame": 18.4,
+      "reboundsPerGame": 3.3,
+      "assistsPerGame": 3,
+      "fgPct": 45.8,
+      "threePct": 41.5,
+      "ftPct": 83.7,
+      "tsPct": 57.5,
+      "bpm": 1.7,
+      "gameScore": 12.2,
+      "srSlug": "andrew-goudelock-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "travis-leslie-2011",
@@ -2025,7 +2317,7 @@
     "name": "Keith Benson",
     "draftYear": 2011,
     "draftSlot": 48,
-    "position": "PF/C",
+    "position": "C",
     "school": "Oakland",
     "height": "6-11",
     "age": 22.9,
@@ -2104,7 +2396,7 @@
     "name": "Lavoy Allen",
     "draftYear": 2011,
     "draftSlot": 50,
-    "position": "PF/C",
+    "position": "C",
     "school": "Temple",
     "height": "6-9",
     "age": 22.4,
@@ -2331,7 +2623,25 @@
       "careerBpg": 0.2
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "cbbStats": {
+      "fromSeason": "2007-08",
+      "toSeason": "2010-11",
+      "games": 139,
+      "minutes": 4480,
+      "pointsTotal": 2119,
+      "pointsPerGame": 15.2,
+      "reboundsPerGame": 4.4,
+      "assistsPerGame": 2.9,
+      "fgPct": 44,
+      "threePct": 37.8,
+      "ftPct": 73.3,
+      "tsPct": 53.7,
+      "bpm": 2.6,
+      "gameScore": 10.5,
+      "srSlug": "etwaun-moore-1",
+      "source": "sports-reference / stathead"
+    }
   },
   {
     "id": "chukwudiebere-maduabum-2011",
@@ -2468,7 +2778,7 @@
     "age": 22.4,
     "archetype": "Combo Guard",
     "roleOutcome": "",
-    "outcomeTier": "Star",
+    "outcomeTier": "Hit",
     "pointsPerGame": 17.5,
     "reboundsPerGame": 2.4,
     "assistsPerGame": 4.8,
@@ -2498,6 +2808,28 @@
       "careerBpg": 0.1
     },
     "positionFamily": "Guard",
-    "archetypeFamily": "Guard"
+    "archetypeFamily": "Guard",
+    "srNbaStats": {
+      "fromSeason": "2011-12",
+      "toSeason": "2023-24",
+      "ageRange": "22-34",
+      "games": 556,
+      "minutes": 15582,
+      "pointsTotal": 9723,
+      "winShares": 45.3,
+      "allStarSelections": 2,
+      "pointsPerGame": 17.5,
+      "reboundsPerGame": 2.4,
+      "assistsPerGame": 4.8,
+      "fgPct": 43.4,
+      "threePct": 36.3,
+      "ftPct": 87.2,
+      "tsPct": 57.3,
+      "efgPct": 50.6,
+      "pos": "G",
+      "teams": "BOSCHOCLEDALDENLALNOPPHOSACWAS",
+      "srSlug": "thomais02",
+      "source": "sports-reference / stathead"
+    }
   }
 ]
