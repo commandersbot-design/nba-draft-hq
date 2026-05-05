@@ -39,6 +39,47 @@ const CONFIDENCE = [
   { value: "HIGH", label: "High", color: T.cyan },
 ];
 
+// ---------- TAXONOMY ----------
+const TRAIT_KEYS = [
+  { key: "Advantage Creation",     short: "AC",  hint: "Self-creation, downhill drives, pull-up gravity" },
+  { key: "Decision Making",        short: "DM",  hint: "Reads, shot selection, mistakes" },
+  { key: "Passing Creation",       short: "PC",  hint: "Vision, advantage passing, drive-and-kick" },
+  { key: "Shooting Gravity",       short: "SG",  hint: "Three-level threat, spacing impact" },
+  { key: "Off-Ball Value",         short: "OB",  hint: "Cuts, screen actions, off-ball gravity" },
+  { key: "Processing Speed",       short: "PS",  hint: "Speed of reads, defensive recognition" },
+  { key: "Scalability",            short: "SC",  hint: "Maintains effectiveness in increased role" },
+  { key: "Defensive Versatility",  short: "DV",  hint: "POA defense, switching, scheme range" },
+];
+
+const RISK_KEYS = [
+  { key: "Shooting",                hint: "Shot translation concern" },
+  { key: "Physical Translation",    hint: "Frame, athleticism vs. NBA bigs" },
+  { key: "Creation Translation",    hint: "Will the on-ball game survive at higher level" },
+  { key: "Defensive Role",          hint: "Where they fit on D" },
+  { key: "Processing",              hint: "Speed of reads under pressure" },
+  { key: "Age / Upside",            hint: "Older prospect with limited runway" },
+  { key: "Motor / Consistency",     hint: "Effort, focus night-to-night" },
+  { key: "Medical",                 hint: "Injury history / red flags" },
+];
+
+const RISK_LEVELS = [
+  { value: 0, label: "Clean" },
+  { value: 1, label: "Watch" },
+  { value: 2, label: "Real Risk" },
+  { value: 3, label: "Critical" },
+];
+
+const OUTCOME_TIERS = [
+  { value: "",        label: "—" },
+  { value: "Legend",  label: "Legend" },
+  { value: "Star",    label: "Star" },
+  { value: "Hit",     label: "Hit" },
+  { value: "Swing",   label: "Swing" },
+  { value: "Bust",    label: "Bust" },
+];
+
+const POSITIONS = ["PG", "SG", "SF", "PF", "C"];
+
 // ---------- TEMPLATE ----------
 // A blank deep dive uses these defaults so the form has a consistent shape
 // and the markdown template stays in sync.
@@ -54,9 +95,25 @@ function emptyDeepDive(prospectId) {
     weaknesses: [],
     swingFactors: [],
     ceiling: "",
+    ceilingTier: "",
     floor: "",
+    floorTier: "",
     observations: [],
     traitNotes: "",
+    traitOverrides: {},      // { "Advantage Creation": 8, ... } — overrides traits9 (1-10 scale)
+    riskOverrides: {},       // { "Shooting": 1, ... } — overrides risks (0-3 scale)
+    measurements: {          // verified combine-style measurements (optional)
+      height: "",
+      weight: "",
+      wingspan: "",
+      standingReach: "",
+      maxVertical: "",
+      bodyFat: "",
+      laneAgility: "",
+      threeQuarterSprint: "",
+    },
+    defendsPositions: [],    // ["PG", "SG"] — multi-select
+    attacksAt: "",           // single position the player primarily attacks at
     createdAt: new Date().toISOString(),
     lastUpdated: new Date().toISOString(),
   };
@@ -93,11 +150,40 @@ const TEMPLATE_MARKDOWN = `# Deep Dive · {{Player Name}}
 - ...
 - ...
 
-## Ceiling
+## Ceiling — Tier: Legend / Star / Hit / Swing / Bust
 > Best-case NBA outcome. One paragraph.
 
-## Floor
+## Floor — Tier: Star / Hit / Swing / Bust
 > Worst-case NBA outcome. One paragraph.
+
+## Trait Adjustments (optional, 1-10 scale)
+- Advantage Creation: ___
+- Decision Making: ___
+- Passing Creation: ___
+- Shooting Gravity: ___
+- Off-Ball Value: ___
+- Processing Speed: ___
+- Scalability: ___
+- Defensive Versatility: ___
+
+## Risk Flags (optional, 0=Clean / 1=Watch / 2=Real Risk / 3=Critical)
+- Shooting: ___
+- Physical Translation: ___
+- Creation Translation: ___
+- Defensive Role: ___
+- Processing: ___
+- Age / Upside: ___
+- Motor / Consistency: ___
+- Medical: ___
+
+## Verified Measurements (optional)
+- Height: ___ Weight: ___ Wingspan: ___
+- Standing reach: ___ Max vertical: ___
+- Body fat %: ___ Lane agility: ___ ¾ sprint: ___
+
+## Position Fit (optional)
+- Defends: PG / SG / SF / PF / C  (circle all that apply)
+- Attacks at: PG / SG / SF / PF / C
 
 ## Recent Observations
 - {{YYYY-MM-DD}} vs {{Opponent}} — what stood out
@@ -325,6 +411,178 @@ function ObservationsList({ observations, onChange }) {
   );
 }
 
+function TraitOverrideRow({ traitKey, short, hint, systemValue, value, onChange }) {
+  const display = value != null ? value : null;
+  const sys = systemValue != null ? systemValue : null;
+  const delta = display != null && sys != null ? display - sys : null;
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "150px 56px 1fr 56px", gap: 10, alignItems: "center", padding: "6px 0", borderBottom: `1px solid ${T.borderSoft}` }}>
+      <div>
+        <div style={{ fontSize: 12, color: T.text, fontWeight: 500 }}>{traitKey}</div>
+        <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.08em", marginTop: 2 }}>{short} · {hint}</div>
+      </div>
+      <div style={{ ...mono, fontSize: 11, color: T.textMute, textAlign: "center" }}>
+        {sys != null ? `Sys ${sys}` : "Sys —"}
+      </div>
+      <input
+        type="range"
+        min={0}
+        max={10}
+        step={1}
+        value={display ?? sys ?? 5}
+        onChange={(e) => onChange(Number(e.target.value))}
+        style={{ width: "100%", accentColor: T.cyan }}
+      />
+      <div style={{ ...mono, fontSize: 12, color: display != null ? T.cyan : T.textMute, textAlign: "right", fontWeight: 600 }}>
+        {display != null ? `${display}/10` : "—"}
+        {delta != null && delta !== 0 && (
+          <div style={{ ...mono, fontSize: 9, color: delta > 0 ? T.cyan : T.warn, marginTop: 1 }}>
+            {delta > 0 ? "+" : ""}{delta}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function RiskOverrideRow({ riskKey, hint, systemValue, value, onChange }) {
+  const display = value != null ? value : null;
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "180px 60px 1fr 110px", gap: 10, alignItems: "center", padding: "6px 0", borderBottom: `1px solid ${T.borderSoft}` }}>
+      <div>
+        <div style={{ fontSize: 12, color: T.text, fontWeight: 500 }}>{riskKey}</div>
+        <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.08em", marginTop: 2 }}>{hint}</div>
+      </div>
+      <div style={{ ...mono, fontSize: 11, color: T.textMute, textAlign: "center" }}>
+        {systemValue != null ? `Sys ${systemValue}` : "—"}
+      </div>
+      <select
+        value={display ?? systemValue ?? 0}
+        onChange={(e) => onChange(Number(e.target.value))}
+        style={{
+          ...mono,
+          fontSize: 11,
+          letterSpacing: "0.06em",
+          color: display && display >= 2 ? T.warn : display === 1 ? T.cyan : T.text,
+          background: T.surface2,
+          border: `1px solid ${T.border}`,
+          padding: "4px 8px",
+          cursor: "pointer",
+          width: "100%",
+        }}
+      >
+        {RISK_LEVELS.map((lvl) => (
+          <option key={lvl.value} value={lvl.value}>
+            {lvl.value} · {lvl.label}
+          </option>
+        ))}
+      </select>
+      <div style={{ ...mono, fontSize: 11, color: display && display >= 2 ? T.warn : display === 1 ? T.cyan : T.textMute, textAlign: "right" }}>
+        {display != null ? RISK_LEVELS.find((l) => l.value === display)?.label : "—"}
+      </div>
+    </div>
+  );
+}
+
+function MeasurementsGrid({ measurements, onChange }) {
+  const fields = [
+    { key: "height",            label: "Height",       placeholder: '6-9' },
+    { key: "weight",            label: "Weight (lb)",  placeholder: "210" },
+    { key: "wingspan",          label: "Wingspan",     placeholder: "7-0" },
+    { key: "standingReach",     label: "Stand reach",  placeholder: "8-11" },
+    { key: "maxVertical",       label: "Max vert (in)", placeholder: "39" },
+    { key: "bodyFat",           label: "Body fat %",   placeholder: "5.2" },
+    { key: "laneAgility",       label: "Lane agility (s)", placeholder: "10.8" },
+    { key: "threeQuarterSprint",label: "¾ sprint (s)", placeholder: "3.18" },
+  ];
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }} className="prospera-meta-strip">
+      {fields.map((f) => (
+        <div key={f.key}>
+          <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em", marginBottom: 4, textTransform: "uppercase" }}>{f.label}</div>
+          <input
+            value={measurements[f.key] || ""}
+            onChange={(e) => onChange({ ...measurements, [f.key]: e.target.value })}
+            placeholder={f.placeholder}
+            style={{
+              width: "100%",
+              background: T.surface2,
+              border: `1px solid ${T.border}`,
+              color: T.text,
+              padding: "6px 8px",
+              fontSize: 12,
+              outline: "none",
+              boxSizing: "border-box",
+              ...mono,
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PositionFit({ defendsPositions, attacksAt, onDefendChange, onAttackChange }) {
+  const toggleDefend = (pos) => {
+    if (defendsPositions.includes(pos)) onDefendChange(defendsPositions.filter((p) => p !== pos));
+    else onDefendChange([...defendsPositions, pos]);
+  };
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="prospera-eval-grid">
+      <div>
+        <FieldLabel hint="Tap every position they can guard at the next level (multi-select).">
+          Defends
+        </FieldLabel>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          {POSITIONS.map((pos) => {
+            const active = defendsPositions.includes(pos);
+            return (
+              <button
+                key={pos}
+                type="button"
+                onClick={() => toggleDefend(pos)}
+                style={{
+                  ...mono,
+                  fontSize: 11,
+                  letterSpacing: "0.12em",
+                  color: active ? T.bg : T.cyan,
+                  background: active ? T.cyan : "transparent",
+                  border: `1px solid ${T.cyan}`,
+                  padding: "5px 10px",
+                  cursor: "pointer",
+                  fontWeight: active ? 700 : 400,
+                }}
+              >
+                {pos}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <div>
+        <FieldLabel hint="Where the offense actually flows through them.">Primary attack position</FieldLabel>
+        <select
+          value={attacksAt || ""}
+          onChange={(e) => onAttackChange(e.target.value)}
+          style={{
+            ...mono,
+            fontSize: 12,
+            color: attacksAt ? T.cyan : T.textMute,
+            background: T.surface2,
+            border: `1px solid ${T.border}`,
+            padding: "8px 10px",
+            cursor: "pointer",
+            minWidth: 140,
+          }}
+        >
+          <option value="">—</option>
+          {POSITIONS.map((pos) => <option key={pos} value={pos}>{pos}</option>)}
+        </select>
+      </div>
+    </div>
+  );
+}
+
 // ---------- DEEP DIVE FORM ----------
 function DeepDiveForm({ prospect, deepDive, onChange, onClose, onDelete }) {
   const update = (patch) => {
@@ -423,13 +681,129 @@ function DeepDiveForm({ prospect, deepDive, onChange, onClose, onDelete }) {
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="prospera-eval-grid">
         <div>
-          <FieldLabel hint="Best-case NBA outcome.">Ceiling</FieldLabel>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 8, marginBottom: 6 }}>
+            <FieldLabel hint="Best-case NBA outcome.">Ceiling</FieldLabel>
+            <select
+              value={deepDive.ceilingTier || ""}
+              onChange={(e) => update({ ceilingTier: e.target.value })}
+              title="Ceiling outcome tier"
+              style={{
+                ...mono,
+                fontSize: 10,
+                letterSpacing: "0.08em",
+                color: deepDive.ceilingTier ? T.cyan : T.textMute,
+                background: T.surface2,
+                border: `1px solid ${deepDive.ceilingTier ? T.cyan : T.border}`,
+                padding: "3px 6px",
+                cursor: "pointer",
+                marginBottom: 4,
+              }}
+            >
+              {OUTCOME_TIERS.map((t) => (
+                <option key={t.value} value={t.value}>Tier · {t.label}</option>
+              ))}
+            </select>
+          </div>
           <TextArea value={deepDive.ceiling} onChange={(v) => update({ ceiling: v })} rows={3} placeholder="If everything translates..." />
         </div>
         <div>
-          <FieldLabel hint="Worst-case NBA outcome.">Floor</FieldLabel>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 8, marginBottom: 6 }}>
+            <FieldLabel hint="Worst-case NBA outcome.">Floor</FieldLabel>
+            <select
+              value={deepDive.floorTier || ""}
+              onChange={(e) => update({ floorTier: e.target.value })}
+              title="Floor outcome tier"
+              style={{
+                ...mono,
+                fontSize: 10,
+                letterSpacing: "0.08em",
+                color: deepDive.floorTier ? T.warn : T.textMute,
+                background: T.surface2,
+                border: `1px solid ${deepDive.floorTier ? T.warn : T.border}`,
+                padding: "3px 6px",
+                cursor: "pointer",
+                marginBottom: 4,
+              }}
+            >
+              {OUTCOME_TIERS.map((t) => (
+                <option key={t.value} value={t.value}>Tier · {t.label}</option>
+              ))}
+            </select>
+          </div>
           <TextArea value={deepDive.floor} onChange={(v) => update({ floor: v })} rows={3} placeholder="If the swing skills don't develop..." />
         </div>
+      </div>
+
+      {/* Trait Adjustments */}
+      <div>
+        <FieldLabel hint="Override the system's trait scores (1-10). Leave at system value to defer. Drag the slider only when you have a real read.">
+          Trait Adjustments
+        </FieldLabel>
+        <div style={{ background: "rgba(10, 15, 28, 0.4)", border: `1px solid ${T.borderSoft}`, padding: "8px 14px" }}>
+          {TRAIT_KEYS.map((t) => (
+            <TraitOverrideRow
+              key={t.key}
+              traitKey={t.key}
+              short={t.short}
+              hint={t.hint}
+              systemValue={prospect?.traits9?.[t.key] ?? prospect?.traits?.[t.key] ?? null}
+              value={deepDive.traitOverrides?.[t.key]}
+              onChange={(val) => update({ traitOverrides: { ...(deepDive.traitOverrides || {}), [t.key]: val } })}
+            />
+          ))}
+          {Object.keys(deepDive.traitOverrides || {}).length > 0 && (
+            <button
+              type="button"
+              onClick={() => update({ traitOverrides: {} })}
+              style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: T.textMute, background: "transparent", border: `1px dashed ${T.border}`, padding: "4px 8px", cursor: "pointer", textTransform: "uppercase", marginTop: 10 }}
+            >
+              Reset all overrides
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Risk Flags */}
+      <div>
+        <FieldLabel hint="Mark the dimensions where this player has translation risk. 0=Clean / 1=Watch / 2=Real Risk / 3=Critical.">
+          Risk Flags
+        </FieldLabel>
+        <div style={{ background: "rgba(10, 15, 28, 0.4)", border: `1px solid ${T.borderSoft}`, padding: "8px 14px" }}>
+          {RISK_KEYS.map((r) => (
+            <RiskOverrideRow
+              key={r.key}
+              riskKey={r.key}
+              hint={r.hint}
+              systemValue={prospect?.risks?.[r.key] ?? null}
+              value={deepDive.riskOverrides?.[r.key]}
+              onChange={(val) => update({ riskOverrides: { ...(deepDive.riskOverrides || {}), [r.key]: val } })}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Verified Measurements */}
+      <div>
+        <FieldLabel hint="Combine / pro-day measurements you trust. Leave blank if unverified — the system has its own listed numbers.">
+          Verified Measurements
+        </FieldLabel>
+        <MeasurementsGrid
+          measurements={deepDive.measurements || {}}
+          onChange={(m) => update({ measurements: m })}
+        />
+      </div>
+
+      {/* Position Fit */}
+      <div>
+        <FieldLabel hint="Where they actually fit at the next level — both ends of the floor.">
+          Position Fit
+        </FieldLabel>
+        <PositionFit
+          defendsPositions={deepDive.defendsPositions || []}
+          attacksAt={deepDive.attacksAt || ""}
+          onDefendChange={(arr) => update({ defendsPositions: arr })}
+          onAttackChange={(pos) => update({ attacksAt: pos })}
+        />
       </div>
 
       <div>
