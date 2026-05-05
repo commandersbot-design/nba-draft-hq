@@ -97,12 +97,46 @@ function deriveStory(p) {
     return `${p.name} — ${p.archetype}. ${p.school || "—"}, ${p.cls || ""}. Stat coverage limited; evaluation lean.`;
   }
   const sorted = Object.entries(p.traits9).sort((a, b) => b[1] - a[1]);
-  const top = sorted.slice(0, 2).map((x) => x[0].toLowerCase());
+  const topTraits = sorted.slice(0, 2);
+  const bottomTrait = sorted[sorted.length - 1];
   const flagged = (p.flags || []).length;
-  const tierPhrase = p.tier ? p.tier.split(" - ")[1] || p.tier : "developmental";
   const heightPhrase = p.height && p.wingspan ? `${p.height} / ${p.wingspan}` : (p.height || "");
   const classPhrase = p.cls === "Fr." ? "true freshman" : p.cls === "So." ? "sophomore" : p.cls === "Jr." ? "junior" : p.cls === "Sr." ? "upperclassman" : "international prospect";
-  return `${p.archetype} from ${p.school}. ${heightPhrase} ${classPhrase} whose game leans on ${top[0]} and ${top[1]}. ${flagged > 0 ? `${flagged} active risk flag${flagged > 1 ? "s" : ""}; profiles as a ${tierPhrase.toLowerCase()} outcome.` : `Profiles as a ${tierPhrase.toLowerCase()} outcome.`}`;
+
+  // Lookup archetype meta from the catalog. If found, lean on the catalog's
+  // scouting blurb + exemplars. Otherwise fall back to the legacy tier phrase.
+  const archetypeMeta = getArchetypeMeta(p.archetype);
+  const isUnique = isUniqueArchetype(p.archetype);
+
+  const parts = [];
+  parts.push(`${heightPhrase} ${classPhrase} from ${p.school}.`);
+
+  if (archetypeMeta?.notes) {
+    // Use the catalog's scouting blurb verbatim (e.g., "Versatile defender,
+    // secondary scorer, high-feel team player").
+    parts.push(`${p.archetype} prototype — ${archetypeMeta.notes.toLowerCase()}.`);
+  } else if (p.archetype) {
+    parts.push(`Profiles as a ${p.archetype}.`);
+  }
+
+  if (archetypeMeta?.exemplars?.length > 0) {
+    const examples = archetypeMeta.exemplars.slice(0, isUnique ? 1 : 2).join(" / ");
+    parts.push(`${isUnique ? "Compares only to" : "Comp range:"} ${examples}.`);
+  }
+
+  if (topTraits.length >= 2) {
+    parts.push(`Top traits: ${topTraits[0][0]} ${topTraits[0][1]}/10, ${topTraits[1][0]} ${topTraits[1][1]}/10.`);
+  }
+
+  if (bottomTrait && bottomTrait[1] <= 4) {
+    parts.push(`Concern: ${bottomTrait[0]} only ${bottomTrait[1]}/10.`);
+  }
+
+  if (flagged > 0) {
+    parts.push(`${flagged} active risk flag${flagged > 1 ? "s" : ""}.`);
+  }
+
+  return parts.join(" ");
 }
 
 const Label = ({ children, style }) => (
