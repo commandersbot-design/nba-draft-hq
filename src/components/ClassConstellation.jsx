@@ -62,10 +62,25 @@ function colorForProspect(prospect) {
   return (key && TIER_COLORS[key]) || C.cyan;
 }
 
-// Layout the prospects into a polar coordinate per-quadrant.
-// Each quadrant gets a 90° arc; within it, prospects are placed by rank
-// (rank 1 closest to outer rim, last rank closest to center), with a
-// deterministic spread along the angular axis to avoid overlap.
+// Deterministic pseudo-random in [0,1) seeded by a player id and a salt.
+// We need stable layout across renders without storing positions.
+function seededRandom(id, salt) {
+  let h = salt >>> 0;
+  const str = String(id);
+  for (let i = 0; i < str.length; i++) {
+    h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+  }
+  // Mix
+  h = ((h ^ (h >>> 16)) * 0x85ebca6b) | 0;
+  h = ((h ^ (h >>> 13)) * 0xc2b2ae35) | 0;
+  h = (h ^ (h >>> 16)) >>> 0;
+  return (h % 100000) / 100000;
+}
+
+// Layout prospects as a galaxy of clusters. Each position family gets a
+// quadrant with its own arc. Radius is driven by score (better players ride
+// the outer rim) with random scatter, and angle is decoupled from rank so the
+// quadrant fills as a cloud rather than tracing a curve.
 function layoutProspects(prospects, half, available) {
   if (!prospects.length) return [];
   const grouped = new Map();
@@ -77,19 +92,30 @@ function layoutProspects(prospects, half, available) {
 
   const placed = [];
   for (const quadrant of QUADRANTS) {
-    const list = (grouped.get(quadrant.id) || []).slice().sort((a, b) => a.rank - b.rank);
-    const count = list.length;
-    const arc = (Math.PI / 2) * 0.9; // 81° usable per quadrant; leaves padding
-    list.forEach((p, idx) => {
-      // Radius: rank 1 → outer; last rank → inner.
-      const ringT = count > 1 ? idx / (count - 1) : 0.5;
-      const minRadius = 70;
-      const radius = available - ringT * (available - minRadius);
-      // Angle: distribute prospects evenly across the quadrant arc.
-      const t = count > 1 ? idx / (count - 1) - 0.5 : 0;
-      const jitter = ((idx * 137) % 13) / 13 - 0.5; // tiny deterministic jitter
-      const angle = quadrant.center + t * arc + jitter * (arc / Math.max(count, 6));
+    const list = grouped.get(quadrant.id) || [];
+    const arc = (Math.PI / 2) * 0.85;     // 76.5° usable (leaves padding between quadrants)
+    const minRadius = 60;                 // inner edge of the quadrant cloud
+    const maxRadius = available - 8;      // outer edge
+
+    // Score range within this quadrant for normalization. Falling back to a
+    // sensible default keeps quadrants with sparse data from collapsing.
+    const scores = list.map((p) => p.score ?? p.scores?.overallComposite ?? 50);
+    const scoreMin = scores.length ? Math.min(...scores) : 40;
+    const scoreMax = scores.length ? Math.max(...scores) : 90;
+    const scoreSpan = Math.max(8, scoreMax - scoreMin);
+
+    list.forEach((p) => {
       const score = p.score ?? p.scores?.overallComposite ?? 50;
+      // Outer rim for high score, inner for low. Add scatter so the cloud has depth.
+      const scoreT = Math.max(0, Math.min(1, (score - scoreMin) / scoreSpan));
+      const radialJitter = (seededRandom(p.id, 91) - 0.5) * 0.35;
+      const radiusT = Math.max(0, Math.min(1, scoreT + radialJitter));
+      const radius = minRadius + radiusT * (maxRadius - minRadius);
+
+      // Angle: independent of rank/score. Pure pseudo-random within the arc.
+      const angleT = seededRandom(p.id, 17) - 0.5; // -0.5..0.5
+      const angle = quadrant.center + angleT * arc;
+
       const sizeT = Math.max(0, Math.min(1, (score - 50) / 40));
       const r = 4 + sizeT * 10;
       placed.push({
@@ -101,6 +127,31 @@ function layoutProspects(prospects, half, available) {
         quadrant: quadrant.id,
       });
     });
+  }
+
+  // Resolve overlaps with a few relaxation passes — push any pair that's too
+  // close apart along the line between them.
+  const minSep = 14;
+  for (let pass = 0; pass < 4; pass++) {
+    for (let i = 0; i < placed.length; i++) {
+      for (let j = i + 1; j < placed.length; j++) {
+        const a = placed[i];
+        const b = placed[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 0.0001;
+        const want = Math.max(minSep, a.r + b.r + 4);
+        if (dist < want) {
+          const push = (want - dist) / 2;
+          const nx = dx / dist;
+          const ny = dy / dist;
+          a.x -= nx * push;
+          a.y -= ny * push;
+          b.x += nx * push;
+          b.y += ny * push;
+        }
+      }
+    }
   }
   return placed;
 }
