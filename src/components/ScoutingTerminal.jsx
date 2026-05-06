@@ -767,7 +767,8 @@ const ProsperaTicker = ({ prospects, onOpenProfile }) => {
                   padding: 0,
                 }}
               >
-                <span style={{ color: T.textMute }}>#{p.rank}</span>
+                {/* Ticker shows last name only — system rank intentionally
+                    omitted to match the Big Board / Dashboard convention. */}
                 <span style={{ color: T.text, fontWeight: 600 }}>{p.last}</span>
 
                 {item.kind === "movement" ? (
