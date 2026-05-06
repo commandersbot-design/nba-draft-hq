@@ -19,6 +19,7 @@ const path = require('path');
 const STATHEAD_DIR = path.join(__dirname, '..', '..', 'imports', 'upstream', 'stathead');
 const OUTPUT_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'historicalAdvancedStats.json');
 const HIST_PROSPECTS_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'historicalProspects.json');
+const SHOOTING_MANUAL_OVERRIDES_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'cbbShootingManualOverrides.json');
 
 const NBA_FILE = path.join(STATHEAD_DIR, 'stathead-nba-advanced-careers.csv');
 const CBB_FILE = path.join(STATHEAD_DIR, 'stathead-cbb-advanced-careers.csv');
@@ -240,7 +241,16 @@ function main() {
   const per36Rows = fs.existsSync(NBA_PER36_FILE)
     ? parseCsv(fs.readFileSync(NBA_PER36_FILE, 'utf8')).rows
     : [];
-  console.log(`Loaded ${nbaRows.length} NBA advanced, ${cbbRows.length} CBB advanced, ${cbbShootingRows.length} CBB shooting, ${per100Rows.length} per-100, ${per36Rows.length} per-36.`);
+  // Manual overrides for pre-2011 historicals where Sports Reference's bulk
+  // export doesn't carry shooting indices (TS%, 3PAr, eFG%). Applied AFTER
+  // the bulk shooting CSV merge so manual values win on conflicts (in
+  // practice they only fire for pre-2011 entries the CSV doesn't cover).
+  const shootingOverrides = fs.existsSync(SHOOTING_MANUAL_OVERRIDES_PATH)
+    ? (JSON.parse(fs.readFileSync(SHOOTING_MANUAL_OVERRIDES_PATH, 'utf8')).overrides || {})
+    : {};
+  const overrideCount = Object.keys(shootingOverrides).length;
+
+  console.log(`Loaded ${nbaRows.length} NBA advanced, ${cbbRows.length} CBB advanced, ${cbbShootingRows.length} CBB shooting (bulk), ${overrideCount} CBB shooting (manual), ${per100Rows.length} per-100, ${per36Rows.length} per-36.`);
 
   const nbaByKey = buildKeyedMap(nbaRows);
   const cbbByKey = buildKeyedMap(cbbRows);
@@ -289,6 +299,15 @@ function main() {
         if (sh.efgPct != null)   entry.cbbAdv.efgPct = sh.efgPct;
         if (sh.threePAr != null) entry.cbbAdv.threePAr = sh.threePAr;
         cbbShootingHits++;
+      }
+      // Manual overrides for pre-2011 stars whose shooting data isn't in the
+      // bulk export. Only fills missing fields — won't overwrite a value
+      // that came from the bulk CSV.
+      const manual = shootingOverrides[p.id];
+      if (manual) {
+        if (entry.cbbAdv.tsPct == null && typeof manual.tsPct === 'number')      entry.cbbAdv.tsPct = manual.tsPct;
+        if (entry.cbbAdv.efgPct == null && typeof manual.efgPct === 'number')    entry.cbbAdv.efgPct = manual.efgPct;
+        if (entry.cbbAdv.threePAr == null && typeof manual.threePAr === 'number') entry.cbbAdv.threePAr = manual.threePAr;
       }
     } else {
       missingCbb.push(p.name);

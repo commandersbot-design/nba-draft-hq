@@ -52913,7 +52913,10 @@
       "team": "Kentucky",
       "fromSeason": "2009-10",
       "toSeason": "2009-10",
-      "srSlug": "john-wall-1"
+      "srSlug": "john-wall-1",
+      "tsPct": 55,
+      "efgPct": 50,
+      "threePAr": 12
     },
     "nbaPer100": {
       "pts": 26.9,
@@ -53257,7 +53260,10 @@
       "team": "Kentucky",
       "fromSeason": "2009-10",
       "toSeason": "2009-10",
-      "srSlug": "demarcus-cousins-1"
+      "srSlug": "demarcus-cousins-1",
+      "tsPct": 58,
+      "efgPct": 55.5,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 32.6,
@@ -53722,7 +53728,10 @@
       "team": "Fresno State",
       "fromSeason": "2008-09",
       "toSeason": "2009-10",
-      "srSlug": "paul-george-1"
+      "srSlug": "paul-george-1",
+      "tsPct": 58.5,
+      "efgPct": 53.5,
+      "threePAr": 33
     },
     "nbaPer100": {
       "pts": 30.5,
@@ -57544,7 +57553,10 @@
       "team": "Oklahoma",
       "fromSeason": "2007-08",
       "toSeason": "2008-09",
-      "srSlug": "blake-griffin-1"
+      "srSlug": "blake-griffin-1",
+      "tsPct": 65,
+      "efgPct": 56.5,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 30.1,
@@ -57730,7 +57742,10 @@
       "team": "Arizona State",
       "fromSeason": "2007-08",
       "toSeason": "2008-09",
-      "srSlug": "james-harden-1"
+      "srSlug": "james-harden-1",
+      "tsPct": 60.5,
+      "efgPct": 53,
+      "threePAr": 35
     },
     "nbaPer100": {
       "pts": 34.1,
@@ -58074,7 +58089,10 @@
       "team": "Davidson",
       "fromSeason": "2006-07",
       "toSeason": "2008-09",
-      "srSlug": "stephen-curry-1"
+      "srSlug": "stephen-curry-1",
+      "tsPct": 62.1,
+      "efgPct": 56.5,
+      "threePAr": 48.9
     },
     "nbaPer100": {
       "pts": 35.6,
@@ -58260,7 +58278,10 @@
       "team": "Southern California",
       "fromSeason": "2008-09",
       "toSeason": "2008-09",
-      "srSlug": "demar-derozan-1"
+      "srSlug": "demar-derozan-1",
+      "tsPct": 53.5,
+      "efgPct": 51,
+      "threePAr": 8
     },
     "nbaPer100": {
       "pts": 30.8,
@@ -62035,7 +62056,10 @@
       "team": "Memphis",
       "fromSeason": "2007-08",
       "toSeason": "2007-08",
-      "srSlug": "derrick-rose-1"
+      "srSlug": "derrick-rose-1",
+      "tsPct": 56,
+      "efgPct": 49.5,
+      "threePAr": 16.5
     },
     "nbaPer100": {
       "pts": 29.1,
@@ -62314,7 +62338,10 @@
       "team": "UCLA",
       "fromSeason": "2006-07",
       "toSeason": "2007-08",
-      "srSlug": "russell-westbrook-1"
+      "srSlug": "russell-westbrook-1",
+      "tsPct": 56.5,
+      "efgPct": 51,
+      "threePAr": 19
     },
     "nbaPer100": {
       "pts": 31.1,
@@ -62407,7 +62434,10 @@
       "team": "UCLA",
       "fromSeason": "2007-08",
       "toSeason": "2007-08",
-      "srSlug": "kevin-love-1"
+      "srSlug": "kevin-love-1",
+      "tsPct": 60.5,
+      "efgPct": 53.5,
+      "threePAr": 25.5
     },
     "nbaPer100": {
       "pts": 28,
@@ -62844,7 +62874,10 @@
       "team": "Stanford",
       "fromSeason": "2006-07",
       "toSeason": "2007-08",
-      "srSlug": "brook-lopez-1"
+      "srSlug": "brook-lopez-1",
+      "tsPct": 56.5,
+      "efgPct": 51.5,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 25.7,
@@ -64871,7 +64904,10 @@
       "team": "Texas A&M",
       "fromSeason": "2007-08",
       "toSeason": "2007-08",
-      "srSlug": "deandre-jordan-1"
+      "srSlug": "deandre-jordan-1",
+      "tsPct": 67.5,
+      "efgPct": 67,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 17,
@@ -66529,7 +66565,10 @@
       "team": "Texas",
       "fromSeason": "2006-07",
       "toSeason": "2006-07",
-      "srSlug": "kevin-durant-1"
+      "srSlug": "kevin-durant-1",
+      "tsPct": 61.5,
+      "efgPct": 53.5,
+      "threePAr": 32
     },
     "nbaPer100": {
       "pts": 36.9,
@@ -66622,7 +66661,10 @@
       "team": "Florida",
       "fromSeason": "2004-05",
       "toSeason": "2006-07",
-      "srSlug": "al-horford-1"
+      "srSlug": "al-horford-1",
+      "tsPct": 60.5,
+      "efgPct": 56.5,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 20.7,
@@ -66715,7 +66757,10 @@
       "team": "Ohio State",
       "fromSeason": "2006-07",
       "toSeason": "2006-07",
-      "srSlug": "mike-conley-1"
+      "srSlug": "mike-conley-1",
+      "tsPct": 57.5,
+      "efgPct": 53,
+      "threePAr": 27
     },
     "nbaPer100": {
       "pts": 22.7,
@@ -70859,7 +70904,10 @@
       "team": "Texas",
       "fromSeason": "2004-05",
       "toSeason": "2005-06",
-      "srSlug": "lamarcus-aldridge-1"
+      "srSlug": "lamarcus-aldridge-1",
+      "tsPct": 56,
+      "efgPct": 50.5,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 29.5,
@@ -71231,7 +71279,10 @@
       "team": "Washington",
       "fromSeason": "2002-03",
       "toSeason": "2005-06",
-      "srSlug": "brandon-roy-1"
+      "srSlug": "brandon-roy-1",
+      "tsPct": 60.5,
+      "efgPct": 53,
+      "threePAr": 28
     },
     "nbaPer100": {
       "pts": 29.1,
@@ -72514,7 +72565,10 @@
       "team": "Kentucky",
       "fromSeason": "2004-05",
       "toSeason": "2005-06",
-      "srSlug": "rajon-rondo-1"
+      "srSlug": "rajon-rondo-1",
+      "tsPct": 54.5,
+      "efgPct": 50.5,
+      "threePAr": 16
     },
     "nbaPer100": {
       "pts": 16.6,
@@ -72793,7 +72847,10 @@
       "team": "Villanova",
       "fromSeason": "2004-05",
       "toSeason": "2005-06",
-      "srSlug": "kyle-lowry-1"
+      "srSlug": "kyle-lowry-1",
+      "tsPct": 55.5,
+      "efgPct": 51.5,
+      "threePAr": 27
     },
     "nbaPer100": {
       "pts": 22.5,
@@ -74665,7 +74722,10 @@
       "team": "Louisiana Tech",
       "fromSeason": "2003-04",
       "toSeason": "2005-06",
-      "srSlug": "paul-millsap-1"
+      "srSlug": "paul-millsap-1",
+      "tsPct": 57,
+      "efgPct": 52,
+      "threePAr": 3
     },
     "nbaPer100": {
       "pts": 24.3,
@@ -75539,7 +75599,10 @@
       "team": "Illinois",
       "fromSeason": "2002-03",
       "toSeason": "2004-05",
-      "srSlug": "deron-williams-1"
+      "srSlug": "deron-williams-1",
+      "tsPct": 56.5,
+      "efgPct": 51.5,
+      "threePAr": 32
     },
     "nbaPer100": {
       "pts": 25,
@@ -75632,7 +75695,10 @@
       "team": "Wake Forest",
       "fromSeason": "2003-04",
       "toSeason": "2004-05",
-      "srSlug": "chris-paul-1"
+      "srSlug": "chris-paul-1",
+      "tsPct": 60,
+      "efgPct": 53.5,
+      "threePAr": 30
     },
     "nbaPer100": {
       "pts": 25.7,
@@ -80618,7 +80684,10 @@
       "team": "Arizona",
       "fromSeason": "2002-03",
       "toSeason": "2003-04",
-      "srSlug": "andre-iguodala-1"
+      "srSlug": "andre-iguodala-1",
+      "tsPct": 56.5,
+      "efgPct": 51,
+      "threePAr": 21
     },
     "nbaPer100": {
       "pts": 18,
@@ -83924,7 +83993,10 @@
       "team": "Syracuse",
       "fromSeason": "2002-03",
       "toSeason": "2002-03",
-      "srSlug": "carmelo-anthony-1"
+      "srSlug": "carmelo-anthony-1",
+      "tsPct": 57.5,
+      "efgPct": 51.5,
+      "threePAr": 22
     },
     "nbaPer100": {
       "pts": 32.8,
@@ -84017,7 +84089,10 @@
       "team": "Georgia Tech",
       "fromSeason": "2002-03",
       "toSeason": "2002-03",
-      "srSlug": "chris-bosh-1"
+      "srSlug": "chris-bosh-1",
+      "tsPct": 60.5,
+      "efgPct": 53,
+      "threePAr": 1
     },
     "nbaPer100": {
       "pts": 28.3,
@@ -84110,7 +84185,10 @@
       "team": "Marquette",
       "fromSeason": "2001-02",
       "toSeason": "2002-03",
-      "srSlug": "dwyane-wade-1"
+      "srSlug": "dwyane-wade-1",
+      "tsPct": 58.5,
+      "efgPct": 53,
+      "threePAr": 14.5
     },
     "nbaPer100": {
       "pts": 33.9,
