@@ -1538,6 +1538,22 @@ function cbbProfileMatch(current, historical) {
   return { score, reasons };
 }
 
+// Comparable scoring philosophy:
+//   The goal is "what stars / hits / busts had this physical + skill profile?"
+//   Therefore OUTCOME TIER is weighted heavily — a Star comp at the same
+//   position is far more valuable to a scout than a Bust at the same position.
+//   NBA career impact (BPM, All-Stars from the SR career file) breaks ties
+//   inside the Star tier so legends rise above one-time All-Stars rise above
+//   role players.
+//
+// Weight budget (max ~165, typical Star comp lands ~115-130):
+//   Position fit:         50
+//   Height match:         0-20
+//   Archetype overlap:    0-30
+//   Outcome tier:        -15 (Bust) → +30 (Legend)
+//   NBA career impact:    0-12  (BPM + All-Star tiebreakers)
+//   Age proximity:        0-6
+//   CBB profile match:    0-30 (only awarded when historical isn't a Bust)
 function scoreComparable(current, historical) {
   let score = 0;
   const reasons = [];
@@ -1560,19 +1576,67 @@ function scoreComparable(current, historical) {
   const archHits = archetypeOverlap(current.archetype, historical.archetype);
   if (archHits >= 2) { score += 30; reasons.push("archetype match"); }
   else if (archHits === 1) { score += 12; reasons.push("archetype overlap"); }
-  if (historical.outcomeTier === "Outlier" || historical.outcomeTier === "Star") {
-    score += 5;
-    reasons.push("star outcome");
+
+  // Outcome tier — the dominant signal for "what does this player become?"
+  // Legend gets the biggest boost; Bust gets a real penalty so flops stop
+  // cluttering the top of the list when their physical profile matches.
+  switch (historical.outcomeTier) {
+    case "Legend":
+      score += 30;
+      reasons.push("legend outcome");
+      break;
+    case "Outlier":
+    case "Star":
+      score += 22;
+      reasons.push("star outcome");
+      break;
+    case "Hit":
+      score += 10;
+      reasons.push("hit outcome");
+      break;
+    case "Swing":
+      // neutral — neither bonus nor penalty
+      break;
+    case "Bust":
+      score -= 15;
+      reasons.push("bust history");
+      break;
+    default:
+      break;
   }
+
+  // NBA career impact — fine-grained tiebreaker WITHIN tiers using the SR
+  // career-advanced data we ingested (BPM, All-Star count). Only awarded
+  // for non-Bust outcomes so failed careers don't accidentally accumulate
+  // points from playing time alone.
+  if (historical.nbaAdv && historical.outcomeTier !== "Bust") {
+    const bpm = historical.nbaAdv.bpm;
+    const as = historical.nbaAdv.allStarSelections || 0;
+    if (typeof bpm === "number") {
+      if (bpm >= 5)      score += 6;
+      else if (bpm >= 2) score += 3;
+      else if (bpm >= 0) score += 1;
+    }
+    if (as >= 5)      score += 6;
+    else if (as >= 2) score += 3;
+    else if (as >= 1) score += 1;
+  }
+
   if (current.age != null && historical.age != null) {
     const ageDelta = Math.abs(current.age - historical.age);
     if (ageDelta <= 0.5) score += 6;
     else if (ageDelta <= 1.0) score += 3;
   }
-  // CBB rate-stat profile boost
-  const profile = cbbProfileMatch(current, historical);
-  score += profile.score;
-  for (const r of profile.reasons) reasons.push(r);
+
+  // CBB rate-stat profile boost — only when the historical actually became a
+  // useful NBA player. Otherwise we'd give bonus points to college stat lines
+  // that didn't translate, which is the opposite of what a comp should signal.
+  if (historical.outcomeTier !== "Bust") {
+    const profile = cbbProfileMatch(current, historical);
+    score += profile.score;
+    for (const r of profile.reasons) reasons.push(r);
+  }
+
   return { score, reasons };
 }
 
