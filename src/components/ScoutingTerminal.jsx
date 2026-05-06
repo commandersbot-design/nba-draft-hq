@@ -1817,8 +1817,21 @@ function rankComparables(current, historicalSet, limit = 5) {
 // Each band is independently scored + sorted, so within-band order comes
 // from physical/archetype match. The user sees the SHAPE of the outcome
 // distribution at a glance, with realistic correctly emphasized.
+// Similarity floors per tier — keeps high-end comps RARE and earned.
+// Most 2026 prospects don't have college profiles that genuinely match
+// Legend/Star college careers. Without these floors, every prospect with
+// a settled position-family match would get 2 Legend/Star comps stuffed
+// into their high-end bucket regardless of fit. With them:
+//   - Only prospects whose profile clears 75 get any high-end comp at all
+//   - Only prospects whose profile clears 78 get the full 2 high-end comps
+//   - The high-end section just doesn't render when nothing qualifies
+const HIGH_END_FLOOR  = 75;   // Legend / Star comp must score this or higher
+const HIGH_END_FLOOR_FOR_TWO = 78; // need this for the 2nd entry to also show
+const REALISTIC_FLOOR = 60;
+const CAUTIONARY_FLOOR = 55;
+
 function rankComparablesByTier(current, historicalSet, opts = {}) {
-  const { highEnd: highCount = 2, realistic: realCount = 4, cautionary: cautionCount = 2 } = opts;
+  const { realistic: realCount = 4, cautionary: cautionCount = 2 } = opts;
   const scored = historicalSet
     .filter(isSettledHistorical)
     .map((historical) => ({ historical, ...scoreComparable(current, historical) }))
@@ -1840,10 +1853,21 @@ function rankComparablesByTier(current, historicalSet, opts = {}) {
   for (const k of Object.keys(buckets)) {
     buckets[k].sort((a, b) => b.score - a.score);
   }
+
+  // High-end: dynamic count based on how strong the matches actually are.
+  // 0 entries when nothing clears the floor. 1 entry when only top clears.
+  // 2 entries only when both top picks are clearly similar profiles.
+  const highEndQualifiers = buckets.highEnd.filter((e) => e.score >= HIGH_END_FLOOR);
+  const highEnd = highEndQualifiers.length === 0
+    ? []
+    : highEndQualifiers[1] && highEndQualifiers[1].score >= HIGH_END_FLOOR_FOR_TWO
+      ? highEndQualifiers.slice(0, 2)
+      : [highEndQualifiers[0]];
+
   return {
-    highEnd:    buckets.highEnd.slice(0, highCount),
-    realistic:  buckets.realistic.slice(0, realCount),
-    cautionary: buckets.cautionary.slice(0, cautionCount),
+    highEnd,
+    realistic:  buckets.realistic.filter((e) => e.score >= REALISTIC_FLOOR).slice(0, realCount),
+    cautionary: buckets.cautionary.filter((e) => e.score >= CAUTIONARY_FLOOR).slice(0, cautionCount),
   };
 }
 
