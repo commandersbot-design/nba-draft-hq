@@ -90,7 +90,44 @@ const SLUG_ALIASES = {
 };
 
 // ---------- ROW EXTRACTOR ----------
+// New CSV format includes the primitive box-score columns (FGA, 3P, 3PA, FT,
+// FTA, PF, MP, G) alongside the rate stats. We compute the derived rates
+// locally so we don't depend on Stathead's per-era data availability:
+//   FTr      = FTA / FGA          — free throw / aggression rate
+//   threePAr = 3PA / FGA          — 3-point attempt rate
+//   pfRate   = PF / (MP / 40 * 70) ≈ fouls per 100 possessions (NCAA pace approx)
 function extractAdvancedExtras(row) {
+  const fga = toNum(row['FGA']);
+  const fta = toNum(row['FTA']);
+  const ft  = toNum(row['FT']);
+  const threeP  = toNum(row['3P']);
+  const threePA = toNum(row['3PA']);
+  const pf  = toNum(row['PF']);
+  const mp  = toNum(row['MP']);
+  const g   = toNum(row['G']);
+  const pts = toNum(row['PTS']);
+
+  // Compute derived rates with safety
+  const ftr = (fta != null && fga != null && fga > 0)
+    ? Math.round((fta / fga) * 1000) / 10  // 0-100 scale
+    : null;
+  const threePArComputed = (threePA != null && fga != null && fga > 0)
+    ? Math.round((threePA / fga) * 1000) / 10
+    : null;
+  // PFr: per-100-possession approximation. NCAA average pace ~70 poss/40min,
+  // so per-100 = PF / MP * 40 * 100/70 = PF / MP * 57.14.
+  const pfr = (pf != null && mp != null && mp > 0)
+    ? Math.round((pf / mp) * 5714) / 100  // round to 2 decimals
+    : null;
+  // TS% locally computed from primitives — cross-validates the SR values
+  const tsComputed = (pts != null && fga != null && fta != null && (fga + 0.44 * fta) > 0)
+    ? Math.round((pts / (2 * (fga + 0.44 * fta))) * 1000) / 10
+    : null;
+  // eFG%
+  const efgComputed = (fga != null && fga > 0 && row['FG'] != null)
+    ? Math.round(((toNum(row['FG']) + 0.5 * (threeP || 0)) / fga) * 1000) / 10
+    : null;
+
   return {
     stlPct:   toPct(row['STL%']),
     blkPct:   toPct(row['BLK%']),
@@ -99,13 +136,16 @@ function extractAdvancedExtras(row) {
     per:      toNum(row['PER']),
     orbPct:   toPct(row['ORB%']),
     drbPct:   toPct(row['DRB%']),
-    threePAr: decimalToPct(row['3PAr']),  // SR stores as decimal (.245), normalize to percent
-    // TS% and eFG% — already in profileStats but capture as a fallback
-    tsPct:    decimalToPct(row['TS%']),
-    efgPct:   decimalToPct(row['eFG%']),
+    // Derived from primitives — finally have FTr and PFr
+    threePAr: threePArComputed != null ? threePArComputed : decimalToPct(row['3PAr']),
+    ftr:      ftr,
+    pfr:      pfr,
+    tsPct:    tsComputed != null ? tsComputed : decimalToPct(row['TS%']),
+    efgPct:   efgComputed != null ? efgComputed : decimalToPct(row['eFG%']),
     // Career totals for context
-    careerPts: toNum(row['PTS']),
-    careerG:   toNum(row['G']),
+    careerPts: pts,
+    careerG:   g,
+    careerMP:  mp,
     fromSeason: row['From'] || null,
     toSeason:   row['To'] || null,
     school:    row['Team'] || null,

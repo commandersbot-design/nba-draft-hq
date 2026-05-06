@@ -95,6 +95,8 @@ function getProspectStats(prospect) {
     orbPct:    baseAdv.orbPct    ?? extras.orbPct,
     drbPct:    baseAdv.drbPct    ?? extras.drbPct,
     threePAr:  baseAdv.threePAr  ?? extras.threePAr,
+    ftr:       baseAdv.ftr       ?? extras.ftr,
+    pfr:       baseAdv.pfr       ?? extras.pfr,
   };
   return {
     ...base,
@@ -402,6 +404,8 @@ const COHORT_PERCENTILES = (() => {
       orbPct:    baseAdv.orbPct    ?? extras.orbPct,
       drbPct:    baseAdv.drbPct    ?? extras.drbPct,
       threePAr:  baseAdv.threePAr  ?? extras.threePAr,
+      ftr:       baseAdv.ftr       ?? extras.ftr,
+      pfr:       baseAdv.pfr       ?? extras.pfr,
     };
     if (!season) continue;
     const factor36 = season.minutes > 0 ? 36 / season.minutes : null;
@@ -462,6 +466,8 @@ const COHORT_PERCENTILES = (() => {
         orbPct:       typeof advanced.orbPct === "number" ? advanced.orbPct : null,
         drbPct:       typeof advanced.drbPct === "number" ? advanced.drbPct : null,
         threePAr:     typeof advanced.threePAr === "number" ? advanced.threePAr : null,
+        ftr:          typeof advanced.ftr === "number" ? advanced.ftr : null,
+        pfr:          typeof advanced.pfr === "number" ? advanced.pfr : null,
       } : null,
     });
   }
@@ -491,6 +497,8 @@ const COHORT_PERCENTILES = (() => {
     ["advanced", "per",          false],
     ["advanced", "orbPct",       false], ["advanced", "drbPct",      false],
     ["advanced", "threePAr",     false],
+    ["advanced", "ftr",          false],   // higher = more aggressive
+    ["advanced", "pfr",          true ],   // INVERTED — fewer fouls is better
   ];
 
   const out = {};
@@ -546,6 +554,8 @@ const STAT_LABEL_TO_PCT_KEY = {
   "ORB%":  "advanced.orbPct",
   "DRB%":  "advanced.drbPct",
   "3PAr":  "advanced.threePAr",
+  "FTr":   "advanced.ftr",
+  "PFr":   "advanced.pfr",
   // Derived
   "AST/TO": "astTo",  // resolved against the per-game bucket via buildPercentileMap
 };
@@ -3189,8 +3199,10 @@ const ProspectStatsTab = ({ p }) => {
     "BPM": adv.bpm != null ? (adv.bpm > 0 ? `+${adv.bpm}` : adv.bpm) : "—",
   } : null;
 
-  // Defense + on/off table — newly available from prospectAdvancedExtras
-  // (STL%, BLK%, OBPM, DBPM, PER are not in profileStats.json by default)
+  // Defense + on/off + shot diet — populated from prospectAdvancedExtras
+  // (STL%, BLK%, OBPM, DBPM, PER, ORB%, DRB%, 3PAr, FTr, PFr aren't in
+  // profileStats.json by default; primitive box-score columns let us
+  // compute FTr/PFr/3PAr locally so they work for any era.)
   const hasExtrasData = adv && (adv.stlPct != null || adv.blkPct != null || adv.per != null);
   const defenseTable = hasExtrasData ? {
     "STL%": adv.stlPct != null ? adv.stlPct : "—",
@@ -3200,7 +3212,13 @@ const ProspectStatsTab = ({ p }) => {
     "PER": adv.per != null ? adv.per : "—",
     "ORB%": adv.orbPct != null ? adv.orbPct : "—",
     "DRB%": adv.drbPct != null ? adv.drbPct : "—",
-    "3PAr": adv.threePAr != null ? `${adv.threePAr.toFixed(1)}` : "—",
+  } : null;
+
+  // Shot diet + foul rate — separate row since these aren't strictly defense.
+  const shotDietTable = adv && (adv.threePAr != null || adv.ftr != null || adv.pfr != null) ? {
+    "3PAr": adv.threePAr != null ? adv.threePAr.toFixed(1) : "—",
+    "FTr":  adv.ftr != null ? adv.ftr.toFixed(1) : "—",
+    "PFr":  adv.pfr != null ? adv.pfr.toFixed(2) : "—",
   } : null;
 
   // Shooting splits (FG / 3P / FT)
@@ -3284,8 +3302,15 @@ const ProspectStatsTab = ({ p }) => {
             />
             {defenseTable && (
               <AdvancedTable
-                title="Defense · Rebounds · Shot Diet"
+                title="Defense · Rebounds"
                 data={defenseTable}
+                percentiles={buildPercentileMap(p.id)}
+              />
+            )}
+            {shotDietTable && (
+              <AdvancedTable
+                title="Shot Diet · Aggression"
+                data={shotDietTable}
                 percentiles={buildPercentileMap(p.id)}
               />
             )}
