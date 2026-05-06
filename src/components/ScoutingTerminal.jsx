@@ -2405,39 +2405,66 @@ const StatProfilePanel = ({ title, rows, color }) => (
   </div>
 );
 
-// Tiny percentile pill rendered under a stat value. Higher percentile is
-// always BETTER — invertible stats (TOV, DRtg) are flipped at percentile-
-// computation time so this color rule is universal.
-//   ≥75 = brand cyan (top quartile)
-//   50-74 = neutral text-dim
-//   25-49 = warn (below average)
-//   <25 = mute (struggle zone)
+// Percentile pill under each stat value. Basketball-standard 5-tier
+// red-to-green scale — same convention as BBall-Index, Cleaning the Glass,
+// etc. — so a scout reads the tier without having to parse the number.
+//
+// Higher percentile is always BETTER (TOV/TOV%/DRtg inverted at compute
+// time), so the color rule is universal across every stat.
+//
+//   ≥90 elite green   75-89 lime    50-74 yellow    25-49 amber    <25 red
+function percentileTier(value) {
+  if (value >= 90) return { color: "var(--prospera-pct-elite)", label: "Elite" };
+  if (value >= 75) return { color: "var(--prospera-pct-great)", label: "Great" };
+  if (value >= 50) return { color: "var(--prospera-pct-avg)",   label: "Avg" };
+  if (value >= 25) return { color: "var(--prospera-pct-below)", label: "Below Avg" };
+  return                  { color: "var(--prospera-pct-poor)",  label: "Poor" };
+}
+
 const PercentileIndicator = ({ value }) => {
   if (value == null || !Number.isFinite(value)) return null;
-  const color =
-    value >= 75 ? T.cyan :
-    value >= 50 ? T.textDim :
-    value >= 25 ? T.warn :
-                  T.textMute;
+  const tier = percentileTier(value);
   return (
     <div
-      title={`${value}th percentile vs class`}
+      title={`${value}th percentile · ${tier.label} (vs 2026 class)`}
       style={{
         ...mono,
-        fontSize: 9,
-        color,
-        marginTop: 6,
+        fontSize: 10,
+        color: tier.color,
+        marginTop: 8,
         display: "flex",
         alignItems: "center",
-        gap: 5,
-        letterSpacing: "0.06em",
+        gap: 6,
+        letterSpacing: "0.05em",
       }}
     >
-      <span style={{ position: "relative", display: "inline-block", width: 28, height: 3, background: "var(--prospera-border-soft)", borderRadius: 2, overflow: "hidden" }}>
-        <span style={{ position: "absolute", top: 0, left: 0, height: "100%", width: `${value}%`, background: color }} />
+      {/* Filled progress bar — the primary visual signal */}
+      <span
+        style={{
+          position: "relative",
+          display: "inline-block",
+          width: 42,
+          height: 5,
+          background: "var(--prospera-pct-track)",
+          borderRadius: 2,
+          overflow: "hidden",
+          flexShrink: 0,
+        }}
+      >
+        <span
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "100%",
+            width: `${value}%`,
+            background: tier.color,
+            boxShadow: `0 0 6px ${tier.color}`,
+          }}
+        />
       </span>
-      <span style={{ fontWeight: 700 }}>{value}</span>
-      <span style={{ color: T.textMute, fontSize: 8 }}>PCT</span>
+      <span style={{ fontWeight: 800, color: tier.color }}>{value}</span>
+      <span style={{ color: "var(--prospera-text-mute)", fontSize: 8, fontWeight: 600 }}>PCT</span>
     </div>
   );
 };
