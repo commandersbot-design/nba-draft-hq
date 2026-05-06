@@ -4299,23 +4299,74 @@ const EmptyState = ({ label, compact }) => (
 );
 
 // ---------- BIG BOARD PAGE (full) ----------
-const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggleWatchlist, onToggleCompare, onOpenCompare, savedViews = [], onSaveView, onDeleteView }) => {
+const BigBoardPage = ({
+  onOpenProfile, watchlist = [], compareIds = [],
+  onToggleWatchlist, onToggleCompare, onOpenCompare,
+  savedViews = [], onSaveView, onDeleteView,
+  boardOrder = null, onSetBoardOrder,
+}) => {
   const [watchOnly, setWatchOnly] = useState(false);
   const [query, setQuery] = useState("");
   const [viewName, setViewName] = useState("");
+  const [draggingId, setDraggingId] = useState(null);
+  const allowReorder = typeof onSetBoardOrder === "function";
   const lowered = query.trim().toLowerCase();
-  // Big Board hides system rank — sort alphabetically by last name. Personal
-  // ranking lives in My Board (drag-and-drop) and the Deep Dive form.
-  const rows = PROSPECTS.filter((p) => {
+
+  // Compute the canonical order of all active prospects:
+  //   - If user has set a custom order via drag-drop, use it
+  //   - Otherwise default to alphabetical by last name
+  // We always validate the custom order against PROSPECTS so stale IDs (from
+  // an earlier active class) are dropped and newly-added prospects auto-append.
+  const orderedAllProspects = useMemo(() => {
+    const allIds = new Set(PROSPECTS.map((p) => p.id));
+    if (Array.isArray(boardOrder) && boardOrder.length > 0) {
+      const seen = new Set();
+      const ordered = [];
+      for (const id of boardOrder) {
+        if (allIds.has(id) && !seen.has(id)) {
+          seen.add(id);
+          ordered.push(PROSPECTS.find((p) => p.id === id));
+        }
+      }
+      // Append any new prospects that weren't in the saved order
+      for (const p of PROSPECTS) {
+        if (!seen.has(p.id)) ordered.push(p);
+      }
+      return ordered;
+    }
+    // Default: alphabetical by last name
+    return PROSPECTS.slice().sort((a, b) => {
+      const an = String(a.last || a.name || "").toLowerCase();
+      const bn = String(b.last || b.name || "").toLowerCase();
+      return an.localeCompare(bn);
+    });
+  }, [boardOrder]);
+  const usingCustomOrder = Array.isArray(boardOrder) && boardOrder.length > 0;
+
+  // Apply watchlist + search filters AFTER ordering so the user's drag order
+  // is preserved when filters narrow the list.
+  const rows = orderedAllProspects.filter((p) => {
     if (watchOnly && !watchlist.includes(p.id)) return false;
     if (!lowered) return true;
     const haystack = [p.name, p.school, p.pos, p.archetype, p.country].join(" ").toLowerCase();
     return haystack.includes(lowered);
-  }).slice().sort((a, b) => {
-    const an = String(a.last || a.name || "").toLowerCase();
-    const bn = String(b.last || b.name || "").toLowerCase();
-    return an.localeCompare(bn);
   });
+
+  // Drag-and-drop reorder. We persist by saving the FULL ordered prospect ID
+  // list (using the current resolved order as the baseline) so dragging while
+  // a search filter is active doesn't lose unfiltered entries' positions.
+  const reorderRow = (fromId, toId) => {
+    if (!allowReorder || !fromId || !toId || fromId === toId) return;
+    const baseline = orderedAllProspects.map((p) => p.id);
+    const fromIdx = baseline.indexOf(fromId);
+    const toIdx   = baseline.indexOf(toId);
+    if (fromIdx < 0 || toIdx < 0) return;
+    const next = baseline.slice();
+    const [moved] = next.splice(fromIdx, 1);
+    next.splice(toIdx, 0, moved);
+    onSetBoardOrder(next);
+  };
+
   const applyView = (state) => {
     setWatchOnly(Boolean(state?.watchOnly));
     setQuery(state?.query || "");
@@ -4323,11 +4374,37 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
       <Label>Class · 2026</Label>
-      <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
-        Big Board
-      </h1>
-      <div style={{ fontSize: 13, color: T.textDim, marginBottom: 18 }}>
-        {PROSPECTS.length} prospects · alphabetical · personal rankings live in My Board
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}>
+        <div>
+          <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+            Big Board
+          </h1>
+          <div style={{ fontSize: 13, color: T.textDim, marginBottom: 18 }}>
+            {PROSPECTS.length} prospects · {usingCustomOrder ? "your custom order" : "alphabetical"} · drag to reorder
+          </div>
+        </div>
+        {allowReorder && usingCustomOrder && (
+          <button
+            type="button"
+            onClick={() => {
+              if (window.confirm("Reset the Big Board to alphabetical order? Your custom order will be cleared.")) {
+                onSetBoardOrder(null);
+              }
+            }}
+            title="Clear your custom order and revert to alphabetical sort"
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.16em",
+              color: T.textMute, background: "transparent",
+              border: `1px dashed ${T.border}`, padding: "5px 12px",
+              cursor: "pointer", textTransform: "uppercase",
+              alignSelf: "center",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = T.textDim; e.currentTarget.style.borderColor = T.borderSoft; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = T.textMute; e.currentTarget.style.borderColor = T.border; }}
+          >
+            ↺ Reset to alphabetical
+          </button>
+        )}
       </div>
 
       <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center", background: T.surface, border: `1px solid ${T.border}`, padding: "8px 12px" }}>
@@ -4497,18 +4574,21 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
       </div>
 
       <div style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
-        <div style={{ minWidth: 660 }}>
+        <div style={{ minWidth: 680 }}>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 80px 70px 90px 70px 80px",
-              padding: "10px 16px 10px 22px",
+              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 80px" : "1fr 80px 70px 90px 70px 80px",
+              padding: "10px 16px 10px 14px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
             }}
           >
-            {["PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"].map((h) => (
-              <div key={h} style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
+            {(allowReorder
+              ? ["", "PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"]
+              : ["PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"]
+            ).map((h, i) => (
+              <div key={h || `_${i}`} style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
                 {h}
               </div>
             ))}
@@ -4522,21 +4602,63 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
             const isWatched = watchlist.includes(p.id);
             const isCompared = compareIds.includes(p.id);
             const familyBar = familyBarColor(p);
+            const isDragging = draggingId === p.id;
             return (
               <div
                 key={p.id}
+                // Drag-and-drop reorder. The whole row is the drop target;
+                // initiating a drag requires grabbing the ⋮⋮ handle on the
+                // left so accidental clicks don't start drags.
+                onDragOver={(e) => {
+                  if (!allowReorder || !draggingId) return;
+                  e.preventDefault();
+                  e.dataTransfer.dropEffect = "move";
+                }}
+                onDrop={(e) => {
+                  if (!allowReorder) return;
+                  e.preventDefault();
+                  const fromId = e.dataTransfer.getData("text/plain") || draggingId;
+                  reorderRow(fromId, p.id);
+                  setDraggingId(null);
+                }}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 80px 70px 90px 70px 80px",
-                  padding: "12px 16px 12px 22px",
+                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 80px" : "1fr 80px 70px 90px 70px 80px",
+                  padding: "12px 16px 12px 14px",
                   borderBottom: `1px solid ${T.borderSoft}`,
                   boxShadow: `inset 5px 0 0 ${familyBar}`,
                   alignItems: "center",
                   transition: "background 0.12s",
+                  background: isDragging ? "var(--prospera-accent-bg-mid)" : "transparent",
+                  opacity: isDragging ? 0.5 : 1,
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                onMouseEnter={(e) => { if (!isDragging) e.currentTarget.style.background = "var(--prospera-accent-bg-soft)"; }}
+                onMouseLeave={(e) => { if (!isDragging) e.currentTarget.style.background = "transparent"; }}
               >
+                {allowReorder && (
+                  <div
+                    draggable
+                    onDragStart={(e) => {
+                      setDraggingId(p.id);
+                      e.dataTransfer.effectAllowed = "move";
+                      e.dataTransfer.setData("text/plain", p.id);
+                    }}
+                    onDragEnd={() => setDraggingId(null)}
+                    title="Drag to reorder"
+                    style={{
+                      ...mono,
+                      fontSize: 14,
+                      color: T.textMute,
+                      cursor: "grab",
+                      userSelect: "none",
+                      lineHeight: 1,
+                      padding: "4px 2px",
+                      textAlign: "center",
+                    }}
+                  >
+                    ⋮⋮
+                  </div>
+                )}
                 <div onClick={() => onOpenProfile(p.id)} style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, cursor: "pointer" }}>
                   <PlayerImg p={p} size={32} />
                   <div style={{ minWidth: 0 }}>
@@ -5421,6 +5543,9 @@ function ProsperaAppInner() {
   // Applied by rankComparablesByTier — manual pins inject into the chosen
   // section, 'hidden' filters the historical out of all sections entirely.
   const [compOverrides, setCompOverrides] = useLocalStorageState("prospera.terminal.comp-overrides", {});
+  // Custom Big Board order — null means "use default alphabetical sort".
+  // When the user drags to reorder, this stores their array of prospect IDs.
+  const [bigBoardOrder, setBigBoardOrder] = useLocalStorageState("prospera.terminal.big-board-order", null);
 
   const saveView = (name, state) => {
     const trimmed = String(name || "").trim();
@@ -5663,6 +5788,8 @@ function ProsperaAppInner() {
               savedViews={savedViews}
               onSaveView={saveView}
               onDeleteView={deleteView}
+              boardOrder={bigBoardOrder}
+              onSetBoardOrder={setBigBoardOrder}
             />
           )}
           {route === "My Board" && (
