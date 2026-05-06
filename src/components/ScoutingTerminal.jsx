@@ -108,6 +108,136 @@ function derivePer100Approx(season) {
   };
 }
 
+// =============================================================================
+// COMPARABLES SIMILARITY ENGINE
+// =============================================================================
+// Replaces the old "position + height + archetype-label string match" heuristic.
+// Builds a feature vector for each prospect (current + historical) using the
+// rich CBB advanced data we ingested, computes a weighted Euclidean distance
+// in z-space, and converts that to a 0-100 similarity score.
+//
+// 8 features used, all available on both sides:
+//   height (in)   — physical foundation
+//   USG%          — creator load (primary signal of role)
+//   AST%          — playmaking volume
+//   TOV%          — mistake rate
+//   TRB%          — rebounding share (position-relative)
+//   BPM           — overall college impact
+//   ORtg          — offensive efficiency
+//   DRtg          — defensive efficiency
+//
+// Feature weights tuned so the scout's instinct lines up with the math:
+//   height + USG + BPM dominate (the things you'd notice first on a card),
+//   ORtg/DRtg/TOV are tiebreakers within similar profiles.
+// =============================================================================
+
+const COMP_FEATURE_WEIGHTS = {
+  height: 3.0,
+  usg:    2.5,
+  bpm:    2.5,
+  ast:    2.0,
+  trb:    1.5,
+  tov:    1.0,
+  ortg:   1.0,
+  drtg:   1.0,
+};
+const COMP_FEATURE_KEYS = Object.keys(COMP_FEATURE_WEIGHTS);
+
+// Pull a numeric feature from a CURRENT prospect's profileStats record.
+// Returns null when missing — caller substitutes the cohort mean (z=0).
+function extractCurrentFeatures(prospect) {
+  if (!prospect) return null;
+  const slug = profileStatsKey(prospect.name);
+  const ps = PROFILE_STATS[slug];
+  const adv = ps?.stats?.advanced;
+  if (!adv) return null;
+  const parsePct = (v) => (v == null ? null : parseFloat(String(v).replace("%", "")));
+  return {
+    height: heightToInches(prospect.height),
+    usg:    parsePct(adv.usage),
+    ast:    parsePct(adv.assistRate),
+    tov:    parsePct(adv.turnoverRate),
+    trb:    parsePct(adv.reboundRate),
+    bpm:    typeof adv.bpm  === "number" ? adv.bpm  : null,
+    ortg:   typeof adv.ortg === "number" ? adv.ortg : null,
+    drtg:   typeof adv.drtg === "number" ? adv.drtg : null,
+  };
+}
+
+// Pull the same feature shape from a HISTORICAL's cbbAdv block.
+function extractHistoricalFeatures(historical) {
+  if (!historical?.cbbAdv) return null;
+  const c = historical.cbbAdv;
+  return {
+    height: heightToInches(historical.height),
+    usg:    typeof c.usgPct === "number" ? c.usgPct : null,
+    ast:    typeof c.astPct === "number" ? c.astPct : null,
+    tov:    typeof c.tovPct === "number" ? c.tovPct : null,
+    trb:    typeof c.trbPct === "number" ? c.trbPct : null,
+    bpm:    typeof c.bpm    === "number" ? c.bpm    : null,
+    ortg:   typeof c.ortg   === "number" ? c.ortg   : null,
+    drtg:   typeof c.drtg   === "number" ? c.drtg   : null,
+  };
+}
+
+// Cohort mean / std per feature, computed once at module load. Used to
+// z-score the feature vectors before computing similarity. Only historicals
+// with cbbAdv data participate (~74% of the archive — the rest are filtered
+// out as comp candidates entirely since we have nothing to compare against).
+const COMP_FEATURE_STATS = (() => {
+  const out = {};
+  for (const key of COMP_FEATURE_KEYS) {
+    const values = [];
+    for (const h of HISTORICAL_PROSPECTS) {
+      const f = extractHistoricalFeatures(h);
+      if (!f) continue;
+      const v = f[key];
+      if (typeof v === "number" && Number.isFinite(v)) values.push(v);
+    }
+    if (values.length === 0) {
+      out[key] = { mean: 0, std: 1 };
+      continue;
+    }
+    const mean = values.reduce((a, b) => a + b, 0) / values.length;
+    const variance = values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length;
+    const std = Math.sqrt(variance) || 1;
+    out[key] = { mean, std };
+  }
+  return out;
+})();
+
+// Convert raw feature object → z-score vector. Missing features → 0 (mean).
+function toZVector(features) {
+  if (!features) return null;
+  return COMP_FEATURE_KEYS.map((key) => {
+    const v = features[key];
+    if (v == null || !Number.isFinite(v)) return 0;
+    const { mean, std } = COMP_FEATURE_STATS[key];
+    return (v - mean) / std;
+  });
+}
+
+// Weighted Euclidean distance between two z-vectors. Lower = more similar.
+function weightedDistance(za, zb) {
+  let sum = 0;
+  for (let i = 0; i < COMP_FEATURE_KEYS.length; i++) {
+    const w = COMP_FEATURE_WEIGHTS[COMP_FEATURE_KEYS[i]];
+    const d = za[i] - zb[i];
+    sum += w * d * d;
+  }
+  return Math.sqrt(sum);
+}
+
+// Distance → 0-100 similarity score. Tuned so:
+//   distance 0     → 100 (identical profile)
+//   distance ~1.5  → ~85 (clearly similar)
+//   distance ~3    → ~65 (passable comp)
+//   distance ~5    → ~40 (loose match)
+//   distance >7    → ~20 (probably noise)
+function distanceToSimilarity(d) {
+  return Math.round(100 * Math.exp(-d * 0.18));
+}
+
 function isUniqueArchetype(archetypeName) {
   const meta = getArchetypeMeta(archetypeName);
   return Boolean(meta && meta.tier === "Unique");
@@ -1538,112 +1668,137 @@ function cbbProfileMatch(current, historical) {
   return { score, reasons };
 }
 
-// Comparable scoring philosophy:
-//   The goal is "what stars / hits / busts had this physical + skill profile?"
-//   Therefore OUTCOME TIER is weighted heavily — a Star comp at the same
-//   position is far more valuable to a scout than a Bust at the same position.
-//   NBA career impact (BPM, All-Stars from the SR career file) breaks ties
-//   inside the Star tier so legends rise above one-time All-Stars rise above
-//   role players.
+// 4-family position routing: guard, wing, forward, big. Improves over the
+// 3-family routing because PFs are usually closer to bigs than to wings.
+//   PG/SG          → guard
+//   SF             → wing
+//   PF + (C 2nd)   → big   (Boozer-type — hybrid 4/5)
+//   PF + (SF 2nd)  → wing  (Tatum-type — stretch 4 wing)
+//   PF + (no 2nd)  → forward
+//   C              → big
+function positionFamily4(pos, pos2) {
+  const main = String(pos || "").toUpperCase();
+  const sec  = String(pos2 || "").toUpperCase();
+  if (main === "PG" || main === "SG") return "guard";
+  if (main === "SF") return "wing";
+  if (main === "PF") {
+    if (sec === "C") return "big";
+    if (sec === "SF") return "wing";
+    return "forward";
+  }
+  if (main === "C") return "big";
+  return null;
+}
+
+const FAMILY_DISTANCE = { guard: 0, wing: 1, forward: 2, big: 3 };
+
+// Penalty applied to similarity score when families differ. Same family = 0.
+// Adjacent (guard↔wing, wing↔forward, forward↔big) = small penalty.
+// Two apart (guard↔forward, wing↔big) = big penalty. Three apart (guard↔big)
+// = effectively excluded.
+function positionPenalty(currentFam, histFam) {
+  if (!currentFam || !histFam) return 60;
+  const a = FAMILY_DISTANCE[currentFam];
+  const b = FAMILY_DISTANCE[histFam];
+  if (a == null || b == null) return 60;
+  const d = Math.abs(a - b);
+  if (d === 0) return 0;
+  if (d === 1) return 10;
+  if (d === 2) return 30;
+  return 60;
+}
+
+// scoreComparable — feature-vector similarity engine (replaces old heuristic).
+// Computes weighted Euclidean distance over 8 z-scored features, converts to
+// a 0-100 similarity score. Position family applies a graduated penalty
+// (same → 0, adjacent → -10, two apart → -30, three apart → -60). Outcome
+// tier is a small additive tiebreaker (±5) — the UI tiers comps by outcome,
+// so the score itself doesn't need to over-weight outcome.
 //
-// Weight budget (max ~165, typical Star comp lands ~115-130):
-//   Position fit:         50
-//   Height match:         0-20
-//   Archetype overlap:    0-30
-//   Outcome tier:        -15 (Bust) → +30 (Legend)
-//   NBA career impact:    0-12  (BPM + All-Star tiebreakers)
-//   Age proximity:        0-6
-//   CBB profile match:    0-30 (only awarded when historical isn't a Bust)
+// `reasons` enumerates the dimensions where the historical and current
+// prospect are particularly close (within 0.6 z-score on a weighted feature)
+// so the user can see WHY this comp surfaced.
 function scoreComparable(current, historical) {
-  let score = 0;
-  const reasons = [];
-  const currentFam = positionFamily(current.pos) || positionFamily(current.pos2);
-  const histFam = positionFamily(historical.position) || (historical.positionFamily ? historical.positionFamily[0].toUpperCase() + historical.positionFamily.slice(1) : null);
-  if (currentFam && histFam && currentFam === histFam) {
-    score += 50;
-    reasons.push(`${currentFam} fit`);
+  // Need both feature vectors; skip historicals without cbbAdv data.
+  const currentFeatures = extractCurrentFeatures(current);
+  const historicalFeatures = extractHistoricalFeatures(historical);
+  if (!currentFeatures || !historicalFeatures) {
+    return { score: 0, reasons: [] };
   }
-  const currentH = heightToInches(current.height);
-  const histH = heightToInches(historical.height);
-  if (currentH != null && histH != null) {
-    const delta = Math.abs(currentH - histH);
-    if (delta === 0) { score += 20; reasons.push("exact height"); }
-    else if (delta <= 1) { score += 15; reasons.push(`±${delta}" height`); }
-    else if (delta <= 2) { score += 10; reasons.push(`±${delta}" height`); }
-    else if (delta <= 3) { score += 5; }
-    else if (delta > 5) { score -= 10; }
-  }
-  const archHits = archetypeOverlap(current.archetype, historical.archetype);
-  if (archHits >= 2) { score += 30; reasons.push("archetype match"); }
-  else if (archHits === 1) { score += 12; reasons.push("archetype overlap"); }
+  const za = toZVector(currentFeatures);
+  const zb = toZVector(historicalFeatures);
+  if (!za || !zb) return { score: 0, reasons: [] };
 
-  // Outcome tier — moderate signal. We cluster comparables by tier in the UI
-  // (High-End / Realistic / Cautionary) so the user sees outcome distribution
-  // rather than a list dominated by Legends. Within each tier, position fit
-  // and archetype match drive the order. Hence smaller weight spread here.
+  // 4-family position routing — soft penalty rather than hard filter so a
+  // PF/C hybrid like Boozer can still surface a Tatum (PF/SF) comp at a
+  // small discount, but a guard never surfaces a center.
+  const cFam = positionFamily4(current.pos, current.pos2);
+  const hFam = positionFamily4(historical.position) ||
+    (historical.positionFamily ? historical.positionFamily : null);
+  const posPenalty = positionPenalty(cFam, hFam);
+
+  // Weighted Euclidean → similarity 0-100, then apply position penalty
+  const distance = weightedDistance(za, zb);
+  let score = distanceToSimilarity(distance) - posPenalty;
+  if (score <= 0) return { score: 0, reasons: [] };
+
+  // Per-feature "close on this dimension" reasons. A z-difference under 0.6
+  // means the two prospects are within ~half a std on that feature. Surface
+  // the strongest 3 matches as reason chips so the card explains WHY.
+  const featureMatches = COMP_FEATURE_KEYS
+    .map((key, i) => ({ key, delta: Math.abs(za[i] - zb[i]) * Math.sqrt(COMP_FEATURE_WEIGHTS[key]) }))
+    .filter((m) => m.delta < 0.7)
+    .sort((a, b) => a.delta - b.delta)
+    .slice(0, 3);
+  const REASON_LABELS = {
+    height: "height match",
+    usg:    "usage match",
+    bpm:    "BPM match",
+    ast:    "playmaking match",
+    trb:    "rebounding match",
+    tov:    "TOV match",
+    ortg:   "offensive efficiency match",
+    drtg:   "defensive efficiency match",
+  };
+  const reasons = featureMatches.map((m) => REASON_LABELS[m.key]).filter(Boolean);
+
+  // Small outcome tiebreaker — clusters in the UI handle the major sort,
+  // this just keeps within-tier ordering sensible (a 3x All-Star edges out
+  // a one-and-done bust at the same similarity).
   switch (historical.outcomeTier) {
-    case "Legend":
-      score += 12;
-      reasons.push("legend outcome");
-      break;
+    case "Legend":           score += 5; break;
     case "Outlier":
-    case "Star":
-      score += 10;
-      reasons.push("star outcome");
-      break;
-    case "Hit":
-      score += 6;
-      reasons.push("hit outcome");
-      break;
-    case "Swing":
-      // neutral
-      break;
-    case "Bust":
-      score -= 5;
-      // no reason chip — busts shouldn't visually flag themselves;
-      // the cautionary section makes the categorization explicit
-      break;
-    default:
-      break;
+    case "Star":             score += 3; break;
+    case "Hit":              score += 1; break;
+    case "Swing":            score -= 1; break;
+    case "Bust":             score -= 3; break;
+    default:                 break;
   }
 
-  // NBA career impact — fine-grained tiebreaker WITHIN tiers using the SR
-  // career-advanced data we ingested (BPM, All-Star count). Only awarded
-  // for non-Bust outcomes so failed careers don't accidentally accumulate
-  // points from playing time alone.
-  if (historical.nbaAdv && historical.outcomeTier !== "Bust") {
-    const bpm = historical.nbaAdv.bpm;
-    const as = historical.nbaAdv.allStarSelections || 0;
-    if (typeof bpm === "number") {
-      if (bpm >= 5)      score += 6;
-      else if (bpm >= 2) score += 3;
-      else if (bpm >= 0) score += 1;
-    }
-    if (as >= 5)      score += 6;
-    else if (as >= 2) score += 3;
-    else if (as >= 1) score += 1;
-  }
-
+  // Age proximity bumps very lightly (one-and-done freshman vs. 22-year-old
+  // junior on the same profile is a meaningful difference for projection).
   if (current.age != null && historical.age != null) {
     const ageDelta = Math.abs(current.age - historical.age);
-    if (ageDelta <= 0.5) score += 6;
-    else if (ageDelta <= 1.0) score += 3;
-  }
-
-  // CBB rate-stat profile boost — only when the historical actually became a
-  // useful NBA player. Otherwise we'd give bonus points to college stat lines
-  // that didn't translate, which is the opposite of what a comp should signal.
-  if (historical.outcomeTier !== "Bust") {
-    const profile = cbbProfileMatch(current, historical);
-    score += profile.score;
-    for (const r of profile.reasons) reasons.push(r);
+    if (ageDelta <= 0.5) score += 2;
+    else if (ageDelta <= 1.0) score += 1;
+    else if (ageDelta > 3) score -= 2;
   }
 
   return { score, reasons };
 }
 
+// Drop historicals whose NBA careers are too young to evaluate (drafted in
+// the last 3 years). Otherwise current-class players like Cooper Flagg, Dylan
+// Harper, Derik Queen — drafted in 2025 — get surfaced as "Cautionary" comps
+// just because their incomplete sample classifies as Bust by default.
+const COMP_MIN_DRAFT_YEAR = 2026 - 3; // settle window: career must be ≥3 yrs in
+function isSettledHistorical(historical) {
+  return typeof historical.draftYear === "number" && historical.draftYear < COMP_MIN_DRAFT_YEAR;
+}
+
 function rankComparables(current, historicalSet, limit = 5) {
   const scored = historicalSet
+    .filter(isSettledHistorical)
     .map((historical) => ({ historical, ...scoreComparable(current, historical) }))
     .filter((entry) => entry.score > 0)
     .sort((a, b) => b.score - a.score);
@@ -1665,6 +1820,7 @@ function rankComparables(current, historicalSet, limit = 5) {
 function rankComparablesByTier(current, historicalSet, opts = {}) {
   const { highEnd: highCount = 2, realistic: realCount = 4, cautionary: cautionCount = 2 } = opts;
   const scored = historicalSet
+    .filter(isSettledHistorical)
     .map((historical) => ({ historical, ...scoreComparable(current, historical) }))
     .filter((entry) => entry.score > 0);
 
