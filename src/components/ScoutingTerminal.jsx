@@ -1035,7 +1035,13 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
     </div>
 
     <div style={{ padding: "8px 0" }}>
-      {PROSPECTS.map((p) => {
+      {/* Rail sorted alphabetically — system rank is hidden everywhere on
+          Big Board / Dashboard / rail. Personal ranks live in My Board only. */}
+      {PROSPECTS.slice().sort((a, b) => {
+        const an = String(a.last || a.name || "").toLowerCase();
+        const bn = String(b.last || b.name || "").toLowerCase();
+        return an.localeCompare(bn);
+      }).map((p) => {
         const isActive = p.id === selectedId;
         return (
           <button
@@ -1066,16 +1072,6 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
               if (!isActive) e.currentTarget.style.background = "transparent";
             }}
           >
-            <div
-              style={{
-                ...mono,
-                fontSize: 11,
-                color: isActive ? T.cyan : T.textMute,
-                width: 22,
-              }}
-            >
-              {String(p.rank).padStart(2, "0")}
-            </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div
                 style={{
@@ -1139,22 +1135,9 @@ const ProspectStreamCard = ({ p, isSelected, onClick }) => (
       if (!isSelected) e.currentTarget.style.borderColor = T.border;
     }}
   >
-    <div
-      style={{
-        position: "absolute",
-        top: 8,
-        left: 8,
-        ...mono,
-        fontSize: 10,
-        color: T.cyan,
-        background: "rgba(5, 10, 18, 0.9)",
-        padding: "2px 6px",
-        border: `1px solid ${T.border}`,
-        zIndex: 2,
-      }}
-    >
-      #{p.rank}
-    </div>
+    {/* System rank intentionally hidden on Dashboard. Personal ranks live in
+        My Board / Deep Dives only. Score chip stays — it's a data point that
+        only shows a real value when custom weights are active. */}
     <div
       style={{
         position: "absolute",
@@ -1429,14 +1412,21 @@ const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, re
   const [view, setView] = useState("Overview");
   const [query, setQuery] = useState("");
 
-  const filtered = query
+  // Dashboard hides system rank — sort alphabetically. Personal ranking
+  // surfaces (My Board, Deep Dives) keep their own ordering.
+  const filtered = (query
     ? PROSPECTS.filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
-    : PROSPECTS;
+    : PROSPECTS
+  ).slice().sort((a, b) => {
+    const an = String(a.last || a.name || "").toLowerCase();
+    const bn = String(b.last || b.name || "").toLowerCase();
+    return an.localeCompare(bn);
+  });
 
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
       <div style={{ marginBottom: 24 }}>
-        <Label>Workspace · 2025 Class</Label>
+        <Label>Workspace · 2026 Class</Label>
         <h1
           style={{
             fontSize: 32,
@@ -4179,11 +4169,17 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
   const [query, setQuery] = useState("");
   const [viewName, setViewName] = useState("");
   const lowered = query.trim().toLowerCase();
+  // Big Board hides system rank — sort alphabetically by last name. Personal
+  // ranking lives in My Board (drag-and-drop) and the Deep Dive form.
   const rows = PROSPECTS.filter((p) => {
     if (watchOnly && !watchlist.includes(p.id)) return false;
     if (!lowered) return true;
     const haystack = [p.name, p.school, p.pos, p.archetype, p.country].join(" ").toLowerCase();
     return haystack.includes(lowered);
+  }).slice().sort((a, b) => {
+    const an = String(a.last || a.name || "").toLowerCase();
+    const bn = String(b.last || b.name || "").toLowerCase();
+    return an.localeCompare(bn);
   });
   const applyView = (state) => {
     setWatchOnly(Boolean(state?.watchOnly));
@@ -4191,12 +4187,12 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
   };
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
-      <Label>Class · 2025</Label>
+      <Label>Class · 2026</Label>
       <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
         Big Board
       </h1>
       <div style={{ fontSize: 13, color: T.textDim, marginBottom: 18 }}>
-        Ranked prospect index · live ordering
+        {PROSPECTS.length} prospects · alphabetical · personal rankings live in My Board
       </div>
 
       <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center", background: T.surface, border: `1px solid ${T.border}`, padding: "8px 12px" }}>
@@ -4366,17 +4362,17 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
       </div>
 
       <div style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
-        <div style={{ minWidth: 720 }}>
+        <div style={{ minWidth: 660 }}>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "60px 1fr 80px 70px 90px 70px 80px",
+              gridTemplateColumns: "1fr 80px 70px 90px 70px 80px",
               padding: "10px 16px 10px 22px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
             }}
           >
-            {["RANK", "PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"].map((h) => (
+            {["PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"].map((h) => (
               <div key={h} style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
                 {h}
               </div>
@@ -4396,12 +4392,9 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
                 key={p.id}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "60px 1fr 80px 70px 90px 70px 80px",
+                  gridTemplateColumns: "1fr 80px 70px 90px 70px 80px",
                   padding: "12px 16px 12px 22px",
                   borderBottom: `1px solid ${T.borderSoft}`,
-                  // box-shadow inset draws inside the row's box, so a parent
-                  // border or overflow:auto wrapper can't hide it. 5px reads
-                  // clearly without changing the column geometry.
                   boxShadow: `inset 5px 0 0 ${familyBar}`,
                   alignItems: "center",
                   transition: "background 0.12s",
@@ -4409,7 +4402,6 @@ const BigBoardPage = ({ onOpenProfile, watchlist = [], compareIds = [], onToggle
                 onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 15, color: T.cyan, fontWeight: 600, cursor: "pointer" }}>{String(p.rank).padStart(2, "0")}</div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, cursor: "pointer" }}>
                   <PlayerImg p={p} size={32} />
                   <div style={{ minWidth: 0 }}>
