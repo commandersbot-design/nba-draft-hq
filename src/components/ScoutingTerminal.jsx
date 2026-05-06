@@ -1577,29 +1577,31 @@ function scoreComparable(current, historical) {
   if (archHits >= 2) { score += 30; reasons.push("archetype match"); }
   else if (archHits === 1) { score += 12; reasons.push("archetype overlap"); }
 
-  // Outcome tier — the dominant signal for "what does this player become?"
-  // Legend gets the biggest boost; Bust gets a real penalty so flops stop
-  // cluttering the top of the list when their physical profile matches.
+  // Outcome tier — moderate signal. We cluster comparables by tier in the UI
+  // (High-End / Realistic / Cautionary) so the user sees outcome distribution
+  // rather than a list dominated by Legends. Within each tier, position fit
+  // and archetype match drive the order. Hence smaller weight spread here.
   switch (historical.outcomeTier) {
     case "Legend":
-      score += 30;
+      score += 12;
       reasons.push("legend outcome");
       break;
     case "Outlier":
     case "Star":
-      score += 22;
+      score += 10;
       reasons.push("star outcome");
       break;
     case "Hit":
-      score += 10;
+      score += 6;
       reasons.push("hit outcome");
       break;
     case "Swing":
-      // neutral — neither bonus nor penalty
+      // neutral
       break;
     case "Bust":
-      score -= 15;
-      reasons.push("bust history");
+      score -= 5;
+      // no reason chip — busts shouldn't visually flag themselves;
+      // the cautionary section makes the categorization explicit
       break;
     default:
       break;
@@ -1648,83 +1650,219 @@ function rankComparables(current, historicalSet, limit = 5) {
   return scored.slice(0, limit);
 }
 
+// Group comparables into three outcome bands so the UI can show
+// distribution rather than a parade of stars. The realistic band gets
+// the most slots — that's the median projection scouts care about most.
+//
+// Bands:
+//   highEnd     — Legend + Star (best-case outcome, "if everything works")
+//   realistic   — Hit (the median outcome for solid prospects)
+//   cautionary  — Bust + Swing (downside risk profile)
+//
+// Each band is independently scored + sorted, so within-band order comes
+// from physical/archetype match. The user sees the SHAPE of the outcome
+// distribution at a glance, with realistic correctly emphasized.
+function rankComparablesByTier(current, historicalSet, opts = {}) {
+  const { highEnd: highCount = 2, realistic: realCount = 4, cautionary: cautionCount = 2 } = opts;
+  const scored = historicalSet
+    .map((historical) => ({ historical, ...scoreComparable(current, historical) }))
+    .filter((entry) => entry.score > 0);
+
+  const tierOf = (entry) => {
+    const t = entry.historical.outcomeTier;
+    if (t === "Legend" || t === "Star" || t === "Outlier") return "highEnd";
+    if (t === "Hit") return "realistic";
+    if (t === "Swing" || t === "Bust") return "cautionary";
+    return null;
+  };
+
+  const buckets = { highEnd: [], realistic: [], cautionary: [] };
+  for (const entry of scored) {
+    const t = tierOf(entry);
+    if (t) buckets[t].push(entry);
+  }
+  for (const k of Object.keys(buckets)) {
+    buckets[k].sort((a, b) => b.score - a.score);
+  }
+  return {
+    highEnd:    buckets.highEnd.slice(0, highCount),
+    realistic:  buckets.realistic.slice(0, realCount),
+    cautionary: buckets.cautionary.slice(0, cautionCount),
+  };
+}
+
+// Single comparable card — used inside each ComparablesTab section.
+// `dim=true` softens the visual for the cautionary section so the realistic
+// section remains the primary read.
+const ComparableCard = ({ historical, score, reasons, dim = false }) => {
+  const tierColor = OUTCOME_TIER_COLORS[historical.outcomeTier] || T.textMute;
+  return (
+    <div
+      style={{
+        background: T.card,
+        borderTop: `1px solid ${T.border}`,
+        borderRight: `1px solid ${T.border}`,
+        borderBottom: `1px solid ${T.border}`,
+        borderLeft: `3px solid ${tierColor}`,
+        opacity: dim ? 0.78 : 1,
+      }}
+    >
+      <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "44px 1fr auto", gap: 12, alignItems: "center" }}>
+        <div style={{ ...mono, fontSize: 11, color: T.cyan, lineHeight: 1.2 }}>
+          <div>{historical.draftYear}</div>
+          <div>#{String(historical.draftSlot).padStart(2, "0")}</div>
+        </div>
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontSize: 14, color: T.text, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{historical.name}</div>
+          <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 3 }}>
+            {historical.school?.toUpperCase() || "—"} · {historical.position || "—"} · {historical.height || "—"}
+          </div>
+          {historical.archetype && (
+            <div style={{ ...mono, fontSize: 9, color: isUniqueArchetype(historical.archetype) ? T.purple : T.textDim, letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase", fontWeight: isUniqueArchetype(historical.archetype) ? 600 : 400 }}>
+              {isUniqueArchetype(historical.archetype) ? `★ ${historical.archetype}` : historical.archetype}
+            </div>
+          )}
+        </div>
+        <div style={{ display: "grid", gap: 4, justifyItems: "end" }}>
+          <div style={{ ...mono, fontSize: 18, color: T.cyan, fontWeight: 700, lineHeight: 1 }}>{score}</div>
+          <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>SIM SCORE</div>
+        </div>
+      </div>
+      {(reasons.length > 0 || historical.outcomeTier) && (
+        <div style={{ display: "flex", gap: 6, padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, flexWrap: "wrap", alignItems: "center" }}>
+          {historical.outcomeTier && (
+            <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: tierColor, border: `1px solid ${tierColor}`, padding: "2px 6px", textTransform: "uppercase" }}>
+              {historical.outcomeTier}
+            </span>
+          )}
+          {reasons.map((reason, i) => {
+            const isProfileMatch = reason.includes("-");
+            return (
+              <span
+                key={i}
+                title={isProfileMatch ? "CBB rate-stat profile match" : "Position / archetype / outcome signal"}
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.12em",
+                  color: isProfileMatch ? T.cyan : T.textDim,
+                  padding: "2px 6px",
+                  border: `1px solid ${isProfileMatch ? T.cyan : T.borderSoft}`,
+                  background: isProfileMatch ? "var(--prospera-accent-bg-mid)" : "transparent",
+                  textTransform: "uppercase",
+                }}
+              >
+                {reason}
+              </span>
+            );
+          })}
+        </div>
+      )}
+      <CompactAdvancedChips nbaAdv={historical.nbaAdv} cbbAdv={historical.cbbAdv} />
+      {historical.notes && (
+        <div style={{ padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, fontSize: 11, color: T.textDim, lineHeight: 1.5, fontStyle: "italic" }}>
+          "{historical.notes}"
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Section header for each comp tier. Color + accent rule echoes the
+// outcome-tier color of the band so a glance tells you which tier
+// you're in: cyan for high-end, green/blue for realistic, dim for cautionary.
+const ComparableSectionHeader = ({ title, eyebrow, count, accent, hint }) => (
+  <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 12, marginBottom: 8, marginTop: 6 }}>
+    <div style={{ display: "flex", alignItems: "stretch", gap: 10, flex: 1, minWidth: 0 }}>
+      <div style={{ width: 3, alignSelf: "stretch", background: accent }} />
+      <div>
+        <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase" }}>
+          {eyebrow}
+        </div>
+        <div style={{ ...mono, fontSize: 13, letterSpacing: "0.10em", color: accent, fontWeight: 700, textTransform: "uppercase", marginTop: 2 }}>
+          {title} {count != null && <span style={{ color: T.textMute, fontWeight: 500 }}>· {count}</span>}
+        </div>
+        {hint && (
+          <div style={{ fontSize: 11, color: T.textDim, marginTop: 4, lineHeight: 1.5, fontStyle: "italic" }}>
+            {hint}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+);
+
 const ComparablesTab = ({ p }) => {
-  const matches = useMemo(() => rankComparables(p, HISTORICAL_PROSPECTS, 6), [p]);
-  if (matches.length === 0) {
+  const groups = useMemo(
+    () => rankComparablesByTier(p, HISTORICAL_PROSPECTS, { highEnd: 2, realistic: 4, cautionary: 2 }),
+    [p]
+  );
+  const totalShown = groups.highEnd.length + groups.realistic.length + groups.cautionary.length;
+  if (totalShown === 0) {
     return <EmptyState label="No historical comparables found yet — enrichment may still be in progress." />;
   }
+
+  // Color accents per tier — echoes the outcome-tier palette so the section
+  // headers feel of-a-piece with each card's left rail.
+  const ACCENT_HIGH = OUTCOME_TIER_COLORS.Star || T.cyan;
+  const ACCENT_REAL = OUTCOME_TIER_COLORS.Hit || T.blue;
+  const ACCENT_CAUT = T.textMute;
+
   return (
-    <div style={{ display: "grid", gap: 12 }}>
-      <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.14em", marginBottom: 4 }}>
-        TOP {matches.length} HISTORICAL COMPARABLES · POSITION · HEIGHT · ARCHETYPE · CBB RATE-STAT PROFILE
+    <div style={{ display: "grid", gap: 18 }}>
+      <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.14em" }}>
+        OUTCOME DISTRIBUTION · BEST CASE → MEDIAN PROJECTION → DOWNSIDE
       </div>
-      {matches.map(({ historical, score, reasons }) => {
-        const tierColor = OUTCOME_TIER_COLORS[historical.outcomeTier] || T.textMute;
-        return (
-          <div key={historical.id} style={{ background: T.card, borderTop: `1px solid ${T.border}`, borderRight: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, borderLeft: `3px solid ${tierColor}` }}>
-            <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "44px 1fr auto", gap: 12, alignItems: "center" }}>
-              <div style={{ ...mono, fontSize: 11, color: T.cyan, lineHeight: 1.2 }}>
-                <div>{historical.draftYear}</div>
-                <div>#{String(historical.draftSlot).padStart(2, "0")}</div>
-              </div>
-              <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 14, color: T.text, fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{historical.name}</div>
-                <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 3 }}>
-                  {historical.school?.toUpperCase() || "—"} · {historical.position || "—"} · {historical.height || "—"}
-                </div>
-                {historical.archetype && (
-                  <div style={{ ...mono, fontSize: 9, color: isUniqueArchetype(historical.archetype) ? T.purple : T.textDim, letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase", fontWeight: isUniqueArchetype(historical.archetype) ? 600 : 400 }}>
-                    {isUniqueArchetype(historical.archetype) ? `★ ${historical.archetype}` : historical.archetype}
-                  </div>
-                )}
-              </div>
-              <div style={{ display: "grid", gap: 4, justifyItems: "end" }}>
-                <div style={{ ...mono, fontSize: 18, color: T.cyan, fontWeight: 700, lineHeight: 1 }}>{score}</div>
-                <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.14em" }}>SIM SCORE</div>
-              </div>
-            </div>
-            {(reasons.length > 0 || historical.outcomeTier) && (
-              <div style={{ display: "flex", gap: 6, padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, flexWrap: "wrap", alignItems: "center" }}>
-                {historical.outcomeTier && (
-                  <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: tierColor, border: `1px solid ${tierColor}`, padding: "2px 6px", textTransform: "uppercase" }}>
-                    {historical.outcomeTier}
-                  </span>
-                )}
-                {reasons.map((reason, i) => {
-                  // Profile-match reasons (creator-volume, primary-playmaker, rim-protector,
-                  // etc.) all contain a hyphen, distinguishing them from legacy
-                  // reasons like "guard fit" / "archetype match" / "exact height".
-                  const isProfileMatch = reason.includes("-");
-                  return (
-                    <span
-                      key={i}
-                      title={isProfileMatch ? "CBB rate-stat profile match" : "Position / archetype / outcome signal"}
-                      style={{
-                        ...mono,
-                        fontSize: 9,
-                        letterSpacing: "0.12em",
-                        color: isProfileMatch ? T.cyan : T.textDim,
-                        padding: "2px 6px",
-                        border: `1px solid ${isProfileMatch ? T.cyan : T.borderSoft}`,
-                        background: isProfileMatch ? "var(--prospera-accent-bg-mid)" : "transparent",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {reason}
-                    </span>
-                  );
-                })}
-              </div>
-            )}
-            <CompactAdvancedChips nbaAdv={historical.nbaAdv} cbbAdv={historical.cbbAdv} />
-            {historical.notes && (
-              <div style={{ padding: "8px 16px", borderTop: `1px solid ${T.borderSoft}`, fontSize: 11, color: T.textDim, lineHeight: 1.5, fontStyle: "italic" }}>
-                "{historical.notes}"
-              </div>
-            )}
+
+      {/* HIGH-END · best case (smaller emphasis — these are the dream) */}
+      {groups.highEnd.length > 0 && (
+        <div>
+          <ComparableSectionHeader
+            eyebrow="Best Case"
+            title="High-End Outcomes"
+            count={groups.highEnd.length}
+            accent={ACCENT_HIGH}
+            hint="If everything translates — Star / Legend tier outcomes that match this profile."
+          />
+          <div style={{ display: "grid", gap: 8 }}>
+            {groups.highEnd.map((entry) => <ComparableCard key={entry.historical.id} {...entry} />)}
           </div>
-        );
-      })}
+        </div>
+      )}
+
+      {/* REALISTIC · the actual projection — biggest section */}
+      {groups.realistic.length > 0 && (
+        <div>
+          <ComparableSectionHeader
+            eyebrow="Median Projection"
+            title="Realistic Outcomes"
+            count={groups.realistic.length}
+            accent={ACCENT_REAL}
+            hint="Hit-tier solid contributors — the most likely outcome for this profile."
+          />
+          <div style={{ display: "grid", gap: 10 }}>
+            {groups.realistic.map((entry) => <ComparableCard key={entry.historical.id} {...entry} />)}
+          </div>
+        </div>
+      )}
+
+      {/* CAUTIONARY · downside risk (dimmed so it doesn't overpower) */}
+      {groups.cautionary.length > 0 && (
+        <div>
+          <ComparableSectionHeader
+            eyebrow="Downside Risk"
+            title="Cautionary Comps"
+            count={groups.cautionary.length}
+            accent={ACCENT_CAUT}
+            hint="Same profile, didn't translate. What goes wrong looks like this."
+          />
+          <div style={{ display: "grid", gap: 8 }}>
+            {groups.cautionary.map((entry) => (
+              <ComparableCard key={entry.historical.id} {...entry} dim />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
