@@ -22,6 +22,7 @@ const HIST_PROSPECTS_PATH = path.join(__dirname, '..', '..', 'src', 'data', 'his
 
 const NBA_FILE = path.join(STATHEAD_DIR, 'stathead-nba-advanced-careers.csv');
 const CBB_FILE = path.join(STATHEAD_DIR, 'stathead-cbb-advanced-careers.csv');
+const CBB_SHOOTING_FILE = path.join(STATHEAD_DIR, 'stathead-cbb-shooting-extras.csv');
 const NBA_PER100_FILE = path.join(STATHEAD_DIR, 'stathead-nba-per100-careers.csv');
 const NBA_PER36_FILE = path.join(STATHEAD_DIR, 'stathead-nba-per36-careers.csv');
 
@@ -169,6 +170,19 @@ function extractNbaPerStats(row) {
   };
 }
 
+// Pulled from a separate Stathead CBB query that includes the shooting
+// efficiency columns the standard Advanced panel doesn't carry: TS%, 3PAr,
+// eFG%. These get merged into the cbbAdv block at runtime so downstream
+// consumers see one unified shape.
+function extractCbbShooting(row) {
+  return {
+    tsPct:   decimalToPct(row['TS%']),    // SR stores as decimal e.g. ".567"
+    efgPct:  decimalToPct(row['eFG%']),
+    threePAr: decimalToPct(row['3PAr']),  // also a decimal e.g. ".408"
+    careerPts: toNum(row.PTS),            // career total points (used as a sanity field)
+  };
+}
+
 function extractCbbAdvanced(row) {
   return {
     g: toNum(row.G),
@@ -217,16 +231,20 @@ function main() {
 
   const { rows: nbaRows } = parseCsv(fs.readFileSync(NBA_FILE, 'utf8'));
   const { rows: cbbRows } = parseCsv(fs.readFileSync(CBB_FILE, 'utf8'));
+  const cbbShootingRows = fs.existsSync(CBB_SHOOTING_FILE)
+    ? parseCsv(fs.readFileSync(CBB_SHOOTING_FILE, 'utf8')).rows
+    : [];
   const per100Rows = fs.existsSync(NBA_PER100_FILE)
     ? parseCsv(fs.readFileSync(NBA_PER100_FILE, 'utf8')).rows
     : [];
   const per36Rows = fs.existsSync(NBA_PER36_FILE)
     ? parseCsv(fs.readFileSync(NBA_PER36_FILE, 'utf8')).rows
     : [];
-  console.log(`Loaded ${nbaRows.length} NBA advanced rows, ${cbbRows.length} CBB advanced rows, ${per100Rows.length} per-100 rows, ${per36Rows.length} per-36 rows.`);
+  console.log(`Loaded ${nbaRows.length} NBA advanced, ${cbbRows.length} CBB advanced, ${cbbShootingRows.length} CBB shooting, ${per100Rows.length} per-100, ${per36Rows.length} per-36.`);
 
   const nbaByKey = buildKeyedMap(nbaRows);
   const cbbByKey = buildKeyedMap(cbbRows);
+  const cbbShootingByKey = buildKeyedMap(cbbShootingRows);
   const per100ByKey = buildKeyedMap(per100Rows);
   const per36ByKey = buildKeyedMap(per36Rows);
 
@@ -240,10 +258,12 @@ function main() {
 
   let per100Hits = 0;
   let per36Hits = 0;
+  let cbbShootingHits = 0;
   for (const p of historicalProspects) {
     const key = `${normalizeName(p.name)}|${p.draftYear}`;
     const nbaRow = nbaByKey.get(key);
     const cbbRow = cbbByKey.get(key);
+    const cbbShootingRow = cbbShootingByKey.get(key);
     const per100Row = per100ByKey.get(key);
     const per36Row = per36ByKey.get(key);
     if (!nbaRow && !cbbRow && !per100Row && !per36Row) {
@@ -261,6 +281,15 @@ function main() {
     if (cbbRow) {
       entry.cbbAdv = extractCbbAdvanced(cbbRow);
       cbbHits++;
+      // Merge in CBB shooting extras (TS%, 3PAr, eFG%) when we have them.
+      // Lives on cbbAdv so downstream consumers see one unified shape.
+      if (cbbShootingRow) {
+        const sh = extractCbbShooting(cbbShootingRow);
+        if (sh.tsPct != null)    entry.cbbAdv.tsPct = sh.tsPct;
+        if (sh.efgPct != null)   entry.cbbAdv.efgPct = sh.efgPct;
+        if (sh.threePAr != null) entry.cbbAdv.threePAr = sh.threePAr;
+        cbbShootingHits++;
+      }
     } else {
       missingCbb.push(p.name);
     }
@@ -283,6 +312,7 @@ function main() {
   console.log(`Historical prospects total: ${historicalProspects.length}`);
   console.log(`NBA advanced matched:       ${nbaHits} (${((nbaHits / historicalProspects.length) * 100).toFixed(1)}%)`);
   console.log(`CBB advanced matched:       ${cbbHits} (${((cbbHits / historicalProspects.length) * 100).toFixed(1)}%)`);
+  console.log(`CBB shooting (TS/3PAr/eFG): ${cbbShootingHits} (${((cbbShootingHits / historicalProspects.length) * 100).toFixed(1)}%)`);
   console.log(`NBA per-100 matched:        ${per100Hits} (${((per100Hits / historicalProspects.length) * 100).toFixed(1)}%)`);
   console.log(`NBA per-36 matched:         ${per36Hits} (${((per36Hits / historicalProspects.length) * 100).toFixed(1)}%)`);
   console.log(`Both NBA + CBB matched:     ${bothHits} (${((bothHits / historicalProspects.length) * 100).toFixed(1)}%)`);

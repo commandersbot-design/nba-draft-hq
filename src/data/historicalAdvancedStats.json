@@ -57,7 +57,10 @@
       "team": "Duke",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "cooper-flagg-1"
+      "srSlug": "cooper-flagg-1",
+      "tsPct": 59.3,
+      "efgPct": 53.3,
+      "threePAr": 27.2
     },
     "nbaPer100": {
       "pts": 29.6,
@@ -150,7 +153,10 @@
       "team": "Rutgers",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "dylan-harper-1"
+      "srSlug": "dylan-harper-1",
+      "tsPct": 58.7,
+      "efgPct": 54.6,
+      "threePAr": 37.4
     },
     "nbaPer100": {
       "pts": 25.1,
@@ -308,7 +314,10 @@
       "team": "Duke",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "kon-knueppel-1"
+      "srSlug": "kon-knueppel-1",
+      "tsPct": 64.2,
+      "efgPct": 59,
+      "threePAr": 54.8
     },
     "nbaPer100": {
       "pts": 29.1,
@@ -466,7 +475,10 @@
       "team": "Texas",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "tre-johnson-2"
+      "srSlug": "tre-johnson-2",
+      "tsPct": 55.7,
+      "efgPct": 51.1,
+      "threePAr": 42.7
     },
     "nbaPer100": {
       "pts": 24.1,
@@ -559,7 +571,10 @@
       "team": "Oklahoma",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "jeremiah-fears-1"
+      "srSlug": "jeremiah-fears-1",
+      "tsPct": 56.2,
+      "efgPct": 48,
+      "threePAr": 32.3
     },
     "nbaPer100": {
       "pts": 26.5,
@@ -622,7 +637,10 @@
       "team": "Brigham Young",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "egor-demin-1"
+      "srSlug": "egor-demin-1",
+      "tsPct": 50.9,
+      "efgPct": 48,
+      "threePAr": 50.3
     }
   },
   "collin-murray-boyles-2025": {
@@ -683,7 +701,10 @@
       "team": "South Carolina",
       "fromSeason": "2023-24",
       "toSeason": "2024-25",
-      "srSlug": "collin-murray-boyles-1"
+      "srSlug": "collin-murray-boyles-1",
+      "tsPct": 62.4,
+      "efgPct": 59.8,
+      "threePAr": 7.3
     },
     "nbaPer100": {
       "pts": 18.9,
@@ -776,7 +797,10 @@
       "team": "Duke",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "khaman-maluach-1"
+      "srSlug": "khaman-maluach-1",
+      "tsPct": 73.6,
+      "efgPct": 72.3,
+      "threePAr": 8.4
     },
     "nbaPer100": {
       "pts": 16.7,
@@ -869,7 +893,10 @@
       "team": "Eastern WashingtonWashington State",
       "fromSeason": "2022-23",
       "toSeason": "2024-25",
-      "srSlug": "cedric-coward-1"
+      "srSlug": "cedric-coward-1",
+      "tsPct": 69.7,
+      "efgPct": 66.8,
+      "threePAr": 37.4
     },
     "nbaPer100": {
       "pts": 25,
@@ -1027,7 +1054,10 @@
       "team": "Maryland",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "derik-queen-1"
+      "srSlug": "derik-queen-1",
+      "tsPct": 59.1,
+      "efgPct": 53.5,
+      "threePAr": 8.8
     },
     "nbaPer100": {
       "pts": 22.4,
@@ -1120,7 +1150,10 @@
       "team": "Arizona",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "carter-bryant-1"
+      "srSlug": "carter-bryant-1",
+      "tsPct": 59.3,
+      "efgPct": 57.1,
+      "threePAr": 59.7
     },
     "nbaPer100": {
       "pts": 17.5,
@@ -1183,7 +1216,10 @@
       "team": "Georgetown",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "thomas-sorber-1"
+      "srSlug": "thomas-sorber-1",
+      "tsPct": 58,
+      "efgPct": 54.4,
+      "threePAr": 14.8
     }
   },
   "yang-hansen-2025": {
@@ -1374,7 +1410,10 @@
       "team": "FloridaIona",
       "fromSeason": "2021-22",
       "toSeason": "2024-25",
-      "srSlug": "walter-claytonjr-1"
+      "srSlug": "walter-claytonjr-1",
+      "tsPct": 59.3,
+      "efgPct": 54.4,
+      "threePAr": 51.9
     },
     "nbaPer100": {
       "pts": 18,
@@ -1532,7 +1571,10 @@
       "team": "Illinois",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "kasparas-jakucionis-1"
+      "srSlug": "kasparas-jakucionis-1",
+      "tsPct": 59,
+      "efgPct": 51.9,
+      "threePAr": 50.1
     },
     "nbaPer100": {
       "pts": 16.1,
@@ -1625,7 +1667,10 @@
       "team": "Illinois",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "will-riley-1"
+      "srSlug": "will-riley-1",
+      "tsPct": 53.2,
+      "efgPct": 49.7,
+      "threePAr": 40.1
     },
     "nbaPer100": {
       "pts": 22.2,
@@ -1718,7 +1763,10 @@
       "team": "North Carolina",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "drake-powell-1"
+      "srSlug": "drake-powell-1",
+      "tsPct": 58.1,
+      "efgPct": 56.9,
+      "threePAr": 45
     },
     "nbaPer100": {
       "pts": 15.3,
@@ -1811,7 +1859,10 @@
       "team": "Georgia",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "asa-newell-1"
+      "srSlug": "asa-newell-1",
+      "tsPct": 61.2,
+      "efgPct": 58,
+      "threePAr": 25.3
     },
     "nbaPer100": {
       "pts": 21.4,
@@ -1904,7 +1955,10 @@
       "team": "ColoradoColorado State",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "nique-clifford-1"
+      "srSlug": "nique-clifford-1",
+      "tsPct": 56.1,
+      "efgPct": 53.2,
+      "threePAr": 34.8
     },
     "nbaPer100": {
       "pts": 16.6,
@@ -1997,7 +2051,10 @@
       "team": "Michigan State",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "jase-richardson-1"
+      "srSlug": "jase-richardson-1",
+      "tsPct": 62.4,
+      "efgPct": 57.4,
+      "threePAr": 39
     },
     "nbaPer100": {
       "pts": 19.6,
@@ -2155,7 +2212,10 @@
       "team": "MichiganYale",
       "fromSeason": "2022-23",
       "toSeason": "2024-25",
-      "srSlug": "danny-wolf-1"
+      "srSlug": "danny-wolf-1",
+      "tsPct": 54.5,
+      "efgPct": 52.6,
+      "threePAr": 27.5
     },
     "nbaPer100": {
       "pts": 21.2,
@@ -2313,7 +2373,10 @@
       "team": "Connecticut",
       "fromSeason": "2024-25",
       "toSeason": "2024-25",
-      "srSlug": "liam-mcneeley-1"
+      "srSlug": "liam-mcneeley-1",
+      "tsPct": 52.9,
+      "efgPct": 45.5,
+      "threePAr": 46.8
     },
     "nbaPer100": {
       "pts": 17.8,
@@ -2499,7 +2562,10 @@
       "team": "Saint Joseph's",
       "fromSeason": "2022-23",
       "toSeason": "2024-25",
-      "srSlug": "rasheer-fleming-1"
+      "srSlug": "rasheer-fleming-1",
+      "tsPct": 60.3,
+      "efgPct": 58.6,
+      "threePAr": 43.8
     },
     "nbaPer100": {
       "pts": 17.5,
@@ -2657,7 +2723,10 @@
       "team": "DukeTulane",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "sion-james-1"
+      "srSlug": "sion-james-1",
+      "tsPct": 58.3,
+      "efgPct": 54.4,
+      "threePAr": 35.4
     },
     "nbaPer100": {
       "pts": 11.9,
@@ -2750,7 +2819,10 @@
       "team": "Creighton",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "ryan-kalkbrenner-1"
+      "srSlug": "ryan-kalkbrenner-1",
+      "tsPct": 68.5,
+      "efgPct": 67.4,
+      "threePAr": 9.9
     },
     "nbaPer100": {
       "pts": 17.5,
@@ -2843,7 +2915,10 @@
       "team": "AuburnMorehead State",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "johni-broome-1"
+      "srSlug": "johni-broome-1",
+      "tsPct": 56.7,
+      "efgPct": 55.5,
+      "threePAr": 10.1
     },
     "nbaPer100": {
       "pts": 8.8,
@@ -2936,7 +3011,10 @@
       "team": "ArkansasKentucky",
       "fromSeason": "2022-23",
       "toSeason": "2024-25",
-      "srSlug": "adou-thiero-1"
+      "srSlug": "adou-thiero-1",
+      "tsPct": 58.8,
+      "efgPct": 54,
+      "threePAr": 17.9
     },
     "nbaPer100": {
       "pts": 15.4,
@@ -3029,7 +3107,10 @@
       "team": "North FloridaTennessee",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "chaz-lanier-1"
+      "srSlug": "chaz-lanier-1",
+      "tsPct": 59.8,
+      "efgPct": 57.1,
+      "threePAr": 56.1
     },
     "nbaPer100": {
       "pts": 14.8,
@@ -3187,7 +3268,10 @@
       "team": "FloridaFlorida Atlantic",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "alijah-martin-1"
+      "srSlug": "alijah-martin-1",
+      "tsPct": 57.2,
+      "efgPct": 54.4,
+      "threePAr": 56.1
     },
     "nbaPer100": {
       "pts": 17,
@@ -3280,7 +3364,10 @@
       "team": "GeorgetownTCUTexas Tech",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "micah-peavy-1"
+      "srSlug": "micah-peavy-1",
+      "tsPct": 50.5,
+      "efgPct": 48.9,
+      "threePAr": 23.3
     },
     "nbaPer100": {
       "pts": 13.7,
@@ -3373,7 +3460,10 @@
       "team": "DaytonKentucky",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "koby-brea-1"
+      "srSlug": "koby-brea-1",
+      "tsPct": 61.7,
+      "efgPct": 60.6,
+      "threePAr": 71.9
     },
     "nbaPer100": {
       "pts": 26.5,
@@ -3466,7 +3556,10 @@
       "team": "Stanford",
       "fromSeason": "2021-22",
       "toSeason": "2024-25",
-      "srSlug": "maxime-raynaud-1"
+      "srSlug": "maxime-raynaud-1",
+      "tsPct": 58.1,
+      "efgPct": 56,
+      "threePAr": 25.8
     },
     "nbaPer100": {
       "pts": 22.7,
@@ -3559,7 +3652,10 @@
       "team": "Florida StateVCU",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "jamir-watkins-1"
+      "srSlug": "jamir-watkins-1",
+      "tsPct": 55,
+      "efgPct": 48.8,
+      "threePAr": 37.4
     },
     "nbaPer100": {
       "pts": 16.9,
@@ -3652,7 +3748,10 @@
       "team": "Northwestern",
       "fromSeason": "2021-22",
       "toSeason": "2024-25",
-      "srSlug": "brooks-barnhizer-1"
+      "srSlug": "brooks-barnhizer-1",
+      "tsPct": 51.3,
+      "efgPct": 46.2,
+      "threePAr": 30.6
     },
     "nbaPer100": {
       "pts": 9.4,
@@ -3810,7 +3909,10 @@
       "team": "DrexelKentucky",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "amari-williams-2"
+      "srSlug": "amari-williams-2",
+      "tsPct": 56.2,
+      "efgPct": 53.3,
+      "threePAr": 3
     },
     "nbaPer100": {
       "pts": 10.4,
@@ -3903,7 +4005,10 @@
       "team": "East CarolinaOklahoma StateWest Virginia",
       "fromSeason": "2021-22",
       "toSeason": "2024-25",
-      "srSlug": "javon-small-1"
+      "srSlug": "javon-small-1",
+      "tsPct": 57,
+      "efgPct": 50.6,
+      "threePAr": 51.7
     },
     "nbaPer100": {
       "pts": 22.6,
@@ -3996,7 +4101,10 @@
       "team": "Duke",
       "fromSeason": "2022-23",
       "toSeason": "2024-25",
-      "srSlug": "tyrese-proctor-1"
+      "srSlug": "tyrese-proctor-1",
+      "tsPct": 54.8,
+      "efgPct": 52.3,
+      "threePAr": 55.9
     },
     "nbaPer100": {
       "pts": 24,
@@ -4089,7 +4197,10 @@
       "team": "Cal PolyNevada",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "kobe-sanders-1"
+      "srSlug": "kobe-sanders-1",
+      "tsPct": 54.8,
+      "efgPct": 49,
+      "threePAr": 38.2
     },
     "nbaPer100": {
       "pts": 18.2,
@@ -4247,7 +4358,10 @@
       "team": "Colorado StateMissouriWisconsin",
       "fromSeason": "2019-20",
       "toSeason": "2024-25",
-      "srSlug": "john-tonje-1"
+      "srSlug": "john-tonje-1",
+      "tsPct": 61.5,
+      "efgPct": 55.1,
+      "threePAr": 49.8
     },
     "nbaPer100": {
       "pts": 18.1,
@@ -4340,7 +4454,10 @@
       "team": "LibertyTennessee Tech",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "taelon-peter-1"
+      "srSlug": "taelon-peter-1",
+      "tsPct": 70.9,
+      "efgPct": 69.5,
+      "threePAr": 59.4
     },
     "nbaPer100": {
       "pts": 16.5,
@@ -4526,7 +4643,10 @@
       "team": "BelmontFlorida",
       "fromSeason": "2021-22",
       "toSeason": "2024-25",
-      "srSlug": "will-richard-2"
+      "srSlug": "will-richard-2",
+      "tsPct": 60.1,
+      "efgPct": 56.5,
+      "threePAr": 57
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -4619,7 +4739,10 @@
       "team": "Utah StateVCU",
       "fromSeason": "2020-21",
       "toSeason": "2024-25",
-      "srSlug": "max-shulga-1"
+      "srSlug": "max-shulga-1",
+      "tsPct": 60.8,
+      "efgPct": 54.8,
+      "threePAr": 55.4
     },
     "nbaPer100": {
       "pts": 9.8,
@@ -4712,7 +4835,10 @@
       "team": "Tennessee",
       "fromSeason": "2021-22",
       "toSeason": "2024-25",
-      "srSlug": "jahmai-mashack-1"
+      "srSlug": "jahmai-mashack-1",
+      "tsPct": 52.7,
+      "efgPct": 49,
+      "threePAr": 29.5
     },
     "nbaPer100": {
       "pts": 13.5,
@@ -4935,7 +5061,10 @@
       "team": "Kentucky",
       "fromSeason": "2023-24",
       "toSeason": "2023-24",
-      "srSlug": "reed-sheppard-2"
+      "srSlug": "reed-sheppard-2",
+      "tsPct": 69.9,
+      "efgPct": 67.9,
+      "threePAr": 54.8
     },
     "nbaPer100": {
       "pts": 23.7,
@@ -5028,7 +5157,10 @@
       "team": "Connecticut",
       "fromSeason": "2023-24",
       "toSeason": "2023-24",
-      "srSlug": "stephon-castle-2"
+      "srSlug": "stephon-castle-2",
+      "tsPct": 55.1,
+      "efgPct": 50.7,
+      "threePAr": 25.9
     },
     "nbaPer100": {
       "pts": 26.6,
@@ -5251,7 +5383,10 @@
       "team": "Connecticut",
       "fromSeason": "2022-23",
       "toSeason": "2023-24",
-      "srSlug": "donovan-clingan-1"
+      "srSlug": "donovan-clingan-1",
+      "tsPct": 63.6,
+      "efgPct": 64.7,
+      "threePAr": 1.9
     },
     "nbaPer100": {
       "pts": 19.3,
@@ -5344,7 +5479,10 @@
       "team": "Kentucky",
       "fromSeason": "2023-24",
       "toSeason": "2023-24",
-      "srSlug": "rob-dillingham-1"
+      "srSlug": "rob-dillingham-1",
+      "tsPct": 59.5,
+      "efgPct": 56.4,
+      "threePAr": 39.8
     },
     "nbaPer100": {
       "pts": 20.2,
@@ -5437,7 +5575,10 @@
       "team": "Colorado",
       "fromSeason": "2023-24",
       "toSeason": "2023-24",
-      "srSlug": "cody-williams-2"
+      "srSlug": "cody-williams-2",
+      "tsPct": 62,
+      "efgPct": 59.5,
+      "threePAr": 21.1
     },
     "nbaPer100": {
       "pts": 14.4,
@@ -5660,7 +5801,10 @@
       "team": "ProvidenceSouth Carolina",
       "fromSeason": "2021-22",
       "toSeason": "2023-24",
-      "srSlug": "devin-carter-3"
+      "srSlug": "devin-carter-3",
+      "tsPct": 55.6,
+      "efgPct": 51.4,
+      "threePAr": 39.8
     },
     "nbaPer100": {
       "pts": 21.1,
@@ -5753,7 +5897,10 @@
       "team": "Northern ColoradoTennessee",
       "fromSeason": "2021-22",
       "toSeason": "2023-24",
-      "srSlug": "dalton-knecht-1"
+      "srSlug": "dalton-knecht-1",
+      "tsPct": 57.9,
+      "efgPct": 54.5,
+      "threePAr": 43.5
     },
     "nbaPer100": {
       "pts": 22.4,
@@ -5846,7 +5993,10 @@
       "team": "Baylor",
       "fromSeason": "2023-24",
       "toSeason": "2023-24",
-      "srSlug": "jakobe-walter-2"
+      "srSlug": "jakobe-walter-2",
+      "tsPct": 54.1,
+      "efgPct": 47.4,
+      "threePAr": 57.4
     },
     "nbaPer100": {
       "pts": 18.6,
@@ -5939,7 +6089,10 @@
       "team": "Alabama",
       "fromSeason": "2022-23",
       "toSeason": "2022-23",
-      "srSlug": "brandon-miller-3"
+      "srSlug": "brandon-miller-3",
+      "tsPct": 58.3,
+      "efgPct": 53.3,
+      "threePAr": 53.5
     },
     "nbaPer100": {
       "pts": 29.6,
@@ -6162,7 +6315,10 @@
       "team": "Arkansas",
       "fromSeason": "2022-23",
       "toSeason": "2022-23",
-      "srSlug": "anthony-black-1"
+      "srSlug": "anthony-black-1",
+      "tsPct": 54.9,
+      "efgPct": 49.5,
+      "threePAr": 28.3
     },
     "nbaPer100": {
       "pts": 19.9,
@@ -6255,7 +6411,10 @@
       "team": "Houston",
       "fromSeason": "2022-23",
       "toSeason": "2022-23",
-      "srSlug": "jarace-walker-1"
+      "srSlug": "jarace-walker-1",
+      "tsPct": 53.4,
+      "efgPct": 51.6,
+      "threePAr": 29.7
     },
     "nbaPer100": {
       "pts": 20.1,
@@ -6348,7 +6507,10 @@
       "team": "UCF",
       "fromSeason": "2022-23",
       "toSeason": "2022-23",
-      "srSlug": "taylor-hendricks-1"
+      "srSlug": "taylor-hendricks-1",
+      "tsPct": 58.9,
+      "efgPct": 55.7,
+      "threePAr": 40.3
     },
     "nbaPer100": {
       "pts": 17.3,
@@ -6441,7 +6603,10 @@
       "team": "Kentucky",
       "fromSeason": "2022-23",
       "toSeason": "2022-23",
-      "srSlug": "cason-wallace-1"
+      "srSlug": "cason-wallace-1",
+      "tsPct": 54.3,
+      "efgPct": 51.6,
+      "threePAr": 40.7
     },
     "nbaPer100": {
       "pts": 15.3,
@@ -6534,7 +6699,10 @@
       "team": "Duke",
       "fromSeason": "2022-23",
       "toSeason": "2022-23",
-      "srSlug": "dereck-lively-ii-1"
+      "srSlug": "dereck-lively-ii-1",
+      "tsPct": 66.2,
+      "efgPct": 66.7,
+      "threePAr": 11.1
     },
     "nbaPer100": {
       "pts": 17.7,
@@ -6627,7 +6795,10 @@
       "team": "Baylor",
       "fromSeason": "2022-23",
       "toSeason": "2022-23",
-      "srSlug": "keyonte-george-1"
+      "srSlug": "keyonte-george-1",
+      "tsPct": 52.4,
+      "efgPct": 47,
+      "threePAr": 55.3
     },
     "nbaPer100": {
       "pts": 27.2,
@@ -6720,7 +6891,10 @@
       "team": "Duke",
       "fromSeason": "2021-22",
       "toSeason": "2021-22",
-      "srSlug": "paolo-banchero-1"
+      "srSlug": "paolo-banchero-1",
+      "tsPct": 55.7,
+      "efgPct": 52,
+      "threePAr": 25.3
     },
     "nbaPer100": {
       "pts": 31.6,
@@ -6813,7 +6987,10 @@
       "team": "Gonzaga",
       "fromSeason": "2021-22",
       "toSeason": "2021-22",
-      "srSlug": "chet-holmgren-1"
+      "srSlug": "chet-holmgren-1",
+      "tsPct": 69.1,
+      "efgPct": 68,
+      "threePAr": 37.5
     },
     "nbaPer100": {
       "pts": 27.5,
@@ -6906,7 +7083,10 @@
       "team": "Auburn",
       "fromSeason": "2021-22",
       "toSeason": "2021-22",
-      "srSlug": "jabari-smith-2"
+      "srSlug": "jabari-smith-2",
+      "tsPct": 57,
+      "efgPct": 52.1,
+      "threePAr": 44
     },
     "nbaPer100": {
       "pts": 20.9,
@@ -6999,7 +7179,10 @@
       "team": "Iowa",
       "fromSeason": "2020-21",
       "toSeason": "2021-22",
-      "srSlug": "keegan-murray-1"
+      "srSlug": "keegan-murray-1",
+      "tsPct": 62.6,
+      "efgPct": 60,
+      "threePAr": 30.6
     },
     "nbaPer100": {
       "pts": 19.7,
@@ -7092,7 +7275,10 @@
       "team": "Purdue",
       "fromSeason": "2020-21",
       "toSeason": "2021-22",
-      "srSlug": "jaden-ivey-1"
+      "srSlug": "jaden-ivey-1",
+      "tsPct": 55.2,
+      "efgPct": 50.7,
+      "threePAr": 41.6
     },
     "nbaPer100": {
       "pts": 25.6,
@@ -7185,7 +7371,10 @@
       "team": "Arizona",
       "fromSeason": "2020-21",
       "toSeason": "2021-22",
-      "srSlug": "bennedict-mathurin-1"
+      "srSlug": "bennedict-mathurin-1",
+      "tsPct": 59,
+      "efgPct": 54.6,
+      "threePAr": 47.1
     },
     "nbaPer100": {
       "pts": 27.1,
@@ -7343,7 +7532,10 @@
       "team": "Santa Clara",
       "fromSeason": "2019-20",
       "toSeason": "2021-22",
-      "srSlug": "jalen-williams-13"
+      "srSlug": "jalen-williams-13",
+      "tsPct": 56.8,
+      "efgPct": 52.6,
+      "threePAr": 32
     },
     "nbaPer100": {
       "pts": 27.9,
@@ -7436,7 +7628,10 @@
       "team": "AuburnNorth Carolina",
       "fromSeason": "2020-21",
       "toSeason": "2021-22",
-      "srSlug": "walker-kessler-1"
+      "srSlug": "walker-kessler-1",
+      "tsPct": 61.5,
+      "efgPct": 61.6,
+      "threePAr": 15.1
     },
     "nbaPer100": {
       "pts": 18,
@@ -7529,7 +7724,10 @@
       "team": "Oklahoma State",
       "fromSeason": "2020-21",
       "toSeason": "2020-21",
-      "srSlug": "cade-cunningham-1"
+      "srSlug": "cade-cunningham-1",
+      "tsPct": 57.4,
+      "efgPct": 51.5,
+      "threePAr": 38.8
     },
     "nbaPer100": {
       "pts": 32.2,
@@ -7687,7 +7885,10 @@
       "team": "Southern California",
       "fromSeason": "2020-21",
       "toSeason": "2020-21",
-      "srSlug": "evan-mobley-1"
+      "srSlug": "evan-mobley-1",
+      "tsPct": 62.4,
+      "efgPct": 59.5,
+      "threePAr": 11.7
     },
     "nbaPer100": {
       "pts": 25.4,
@@ -7780,7 +7981,10 @@
       "team": "Florida State",
       "fromSeason": "2020-21",
       "toSeason": "2020-21",
-      "srSlug": "scottie-barnes-1"
+      "srSlug": "scottie-barnes-1",
+      "tsPct": 54.8,
+      "efgPct": 53.1,
+      "threePAr": 20.5
     },
     "nbaPer100": {
       "pts": 24.9,
@@ -7873,7 +8077,10 @@
       "team": "Gonzaga",
       "fromSeason": "2020-21",
       "toSeason": "2020-21",
-      "srSlug": "jalen-suggs-1"
+      "srSlug": "jalen-suggs-1",
+      "tsPct": 59.5,
+      "efgPct": 56,
+      "threePAr": 33.8
     },
     "nbaPer100": {
       "pts": 23.1,
@@ -8031,7 +8238,10 @@
       "team": "Michigan",
       "fromSeason": "2019-20",
       "toSeason": "2020-21",
-      "srSlug": "franz-wagner-1"
+      "srSlug": "franz-wagner-1",
+      "tsPct": 57.7,
+      "efgPct": 53.9,
+      "threePAr": 45.9
     },
     "nbaPer100": {
       "pts": 29.3,
@@ -8124,7 +8334,10 @@
       "team": "Georgia",
       "fromSeason": "2019-20",
       "toSeason": "2019-20",
-      "srSlug": "anthony-edwards-2"
+      "srSlug": "anthony-edwards-2",
+      "tsPct": 52,
+      "efgPct": 47.3,
+      "threePAr": 48.5
     },
     "nbaPer100": {
       "pts": 34,
@@ -8282,7 +8495,10 @@
       "team": "Florida State",
       "fromSeason": "2019-20",
       "toSeason": "2019-20",
-      "srSlug": "patrick-williams-2"
+      "srSlug": "patrick-williams-2",
+      "tsPct": 55.3,
+      "efgPct": 49.8,
+      "threePAr": 24.2
     },
     "nbaPer100": {
       "pts": 16.9,
@@ -8375,7 +8591,10 @@
       "team": "Auburn",
       "fromSeason": "2019-20",
       "toSeason": "2019-20",
-      "srSlug": "isaac-okoro-1"
+      "srSlug": "isaac-okoro-1",
+      "tsPct": 58.7,
+      "efgPct": 55.6,
+      "threePAr": 28.8
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -8468,7 +8687,10 @@
       "team": "Iowa State",
       "fromSeason": "2018-19",
       "toSeason": "2019-20",
-      "srSlug": "tyrese-haliburton-1"
+      "srSlug": "tyrese-haliburton-1",
+      "tsPct": 64.5,
+      "efgPct": 63.1,
+      "threePAr": 57.7
     },
     "nbaPer100": {
       "pts": 25.4,
@@ -8561,7 +8783,10 @@
       "team": "Duke",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "zion-williamson-1"
+      "srSlug": "zion-williamson-1",
+      "tsPct": 70.2,
+      "efgPct": 70.8,
+      "threePAr": 16.3
     },
     "nbaPer100": {
       "pts": 37.1,
@@ -8654,7 +8879,10 @@
       "team": "Murray State",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "temetrius-morant-1"
+      "srSlug": "temetrius-morant-1",
+      "tsPct": 59.7,
+      "efgPct": 53.6,
+      "threePAr": 29.8
     },
     "nbaPer100": {
       "pts": 33.5,
@@ -8812,7 +9040,10 @@
       "team": "Virginia",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "deandre-hunter-1"
+      "srSlug": "deandre-hunter-1",
+      "tsPct": 60.6,
+      "efgPct": 56.4,
+      "threePAr": 26.4
     },
     "nbaPer100": {
       "pts": 23.7,
@@ -8905,7 +9136,10 @@
       "team": "Vanderbilt",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "darius-garland-1"
+      "srSlug": "darius-garland-1",
+      "tsPct": 65.7,
+      "efgPct": 63.9,
+      "threePAr": 42.6
     },
     "nbaPer100": {
       "pts": 28.2,
@@ -8998,7 +9232,10 @@
       "team": "Texas Tech",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "jarrett-culver-1"
+      "srSlug": "jarrett-culver-1",
+      "tsPct": 54.8,
+      "efgPct": 51.8,
+      "threePAr": 35.1
     },
     "nbaPer100": {
       "pts": 17.6,
@@ -9091,7 +9328,10 @@
       "team": "North Carolina",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "coby-white-1"
+      "srSlug": "coby-white-1",
+      "tsPct": 55.6,
+      "efgPct": 51.6,
+      "threePAr": 52.3
     },
     "nbaPer100": {
       "pts": 25.5,
@@ -9184,7 +9424,10 @@
       "team": "Texas",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "jaxson-hayes-1"
+      "srSlug": "jaxson-hayes-1",
+      "tsPct": 73.9,
+      "efgPct": 72.8,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 20,
@@ -9277,7 +9520,10 @@
       "team": "Gonzaga",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "rui-hachimura-1"
+      "srSlug": "rui-hachimura-1",
+      "tsPct": 62.9,
+      "efgPct": 59.4,
+      "threePAr": 9.5
     },
     "nbaPer100": {
       "pts": 21.7,
@@ -9370,7 +9616,10 @@
       "team": "Duke",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "cam-reddish-1"
+      "srSlug": "cam-reddish-1",
+      "tsPct": 49.9,
+      "efgPct": 45.9,
+      "threePAr": 61.8
     },
     "nbaPer100": {
       "pts": 17.6,
@@ -9463,7 +9712,10 @@
       "team": "North CarolinaPittsburgh",
       "fromSeason": "2014-15",
       "toSeason": "2018-19",
-      "srSlug": "cameron-johnson-4"
+      "srSlug": "cameron-johnson-4",
+      "tsPct": 60.1,
+      "efgPct": 57.1,
+      "threePAr": 56.5
     },
     "nbaPer100": {
       "pts": 23.2,
@@ -9621,7 +9873,10 @@
       "team": "Kentucky",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "tyler-herro-1"
+      "srSlug": "tyler-herro-1",
+      "tsPct": 58,
+      "efgPct": 53.6,
+      "threePAr": 41.9
     },
     "nbaPer100": {
       "pts": 29.6,
@@ -9714,7 +9969,10 @@
       "team": "Indiana",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "romeo-langford-1"
+      "srSlug": "romeo-langford-1",
+      "tsPct": 54.2,
+      "efgPct": 49.1,
+      "threePAr": 31.6
     },
     "nbaPer100": {
       "pts": 13.9,
@@ -9872,7 +10130,10 @@
       "team": "Auburn",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "chuma-okeke-1"
+      "srSlug": "chuma-okeke-1",
+      "tsPct": 58.4,
+      "efgPct": 56.4,
+      "threePAr": 42.4
     },
     "nbaPer100": {
       "pts": 15,
@@ -9965,7 +10226,10 @@
       "team": "Virginia Tech",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "nickeil-alexander-walker-1"
+      "srSlug": "nickeil-alexander-walker-1",
+      "tsPct": 58.2,
+      "efgPct": 54.9,
+      "threePAr": 44.8
     },
     "nbaPer100": {
       "pts": 22.4,
@@ -10188,7 +10452,10 @@
       "team": "Washington",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "matisse-thybulle-1"
+      "srSlug": "matisse-thybulle-1",
+      "tsPct": 55,
+      "efgPct": 52.2,
+      "threePAr": 52
     },
     "nbaPer100": {
       "pts": 11.8,
@@ -10281,7 +10548,10 @@
       "team": "GonzagaSan Jose State",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "brandon-clarke-1"
+      "srSlug": "brandon-clarke-1",
+      "tsPct": 64.3,
+      "efgPct": 64.2,
+      "threePAr": 2.6
     },
     "nbaPer100": {
       "pts": 23.2,
@@ -10374,7 +10644,10 @@
       "team": "Tennessee",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "grant-williams-1"
+      "srSlug": "grant-williams-1",
+      "tsPct": 59.1,
+      "efgPct": 53,
+      "threePAr": 9.7
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -10532,7 +10805,10 @@
       "team": "Virginia",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "ty-jerome-1"
+      "srSlug": "ty-jerome-1",
+      "tsPct": 55.8,
+      "efgPct": 53.4,
+      "threePAr": 50.8
     },
     "nbaPer100": {
       "pts": 24.4,
@@ -10625,7 +10901,10 @@
       "team": "North Carolina",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "nassir-little-1"
+      "srSlug": "nassir-little-1",
+      "tsPct": 54.9,
+      "efgPct": 50.4,
+      "threePAr": 19
     },
     "nbaPer100": {
       "pts": 17.1,
@@ -10718,7 +10997,10 @@
       "team": "Belmont",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "dylan-windler-1"
+      "srSlug": "dylan-windler-1",
+      "tsPct": 66.3,
+      "efgPct": 64,
+      "threePAr": 48.7
     },
     "nbaPer100": {
       "pts": 14.5,
@@ -10811,7 +11093,10 @@
       "team": "Florida State",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "mfiondu-kabengele-1"
+      "srSlug": "mfiondu-kabengele-1",
+      "tsPct": 58,
+      "efgPct": 53.2,
+      "threePAr": 18.2
     },
     "nbaPer100": {
       "pts": 18.4,
@@ -10904,7 +11189,10 @@
       "team": "Michigan",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "jordan-poole-1"
+      "srSlug": "jordan-poole-1",
+      "tsPct": 57.6,
+      "efgPct": 54,
+      "threePAr": 57.2
     },
     "nbaPer100": {
       "pts": 28.9,
@@ -10997,7 +11285,10 @@
       "team": "Kentucky",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "keldon-johnson-1"
+      "srSlug": "keldon-johnson-1",
+      "tsPct": 55.8,
+      "efgPct": 52.1,
+      "threePAr": 31.6
     },
     "nbaPer100": {
       "pts": 26.2,
@@ -11090,7 +11381,10 @@
       "team": "Southern California",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "kevin-porterjr-1"
+      "srSlug": "kevin-porterjr-1",
+      "tsPct": 55.9,
+      "efgPct": 56.1,
+      "threePAr": 43.3
     },
     "nbaPer100": {
       "pts": 24.8,
@@ -11313,7 +11607,10 @@
       "team": "Purdue",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "carsen-edwards-1"
+      "srSlug": "carsen-edwards-1",
+      "tsPct": 54.7,
+      "efgPct": 50.4,
+      "threePAr": 49.6
     },
     "nbaPer100": {
       "pts": 18.4,
@@ -11406,7 +11703,10 @@
       "team": "Maryland",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "bruno-fernando-1"
+      "srSlug": "bruno-fernando-1",
+      "tsPct": 63.8,
+      "efgPct": 59.9,
+      "threePAr": 2.7
     },
     "nbaPer100": {
       "pts": 17.9,
@@ -11564,7 +11864,10 @@
       "team": "NC StateNevada",
       "fromSeason": "2014-15",
       "toSeason": "2018-19",
-      "srSlug": "cody-martin-1"
+      "srSlug": "cody-martin-1",
+      "tsPct": 55.8,
+      "efgPct": 52.9,
+      "threePAr": 17.8
     },
     "nbaPer100": {
       "pts": 13.6,
@@ -11722,7 +12025,10 @@
       "team": "Arkansas",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "daniel-gafford-1"
+      "srSlug": "daniel-gafford-1",
+      "tsPct": 62.6,
+      "efgPct": 63.5,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 22.3,
@@ -11880,7 +12186,10 @@
       "team": "Wyoming",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "justin-james-2"
+      "srSlug": "justin-james-2",
+      "tsPct": 54.2,
+      "efgPct": 49.3,
+      "threePAr": 30
     },
     "nbaPer100": {
       "pts": 20.3,
@@ -11973,7 +12282,10 @@
       "team": "FordhamVillanova",
       "fromSeason": "2014-15",
       "toSeason": "2018-19",
-      "srSlug": "eric-paschall-1"
+      "srSlug": "eric-paschall-1",
+      "tsPct": 57.4,
+      "efgPct": 53.5,
+      "threePAr": 40.7
     },
     "nbaPer100": {
       "pts": 24.2,
@@ -12066,7 +12378,10 @@
       "team": "Tennessee",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "admiral-schofield-1"
+      "srSlug": "admiral-schofield-1",
+      "tsPct": 55.6,
+      "efgPct": 53,
+      "threePAr": 37.3
     },
     "nbaPer100": {
       "pts": 14.9,
@@ -12159,7 +12474,10 @@
       "team": "Washington",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "jaylen-nowell-1"
+      "srSlug": "jaylen-nowell-1",
+      "tsPct": 56.3,
+      "efgPct": 52.7,
+      "threePAr": 25.7
     },
     "nbaPer100": {
       "pts": 24.5,
@@ -12252,7 +12570,10 @@
       "team": "Oregon",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "bol-bol-1"
+      "srSlug": "bol-bol-1",
+      "tsPct": 63.2,
+      "efgPct": 61,
+      "threePAr": 18.9
     },
     "nbaPer100": {
       "pts": 22,
@@ -12345,7 +12666,10 @@
       "team": "Nebraska",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "isaiah-roby-1"
+      "srSlug": "isaiah-roby-1",
+      "tsPct": 55.5,
+      "efgPct": 51.8,
+      "threePAr": 24.8
     },
     "nbaPer100": {
       "pts": 19.4,
@@ -12438,7 +12762,10 @@
       "team": "Iowa State",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "talen-horton-tucker-1"
+      "srSlug": "talen-horton-tucker-1",
+      "tsPct": 48.8,
+      "efgPct": 47,
+      "threePAr": 41.6
     },
     "nbaPer100": {
       "pts": 22.7,
@@ -12531,7 +12858,10 @@
       "team": "Michigan",
       "fromSeason": "2018-19",
       "toSeason": "2018-19",
-      "srSlug": "ignas-brazdeikis-1"
+      "srSlug": "ignas-brazdeikis-1",
+      "tsPct": 57.3,
+      "efgPct": 53.1,
+      "threePAr": 35.1
     },
     "nbaPer100": {
       "pts": 18.4,
@@ -12624,7 +12954,10 @@
       "team": "Florida State",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "terance-mann-1"
+      "srSlug": "terance-mann-1",
+      "tsPct": 60.2,
+      "efgPct": 58.1,
+      "threePAr": 18
     },
     "nbaPer100": {
       "pts": 17.4,
@@ -12717,7 +13050,10 @@
       "team": "Mississippi State",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "quinndary-weatherspoon-1"
+      "srSlug": "quinndary-weatherspoon-1",
+      "tsPct": 58.5,
+      "efgPct": 54.4,
+      "threePAr": 34.5
     },
     "nbaPer100": {
       "pts": 15.7,
@@ -12810,7 +13146,10 @@
       "team": "College of Charleston",
       "fromSeason": "2015-16",
       "toSeason": "2018-19",
-      "srSlug": "jarrell-brantley-1"
+      "srSlug": "jarrell-brantley-1",
+      "tsPct": 57,
+      "efgPct": 52.7,
+      "threePAr": 22.3
     },
     "nbaPer100": {
       "pts": 19.6,
@@ -12903,7 +13242,10 @@
       "team": "Louisiana State",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "tremont-waters-1"
+      "srSlug": "tremont-waters-1",
+      "tsPct": 55.1,
+      "efgPct": 50.3,
+      "threePAr": 46.8
     },
     "nbaPer100": {
       "pts": 17.9,
@@ -12996,7 +13338,10 @@
       "team": "San Diego State",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "jalen-mcdaniels-1"
+      "srSlug": "jalen-mcdaniels-1",
+      "tsPct": 56.5,
+      "efgPct": 52.5,
+      "threePAr": 14
     },
     "nbaPer100": {
       "pts": 18,
@@ -13182,7 +13527,10 @@
       "team": "Iowa StateVirginia",
       "fromSeason": "2014-15",
       "toSeason": "2018-19",
-      "srSlug": "marial-shayok-1"
+      "srSlug": "marial-shayok-1",
+      "tsPct": 56.5,
+      "efgPct": 53.5,
+      "threePAr": 34.2
     },
     "nbaPer100": {
       "pts": 19,
@@ -13275,7 +13623,10 @@
       "team": "Virginia",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "kyle-guy-1"
+      "srSlug": "kyle-guy-1",
+      "tsPct": 57.2,
+      "efgPct": 55.2,
+      "threePAr": 55.5
     },
     "nbaPer100": {
       "pts": 18.7,
@@ -13338,7 +13689,10 @@
       "team": "UCLA",
       "fromSeason": "2017-18",
       "toSeason": "2018-19",
-      "srSlug": "jaylen-hands-1"
+      "srSlug": "jaylen-hands-1",
+      "tsPct": 53.3,
+      "efgPct": 49.5,
+      "threePAr": 46
     }
   },
   "jordan-bone-2019": {
@@ -13399,7 +13753,10 @@
       "team": "Tennessee",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "jordan-bone-1"
+      "srSlug": "jordan-bone-1",
+      "tsPct": 51.9,
+      "efgPct": 48.1,
+      "threePAr": 32.3
     },
     "nbaPer100": {
       "pts": 13.3,
@@ -13492,7 +13849,10 @@
       "team": "Yale",
       "fromSeason": "2016-17",
       "toSeason": "2018-19",
-      "srSlug": "miye-oni-1"
+      "srSlug": "miye-oni-1",
+      "tsPct": 54.7,
+      "efgPct": 51,
+      "threePAr": 46.5
     },
     "nbaPer100": {
       "pts": 10.5,
@@ -13585,7 +13945,10 @@
       "team": "Miami (FL)",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "dewan-huell-1"
+      "srSlug": "dewan-huell-1",
+      "tsPct": 58.3,
+      "efgPct": 56,
+      "threePAr": 1.3
     },
     "nbaPer100": {
       "pts": 23.8,
@@ -13678,7 +14041,10 @@
       "team": "Arizona",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "deandre-ayton-1"
+      "srSlug": "deandre-ayton-1",
+      "tsPct": 65,
+      "efgPct": 62.5,
+      "threePAr": 7.8
     },
     "nbaPer100": {
       "pts": 25.4,
@@ -13771,7 +14137,10 @@
       "team": "Duke",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "marvin-bagleyiii-1"
+      "srSlug": "marvin-bagleyiii-1",
+      "tsPct": 64.3,
+      "efgPct": 64,
+      "threePAr": 13.2
     },
     "nbaPer100": {
       "pts": 25.5,
@@ -13929,7 +14298,10 @@
       "team": "Michigan State",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "jaren-jacksonjr-1"
+      "srSlug": "jaren-jacksonjr-1",
+      "tsPct": 64.7,
+      "efgPct": 59.5,
+      "threePAr": 41.4
     },
     "nbaPer100": {
       "pts": 30.8,
@@ -14022,7 +14394,10 @@
       "team": "Oklahoma",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "trae-young-1"
+      "srSlug": "trae-young-1",
+      "tsPct": 58.5,
+      "efgPct": 51.8,
+      "threePAr": 53.1
     },
     "nbaPer100": {
       "pts": 35,
@@ -14180,7 +14555,10 @@
       "team": "Duke",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "wendell-carterjr-1"
+      "srSlug": "wendell-carterjr-1",
+      "tsPct": 62.8,
+      "efgPct": 59.1,
+      "threePAr": 14.4
     },
     "nbaPer100": {
       "pts": 21,
@@ -14273,7 +14651,10 @@
       "team": "Alabama",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "collin-sexton-1"
+      "srSlug": "collin-sexton-1",
+      "tsPct": 56.7,
+      "efgPct": 49.8,
+      "threePAr": 29.9
     },
     "nbaPer100": {
       "pts": 30.8,
@@ -14366,7 +14747,10 @@
       "team": "Kentucky",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "kevin-knox-1"
+      "srSlug": "kevin-knox-1",
+      "tsPct": 55.6,
+      "efgPct": 51,
+      "threePAr": 38
     },
     "nbaPer100": {
       "pts": 20.1,
@@ -14459,7 +14843,10 @@
       "team": "Villanova",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "mikal-bridges-1"
+      "srSlug": "mikal-bridges-1",
+      "tsPct": 65.6,
+      "efgPct": 62.3,
+      "threePAr": 49
     },
     "nbaPer100": {
       "pts": 21.6,
@@ -14552,7 +14939,10 @@
       "team": "Kentucky",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "shai-gilgeous-alexander-1"
+      "srSlug": "shai-gilgeous-alexander-1",
+      "tsPct": 57.8,
+      "efgPct": 51.6,
+      "threePAr": 15.1
     },
     "nbaPer100": {
       "pts": 36.7,
@@ -14645,7 +15035,10 @@
       "team": "Michigan State",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "miles-bridges-1"
+      "srSlug": "miles-bridges-1",
+      "tsPct": 57.6,
+      "efgPct": 54.8,
+      "threePAr": 41.3
     },
     "nbaPer100": {
       "pts": 25.3,
@@ -14738,7 +15131,10 @@
       "team": "Boston College",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "jerome-robinson-2"
+      "srSlug": "jerome-robinson-2",
+      "tsPct": 55.1,
+      "efgPct": 51.4,
+      "threePAr": 33.9
     },
     "nbaPer100": {
       "pts": 15.2,
@@ -14831,7 +15227,10 @@
       "team": "Missouri",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "michael-porterjr-1"
+      "srSlug": "michael-porterjr-1",
+      "tsPct": 43.8,
+      "efgPct": 38.3,
+      "threePAr": 33.3
     },
     "nbaPer100": {
       "pts": 28.7,
@@ -14924,7 +15323,10 @@
       "team": "Oregon",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "troy-brown-5"
+      "srSlug": "troy-brown-5",
+      "tsPct": 53.2,
+      "efgPct": 49.4,
+      "threePAr": 34.2
     },
     "nbaPer100": {
       "pts": 15.4,
@@ -15017,7 +15419,10 @@
       "team": "Texas Tech",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "zhaire-smith-1"
+      "srSlug": "zhaire-smith-1",
+      "tsPct": 61.8,
+      "efgPct": 58.8,
+      "threePAr": 14.4
     },
     "nbaPer100": {
       "pts": 15.9,
@@ -15110,7 +15515,10 @@
       "team": "Villanova",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "donte-divincenzo-1"
+      "srSlug": "donte-divincenzo-1",
+      "tsPct": 59.1,
+      "efgPct": 57,
+      "threePAr": 53.3
     },
     "nbaPer100": {
       "pts": 20,
@@ -15203,7 +15611,10 @@
       "team": "Miami (FL)",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "lonnie-walker-2"
+      "srSlug": "lonnie-walker-2",
+      "tsPct": 52.7,
+      "efgPct": 50.3,
+      "threePAr": 50.9
     },
     "nbaPer100": {
       "pts": 23.5,
@@ -15296,7 +15707,10 @@
       "team": "Maryland",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "kevin-huerter-1"
+      "srSlug": "kevin-huerter-1",
+      "tsPct": 60.3,
+      "efgPct": 58.4,
+      "threePAr": 59.7
     },
     "nbaPer100": {
       "pts": 19.9,
@@ -15389,7 +15803,10 @@
       "team": "Georgia Tech",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "josh-okogie-1"
+      "srSlug": "josh-okogie-1",
+      "tsPct": 55,
+      "efgPct": 48.1,
+      "threePAr": 23.1
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -15482,7 +15899,10 @@
       "team": "Duke",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "grayson-allen-1"
+      "srSlug": "grayson-allen-1",
+      "tsPct": 59.1,
+      "efgPct": 53.3,
+      "threePAr": 54.4
     },
     "nbaPer100": {
       "pts": 21.1,
@@ -15575,7 +15995,10 @@
       "team": "Boise State",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "chandler-hutchison-1"
+      "srSlug": "chandler-hutchison-1",
+      "tsPct": 55.1,
+      "efgPct": 51.2,
+      "threePAr": 20.4
     },
     "nbaPer100": {
       "pts": 15,
@@ -15668,7 +16091,10 @@
       "team": "UCLA",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "aaron-holiday-1"
+      "srSlug": "aaron-holiday-1",
+      "tsPct": 58,
+      "efgPct": 53.5,
+      "threePAr": 40.4
     },
     "nbaPer100": {
       "pts": 19.1,
@@ -15826,7 +16252,10 @@
       "team": "Michigan",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "moritz-wagner-1"
+      "srSlug": "moritz-wagner-1",
+      "tsPct": 63.3,
+      "efgPct": 61.8,
+      "threePAr": 37.1
     },
     "nbaPer100": {
       "pts": 26.6,
@@ -15919,7 +16348,10 @@
       "team": "Wichita State",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "landry-shamet-1"
+      "srSlug": "landry-shamet-1",
+      "tsPct": 64.1,
+      "efgPct": 60.9,
+      "threePAr": 59
     },
     "nbaPer100": {
       "pts": 19.1,
@@ -16012,7 +16444,10 @@
       "team": "Texas A&M",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "robert-williams-3"
+      "srSlug": "robert-williams-3",
+      "tsPct": 59,
+      "efgPct": 59.3,
+      "threePAr": 6
     },
     "nbaPer100": {
       "pts": 17.7,
@@ -16105,7 +16540,10 @@
       "team": "Cincinnati",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "jacob-evans-1"
+      "srSlug": "jacob-evans-1",
+      "tsPct": 55.1,
+      "efgPct": 51.8,
+      "threePAr": 46.9
     },
     "nbaPer100": {
       "pts": 12.9,
@@ -16263,7 +16701,10 @@
       "team": "Villanova",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "omari-spellman-1"
+      "srSlug": "omari-spellman-1",
+      "tsPct": 58.8,
+      "efgPct": 57.3,
+      "threePAr": 44.6
     },
     "nbaPer100": {
       "pts": 17.9,
@@ -16421,7 +16862,10 @@
       "team": "West Virginia",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "jevon-carter-1"
+      "srSlug": "jevon-carter-1",
+      "tsPct": 53.4,
+      "efgPct": 49.1,
+      "threePAr": 47.1
     },
     "nbaPer100": {
       "pts": 16.8,
@@ -16514,7 +16958,10 @@
       "team": "Villanova",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "jalen-brunson-1"
+      "srSlug": "jalen-brunson-1",
+      "tsPct": 62.8,
+      "efgPct": 58.8,
+      "threePAr": 39.6
     },
     "nbaPer100": {
       "pts": 31.7,
@@ -16607,7 +17054,10 @@
       "team": "Kansas",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "devonte-graham-1"
+      "srSlug": "devonte-graham-1",
+      "tsPct": 57.8,
+      "efgPct": 53.6,
+      "threePAr": 55.8
     },
     "nbaPer100": {
       "pts": 21.9,
@@ -16700,7 +17150,10 @@
       "team": "Tulane",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "melvin-frazier-1"
+      "srSlug": "melvin-frazier-1",
+      "tsPct": 56,
+      "efgPct": 53.6,
+      "threePAr": 34.9
     },
     "nbaPer100": {
       "pts": 14.6,
@@ -16858,7 +17311,10 @@
       "team": "Duke",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "gary-trentjr-1"
+      "srSlug": "gary-trentjr-1",
+      "tsPct": 56.7,
+      "efgPct": 52.8,
+      "threePAr": 56.4
     },
     "nbaPer100": {
       "pts": 23.3,
@@ -16951,7 +17407,10 @@
       "team": "Creighton",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "khyri-thomas-1"
+      "srSlug": "khyri-thomas-1",
+      "tsPct": 60.7,
+      "efgPct": 58.9,
+      "threePAr": 38.5
     },
     "nbaPer100": {
       "pts": 19,
@@ -17174,7 +17633,10 @@
       "team": "Kentucky",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "jarred-vanderbilt-1"
+      "srSlug": "jarred-vanderbilt-1",
+      "tsPct": 47.6,
+      "efgPct": 42.6,
+      "threePAr": 1.5
     },
     "nbaPer100": {
       "pts": 13.7,
@@ -17267,7 +17729,10 @@
       "team": "Miami (FL)",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "bruce-brown-2"
+      "srSlug": "bruce-brown-2",
+      "tsPct": 53.2,
+      "efgPct": 49.3,
+      "threePAr": 32.3
     },
     "nbaPer100": {
       "pts": 17.1,
@@ -17330,7 +17795,10 @@
       "team": "Maryland",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "justin-jackson-5"
+      "srSlug": "justin-jackson-5",
+      "tsPct": 53.2,
+      "efgPct": 49.5,
+      "threePAr": 39.4
     }
   },
   "hamidou-diallo-2018": {
@@ -17391,7 +17859,10 @@
       "team": "Kentucky",
       "fromSeason": "2017-18",
       "toSeason": "2017-18",
-      "srSlug": "hamidou-diallo-1"
+      "srSlug": "hamidou-diallo-1",
+      "tsPct": 49.8,
+      "efgPct": 47,
+      "threePAr": 24.6
     },
     "nbaPer100": {
       "pts": 22.3,
@@ -17484,7 +17955,10 @@
       "team": "Southern California",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "deanthony-melton-1"
+      "srSlug": "deanthony-melton-1",
+      "tsPct": 53,
+      "efgPct": 48.3,
+      "threePAr": 32
     },
     "nbaPer100": {
       "pts": 20,
@@ -17642,7 +18116,10 @@
       "team": "Ohio State",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "keita-bates-diop-1"
+      "srSlug": "keita-bates-diop-1",
+      "tsPct": 56.7,
+      "efgPct": 53.4,
+      "threePAr": 35.1
     },
     "nbaPer100": {
       "pts": 17.7,
@@ -17735,7 +18212,10 @@
       "team": "Southern California",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "chimezie-metu-1"
+      "srSlug": "chimezie-metu-1",
+      "tsPct": 57.3,
+      "efgPct": 54,
+      "threePAr": 4.6
     },
     "nbaPer100": {
       "pts": 20.6,
@@ -17891,7 +18371,10 @@
       "team": "Penn State",
       "fromSeason": "2016-17",
       "toSeason": "2017-18",
-      "srSlug": "tony-carr-1"
+      "srSlug": "tony-carr-1",
+      "tsPct": 51.1,
+      "efgPct": 45.8,
+      "threePAr": 31.4
     }
   },
   "devon-hall-2018": {
@@ -17952,7 +18435,10 @@
       "team": "Virginia",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "devon-hall-1"
+      "srSlug": "devon-hall-1",
+      "tsPct": 53.8,
+      "efgPct": 49.8,
+      "threePAr": 40.7
     },
     "nbaPer100": {
       "pts": 12,
@@ -18045,7 +18531,10 @@
       "team": "SMU",
       "fromSeason": "2015-16",
       "toSeason": "2017-18",
-      "srSlug": "malik-milton-1"
+      "srSlug": "malik-milton-1",
+      "tsPct": 59.5,
+      "efgPct": 56.2,
+      "threePAr": 51.8
     },
     "nbaPer100": {
       "pts": 21.2,
@@ -18268,7 +18757,10 @@
       "team": "UT Arlington",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "kevin-hervey-1"
+      "srSlug": "kevin-hervey-1",
+      "tsPct": 54.7,
+      "efgPct": 51.1,
+      "threePAr": 43.9
     },
     "nbaPer100": {
       "pts": 15.9,
@@ -18361,7 +18853,10 @@
       "team": "UCLA",
       "fromSeason": "2014-15",
       "toSeason": "2017-18",
-      "srSlug": "thomas-welsh-1"
+      "srSlug": "thomas-welsh-1",
+      "tsPct": 58.2,
+      "efgPct": 56.1,
+      "threePAr": 11.4
     },
     "nbaPer100": {
       "pts": 24.6,
@@ -18454,7 +18949,10 @@
       "team": "Colorado",
       "fromSeason": "2013-14",
       "toSeason": "2017-18",
-      "srSlug": "george-king-1"
+      "srSlug": "george-king-1",
+      "tsPct": 56.4,
+      "efgPct": 53.4,
+      "threePAr": 45.1
     },
     "nbaPer100": {
       "pts": 2,
@@ -18640,7 +19138,10 @@
       "team": "Washington",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "markelle-fultz-1"
+      "srSlug": "markelle-fultz-1",
+      "tsPct": 55.8,
+      "efgPct": 53.5,
+      "threePAr": 28.7
     },
     "nbaPer100": {
       "pts": 21,
@@ -18733,7 +19234,10 @@
       "team": "UCLA",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "lonzo-ball-1"
+      "srSlug": "lonzo-ball-1",
+      "tsPct": 67.3,
+      "efgPct": 66.8,
+      "threePAr": 56.6
     },
     "nbaPer100": {
       "pts": 16.7,
@@ -18826,7 +19330,10 @@
       "team": "Duke",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "jayson-tatum-1"
+      "srSlug": "jayson-tatum-1",
+      "tsPct": 56.6,
+      "efgPct": 50.7,
+      "threePAr": 32.1
     },
     "nbaPer100": {
       "pts": 33.6,
@@ -18919,7 +19426,10 @@
       "team": "Kansas",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "josh-jackson-2"
+      "srSlug": "josh-jackson-2",
+      "tsPct": 55.9,
+      "efgPct": 55.2,
+      "threePAr": 21
     },
     "nbaPer100": {
       "pts": 23.5,
@@ -19012,7 +19522,10 @@
       "team": "Kentucky",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "deaaron-fox-1"
+      "srSlug": "deaaron-fox-1",
+      "tsPct": 54.9,
+      "efgPct": 49.8,
+      "threePAr": 15.4
     },
     "nbaPer100": {
       "pts": 30.9,
@@ -19105,7 +19618,10 @@
       "team": "Florida State",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "jonathan-isaac-1"
+      "srSlug": "jonathan-isaac-1",
+      "tsPct": 61.4,
+      "efgPct": 56.8,
+      "threePAr": 34.8
     },
     "nbaPer100": {
       "pts": 17.8,
@@ -19198,7 +19714,10 @@
       "team": "Arizona",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "lauri-markkanen-1"
+      "srSlug": "lauri-markkanen-1",
+      "tsPct": 63.5,
+      "efgPct": 58.4,
+      "threePAr": 43.4
     },
     "nbaPer100": {
       "pts": 29.3,
@@ -19356,7 +19875,10 @@
       "team": "NC State",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "dennis-smithjr-1"
+      "srSlug": "dennis-smithjr-1",
+      "tsPct": 56.3,
+      "efgPct": 52,
+      "threePAr": 36.4
     },
     "nbaPer100": {
       "pts": 20.4,
@@ -19449,7 +19971,10 @@
       "team": "Gonzaga",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "zach-collins-1"
+      "srSlug": "zach-collins-1",
+      "tsPct": 70.3,
+      "efgPct": 67.6,
+      "threePAr": 10.1
     },
     "nbaPer100": {
       "pts": 20.4,
@@ -19542,7 +20067,10 @@
       "team": "Kentucky",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "malik-monk-1"
+      "srSlug": "malik-monk-1",
+      "tsPct": 58.6,
+      "efgPct": 54.3,
+      "threePAr": 47
     },
     "nbaPer100": {
       "pts": 26.3,
@@ -19635,7 +20163,10 @@
       "team": "Duke",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "luke-kennard-1"
+      "srSlug": "luke-kennard-1",
+      "tsPct": 60,
+      "efgPct": 54.8,
+      "threePAr": 45.5
     },
     "nbaPer100": {
       "pts": 20.2,
@@ -19728,7 +20259,10 @@
       "team": "Louisville",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "donovan-mitchell-1"
+      "srSlug": "donovan-mitchell-1",
+      "tsPct": 53.2,
+      "efgPct": 49.5,
+      "threePAr": 47
     },
     "nbaPer100": {
       "pts": 36.3,
@@ -19821,7 +20355,10 @@
       "team": "Kentucky",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "edrice-adebayo-1"
+      "srSlug": "edrice-adebayo-1",
+      "tsPct": 62.4,
+      "efgPct": 59.9,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 25.9,
@@ -19914,7 +20451,10 @@
       "team": "North Carolina",
       "fromSeason": "2014-15",
       "toSeason": "2016-17",
-      "srSlug": "justin-jackson-4"
+      "srSlug": "justin-jackson-4",
+      "tsPct": 54.5,
+      "efgPct": 52.1,
+      "threePAr": 37
     },
     "nbaPer100": {
       "pts": 16.6,
@@ -20007,7 +20547,10 @@
       "team": "Creighton",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "justin-patton-1"
+      "srSlug": "justin-patton-1",
+      "tsPct": 67.1,
+      "efgPct": 68.9,
+      "threePAr": 5.1
     },
     "nbaPer100": {
       "pts": 13.8,
@@ -20100,7 +20643,10 @@
       "team": "Michigan",
       "fromSeason": "2014-15",
       "toSeason": "2016-17",
-      "srSlug": "dj-wilson-1"
+      "srSlug": "dj-wilson-1",
+      "tsPct": 61.4,
+      "efgPct": 59.2,
+      "threePAr": 36.9
     },
     "nbaPer100": {
       "pts": 16.9,
@@ -20258,7 +20804,10 @@
       "team": "Wake Forest",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "john-collins-1"
+      "srSlug": "john-collins-1",
+      "tsPct": 63.8,
+      "efgPct": 60.1,
+      "threePAr": 0.2
     },
     "nbaPer100": {
       "pts": 26.2,
@@ -20351,7 +20900,10 @@
       "team": "Duke",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "harry-giles-1"
+      "srSlug": "harry-giles-1",
+      "tsPct": 57,
+      "efgPct": 57.7,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 21.9,
@@ -20509,7 +21061,10 @@
       "team": "Texas",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "jarrett-allen-1"
+      "srSlug": "jarrett-allen-1",
+      "tsPct": 57.1,
+      "efgPct": 56.6,
+      "threePAr": 2.2
     },
     "nbaPer100": {
       "pts": 22.6,
@@ -20602,7 +21157,10 @@
       "team": "Indiana",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "og-anunoby-1"
+      "srSlug": "og-anunoby-1",
+      "tsPct": 60.9,
+      "efgPct": 62,
+      "threePAr": 31.1
     },
     "nbaPer100": {
       "pts": 21.4,
@@ -20695,7 +21253,10 @@
       "team": "Syracuse",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "tyler-lydon-1"
+      "srSlug": "tyler-lydon-1",
+      "tsPct": 60.2,
+      "efgPct": 56,
+      "threePAr": 42
     },
     "nbaPer100": {
       "pts": 11.8,
@@ -20853,7 +21414,10 @@
       "team": "Purdue",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "caleb-swanigan-1"
+      "srSlug": "caleb-swanigan-1",
+      "tsPct": 58.6,
+      "efgPct": 54.3,
+      "threePAr": 22.3
     },
     "nbaPer100": {
       "pts": 12.5,
@@ -20946,7 +21510,10 @@
       "team": "Utah",
       "fromSeason": "2014-15",
       "toSeason": "2016-17",
-      "srSlug": "kyle-kuzma-1"
+      "srSlug": "kyle-kuzma-1",
+      "tsPct": 56,
+      "efgPct": 54.1,
+      "threePAr": 23
     },
     "nbaPer100": {
       "pts": 26,
@@ -21039,7 +21606,10 @@
       "team": "North Carolina",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "tony-bradley-1"
+      "srSlug": "tony-bradley-1",
+      "tsPct": 59,
+      "efgPct": 57.3,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 19.1,
@@ -21132,7 +21702,10 @@
       "team": "Colorado",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "derrick-white-1"
+      "srSlug": "derrick-white-1",
+      "tsPct": 62.7,
+      "efgPct": 57.8,
+      "threePAr": 35.6
     },
     "nbaPer100": {
       "pts": 22.6,
@@ -21225,7 +21798,10 @@
       "team": "Villanova",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "josh-hart-1"
+      "srSlug": "josh-hart-1",
+      "tsPct": 61.4,
+      "efgPct": 58.9,
+      "threePAr": 40.1
     },
     "nbaPer100": {
       "pts": 16.8,
@@ -21318,7 +21894,10 @@
       "team": "Duke",
       "fromSeason": "2016-17",
       "toSeason": "2016-17",
-      "srSlug": "frank-jackson-2"
+      "srSlug": "frank-jackson-2",
+      "tsPct": 59.8,
+      "efgPct": 56.4,
+      "threePAr": 45.9
     },
     "nbaPer100": {
       "pts": 22.3,
@@ -21411,7 +21990,10 @@
       "team": "Miami (FL)",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "davon-reed-1"
+      "srSlug": "davon-reed-1",
+      "tsPct": 56.9,
+      "efgPct": 52.9,
+      "threePAr": 50.3
     },
     "nbaPer100": {
       "pts": 14,
@@ -21569,7 +22151,10 @@
       "team": "Kansas",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "frank-mason-1"
+      "srSlug": "frank-mason-1",
+      "tsPct": 57.4,
+      "efgPct": 52.4,
+      "threePAr": 32.8
     },
     "nbaPer100": {
       "pts": 21.1,
@@ -21662,7 +22247,10 @@
       "team": "California",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "ivan-rabb-1"
+      "srSlug": "ivan-rabb-1",
+      "tsPct": 58.4,
+      "efgPct": 55.1,
+      "threePAr": 3.8
     },
     "nbaPer100": {
       "pts": 19.6,
@@ -21755,7 +22343,10 @@
       "team": "UCLA",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "jonah-bolden-1"
+      "srSlug": "jonah-bolden-1",
+      "tsPct": 49.9,
+      "efgPct": 45.1,
+      "threePAr": 29.3
     },
     "nbaPer100": {
       "pts": 14.9,
@@ -21848,7 +22439,10 @@
       "team": "DukeSMU",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "semi-ojeleye-1"
+      "srSlug": "semi-ojeleye-1",
+      "tsPct": 61.8,
+      "efgPct": 56.7,
+      "threePAr": 42.1
     },
     "nbaPer100": {
       "pts": 11.6,
@@ -21941,7 +22535,10 @@
       "team": "Oregon",
       "fromSeason": "2014-15",
       "toSeason": "2016-17",
-      "srSlug": "jordan-bell-1"
+      "srSlug": "jordan-bell-1",
+      "tsPct": 61.9,
+      "efgPct": 61.2,
+      "threePAr": 2.8
     },
     "nbaPer100": {
       "pts": 14.6,
@@ -22034,7 +22631,10 @@
       "team": "Oklahoma State",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "jawun-evans-1"
+      "srSlug": "jawun-evans-1",
+      "tsPct": 54.7,
+      "efgPct": 48.8,
+      "threePAr": 19.6
     },
     "nbaPer100": {
       "pts": 13.7,
@@ -22127,7 +22727,10 @@
       "team": "Florida State",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "dwayne-bacon-1"
+      "srSlug": "dwayne-bacon-1",
+      "tsPct": 53.3,
+      "efgPct": 49.7,
+      "threePAr": 30.6
     },
     "nbaPer100": {
       "pts": 18.3,
@@ -22220,7 +22823,10 @@
       "team": "Oregon",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "tyler-dorsey-1"
+      "srSlug": "tyler-dorsey-1",
+      "tsPct": 59.1,
+      "efgPct": 55.8,
+      "threePAr": 49.6
     },
     "nbaPer100": {
       "pts": 20.6,
@@ -22313,7 +22919,10 @@
       "team": "Indiana",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "thomas-bryant-1"
+      "srSlug": "thomas-bryant-1",
+      "tsPct": 64.8,
+      "efgPct": 61.9,
+      "threePAr": 14.6
     },
     "nbaPer100": {
       "pts": 23.9,
@@ -22471,7 +23080,10 @@
       "team": "HoustonOregon",
       "fromSeason": "2012-13",
       "toSeason": "2016-17",
-      "srSlug": "damyean-dotson-1"
+      "srSlug": "damyean-dotson-1",
+      "tsPct": 57.4,
+      "efgPct": 55.1,
+      "threePAr": 46
     },
     "nbaPer100": {
       "pts": 18.3,
@@ -22564,7 +23176,10 @@
       "team": "Oregon",
       "fromSeason": "2014-15",
       "toSeason": "2016-17",
-      "srSlug": "dillon-brooks-1"
+      "srSlug": "dillon-brooks-1",
+      "tsPct": 56.5,
+      "efgPct": 52.6,
+      "threePAr": 29.5
     },
     "nbaPer100": {
       "pts": 24.2,
@@ -22657,7 +23272,10 @@
       "team": "SMU",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "sterling-brown-2"
+      "srSlug": "sterling-brown-2",
+      "tsPct": 61.6,
+      "efgPct": 58.6,
+      "threePAr": 36.3
     },
     "nbaPer100": {
       "pts": 15.3,
@@ -22843,7 +23461,10 @@
       "team": "South Carolina",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "sindarius-thornwell-1"
+      "srSlug": "sindarius-thornwell-1",
+      "tsPct": 51.8,
+      "efgPct": 45.1,
+      "threePAr": 34.7
     },
     "nbaPer100": {
       "pts": 11.3,
@@ -23001,7 +23622,10 @@
       "team": "Iowa State",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "monte-morris-1"
+      "srSlug": "monte-morris-1",
+      "tsPct": 56.6,
+      "efgPct": 53.3,
+      "threePAr": 29.9
     },
     "nbaPer100": {
       "pts": 19.9,
@@ -23094,7 +23718,10 @@
       "team": "Xavier",
       "fromSeason": "2014-15",
       "toSeason": "2016-17",
-      "srSlug": "edmond-sumner-1"
+      "srSlug": "edmond-sumner-1",
+      "tsPct": 53.6,
+      "efgPct": 46.8,
+      "threePAr": 27.2
     },
     "nbaPer100": {
       "pts": 21.3,
@@ -23187,7 +23814,10 @@
       "team": "Arizona",
       "fromSeason": "2015-16",
       "toSeason": "2016-17",
-      "srSlug": "kadeem-allen-1"
+      "srSlug": "kadeem-allen-1",
+      "tsPct": 56,
+      "efgPct": 51.4,
+      "threePAr": 27.7
     },
     "nbaPer100": {
       "pts": 19.6,
@@ -23280,7 +23910,10 @@
       "team": "Valparaiso",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "alec-peters-1"
+      "srSlug": "alec-peters-1",
+      "tsPct": 62.1,
+      "efgPct": 57.6,
+      "threePAr": 42.8
     },
     "nbaPer100": {
       "pts": 17.4,
@@ -23373,7 +24006,10 @@
       "team": "GonzagaWashington",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "nigel-williams-goss-1"
+      "srSlug": "nigel-williams-goss-1",
+      "tsPct": 54.6,
+      "efgPct": 50.4,
+      "threePAr": 23.7
     },
     "nbaPer100": {
       "pts": 13.6,
@@ -23466,7 +24102,10 @@
       "team": "California",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "jabari-bird-1"
+      "srSlug": "jabari-bird-1",
+      "tsPct": 55.5,
+      "efgPct": 53.4,
+      "threePAr": 49.5
     },
     "nbaPer100": {
       "pts": 16.9,
@@ -23624,7 +24263,10 @@
       "team": "Clemson",
       "fromSeason": "2013-14",
       "toSeason": "2016-17",
-      "srSlug": "jaron-blossomgame-1"
+      "srSlug": "jaron-blossomgame-1",
+      "tsPct": 56.4,
+      "efgPct": 52.5,
+      "threePAr": 23.6
     },
     "nbaPer100": {
       "pts": 12.9,
@@ -23717,7 +24359,10 @@
       "team": "Louisiana State",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "ben-simmons-1"
+      "srSlug": "ben-simmons-1",
+      "tsPct": 60,
+      "efgPct": 56.1,
+      "threePAr": 0.8
     },
     "nbaPer100": {
       "pts": 20.3,
@@ -23810,7 +24455,10 @@
       "team": "Duke",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "brandon-ingram-1"
+      "srSlug": "brandon-ingram-1",
+      "tsPct": 55.2,
+      "efgPct": 52.5,
+      "threePAr": 40.3
     },
     "nbaPer100": {
       "pts": 28.8,
@@ -23903,7 +24551,10 @@
       "team": "California",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "jaylen-brown-1"
+      "srSlug": "jaylen-brown-1",
+      "tsPct": 51.8,
+      "efgPct": 47.1,
+      "threePAr": 27
     },
     "nbaPer100": {
       "pts": 31.8,
@@ -24061,7 +24712,10 @@
       "team": "Providence",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "kris-dunn-1"
+      "srSlug": "kris-dunn-1",
+      "tsPct": 53.1,
+      "efgPct": 48.8,
+      "threePAr": 21.8
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -24154,7 +24808,10 @@
       "team": "Oklahoma",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "buddy-hield-1"
+      "srSlug": "buddy-hield-1",
+      "tsPct": 58.4,
+      "efgPct": 54.8,
+      "threePAr": 51.1
     },
     "nbaPer100": {
       "pts": 25.6,
@@ -24247,7 +24904,10 @@
       "team": "Kentucky",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "jamal-murray-1"
+      "srSlug": "jamal-murray-1",
+      "tsPct": 59,
+      "efgPct": 55.9,
+      "threePAr": 51.5
     },
     "nbaPer100": {
       "pts": 29.1,
@@ -24340,7 +25000,10 @@
       "team": "Washington",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "marquese-chriss-1"
+      "srSlug": "marquese-chriss-1",
+      "tsPct": 58.5,
+      "efgPct": 56.1,
+      "threePAr": 17.8
     },
     "nbaPer100": {
       "pts": 19.9,
@@ -24433,7 +25096,10 @@
       "team": "Utah",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "jakob-poeltl-1"
+      "srSlug": "jakob-poeltl-1",
+      "tsPct": 65.3,
+      "efgPct": 65.8,
+      "threePAr": 0.2
     },
     "nbaPer100": {
       "pts": 19.4,
@@ -24591,7 +25257,10 @@
       "team": "Gonzaga",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "domantas-sabonis-1"
+      "srSlug": "domantas-sabonis-1",
+      "tsPct": 66.2,
+      "efgPct": 63.6,
+      "threePAr": 2.3
     },
     "nbaPer100": {
       "pts": 25.4,
@@ -24684,7 +25353,10 @@
       "team": "Baylor",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "taurean-prince-1"
+      "srSlug": "taurean-prince-1",
+      "tsPct": 55.7,
+      "efgPct": 52.4,
+      "threePAr": 34
     },
     "nbaPer100": {
       "pts": 19.1,
@@ -24842,7 +25514,10 @@
       "team": "Michigan State",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "denzel-valentine-1"
+      "srSlug": "denzel-valentine-1",
+      "tsPct": 56.9,
+      "efgPct": 54.4,
+      "threePAr": 49.7
     },
     "nbaPer100": {
       "pts": 18.3,
@@ -25065,7 +25740,10 @@
       "team": "Vanderbilt",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "wade-baldwin-1"
+      "srSlug": "wade-baldwin-1",
+      "tsPct": 57.8,
+      "efgPct": 50.8,
+      "threePAr": 36.6
     },
     "nbaPer100": {
       "pts": 15.4,
@@ -25158,7 +25836,10 @@
       "team": "Marquette",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "henry-ellenson-1"
+      "srSlug": "henry-ellenson-1",
+      "tsPct": 53.4,
+      "efgPct": 48,
+      "threePAr": 23.9
     },
     "nbaPer100": {
       "pts": 21.4,
@@ -25251,7 +25932,10 @@
       "team": "Florida State",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "malik-beasley-1"
+      "srSlug": "malik-beasley-1",
+      "tsPct": 58.3,
+      "efgPct": 54.1,
+      "threePAr": 36.1
     },
     "nbaPer100": {
       "pts": 23.6,
@@ -25344,7 +26028,10 @@
       "team": "Michigan",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "caris-levert-1"
+      "srSlug": "caris-levert-1",
+      "tsPct": 55.2,
+      "efgPct": 51.4,
+      "threePAr": 39.6
     },
     "nbaPer100": {
       "pts": 23.8,
@@ -25437,7 +26124,10 @@
       "team": "Saint Joseph's",
       "fromSeason": "2013-14",
       "toSeason": "2015-16",
-      "srSlug": "deandre-bembry-1"
+      "srSlug": "deandre-bembry-1",
+      "tsPct": 52.8,
+      "efgPct": 50.4,
+      "threePAr": 30.3
     },
     "nbaPer100": {
       "pts": 14.6,
@@ -25530,7 +26220,10 @@
       "team": "Syracuse",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "malachi-richardson-1"
+      "srSlug": "malachi-richardson-1",
+      "tsPct": 51,
+      "efgPct": 46.5,
+      "threePAr": 54.4
     },
     "nbaPer100": {
       "pts": 15.9,
@@ -25753,7 +26446,10 @@
       "team": "North Carolina",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "brice-johnson-1"
+      "srSlug": "brice-johnson-1",
+      "tsPct": 59.8,
+      "efgPct": 57.5,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 21.9,
@@ -25911,7 +26607,10 @@
       "team": "New Mexico State",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "pascal-siakam-1"
+      "srSlug": "pascal-siakam-1",
+      "tsPct": 58.6,
+      "efgPct": 55.3,
+      "threePAr": 2.1
     },
     "nbaPer100": {
       "pts": 28.6,
@@ -26097,7 +26796,10 @@
       "team": "Washington",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "dejounte-murray-1"
+      "srSlug": "dejounte-murray-1",
+      "tsPct": 48.5,
+      "efgPct": 45.1,
+      "threePAr": 24.3
     },
     "nbaPer100": {
       "pts": 25.7,
@@ -26190,7 +26892,10 @@
       "team": "Vanderbilt",
       "fromSeason": "2013-14",
       "toSeason": "2015-16",
-      "srSlug": "damian-jones-1"
+      "srSlug": "damian-jones-1",
+      "tsPct": 57.3,
+      "efgPct": 56.7,
+      "threePAr": 0.9
     },
     "nbaPer100": {
       "pts": 17.2,
@@ -26283,7 +26988,10 @@
       "team": "Michigan State",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "deyonta-davis-1"
+      "srSlug": "deyonta-davis-1",
+      "tsPct": 60.1,
+      "efgPct": 59.8,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 17.6,
@@ -26534,7 +27242,10 @@
       "team": "Kentucky",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "tyler-ulis-1"
+      "srSlug": "tyler-ulis-1",
+      "tsPct": 56.3,
+      "efgPct": 49.9,
+      "threePAr": 39
     },
     "nbaPer100": {
       "pts": 17.2,
@@ -26627,7 +27338,10 @@
       "team": "Virginia",
       "fromSeason": "2011-12",
       "toSeason": "2015-16",
-      "srSlug": "malcolm-brogdon-1"
+      "srSlug": "malcolm-brogdon-1",
+      "tsPct": 55.6,
+      "efgPct": 49.6,
+      "threePAr": 36.2
     },
     "nbaPer100": {
       "pts": 25.5,
@@ -26720,7 +27434,10 @@
       "team": "Louisville",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "chinanu-onuaku-1"
+      "srSlug": "chinanu-onuaku-1",
+      "tsPct": 61.4,
+      "efgPct": 61.9,
+      "threePAr": 0.3
     },
     "nbaPer100": {
       "pts": 11.8,
@@ -26813,7 +27530,10 @@
       "team": "UNLV",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "patrick-mccaw-1"
+      "srSlug": "patrick-mccaw-1",
+      "tsPct": 56.7,
+      "efgPct": 53.9,
+      "threePAr": 54.8
     },
     "nbaPer100": {
       "pts": 10.8,
@@ -26906,7 +27626,10 @@
       "team": "Maryland",
       "fromSeason": "2015-16",
       "toSeason": "2015-16",
-      "srSlug": "diamond-stone-1"
+      "srSlug": "diamond-stone-1",
+      "tsPct": 61,
+      "efgPct": 56.8,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 20.8,
@@ -27092,7 +27815,10 @@
       "team": "Seton Hall",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "isaiah-whitehead-1"
+      "srSlug": "isaiah-whitehead-1",
+      "tsPct": 50,
+      "efgPct": 45.2,
+      "threePAr": 42.9
     },
     "nbaPer100": {
       "pts": 16.8,
@@ -27250,7 +27976,10 @@
       "team": "Notre Dame",
       "fromSeason": "2013-14",
       "toSeason": "2015-16",
-      "srSlug": "demetrius-jackson-2"
+      "srSlug": "demetrius-jackson-2",
+      "tsPct": 58.2,
+      "efgPct": 54.2,
+      "threePAr": 39.3
     },
     "nbaPer100": {
       "pts": 17.1,
@@ -27343,7 +28072,10 @@
       "team": "Maryland",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "jake-layman-1"
+      "srSlug": "jake-layman-1",
+      "tsPct": 57.2,
+      "efgPct": 53.6,
+      "threePAr": 50.5
     },
     "nbaPer100": {
       "pts": 18.2,
@@ -27501,7 +28233,10 @@
       "team": "DukeSyracuse",
       "fromSeason": "2011-12",
       "toSeason": "2015-16",
-      "srSlug": "michael-gbinije-1"
+      "srSlug": "michael-gbinije-1",
+      "tsPct": 56.1,
+      "efgPct": 54.3,
+      "threePAr": 45.7
     },
     "nbaPer100": {
       "pts": 6.3,
@@ -27594,7 +28329,10 @@
       "team": "Iowa State",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "georges-niang-1"
+      "srSlug": "georges-niang-1",
+      "tsPct": 58.3,
+      "efgPct": 55.6,
+      "threePAr": 29.6
     },
     "nbaPer100": {
       "pts": 20.9,
@@ -27687,7 +28425,10 @@
       "team": "Providence",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "ben-bentil-1"
+      "srSlug": "ben-bentil-1",
+      "tsPct": 55.4,
+      "efgPct": 49.9,
+      "threePAr": 26.7
     },
     "nbaPer100": {
       "pts": 0,
@@ -27780,7 +28521,10 @@
       "team": "Weber State",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "joel-bolomboy-1"
+      "srSlug": "joel-bolomboy-1",
+      "tsPct": 59.8,
+      "efgPct": 54.8,
+      "threePAr": 10.4
     },
     "nbaPer100": {
       "pts": 17.5,
@@ -28031,7 +28775,10 @@
       "team": "North Carolina",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "marcus-paige-1"
+      "srSlug": "marcus-paige-1",
+      "tsPct": 55.3,
+      "efgPct": 50.9,
+      "threePAr": 54.2
     },
     "nbaPer100": {
       "pts": 20.9,
@@ -28124,7 +28871,10 @@
       "team": "Connecticut",
       "fromSeason": "2014-15",
       "toSeason": "2015-16",
-      "srSlug": "daniel-hamilton-1"
+      "srSlug": "daniel-hamilton-1",
+      "tsPct": 48.1,
+      "efgPct": 44.3,
+      "threePAr": 35.5
     },
     "nbaPer100": {
       "pts": 13.9,
@@ -28280,7 +29030,10 @@
       "team": "Oklahoma",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "isaiah-cousins-1"
+      "srSlug": "isaiah-cousins-1",
+      "tsPct": 51.1,
+      "efgPct": 48.4,
+      "threePAr": 37.2
     }
   },
   "tyrone-wallace-2016": {
@@ -28341,7 +29094,10 @@
       "team": "California",
       "fromSeason": "2012-13",
       "toSeason": "2015-16",
-      "srSlug": "tyrone-wallace-1"
+      "srSlug": "tyrone-wallace-1",
+      "tsPct": 48.5,
+      "efgPct": 45.7,
+      "threePAr": 28.5
     },
     "nbaPer100": {
       "pts": 15.8,
@@ -28434,7 +29190,10 @@
       "team": "Kentucky",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "karl-anthony-towns-1"
+      "srSlug": "karl-anthony-towns-1",
+      "tsPct": 62.7,
+      "efgPct": 57,
+      "threePAr": 3.1
     },
     "nbaPer100": {
       "pts": 33.1,
@@ -28527,7 +29286,10 @@
       "team": "Ohio State",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "dangelo-russell-1"
+      "srSlug": "dangelo-russell-1",
+      "tsPct": 57.3,
+      "efgPct": 54.1,
+      "threePAr": 44.9
     },
     "nbaPer100": {
       "pts": 27.8,
@@ -28620,7 +29382,10 @@
       "team": "Duke",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "jahlil-okafor-1"
+      "srSlug": "jahlil-okafor-1",
+      "tsPct": 64.1,
+      "efgPct": 66.4,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 25.6,
@@ -28843,7 +29608,10 @@
       "team": "Kentucky",
       "fromSeason": "2012-13",
       "toSeason": "2014-15",
-      "srSlug": "willie-cauley-stein-1"
+      "srSlug": "willie-cauley-stein-1",
+      "tsPct": 58.2,
+      "efgPct": 59.3,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 19.3,
@@ -29001,7 +29769,10 @@
       "team": "Arizona",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "stanley-johnson-1"
+      "srSlug": "stanley-johnson-1",
+      "tsPct": 55.1,
+      "efgPct": 50.1,
+      "threePAr": 29.7
     },
     "nbaPer100": {
       "pts": 15.6,
@@ -29094,7 +29865,10 @@
       "team": "Wisconsin",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "frank-kaminsky-1"
+      "srSlug": "frank-kaminsky-1",
+      "tsPct": 60.9,
+      "efgPct": 57.3,
+      "threePAr": 27.5
     },
     "nbaPer100": {
       "pts": 21.9,
@@ -29187,7 +29961,10 @@
       "team": "Duke",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "justise-winslow-1"
+      "srSlug": "justise-winslow-1",
+      "tsPct": 57.2,
+      "efgPct": 55.1,
+      "threePAr": 30.9
     },
     "nbaPer100": {
       "pts": 15.8,
@@ -29280,7 +30057,10 @@
       "team": "Texas",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "myles-turner-1"
+      "srSlug": "myles-turner-1",
+      "tsPct": 55.6,
+      "efgPct": 48.8,
+      "threePAr": 24.1
     },
     "nbaPer100": {
       "pts": 23.6,
@@ -29373,7 +30153,10 @@
       "team": "Kentucky",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "trey-lyles-1"
+      "srSlug": "trey-lyles-1",
+      "tsPct": 54.3,
+      "efgPct": 49.6,
+      "threePAr": 12.1
     },
     "nbaPer100": {
       "pts": 20.4,
@@ -29466,7 +30249,10 @@
       "team": "Kentucky",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "devin-booker-2"
+      "srSlug": "devin-booker-2",
+      "tsPct": 60,
+      "efgPct": 57.1,
+      "threePAr": 49.1
     },
     "nbaPer100": {
       "pts": 34.7,
@@ -29559,7 +30345,10 @@
       "team": "Murray State",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "cameron-payne-1"
+      "srSlug": "cameron-payne-1",
+      "tsPct": 55.1,
+      "efgPct": 50.9,
+      "threePAr": 43.1
     },
     "nbaPer100": {
       "pts": 21.7,
@@ -29652,7 +30441,10 @@
       "team": "Kansas",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "kelly-oubre-1"
+      "srSlug": "kelly-oubre-1",
+      "tsPct": 55.5,
+      "efgPct": 51.2,
+      "threePAr": 38.3
     },
     "nbaPer100": {
       "pts": 23.5,
@@ -29745,7 +30537,10 @@
       "team": "Louisville",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "terry-rozier-1"
+      "srSlug": "terry-rozier-1",
+      "tsPct": 50.7,
+      "efgPct": 46.3,
+      "threePAr": 33.7
     },
     "nbaPer100": {
       "pts": 24.7,
@@ -29838,7 +30633,10 @@
       "team": "UNLV",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "rashad-vaughn-1"
+      "srSlug": "rashad-vaughn-1",
+      "tsPct": 54.7,
+      "efgPct": 52.1,
+      "threePAr": 43
     },
     "nbaPer100": {
       "pts": 12.8,
@@ -29931,7 +30729,10 @@
       "team": "Wisconsin",
       "fromSeason": "2012-13",
       "toSeason": "2014-15",
-      "srSlug": "sam-dekker-1"
+      "srSlug": "sam-dekker-1",
+      "tsPct": 58.5,
+      "efgPct": 56.3,
+      "threePAr": 40.3
     },
     "nbaPer100": {
       "pts": 17,
@@ -30024,7 +30825,10 @@
       "team": "Notre Dame",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "jerian-grant-1"
+      "srSlug": "jerian-grant-1",
+      "tsPct": 56.3,
+      "efgPct": 50.6,
+      "threePAr": 40.7
     },
     "nbaPer100": {
       "pts": 16.8,
@@ -30117,7 +30921,10 @@
       "team": "Utah",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "delon-wright-1"
+      "srSlug": "delon-wright-1",
+      "tsPct": 62.9,
+      "efgPct": 56.5,
+      "threePAr": 20
     },
     "nbaPer100": {
       "pts": 16,
@@ -30210,7 +31017,10 @@
       "team": "Virginia",
       "fromSeason": "2012-13",
       "toSeason": "2014-15",
-      "srSlug": "justin-anderson-1"
+      "srSlug": "justin-anderson-1",
+      "tsPct": 54.9,
+      "efgPct": 50.3,
+      "threePAr": 40.7
     },
     "nbaPer100": {
       "pts": 19.3,
@@ -30303,7 +31113,10 @@
       "team": "Arkansas",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "bobby-portis-1"
+      "srSlug": "bobby-portis-1",
+      "tsPct": 57.4,
+      "efgPct": 54,
+      "threePAr": 8.1
     },
     "nbaPer100": {
       "pts": 25.6,
@@ -30396,7 +31209,10 @@
       "team": "Arizona",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "rondae-hollis-jefferson-1"
+      "srSlug": "rondae-hollis-jefferson-1",
+      "tsPct": 56,
+      "efgPct": 50.4,
+      "threePAr": 7.5
     },
     "nbaPer100": {
       "pts": 19.6,
@@ -30489,7 +31305,10 @@
       "team": "Duke",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "tyus-jones-1"
+      "srSlug": "tyus-jones-1",
+      "tsPct": 57.5,
+      "efgPct": 48.9,
+      "threePAr": 38.3
     },
     "nbaPer100": {
       "pts": 17.1,
@@ -30582,7 +31401,10 @@
       "team": "Louisiana State",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "jarell-martin-1"
+      "srSlug": "jarell-martin-1",
+      "tsPct": 56,
+      "efgPct": 52.5,
+      "threePAr": 20.3
     },
     "nbaPer100": {
       "pts": 17.3,
@@ -30675,7 +31497,10 @@
       "team": "Wyoming",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "larry-nance-2"
+      "srSlug": "larry-nance-2",
+      "tsPct": 58.7,
+      "efgPct": 54,
+      "threePAr": 12
     },
     "nbaPer100": {
       "pts": 16.3,
@@ -30861,7 +31686,10 @@
       "team": "UCLA",
       "fromSeason": "2014-15",
       "toSeason": "2014-15",
-      "srSlug": "kevon-looney-1"
+      "srSlug": "kevon-looney-1",
+      "tsPct": 53.2,
+      "efgPct": 50.5,
+      "threePAr": 16.5
     },
     "nbaPer100": {
       "pts": 13.7,
@@ -31019,7 +31847,10 @@
       "team": "Louisville",
       "fromSeason": "2012-13",
       "toSeason": "2014-15",
-      "srSlug": "montrezl-harrell-1"
+      "srSlug": "montrezl-harrell-1",
+      "tsPct": 58.6,
+      "efgPct": 59.2,
+      "threePAr": 4.4
     },
     "nbaPer100": {
       "pts": 28.4,
@@ -31112,7 +31943,10 @@
       "team": "Louisiana State",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "jordan-mickey-1"
+      "srSlug": "jordan-mickey-1",
+      "tsPct": 54.8,
+      "efgPct": 51.9,
+      "threePAr": 2
     },
     "nbaPer100": {
       "pts": 15.7,
@@ -31205,7 +32039,10 @@
       "team": "Stanford",
       "fromSeason": "2010-11",
       "toSeason": "2014-15",
-      "srSlug": "anthony-brown-5"
+      "srSlug": "anthony-brown-5",
+      "tsPct": 55.6,
+      "efgPct": 51.8,
+      "threePAr": 44.7
     },
     "nbaPer100": {
       "pts": 10.6,
@@ -31363,7 +32200,10 @@
       "team": "Syracuse",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "rakeem-christmas-1"
+      "srSlug": "rakeem-christmas-1",
+      "tsPct": 58.8,
+      "efgPct": 56,
+      "threePAr": 0.1
     },
     "nbaPer100": {
       "pts": 14,
@@ -31456,7 +32296,10 @@
       "team": "Bowling Green",
       "fromSeason": "2012-13",
       "toSeason": "2014-15",
-      "srSlug": "richaun-holmes-1"
+      "srSlug": "richaun-holmes-1",
+      "tsPct": 60.5,
+      "efgPct": 57.4,
+      "threePAr": 11.7
     },
     "nbaPer100": {
       "pts": 21.4,
@@ -31549,7 +32392,10 @@
       "team": "Villanova",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "darrun-hilliard-1"
+      "srSlug": "darrun-hilliard-1",
+      "tsPct": 56.9,
+      "efgPct": 52.9,
+      "threePAr": 50.6
     },
     "nbaPer100": {
       "pts": 17.3,
@@ -31642,7 +32488,10 @@
       "team": "Tennessee",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "josh-richardson-2"
+      "srSlug": "josh-richardson-2",
+      "tsPct": 54.2,
+      "efgPct": 50.4,
+      "threePAr": 30.6
     },
     "nbaPer100": {
       "pts": 19.9,
@@ -31735,7 +32584,10 @@
       "team": "Notre Dame",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "pat-connaughton-1"
+      "srSlug": "pat-connaughton-1",
+      "tsPct": 58.7,
+      "efgPct": 56.7,
+      "threePAr": 60.7
     },
     "nbaPer100": {
       "pts": 15,
@@ -31952,7 +32804,10 @@
       "team": "Kentucky",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "andrew-harrison-1"
+      "srSlug": "andrew-harrison-1",
+      "tsPct": 51.7,
+      "efgPct": 43,
+      "threePAr": 31.5
     },
     "nbaPer100": {
       "pts": 17.3,
@@ -32076,7 +32931,10 @@
       "team": "UCLA",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "norman-powell-1"
+      "srSlug": "norman-powell-1",
+      "tsPct": 54.8,
+      "efgPct": 51.2,
+      "threePAr": 32.5
     },
     "nbaPer100": {
       "pts": 27.6,
@@ -32169,7 +33027,10 @@
       "team": "Kentucky",
       "fromSeason": "2013-14",
       "toSeason": "2014-15",
-      "srSlug": "dakari-johnson-1"
+      "srSlug": "dakari-johnson-1",
+      "tsPct": 55,
+      "efgPct": 53.7,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 17,
@@ -32232,7 +33093,10 @@
       "team": "Iowa",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "aaron-white-3"
+      "srSlug": "aaron-white-3",
+      "tsPct": 61.1,
+      "efgPct": 54.3,
+      "threePAr": 19
     }
   },
   "tyler-harvey-2015": {
@@ -32294,7 +33158,10 @@
       "team": "St. John's (NY)",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "sirdominic-pointer-1"
+      "srSlug": "sirdominic-pointer-1",
+      "tsPct": 52.7,
+      "efgPct": 48.9,
+      "threePAr": 12.8
     }
   },
   "cady-lalanne-2015": {
@@ -32325,7 +33192,10 @@
       "team": "Massachusetts",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "cady-lalanne-1"
+      "srSlug": "cady-lalanne-1",
+      "tsPct": 58.6,
+      "efgPct": 55.9,
+      "threePAr": 6.1
     }
   },
   "branden-dawson-2015": {
@@ -32386,7 +33256,10 @@
       "team": "Michigan State",
       "fromSeason": "2011-12",
       "toSeason": "2014-15",
-      "srSlug": "branden-dawson-1"
+      "srSlug": "branden-dawson-1",
+      "tsPct": 56.2,
+      "efgPct": 55.9,
+      "threePAr": 0.9
     },
     "nbaPer100": {
       "pts": 8.6,
@@ -32479,7 +33352,10 @@
       "team": "Kansas",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "andrew-wiggins-1"
+      "srSlug": "andrew-wiggins-1",
+      "tsPct": 56.3,
+      "efgPct": 49.9,
+      "threePAr": 29.9
     },
     "nbaPer100": {
       "pts": 26.6,
@@ -32572,7 +33448,10 @@
       "team": "Duke",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "jabari-parker-1"
+      "srSlug": "jabari-parker-1",
+      "tsPct": 55.8,
+      "efgPct": 51.1,
+      "threePAr": 21.2
     },
     "nbaPer100": {
       "pts": 25.5,
@@ -32665,7 +33544,10 @@
       "team": "Kansas",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "joel-embiid-1"
+      "srSlug": "joel-embiid-1",
+      "tsPct": 65.5,
+      "efgPct": 62.9,
+      "threePAr": 2.9
     },
     "nbaPer100": {
       "pts": 42.2,
@@ -32758,7 +33640,10 @@
       "team": "Arizona",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "aaron-gordon-1"
+      "srSlug": "aaron-gordon-1",
+      "tsPct": 50.3,
+      "efgPct": 51.6,
+      "threePAr": 11.8
     },
     "nbaPer100": {
       "pts": 23,
@@ -32916,7 +33801,10 @@
       "team": "Oklahoma State",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "marcus-smart-1"
+      "srSlug": "marcus-smart-1",
+      "tsPct": 54.2,
+      "efgPct": 47,
+      "threePAr": 38.8
     },
     "nbaPer100": {
       "pts": 17.5,
@@ -33009,7 +33897,10 @@
       "team": "Kentucky",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "julius-randle-1"
+      "srSlug": "julius-randle-1",
+      "tsPct": 56.7,
+      "efgPct": 50.5,
+      "threePAr": 4.6
     },
     "nbaPer100": {
       "pts": 29.3,
@@ -33102,7 +33993,10 @@
       "team": "Michigan",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "nik-stauskas-1"
+      "srSlug": "nik-stauskas-1",
+      "tsPct": 63.8,
+      "efgPct": 59.1,
+      "threePAr": 56.4
     },
     "nbaPer100": {
       "pts": 16.8,
@@ -33195,7 +34089,10 @@
       "team": "Indiana",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "noah-vonleh-1"
+      "srSlug": "noah-vonleh-1",
+      "tsPct": 60.4,
+      "efgPct": 56,
+      "threePAr": 15.3
     },
     "nbaPer100": {
       "pts": 14.1,
@@ -33288,7 +34185,10 @@
       "team": "Louisiana–Lafayette",
       "fromSeason": "2011-12",
       "toSeason": "2013-14",
-      "srSlug": "elfrid-payton-1"
+      "srSlug": "elfrid-payton-1",
+      "tsPct": 53.3,
+      "efgPct": 50,
+      "threePAr": 10.9
     },
     "nbaPer100": {
       "pts": 18.2,
@@ -33539,7 +34439,10 @@
       "team": "UCLA",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "zach-lavine-1"
+      "srSlug": "zach-lavine-1",
+      "tsPct": 54.5,
+      "efgPct": 52.4,
+      "threePAr": 44.4
     },
     "nbaPer100": {
       "pts": 31,
@@ -33632,7 +34535,10 @@
       "team": "NC State",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "tj-warren-1"
+      "srSlug": "tj-warren-1",
+      "tsPct": 59.3,
+      "efgPct": 57.9,
+      "threePAr": 15
     },
     "nbaPer100": {
       "pts": 25.6,
@@ -33725,7 +34631,10 @@
       "team": "Michigan State",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "adreian-payne-1"
+      "srSlug": "adreian-payne-1",
+      "tsPct": 60.1,
+      "efgPct": 56.2,
+      "threePAr": 17.5
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -33883,7 +34792,10 @@
       "team": "Kentucky",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "james-young-1"
+      "srSlug": "james-young-1",
+      "tsPct": 53.6,
+      "efgPct": 49.8,
+      "threePAr": 52.2
     },
     "nbaPer100": {
       "pts": 13.3,
@@ -33976,7 +34888,10 @@
       "team": "Syracuse",
       "fromSeason": "2013-14",
       "toSeason": "2013-14",
-      "srSlug": "tyler-ennis-1"
+      "srSlug": "tyler-ennis-1",
+      "tsPct": 51.1,
+      "efgPct": 45.3,
+      "threePAr": 23.6
     },
     "nbaPer100": {
       "pts": 16.5,
@@ -34069,7 +34984,10 @@
       "team": "Michigan State",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "gary-harris-1"
+      "srSlug": "gary-harris-1",
+      "tsPct": 57.1,
+      "efgPct": 53.3,
+      "threePAr": 49.5
     },
     "nbaPer100": {
       "pts": 18.7,
@@ -34227,7 +35145,10 @@
       "team": "Michigan",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "mitch-mcgary-1"
+      "srSlug": "mitch-mcgary-1",
+      "tsPct": 58.2,
+      "efgPct": 58.8,
+      "threePAr": 0.7
     },
     "nbaPer100": {
       "pts": 20.4,
@@ -34320,7 +35241,10 @@
       "team": "UCLA",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "jordan-adams-1"
+      "srSlug": "jordan-adams-1",
+      "tsPct": 58.9,
+      "efgPct": 52.9,
+      "threePAr": 37.1
     },
     "nbaPer100": {
       "pts": 20,
@@ -34413,7 +35337,10 @@
       "team": "DukeMississippi State",
       "fromSeason": "2011-12",
       "toSeason": "2013-14",
-      "srSlug": "rodney-hood-1"
+      "srSlug": "rodney-hood-1",
+      "tsPct": 56.9,
+      "efgPct": 53.9,
+      "threePAr": 42.6
     },
     "nbaPer100": {
       "pts": 21.5,
@@ -34506,7 +35433,10 @@
       "team": "Connecticut",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "shabazz-napier-1"
+      "srSlug": "shabazz-napier-1",
+      "tsPct": 56.2,
+      "efgPct": 50.1,
+      "threePAr": 47.9
     },
     "nbaPer100": {
       "pts": 20,
@@ -34729,7 +35659,10 @@
       "team": "Washington",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "cj-wilcox-1"
+      "srSlug": "cj-wilcox-1",
+      "tsPct": 57.1,
+      "efgPct": 53.5,
+      "threePAr": 52.3
     },
     "nbaPer100": {
       "pts": 17.6,
@@ -34822,7 +35755,10 @@
       "team": "Stanford",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "josh-huestis-1"
+      "srSlug": "josh-huestis-1",
+      "tsPct": 50.9,
+      "efgPct": 48.9,
+      "threePAr": 23.8
     },
     "nbaPer100": {
       "pts": 8.7,
@@ -34915,7 +35851,10 @@
       "team": "UCLA",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "kyle-anderson-3"
+      "srSlug": "kyle-anderson-3",
+      "tsPct": 53.1,
+      "efgPct": 47.9,
+      "threePAr": 14.3
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -35073,7 +36012,10 @@
       "team": "Virginia",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "joe-harris--1"
+      "srSlug": "joe-harris--1",
+      "tsPct": 57.7,
+      "efgPct": 54.8,
+      "threePAr": 50.6
     },
     "nbaPer100": {
       "pts": 20.3,
@@ -35166,7 +36108,10 @@
       "team": "Wichita State",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "cleanthony-early-1"
+      "srSlug": "cleanthony-early-1",
+      "tsPct": 59.6,
+      "efgPct": 54.1,
+      "threePAr": 41.1
     },
     "nbaPer100": {
       "pts": 15.8,
@@ -35259,7 +36204,10 @@
       "team": "Tennessee",
       "fromSeason": "2011-12",
       "toSeason": "2013-14",
-      "srSlug": "jarnell-stokes-1"
+      "srSlug": "jarnell-stokes-1",
+      "tsPct": 56,
+      "efgPct": 53,
+      "threePAr": 0.4
     },
     "nbaPer100": {
       "pts": 23,
@@ -35415,7 +36363,10 @@
       "team": "Connecticut",
       "fromSeason": "2011-12",
       "toSeason": "2013-14",
-      "srSlug": "deandre-daniels-1"
+      "srSlug": "deandre-daniels-1",
+      "tsPct": 53.7,
+      "efgPct": 50.6,
+      "threePAr": 30.1
     }
   },
   "spencer-dinwiddie-2014": {
@@ -35476,7 +36427,10 @@
       "team": "Colorado",
       "fromSeason": "2011-12",
       "toSeason": "2013-14",
-      "srSlug": "spencer-dinwiddie-1"
+      "srSlug": "spencer-dinwiddie-1",
+      "tsPct": 59.9,
+      "efgPct": 50.4,
+      "threePAr": 43.2
     },
     "nbaPer100": {
       "pts": 22.8,
@@ -35569,7 +36523,10 @@
       "team": "Syracuse",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "jerami-grant-1"
+      "srSlug": "jerami-grant-1",
+      "tsPct": 53.6,
+      "efgPct": 49.4,
+      "threePAr": 5.2
     },
     "nbaPer100": {
       "pts": 23.5,
@@ -35662,7 +36619,10 @@
       "team": "Michigan",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "glenn-robinson-2"
+      "srSlug": "glenn-robinson-2",
+      "tsPct": 59.3,
+      "efgPct": 56.7,
+      "threePAr": 26.9
     },
     "nbaPer100": {
       "pts": 16.7,
@@ -35820,7 +36780,10 @@
       "team": "Arizona",
       "fromSeason": "2011-12",
       "toSeason": "2013-14",
-      "srSlug": "nick-johnson-1"
+      "srSlug": "nick-johnson-1",
+      "tsPct": 53.5,
+      "efgPct": 49,
+      "threePAr": 38.3
     },
     "nbaPer100": {
       "pts": 14,
@@ -35978,7 +36941,10 @@
       "team": "Oklahoma State",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "markel-brown-1"
+      "srSlug": "markel-brown-1",
+      "tsPct": 54.5,
+      "efgPct": 49.7,
+      "threePAr": 33.5
     },
     "nbaPer100": {
       "pts": 16.6,
@@ -36071,7 +37037,10 @@
       "team": "Stanford",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "dwight-powell-1"
+      "srSlug": "dwight-powell-1",
+      "tsPct": 53.3,
+      "efgPct": 47.9,
+      "threePAr": 10.3
     },
     "nbaPer100": {
       "pts": 18.3,
@@ -36164,7 +37133,10 @@
       "team": "MissouriTulsa",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "jordan-clarkson-1"
+      "srSlug": "jordan-clarkson-1",
+      "tsPct": 54.8,
+      "efgPct": 48.4,
+      "threePAr": 27.4
     },
     "nbaPer100": {
       "pts": 28.1,
@@ -36257,7 +37229,10 @@
       "team": "Louisville",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "russ-smith-1"
+      "srSlug": "russ-smith-1",
+      "tsPct": 52.8,
+      "efgPct": 47.3,
+      "threePAr": 34.7
     },
     "nbaPer100": {
       "pts": 21,
@@ -36350,7 +37325,10 @@
       "team": "Pittsburgh",
       "fromSeason": "2009-10",
       "toSeason": "2013-14",
-      "srSlug": "lamar-patterson-1"
+      "srSlug": "lamar-patterson-1",
+      "tsPct": 54.9,
+      "efgPct": 51.3,
+      "threePAr": 42.2
     },
     "nbaPer100": {
       "pts": 10.6,
@@ -36443,7 +37421,10 @@
       "team": "New Mexico",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "cameron-bairstow-1"
+      "srSlug": "cameron-bairstow-1",
+      "tsPct": 57.7,
+      "efgPct": 51.9,
+      "threePAr": 0.7
     },
     "nbaPer100": {
       "pts": 13.4,
@@ -36506,7 +37487,10 @@
       "team": "Green Bay",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "alec-brown-1"
+      "srSlug": "alec-brown-1",
+      "tsPct": 54.2,
+      "efgPct": 49.5,
+      "threePAr": 15
     }
   },
   "thanasis-antetokounmpo-2014": {
@@ -36697,7 +37681,10 @@
       "team": "Xavier",
       "fromSeason": "2012-13",
       "toSeason": "2013-14",
-      "srSlug": "semaj-christon-1"
+      "srSlug": "semaj-christon-1",
+      "tsPct": 52.5,
+      "efgPct": 47.9,
+      "threePAr": 9.8
     },
     "nbaPer100": {
       "pts": 9.2,
@@ -36855,7 +37842,10 @@
       "team": "Tennessee",
       "fromSeason": "2010-11",
       "toSeason": "2013-14",
-      "srSlug": "jordan-mcrae-1"
+      "srSlug": "jordan-mcrae-1",
+      "tsPct": 54.1,
+      "efgPct": 49.2,
+      "threePAr": 43.9
     },
     "nbaPer100": {
       "pts": 24,
@@ -36918,7 +37908,10 @@
       "team": "San Diego StateWashington State",
       "fromSeason": "2009-10",
       "toSeason": "2013-14",
-      "srSlug": "xavier-thames-1"
+      "srSlug": "xavier-thames-1",
+      "tsPct": 52.4,
+      "efgPct": 45.2,
+      "threePAr": 32.7
     }
   },
   "cory-jefferson-2014": {
@@ -36979,7 +37972,10 @@
       "team": "Baylor",
       "fromSeason": "2009-10",
       "toSeason": "2013-14",
-      "srSlug": "cory-jefferson-1"
+      "srSlug": "cory-jefferson-1",
+      "tsPct": 58.2,
+      "efgPct": 55.4,
+      "threePAr": 6.3
     },
     "nbaPer100": {
       "pts": 18.2,
@@ -37072,7 +38068,10 @@
       "team": "UNLV",
       "fromSeason": "2012-13",
       "toSeason": "2012-13",
-      "srSlug": "anthony-bennett-1"
+      "srSlug": "anthony-bennett-1",
+      "tsPct": 60.9,
+      "efgPct": 58,
+      "threePAr": 25.3
     },
     "nbaPer100": {
       "pts": 17.5,
@@ -37165,7 +38164,10 @@
       "team": "Indiana",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "victor-oladipo-1"
+      "srSlug": "victor-oladipo-1",
+      "tsPct": 60.4,
+      "efgPct": 57,
+      "threePAr": 18.8
     },
     "nbaPer100": {
       "pts": 26.1,
@@ -37258,7 +38260,10 @@
       "team": "Georgetown",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "otto-porter-1"
+      "srSlug": "otto-porter-1",
+      "tsPct": 58.5,
+      "efgPct": 54.5,
+      "threePAr": 26.4
     },
     "nbaPer100": {
       "pts": 19.9,
@@ -37351,7 +38356,10 @@
       "team": "Indiana",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "cody-zeller-1"
+      "srSlug": "cody-zeller-1",
+      "tsPct": 64.3,
+      "efgPct": 59.2,
+      "threePAr": 0.3
     },
     "nbaPer100": {
       "pts": 19,
@@ -37444,7 +38452,10 @@
       "team": "Maryland",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "alex-len-1"
+      "srSlug": "alex-len-1",
+      "tsPct": 56.9,
+      "efgPct": 53.9,
+      "threePAr": 2.2
     },
     "nbaPer100": {
       "pts": 18.8,
@@ -37537,7 +38548,10 @@
       "team": "Kentucky",
       "fromSeason": "2012-13",
       "toSeason": "2012-13",
-      "srSlug": "nerlens-noel-1"
+      "srSlug": "nerlens-noel-1",
+      "tsPct": 58.3,
+      "efgPct": 59,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 16,
@@ -37630,7 +38644,10 @@
       "team": "Kansas",
       "fromSeason": "2012-13",
       "toSeason": "2012-13",
-      "srSlug": "ben-mclemore-1"
+      "srSlug": "ben-mclemore-1",
+      "tsPct": 63.3,
+      "efgPct": 58.6,
+      "threePAr": 43.5
     },
     "nbaPer100": {
       "pts": 19.7,
@@ -37723,7 +38740,10 @@
       "team": "Georgia",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "kentavious-caldwell-pope-1"
+      "srSlug": "kentavious-caldwell-pope-1",
+      "tsPct": 54.3,
+      "efgPct": 50.7,
+      "threePAr": 53.9
     },
     "nbaPer100": {
       "pts": 18.6,
@@ -37816,7 +38836,10 @@
       "team": "Michigan",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "trey-burke-1"
+      "srSlug": "trey-burke-1",
+      "tsPct": 55.6,
+      "efgPct": 51.9,
+      "threePAr": 37.4
     },
     "nbaPer100": {
       "pts": 23.6,
@@ -37974,7 +38997,10 @@
       "team": "Syracuse",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "michael-carter-williams-1"
+      "srSlug": "michael-carter-williams-1",
+      "tsPct": 49.3,
+      "efgPct": 44.5,
+      "threePAr": 30.3
     },
     "nbaPer100": {
       "pts": 20.1,
@@ -38067,7 +39093,10 @@
       "team": "Pittsburgh",
       "fromSeason": "2012-13",
       "toSeason": "2012-13",
-      "srSlug": "steven-adams-1"
+      "srSlug": "steven-adams-1",
+      "tsPct": 55.5,
+      "efgPct": 57.1,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 16.5,
@@ -38160,7 +39189,10 @@
       "team": "Gonzaga",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "kelly-olynyk-1"
+      "srSlug": "kelly-olynyk-1",
+      "tsPct": 64.1,
+      "efgPct": 61.6,
+      "threePAr": 13.2
     },
     "nbaPer100": {
       "pts": 22.1,
@@ -38541,7 +39573,10 @@
       "team": "Miami (FL)",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "shane-larkin-1"
+      "srSlug": "shane-larkin-1",
+      "tsPct": 56.6,
+      "efgPct": 52.4,
+      "threePAr": 46
     },
     "nbaPer100": {
       "pts": 14.7,
@@ -38699,7 +39734,10 @@
       "team": "New Mexico",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "tony-snell-1"
+      "srSlug": "tony-snell-1",
+      "tsPct": 57.1,
+      "efgPct": 53.3,
+      "threePAr": 58.8
     },
     "nbaPer100": {
       "pts": 14,
@@ -38792,7 +39830,10 @@
       "team": "Louisville",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "gorgui-dieng-1"
+      "srSlug": "gorgui-dieng-1",
+      "tsPct": 56.8,
+      "efgPct": 54.6,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 18,
@@ -38885,7 +39926,10 @@
       "team": "Duke",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "mason-plumlee-1"
+      "srSlug": "mason-plumlee-1",
+      "tsPct": 58.4,
+      "efgPct": 57.5,
+      "threePAr": 1.1
     },
     "nbaPer100": {
       "pts": 18.1,
@@ -38978,7 +40022,10 @@
       "team": "Arizona",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "solomon-hill-1"
+      "srSlug": "solomon-hill-1",
+      "tsPct": 58.2,
+      "efgPct": 53.8,
+      "threePAr": 30.3
     },
     "nbaPer100": {
       "pts": 12.5,
@@ -39071,7 +40118,10 @@
       "team": "Michigan",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "tim-hardaway-jr-1"
+      "srSlug": "tim-hardaway-jr-1",
+      "tsPct": 53.9,
+      "efgPct": 50.7,
+      "threePAr": 47.5
     },
     "nbaPer100": {
       "pts": 24.8,
@@ -39164,7 +40214,10 @@
       "team": "North Carolina",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "reggie-bullock-2"
+      "srSlug": "reggie-bullock-2",
+      "tsPct": 56.8,
+      "efgPct": 55.5,
+      "threePAr": 59.6
     },
     "nbaPer100": {
       "pts": 16,
@@ -39257,7 +40310,10 @@
       "team": "Colorado",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "andre-roberson-1"
+      "srSlug": "andre-roberson-1",
+      "tsPct": 56.1,
+      "efgPct": 54.9,
+      "threePAr": 19.3
     },
     "nbaPer100": {
       "pts": 10.1,
@@ -39415,7 +40471,10 @@
       "team": "Kentucky",
       "fromSeason": "2012-13",
       "toSeason": "2012-13",
-      "srSlug": "archie-goodwin-1"
+      "srSlug": "archie-goodwin-1",
+      "tsPct": 50.9,
+      "efgPct": 46.4,
+      "threePAr": 17.9
     },
     "nbaPer100": {
       "pts": 21.3,
@@ -39573,7 +40632,10 @@
       "team": "California",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "allen-crabbe-1"
+      "srSlug": "allen-crabbe-1",
+      "tsPct": 57.1,
+      "efgPct": 53.3,
+      "threePAr": 45.8
     },
     "nbaPer100": {
       "pts": 18.6,
@@ -39731,7 +40793,10 @@
       "team": "Arizona State",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "carrick-felix-1"
+      "srSlug": "carrick-felix-1",
+      "tsPct": 55.2,
+      "efgPct": 52.2,
+      "threePAr": 40.6
     },
     "nbaPer100": {
       "pts": 25.8,
@@ -39824,7 +40889,10 @@
       "team": "Murray State",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "isaiah-canaan-1"
+      "srSlug": "isaiah-canaan-1",
+      "tsPct": 60.6,
+      "efgPct": 55.8,
+      "threePAr": 51.4
     },
     "nbaPer100": {
       "pts": 19.6,
@@ -39917,7 +40985,10 @@
       "team": "Georgia Tech",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "glen-rice-jr-1"
+      "srSlug": "glen-rice-jr-1",
+      "tsPct": 52,
+      "efgPct": 50.3,
+      "threePAr": 39.8
     },
     "nbaPer100": {
       "pts": 14.5,
@@ -40010,7 +41081,10 @@
       "team": "Detroit Mercy",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "ray-mccallum-2"
+      "srSlug": "ray-mccallum-2",
+      "tsPct": 55.6,
+      "efgPct": 50.7,
+      "threePAr": 28.6
     },
     "nbaPer100": {
       "pts": 16.6,
@@ -40103,7 +41177,10 @@
       "team": "North Texas",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "tony-mitchell-4"
+      "srSlug": "tony-mitchell-4",
+      "tsPct": 57.6,
+      "efgPct": 53.6,
+      "threePAr": 26.8
     },
     "nbaPer100": {
       "pts": 14.1,
@@ -40196,7 +41273,10 @@
       "team": "South Dakota State",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "nate-wolters-1"
+      "srSlug": "nate-wolters-1",
+      "tsPct": 56,
+      "efgPct": 49.7,
+      "threePAr": 26.9
     },
     "nbaPer100": {
       "pts": 15.3,
@@ -40289,7 +41369,10 @@
       "team": "Kansas",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "jeff-withey-1"
+      "srSlug": "jeff-withey-1",
+      "tsPct": 61.6,
+      "efgPct": 56.9,
+      "threePAr": 0.2
     },
     "nbaPer100": {
       "pts": 16.8,
@@ -40382,7 +41465,10 @@
       "team": "Arizona",
       "fromSeason": "2012-13",
       "toSeason": "2012-13",
-      "srSlug": "grant-jerrett-1"
+      "srSlug": "grant-jerrett-1",
+      "tsPct": 53.5,
+      "efgPct": 51.3,
+      "threePAr": 51.3
     },
     "nbaPer100": {
       "pts": 16.2,
@@ -40475,7 +41561,10 @@
       "team": "San Diego State",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "jamaal-franklin-1"
+      "srSlug": "jamaal-franklin-1",
+      "tsPct": 55,
+      "efgPct": 48.4,
+      "threePAr": 38.3
     },
     "nbaPer100": {
       "pts": 12.8,
@@ -40568,7 +41657,10 @@
       "team": "Baylor",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "pierre-jackson-1"
+      "srSlug": "pierre-jackson-1",
+      "tsPct": 58.3,
+      "efgPct": 53,
+      "threePAr": 46.8
     },
     "nbaPer100": {
       "pts": 21.7,
@@ -40726,7 +41818,10 @@
       "team": "Bucknell",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "mike-muscala-1"
+      "srSlug": "mike-muscala-1",
+      "tsPct": 57.4,
+      "efgPct": 50.8,
+      "threePAr": 4.6
     },
     "nbaPer100": {
       "pts": 18.9,
@@ -40819,7 +41914,10 @@
       "team": "Virginia Tech",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "erick-green-1"
+      "srSlug": "erick-green-1",
+      "tsPct": 54.3,
+      "efgPct": 48.8,
+      "threePAr": 30.5
     },
     "nbaPer100": {
       "pts": 17.6,
@@ -40977,7 +42075,10 @@
       "team": "Duke",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "ryan-kelly-3"
+      "srSlug": "ryan-kelly-3",
+      "tsPct": 58.5,
+      "efgPct": 53.5,
+      "threePAr": 39.4
     },
     "nbaPer100": {
       "pts": 15.6,
@@ -41070,7 +42171,10 @@
       "team": "Florida",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "erik-murphy-1"
+      "srSlug": "erik-murphy-1",
+      "tsPct": 62.2,
+      "efgPct": 60.6,
+      "threePAr": 42.6
     },
     "nbaPer100": {
       "pts": 5.1,
@@ -41163,7 +42267,10 @@
       "team": "Long Beach State",
       "fromSeason": "2011-12",
       "toSeason": "2012-13",
-      "srSlug": "james-ennis-1"
+      "srSlug": "james-ennis-1",
+      "tsPct": 61.5,
+      "efgPct": 57.4,
+      "threePAr": 45.7
     },
     "nbaPer100": {
       "pts": 16.4,
@@ -41226,7 +42333,10 @@
       "team": "Mississippi StateOklahoma",
       "fromSeason": "2008-09",
       "toSeason": "2012-13",
-      "srSlug": "romero-osby-1"
+      "srSlug": "romero-osby-1",
+      "tsPct": 56.5,
+      "efgPct": 51.5,
+      "threePAr": 11.8
     }
   },
   "lorenzo-brown-2013": {
@@ -41287,7 +42397,10 @@
       "team": "NC State",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "lorenzo-brown-1"
+      "srSlug": "lorenzo-brown-1",
+      "tsPct": 51.3,
+      "efgPct": 46.3,
+      "threePAr": 22
     },
     "nbaPer100": {
       "pts": 12.2,
@@ -41350,7 +42463,10 @@
       "team": "Colorado StateMinnesota",
       "fromSeason": "2008-09",
       "toSeason": "2012-13",
-      "srSlug": "colton-iverson-1"
+      "srSlug": "colton-iverson-1",
+      "tsPct": 55.7,
+      "efgPct": 54.6,
+      "threePAr": 0
     }
   },
   "arsalan-kazemi-2013": {
@@ -41381,7 +42497,10 @@
       "team": "OregonRice",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "arsalan-kazemi-1"
+      "srSlug": "arsalan-kazemi-1",
+      "tsPct": 60.4,
+      "efgPct": 55.9,
+      "threePAr": 0.2
     }
   },
   "joffrey-lauvergne-2013": {
@@ -41507,7 +42626,10 @@
       "team": "Louisville",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "peyton-siva-1"
+      "srSlug": "peyton-siva-1",
+      "tsPct": 51.6,
+      "efgPct": 46.7,
+      "threePAr": 34.4
     },
     "nbaPer100": {
       "pts": 12.2,
@@ -41570,7 +42692,10 @@
       "team": "ConnecticutMissouri",
       "fromSeason": "2009-10",
       "toSeason": "2012-13",
-      "srSlug": "alex-oriakhi-1"
+      "srSlug": "alex-oriakhi-1",
+      "tsPct": 55.9,
+      "efgPct": 53,
+      "threePAr": 0.1
     }
   },
   "deshaun-thomas-2013": {
@@ -41601,7 +42726,10 @@
       "team": "Ohio State",
       "fromSeason": "2010-11",
       "toSeason": "2012-13",
-      "srSlug": "deshaun-thomas-1"
+      "srSlug": "deshaun-thomas-1",
+      "tsPct": 56.9,
+      "efgPct": 53.5,
+      "threePAr": 32.9
     }
   },
   "anthony-davis-2012": {
@@ -41662,7 +42790,10 @@
       "team": "Kentucky",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "anthony-davis-5"
+      "srSlug": "anthony-davis-5",
+      "tsPct": 65.4,
+      "efgPct": 62.8,
+      "threePAr": 5.9
     },
     "nbaPer100": {
       "pts": 34.3,
@@ -41755,7 +42886,10 @@
       "team": "Kentucky",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "michael-kidd-gilchrist-1"
+      "srSlug": "michael-kidd-gilchrist-1",
+      "tsPct": 57,
+      "efgPct": 51.1,
+      "threePAr": 15.6
     },
     "nbaPer100": {
       "pts": 17.3,
@@ -41848,7 +42982,10 @@
       "team": "Florida",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "bradley-beal-1"
+      "srSlug": "bradley-beal-1",
+      "tsPct": 57.5,
+      "efgPct": 52.5,
+      "threePAr": 47.3
     },
     "nbaPer100": {
       "pts": 30.7,
@@ -41941,7 +43078,10 @@
       "team": "Syracuse",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "dion-waiters-1"
+      "srSlug": "dion-waiters-1",
+      "tsPct": 55.1,
+      "efgPct": 51.6,
+      "threePAr": 36.2
     },
     "nbaPer100": {
       "pts": 23.5,
@@ -42034,7 +43174,10 @@
       "team": "Kansas",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "thomas-robinson-2"
+      "srSlug": "thomas-robinson-2",
+      "tsPct": 55,
+      "efgPct": 52.9,
+      "threePAr": 1.9
     },
     "nbaPer100": {
       "pts": 18.3,
@@ -42127,7 +43270,10 @@
       "team": "Weber State",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "damian-lillard-1"
+      "srSlug": "damian-lillard-1",
+      "tsPct": 60.6,
+      "efgPct": 54,
+      "threePAr": 48.1
     },
     "nbaPer100": {
       "pts": 34.3,
@@ -42220,7 +43366,10 @@
       "team": "North Carolina",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "harrison-barnes-1"
+      "srSlug": "harrison-barnes-1",
+      "tsPct": 52.4,
+      "efgPct": 48.7,
+      "threePAr": 32.6
     },
     "nbaPer100": {
       "pts": 21.6,
@@ -42313,7 +43462,10 @@
       "team": "Washington",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "terrence-ross-1"
+      "srSlug": "terrence-ross-1",
+      "tsPct": 55.7,
+      "efgPct": 53.6,
+      "threePAr": 45.6
     },
     "nbaPer100": {
       "pts": 22.5,
@@ -42406,7 +43558,10 @@
       "team": "Connecticut",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "andre-drummond-1"
+      "srSlug": "andre-drummond-1",
+      "tsPct": 50.9,
+      "efgPct": 53.8,
+      "threePAr": 0.7
     },
     "nbaPer100": {
       "pts": 23,
@@ -42499,7 +43654,10 @@
       "team": "Duke",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "austin-rivers-1"
+      "srSlug": "austin-rivers-1",
+      "tsPct": 53.8,
+      "efgPct": 50.5,
+      "threePAr": 39.6
     },
     "nbaPer100": {
       "pts": 17.7,
@@ -42592,7 +43750,10 @@
       "team": "Illinois",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "meyers-leonard-1"
+      "srSlug": "meyers-leonard-1",
+      "tsPct": 60.1,
+      "efgPct": 56.9,
+      "threePAr": 3.4
     },
     "nbaPer100": {
       "pts": 17.5,
@@ -42685,7 +43846,10 @@
       "team": "Connecticut",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "jeremy-lamb-1"
+      "srSlug": "jeremy-lamb-1",
+      "tsPct": 58,
+      "efgPct": 55.3,
+      "threePAr": 40.6
     },
     "nbaPer100": {
       "pts": 24,
@@ -42778,7 +43942,10 @@
       "team": "North Carolina",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "kendall-marshall-1"
+      "srSlug": "kendall-marshall-1",
+      "tsPct": 54.1,
+      "efgPct": 50.5,
+      "threePAr": 32.3
     },
     "nbaPer100": {
       "pts": 12.9,
@@ -42871,7 +44038,10 @@
       "team": "North Carolina",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "john-henson-1"
+      "srSlug": "john-henson-1",
+      "tsPct": 50.1,
+      "efgPct": 50,
+      "threePAr": 2.5
     },
     "nbaPer100": {
       "pts": 19.6,
@@ -42964,7 +44134,10 @@
       "team": "St. John's (NY)",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "maurice-harkless-1"
+      "srSlug": "maurice-harkless-1",
+      "tsPct": 50.4,
+      "efgPct": 47.2,
+      "threePAr": 18.5
     },
     "nbaPer100": {
       "pts": 15.1,
@@ -43057,7 +44230,10 @@
       "team": "Iowa StateMinnesota",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "royce-white-1"
+      "srSlug": "royce-white-1",
+      "tsPct": 53.7,
+      "efgPct": 54.1,
+      "threePAr": 3.6
     },
     "nbaPer100": {
       "pts": 0,
@@ -43150,7 +44326,10 @@
       "team": "North Carolina",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "tyler-zeller-1"
+      "srSlug": "tyler-zeller-1",
+      "tsPct": 59.7,
+      "efgPct": 54.3,
+      "threePAr": 0.2
     },
     "nbaPer100": {
       "pts": 20,
@@ -43243,7 +44422,10 @@
       "team": "Kentucky",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "terrence-jones-1"
+      "srSlug": "terrence-jones-1",
+      "tsPct": 52.6,
+      "efgPct": 49.3,
+      "threePAr": 15.6
     },
     "nbaPer100": {
       "pts": 21.6,
@@ -43336,7 +44518,10 @@
       "team": "St. Bonaventure",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "andrew-nicholson-1"
+      "srSlug": "andrew-nicholson-1",
+      "tsPct": 61.6,
+      "efgPct": 58.5,
+      "threePAr": 5.5
     },
     "nbaPer100": {
       "pts": 21.3,
@@ -43494,7 +44679,10 @@
       "team": "Ohio State",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "jared-sullinger-1"
+      "srSlug": "jared-sullinger-1",
+      "tsPct": 59.1,
+      "efgPct": 54.1,
+      "threePAr": 6.1
     },
     "nbaPer100": {
       "pts": 22.3,
@@ -43680,7 +44868,10 @@
       "team": "Vanderbilt",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "john-jenkins-1"
+      "srSlug": "john-jenkins-1",
+      "tsPct": 64.8,
+      "efgPct": 60.7,
+      "threePAr": 63.4
     },
     "nbaPer100": {
       "pts": 19.8,
@@ -43773,7 +44964,10 @@
       "team": "Oregon State",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "jared-cunningham-2"
+      "srSlug": "jared-cunningham-2",
+      "tsPct": 57.6,
+      "efgPct": 50.5,
+      "threePAr": 29.2
     },
     "nbaPer100": {
       "pts": 16.7,
@@ -43866,7 +45060,10 @@
       "team": "Washington",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "tony-wroten-1"
+      "srSlug": "tony-wroten-1",
+      "tsPct": 48.8,
+      "efgPct": 45.3,
+      "threePAr": 12.5
     },
     "nbaPer100": {
       "pts": 25.8,
@@ -43959,7 +45156,10 @@
       "team": "Duke",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "miles-plumlee-1"
+      "srSlug": "miles-plumlee-1",
+      "tsPct": 57.5,
+      "efgPct": 55.9,
+      "threePAr": 0.2
     },
     "nbaPer100": {
       "pts": 15,
@@ -44052,7 +45252,10 @@
       "team": "Mississippi StateUTEP",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "arnett-moultrie-1"
+      "srSlug": "arnett-moultrie-1",
+      "tsPct": 55.7,
+      "efgPct": 52.7,
+      "threePAr": 11.2
     },
     "nbaPer100": {
       "pts": 14.9,
@@ -44145,7 +45348,10 @@
       "team": "Baylor",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "perry-jones-1"
+      "srSlug": "perry-jones-1",
+      "tsPct": 55.8,
+      "efgPct": 53.1,
+      "threePAr": 6.5
     },
     "nbaPer100": {
       "pts": 14.7,
@@ -44238,7 +45444,10 @@
       "team": "Kentucky",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "marquis-teague-1"
+      "srSlug": "marquis-teague-1",
+      "tsPct": 49.1,
+      "efgPct": 44.9,
+      "threePAr": 22.7
     },
     "nbaPer100": {
       "pts": 12.7,
@@ -44331,7 +45540,10 @@
       "team": "Vanderbilt",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "festus-ezeli-1"
+      "srSlug": "festus-ezeli-1",
+      "tsPct": 57.7,
+      "efgPct": 56.2,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 14.7,
@@ -44394,7 +45606,10 @@
       "team": "Vanderbilt",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "jeffery-taylor-1"
+      "srSlug": "jeffery-taylor-1",
+      "tsPct": 56.2,
+      "efgPct": 52.4,
+      "threePAr": 23.3
     }
   },
   "tomas-satoransky-2012": {
@@ -44520,7 +45735,10 @@
       "team": "Florida State",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "bernard-james--1"
+      "srSlug": "bernard-james--1",
+      "tsPct": 61.3,
+      "efgPct": 62.7,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 13.6,
@@ -44613,7 +45831,10 @@
       "team": "Marquette",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "jae-crowder-1"
+      "srSlug": "jae-crowder-1",
+      "tsPct": 58.4,
+      "efgPct": 56,
+      "threePAr": 38.6
     },
     "nbaPer100": {
       "pts": 18.3,
@@ -44706,7 +45927,10 @@
       "team": "Michigan State",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "draymond-green-1"
+      "srSlug": "draymond-green-1",
+      "tsPct": 54.3,
+      "efgPct": 50.6,
+      "threePAr": 21.7
     },
     "nbaPer100": {
       "pts": 14.7,
@@ -44799,7 +46023,10 @@
       "team": "Loyola MarymountUC Santa Barbara",
       "fromSeason": "2007-08",
       "toSeason": "2011-12",
-      "srSlug": "orlando-johnson-1"
+      "srSlug": "orlando-johnson-1",
+      "tsPct": 56.6,
+      "efgPct": 52.6,
+      "threePAr": 35.2
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -44892,7 +46119,10 @@
       "team": "Baylor",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "quincy-acy-1"
+      "srSlug": "quincy-acy-1",
+      "tsPct": 63.5,
+      "efgPct": 60.4,
+      "threePAr": 0.8
     },
     "nbaPer100": {
       "pts": 15.2,
@@ -44985,7 +46215,10 @@
       "team": "Baylor",
       "fromSeason": "2011-12",
       "toSeason": "2011-12",
-      "srSlug": "quincy-miller-1"
+      "srSlug": "quincy-miller-1",
+      "tsPct": 54.1,
+      "efgPct": 48.5,
+      "threePAr": 22.3
     },
     "nbaPer100": {
       "pts": 15.6,
@@ -45078,7 +46311,10 @@
       "team": "Texas A&M",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "khris-middleton-1"
+      "srSlug": "khris-middleton-1",
+      "tsPct": 53.4,
+      "efgPct": 48.9,
+      "threePAr": 36.4
     },
     "nbaPer100": {
       "pts": 26.2,
@@ -45171,7 +46407,10 @@
       "team": "Memphis",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "will-barton-1"
+      "srSlug": "will-barton-1",
+      "tsPct": 54.9,
+      "efgPct": 51.7,
+      "threePAr": 30.2
     },
     "nbaPer100": {
       "pts": 22.1,
@@ -45264,7 +46503,10 @@
       "team": "Kansas",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "tyshawn-taylor-1"
+      "srSlug": "tyshawn-taylor-1",
+      "tsPct": 56.6,
+      "efgPct": 52.9,
+      "threePAr": 28
     },
     "nbaPer100": {
       "pts": 18.9,
@@ -45357,7 +46599,10 @@
       "team": "Kentucky",
       "fromSeason": "2010-11",
       "toSeason": "2011-12",
-      "srSlug": "doron-lamb-1"
+      "srSlug": "doron-lamb-1",
+      "tsPct": 62.7,
+      "efgPct": 58.9,
+      "threePAr": 43.7
     },
     "nbaPer100": {
       "pts": 13.9,
@@ -45450,7 +46695,10 @@
       "team": "Virginia",
       "fromSeason": "2007-08",
       "toSeason": "2011-12",
-      "srSlug": "mike-scott-4"
+      "srSlug": "mike-scott-4",
+      "tsPct": 57.5,
+      "efgPct": 52.9,
+      "threePAr": 3.9
     },
     "nbaPer100": {
       "pts": 20.1,
@@ -45543,7 +46791,10 @@
       "team": "Missouri",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "kim-english-1"
+      "srSlug": "kim-english-1",
+      "tsPct": 55.1,
+      "efgPct": 51.7,
+      "threePAr": 49.4
     },
     "nbaPer100": {
       "pts": 15.5,
@@ -45636,7 +46887,10 @@
       "team": "Iowa StateLouisiana State",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "justin-hamilton-2"
+      "srSlug": "justin-hamilton-2",
+      "tsPct": 58,
+      "efgPct": 53.8,
+      "threePAr": 2.2
     },
     "nbaPer100": {
       "pts": 17.2,
@@ -45729,7 +46983,10 @@
       "team": "Kentucky",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "darius-miller-1"
+      "srSlug": "darius-miller-1",
+      "tsPct": 56.8,
+      "efgPct": 53.7,
+      "threePAr": 46.7
     },
     "nbaPer100": {
       "pts": 14.5,
@@ -45980,7 +47237,10 @@
       "team": "Norfolk State",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "kyle-oquinn-1"
+      "srSlug": "kyle-oquinn-1",
+      "tsPct": 60.2,
+      "efgPct": 57.7,
+      "threePAr": 18.8
     },
     "nbaPer100": {
       "pts": 19.3,
@@ -46073,7 +47333,10 @@
       "team": "Syracuse",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "kris-joseph-1"
+      "srSlug": "kris-joseph-1",
+      "tsPct": 54.6,
+      "efgPct": 50,
+      "threePAr": 30.9
     },
     "nbaPer100": {
       "pts": 8.9,
@@ -46361,7 +47624,10 @@
       "team": "Marquette",
       "fromSeason": "2009-10",
       "toSeason": "2011-12",
-      "srSlug": "darius-johnson-odom-1"
+      "srSlug": "darius-johnson-odom-1",
+      "tsPct": 56.4,
+      "efgPct": 53.2,
+      "threePAr": 43.7
     },
     "nbaPer100": {
       "pts": 0,
@@ -46454,7 +47720,10 @@
       "team": "Purdue",
       "fromSeason": "2007-08",
       "toSeason": "2011-12",
-      "srSlug": "robbie-hummel-1"
+      "srSlug": "robbie-hummel-1",
+      "tsPct": 57.7,
+      "efgPct": 52.5,
+      "threePAr": 42.2
     },
     "nbaPer100": {
       "pts": 13.6,
@@ -46517,7 +47786,10 @@
       "team": "Missouri",
       "fromSeason": "2008-09",
       "toSeason": "2011-12",
-      "srSlug": "marcus-denmon-1"
+      "srSlug": "marcus-denmon-1",
+      "tsPct": 59.6,
+      "efgPct": 56.3,
+      "threePAr": 53.8
     }
   },
   "robert-sacre-2012": {
@@ -46578,7 +47850,10 @@
       "team": "Gonzaga",
       "fromSeason": "2007-08",
       "toSeason": "2011-12",
-      "srSlug": "robert-sacre-1"
+      "srSlug": "robert-sacre-1",
+      "tsPct": 57.5,
+      "efgPct": 50.4,
+      "threePAr": 0.5
     },
     "nbaPer100": {
       "pts": 14.3,
@@ -46671,7 +47946,10 @@
       "team": "Duke",
       "fromSeason": "2010-11",
       "toSeason": "2010-11",
-      "srSlug": "kyrie-irving-1"
+      "srSlug": "kyrie-irving-1",
+      "tsPct": 69.7,
+      "efgPct": 61.5,
+      "threePAr": 37.5
     },
     "nbaPer100": {
       "pts": 34.2,
@@ -46764,7 +48042,10 @@
       "team": "Arizona",
       "fromSeason": "2009-10",
       "toSeason": "2010-11",
-      "srSlug": "derrick-williams-2"
+      "srSlug": "derrick-williams-2",
+      "tsPct": 66,
+      "efgPct": 62.1,
+      "threePAr": 13.6
     },
     "nbaPer100": {
       "pts": 21.9,
@@ -46922,7 +48203,10 @@
       "team": "Texas",
       "fromSeason": "2010-11",
       "toSeason": "2010-11",
-      "srSlug": "tristan-thompson-2"
+      "srSlug": "tristan-thompson-2",
+      "tsPct": 53.6,
+      "efgPct": 54.6,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 16.9,
@@ -47210,7 +48494,10 @@
       "team": "Kentucky",
       "fromSeason": "2010-11",
       "toSeason": "2010-11",
-      "srSlug": "brandon-knight-1"
+      "srSlug": "brandon-knight-1",
+      "tsPct": 55.3,
+      "efgPct": 50.8,
+      "threePAr": 45
     },
     "nbaPer100": {
       "pts": 24.4,
@@ -47303,7 +48590,10 @@
       "team": "Connecticut",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "kemba-walker-1"
+      "srSlug": "kemba-walker-1",
+      "tsPct": 53.9,
+      "efgPct": 47.5,
+      "threePAr": 28.7
     },
     "nbaPer100": {
       "pts": 29.4,
@@ -47396,7 +48686,10 @@
       "team": "Brigham Young",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "jimmer-fredette-1"
+      "srSlug": "jimmer-fredette-1",
+      "tsPct": 59.6,
+      "efgPct": 53.5,
+      "threePAr": 40.8
     },
     "nbaPer100": {
       "pts": 22.9,
@@ -47489,7 +48782,10 @@
       "team": "Washington State",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "klay-thompson-1"
+      "srSlug": "klay-thompson-1",
+      "tsPct": 55,
+      "efgPct": 50.9,
+      "threePAr": 43.8
     },
     "nbaPer100": {
       "pts": 28.8,
@@ -47582,7 +48878,10 @@
       "team": "Colorado",
       "fromSeason": "2009-10",
       "toSeason": "2010-11",
-      "srSlug": "alec-burks-1"
+      "srSlug": "alec-burks-1",
+      "tsPct": 59.2,
+      "efgPct": 52.2,
+      "threePAr": 17.5
     },
     "nbaPer100": {
       "pts": 24,
@@ -47675,7 +48974,10 @@
       "team": "Kansas",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "markieff-morris-1"
+      "srSlug": "markieff-morris-1",
+      "tsPct": 60.3,
+      "efgPct": 58.3,
+      "threePAr": 15.2
     },
     "nbaPer100": {
       "pts": 21.7,
@@ -47768,7 +49070,10 @@
       "team": "Kansas",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "marcus-morris-1"
+      "srSlug": "marcus-morris-1",
+      "tsPct": 60.1,
+      "efgPct": 57.9,
+      "threePAr": 13.4
     },
     "nbaPer100": {
       "pts": 22.4,
@@ -47861,7 +49166,10 @@
       "team": "San Diego State",
       "fromSeason": "2009-10",
       "toSeason": "2010-11",
-      "srSlug": "kawhi-leonard-1"
+      "srSlug": "kawhi-leonard-1",
+      "tsPct": 51.3,
+      "efgPct": 47.3,
+      "threePAr": 19.5
     },
     "nbaPer100": {
       "pts": 32.5,
@@ -47954,7 +49262,10 @@
       "team": "Southern California",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "nikola-vucevic-1"
+      "srSlug": "nikola-vucevic-1",
+      "tsPct": 57.1,
+      "efgPct": 53.5,
+      "threePAr": 16.9
     },
     "nbaPer100": {
       "pts": 27,
@@ -48047,7 +49358,10 @@
       "team": "Georgia Tech",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "iman-shumpert-1"
+      "srSlug": "iman-shumpert-1",
+      "tsPct": 50.3,
+      "efgPct": 45.3,
+      "threePAr": 37.3
     },
     "nbaPer100": {
       "pts": 14.8,
@@ -48140,7 +49454,10 @@
       "team": "Florida State",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "chris-singleton-1"
+      "srSlug": "chris-singleton-1",
+      "tsPct": 50.7,
+      "efgPct": 48.4,
+      "threePAr": 39.3
     },
     "nbaPer100": {
       "pts": 12.2,
@@ -48233,7 +49550,10 @@
       "team": "Tennessee",
       "fromSeason": "2010-11",
       "toSeason": "2010-11",
-      "srSlug": "tobias-harris-1"
+      "srSlug": "tobias-harris-1",
+      "tsPct": 54,
+      "efgPct": 48.9,
+      "threePAr": 18.9
     },
     "nbaPer100": {
       "pts": 25,
@@ -48391,7 +49711,10 @@
       "team": "Duke",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "nolan-smith-1"
+      "srSlug": "nolan-smith-1",
+      "tsPct": 55.1,
+      "efgPct": 50.3,
+      "threePAr": 30.3
     },
     "nbaPer100": {
       "pts": 17.6,
@@ -48484,7 +49807,10 @@
       "team": "Morehead State",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "kenneth-faried-1"
+      "srSlug": "kenneth-faried-1",
+      "tsPct": 57.9,
+      "efgPct": 57,
+      "threePAr": 0.9
     },
     "nbaPer100": {
       "pts": 23,
@@ -48642,7 +49968,10 @@
       "team": "Boston College",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "reggie-jackson-1"
+      "srSlug": "reggie-jackson-1",
+      "tsPct": 56,
+      "efgPct": 52.7,
+      "threePAr": 35.2
     },
     "nbaPer100": {
       "pts": 24.7,
@@ -48735,7 +50064,10 @@
       "team": "Providence",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "marshon-brooks-1"
+      "srSlug": "marshon-brooks-1",
+      "tsPct": 55.9,
+      "efgPct": 52.6,
+      "threePAr": 37.5
     },
     "nbaPer100": {
       "pts": 24.2,
@@ -48828,7 +50160,10 @@
       "team": "Texas",
       "fromSeason": "2009-10",
       "toSeason": "2010-11",
-      "srSlug": "jordan-hamilton-2"
+      "srSlug": "jordan-hamilton-2",
+      "tsPct": 53.8,
+      "efgPct": 51.6,
+      "threePAr": 46.1
     },
     "nbaPer100": {
       "pts": 21.1,
@@ -48921,7 +50256,10 @@
       "team": "Purdue",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "jajuan-johnson-1"
+      "srSlug": "jajuan-johnson-1",
+      "tsPct": 55.6,
+      "efgPct": 50.6,
+      "threePAr": 4.3
     },
     "nbaPer100": {
       "pts": 20.3,
@@ -49014,7 +50352,10 @@
       "team": "Cleveland State",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "norris-cole-1"
+      "srSlug": "norris-cole-1",
+      "tsPct": 53.9,
+      "efgPct": 48,
+      "threePAr": 27.8
     },
     "nbaPer100": {
       "pts": 16.3,
@@ -49107,7 +50448,10 @@
       "team": "Texas",
       "fromSeason": "2010-11",
       "toSeason": "2010-11",
-      "srSlug": "cory-joseph-1"
+      "srSlug": "cory-joseph-1",
+      "tsPct": 52.6,
+      "efgPct": 50.3,
+      "threePAr": 39.1
     },
     "nbaPer100": {
       "pts": 15.9,
@@ -49200,7 +50544,10 @@
       "team": "Marquette",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "jimmy-butler-1"
+      "srSlug": "jimmy-butler-1",
+      "tsPct": 60.7,
+      "efgPct": 53.1,
+      "threePAr": 12.2
     },
     "nbaPer100": {
       "pts": 28,
@@ -49358,7 +50705,10 @@
       "team": "Richmond",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "justin-harper-1"
+      "srSlug": "justin-harper-1",
+      "tsPct": 58.4,
+      "efgPct": 56.4,
+      "threePAr": 42.1
     },
     "nbaPer100": {
       "pts": 15.6,
@@ -49451,7 +50801,10 @@
       "team": "Duke",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "kyle-singler-1"
+      "srSlug": "kyle-singler-1",
+      "tsPct": 54.8,
+      "efgPct": 50.4,
+      "threePAr": 39.2
     },
     "nbaPer100": {
       "pts": 15.3,
@@ -49544,7 +50897,10 @@
       "team": "Butler",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "shelvin-mack-1"
+      "srSlug": "shelvin-mack-1",
+      "tsPct": 54.4,
+      "efgPct": 50.7,
+      "threePAr": 49.3
     },
     "nbaPer100": {
       "pts": 18.2,
@@ -49637,7 +50993,10 @@
       "team": "UCLA",
       "fromSeason": "2009-10",
       "toSeason": "2010-11",
-      "srSlug": "tyler-honeycutt-1"
+      "srSlug": "tyler-honeycutt-1",
+      "tsPct": 52.8,
+      "efgPct": 49.7,
+      "threePAr": 36.6
     },
     "nbaPer100": {
       "pts": 11.9,
@@ -49730,7 +51089,10 @@
       "team": "Maryland",
       "fromSeason": "2009-10",
       "toSeason": "2010-11",
-      "srSlug": "jordan-williams-1"
+      "srSlug": "jordan-williams-1",
+      "tsPct": 54,
+      "efgPct": 52.8,
+      "threePAr": 0
     },
     "nbaPer100": {
       "pts": 16.5,
@@ -49823,7 +51185,10 @@
       "team": "Georgia",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "trey-thompkins-1"
+      "srSlug": "trey-thompkins-1",
+      "tsPct": 53.6,
+      "efgPct": 50.4,
+      "threePAr": 19.4
     },
     "nbaPer100": {
       "pts": 25.8,
@@ -49916,7 +51281,10 @@
       "team": "Florida",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "chandler-parsons-1"
+      "srSlug": "chandler-parsons-1",
+      "tsPct": 56,
+      "efgPct": 54.6,
+      "threePAr": 41.1
     },
     "nbaPer100": {
       "pts": 21.3,
@@ -50074,7 +51442,10 @@
       "team": "Wisconsin",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "jon-leuer-1"
+      "srSlug": "jon-leuer-1",
+      "tsPct": 55.9,
+      "efgPct": 52.9,
+      "threePAr": 25.3
     },
     "nbaPer100": {
       "pts": 20.4,
@@ -50167,7 +51538,10 @@
       "team": "Michigan",
       "fromSeason": "2009-10",
       "toSeason": "2010-11",
-      "srSlug": "darius-morris-1"
+      "srSlug": "darius-morris-1",
+      "tsPct": 52.6,
+      "efgPct": 49.1,
+      "threePAr": 19.1
     },
     "nbaPer100": {
       "pts": 15,
@@ -50325,7 +51699,10 @@
       "team": "UCLA",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "malcolm-lee-1"
+      "srSlug": "malcolm-lee-1",
+      "tsPct": 53.6,
+      "efgPct": 49.2,
+      "threePAr": 36.1
     },
     "nbaPer100": {
       "pts": 13.5,
@@ -50418,7 +51795,10 @@
       "team": "Hofstra",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "charles-jenkins-1"
+      "srSlug": "charles-jenkins-1",
+      "tsPct": 56.3,
+      "efgPct": 50.5,
+      "threePAr": 25.4
     },
     "nbaPer100": {
       "pts": 15.8,
@@ -50511,7 +51891,10 @@
       "team": "Kentucky",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "josh-harrellson-1"
+      "srSlug": "josh-harrellson-1",
+      "tsPct": 57.6,
+      "efgPct": 56.2,
+      "threePAr": 8.6
     },
     "nbaPer100": {
       "pts": 15.3,
@@ -50697,7 +52080,10 @@
       "team": "Georgia",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "travis-leslie-1"
+      "srSlug": "travis-leslie-1",
+      "tsPct": 53.7,
+      "efgPct": 49.2,
+      "threePAr": 6.6
     },
     "nbaPer100": {
       "pts": 16.7,
@@ -50790,7 +52176,10 @@
       "team": "Oakland",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "keith-benson-1"
+      "srSlug": "keith-benson-1",
+      "tsPct": 59.7,
+      "efgPct": 56.2,
+      "threePAr": 2.4
     },
     "nbaPer100": {
       "pts": 0,
@@ -50883,7 +52272,10 @@
       "team": "Kansas",
       "fromSeason": "2010-11",
       "toSeason": "2010-11",
-      "srSlug": "josh-selby-1"
+      "srSlug": "josh-selby-1",
+      "tsPct": 48.9,
+      "efgPct": 46.1,
+      "threePAr": 48.7
     },
     "nbaPer100": {
       "pts": 14.9,
@@ -50976,7 +52368,10 @@
       "team": "Temple",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "lavoy-allen-1"
+      "srSlug": "lavoy-allen-1",
+      "tsPct": 56.2,
+      "efgPct": 54.2,
+      "threePAr": 6
     },
     "nbaPer100": {
       "pts": 13.6,
@@ -51039,7 +52434,10 @@
       "team": "Ohio State",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "jon-diebler-1"
+      "srSlug": "jon-diebler-1",
+      "tsPct": 62.2,
+      "efgPct": 59.5,
+      "threePAr": 81.2
     }
   },
   "vernon-macklin-2011": {
@@ -51100,7 +52498,10 @@
       "team": "FloridaGeorgetown",
       "fromSeason": "2006-07",
       "toSeason": "2010-11",
-      "srSlug": "vernon-macklin-1"
+      "srSlug": "vernon-macklin-1",
+      "tsPct": 59.1,
+      "efgPct": 61,
+      "threePAr": 0.1
     },
     "nbaPer100": {
       "pts": 18.3,
@@ -51193,7 +52594,10 @@
       "team": "Kentucky",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "deandre-liggins-1"
+      "srSlug": "deandre-liggins-1",
+      "tsPct": 50.5,
+      "efgPct": 47.2,
+      "threePAr": 39.2
     },
     "nbaPer100": {
       "pts": 9.1,
@@ -51286,7 +52690,10 @@
       "team": "Purdue",
       "fromSeason": "2007-08",
       "toSeason": "2010-11",
-      "srSlug": "etwaun-moore-1"
+      "srSlug": "etwaun-moore-1",
+      "tsPct": 53.6,
+      "efgPct": 50.8,
+      "threePAr": 36
     },
     "nbaPer100": {
       "pts": 18.6,
@@ -51410,7 +52817,10 @@
       "team": "Washington",
       "fromSeason": "2008-09",
       "toSeason": "2010-11",
-      "srSlug": "isaiah-thomas-1"
+      "srSlug": "isaiah-thomas-1",
+      "tsPct": 53.8,
+      "efgPct": 48.9,
+      "threePAr": 38.8
     },
     "nbaPer100": {
       "pts": 31,
