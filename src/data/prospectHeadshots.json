@@ -498,32 +498,92 @@
     "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5176240/magoon-gwath",
     "subtitle": "San Diego State Aztecs"
   },
-  "Darius Acuff": {
-    "headshotUrl": "https://arkansasrazorbacks.com/wp-content/uploads/2025/09/Darius-Acuff-Jr.-Mug-MBB-2025-26-5820-e1758565443835.jpg",
-    "source": "manual / official roster"
-  },
-  "Mikel Brown": {
-    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fgocards.com%2Fimages%2F2025%2F9%2F22%2FMikel_Brown_Jr._-_Cropped.png&width=180",
-    "source": "manual / official roster"
-  },
-  "Labaron Philon": {
-    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Frolltide.com%2Fimages%2F2025%2F8%2F27%2FPhilon_Labaron_2025_web.JPG&width=180",
-    "source": "manual / official roster"
-  },
-  "Chris Cenac": {
-    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fuhcougars.com%2Fimages%2F2025%2F8%2F30%2FCenac_Jr_eXMJO.jpg&width=180",
-    "source": "manual / official roster"
-  },
-  "Dash Daniels": {
-    "headshotUrl": "https://cdn.prod.website-files.com/689d925d97d31acf23d2722a/691bc971574be3713a4fd709_6ebe2df8e9d645238c718c26af5c6cc7.webp",
-    "source": "manual / official roster"
-  },
   "Morez Johnson": {
     "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fmgoblue.com%2Fimages%2F2025%2F7%2F28%2F21-Morez-Johnson-Jr_vD0Hr.jpg&width=180",
     "source": "manual / official roster"
   },
+  "Darius Acuff": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5142620.png",
+    "espnId": "s:40~l:41~a:5142620",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5142620/darius-acuff-jr",
+    "subtitle": "Arkansas Razorbacks"
+  },
+  "Mikel Brown": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5101761.png",
+    "espnId": "s:40~l:41~a:5101761",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5101761/mikel-brown-jr",
+    "subtitle": "Louisville Cardinals"
+  },
+  "Labaron Philon": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/4873090.png",
+    "espnId": "s:40~l:41~a:4873090",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/4873090/labaron-philon-jr",
+    "subtitle": "Alabama Crimson Tide"
+  },
+  "Chris Cenac": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5142621.png",
+    "espnId": "s:40~l:41~a:5142621",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5142621/chris-cenac-jr",
+    "subtitle": "Houston Cougars"
+  },
   "Tarris Reed": {
-    "headshotUrl": "https://images.sidearmdev.com/crop?height=270&type=webp&url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fuconnhuskies.com%2Fimages%2F2025%2F7%2F31%2FTR25_WBG.png&width=180",
-    "source": "manual / official roster"
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5105809.png",
+    "espnId": "s:40~l:41~a:5105809",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5105809/tarris-reed-jr",
+    "subtitle": "UConn Huskies"
+  },
+  "Bruce Thornton": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5105837.png",
+    "espnId": "s:40~l:41~a:5105837",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5105837/bruce-thornton",
+    "subtitle": "Ohio State Buckeyes"
+  },
+  "Otega Oweh": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5106270.png",
+    "espnId": "s:40~l:41~a:5106270",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5106270/otega-oweh",
+    "subtitle": "Kentucky Wildcats"
+  },
+  "Fletcher Loyer": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5105853.png",
+    "espnId": "s:40~l:41~a:5105853",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5105853/fletcher-loyer",
+    "subtitle": "Purdue Boilermakers"
+  },
+  "Tamin Lipsey": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5106254.png",
+    "espnId": "s:40~l:41~a:5106254",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5106254/tamin-lipsey",
+    "subtitle": "Iowa State Cyclones"
+  },
+  "Nolan Winter": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/4895783.png",
+    "espnId": "s:40~l:41~a:4895783",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/4895783/nolan-winter",
+    "subtitle": "Wisconsin Badgers"
+  },
+  "Richie Saunders": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5105462.png",
+    "espnId": "s:40~l:41~a:5105462",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5105462/richie-saunders",
+    "subtitle": "BYU Cougars"
+  },
+  "Braden Huff": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/4894445.png",
+    "espnId": "s:40~l:41~a:4894445",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/4894445/braden-huff",
+    "subtitle": "Gonzaga Bulldogs"
+  },
+  "Benett Stirtz": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5241364.png",
+    "espnId": "s:40~l:41~a:5241364",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/5241364/bennett-stirtz",
+    "subtitle": "Iowa Hawkeyes"
+  },
+  "Paul McNeil": {
+    "headshotUrl": "https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/4873151.png",
+    "espnId": "s:40~l:41~a:4873151",
+    "espnPage": "https://www.espn.com/mens-college-basketball/player/_/id/4873151/paul-mcneil-jr",
+    "subtitle": "NC State Wolfpack"
   }
 }

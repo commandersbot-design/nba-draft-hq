@@ -145,3 +145,37 @@ modern comp pool is what matters for matching current prospects.
 ## Update log
 
 - **2026-05-06:** Document created. Items 1+2 user-confirmed; 3+4 deferred pending subscription.
+- **2026-05-06 (later):** User pulled Stathead "current active CBB" CSV — gap-filled STL%/BLK%/OBPM/DBPM/PER/3PAr/ORB%/DRB% on 53/59 active 2026 prospects (90%). The 6 unmatched are international (no NCAA): Karim Lopez, Dash Daniels, Sergio De Larrea, Adam Atamna, Johann Grunloh, MoMo Faye. Item 1B partially complete; Item 1A (historicals 2000-2026 Per-Game pull for FTr/PFr) still queued.
+- **2026-05-06 (later):** AST/TO ratio derived from existing per-game totals — no new pull needed. Now displayed on Efficiency · Usage · Impact table with cohort percentile ranking.
+- **2026-05-06 (later):** Headshot audit — replaced 6 non-ESPN backgrounds (Acuff/Brown/Philon/Cenac/Tarris Reed/Dash Daniels) with ESPN transparent equivalents via Jr/Sr-aware search. Found ESPN matches for 8 previously-missing names (Bruce Thornton, Otega Oweh, Fletcher Loyer, Tamin Lipsey, Nolan Winter, Richie Saunders, Braden Huff, Benett Stirtz, Paul McNeil). Coverage: **49/59 active (83%) with transparent ESPN headshots, 0 with non-transparent backgrounds**, 10 still missing (7 international + Silas DeMary, Pryce Sandfort, K.J. Lewis — ESPN search returns no matches for the latter three).
+
+---
+
+## Still missing for the 2026 active class
+
+### Stathead Per-Game / Totals pull (NOT yet pulled)
+
+Required columns: `Player`, `FGA`, `3P`, `3PA`, `FTA`, `FT`, `PTS`, `PF`, `MP`, `G`, `Player-additional`. Will let us compute:
+- **FTr** (FTA / FGA) — aggression / foul-drawing signal
+- **PFr** (PF per 100 possessions, approximated) — bigs especially
+- **TS%, eFG%, 3PAr** for the 6 international prospects (Karim Lopez, etc.) IF Stathead has their NCAA history (most won't)
+
+Note: same Stathead query, different panel. Per-Game or Totals tab instead of Advanced.
+Save as: `imports/upstream/stathead/stathead-cbb-totals-current.csv`
+
+### Hoop-Math shot location splits — STILL QUEUED (Item 2)
+
+Same as before: rim/mid/3 split + zone eFG for the 53 NCAA-active prospects.
+Save as: `imports/upstream/hoop-math/2026-shot-locations.csv`
+
+### Three NCAA prospects with no ESPN headshot
+
+ESPN search returned no matches even with school-filter:
+- Silas DeMary (Georgia)
+- Pryce Sandfort (Iowa)
+- K.J. Lewis (Arizona)
+
+Options to fill these:
+1. Manually find their ESPN player ID via espn.com search and edit `src/data/prospectHeadshots.json`
+2. Use school athletic-site PNG (might have backgrounds — same problem we just solved)
+3. Leave as initials placeholder for now
