@@ -1831,12 +1831,13 @@ const REALISTIC_FLOOR = 60;
 const CAUTIONARY_FLOOR = 55;
 
 function rankComparablesByTier(current, historicalSet, opts = {}) {
-  const { realistic: realCount = 4, cautionary: cautionCount = 2 } = opts;
+  const { realistic: realCount = 4, cautionary: cautionCount = 2, overrides = {} } = opts;
   const scored = historicalSet
     .filter(isSettledHistorical)
     .map((historical) => ({ historical, ...scoreComparable(current, historical) }))
     .filter((entry) => entry.score > 0);
 
+  // Default tier assignment based on outcome
   const tierOf = (entry) => {
     const t = entry.historical.outcomeTier;
     if (t === "Legend" || t === "Star" || t === "Outlier") return "highEnd";
@@ -1846,38 +1847,166 @@ function rankComparablesByTier(current, historicalSet, opts = {}) {
   };
 
   const buckets = { highEnd: [], realistic: [], cautionary: [] };
+  const placedIds = new Set();
   for (const entry of scored) {
-    const t = tierOf(entry);
-    if (t) buckets[t].push(entry);
+    const override = overrides[entry.historical.id];
+    if (override === "hidden") {
+      placedIds.add(entry.historical.id);
+      continue;
+    }
+    const target = override === "highEnd" || override === "realistic" || override === "cautionary"
+      ? override
+      : tierOf(entry);
+    if (target) {
+      buckets[target].push({ ...entry, pinned: !!override });
+      placedIds.add(entry.historical.id);
+    }
   }
+
+  // Pinned historicals not in the natural top scores still need to be
+  // injected. Find them in the full historical set, score them, and place.
+  for (const [historicalId, target] of Object.entries(overrides)) {
+    if (placedIds.has(historicalId)) continue;
+    if (target === "hidden" || target == null) continue;
+    if (!["highEnd", "realistic", "cautionary"].includes(target)) continue;
+    const historical = historicalSet.find((h) => h.id === historicalId);
+    if (!historical) continue;
+    const sc = scoreComparable(current, historical);
+    buckets[target].push({ historical, score: sc.score, reasons: sc.reasons, pinned: true });
+  }
+
   for (const k of Object.keys(buckets)) {
-    buckets[k].sort((a, b) => b.score - a.score);
+    // Pinned entries float to the top of their section, then by score.
+    buckets[k].sort((a, b) => {
+      if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+      return b.score - a.score;
+    });
   }
 
   // High-end: dynamic count based on how strong the matches actually are.
-  // 0 entries when nothing clears the floor. 1 entry when only top clears.
-  // 2 entries only when both top picks are clearly similar profiles.
-  const highEndQualifiers = buckets.highEnd.filter((e) => e.score >= HIGH_END_FLOOR);
-  const highEnd = highEndQualifiers.length === 0
-    ? []
-    : highEndQualifiers[1] && highEndQualifiers[1].score >= HIGH_END_FLOOR_FOR_TWO
-      ? highEndQualifiers.slice(0, 2)
-      : [highEndQualifiers[0]];
+  // Pinned entries always show; auto-qualified entries need to clear the
+  // floor. 2 auto entries only when both top picks are clearly similar.
+  const highEndPinned = buckets.highEnd.filter((e) => e.pinned);
+  const highEndAuto = buckets.highEnd.filter((e) => !e.pinned);
+  const highEndAutoQualifiers = highEndAuto.filter((e) => e.score >= HIGH_END_FLOOR);
+  let highEndAutoShown = [];
+  if (highEndAutoQualifiers.length > 0) {
+    if (highEndAutoQualifiers[1] && highEndAutoQualifiers[1].score >= HIGH_END_FLOOR_FOR_TWO) {
+      highEndAutoShown = highEndAutoQualifiers.slice(0, 2);
+    } else {
+      highEndAutoShown = [highEndAutoQualifiers[0]];
+    }
+  }
+  const highEnd = [...highEndPinned, ...highEndAutoShown].slice(0, 4);
 
-  return {
-    highEnd,
-    realistic:  buckets.realistic.filter((e) => e.score >= REALISTIC_FLOOR).slice(0, realCount),
-    cautionary: buckets.cautionary.filter((e) => e.score >= CAUTIONARY_FLOOR).slice(0, cautionCount),
-  };
+  // Realistic: pinned + top auto-qualifiers up to realCount
+  const realisticPinned = buckets.realistic.filter((e) => e.pinned);
+  const realisticAuto = buckets.realistic.filter((e) => !e.pinned).filter((e) => e.score >= REALISTIC_FLOOR);
+  const realistic = [...realisticPinned, ...realisticAuto].slice(0, Math.max(realCount, realisticPinned.length));
+
+  // Cautionary: pinned + top auto-qualifiers up to cautionCount
+  const cautionaryPinned = buckets.cautionary.filter((e) => e.pinned);
+  const cautionaryAuto = buckets.cautionary.filter((e) => !e.pinned).filter((e) => e.score >= CAUTIONARY_FLOOR);
+  const cautionary = [...cautionaryPinned, ...cautionaryAuto].slice(0, Math.max(cautionCount, cautionaryPinned.length));
+
+  return { highEnd, realistic, cautionary };
 }
 
 // Single comparable card — used inside each ComparablesTab section.
 // `dim=true` softens the visual for the cautionary section so the realistic
 // section remains the primary read.
-const ComparableCard = ({ historical, score, reasons, dim = false }) => {
+// Subtle hover-revealed action menu on each comp card. The trigger sits in
+// the top-right at low opacity (15%) at rest, so a casual glance doesn't
+// catch it; on hover of the parent card it brightens to 60%. Click reveals
+// a small dropdown with move/hide actions. Keeps the override surface hidden
+// behind intent — won't invite spam interactions.
+const ComparableCardMenu = ({ currentSection, pinned, onMove, onHide, onUnpin }) => {
+  const [open, setOpen] = useState(false);
+  const items = [];
+  if (currentSection !== "highEnd")    items.push({ label: "Move to High-End",   action: () => onMove("highEnd") });
+  if (currentSection !== "realistic")  items.push({ label: "Move to Realistic",  action: () => onMove("realistic") });
+  if (currentSection !== "cautionary") items.push({ label: "Move to Cautionary", action: () => onMove("cautionary") });
+  if (pinned)                          items.push({ label: "Reset to default",   action: () => onUnpin() });
+  items.push({ label: "Hide this comp", action: () => onHide(), danger: true });
+
+  return (
+    <div className="prospera-comp-menu" style={{ position: "absolute", top: 8, right: 8 }}>
+      <button
+        type="button"
+        onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}
+        title="Customize this comp"
+        style={{
+          background: "transparent",
+          border: "none",
+          color: T.textMute,
+          cursor: "pointer",
+          padding: 4,
+          fontSize: 14,
+          fontWeight: 700,
+          lineHeight: 1,
+          opacity: open ? 0.9 : 0.15,
+          transition: "opacity 120ms ease",
+        }}
+      >
+        ⋯
+      </button>
+      {open && (
+        <>
+          {/* Outside-click catcher */}
+          <div
+            onClick={() => setOpen(false)}
+            style={{ position: "fixed", inset: 0, zIndex: 5 }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: 26,
+              right: 0,
+              minWidth: 170,
+              background: T.surface2,
+              border: `1px solid ${T.border}`,
+              boxShadow: "0 8px 24px rgba(0, 0, 0, 0.5)",
+              zIndex: 6,
+              display: "grid",
+            }}
+          >
+            {items.map((it, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={(e) => { e.stopPropagation(); it.action(); setOpen(false); }}
+                style={{
+                  ...mono,
+                  fontSize: 10,
+                  letterSpacing: "0.10em",
+                  color: it.danger ? T.danger : T.textDim,
+                  background: "transparent",
+                  border: "none",
+                  borderBottom: i < items.length - 1 ? `1px solid ${T.borderSoft}` : "none",
+                  padding: "8px 12px",
+                  cursor: "pointer",
+                  textAlign: "left",
+                  textTransform: "uppercase",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                {it.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+const ComparableCard = ({ historical, score, reasons, dim = false, pinned = false, currentSection, onMove, onHide, onUnpin }) => {
   const tierColor = OUTCOME_TIER_COLORS[historical.outcomeTier] || T.textMute;
+  const allowOverride = typeof onMove === "function";
   return (
     <div
+      className="prospera-comp-card"
       style={{
         background: T.card,
         borderTop: `1px solid ${T.border}`,
@@ -1885,8 +2014,38 @@ const ComparableCard = ({ historical, score, reasons, dim = false }) => {
         borderBottom: `1px solid ${T.border}`,
         borderLeft: `3px solid ${tierColor}`,
         opacity: dim ? 0.78 : 1,
+        position: "relative",
       }}
     >
+      {pinned && (
+        <span
+          title="Manually pinned"
+          style={{
+            position: "absolute",
+            top: 8,
+            left: 8,
+            ...mono,
+            fontSize: 7,
+            letterSpacing: "0.20em",
+            color: T.cyan,
+            border: `1px solid ${T.cyan}`,
+            padding: "1px 4px",
+            textTransform: "uppercase",
+            fontWeight: 700,
+          }}
+        >
+          PINNED
+        </span>
+      )}
+      {allowOverride && (
+        <ComparableCardMenu
+          currentSection={currentSection}
+          pinned={pinned}
+          onMove={onMove}
+          onHide={onHide}
+          onUnpin={onUnpin}
+        />
+      )}
       <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "44px 1fr auto", gap: 12, alignItems: "center" }}>
         <div style={{ ...mono, fontSize: 11, color: T.cyan, lineHeight: 1.2 }}>
           <div>{historical.draftYear}</div>
@@ -1972,15 +2131,125 @@ const ComparableSectionHeader = ({ title, eyebrow, count, accent, hint }) => (
   </div>
 );
 
-const ComparablesTab = ({ p }) => {
+// Subtle "Pin a comp" trigger that opens a search modal for picking any
+// settled historical and pinning to a chosen tier. Lives quietly at the
+// bottom of the comparables tab — small, low-contrast, intentionally easy
+// to miss for casual users so the override surface doesn't invite spam.
+const PinCompModal = ({ open, onClose, currentProspect, onPin }) => {
+  const [query, setQuery] = useState("");
+  const [tier, setTier] = useState("realistic");
+  const candidates = useMemo(() => {
+    if (!open) return [];
+    const q = query.trim().toLowerCase();
+    return HISTORICAL_PROSPECTS
+      .filter(isSettledHistorical)
+      .filter((h) => !q || h.name.toLowerCase().includes(q) || (h.school || "").toLowerCase().includes(q))
+      .slice(0, 60);
+  }, [open, query]);
+  if (!open) return null;
+  return (
+    <div
+      style={{
+        position: "fixed", inset: 0, background: "rgba(5, 10, 18, 0.78)",
+        zIndex: 95, display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
+      }}
+      onClick={onClose}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: T.surface2, border: `1px solid ${T.border}`,
+          borderLeft: `3px solid ${T.cyan}`,
+          width: "min(640px, 100%)", maxHeight: "85vh", display: "flex", flexDirection: "column",
+        }}
+      >
+        <div style={{ padding: "12px 16px", borderBottom: `1px solid ${T.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>
+            <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase" }}>
+              Pin a comp · {currentProspect.name}
+            </div>
+            <div style={{ fontSize: 13, color: T.text, fontWeight: 600, marginTop: 2 }}>
+              Search the historical archive
+            </div>
+          </div>
+          <button type="button" onClick={onClose} style={{ background: "transparent", border: "none", color: T.textMute, cursor: "pointer", padding: 4 }}>
+            <X size={14} />
+          </button>
+        </div>
+        <div style={{ padding: "10px 16px", borderBottom: `1px solid ${T.borderSoft}`, display: "flex", alignItems: "center", gap: 10 }}>
+          <Search size={13} color={T.textMute} />
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Type a player or school…"
+            autoFocus
+            style={{ flex: 1, background: "transparent", border: "none", outline: "none", color: T.text, fontSize: 13 }}
+          />
+          {/* Section selector */}
+          <select
+            value={tier}
+            onChange={(e) => setTier(e.target.value)}
+            style={{ ...mono, fontSize: 10, letterSpacing: "0.10em", background: T.surface2, color: T.cyan, border: `1px solid ${T.border}`, padding: "4px 8px", textTransform: "uppercase", cursor: "pointer" }}
+          >
+            <option value="highEnd">→ High-End</option>
+            <option value="realistic">→ Realistic</option>
+            <option value="cautionary">→ Cautionary</option>
+          </select>
+        </div>
+        <div style={{ flex: 1, overflowY: "auto" }}>
+          {candidates.length === 0 ? (
+            <div style={{ padding: 24, textAlign: "center", ...mono, fontSize: 11, color: T.textMute, letterSpacing: "0.12em" }}>
+              No matches
+            </div>
+          ) : (
+            candidates.map((h) => {
+              const tierColor = OUTCOME_TIER_COLORS[h.outcomeTier] || T.textMute;
+              return (
+                <button
+                  key={h.id}
+                  type="button"
+                  onClick={() => { onPin(h.id, tier); onClose(); }}
+                  style={{
+                    width: "100%", textAlign: "left",
+                    background: "transparent", border: "none",
+                    borderBottom: `1px solid ${T.borderSoft}`, borderLeft: `3px solid ${tierColor}`,
+                    padding: "10px 14px", color: T.text, cursor: "pointer",
+                    display: "grid", gridTemplateColumns: "60px 1fr auto", gap: 10, alignItems: "center",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  <div style={{ ...mono, fontSize: 11, color: T.cyan }}>
+                    <div>{h.draftYear}</div>
+                    <div>#{String(h.draftSlot).padStart(2, "0")}</div>
+                  </div>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: 13, color: T.text, fontWeight: 500 }}>{h.name}</div>
+                    <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2 }}>
+                      {h.school?.toUpperCase() || "—"} · {h.position || "—"} · {h.height || "—"}
+                    </div>
+                  </div>
+                  <span style={{ ...mono, fontSize: 9, letterSpacing: "0.12em", color: tierColor, border: `1px solid ${tierColor}`, padding: "2px 6px", textTransform: "uppercase" }}>
+                    {h.outcomeTier || "—"}
+                  </span>
+                </button>
+              );
+            })
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
+  const [pinModalOpen, setPinModalOpen] = useState(false);
   const groups = useMemo(
-    () => rankComparablesByTier(p, HISTORICAL_PROSPECTS, { highEnd: 2, realistic: 4, cautionary: 2 }),
-    [p]
+    () => rankComparablesByTier(p, HISTORICAL_PROSPECTS, { realistic: 4, cautionary: 2, overrides: compOverrides }),
+    [p, compOverrides]
   );
   const totalShown = groups.highEnd.length + groups.realistic.length + groups.cautionary.length;
-  if (totalShown === 0) {
-    return <EmptyState label="No historical comparables found yet — enrichment may still be in progress." />;
-  }
+  const allowOverride = typeof onSetCompOverride === "function";
 
   // Color accents per tier — echoes the outcome-tier palette so the section
   // headers feel of-a-piece with each card's left rail.
@@ -1988,13 +2257,48 @@ const ComparablesTab = ({ p }) => {
   const ACCENT_REAL = OUTCOME_TIER_COLORS.Hit || T.blue;
   const ACCENT_CAUT = T.textMute;
 
+  // Build the section's overflow handlers for ComparableCard. `currentSection`
+  // tells the menu which moves are valid; the handlers fire onSetCompOverride.
+  const cardProps = (entry, currentSection) => allowOverride ? {
+    currentSection,
+    onMove:   (target) => onSetCompOverride(entry.historical.id, target),
+    onHide:   () => onSetCompOverride(entry.historical.id, "hidden"),
+    onUnpin:  () => onSetCompOverride(entry.historical.id, null),
+  } : {};
+
+  if (totalShown === 0) {
+    return (
+      <div style={{ display: "grid", gap: 18 }}>
+        <EmptyState label="No historical comparables found yet — profile may not match the cohort closely enough" compact />
+        {allowOverride && (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              type="button"
+              onClick={() => setPinModalOpen(true)}
+              style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.textMute, background: "transparent", border: `1px dashed ${T.border}`, padding: "5px 12px", cursor: "pointer", textTransform: "uppercase" }}
+            >
+              + Pin a comp manually
+            </button>
+          </div>
+        )}
+        {allowOverride && (
+          <PinCompModal
+            open={pinModalOpen}
+            onClose={() => setPinModalOpen(false)}
+            currentProspect={p}
+            onPin={(id, tier) => onSetCompOverride(id, tier)}
+          />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div style={{ display: "grid", gap: 18 }}>
       <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.14em" }}>
         OUTCOME DISTRIBUTION · BEST CASE → MEDIAN PROJECTION → DOWNSIDE
       </div>
 
-      {/* HIGH-END · best case (smaller emphasis — these are the dream) */}
       {groups.highEnd.length > 0 && (
         <div>
           <ComparableSectionHeader
@@ -2005,12 +2309,13 @@ const ComparablesTab = ({ p }) => {
             hint="If everything translates — Star / Legend tier outcomes that match this profile."
           />
           <div style={{ display: "grid", gap: 8 }}>
-            {groups.highEnd.map((entry) => <ComparableCard key={entry.historical.id} {...entry} />)}
+            {groups.highEnd.map((entry) => (
+              <ComparableCard key={entry.historical.id} {...entry} {...cardProps(entry, "highEnd")} />
+            ))}
           </div>
         </div>
       )}
 
-      {/* REALISTIC · the actual projection — biggest section */}
       {groups.realistic.length > 0 && (
         <div>
           <ComparableSectionHeader
@@ -2021,12 +2326,13 @@ const ComparablesTab = ({ p }) => {
             hint="Hit-tier solid contributors — the most likely outcome for this profile."
           />
           <div style={{ display: "grid", gap: 10 }}>
-            {groups.realistic.map((entry) => <ComparableCard key={entry.historical.id} {...entry} />)}
+            {groups.realistic.map((entry) => (
+              <ComparableCard key={entry.historical.id} {...entry} {...cardProps(entry, "realistic")} />
+            ))}
           </div>
         </div>
       )}
 
-      {/* CAUTIONARY · downside risk (dimmed so it doesn't overpower) */}
       {groups.cautionary.length > 0 && (
         <div>
           <ComparableSectionHeader
@@ -2038,10 +2344,40 @@ const ComparablesTab = ({ p }) => {
           />
           <div style={{ display: "grid", gap: 8 }}>
             {groups.cautionary.map((entry) => (
-              <ComparableCard key={entry.historical.id} {...entry} dim />
+              <ComparableCard key={entry.historical.id} {...entry} dim {...cardProps(entry, "cautionary")} />
             ))}
           </div>
         </div>
+      )}
+
+      {/* Subtle pin-a-comp affordance — small dashed link at the very bottom */}
+      {allowOverride && (
+        <div style={{ display: "flex", justifyContent: "center", paddingTop: 4 }}>
+          <button
+            type="button"
+            onClick={() => setPinModalOpen(true)}
+            title="Search the historical archive and add a comp manually"
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.16em",
+              color: T.textMute, background: "transparent",
+              border: `1px dashed ${T.border}`, padding: "5px 12px",
+              cursor: "pointer", textTransform: "uppercase",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = T.textDim; e.currentTarget.style.borderColor = T.borderSoft; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = T.textMute; e.currentTarget.style.borderColor = T.border; }}
+          >
+            + Pin a comp manually
+          </button>
+        </div>
+      )}
+
+      {allowOverride && (
+        <PinCompModal
+          open={pinModalOpen}
+          onClose={() => setPinModalOpen(false)}
+          currentProspect={p}
+          onPin={(id, tier) => onSetCompOverride(id, tier)}
+        />
       )}
     </div>
   );
@@ -2053,7 +2389,7 @@ const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Co
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
 
-const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAddNote, onDeleteNote, customTier = "", customTags = [], onSetCustomTier, onToggleCustomTag }) => {
+const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAddNote, onDeleteNote, customTier = "", customTags = [], onSetCustomTier, onToggleCustomTag, compOverrides = {}, onSetCompOverride }) => {
   const [tab, setTab] = useState("Prospect Stats");
   const { displayScore, active: weightsActive } = useCustomWeights();
   const p = useMemo(() => {
@@ -2498,7 +2834,13 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
       )}
       {tab === "Traits" && <TraitsTab p={p} />}
       {tab === "Advantage" && <AdvantageProfile player={p} />}
-      {tab === "Comparables" && <ComparablesTab p={p} />}
+      {tab === "Comparables" && (
+        <ComparablesTab
+          p={p}
+          compOverrides={compOverrides}
+          onSetCompOverride={onSetCompOverride}
+        />
+      )}
       {tab === "Constellation" && (
         <ConstellationMap
           player={p}
@@ -4925,6 +5267,11 @@ function ProsperaAppInner() {
   const [mockDraftPicks, setMockDraftPicks] = useLocalStorageState("prospera.terminal.mock-draft", Array(60).fill(null));
   const [mockDraftTeams, setMockDraftTeams] = useLocalStorageState("prospera.terminal.mock-draft-teams", DEFAULT_MOCK_DRAFT_TEAMS);
   const [deepDives, setDeepDives] = useLocalStorageState("prospera.terminal.deep-dives", {});
+  // Per-prospect comp overrides. Shape:
+  //   { [prospectId]: { [historicalId]: 'highEnd' | 'realistic' | 'cautionary' | 'hidden' } }
+  // Applied by rankComparablesByTier — manual pins inject into the chosen
+  // section, 'hidden' filters the historical out of all sections entirely.
+  const [compOverrides, setCompOverrides] = useLocalStorageState("prospera.terminal.comp-overrides", {});
 
   const saveView = (name, state) => {
     const trimmed = String(name || "").trim();
@@ -5082,6 +5429,11 @@ function ProsperaAppInner() {
         @media (prefers-reduced-motion: reduce) {
           .prospera-ticker-marquee { animation: none !important; }
         }
+        /* Comp-card override menu — barely visible at rest, reveals on hover */
+        .prospera-comp-menu button:first-child { opacity: 0.15; }
+        .prospera-comp-menu:hover button:first-child,
+        .prospera-comp-card:hover .prospera-comp-menu button:first-child { opacity: 0.6; }
+        .prospera-comp-menu button:first-child:hover { opacity: 1 !important; }
         @media (max-width: 880px) {
           .prospera-rail { display: ${railOpen ? "block" : "none"} !important; position: fixed !important; left: 0; top: 52px; z-index: 40; height: calc(100vh - 52px) !important; box-shadow: 0 0 40px rgba(0,0,0,0.6); }
           .prospera-mobile-only { display: inline-flex !important; }
@@ -5225,6 +5577,15 @@ function ProsperaAppInner() {
               customTags={customTags[profilePlayer.id] || []}
               onSetCustomTier={(tier) => setCustomTier(profilePlayer.id, tier)}
               onToggleCustomTag={(tag) => toggleCustomTag(profilePlayer.id, tag)}
+              compOverrides={compOverrides[profilePlayer.id] || {}}
+              onSetCompOverride={(historicalId, target) => {
+                setCompOverrides((curr) => {
+                  const forProspect = { ...(curr[profilePlayer.id] || {}) };
+                  if (target == null) delete forProspect[historicalId];
+                  else forProspect[historicalId] = target;
+                  return { ...curr, [profilePlayer.id]: forProspect };
+                });
+              }}
             />
           )}
         </main>
