@@ -255,11 +255,25 @@ export const ScoreCell = ({ prospect, fallback = "—", style, decimals = 1 }) =
   return <span style={style}>{score.toFixed(decimals)}</span>;
 };
 
+// Hard ceilings on the weight system. TOTAL_CAP enforces "weights never sum
+// past 100" so the user has a fixed budget — moving one slider up forces
+// trade-offs against the rest. PER_AXIS_CAP keeps any single axis from
+// dominating the budget. A slider's effective max = min(PER_AXIS_CAP,
+// remaining budget when other axes hold their values).
+export const TOTAL_CAP = 100;
+export const PER_AXIS_CAP = 40;
+
 export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active, setActive }) => {
   const total = ALL_AXES.reduce((acc, a) => acc + (weights[a.key] || 0), 0);
 
   const setOne = (key, value) => {
-    setWeights((curr) => ({ ...curr, [key]: Math.max(0, Math.min(40, Math.round(value))) }));
+    setWeights((curr) => {
+      const others = ALL_AXES.reduce((s, a) => a.key === key ? s : s + (curr[a.key] || 0), 0);
+      const headroom = TOTAL_CAP - others;            // max this axis can take
+      const ceiling = Math.min(PER_AXIS_CAP, Math.max(0, headroom));
+      const clamped = Math.max(0, Math.min(ceiling, Math.round(value)));
+      return { ...curr, [key]: clamped };
+    });
   };
 
   const reset = () => setWeights({ ...DEFAULT_WEIGHTS });
@@ -326,7 +340,7 @@ export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active
       </div>
 
       <div style={{ padding: "12px 18px", borderBottom: `1px solid ${T.border}`, fontSize: 12, color: T.textDim, lineHeight: 1.55 }}>
-        Slide each trait to set how much it counts. Higher = more important. The mix gets normalized; absolute totals don't matter, ratios do.
+        Slide each trait to set how much it counts. Higher = more important. Total caps at 100 — pushing one slider up forces trade-offs against the rest.
       </div>
 
       <div style={{ flex: 1, overflowY: "auto", padding: "12px 18px" }}>
@@ -349,8 +363,12 @@ export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active
       </div>
 
       <div style={{ padding: "12px 18px", borderTop: `1px solid ${T.border}`, display: "flex", gap: 8, justifyContent: "space-between", alignItems: "center" }}>
-        <div style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: T.textMute, textTransform: "uppercase" }}>
-          Sum: {total}
+        <div style={{ ...mono, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ color: T.textMute }}>Budget</span>
+          <span style={{ color: total >= TOTAL_CAP ? T.cyan : T.text, fontWeight: 700 }}>{total} / {TOTAL_CAP}</span>
+          {total >= TOTAL_CAP && (
+            <span style={{ color: T.cyan, fontSize: 9, padding: "1px 5px", border: `1px solid ${T.cyan}`, fontWeight: 700 }}>AT CAP</span>
+          )}
         </div>
         <div style={{ display: "flex", gap: 8 }}>
           <button
@@ -386,6 +404,12 @@ function SliderSection({ title, subtitle, axes, weights, total, setOne }) {
         {axes.map((axis) => {
           const value = weights[axis.key] || 0;
           const sharePct = total > 0 ? Math.round((value / total) * 100) : 0;
+          // Per-slider effective max = min(per-axis cap, what's left in budget
+          // when other axes hold their values + this axis's current value).
+          // This prevents the slider from being dragged past the global 100 cap.
+          const headroom = TOTAL_CAP - (total - value);
+          const sliderMax = Math.max(value, Math.min(PER_AXIS_CAP, headroom));
+          const atCeiling = value >= sliderMax && sliderMax < PER_AXIS_CAP;
           return (
             <div key={axis.key}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
@@ -402,10 +426,11 @@ function SliderSection({ title, subtitle, axes, weights, total, setOne }) {
               <input
                 type="range"
                 min={0}
-                max={40}
+                max={sliderMax}
                 step={1}
                 value={value}
                 onChange={(e) => setOne(axis.key, Number(e.target.value))}
+                title={atCeiling ? "Capped — total budget is at 100. Reduce other axes to give this one more room." : undefined}
                 style={{ width: "100%", accentColor: T.cyan }}
               />
             </div>
