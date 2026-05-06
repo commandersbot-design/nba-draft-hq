@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import NEWS_DATA from '../data/prospectNews.json';
+import { isActive, getTickerPriority } from '../lib/prospectAliases';
 
 // Returns a unified, time-sorted news feed for the top ticker bar.
 //
@@ -32,9 +33,14 @@ export function useProspectNewsFeed(prospects, options = {}) {
     const items = [];
 
     // 1) Authored news items
+    //    Active flag: skip items whose prospect is flagged active=false in
+    //    prospectAliases.json (e.g., declared/withdrew). Ticker priority is
+    //    used as a sort boost so high-priority prospects' items rise to the
+    //    top within the freshness window.
     for (const raw of NEWS_DATA.items || []) {
       const prospect = prospectsById[raw.prospectId];
       if (!prospect) continue;
+      if (!isActive(prospect)) continue;
       const ts = raw.timestamp ? new Date(raw.timestamp).getTime() : 0;
       if (!raw.pinned && ts < cutoff) continue;
       items.push({
@@ -48,11 +54,13 @@ export function useProspectNewsFeed(prospects, options = {}) {
         timestampISO: raw.timestamp || null,
         sourceUrl: raw.sourceUrl || null,
         pinned: !!raw.pinned,
+        priority: getTickerPriority(prospect),
       });
     }
 
     // 2) Synthetic movement items from PROSPECTS[*].movement
     for (const p of prospects || []) {
+      if (!isActive(p)) continue;
       const raw = p.movement;
       if (!raw || raw === '' || raw === '0') continue;
       const delta = parseInt(raw, 10);
@@ -69,12 +77,19 @@ export function useProspectNewsFeed(prospects, options = {}) {
         timestampISO: null,
         sourceUrl: null,
         pinned: false,
+        priority: getTickerPriority(p),
       });
     }
 
+    // Sort: high priority items first, then newest first, with movement
+    // magnitude as the final tiebreaker. Priority is a coarse bucket (high /
+    // normal / low) so within a bucket we still respect timestamp.
+    const priorityRank = (p) => (p === 'high' ? 0 : p === 'low' ? 2 : 1);
     items.sort((a, b) => {
+      const pa = priorityRank(a.priority);
+      const pb = priorityRank(b.priority);
+      if (pa !== pb) return pa - pb;
       if (a.timestamp !== b.timestamp) return b.timestamp - a.timestamp;
-      // Tie-break: movement magnitude desc, then rank asc
       const am = Math.abs(a.delta || 0);
       const bm = Math.abs(b.delta || 0);
       if (am !== bm) return bm - am;
