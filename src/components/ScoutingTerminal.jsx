@@ -407,6 +407,10 @@ const COHORT_PERCENTILES = (() => {
     const factor36 = season.minutes > 0 ? 36 / season.minutes : null;
     const factor100 = season.minutes > 0 ? (36 / season.minutes) * (100 / 70) : null;
     const scale = (v, k) => (typeof v === "number" && k != null ? Math.round(v * k * 10) / 10 : null);
+    // Derived: AST/TO ratio — uncovered scout signal we can compute now.
+    const astToRatio = (typeof season.assists === "number" && typeof season.turnovers === "number" && season.turnovers > 0)
+      ? Math.round((season.assists / season.turnovers) * 100) / 100
+      : null;
     cohort.push({
       id: p.id,
       perGame: {
@@ -416,6 +420,7 @@ const COHORT_PERCENTILES = (() => {
         stl: season.steals ?? null,
         blk: season.blocks ?? null,
         tov: season.turnovers ?? null,
+        astTo: astToRatio,
       },
       per36: factor36 ? {
         pts: scale(season.points, factor36),
@@ -424,6 +429,7 @@ const COHORT_PERCENTILES = (() => {
         stl: scale(season.steals, factor36),
         blk: scale(season.blocks, factor36),
         tov: scale(season.turnovers, factor36),
+        astTo: astToRatio,  // ratio is rate-invariant
       } : null,
       per100: factor100 ? {
         pts: scale(season.points, factor100),
@@ -432,6 +438,7 @@ const COHORT_PERCENTILES = (() => {
         stl: scale(season.steals, factor100),
         blk: scale(season.blocks, factor100),
         tov: scale(season.turnovers, factor100),
+        astTo: astToRatio,
       } : null,
       advanced: advanced ? {
         trueShooting: advanced.trueShooting ? parseFloat(String(advanced.trueShooting).replace("%", "")) : null,
@@ -464,10 +471,13 @@ const COHORT_PERCENTILES = (() => {
   const STAT_DEFS = [
     ["perGame",  "pts", false], ["perGame",  "reb", false], ["perGame",  "ast", false],
     ["perGame",  "stl", false], ["perGame",  "blk", false], ["perGame",  "tov", true],
+    ["perGame",  "astTo", false],
     ["per36",    "pts", false], ["per36",    "reb", false], ["per36",    "ast", false],
     ["per36",    "stl", false], ["per36",    "blk", false], ["per36",    "tov", true],
+    ["per36",    "astTo", false],
     ["per100",   "pts", false], ["per100",   "reb", false], ["per100",   "ast", false],
     ["per100",   "stl", false], ["per100",   "blk", false], ["per100",   "tov", true],
+    ["per100",   "astTo", false],
     ["advanced", "trueShooting", false], ["advanced", "efgPct", false],
     ["advanced", "usage",        false], ["advanced", "assistRate", false],
     ["advanced", "turnoverRate", true ], ["advanced", "reboundRate", false],
@@ -536,6 +546,8 @@ const STAT_LABEL_TO_PCT_KEY = {
   "ORB%":  "advanced.orbPct",
   "DRB%":  "advanced.drbPct",
   "3PAr":  "advanced.threePAr",
+  // Derived
+  "AST/TO": "astTo",  // resolved against the per-game bucket via buildPercentileMap
 };
 
 // Build a percentile lookup map for a given prospect + rate mode, keyed by
@@ -3157,12 +3169,19 @@ const ProspectStatsTab = ({ p }) => {
     }
   }
 
-  // Build the Advanced metrics table (TS%, eFG%, USG%, AST%, TOV%, ORtg, DRtg, BPM, REB%)
+  // AST/TO ratio derived from raw season totals — no new ingestion needed.
+  // Standard scout citation. Higher = better playmaker signal.
+  const astToRatio = (season && typeof season.assists === "number" && typeof season.turnovers === "number" && season.turnovers > 0)
+    ? Math.round((season.assists / season.turnovers) * 100) / 100
+    : null;
+
+  // Build the Advanced metrics table (TS%, eFG%, USG%, AST%, AST/TO, TOV%, ORtg, DRtg, BPM, REB%)
   const advancedTable = adv ? {
     "TS%": adv.trueShooting ?? "—",
     "eFG%": adv.efgPct ?? "—",
     "USG%": adv.usage ?? "—",
     "AST%": adv.assistRate ?? "—",
+    "AST/TO": astToRatio != null ? astToRatio.toFixed(2) : "—",
     "TOV%": adv.turnoverRate ?? "—",
     "REB%": adv.reboundRate ?? "—",
     "ORtg": adv.ortg != null ? adv.ortg : "—",
