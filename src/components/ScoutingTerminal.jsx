@@ -2050,13 +2050,41 @@ const ComparableCard = ({ historical, score, reasons, dim = false, pinned = fals
         </span>
       )}
       {allowOverride && (
-        <ComparableCardMenu
-          currentSection={currentSection}
-          pinned={pinned}
-          onMove={onMove}
-          onHide={onHide}
-          onUnpin={onUnpin}
-        />
+        <>
+          {/* Direct ✕ remove button — one click to hide. Sits next to the
+              ⋯ menu so users see "remove" as a first-class action without
+              having to open a menu. Both buttons hover-reveal in the same way. */}
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onHide(); }}
+            title="Remove this comp"
+            className="prospera-comp-remove"
+            style={{
+              position: "absolute",
+              top: 8,
+              right: 36,
+              background: "transparent",
+              border: "none",
+              color: T.danger,
+              cursor: "pointer",
+              padding: 4,
+              lineHeight: 1,
+              opacity: 0.15,
+              transition: "opacity 120ms ease",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <X size={14} />
+          </button>
+          <ComparableCardMenu
+            currentSection={currentSection}
+            pinned={pinned}
+            onMove={onMove}
+            onHide={onHide}
+            onUnpin={onUnpin}
+          />
+        </>
       )}
       <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "44px 1fr auto", gap: 12, alignItems: "center" }}>
         <div style={{ ...mono, fontSize: 11, color: T.cyan, lineHeight: 1.2 }}>
@@ -2254,6 +2282,102 @@ const PinCompModal = ({ open, onClose, currentProspect, onPin }) => {
   );
 };
 
+// Footer that lists comps the user has manually hidden, with one-click
+// restore. Renders only when there's at least one hidden comp. Quiet
+// styling — collapsed by default, opens on click — so it doesn't clutter
+// the page when nothing's hidden.
+const HiddenCompsSection = ({ overrides, historicalSet, onRestore }) => {
+  const [open, setOpen] = useState(false);
+  const hidden = useMemo(() => {
+    const ids = Object.entries(overrides || {})
+      .filter(([, v]) => v === "hidden")
+      .map(([id]) => id);
+    return ids
+      .map((id) => historicalSet.find((h) => h.id === id))
+      .filter(Boolean)
+      .sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+  }, [overrides, historicalSet]);
+  if (hidden.length === 0) return null;
+  return (
+    <div style={{ paddingTop: 4 }}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          ...mono,
+          fontSize: 9,
+          letterSpacing: "0.16em",
+          color: T.textMute,
+          background: "transparent",
+          border: "none",
+          padding: "4px 0",
+          cursor: "pointer",
+          textTransform: "uppercase",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+        }}
+      >
+        <span>{hidden.length} hidden comp{hidden.length === 1 ? "" : "s"}</span>
+        <span style={{ color: T.textDim }}>{open ? "▾" : "▸"}</span>
+      </button>
+      {open && (
+        <div style={{ display: "grid", gap: 4, marginTop: 6 }}>
+          {hidden.map((h) => {
+            const tierColor = OUTCOME_TIER_COLORS[h.outcomeTier] || T.textMute;
+            return (
+              <div
+                key={h.id}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "auto 1fr auto",
+                  gap: 10,
+                  alignItems: "center",
+                  padding: "6px 10px",
+                  background: T.surface,
+                  borderLeft: `2px solid ${tierColor}`,
+                  border: `1px solid ${T.borderSoft}`,
+                  opacity: 0.75,
+                }}
+              >
+                <span style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.10em" }}>
+                  {h.draftYear} #{String(h.draftSlot).padStart(2, "0")}
+                </span>
+                <span style={{ fontSize: 12, color: T.textDim, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {h.name}
+                  <span style={{ ...mono, fontSize: 9, color: T.textMute, marginLeft: 8, letterSpacing: "0.1em" }}>
+                    {h.position} · {h.outcomeTier}
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => onRestore(h.id)}
+                  title="Restore this comp"
+                  style={{
+                    ...mono,
+                    fontSize: 9,
+                    letterSpacing: "0.14em",
+                    color: T.cyan,
+                    background: "transparent",
+                    border: `1px solid ${T.border}`,
+                    padding: "3px 8px",
+                    cursor: "pointer",
+                    textTransform: "uppercase",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = T.cyan)}
+                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = T.border)}
+                >
+                  Restore
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
   const [pinModalOpen, setPinModalOpen] = useState(false);
   const groups = useMemo(
@@ -2360,6 +2484,17 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
             ))}
           </div>
         </div>
+      )}
+
+      {/* Hidden comps · expandable footer so removed comps stay reversible.
+          Without this, hiding a comp would be a one-way action — the user
+          would have no path back to a comp they accidentally removed. */}
+      {allowOverride && (
+        <HiddenCompsSection
+          overrides={compOverrides}
+          historicalSet={HISTORICAL_PROSPECTS}
+          onRestore={(historicalId) => onSetCompOverride(historicalId, null)}
+        />
       )}
 
       {/* Subtle pin-a-comp affordance — small dashed link at the very bottom */}
@@ -5448,6 +5583,9 @@ function ProsperaAppInner() {
         .prospera-comp-menu:hover button:first-child,
         .prospera-comp-card:hover .prospera-comp-menu button:first-child { opacity: 0.6; }
         .prospera-comp-menu button:first-child:hover { opacity: 1 !important; }
+        /* Direct ✕ remove button mirrors the menu's reveal logic */
+        .prospera-comp-card:hover .prospera-comp-remove { opacity: 0.6; }
+        .prospera-comp-remove:hover { opacity: 1 !important; }
         @media (max-width: 880px) {
           .prospera-rail { display: ${railOpen ? "block" : "none"} !important; position: fixed !important; left: 0; top: 52px; z-index: 40; height: calc(100vh - 52px) !important; box-shadow: 0 0 40px rgba(0,0,0,0.6); }
           .prospera-mobile-only { display: inline-flex !important; }
