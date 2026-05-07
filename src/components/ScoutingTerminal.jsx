@@ -3624,24 +3624,28 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
 // renders each trait as: large number + tier label (POOR / BELOW AVG / AVG /
 // GREAT / ELITE) + filled bar in the matching tier color. Same 5-tier scale
 // used by PercentileIndicator so the visual language is consistent.
-// Cohort-relative tiering. Falls back to absolute thresholds if no cohort
-// distribution exists for the trait (shouldn't happen for the 5-bucket
-// traits but we defend it anyway).
+// Cohort-relative tiering using letter grades. The 5-bucket trait scores
+// peak at ~80 by design (derived from 1-10 trait grades), so "ELITE" labels
+// for a 75 oversold things. Letter grades (A+/A/B/C/D) are universally
+// understood as class-relative — nobody assumes "A" means objectively elite,
+// they read it as "good for this class." Keeps the user's calibration ask
+// (top guys stand out) without misrepresenting absolute quality.
 function traitTier(value, traitName) {
   const cohort = traitName ? TRAIT_COHORT_THRESHOLDS[traitName] : null;
   if (cohort) {
-    if (value >= cohort.eliteMin) return { label: "ELITE",     color: "var(--prospera-pct-elite)" };
-    if (value >= cohort.greatMin) return { label: "GREAT",     color: "var(--prospera-pct-great)" };
-    if (value >= cohort.avgMin)   return { label: "AVG",       color: "var(--prospera-pct-avg)"   };
-    if (value >= cohort.belowMin) return { label: "BELOW AVG", color: "var(--prospera-pct-below)" };
-    return                              { label: "POOR",      color: "var(--prospera-pct-poor)"  };
+    if (value >= cohort.eliteMin) return { label: "A+", color: "var(--prospera-pct-elite)" };
+    if (value >= cohort.greatMin) return { label: "A",  color: "var(--prospera-pct-great)" };
+    if (value >= cohort.avgMin)   return { label: "B",  color: "var(--prospera-pct-avg)"   };
+    if (value >= cohort.belowMin) return { label: "C",  color: "var(--prospera-pct-below)" };
+    return                              { label: "D",  color: "var(--prospera-pct-poor)"  };
   }
-  // Fallback: absolute scale
-  if (value >= 90) return { label: "ELITE",     color: "var(--prospera-pct-elite)" };
-  if (value >= 75) return { label: "GREAT",     color: "var(--prospera-pct-great)" };
-  if (value >= 50) return { label: "AVG",       color: "var(--prospera-pct-avg)"   };
-  if (value >= 25) return { label: "BELOW AVG", color: "var(--prospera-pct-below)" };
-  return                  { label: "POOR",      color: "var(--prospera-pct-poor)"  };
+  // Fallback: absolute scale (defensive — shouldn't be reached for the
+  // 5-bucket traits since cohort thresholds are precomputed at module load)
+  if (value >= 90) return { label: "A+", color: "var(--prospera-pct-elite)" };
+  if (value >= 75) return { label: "A",  color: "var(--prospera-pct-great)" };
+  if (value >= 50) return { label: "B",  color: "var(--prospera-pct-avg)"   };
+  if (value >= 25) return { label: "C",  color: "var(--prospera-pct-below)" };
+  return                  { label: "D",  color: "var(--prospera-pct-poor)"  };
 }
 
 const TraitBreakdownPanel = ({ traits }) => {
@@ -3659,9 +3663,14 @@ const TraitBreakdownPanel = ({ traits }) => {
           justifyContent: "space-between",
         }}
       >
-        <Label style={{ color: T.cyan, letterSpacing: "0.16em", fontWeight: 700 }}>Trait Breakdown</Label>
+        <Label
+          style={{ color: T.cyan, letterSpacing: "0.16em", fontWeight: 700, cursor: "help" }}
+          title="Letter grades are class-relative. Top 10% of the 2026 class for a trait = A+, top 25% = A, top 50% = B, top 75% = C, bottom 25% = D. The number is the system's 0–100 trait score (peaks ~80)."
+        >
+          Trait Breakdown
+        </Label>
         <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
-          0–100 SCALE · vs CLASS
+          GRADED vs 2026 CLASS
         </div>
       </div>
       <div style={{ padding: "16px 20px", display: "grid", gap: 14 }}>
