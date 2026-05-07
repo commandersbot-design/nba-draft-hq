@@ -381,6 +381,43 @@ const PROSPECTS = PROSPECTS_ALL.filter((p) =>
 //
 // Inverted stats (TOV, turnoverRate, drtg) are flipped so "higher percentile
 // always means BETTER" — UI can use one color rule across the board.
+// Trait-score distribution across the active class. The raw 5-bucket scores
+// (Scoring, Playmaking, Defense, Feel, Athleticism) cluster in the 50-80
+// range — they don't reach 90+. Hard absolute thresholds (90+ = ELITE)
+// would mean nobody ever lands in ELITE. Instead, we compute each trait's
+// distribution across the active 2026 class once at module load, then assign
+// tier labels by PERCENTILE WITHIN THE CLASS:
+//   top 10% → ELITE
+//   top 25% → GREAT
+//   top 50% → AVG
+//   top 75% → BELOW AVG
+//   bottom 25% → POOR
+// This is self-calibrating — the top guys are always recognized as the
+// top guys regardless of how compressed the absolute scale is.
+const TRAIT_COHORT_THRESHOLDS = (() => {
+  const traits = ["Scoring", "Playmaking", "Defense", "Feel", "Athleticism"];
+  const out = {};
+  for (const trait of traits) {
+    const vals = PROSPECTS
+      .map((p) => p.traits?.[trait])
+      .filter((v) => typeof v === "number")
+      .sort((a, b) => b - a); // descending
+    if (vals.length === 0) {
+      out[trait] = { eliteMin: 90, greatMin: 75, avgMin: 50, belowMin: 25 };
+      continue;
+    }
+    // Convert "top X%" into a value cutoff
+    const pct = (p) => vals[Math.min(vals.length - 1, Math.floor(vals.length * p))];
+    out[trait] = {
+      eliteMin:  pct(0.10),  // top 10%
+      greatMin:  pct(0.25),  // top 25%
+      avgMin:    pct(0.50),  // top 50%
+      belowMin:  pct(0.75),  // top 75% (anything below = POOR)
+    };
+  }
+  return out;
+})();
+
 const COHORT_PERCENTILES = (() => {
   // Build per-prospect scaled stat lines once
   const cohort = [];
@@ -3587,7 +3624,19 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
 // renders each trait as: large number + tier label (POOR / BELOW AVG / AVG /
 // GREAT / ELITE) + filled bar in the matching tier color. Same 5-tier scale
 // used by PercentileIndicator so the visual language is consistent.
-function traitTier(value) {
+// Cohort-relative tiering. Falls back to absolute thresholds if no cohort
+// distribution exists for the trait (shouldn't happen for the 5-bucket
+// traits but we defend it anyway).
+function traitTier(value, traitName) {
+  const cohort = traitName ? TRAIT_COHORT_THRESHOLDS[traitName] : null;
+  if (cohort) {
+    if (value >= cohort.eliteMin) return { label: "ELITE",     color: "var(--prospera-pct-elite)" };
+    if (value >= cohort.greatMin) return { label: "GREAT",     color: "var(--prospera-pct-great)" };
+    if (value >= cohort.avgMin)   return { label: "AVG",       color: "var(--prospera-pct-avg)"   };
+    if (value >= cohort.belowMin) return { label: "BELOW AVG", color: "var(--prospera-pct-below)" };
+    return                              { label: "POOR",      color: "var(--prospera-pct-poor)"  };
+  }
+  // Fallback: absolute scale
   if (value >= 90) return { label: "ELITE",     color: "var(--prospera-pct-elite)" };
   if (value >= 75) return { label: "GREAT",     color: "var(--prospera-pct-great)" };
   if (value >= 50) return { label: "AVG",       color: "var(--prospera-pct-avg)"   };
@@ -3617,7 +3666,7 @@ const TraitBreakdownPanel = ({ traits }) => {
       </div>
       <div style={{ padding: "16px 20px", display: "grid", gap: 14 }}>
         {entries.map(([trait, value]) => {
-          const tier = traitTier(value);
+          const tier = traitTier(value, trait);
           return (
             <div key={trait} style={{ display: "grid", gridTemplateColumns: "120px 1fr 56px 90px", gap: 14, alignItems: "center" }}>
               <div style={{ fontSize: 13, color: T.text, fontWeight: 600 }}>{trait}</div>
