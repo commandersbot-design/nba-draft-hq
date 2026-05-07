@@ -24,6 +24,7 @@ import ARCHETYPE_CATALOG from "../data/archetypeCatalog.json";
 import PROFILE_STATS from "../data/profileStats.json";
 import PROSPECT_ADVANCED_EXTRAS from "../data/prospectAdvancedExtras.json";
 import PROSPECT_ALIASES from "../data/prospectAliases.json";
+import BOARD_PRESETS from "../data/boardPresets.json";
 
 // Merge the career advanced sidecar (NBA + CBB rate stats from Sports Reference)
 // into each historical prospect at module load. This keeps the JSON file the
@@ -281,7 +282,7 @@ import { AdvantageProfile, AdvantageComparison } from "./AdvantageBars";
 import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
 import { MockDraftPage } from "./MockDraft";
-import { CustomWeightsProvider, CustomWeightsDrawer, useCustomWeights, ScoreCell } from "./CustomWeights";
+import { CustomWeightsProvider, CustomWeightsDrawer, useCustomWeights, ScoreCell, computePersonalScore, DEFAULT_WEIGHTS } from "./CustomWeights";
 import { DeepDivesPage } from "./DeepDives";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
 
@@ -5068,6 +5069,47 @@ function downloadBlob(filename, content, type) {
   URL.revokeObjectURL(url);
 }
 
+// =============================================================================
+// MY BOARD — multi-mode board builder
+// =============================================================================
+// Four ways to build a board:
+//   1. Manual           — drag-and-drop, the user's own ranking
+//   2. Custom Weights   — auto-rank using the user's saved Lens weights
+//   3. Overall Preset   — auto-rank using a built-in preset (Best Overall,
+//                          Upside Hunter, 3-and-D Specialist, etc.)
+//   4. Team Preset      — auto-rank against an NBA team's stated needs
+//                          (translates needs → weight emphasis via
+//                          BOARD_PRESETS.needsBoosts)
+//
+// Mode + preset selection persists in localStorage. Manual mode preserves
+// the user's hand-curated order; switching modes doesn't destroy it.
+// =============================================================================
+
+// Translate a list of need strings into a weight overrides dict by summing
+// boosts from BOARD_PRESETS.needsBoosts. Unrecognized needs fall through
+// gracefully (no boost applied).
+function buildWeightsForTeam(teamAbbr) {
+  const needs = (DRAFT_CONTEXT.needs && DRAFT_CONTEXT.needs[teamAbbr]) || [];
+  const weights = { ...DEFAULT_WEIGHTS };
+  for (const need of needs) {
+    const boosts = BOARD_PRESETS.needsBoosts[need];
+    if (!boosts) continue;
+    for (const [axis, delta] of Object.entries(boosts)) {
+      weights[axis] = (weights[axis] || 0) + delta;
+    }
+  }
+  return { weights, needs };
+}
+
+// Score every prospect with the given weights config and sort descending.
+function scoreAndSortBoard(weights) {
+  return PROSPECTS
+    .map((p) => ({ p, score: computePersonalScore(p, weights) }))
+    .filter((entry) => typeof entry.score === "number" && Number.isFinite(entry.score))
+    .sort((a, b) => b.score - a.score)
+    .map((entry, idx) => ({ ...entry, rank: idx + 1 }));
+}
+
 const MyBoardPage = ({
   myBoard = [],
   savedBoards = [],
@@ -5077,15 +5119,71 @@ const MyBoardPage = ({
   onLoadBoard,
   onDeleteBoard,
   onOpenProfile,
+  onOpenWeights,
+  mode = "manual",
+  setMode,
+  presetKey = "best_overall",
+  setPresetKey,
+  teamKey = "WAS",
+  setTeamKey,
 }) => {
   const [name, setName] = useState("");
   const [draggingIndex, setDraggingIndex] = useState(null);
-  const orderedPlayers = myBoard.map((id) => PROSPECTS.find((p) => p.id === id)).filter(Boolean);
+  const { weights: customWeights, active: customActive } = useCustomWeights();
+
+  // Pick the active board based on mode. Each mode produces an array of
+  // { p, score, rank } objects (score is null for manual mode since manual
+  // is hand-ordered, not score-driven).
+  const { board, sourceLabel, sourceDetail } = useMemo(() => {
+    if (mode === "custom") {
+      const sorted = scoreAndSortBoard(customWeights);
+      return {
+        board: sorted,
+        sourceLabel: "Custom Weights",
+        sourceDetail: customActive
+          ? "Auto-ranked using your saved Lens weights."
+          : "Lens is currently OFF — turn it on or adjust weights to rank.",
+      };
+    }
+    if (mode === "preset") {
+      const preset = BOARD_PRESETS.overall.find((p) => p.key === presetKey) || BOARD_PRESETS.overall[0];
+      const sorted = scoreAndSortBoard(preset.weights);
+      return {
+        board: sorted,
+        sourceLabel: preset.label,
+        sourceDetail: preset.description,
+      };
+    }
+    if (mode === "team") {
+      const { weights, needs } = buildWeightsForTeam(teamKey);
+      const sorted = scoreAndSortBoard(weights);
+      const teamLabel = BOARD_PRESETS.teamLabels[teamKey] || teamKey;
+      return {
+        board: sorted,
+        sourceLabel: teamLabel,
+        sourceDetail: needs.length > 0
+          ? `Boosted by team needs: ${needs.join(" · ")}`
+          : "No needs registered for this team — fall back to default weights.",
+      };
+    }
+    // manual
+    const orderedPlayers = myBoard
+      .map((id) => PROSPECTS.find((p) => p.id === id))
+      .filter(Boolean)
+      .map((p, idx) => ({ p, score: null, rank: idx + 1 }));
+    return {
+      board: orderedPlayers,
+      sourceLabel: "Manual",
+      sourceDetail: "Drag rows to reorder. Your order is saved automatically.",
+    };
+  }, [mode, presetKey, teamKey, myBoard, customWeights, customActive]);
 
   const exportJson = () => {
     const payload = {
       exportedAt: new Date().toISOString(),
-      board: buildBoardRows(orderedPlayers),
+      mode,
+      sourceLabel,
+      board: buildBoardRows(board.map((entry) => entry.p)),
     };
     downloadBlob(
       `prospera-my-board-${new Date().toISOString().slice(0, 10)}.json`,
@@ -5095,8 +5193,9 @@ const MyBoardPage = ({
   };
 
   const exportCsv = () => {
-    const rows = buildBoardRows(orderedPlayers);
-    const header = Object.keys(rows[0] || { customRank: "" });
+    const rows = buildBoardRows(board.map((entry) => entry.p));
+    if (rows.length === 0) return;
+    const header = Object.keys(rows[0]);
     const lines = [header.join(",")];
     for (const row of rows) lines.push(header.map((k) => escapeCsvCell(row[k])).join(","));
     downloadBlob(
@@ -5106,96 +5205,178 @@ const MyBoardPage = ({
     );
   };
 
+  const isManual = mode === "manual";
+  const teamOptions = Object.keys(BOARD_PRESETS.teamLabels).sort();
+
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
+      {/* Header — minimal. Title + count + export. Save/load was moved into
+          a collapsed section below since most users won't use it day-to-day. */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 18, flexWrap: "wrap", gap: 12 }}>
         <div>
           <Label>Workspace</Label>
           <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
             My Board
           </h1>
           <div style={{ fontSize: 13, color: T.textDim }}>
-            Drag to reorder · {orderedPlayers.length} prospects
+            Build your own big board · {board.length} prospects
           </div>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <button type="button" onClick={onReset} style={pillButtonStyle()}>
-            RESET TO DEFAULT
-          </button>
-          <button type="button" onClick={exportJson} style={pillButtonStyle(T.cyan)}>
-            <Download size={11} /> EXPORT JSON
+          <button type="button" onClick={exportJson} style={pillButtonStyle(T.cyan)} title="Export the active board">
+            <Download size={11} /> JSON
           </button>
           <button type="button" onClick={exportCsv} style={pillButtonStyle(T.cyan)}>
-            <Download size={11} /> EXPORT CSV
+            <Download size={11} /> CSV
           </button>
         </div>
       </div>
 
-      <div style={{ background: T.surface, border: `1px solid ${T.border}`, padding: 14, marginBottom: 18 }}>
-        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Save current board as…"
+      {/* MODE TABS — pick how the board is built */}
+      <div style={{ display: "flex", gap: 0, marginBottom: 14, flexWrap: "wrap", border: `1px solid ${T.border}`, width: "fit-content" }}>
+        {[
+          { key: "manual",  label: "Manual",          hint: "Drag-and-drop your own ranking" },
+          { key: "custom",  label: "Custom Weights",  hint: "Auto-rank using your Lens weights" },
+          { key: "preset",  label: "Preset",          hint: "Pick a built-in scout philosophy" },
+          { key: "team",    label: "Team Needs",      hint: "Rank against an NBA team's needs" },
+        ].map((opt, i, arr) => {
+          const active = mode === opt.key;
+          return (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => setMode?.(opt.key)}
+              title={opt.hint}
+              style={{
+                ...mono,
+                fontSize: 11,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                padding: "10px 16px",
+                background: active ? "var(--prospera-accent-bg)" : "transparent",
+                color: active ? T.cyan : T.textDim,
+                border: "none",
+                borderRight: i < arr.length - 1 ? `1px solid ${T.border}` : "none",
+                cursor: "pointer",
+                fontWeight: active ? 700 : 500,
+              }}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* MODE CONTEXT BAR — explains what's driving the current ranking */}
+      <div
+        style={{
+          background: T.surface,
+          border: `1px solid ${T.border}`,
+          borderLeft: `3px solid ${T.cyan}`,
+          padding: "12px 16px",
+          marginBottom: 14,
+          display: "grid",
+          gridTemplateColumns: "1fr auto",
+          gap: 12,
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <div style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.textMute, textTransform: "uppercase" }}>
+            {mode === "manual" ? "Hand-Curated" : mode === "custom" ? "Lens-Driven" : mode === "preset" ? "Preset" : "Team Needs"}
+          </div>
+          <div style={{ fontSize: 15, color: T.text, fontWeight: 700, marginTop: 2 }}>{sourceLabel}</div>
+          <div style={{ fontSize: 12, color: T.textDim, marginTop: 4, lineHeight: 1.5 }}>{sourceDetail}</div>
+        </div>
+        {/* Mode-specific control on the right side of the context bar */}
+        {mode === "preset" && (
+          <select
+            value={presetKey}
+            onChange={(e) => setPresetKey?.(e.target.value)}
             style={{
-              flex: "1 1 220px",
-              minWidth: 180,
+              ...mono,
+              fontSize: 11,
+              letterSpacing: "0.06em",
+              color: T.cyan,
               background: T.surface2,
-              border: `1px solid ${T.border}`,
-              color: T.text,
-              padding: "8px 10px",
-              fontSize: 13,
-              outline: "none",
-            }}
-          />
-          <button
-            type="button"
-            onClick={() => { onSaveBoard?.(name); setName(""); }}
-            disabled={!name.trim()}
-            style={{
-              ...pillButtonStyle(name.trim() ? T.cyan : T.textMute),
-              cursor: name.trim() ? "pointer" : "not-allowed",
+              border: `1px solid ${T.cyan}`,
+              padding: "8px 12px",
+              cursor: "pointer",
+              minWidth: 200,
             }}
           >
-            SAVE
-          </button>
-        </div>
-        {savedBoards.length > 0 && (
-          <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
-            {savedBoards.map((entry) => (
-              <div key={entry.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", border: `1px solid ${T.borderSoft}`, background: T.surface2 }}>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 13, color: T.text, fontWeight: 500 }}>{entry.name}</div>
-                  <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2 }}>
-                    {new Date(entry.createdAt).toLocaleString().toUpperCase()}
-                  </div>
-                </div>
-                <button type="button" onClick={() => onLoadBoard?.(entry.id)} style={inlineActionStyle(T.cyan)}>LOAD</button>
-                <button type="button" onClick={() => onDeleteBoard?.(entry.id)} style={inlineActionStyle(T.textMute)}>DELETE</button>
-              </div>
+            {BOARD_PRESETS.overall.map((preset) => (
+              <option key={preset.key} value={preset.key}>{preset.label}</option>
             ))}
-          </div>
+          </select>
+        )}
+        {mode === "team" && (
+          <select
+            value={teamKey}
+            onChange={(e) => setTeamKey?.(e.target.value)}
+            style={{
+              ...mono,
+              fontSize: 11,
+              letterSpacing: "0.06em",
+              color: T.cyan,
+              background: T.surface2,
+              border: `1px solid ${T.cyan}`,
+              padding: "8px 12px",
+              cursor: "pointer",
+              minWidth: 240,
+            }}
+          >
+            {teamOptions.map((abbr) => (
+              <option key={abbr} value={abbr}>{abbr} · {BOARD_PRESETS.teamLabels[abbr]}</option>
+            ))}
+          </select>
+        )}
+        {mode === "custom" && (
+          <button
+            type="button"
+            onClick={onOpenWeights}
+            style={pillButtonStyle(T.cyan)}
+          >
+            ADJUST WEIGHTS →
+          </button>
+        )}
+        {mode === "manual" && (
+          <button type="button" onClick={onReset} style={pillButtonStyle()} title="Reset manual order to default">
+            RESET ORDER
+          </button>
         )}
       </div>
 
+      {/* BOARD LIST — manual mode shows drag handles, auto modes show rank + score */}
       <div style={{ background: T.surface, border: `1px solid ${T.border}` }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "44px 56px 1fr 70px 70px 60px",
+            gridTemplateColumns: isManual ? "44px 56px 1fr 70px 70px 60px" : "56px 1fr 70px 90px 80px",
             padding: "10px 14px",
             background: T.surface2,
             borderBottom: `1px solid ${T.border}`,
           }}
         >
-          {["", "MY", "PROSPECT", "POS", "DEFAULT", "SCORE"].map((h) => (
-            <div key={h} style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>{h}</div>
+          {(isManual
+            ? ["", "MY", "PROSPECT", "POS", "DEFAULT", "SCORE"]
+            : ["RANK", "PROSPECT", "POS", "SCHOOL", "SCORE"]
+          ).map((h, i) => (
+            <div key={h || `_${i}`} style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>{h}</div>
           ))}
         </div>
-        {orderedPlayers.map((p, i) => {
-          const isDragging = draggingIndex === i;
+        {board.length === 0 && (
+          <div style={{ padding: 28, textAlign: "center", ...mono, fontSize: 11, color: T.textMute, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+            {mode === "custom" && !customActive
+              ? "Lens is OFF · open the Lens drawer and toggle it on, or set non-zero weights"
+              : "No prospects scoreable with current weights"}
+          </div>
+        )}
+        {board.map((entry, i) => {
+          const p = entry.p;
+          const isDragging = isManual && draggingIndex === i;
           const familyBar = familyBarColor(p);
-          return (
+          const renderManual = (
             <div
               key={p.id}
               draggable
@@ -5204,10 +5385,7 @@ const MyBoardPage = ({
                 e.dataTransfer.effectAllowed = "move";
                 e.dataTransfer.setData("text/plain", String(i));
               }}
-              onDragOver={(e) => {
-                e.preventDefault();
-                e.dataTransfer.dropEffect = "move";
-              }}
+              onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = "move"; }}
               onDrop={(e) => {
                 e.preventDefault();
                 const fromIndex = Number(e.dataTransfer.getData("text/plain"));
@@ -5228,7 +5406,7 @@ const MyBoardPage = ({
               }}
             >
               <div style={{ ...mono, fontSize: 14, color: T.textMute, lineHeight: 1, userSelect: "none" }} title="Drag to reorder">≡</div>
-              <div style={{ ...mono, fontSize: 12, color: T.cyan }}>{String(i + 1).padStart(2, "0")}</div>
+              <div style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600 }}>{String(i + 1).padStart(2, "0")}</div>
               <div onClick={() => onOpenProfile?.(p.id)} style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0, cursor: "pointer" }}>
                 <PlayerImg p={p} size={28} />
                 <div style={{ minWidth: 0 }}>
@@ -5243,11 +5421,137 @@ const MyBoardPage = ({
               <div style={{ ...mono, fontSize: 12, color: T.cyan, fontWeight: 600 }}><ScoreCell prospect={p} /></div>
             </div>
           );
+          const renderAuto = (
+            <div
+              key={p.id}
+              onClick={() => onOpenProfile?.(p.id)}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "56px 1fr 70px 90px 80px",
+                padding: "10px 14px 10px 20px",
+                borderBottom: `1px solid ${T.borderSoft}`,
+                boxShadow: `inset 5px 0 0 ${familyBar}`,
+                alignItems: "center",
+                cursor: "pointer",
+                transition: "background 0.12s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              <div style={{ ...mono, fontSize: 15, color: T.cyan, fontWeight: 700 }}>{String(entry.rank).padStart(2, "0")}</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+                <PlayerImg p={p} size={28} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 13, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+                  <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {p.archetype?.toUpperCase() || "—"}
+                  </div>
+                </div>
+              </div>
+              <div style={{ ...mono, fontSize: 11, color: T.textDim }}>{p.pos}</div>
+              <div style={{ ...mono, fontSize: 11, color: T.textDim, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school || "—"}</div>
+              <div style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700, textAlign: "right" }}>
+                {entry.score != null ? entry.score.toFixed(1) : "—"}
+              </div>
+            </div>
+          );
+          return isManual ? renderManual : renderAuto;
         })}
       </div>
+
+      {/* SAVE / LOAD — collapsed by default. Most users won't touch it. */}
+      {isManual && (
+        <SavedBoardsSection
+          name={name}
+          setName={setName}
+          savedBoards={savedBoards}
+          onSaveBoard={onSaveBoard}
+          onLoadBoard={onLoadBoard}
+          onDeleteBoard={onDeleteBoard}
+        />
+      )}
     </div>
   );
 };
+
+// Collapsible save/load drawer for the manual board. Lives at the bottom so
+// it doesn't clutter the primary read.
+function SavedBoardsSection({ name, setName, savedBoards, onSaveBoard, onLoadBoard, onDeleteBoard }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ marginTop: 18 }}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          ...mono,
+          fontSize: 9,
+          letterSpacing: "0.16em",
+          color: T.textMute,
+          background: "transparent",
+          border: "none",
+          padding: "4px 0",
+          cursor: "pointer",
+          textTransform: "uppercase",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+        }}
+      >
+        <span>Saved boards{savedBoards.length > 0 ? ` · ${savedBoards.length}` : ""}</span>
+        <span style={{ color: T.textDim }}>{open ? "▾" : "▸"}</span>
+      </button>
+      {open && (
+        <div style={{ background: T.surface, border: `1px solid ${T.border}`, padding: 14, marginTop: 6 }}>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Save current board as…"
+              style={{
+                flex: "1 1 220px",
+                minWidth: 180,
+                background: T.surface2,
+                border: `1px solid ${T.border}`,
+                color: T.text,
+                padding: "8px 10px",
+                fontSize: 13,
+                outline: "none",
+              }}
+            />
+            <button
+              type="button"
+              onClick={() => { onSaveBoard?.(name); setName(""); }}
+              disabled={!name.trim()}
+              style={{
+                ...pillButtonStyle(name.trim() ? T.cyan : T.textMute),
+                cursor: name.trim() ? "pointer" : "not-allowed",
+              }}
+            >
+              SAVE
+            </button>
+          </div>
+          {savedBoards.length > 0 && (
+            <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
+              {savedBoards.map((entry) => (
+                <div key={entry.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", border: `1px solid ${T.borderSoft}`, background: T.surface2 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 13, color: T.text, fontWeight: 500 }}>{entry.name}</div>
+                    <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2 }}>
+                      {new Date(entry.createdAt).toLocaleString().toUpperCase()}
+                    </div>
+                  </div>
+                  <button type="button" onClick={() => onLoadBoard?.(entry.id)} style={inlineActionStyle(T.cyan)}>LOAD</button>
+                  <button type="button" onClick={() => onDeleteBoard?.(entry.id)} style={inlineActionStyle(T.textMute)}>DELETE</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function pillButtonStyle(color) {
   return {
@@ -5846,6 +6150,11 @@ function ProsperaAppInner() {
   const [notesByPlayer, setNotesByPlayer] = useLocalStorageState("prospera.terminal.notes", {});
   const [myBoard, setMyBoard] = useLocalStorageState("prospera.terminal.my-board", PROSPECTS.map((p) => p.id));
   const [savedBoards, setSavedBoards] = useLocalStorageState("prospera.terminal.saved-boards", []);
+  // My Board mode + selection (persists across reloads). Modes: manual,
+  // custom, preset, team. preset/team defaults are sane no-op options.
+  const [myBoardMode, setMyBoardMode] = useLocalStorageState("prospera.terminal.my-board-mode", "manual");
+  const [myBoardPresetKey, setMyBoardPresetKey] = useLocalStorageState("prospera.terminal.my-board-preset", "best_overall");
+  const [myBoardTeamKey, setMyBoardTeamKey] = useLocalStorageState("prospera.terminal.my-board-team", "WAS");
   const [customTiers, setCustomTiers] = useLocalStorageState("prospera.terminal.custom-tiers", {});
   const [customTags, setCustomTags] = useLocalStorageState("prospera.terminal.custom-tags", {});
   const [savedViews, setSavedViews] = useLocalStorageState("prospera.terminal.saved-views", []);
@@ -6116,6 +6425,13 @@ function ProsperaAppInner() {
               onLoadBoard={loadSavedBoard}
               onDeleteBoard={deleteSavedBoard}
               onOpenProfile={onOpenProfile}
+              onOpenWeights={() => setWeightsDrawerOpen(true)}
+              mode={myBoardMode}
+              setMode={setMyBoardMode}
+              presetKey={myBoardPresetKey}
+              setPresetKey={setMyBoardPresetKey}
+              teamKey={myBoardTeamKey}
+              setTeamKey={setMyBoardTeamKey}
             />
           )}
           {route === "Class Map" && (

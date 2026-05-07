@@ -1,0 +1,154 @@
+{
+  "_README": "Board preset configurations for the My Board feature. Each preset is a partial weights override applied on top of DEFAULT_WEIGHTS. Custom Weights mode uses the user's saved weights from the Lens drawer; this file is for OVERALL and TEAM presets only. Edit/extend by adding new entries — the UI auto-renders from this data.",
+  "_schema": {
+    "overall":     "Array of broad-strokes presets. Each has {key, label, description, weights}. Weights are absolute (override DEFAULT). Picked from a dropdown in the My Board → Preset mode.",
+    "needsBoosts": "Map of need-string → axis-boost dict. Source of truth for translating team needs into weight emphasis. Each NBA team's preset = sum of these boosts on top of DEFAULT_WEIGHTS for the team's listed needs.",
+    "teamLabels":  "Display name per team abbreviation, used in the Team mode dropdown."
+  },
+
+  "overall": [
+    {
+      "key": "best_overall",
+      "label": "Best Overall",
+      "description": "Balanced — equal emphasis on offense, defense, and translation. The default scout view.",
+      "weights": {
+        "translate": 12, "initiate": 12, "extend": 8, "close": 12,
+        "space": 10, "connect": 8, "contain": 10, "disrupt": 8,
+        "switch": 10, "transition": 10,
+        "bpm": 0, "age_curve": 0, "shooting_threat": 0, "steal_rate": 0,
+        "ast_usg": 0, "plus_minus": 0, "league_translation": 0
+      }
+    },
+    {
+      "key": "upside",
+      "label": "Upside Hunter",
+      "description": "Bet on ceiling. Heavy on age curve, creator traits, scoring volume. Star-or-bust.",
+      "weights": {
+        "translate": 8, "initiate": 18, "extend": 6, "close": 14,
+        "space": 8, "connect": 4, "contain": 6, "disrupt": 6,
+        "switch": 8, "transition": 8,
+        "bpm": 4, "age_curve": 12, "shooting_threat": 4, "steal_rate": 0,
+        "ast_usg": 4, "plus_minus": 0, "league_translation": 0
+      }
+    },
+    {
+      "key": "floor",
+      "label": "Floor / Safety",
+      "description": "Production-first. Prioritize current college impact (BPM, scoring efficiency) over projection.",
+      "weights": {
+        "translate": 14, "initiate": 8, "extend": 6, "close": 10,
+        "space": 8, "connect": 8, "contain": 8, "disrupt": 6,
+        "switch": 6, "transition": 6,
+        "bpm": 12, "age_curve": 0, "shooting_threat": 6, "steal_rate": 4,
+        "ast_usg": 4, "plus_minus": 4, "league_translation": 0
+      }
+    },
+    {
+      "key": "two_way",
+      "label": "Two-Way",
+      "description": "Balanced offense + defense, with a small lean toward defensive versatility.",
+      "weights": {
+        "translate": 10, "initiate": 10, "extend": 6, "close": 10,
+        "space": 8, "connect": 8, "contain": 12, "disrupt": 10,
+        "switch": 12, "transition": 8,
+        "bpm": 0, "age_curve": 0, "shooting_threat": 0, "steal_rate": 6,
+        "ast_usg": 0, "plus_minus": 0, "league_translation": 0
+      }
+    },
+    {
+      "key": "lead_creator",
+      "label": "Lead Creator",
+      "description": "Find the next on-ball star. Heavy on initiation, advantage creation, playmaking.",
+      "weights": {
+        "translate": 8, "initiate": 22, "extend": 12, "close": 12,
+        "space": 6, "connect": 4, "contain": 6, "disrupt": 4,
+        "switch": 6, "transition": 8,
+        "bpm": 4, "age_curve": 4, "shooting_threat": 0, "steal_rate": 0,
+        "ast_usg": 4, "plus_minus": 0, "league_translation": 0
+      }
+    },
+    {
+      "key": "three_and_d",
+      "label": "3-and-D Specialist",
+      "description": "Role-player priority. Off-ball shooting + defensive versatility wins.",
+      "weights": {
+        "translate": 12, "initiate": 4, "extend": 4, "close": 6,
+        "space": 18, "connect": 8, "contain": 14, "disrupt": 8,
+        "switch": 12, "transition": 6,
+        "bpm": 0, "age_curve": 0, "shooting_threat": 8, "steal_rate": 0,
+        "ast_usg": 0, "plus_minus": 0, "league_translation": 0
+      }
+    },
+    {
+      "key": "rim_protection",
+      "label": "Anchor Big",
+      "description": "Defensive anchor first. Rim protection, switchability, finishing.",
+      "weights": {
+        "translate": 10, "initiate": 4, "extend": 4, "close": 12,
+        "space": 6, "connect": 8, "contain": 8, "disrupt": 18,
+        "switch": 12, "transition": 6,
+        "bpm": 0, "age_curve": 0, "shooting_threat": 0, "steal_rate": 4,
+        "ast_usg": 0, "plus_minus": 0, "league_translation": 0
+      }
+    }
+  ],
+
+  "needsBoosts": {
+    "Best Player Available": { "initiate": 2, "close": 2, "contain": 2, "disrupt": 2, "space": 2, "connect": 2 },
+
+    "Lead Initiator":   { "initiate": 10, "extend": 5, "ast_usg": 4 },
+    "Lead Creator":     { "initiate": 10, "extend": 5, "ast_usg": 4 },
+    "Primary Creator":  { "initiate": 10, "extend": 5, "ast_usg": 4 },
+    "Backup PG":        { "extend": 8, "ast_usg": 6, "contain": 3 },
+    "Point Guard":      { "extend": 6, "ast_usg": 6, "contain": 3 },
+    "Scoring Guard":    { "close": 8, "initiate": 4, "space": 4 },
+    "Combo Guard":      { "extend": 6, "close": 6, "ast_usg": 3 },
+
+    "Athletic Wing":    { "contain": 5, "switch": 4, "transition": 4, "close": 3, "age_curve": 3 },
+    "Two-Way Wing":     { "contain": 6, "close": 5, "space": 4, "switch": 4 },
+    "3-and-D Wing":     { "space": 8, "contain": 8, "switch": 4 },
+    "Wing Depth":       { "space": 4, "contain": 4, "switch": 4, "close": 3 },
+    "Wing Shooter":     { "space": 8, "shooting_threat": 6 },
+
+    "Athletic Forward": { "switch": 5, "transition": 5, "contain": 3, "disrupt": 3 },
+    "Stretch Forward":  { "space": 8, "switch": 4, "disrupt": 3 },
+
+    "Stretch Big":      { "space": 8, "disrupt": 4, "switch": 4 },
+    "Floor Spacer":     { "space": 10, "shooting_threat": 6 },
+    "Anchor Big":       { "disrupt": 12, "contain": 4, "switch": 3 },
+    "Rim Protection":   { "disrupt": 10, "contain": 5, "switch": 3 },
+    "Defensive Big":    { "disrupt": 8, "contain": 5, "switch": 3 },
+    "Backup C":         { "disrupt": 6, "contain": 3, "connect": 3 },
+
+    "POA Defender":     { "contain": 8, "switch": 5, "disrupt": 3 },
+    "Defensive Anchor": { "disrupt": 10, "contain": 4, "switch": 4 },
+    "Switch Defender":  { "switch": 8, "contain": 4, "disrupt": 3 },
+    "Perimeter Defender": { "contain": 6, "switch": 5, "disrupt": 3 },
+
+    "Bench Scoring":    { "close": 6, "initiate": 4, "shooting_threat": 4 },
+    "Microwave Scorer": { "close": 8, "initiate": 5 },
+    "Shooting":         { "space": 8, "shooting_threat": 6 },
+    "Shooter":          { "space": 8, "shooting_threat": 6 },
+    "Movement Shooter": { "space": 8, "shooting_threat": 6, "connect": 3 },
+
+    "Playmaking":       { "extend": 6, "ast_usg": 6 },
+    "Secondary Creation": { "extend": 6, "connect": 4, "ast_usg": 4 },
+    "Connector":        { "connect": 8, "extend": 4, "space": 3 },
+
+    "Athleticism":      { "transition": 5, "switch": 4, "contain": 3 },
+    "Youth / Upside":   { "age_curve": 10, "initiate": 3, "translate": 3 },
+    "Youth Movement":   { "age_curve": 10, "translate": 3 },
+    "Veteran / Floor":  { "bpm": 6, "translate": 4, "plus_minus": 4 }
+  },
+
+  "teamLabels": {
+    "ATL": "Atlanta Hawks", "BOS": "Boston Celtics", "BKN": "Brooklyn Nets", "CHA": "Charlotte Hornets",
+    "CHI": "Chicago Bulls", "CLE": "Cleveland Cavaliers", "DAL": "Dallas Mavericks", "DEN": "Denver Nuggets",
+    "DET": "Detroit Pistons", "GSW": "Golden State Warriors", "HOU": "Houston Rockets", "IND": "Indiana Pacers",
+    "LAC": "LA Clippers", "LAL": "Los Angeles Lakers", "MEM": "Memphis Grizzlies", "MIA": "Miami Heat",
+    "MIL": "Milwaukee Bucks", "MIN": "Minnesota Timberwolves", "NOP": "New Orleans Pelicans", "NYK": "New York Knicks",
+    "OKC": "Oklahoma City Thunder", "ORL": "Orlando Magic", "PHI": "Philadelphia 76ers", "PHX": "Phoenix Suns",
+    "POR": "Portland Trail Blazers", "SAC": "Sacramento Kings", "SAS": "San Antonio Spurs", "TOR": "Toronto Raptors",
+    "UTA": "Utah Jazz", "WAS": "Washington Wizards"
+  }
+}
