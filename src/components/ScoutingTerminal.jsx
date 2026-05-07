@@ -1506,16 +1506,13 @@ const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, re
   const [view, setView] = useState("Overview");
   const [query, setQuery] = useState("");
 
-  // Dashboard hides system rank — sort alphabetically. Personal ranking
-  // surfaces (My Board, Deep Dives) keep their own ordering.
+  // Dashboard hides the rank NUMBER but preserves the rank-based order so
+  // top prospects surface first. Personal ranking surfaces (My Board, Deep
+  // Dives) keep their own ordering.
   const filtered = (query
     ? PROSPECTS.filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
     : PROSPECTS
-  ).slice().sort((a, b) => {
-    const an = String(a.last || a.name || "").toLowerCase();
-    const bn = String(b.last || b.name || "").toLowerCase();
-    return an.localeCompare(bn);
-  });
+  ).slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
 
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
@@ -2847,18 +2844,6 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
               <br />
               <span style={{ color: T.cyan }}>{p.last}</span>
             </h1>
-            <div
-              style={{
-                marginTop: 16,
-                fontSize: 14,
-                color: T.textDim,
-                lineHeight: 1.55,
-                maxWidth: 520,
-                fontStyle: "italic",
-              }}
-            >
-              "{deriveStory(p)}"
-            </div>
           </div>
 
           {/* Score */}
@@ -3331,8 +3316,7 @@ const ProspectStatsTab = ({ p }) => {
           MODEL & PROFILE
         </h2>
         <div style={{ display: "grid", gap: 10 }}>
-          <AdvancedTable title="Core Overview" data={coreOverview} />
-          <AdvancedTable title="Trait Breakdown (5-bucket)" data={traitBreakdown} />
+          <TraitBreakdownPanel traits={traitBreakdown} />
           <AdvancedTable title="Measurements" data={measurements} />
         </div>
       </div>
@@ -3482,6 +3466,51 @@ const PercentileIndicator = ({ value }) => {
 //   - Title bar gets a 3px brand-orange leading rule (Prospera signature)
 //   - Each cell: 9px mute label TOP, oversized 24px value, optional pct pill
 //   - Cells separated by thin rules so the row reads as data-cells, not flat
+// Plain-language tooltips so a novice user can hover any metric label and
+// see what it actually means. Keyed by the AdvancedTable column label.
+const METRIC_TOOLTIPS = {
+  "TS%":   "True Shooting % — overall scoring efficiency including 2s, 3s, and free throws. ~55% is league average; 60%+ is elite.",
+  "eFG%":  "Effective FG % — adjusts FG% to credit 3s for being worth more. Better than raw FG% for shooters.",
+  "USG%":  "Usage Rate — % of team possessions a player uses (shot or turnover). 25%+ = high-volume, 30%+ = star load.",
+  "AST%":  "Assist Rate — % of teammate field goals he assists while on the floor. 25%+ = primary playmaker.",
+  "AST/TO":"Assists per Turnover. 2.0+ is solid for a guard, 3.0+ is elite ball control.",
+  "TOV%":  "Turnover Rate — % of possessions ending in his turnover. Lower is better.",
+  "REB%":  "Total Rebound % — share of available rebounds he grabs while on the floor.",
+  "ORtg":  "Offensive Rating — points produced per 100 possessions when on the floor.",
+  "DRtg":  "Defensive Rating — points allowed per 100 possessions when on the floor. Lower is better.",
+  "BPM":   "Box Plus/Minus — estimated impact per 100 possessions vs an average D-I player. +5 = star tier.",
+  "STL%":  "Steal Rate — % of opponent possessions ending in his steal. 2.5%+ is excellent.",
+  "BLK%":  "Block Rate — % of opponent 2-pt attempts he blocks. 5%+ = rim protector.",
+  "OBPM":  "Offensive Box Plus/Minus — offensive impact only. Splits BPM into the offense half.",
+  "DBPM":  "Defensive Box Plus/Minus — defensive impact only. The defense half of BPM.",
+  "PER":   "Player Efficiency Rating — single-number all-in-one. League avg ~15. 25+ = elite.",
+  "ORB%":  "Offensive Rebound Rate — % of available offensive boards.",
+  "DRB%":  "Defensive Rebound Rate — % of available defensive boards.",
+  "3PAr":  "3-Point Attempt Rate — % of his shots that come from 3. High = spacing role; low = interior.",
+  "FTr":   "Free Throw Rate — FT attempts per FG attempt. High = aggressive, draws fouls.",
+  "PFr":   "Personal Foul Rate per 100 possessions. Lower is better — high foul rate hurts playing time.",
+  "FG%":   "Field Goal % — overall make rate from 2-pt and 3-pt combined.",
+  "3P%":   "Three-Point % — make rate on 3-pointers.",
+  "FT%":   "Free Throw % — make rate at the line. Strong predictor of 3-pt translation.",
+  "MIN/G": "Minutes Per Game.",
+  "GP":    "Games Played this season.",
+  "PPG":   "Points Per Game.",
+  "RPG":   "Rebounds Per Game.",
+  "APG":   "Assists Per Game.",
+  "SPG":   "Steals Per Game.",
+  "BPG":   "Blocks Per Game.",
+  "TOV":   "Turnovers Per Game.",
+  "PTS":   "Points (per the active rate mode — game / 36 / 100).",
+  "REB":   "Rebounds (per the active rate mode).",
+  "AST":   "Assists (per the active rate mode).",
+  "STL":   "Steals (per the active rate mode).",
+  "BLK":   "Blocks (per the active rate mode).",
+  "HT":    "Listed Height.",
+  "WT":    "Listed Weight.",
+  "WING":  "Listed Wingspan.",
+  "AGE":   "Age in years.",
+};
+
 const AdvancedTable = ({ title, data, percentiles = null }) => {
   if (!data) return null;
   const entries = Object.entries(data);
@@ -3499,29 +3528,32 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
       >
         <Label style={{ color: T.cyan, letterSpacing: "0.16em", fontWeight: 700 }}>{title}</Label>
         <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
-          {entries.length} {entries.length === 1 ? "FIELD" : "FIELDS"}
+          HOVER A LABEL FOR DETAIL
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${entries.length}, 1fr)` }}>
         {entries.map(([k, v], i) => {
-          const isFirst = i === 0;
+          const tooltip = METRIC_TOOLTIPS[k] || null;
           return (
             <div
               key={k}
               style={{
                 padding: "16px 18px",
                 borderRight: i < entries.length - 1 ? `1px solid ${T.borderSoft}` : "none",
-                paddingLeft: isFirst ? 18 : 18,
                 position: "relative",
               }}
             >
               <div
+                title={tooltip || undefined}
                 style={{
                   ...mono,
                   fontSize: 9,
                   color: T.textMute,
                   letterSpacing: "0.16em",
                   fontWeight: 600,
+                  cursor: tooltip ? "help" : "default",
+                  borderBottom: tooltip ? `1px dotted ${T.borderSoft}` : "none",
+                  display: "inline-block",
                 }}
               >
                 {k}
@@ -3542,6 +3574,81 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
               {percentiles && percentiles[k] != null && (
                 <PercentileIndicator value={percentiles[k]} />
               )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// Visual revamp of the 5-bucket Trait Breakdown — for novice users the raw
+// 0-100 numbers (Scoring 75, Playmaking 67, etc.) are hard to interpret. This
+// renders each trait as: large number + tier label (POOR / BELOW AVG / AVG /
+// GREAT / ELITE) + filled bar in the matching tier color. Same 5-tier scale
+// used by PercentileIndicator so the visual language is consistent.
+function traitTier(value) {
+  if (value >= 90) return { label: "ELITE",     color: "var(--prospera-pct-elite)" };
+  if (value >= 75) return { label: "GREAT",     color: "var(--prospera-pct-great)" };
+  if (value >= 50) return { label: "AVG",       color: "var(--prospera-pct-avg)"   };
+  if (value >= 25) return { label: "BELOW AVG", color: "var(--prospera-pct-below)" };
+  return                  { label: "POOR",      color: "var(--prospera-pct-poor)"  };
+}
+
+const TraitBreakdownPanel = ({ traits }) => {
+  if (!traits || Object.keys(traits).length === 0) return null;
+  const entries = Object.entries(traits);
+  return (
+    <div style={{ background: T.surface, border: `1px solid ${T.border}`, boxShadow: `inset 3px 0 0 ${T.cyan}` }}>
+      <div
+        style={{
+          padding: "10px 14px 10px 18px",
+          borderBottom: `1px solid ${T.border}`,
+          background: T.surface2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Label style={{ color: T.cyan, letterSpacing: "0.16em", fontWeight: 700 }}>Trait Breakdown</Label>
+        <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
+          0–100 SCALE · vs CLASS
+        </div>
+      </div>
+      <div style={{ padding: "16px 20px", display: "grid", gap: 14 }}>
+        {entries.map(([trait, value]) => {
+          const tier = traitTier(value);
+          return (
+            <div key={trait} style={{ display: "grid", gridTemplateColumns: "120px 1fr 56px 90px", gap: 14, alignItems: "center" }}>
+              <div style={{ fontSize: 13, color: T.text, fontWeight: 600 }}>{trait}</div>
+              <div style={{ position: "relative", height: 8, background: "var(--prospera-pct-track)", borderRadius: 3, overflow: "hidden" }}>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0, left: 0, height: "100%",
+                    width: `${Math.max(0, Math.min(100, value))}%`,
+                    background: tier.color,
+                    boxShadow: `0 0 8px ${tier.color}`,
+                  }}
+                />
+              </div>
+              <div style={{ ...mono, fontSize: 18, color: tier.color, fontWeight: 800, textAlign: "right" }}>{value}</div>
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  textAlign: "center",
+                  color: tier.color,
+                  border: `1px solid ${tier.color}`,
+                  padding: "3px 6px",
+                  fontWeight: 700,
+                  background: "rgba(255,255,255,0.02)",
+                }}
+              >
+                {tier.label}
+              </div>
             </div>
           );
         })}
