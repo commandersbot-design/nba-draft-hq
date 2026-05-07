@@ -383,17 +383,28 @@ const PROSPECTS = PROSPECTS_ALL.filter((p) =>
 // always means BETTER" — UI can use one color rule across the board.
 // Trait-score distribution across the active class. The raw 5-bucket scores
 // (Scoring, Playmaking, Defense, Feel, Athleticism) cluster in the 50-80
-// range — they don't reach 90+. Hard absolute thresholds (90+ = ELITE)
-// would mean nobody ever lands in ELITE. Instead, we compute each trait's
-// distribution across the active 2026 class once at module load, then assign
-// tier labels by PERCENTILE WITHIN THE CLASS:
-//   top 10% → ELITE
-//   top 25% → GREAT
-//   top 50% → AVG
-//   top 75% → BELOW AVG
-//   bottom 25% → POOR
-// This is self-calibrating — the top guys are always recognized as the
-// top guys regardless of how compressed the absolute scale is.
+// range — they're derived from 1-10 trait grades and only hit 80 when a
+// player has 8/10 across the bucket inputs.
+//
+// Grade thresholds combine TWO criteria so A+ requires BOTH:
+//   1. Class rank (top 5% / 15% / 40% / 75% / bottom 25%)
+//   2. Absolute value floor (78+ for A+, 68+ for A)
+//
+// The class-rank piece keeps grading honest within the current class; the
+// absolute floor prevents a weak class from getting handed A+ for a 70.
+// Floor calibrated against historical NBA-prospect-grade conventions:
+// 78+ across a trait bucket means 8/10 average across its components,
+// which scout-traditionally lands in the "top draft prospect" range.
+//
+// Tightened from a previous "top 10% = A+" version that the user called
+// out as too generous — A+ should be earned, not class-handed.
+const TRAIT_GRADE_FLOORS = {
+  // A+ requires hitting both the cohort percentile AND this absolute value.
+  // Ensures a 70 in a weak class doesn't get an A+ just for being top of class.
+  aPlusFloor: 78,
+  aFloor:     68,
+};
+
 const TRAIT_COHORT_THRESHOLDS = (() => {
   const traits = ["Scoring", "Playmaking", "Defense", "Feel", "Athleticism"];
   const out = {};
@@ -403,16 +414,15 @@ const TRAIT_COHORT_THRESHOLDS = (() => {
       .filter((v) => typeof v === "number")
       .sort((a, b) => b - a); // descending
     if (vals.length === 0) {
-      out[trait] = { eliteMin: 90, greatMin: 75, avgMin: 50, belowMin: 25 };
+      out[trait] = { aPlusMin: 90, aMin: 78, bMin: 60, cMin: 50 };
       continue;
     }
-    // Convert "top X%" into a value cutoff
     const pct = (p) => vals[Math.min(vals.length - 1, Math.floor(vals.length * p))];
     out[trait] = {
-      eliteMin:  pct(0.10),  // top 10%
-      greatMin:  pct(0.25),  // top 25%
-      avgMin:    pct(0.50),  // top 50%
-      belowMin:  pct(0.75),  // top 75% (anything below = POOR)
+      aPlusMin:  pct(0.05),  // top 5% of class
+      aMin:      pct(0.15),  // top 15%
+      bMin:      pct(0.40),  // top 40%
+      cMin:      pct(0.75),  // top 75% — below this = D
     };
   }
   return out;
@@ -3624,20 +3634,22 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
 // renders each trait as: large number + tier label (POOR / BELOW AVG / AVG /
 // GREAT / ELITE) + filled bar in the matching tier color. Same 5-tier scale
 // used by PercentileIndicator so the visual language is consistent.
-// Cohort-relative tiering using letter grades. The 5-bucket trait scores
-// peak at ~80 by design (derived from 1-10 trait grades), so "ELITE" labels
-// for a 75 oversold things. Letter grades (A+/A/B/C/D) are universally
-// understood as class-relative — nobody assumes "A" means objectively elite,
-// they read it as "good for this class." Keeps the user's calibration ask
-// (top guys stand out) without misrepresenting absolute quality.
+// Letter grades require BOTH cohort rank AND absolute value floor. A+ for
+// a 70 doesn't fly even if it's top of the class — earns the grade only
+// when value clears both criteria. Floors live in TRAIT_GRADE_FLOORS so
+// they're tunable in one place.
 function traitTier(value, traitName) {
   const cohort = traitName ? TRAIT_COHORT_THRESHOLDS[traitName] : null;
   if (cohort) {
-    if (value >= cohort.eliteMin) return { label: "A+", color: "var(--prospera-pct-elite)" };
-    if (value >= cohort.greatMin) return { label: "A",  color: "var(--prospera-pct-great)" };
-    if (value >= cohort.avgMin)   return { label: "B",  color: "var(--prospera-pct-avg)"   };
-    if (value >= cohort.belowMin) return { label: "C",  color: "var(--prospera-pct-below)" };
-    return                              { label: "D",  color: "var(--prospera-pct-poor)"  };
+    if (value >= cohort.aPlusMin && value >= TRAIT_GRADE_FLOORS.aPlusFloor)
+      return { label: "A+", color: "var(--prospera-pct-elite)" };
+    if (value >= cohort.aMin && value >= TRAIT_GRADE_FLOORS.aFloor)
+      return { label: "A",  color: "var(--prospera-pct-great)" };
+    if (value >= cohort.bMin)
+      return { label: "B",  color: "var(--prospera-pct-avg)"   };
+    if (value >= cohort.cMin)
+      return { label: "C",  color: "var(--prospera-pct-below)" };
+    return    { label: "D",  color: "var(--prospera-pct-poor)"  };
   }
   // Fallback: absolute scale (defensive — shouldn't be reached for the
   // 5-bucket traits since cohort thresholds are precomputed at module load)
@@ -3665,7 +3677,7 @@ const TraitBreakdownPanel = ({ traits }) => {
       >
         <Label
           style={{ color: T.cyan, letterSpacing: "0.16em", fontWeight: 700, cursor: "help" }}
-          title="Letter grades are class-relative. Top 10% of the 2026 class for a trait = A+, top 25% = A, top 50% = B, top 75% = C, bottom 25% = D. The number is the system's 0–100 trait score (peaks ~80)."
+          title="Letter grades are class-relative AND have absolute floors. A+ requires top 5% of the 2026 class AND a trait score ≥ 78. A requires top 15% AND ≥ 68. B = top 40%. C = top 75%. D = bottom 25%. The number is the system's 0–100 trait score (peaks ~80)."
         >
           Trait Breakdown
         </Label>
