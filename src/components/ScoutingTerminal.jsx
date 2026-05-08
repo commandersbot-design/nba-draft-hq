@@ -2539,6 +2539,17 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
   // so cards/pinning/hiding/overrides keep working unchanged.
   // Legacy fallback: if the prospect isn't in the precomputed map (e.g. an
   // active prospect without NCAA data), keep the old engine output.
+  // Two views of the comp data:
+  //   ladderGroups — engine output only, no stale-pin injection. Drives the
+  //                  clean ComputedOutcomesLadder visual.
+  //   editGroups   — full legacy behavior (engine + pinned + hidden). Drives
+  //                  the collapsed "Refine comps" section for surgical edits.
+  const ladderGroups = useMemo(() => {
+    const newGroups = buildLegacyCompGroups(p.name, compOverrides, { realistic: 4, cautionary: 2, injectExtraPins: false });
+    const total = newGroups.highEnd.length + newGroups.realistic.length + newGroups.cautionary.length;
+    if (total > 0) return newGroups;
+    return rankComparablesByTier(p, HISTORICAL_PROSPECTS, { realistic: 4, cautionary: 2, overrides: compOverrides });
+  }, [p, compOverrides]);
   const groups = useMemo(() => {
     const newGroups = buildLegacyCompGroups(p.name, compOverrides, { realistic: 4, cautionary: 2 });
     const total = newGroups.highEnd.length + newGroups.realistic.length + newGroups.cautionary.length;
@@ -2674,20 +2685,20 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
       <AuthoredCompsLadder prospectName={p.name} />
 
       {/* Statistical comp engine output as a clean ladder — same visual rhythm
-          as the authored ladder. Maps the bucket structure to ladder rungs:
-          highEnd → headline-style top, realistic → body, cautionary → shadow-style. */}
+          as the authored ladder. Uses ladderGroups (no stale-pin injection) so
+          the engine read isn't polluted by old localStorage overrides. */}
       <ComputedOutcomesLadder
         prospectName={p.name}
         entries={[
-          ...groups.highEnd.map((entry) => ({
-            role: entry.pinned ? "headline" : "headline",
+          ...ladderGroups.highEnd.map((entry) => ({
+            role: "headline",
             name: entry.historical.name,
             tier: entry.historical.outcomeTier,
             year: entry.historical.draftYear || null,
             school: entry.historical.school,
             similarity: entry.score,
           })),
-          ...groups.realistic.map((entry) => ({
+          ...ladderGroups.realistic.map((entry) => ({
             role: "body",
             name: entry.historical.name,
             tier: entry.historical.outcomeTier,
@@ -2695,7 +2706,7 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
             school: entry.historical.school,
             similarity: entry.score,
           })),
-          ...groups.cautionary.map((entry) => ({
+          ...ladderGroups.cautionary.map((entry) => ({
             role: "shadow",
             name: entry.historical.name,
             tier: entry.historical.outcomeTier,

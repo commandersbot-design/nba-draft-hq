@@ -107,10 +107,23 @@ function compToLegacyEntry(c: Comp, pinned: boolean = false): LegacyCompEntry {
 export function buildLegacyCompGroups(
   prospectName: string,
   overrides: CompOverrideMap = {},
-  options: { realistic?: number; cautionary?: number } = {},
+  options: {
+    realistic?: number;
+    cautionary?: number;
+    /**
+     * If false, manually-pinned comps that aren't in the engine's top-K won't
+     * be injected as stubs. The pin's "move" / "hide" semantics still apply
+     * to comps that ARE in engine output. Default true (legacy behavior).
+     *
+     * Use false for the clean ladder where stale pins shouldn't pollute the
+     * engine read; true for the Refine-Comps section that does surgical edits.
+     */
+    injectExtraPins?: boolean;
+  } = {},
 ): LegacyCompGroups {
   const realCount = options.realistic ?? 4;
   const cautionCount = options.cautionary ?? 2;
+  const injectExtraPins = options.injectExtraPins !== false;
 
   const scores = getProspectScoresByName(prospectName);
   if (!scores) return { highEnd: [], realistic: [], cautionary: [] };
@@ -141,7 +154,10 @@ export function buildLegacyCompGroups(
   // Pinned overrides for prospects NOT in the new engine's top-K still get
   // injected — same as legacy behavior. We can't synthesize a similarity
   // score for them; assign 50.
-  for (const [id, target] of Object.entries(overrides)) {
+  if (!injectExtraPins) {
+    // Clean-ladder mode: skip injection so stale pins don't pollute the
+    // engine read. (Move / hide for engine-known comps still applied above.)
+  } else for (const [id, target] of Object.entries(overrides)) {
     if (seen.has(id)) continue;
     if (target === "hidden" || target == null) continue;
     if (!["highEnd", "realistic", "cautionary"].includes(target)) continue;
