@@ -79,6 +79,12 @@ export function listAuthoredProspects(): string[] {
   return Object.values(all).map((l) => l.prospectName);
 }
 
+/** Boolean: does this prospect have an authored ladder? */
+export function hasAuthoredLadder(prospectName: string): boolean {
+  const all = load();
+  return Boolean(all[slugKey(prospectName)]);
+}
+
 /**
  * Returns the rungs of a ladder in canonical Floor → Ceiling order, dropping
  * any null/missing rungs. Rendered top-to-bottom by the UI as Ceiling → Floor.

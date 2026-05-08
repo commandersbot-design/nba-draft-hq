@@ -295,7 +295,7 @@ import AuthoredCompsLadder from "./AuthoredCompsLadder";
 import ComputedOutcomesLadder from "./ComputedOutcomesLadder";
 import { buildLegacyCompGroups, getTopComps } from "../grading/compsBridge";
 import { getProspectScoresByName } from "../grading/precomputed";
-import { getAuthoredCompLadder } from "../grading/authoredComps";
+import { getAuthoredCompLadder, hasAuthoredLadder } from "../grading/authoredComps";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
 
 const DEFAULT_MOCK_DRAFT_TEAMS = (() => {
@@ -2557,7 +2557,11 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
     return rankComparablesByTier(p, HISTORICAL_PROSPECTS, { realistic: 4, cautionary: 2, overrides: compOverrides });
   }, [p, compOverrides]);
   const totalShown = groups.highEnd.length + groups.realistic.length + groups.cautionary.length;
-  const allowOverride = typeof onSetCompOverride === "function";
+  // Suppress the legacy pin/hide/move UI for prospects who have an authored
+  // ladder. The authored ladder + statistical engine is enough for them; the
+  // legacy override system would only re-introduce stale-pin noise.
+  const ladderPresent = hasAuthoredLadder(p.name);
+  const allowOverride = typeof onSetCompOverride === "function" && !ladderPresent;
 
   // Color accents per tier — echoes the outcome-tier palette so the section
   // headers feel of-a-piece with each card's left rail.
@@ -2717,11 +2721,11 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
         ]}
       />
 
-      {/* The override-capable cards are still available below for surgical
-          editing (pin / hide / move). Hidden by default — a thin "Refine comps"
-          toggle expands them. Keeps the page clean while preserving power-user
-          features. */}
-      {(groups.highEnd.length + groups.realistic.length + groups.cautionary.length) > 0 && (
+      {/* The override-capable cards are available for surgical editing (pin /
+          hide / move) — but only for prospects WITHOUT an authored ladder.
+          Once a ladder exists, it's the source of truth and the legacy pin
+          system would only re-introduce stale-pin noise. */}
+      {!ladderPresent && (groups.highEnd.length + groups.realistic.length + groups.cautionary.length) > 0 && (
         <RefineCompsSection
           groups={groups}
           allowOverride={allowOverride}
@@ -2760,6 +2764,35 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
             onMouseLeave={(e) => { e.currentTarget.style.color = T.textMute; e.currentTarget.style.borderColor = T.border; }}
           >
             + Pin a comp manually
+          </button>
+        </div>
+      )}
+
+      {/* Reset-all-pins escape hatch. Only shows when (a) there ARE pins to
+          reset and (b) we have a setter. Lives at the bottom of the tab so
+          it doesn't tempt accidental clicks. Confirmation dialog before
+          purging localStorage. */}
+      {typeof onSetCompOverride === "function" && Object.keys(compOverrides || {}).length > 0 && (
+        <div style={{ display: "flex", justifyContent: "center", paddingTop: 8, opacity: 0.7 }}>
+          <button
+            type="button"
+            onClick={() => {
+              const count = Object.keys(compOverrides || {}).length;
+              if (window.confirm(`Reset all ${count} manually-pinned comp${count === 1 ? "" : "s"} for ${p.name}? This clears every pin/hide/move override on this prospect. Authored ladders are NOT affected.`)) {
+                for (const id of Object.keys(compOverrides || {})) onSetCompOverride(id, null);
+              }
+            }}
+            title="Clear every pin / hide / move override for this prospect"
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.14em",
+              color: T.textMute, background: "transparent",
+              border: `1px dashed ${T.border}`, padding: "4px 10px",
+              cursor: "pointer", textTransform: "uppercase",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--prospera-danger)"; e.currentTarget.style.borderColor = "var(--prospera-danger)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = T.textMute; e.currentTarget.style.borderColor = T.border; }}
+          >
+            Reset {Object.keys(compOverrides || {}).length} manual pin{Object.keys(compOverrides || {}).length === 1 ? "" : "s"}
           </button>
         </div>
       )}
