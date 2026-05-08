@@ -362,6 +362,90 @@
       "exemplars": ["James Harden"],
       "anchorScores": {"initiate": 95, "extend": 85, "close": 95, "space": 80, "connect": 65, "contain": 50, "disrupt": 60, "switch": 50, "transition": 75},
       "notes": "Heliocentric primary. Step-back gravity, elite playmaking burden, MVP-tier offensive engineering."
+    },
+
+    { "_section": "ACTIVE-CLASS ARCHETYPES — added 2026-05 to give the active 2026 class proper anchor coverage. Each is a working archetype distinct from the canonical NBA-tier ones above; differentiated by stylistic role within draft-class scouting." },
+
+    {
+      "key": "advantage-mechanic",
+      "name": "Advantage Mechanic",
+      "tier": "Star",
+      "positionFamily": "Guard",
+      "exemplars": ["Anthony Edwards", "Jalen Brunson", "Damian Lillard"],
+      "anchorScores": {"initiate": 85, "extend": 70, "close": 80, "space": 68, "connect": 58, "contain": 52, "disrupt": 55, "switch": 48, "transition": 72},
+      "notes": "High-usage downhill primary creator. Manufactures advantages off the dribble; pull-up gravity creates for self and others. Defensive ceiling typically modest."
+    },
+    {
+      "key": "tempo-pilot",
+      "name": "Tempo Pilot",
+      "tier": "Star",
+      "positionFamily": "Guard",
+      "exemplars": ["Tyrese Haliburton", "Mike Conley", "Chris Paul"],
+      "anchorScores": {"initiate": 72, "extend": 82, "close": 62, "space": 62, "connect": 70, "contain": 55, "disrupt": 52, "switch": 48, "transition": 62},
+      "notes": "Pace-controlling lead guard. High-IQ pick-and-roll operator who manages tempo and shot quality; playmaking forward of the scoring."
+    },
+    {
+      "key": "heat-check-courier",
+      "name": "Heat-Check Courier",
+      "tier": "Specialist",
+      "positionFamily": "Guard",
+      "exemplars": ["Jordan Poole", "Tyler Herro", "Jamal Crawford"],
+      "anchorScores": {"initiate": 62, "extend": 52, "close": 78, "space": 72, "connect": 50, "contain": 45, "disrupt": 50, "switch": 42, "transition": 68},
+      "notes": "Microwave bench scorer. Streaky volume shooter who can erupt for 25-30 in bursts. Limited primary creation, defensive concerns. Includes undersized scoring wings."
+    },
+    {
+      "key": "switchblade-wing",
+      "name": "Switchblade Wing",
+      "tier": "Role",
+      "positionFamily": "Wing",
+      "exemplars": ["Aaron Gordon", "Dorian Finney-Smith", "Jaden McDaniels"],
+      "anchorScores": {"initiate": 58, "extend": 58, "close": 62, "space": 66, "connect": 70, "contain": 72, "disrupt": 62, "switch": 78, "transition": 65},
+      "notes": "Multi-positional two-way wing. Slides between SF/PF coverage, attacks closeouts, plays connector minutes. More switch range than a pure Two-Way Wing."
+    },
+    {
+      "key": "pressure-valve-wing",
+      "name": "Pressure Valve Wing",
+      "tier": "Role",
+      "positionFamily": "Wing",
+      "exemplars": ["Cam Johnson", "Norman Powell", "Buddy Hield"],
+      "anchorScores": {"initiate": 55, "extend": 50, "close": 70, "space": 80, "connect": 60, "contain": 58, "disrupt": 50, "switch": 55, "transition": 58},
+      "notes": "Off-ball pressure release. Spot-up shooter who attacks closeouts and provides secondary scoring punch when the primary creator is doubled."
+    },
+    {
+      "key": "mismatch-cartographer",
+      "name": "Mismatch Cartographer",
+      "tier": "Star",
+      "positionFamily": "Forward",
+      "exemplars": ["Tobias Harris", "Jerami Grant", "Aaron Gordon"],
+      "anchorScores": {"initiate": 75, "extend": 62, "close": 75, "space": 65, "connect": 58, "contain": 58, "disrupt": 55, "switch": 60, "transition": 70},
+      "notes": "Position-fluid scorer who hunts mismatches. Reads switches, attacks the most exploitable assignment. More scoring-forward than a pure Versatile Forward."
+    },
+    {
+      "key": "glass-and-gas-four",
+      "name": "Glass-and-Gas Four",
+      "tier": "Role",
+      "positionFamily": "Forward",
+      "exemplars": ["Trayce Jackson-Davis", "Larry Nance Jr.", "Bobby Portis"],
+      "anchorScores": {"initiate": 52, "extend": 52, "close": 68, "space": 52, "connect": 65, "contain": 68, "disrupt": 68, "switch": 60, "transition": 80},
+      "notes": "Glass-cleaning forward who runs the floor. Offensive rebounding + transition finishing engine; high-effort connector role player."
+    },
+    {
+      "key": "coverage-bender-big",
+      "name": "Coverage Bender Big",
+      "tier": "Star",
+      "positionFamily": "Big",
+      "exemplars": ["Bam Adebayo", "Walker Kessler", "Jaren Jackson Jr."],
+      "anchorScores": {"initiate": 52, "extend": 55, "close": 68, "space": 55, "connect": 65, "contain": 78, "disrupt": 75, "switch": 78, "transition": 68},
+      "notes": "Defensive big who reads and adapts coverage. Strong screen-action defender; can switch onto guards in spots. Multi-coverage player."
+    },
+    {
+      "key": "paint-eraser",
+      "name": "Paint Eraser",
+      "tier": "Specialist",
+      "positionFamily": "Big",
+      "exemplars": ["Walker Kessler", "Mitchell Robinson", "Daniel Gafford"],
+      "anchorScores": {"initiate": 38, "extend": 42, "close": 62, "space": 35, "connect": 55, "contain": 72, "disrupt": 88, "switch": 55, "transition": 58},
+      "notes": "Vertical rim protector. Anchors interior defense via verticality + timing; finishes off rolls and putbacks. Limited offensive creation, no spacing."
     }
   ]
 }

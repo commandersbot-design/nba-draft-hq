@@ -283,7 +283,18 @@ import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
 import { MockDraftPage } from "./MockDraft";
 import { CustomWeightsProvider, CustomWeightsDrawer, useCustomWeights, ScoreCell, computePersonalScore, DEFAULT_WEIGHTS } from "./CustomWeights";
-import { DeepDivesPage } from "./DeepDives";
+import {
+  DeepDivesPage,
+  STATUSES as DIVE_STATUSES,
+  BUY_SELL as DIVE_BUY_SELL,
+  DEEP_DIVE_TIER_COLORS,
+} from "./DeepDives";
+import ComputedScoreCard from "./ComputedScoreCard";
+import ComputedScorePill from "./ComputedScorePill";
+import AuthoredCompsLadder from "./AuthoredCompsLadder";
+import { buildLegacyCompGroups, getTopComps } from "../grading/compsBridge";
+import { getProspectScoresByName } from "../grading/precomputed";
+import { getAuthoredCompLadder } from "../grading/authoredComps";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
 
 const DEFAULT_MOCK_DRAFT_TEAMS = (() => {
@@ -794,7 +805,9 @@ const FlagDot = ({ lvl }) => {
 };
 
 // ---------- TOP NAV ----------
-const NAV_ITEMS = ["Big Board", "My Board", "Deep Dives", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
+// Scout Desk = the user's personal scouting hub (former Big Board + Deep Dives merged).
+// My Board = the user-facing board builder (manual / preset / team-need / custom-weights).
+const NAV_ITEMS = ["Scout Desk", "My Board", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
 // PROSPERA TICKER · slim band above the main nav.
 // Multi-source unified feed: hand-authored news from prospectNews.json
@@ -1147,7 +1160,7 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
         justifyContent: "space-between",
       }}
     >
-      <Label>Big Board</Label>
+      <Label>Scout Desk</Label>
       <div style={{ display: "flex", gap: 6 }}>
         <button
           style={{
@@ -2519,10 +2532,18 @@ const HiddenCompsSection = ({ overrides, historicalSet, onRestore }) => {
 
 const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
   const [pinModalOpen, setPinModalOpen] = useState(false);
-  const groups = useMemo(
-    () => rankComparablesByTier(p, HISTORICAL_PROSPECTS, { realistic: 4, cautionary: 2, overrides: compOverrides }),
-    [p, compOverrides]
-  );
+  // Comp groups now come from the new engine via compsBridge.
+  // The bridge translates the new pipeline's (headline/shadow/body) output
+  // into the legacy (highEnd/realistic/cautionary) shape this UI expects,
+  // so cards/pinning/hiding/overrides keep working unchanged.
+  // Legacy fallback: if the prospect isn't in the precomputed map (e.g. an
+  // active prospect without NCAA data), keep the old engine output.
+  const groups = useMemo(() => {
+    const newGroups = buildLegacyCompGroups(p.name, compOverrides, { realistic: 4, cautionary: 2 });
+    const total = newGroups.highEnd.length + newGroups.realistic.length + newGroups.cautionary.length;
+    if (total > 0) return newGroups;
+    return rankComparablesByTier(p, HISTORICAL_PROSPECTS, { realistic: 4, cautionary: 2, overrides: compOverrides });
+  }, [p, compOverrides]);
   const totalShown = groups.highEnd.length + groups.realistic.length + groups.cautionary.length;
   const allowOverride = typeof onSetCompOverride === "function";
 
@@ -2570,8 +2591,13 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
 
   return (
     <div style={{ display: "grid", gap: 18 }}>
+      {/* Authored ladder — user's eye-test read. Renders only when an
+          authored ladder exists for this prospect; otherwise the statistical
+          comps below are the primary view. */}
+      <AuthoredCompsLadder prospectName={p.name} />
+
       <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.14em" }}>
-        OUTCOME DISTRIBUTION · BEST CASE → MEDIAN PROJECTION → DOWNSIDE
+        STATISTICAL COMP ENGINE · BEST CASE → MEDIAN → DOWNSIDE
       </div>
 
       {groups.highEnd.length > 0 && (
@@ -2670,7 +2696,7 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
 };
 
 // ---------- PLAYER PROFILE PAGE ----------
-const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Comparables", "Constellation", "Shot Chart", "Notes"];
+const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Computed", "Comparables", "Constellation", "Shot Chart", "Notes"];
 
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
@@ -3108,6 +3134,7 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
       )}
       {tab === "Traits" && <TraitsTab p={p} />}
       {tab === "Advantage" && <AdvantageProfile player={p} />}
+      {tab === "Computed" && <ComputedScoreCard prospectId={p.id} prospectName={p.name} />}
       {tab === "Comparables" && (
         <ComparablesTab
           p={p}
@@ -3118,7 +3145,12 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
       {tab === "Constellation" && (
         <ConstellationMap
           player={p}
-          comparables={rankComparables(p, HISTORICAL_PROSPECTS, 20)}
+          comparables={(() => {
+            // Prefer new engine's top-20 NN; fall back to legacy ranker if
+            // prospect isn't in the precomputed map.
+            const newTop = getTopComps(p.name, 20);
+            return newTop.length > 0 ? newTop : rankComparables(p, HISTORICAL_PROSPECTS, 20);
+          })()}
           size={520}
         />
       )}
@@ -4156,6 +4188,67 @@ const TraitsTab = ({ p }) => {
   const flaggedRisks = Object.entries(p.risks || {}).filter(([, v]) => Number(v) >= 1);
   const cleanRisks = Object.entries(p.risks || {}).filter(([, v]) => Number(v) === 0);
   const overrides = p.__scoutOverrides || { traits: {}, risks: {} };
+
+  // ------------------------------------------------------------------
+  // Source new engine values when available. Fall back to authored.
+  // ------------------------------------------------------------------
+  const computed = useMemo(() => {
+    if (!p?.name) return null;
+    return getProspectScoresByName(p.name);
+  }, [p?.name]);
+
+  // 8-trait (1-10 scale used by the bar) — derived from new engine 0-100
+  const effectiveTraits9 = useMemo(() => {
+    if (computed?.traits) {
+      const out = {};
+      const keyMap = {
+        "Advantage Creation": "AdvantageCreation",
+        "Decision Making":    "DecisionMaking",
+        "Passing Creation":   "PassingCreation",
+        "Shooting Gravity":   "ShootingGravity",
+        "Off-Ball Value":     "OffBallValue",
+        "Processing Speed":   "ProcessingSpeed",
+        "Scalability":        "Scalability",
+        "Defensive Versatility": "DefensiveVersatility",
+      };
+      let any = false;
+      for (const [label, k] of Object.entries(keyMap)) {
+        const t = computed.traits[k];
+        if (t?.score != null) {
+          out[label] = Math.max(1, Math.min(10, Math.round(t.score / 10)));
+          any = true;
+        }
+      }
+      if (any) return out;
+    }
+    return p.traits9 || {};
+  }, [computed, p?.traits9]);
+
+  // 5-bucket (Scoring/Playmaking/Defense/Feel/Athleticism) — derive from
+  // 8-trait when computed is available, fall back to p.traits otherwise.
+  const effectiveTraits5 = useMemo(() => {
+    if (computed?.traits) {
+      const t = computed.traits;
+      const get = (k) => t[k]?.score ?? null;
+      const avg = (vs) => {
+        const present = vs.filter((v) => v != null);
+        return present.length ? Math.round(present.reduce((s, x) => s + x, 0) / present.length) : null;
+      };
+      const scoring     = avg([get("ShootingGravity"), get("AdvantageCreation")]);
+      const playmaking  = avg([get("PassingCreation"), get("DecisionMaking")]);
+      const defense     = avg([get("DefensiveVersatility")]);
+      const feel        = avg([get("DecisionMaking"), get("ProcessingSpeed"), get("OffBallValue")]);
+      const athleticism = avg([get("Scalability"), get("AdvantageCreation")]);
+      const out = {};
+      if (scoring     != null) out.Scoring     = scoring;
+      if (playmaking  != null) out.Playmaking  = playmaking;
+      if (defense     != null) out.Defense     = defense;
+      if (feel        != null) out.Feel        = feel;
+      if (athleticism != null) out.Athleticism = athleticism;
+      if (Object.keys(out).length > 0) return out;
+    }
+    return p.traits || {};
+  }, [computed, p?.traits]);
   return (
     <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 16 }} className="prospera-eval-grid">
       <div style={{ display: "grid", gap: 16 }}>
@@ -4164,7 +4257,7 @@ const TraitsTab = ({ p }) => {
             FULL EVALUATION TAXONOMY · 1–10 SCALE
           </div>
           <div style={{ display: "grid", gap: 14 }}>
-            {Object.entries(p.traits9 || {}).map(([k, v]) => {
+            {Object.entries(effectiveTraits9).map(([k, v]) => {
               const ovr = overrides.traits[k];
               return (
                 <div key={k}>
@@ -4205,7 +4298,7 @@ const TraitsTab = ({ p }) => {
                 </div>
               );
             })}
-            {Object.keys(p.traits9 || {}).length === 0 && (
+            {Object.keys(effectiveTraits9).length === 0 && (
               <div style={{ fontSize: 12, color: T.textMute }}>No trait evaluation on file.</div>
             )}
           </div>
@@ -4213,10 +4306,10 @@ const TraitsTab = ({ p }) => {
 
         <Section title="5-Bucket Snapshot">
           <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em", marginBottom: 14 }}>
-            DERIVED FROM 9-TRAIT PROFILE · 0–100 SCALE
+            {computed ? "FROM COMPUTED 8-TRAIT PIPELINE · 0–100 SCALE" : "DERIVED FROM 9-TRAIT PROFILE · 0–100 SCALE"}
           </div>
           <div style={{ display: "grid", gap: 12 }}>
-            {Object.entries(p.traits || {}).map(([k, v]) => (
+            {Object.entries(effectiveTraits5).map(([k, v]) => (
               <div key={k}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
                   <span style={{ fontSize: 13, color: T.textDim, fontWeight: 500 }}>{k}</span>
@@ -4613,14 +4706,99 @@ const EmptyState = ({ label, compact }) => (
   </div>
 );
 
-// ---------- BIG BOARD PAGE (full) ----------
+// ---------- SCOUT DESK PAGE (Roster spine + Deep Dives — merged personal hub) ----------
+// "Scout Desk" is the user's private scouting workspace. It combines:
+//   • the prospect roster (former Big Board) with drag-to-reorder
+//   • inline indicators for any prospect with a deep dive (status / buy-sell / ceiling)
+//   • a "Dives" toggle that drops into the full Deep Dive editor (DeepDivesPage)
+// This is intentionally distinct from "My Board", which is the user-facing
+// board builder (manual / preset / team-needs / custom-weights).
+
+// Seed shape for a brand-new deep dive — kept in sync with emptyDeepDive() in
+// DeepDives.jsx. Defined locally so we can create a dive from Scout Desk
+// without triggering an extra import dance.
+function emptyDeepDiveSeed(prospectId) {
+  const now = new Date().toISOString();
+  return {
+    prospectId,
+    status: "WATCH",
+    buyHoldSell: "HOLD",
+    confidence: "MEDIUM",
+    personalComp: "",
+    story: "",
+    strengths: [],
+    weaknesses: [],
+    swingFactors: [],
+    ceiling: "",
+    ceilingTier: "",
+    floor: "",
+    floorTier: "",
+    observations: [],
+    traitNotes: "",
+    traitOverrides: {},
+    riskOverrides: {},
+    measurements: {
+      height: "", weight: "", wingspan: "", standingReach: "",
+      maxVertical: "", bodyFat: "", laneAgility: "", threeQuarterSprint: "",
+    },
+    defendsPositions: [],
+    attacksAt: "",
+    createdAt: now,
+    lastUpdated: now,
+  };
+}
+
+// Tabbed shell that wraps the Roster vs Dives switch. Renders a small inline
+// segmented control at the top so the user can flip between the prospect
+// roster (with dive indicators) and the full Deep Dive editor index.
+function ScoutDeskShell({ view, setView, diveCount, children }) {
+  return (
+    <div>
+      <div style={{ padding: "16px 28px 0 28px", maxWidth: 1400, margin: "0 auto" }}>
+        <div style={{ display: "inline-flex", gap: 0, border: `1px solid ${T.border}`, background: T.surface }}>
+          {[
+            ["roster", "Roster"],
+            ["dives",  `Dives · ${diveCount}`],
+          ].map(([key, label], i) => {
+            const active = view === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setView(key)}
+                style={{
+                  ...mono, fontSize: 10, letterSpacing: "0.16em",
+                  color: active ? T.cyan : T.textDim,
+                  background: active ? "var(--prospera-accent-bg)" : "transparent",
+                  border: "none",
+                  borderLeft: i === 0 ? "none" : `1px solid ${T.border}`,
+                  padding: "8px 16px",
+                  cursor: "pointer",
+                  textTransform: "uppercase",
+                  fontWeight: active ? 700 : 500,
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      {children}
+    </div>
+  );
+}
+
 const BigBoardPage = ({
   onOpenProfile, watchlist = [], compareIds = [],
   onToggleWatchlist, onToggleCompare, onOpenCompare,
   savedViews = [], onSaveView, onDeleteView,
   boardOrder = null, onSetBoardOrder,
+  deepDives = {}, onOpenDive,
 }) => {
   const [watchOnly, setWatchOnly] = useState(false);
+  // Dive-status filter: "ALL" | "DIVES" (any) | "ACTIVE" | "BUY" | "SELL"
+  const [diveFilter, setDiveFilter] = useState("ALL");
   const [query, setQuery] = useState("");
   const [viewName, setViewName] = useState("");
   const [draggingId, setDraggingId] = useState(null);
@@ -4658,14 +4836,33 @@ const BigBoardPage = ({
   }, [boardOrder]);
   const usingCustomOrder = Array.isArray(boardOrder) && boardOrder.length > 0;
 
-  // Apply watchlist + search filters AFTER ordering so the user's drag order
-  // is preserved when filters narrow the list.
+  // Apply watchlist + dive-status + search filters AFTER ordering so the user's
+  // drag order is preserved when filters narrow the list.
   const rows = orderedAllProspects.filter((p) => {
     if (watchOnly && !watchlist.includes(p.id)) return false;
+    const dive = deepDives[p.id];
+    if (diveFilter === "DIVES"  && !dive) return false;
+    if (diveFilter === "ACTIVE" && dive?.status !== "ACTIVE") return false;
+    if (diveFilter === "BUY"    && dive?.buyHoldSell !== "BUY") return false;
+    if (diveFilter === "SELL"   && dive?.buyHoldSell !== "SELL") return false;
     if (!lowered) return true;
     const haystack = [p.name, p.school, p.pos, p.archetype, p.country].join(" ").toLowerCase();
     return haystack.includes(lowered);
   });
+
+  // Counts for the dive filter chips (total / with dive / by status / by side)
+  const diveCounts = useMemo(() => {
+    const c = { ALL: PROSPECTS.length, DIVES: 0, ACTIVE: 0, BUY: 0, SELL: 0 };
+    for (const dd of Object.values(deepDives)) {
+      // Only count dives whose prospectId still maps to an active prospect
+      if (!PROSPECTS.find((p) => p.id === dd.prospectId)) continue;
+      c.DIVES += 1;
+      if (dd.status === "ACTIVE") c.ACTIVE += 1;
+      if (dd.buyHoldSell === "BUY") c.BUY += 1;
+      if (dd.buyHoldSell === "SELL") c.SELL += 1;
+    }
+    return c;
+  }, [deepDives]);
 
   // Drag-and-drop reorder. We persist by saving the FULL ordered prospect ID
   // list (using the current resolved order as the baseline) so dragging while
@@ -4688,14 +4885,14 @@ const BigBoardPage = ({
   };
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
-      <Label>Class · 2026</Label>
+      <Label>Class · 2026 · Personal Hub</Label>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}>
         <div>
           <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
-            Big Board
+            Scout Desk
           </h1>
           <div style={{ fontSize: 13, color: T.textDim, marginBottom: 18 }}>
-            {PROSPECTS.length} prospects · {usingCustomOrder ? "your custom order" : "alphabetical"} · drag to reorder
+            {PROSPECTS.length} prospects · {diveCounts.DIVES} deep dive{diveCounts.DIVES === 1 ? "" : "s"} · {usingCustomOrder ? "your custom order" : "alphabetical"} · drag to reorder
           </div>
         </div>
         {allowReorder && usingCustomOrder && (
@@ -4871,6 +5068,41 @@ const BigBoardPage = ({
         </button>
       </div>
 
+      {/* Dive-status filter chips */}
+      <div style={{ display: "flex", gap: 4, alignItems: "center", flexWrap: "wrap", marginBottom: 12 }}>
+        <span style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.textMute, textTransform: "uppercase", marginRight: 6 }}>
+          Dive Filter
+        </span>
+        {[
+          ["ALL",    "All",      diveCounts.ALL,    T.textDim],
+          ["DIVES",  "W/ Dive",  diveCounts.DIVES,  T.cyan],
+          ["ACTIVE", "Active",   diveCounts.ACTIVE, T.cyan],
+          ["BUY",    "Buy",      diveCounts.BUY,    "var(--prospera-positive)"],
+          ["SELL",   "Sell",     diveCounts.SELL,   "var(--prospera-danger)"],
+        ].map(([key, label, count, accent]) => {
+          const isActive = diveFilter === key;
+          return (
+            <button
+              key={key}
+              type="button"
+              onClick={() => setDiveFilter(key)}
+              style={{
+                ...mono, fontSize: 10, letterSpacing: "0.12em",
+                color: isActive ? T.bg : accent,
+                background: isActive ? accent : "transparent",
+                border: `1px solid ${accent}`,
+                padding: "5px 10px",
+                cursor: "pointer",
+                fontWeight: isActive ? 700 : 400,
+                textTransform: "uppercase",
+              }}
+            >
+              {label} · {count}
+            </button>
+          );
+        })}
+      </div>
+
       {/* Family-bar legend — keyed to the colored leading bar on every row */}
       <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 10, flexWrap: "wrap", ...mono, fontSize: 9, letterSpacing: "0.14em", color: T.textMute, textTransform: "uppercase" }}>
         <span>Family Bar:</span>
@@ -4889,11 +5121,11 @@ const BigBoardPage = ({
       </div>
 
       <div style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
-        <div style={{ minWidth: 680 }}>
+        <div style={{ minWidth: 760 }}>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 80px" : "1fr 80px 70px 90px 70px 80px",
+              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 110px" : "1fr 80px 70px 90px 70px 110px",
               padding: "10px 16px 10px 14px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
@@ -4910,7 +5142,9 @@ const BigBoardPage = ({
           </div>
           {rows.length === 0 && (
             <div style={{ padding: 32, textAlign: "center", ...mono, fontSize: 11, color: T.textMute, letterSpacing: "0.12em" }}>
-              NO PROSPECTS IN WATCHLIST · CLICK ☆ TO SAVE
+              {watchOnly && diveFilter === "ALL"
+                ? "NO PROSPECTS IN WATCHLIST · CLICK ☆ TO SAVE"
+                : "NO PROSPECTS MATCH THIS FILTER"}
             </div>
           )}
           {rows.map((p) => {
@@ -4918,6 +5152,11 @@ const BigBoardPage = ({
             const isCompared = compareIds.includes(p.id);
             const familyBar = familyBarColor(p);
             const isDragging = draggingId === p.id;
+            const dive = deepDives[p.id];
+            const statusMeta = dive ? DIVE_STATUSES.find((s) => s.value === dive.status) : null;
+            const sideMeta   = dive ? DIVE_BUY_SELL.find((s) => s.value === dive.buyHoldSell) : null;
+            const ceilingTier = dive?.ceilingTier;
+            const ceilingColor = ceilingTier ? DEEP_DIVE_TIER_COLORS[ceilingTier] : null;
             return (
               <div
                 key={p.id}
@@ -4938,7 +5177,7 @@ const BigBoardPage = ({
                 }}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 80px" : "1fr 80px 70px 90px 70px 80px",
+                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 110px" : "1fr 80px 70px 90px 70px 110px",
                   padding: "12px 16px 12px 14px",
                   borderBottom: `1px solid ${T.borderSoft}`,
                   boxShadow: `inset 5px 0 0 ${familyBar}`,
@@ -4981,12 +5220,71 @@ const BigBoardPage = ({
                     <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {p.archetype?.toUpperCase() || "—"}
                     </div>
+                    {/* Dive indicators — appear only for prospects with an authored deep dive */}
+                    {dive && (
+                      <div style={{ display: "flex", gap: 4, marginTop: 5, flexWrap: "wrap" }}>
+                        {sideMeta && (
+                          <span
+                            title={`${sideMeta.label} — ${sideMeta.hint}`}
+                            style={{
+                              ...mono, fontSize: 8, letterSpacing: "0.12em",
+                              color: T.bg, background: sideMeta.color,
+                              padding: "2px 6px", borderRadius: 2, fontWeight: 700,
+                            }}
+                          >
+                            {sideMeta.label.toUpperCase()}
+                          </span>
+                        )}
+                        {statusMeta && (
+                          <span
+                            title={`Status: ${statusMeta.label} — ${statusMeta.hint}`}
+                            style={{
+                              ...mono, fontSize: 8, letterSpacing: "0.12em",
+                              color: statusMeta.color, background: "transparent",
+                              border: `1px solid ${statusMeta.color}`,
+                              padding: "1px 5px", borderRadius: 2,
+                            }}
+                          >
+                            {statusMeta.label.toUpperCase()}
+                          </span>
+                        )}
+                        {ceilingTier && ceilingColor && (
+                          <span
+                            title={`Ceiling: ${ceilingTier}`}
+                            style={{
+                              ...mono, fontSize: 8, letterSpacing: "0.12em",
+                              color: ceilingColor, background: "transparent",
+                              border: `1px solid ${ceilingColor}`,
+                              padding: "1px 5px", borderRadius: 2,
+                            }}
+                          >
+                            ↑ {ceilingTier.toUpperCase()}
+                          </span>
+                        )}
+                        {dive.personalComp && (
+                          <span
+                            title={`Personal comp: ${dive.personalComp}`}
+                            style={{
+                              ...mono, fontSize: 8, letterSpacing: "0.10em",
+                              color: T.textDim, background: "transparent",
+                              padding: "1px 0",
+                              maxWidth: 140, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                            }}
+                          >
+                            ≈ {dive.personalComp}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.cls || "—"}</div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school?.split(" ")[0]}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700, cursor: "pointer" }}><ScoreCell prospect={p} /></div>
+                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center" }}>
+                  <ScoreCell prospect={p} />
+                  <ComputedScorePill prospectName={p.name} />
+                </div>
                 <div style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
                   <button
                     type="button"
@@ -5017,6 +5315,26 @@ const BigBoardPage = ({
                     }}
                   >
                     <GitCompare size={12} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); onOpenDive?.(p.id); }}
+                    title={dive ? "Edit deep dive" : "Start deep dive"}
+                    style={{
+                      background: dive ? "var(--prospera-accent-bg)" : "transparent",
+                      border: `1px solid ${dive ? T.cyan : T.border}`,
+                      color: dive ? T.cyan : T.textMute,
+                      padding: "3px 6px",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      ...mono,
+                      fontSize: 9,
+                      letterSpacing: "0.08em",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {dive ? "✎ DIVE" : "+ DIVE"}
                   </button>
                 </div>
               </div>
@@ -5618,7 +5936,7 @@ const ComparePage = ({ compareIds = [], onRemoveCompare, onClearCompare, onOpenP
       </div>
 
       {players.length === 0 ? (
-        <EmptyState label="Add prospects from the Big Board to start a comparison." />
+        <EmptyState label="Add prospects from the Scout Desk to start a comparison." />
       ) : (
         <div style={{ display: "grid", gap: 16 }}>
           {players.length === 2 && (
@@ -6161,6 +6479,16 @@ function ProsperaAppInner() {
   const [mockDraftPicks, setMockDraftPicks] = useLocalStorageState("prospera.terminal.mock-draft", Array(60).fill(null));
   const [mockDraftTeams, setMockDraftTeams] = useLocalStorageState("prospera.terminal.mock-draft-teams", DEFAULT_MOCK_DRAFT_TEAMS);
   const [deepDives, setDeepDives] = useLocalStorageState("prospera.terminal.deep-dives", {});
+  // When set, Scout Desk routes through the DeepDives editor for that prospect.
+  // Clearing returns to the roster view. The actual list of dives still lives
+  // in the deepDives map above; this is just navigation state. The seq counter
+  // increments on every open request so the editor remounts even when the user
+  // re-clicks the same prospect they just closed.
+  const [diveEditorId, setDiveEditorId] = useState(null);
+  const [diveEditorSeq, setDiveEditorSeq] = useState(0);
+  // Toggle for the secondary "All Dives" workspace (the former Deep Dives index page).
+  // Roster view = personal Big Board; Dives view = the dive index/editor.
+  const [scoutDeskView, setScoutDeskView] = useState("roster");
   // Per-prospect comp overrides. Shape:
   //   { [prospectId]: { [historicalId]: 'highEnd' | 'realistic' | 'cautionary' | 'hidden' } }
   // Applied by rankComparablesByTier — manual pins inject into the chosen
@@ -6359,7 +6687,7 @@ function ProsperaAppInner() {
 
       <ProsperaTicker prospects={PROSPECTS} onOpenProfile={onOpenProfile} />
       <TopNav
-        active={route === "Player" ? "Big Board" : route}
+        active={route === "Player" ? "Scout Desk" : route}
         setActive={setRoute}
         onMenu={() => setRailOpen(!railOpen)}
         onOpenWeights={() => setWeightsDrawerOpen(true)}
@@ -6381,7 +6709,7 @@ function ProsperaAppInner() {
             setSelectedId(id);
             if (route === "Dashboard") {
               addToSelected(id);
-            } else if (route === "Big Board" || route === "Player") {
+            } else if (route === "Scout Desk" || route === "Player") {
               onOpenProfile(id);
             }
           }}
@@ -6400,20 +6728,51 @@ function ProsperaAppInner() {
               dashSelected={dashSelected}
             />
           )}
-          {route === "Big Board" && (
-            <BigBoardPage
-              onOpenProfile={onOpenProfile}
-              watchlist={watchlist}
-              compareIds={compareIds}
-              onToggleWatchlist={toggleWatchlist}
-              onToggleCompare={toggleCompare}
-              onOpenCompare={() => setRoute("Compare")}
-              savedViews={savedViews}
-              onSaveView={saveView}
-              onDeleteView={deleteView}
-              boardOrder={bigBoardOrder}
-              onSetBoardOrder={setBigBoardOrder}
-            />
+          {route === "Scout Desk" && (
+            <ScoutDeskShell
+              view={scoutDeskView}
+              setView={setScoutDeskView}
+              diveCount={Object.keys(deepDives).length}
+            >
+              {scoutDeskView === "roster" && (
+                <BigBoardPage
+                  onOpenProfile={onOpenProfile}
+                  watchlist={watchlist}
+                  compareIds={compareIds}
+                  onToggleWatchlist={toggleWatchlist}
+                  onToggleCompare={toggleCompare}
+                  onOpenCompare={() => setRoute("Compare")}
+                  savedViews={savedViews}
+                  onSaveView={saveView}
+                  onDeleteView={deleteView}
+                  boardOrder={bigBoardOrder}
+                  onSetBoardOrder={setBigBoardOrder}
+                  deepDives={deepDives}
+                  onOpenDive={(prospectId) => {
+                    if (!deepDives[prospectId]) {
+                      // Auto-create an empty dive so the editor opens populated
+                      setDeepDives((curr) => ({
+                        ...curr,
+                        [prospectId]: emptyDeepDiveSeed(prospectId),
+                      }));
+                    }
+                    setDiveEditorId(prospectId);
+                    setDiveEditorSeq((n) => n + 1);
+                    setScoutDeskView("dives");
+                  }}
+                />
+              )}
+              {scoutDeskView === "dives" && (
+                <DeepDivesPage
+                  key={`dives-${diveEditorId || "none"}-${diveEditorSeq}`}
+                  prospects={PROSPECTS}
+                  deepDives={deepDives}
+                  setDeepDives={setDeepDives}
+                  onOpenProfile={onOpenProfile}
+                  initialEditingId={diveEditorId}
+                />
+              )}
+            </ScoutDeskShell>
           )}
           {route === "My Board" && (
             <MyBoardPage
@@ -6447,14 +6806,6 @@ function ProsperaAppInner() {
               onOpenProfile={onOpenProfile}
             />
           )}
-          {route === "Deep Dives" && (
-            <DeepDivesPage
-              prospects={PROSPECTS}
-              deepDives={deepDives}
-              setDeepDives={setDeepDives}
-              onOpenProfile={onOpenProfile}
-            />
-          )}
           {route === "Compare" && (
             <ComparePage
               compareIds={compareIds}
@@ -6478,7 +6829,7 @@ function ProsperaAppInner() {
             <PlayerProfilePage
               p={profilePlayer}
               deepDive={deepDives[profilePlayer.id] || null}
-              onBack={() => setRoute("Big Board")}
+              onBack={() => setRoute("Scout Desk")}
               notes={notesByPlayer[profilePlayer.id] || []}
               onAddNote={addNote}
               onDeleteNote={deleteNote}

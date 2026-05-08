@@ -1,0 +1,24 @@
+{
+  "_README": "Maps scoutTraitLibrary category IDs to 9-axis weights. When a prospect's prose matches a library item, the item's category is looked up here and the matched ProseTag entries are emitted with these weights. The 'risk' and 'rebounding' categories don't map to axes; they feed the overall-grade confidence interval / red-flag deductions instead.",
+  "_schema": {
+    "categoryId":     "Matches scoutTraitLibrary category id (offensive-creation, shooting, etc.)",
+    "axisWeights":    "Object mapping axis key → contribution weight (0..1). Multiple axes per category supported (e.g., off-ball maps to connect + space).",
+    "feedsRiskFlag":  "If true (and category isn't axis-mapped), the prose contributes to overall-grade red-flag deductions instead of axis scores."
+  },
+  "categories": {
+    "offensive-creation":   { "axisWeights": { "initiate":   1.00, "transition": 0.40 } },
+    "shooting":             { "axisWeights": { "space":      1.00, "close":      0.30 } },
+    "finishing":            { "axisWeights": { "close":      1.00, "transition": 0.30 } },
+    "playmaking":           { "axisWeights": { "extend":     1.00, "connect":    0.30 } },
+    "off-ball":             { "axisWeights": { "connect":    0.70, "space":      0.30 } },
+    "defense-individual":   { "axisWeights": { "contain":    1.00, "switch":     0.30 } },
+    "defense-team":         { "axisWeights": { "disrupt":    0.70, "switch":     0.30, "contain": 0.30 } },
+    "rebounding":           { "axisWeights": {                          },         "feedsRiskFlag": false },
+    "athleticism":          { "axisWeights": { "transition": 1.00, "close":      0.30 } },
+    "physical":             { "axisWeights": { "contain":    0.40, "switch":     0.40 } },
+    "motor":                { "axisWeights": { "transition": 0.30, "connect":    0.30 } },
+    "processing":           { "axisWeights": { "extend":     0.30, "disrupt":    0.30, "connect": 0.30 } },
+    "translation":          { "axisWeights": {                          },         "feedsRiskFlag": false },
+    "risk":                 { "axisWeights": {                          },         "feedsRiskFlag": true  }
+  }
+}

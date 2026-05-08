@@ -1,0 +1,18 @@
+{
+  "_README": "Fixed 9-axis → 8-trait projection. Each 8-trait UI label is computed as a weighted blend of one or more 9-axes. Weights per trait must sum to 1.0 (within EPSILON tolerance). The projection is intentionally lossy — the 9-axis system is the canonical scoring layer; the 8-trait UI is a presentation projection.",
+  "_schema": {
+    "trait":   "8-trait UI label (one of: AdvantageCreation, DecisionMaking, PassingCreation, ShootingGravity, OffBallValue, ProcessingSpeed, Scalability, DefensiveVersatility)",
+    "blend":   "Object mapping axis key (one of the 9 axes from axisScores.AXIS_KEYS) to weight (0..1). Sum of weights must equal 1.0."
+  },
+  "_design_note": "DecisionMaking and PassingCreation both project from `extend`. They produce the same numeric value today; differentiation can be added later (e.g., a downstream prose-tag override) without changing the projection topology.",
+  "projection": {
+    "AdvantageCreation":     { "blend": { "initiate": 0.60, "transition": 0.40 } },
+    "DecisionMaking":        { "blend": { "extend":   1.00 } },
+    "PassingCreation":       { "blend": { "extend":   1.00 } },
+    "ShootingGravity":       { "blend": { "close":    0.70, "space":      0.30 } },
+    "OffBallValue":          { "blend": { "connect":  0.60, "space":      0.40 } },
+    "ProcessingSpeed":       { "blend": { "disrupt":  0.50, "connect":    0.50 } },
+    "Scalability":           { "blend": { "switch":   1.00 } },
+    "DefensiveVersatility":  { "blend": { "contain":  0.60, "disrupt":    0.40 } }
+  }
+}

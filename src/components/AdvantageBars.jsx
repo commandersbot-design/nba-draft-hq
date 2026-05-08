@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import ARCHETYPE_CATALOG from "../data/archetypeCatalog.json";
+import { getProspectScoresByName } from "../grading/precomputed";
 
 // Archetype lookup helpers
 const ARCHETYPE_BY_NAME = (() => {
@@ -131,44 +132,90 @@ function blendWithAnchors(traitName, traitGrade, anchor) {
 export function deriveAdvantageProfile(prospect) {
   if (!prospect) return null;
   if (prospect.advantageProfile) return prospect.advantageProfile;
-  const t = prospect.traits9 || {};
-  const ac = asScore(t, "Advantage Creation");
-  const dm = asScore(t, "Decision Making");
-  const pc = asScore(t, "Passing Creation");
-  const sg = asScore(t, "Shooting Gravity");
-  const ob = asScore(t, "Off-Ball Value");
-  const ps = asScore(t, "Processing Speed");
-  const sc = asScore(t, "Scalability");
-  const dv = asScore(t, "Defensive Versatility");
-  if ([ac, dm, pc, sg, ob, ps, sc, dv].some((v) => v == null)) return null;
 
-  // Map 8 actual traits to the 9-trait advantage taxonomy.
-  const traitGrades = {
-    initiate: ac,
-    extend: Math.round((pc + dm) / 2),
-    close: sg,
-    space: Math.round(sg * 0.55 + ob * 0.45),
-    connect: Math.round(ob * 0.7 + ps * 0.3),
-    contain: dv,
-    disrupt: Math.round(dv * 0.7 + ps * 0.3),
-    switch: Math.round(sc * 0.5 + dv * 0.5),
-    transition: Math.round(ac * 0.5 + ob * 0.5),
-  };
-
-  // If we have a catalog archetype, blend its anchor scores with the prospect's
-  // actual trait grades. This gives better differentiation than raw derivation.
   const archetypeMeta = findCatalogArchetype(prospect);
-  const finalTraits = {};
-  for (const key of Object.keys(traitGrades)) {
-    if (archetypeMeta?.anchorScores?.[key] != null) {
-      finalTraits[key] = blendWithAnchors(key, traitGrades[key], archetypeMeta.anchorScores[key]);
-    } else {
-      finalTraits[key] = traitGrades[key];
+
+  // -------------------------------------------------------------------------
+  // PRIMARY PATH: read from the new scoring pipeline.
+  // The new engine produces 9-axis scores directly (initiate/extend/close/
+  // space/connect/contain/disrupt/switch/transition + translate). When
+  // available, we use them — these are statistically calibrated, not
+  // hand-authored 1-10 values.
+  // -------------------------------------------------------------------------
+  let finalTraits = null;
+  let translateScore = null;
+  let usedComputed = false;
+  if (prospect.name) {
+    const computed = getProspectScoresByName(prospect.name);
+    if (computed && computed.axes && computed.axes.axes) {
+      const axes = computed.axes.axes;
+      const get = (k) => {
+        const a = axes[k];
+        return a && a.score != null ? Math.round(a.score) : null;
+      };
+      const initiate   = get("initiate");
+      const extend     = get("extend");
+      const close      = get("close");
+      const space      = get("space");
+      const connect    = get("connect");
+      const contain    = get("contain");
+      const disrupt    = get("disrupt");
+      const switchAxis = get("switch");
+      const transition = get("transition");
+      // All 9 must be present for the new path; otherwise fall back.
+      if ([initiate, extend, close, space, connect, contain, disrupt, switchAxis, transition].every((v) => v != null)) {
+        finalTraits = { initiate, extend, close, space, connect, contain, disrupt, switch: switchAxis, transition };
+        // Translate score: prefer the engine's translate axis, fall back to overall display
+        translateScore = clamp(
+          computed.axes.translate?.score != null ? Math.round(computed.axes.translate.score)
+          : computed.summary.overallDisplay != null ? Math.round(computed.summary.overallDisplay)
+          : 50,
+        );
+        usedComputed = true;
+      }
     }
   }
 
-  const baseScore = prospect.score != null ? Math.round(prospect.score) : Math.round((ac + sg + sc) / 3);
-  const translateScore = clamp(baseScore);
+  // -------------------------------------------------------------------------
+  // FALLBACK PATH: legacy hand-authored traits9 → 9-axis derivation.
+  // Used for prospects not in the precomputed map (international,
+  // pre-NCAA, or anyone scored before the new pipeline ran).
+  // -------------------------------------------------------------------------
+  if (!usedComputed) {
+    const t = prospect.traits9 || {};
+    const ac = asScore(t, "Advantage Creation");
+    const dm = asScore(t, "Decision Making");
+    const pc = asScore(t, "Passing Creation");
+    const sg = asScore(t, "Shooting Gravity");
+    const ob = asScore(t, "Off-Ball Value");
+    const ps = asScore(t, "Processing Speed");
+    const sc = asScore(t, "Scalability");
+    const dv = asScore(t, "Defensive Versatility");
+    if ([ac, dm, pc, sg, ob, ps, sc, dv].some((v) => v == null)) return null;
+
+    const traitGrades = {
+      initiate: ac,
+      extend: Math.round((pc + dm) / 2),
+      close: sg,
+      space: Math.round(sg * 0.55 + ob * 0.45),
+      connect: Math.round(ob * 0.7 + ps * 0.3),
+      contain: dv,
+      disrupt: Math.round(dv * 0.7 + ps * 0.3),
+      switch: Math.round(sc * 0.5 + dv * 0.5),
+      transition: Math.round(ac * 0.5 + ob * 0.5),
+    };
+
+    finalTraits = {};
+    for (const key of Object.keys(traitGrades)) {
+      if (archetypeMeta?.anchorScores?.[key] != null) {
+        finalTraits[key] = blendWithAnchors(key, traitGrades[key], archetypeMeta.anchorScores[key]);
+      } else {
+        finalTraits[key] = traitGrades[key];
+      }
+    }
+    const baseScore = prospect.score != null ? Math.round(prospect.score) : Math.round((ac + sg + sc) / 3);
+    translateScore = clamp(baseScore);
+  }
 
   const offTrait = (score) => ({
     archetype: { score, ...band(score, 11), efficient: efficient(score) },

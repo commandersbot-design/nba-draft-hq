@@ -1,0 +1,147 @@
+{
+  "_README": "User-authored stylistic comps per prospect. Each prospect has a 5-rung outcome ladder from Floor (worst case) → Ceiling (best case), with each rung carrying a player name + role tier label. The UI surfaces this ladder above the statistical comp engine output as the user's eye-test read. Slugs match the precomputed scoring map convention (lowercase alphanumeric). Levels can be null when the user didn't fill that slot.",
+  "_levelOrder": ["floor", "lowEnd", "middle", "highEnd", "ceiling"],
+  "_authoredAt": "2026-05",
+  "comps": {
+    "ajdybantsa": {
+      "prospectName": "AJ Dybantsa",
+      "ladder": {
+        "floor":   { "name": "RJ Barrett",      "tier": "Starter" },
+        "lowEnd":  { "name": "Andrew Wiggins",  "tier": "Starter" },
+        "middle":  { "name": "Brandon Miller",  "tier": "Star" },
+        "highEnd": { "name": "Jaylen Brown",    "tier": "Superstar" },
+        "ceiling": { "name": "Tracy McGrady",   "tier": "Hall of Famer" }
+      }
+    },
+    "darrynpeterson": {
+      "prospectName": "Darryn Peterson",
+      "ladder": {
+        "floor":   { "name": "Ben Gordon",      "tier": "6th Man / Starter" },
+        "lowEnd":  { "name": "Brandon Roy",     "tier": "All-Star" },
+        "middle":  { "name": "Devin Booker",    "tier": "Star" },
+        "highEnd": { "name": "Ray Allen",       "tier": "Superstar" },
+        "ceiling": { "name": "Kobe Bryant",     "tier": "Hall of Famer" }
+      }
+    },
+    "cameronboozer": {
+      "prospectName": "Cameron Boozer",
+      "ladder": {
+        "floor":   { "name": "David West",      "tier": "Starter" },
+        "lowEnd":  { "name": "Al Horford",      "tier": "Star" },
+        "middle":  { "name": "Alperen Sengun",  "tier": "Star" },
+        "highEnd": { "name": "Domantas Sabonis","tier": "Star" },
+        "ceiling": { "name": "Kevin Love",      "tier": "Superstar" }
+      }
+    },
+    "calebwilson": {
+      "prospectName": "Caleb Wilson",
+      "ladder": {
+        "floor":   { "name": "Al-Farouq Aminu",   "tier": "Starter" },
+        "lowEnd":  { "name": "Jonathan Isaac+",   "tier": "Starter" },
+        "middle":  { "name": "Jalen Johnson",     "tier": "Star" },
+        "highEnd": { "name": "Pascal Siakam",     "tier": "Star" },
+        "ceiling": { "name": "Chris Bosh",        "tier": "Superstar" }
+      }
+    },
+    "kingstonflemings": {
+      "prospectName": "Kingston Flemings",
+      "ladder": {
+        "floor":   { "name": "Cason Wallace",     "tier": "Role Player / Starter" },
+        "lowEnd":  { "name": "Andrew Nembhard+",  "tier": "Starter" },
+        "middle":  { "name": "Dejounte Murray",   "tier": "Starter" },
+        "highEnd": { "name": "Jrue Holiday",      "tier": "Star" },
+        "ceiling": { "name": "De'Aaron Fox",      "tier": "Star" }
+      }
+    },
+    "dariusacuff": {
+      "prospectName": "Darius Acuff",
+      "ladder": {
+        "floor":   { "name": "Cole Anthony",      "tier": "Role Player" },
+        "lowEnd":  { "name": "Isaiah Collier",    "tier": "Starter" },
+        "middle":  { "name": "Keyonte George",    "tier": "Starter" },
+        "highEnd": { "name": "Jeff Teague",       "tier": "Star" },
+        "ceiling": { "name": "Stephon Marbury",   "tier": "Star" }
+      }
+    },
+    "mikelbrown": {
+      "prospectName": "Mikel Brown",
+      "ladder": {
+        "floor":   { "name": "Lonzo Ball",        "tier": "Starter" },
+        "lowEnd":  { "name": "Anfernee Simons",   "tier": "Starter" },
+        "middle":  { "name": "Darius Garland",    "tier": "Star" },
+        "highEnd": { "name": "Tyrese Haliburton", "tier": "Superstar" },
+        "ceiling": { "name": "Trae Young",        "tier": "Superstar" }
+      }
+    },
+    "keatonwagler": {
+      "prospectName": "Keaton Wagler",
+      "ladder": {
+        "floor":   { "name": "Bogdan Bogdanovic", "tier": "Role Player" },
+        "lowEnd":  { "name": "Austin Reaves",     "tier": "Starter" },
+        "middle":  { "name": "D'Angelo Russell",  "tier": "Starter" },
+        "highEnd": { "name": "Tyler Herro",       "tier": "Star" },
+        "ceiling": { "name": "Tyrese Haliburton", "tier": "Superstar" }
+      }
+    },
+    "braydenburries": {
+      "prospectName": "Brayden Burries",
+      "ladder": {
+        "floor":   { "name": "Quentin Grimes",    "tier": "Role Player" },
+        "lowEnd":  { "name": "Jared McCain",      "tier": "Role Player" },
+        "middle":  { "name": "Donte DiVincenzo",  "tier": "Starter" },
+        "highEnd": { "name": "Malcolm Brogdon",   "tier": "Starter" },
+        "ceiling": { "name": "Norman Powell",     "tier": "Star" }
+      }
+    },
+    "labaronphilon": {
+      "prospectName": "Labaron Philon",
+      "ladder": {
+        "floor":   { "name": "Bones Hyland",      "tier": "Role Player" },
+        "lowEnd":  { "name": "Dennis Schroder",   "tier": "Role Player / Starter" },
+        "middle":  { "name": "Mike Conley",       "tier": "Starter" },
+        "highEnd": { "name": "Tyrese Maxey",      "tier": "Star" },
+        "ceiling": { "name": "SGA lite",          "tier": "Superstar" }
+      }
+    },
+    "yaxellendeborg": {
+      "prospectName": "Yaxel Lendeborg",
+      "ladder": {
+        "floor":   { "name": "Kyle Anderson",     "tier": "Role Player" },
+        "lowEnd":  { "name": "Rui Hachimura",     "tier": "Starter" },
+        "middle":  { "name": "Kyle Kuzma",        "tier": "Starter" },
+        "highEnd": { "name": "PJ Washington",     "tier": "Starter" },
+        "ceiling": { "name": "Aaron Gordon",      "tier": "Star" }
+      }
+    },
+    "hannessteinbach": {
+      "prospectName": "Hannes Steinbach",
+      "ladder": {
+        "floor":   { "name": "Moritz Wagner",       "tier": "Role Player" },
+        "lowEnd":  { "name": "Mason Plumlee",       "tier": "Role Player" },
+        "middle":  { "name": "Isaiah Hartenstein",  "tier": "Starter" },
+        "highEnd": { "name": "Nikola Vučević",      "tier": "Star" },
+        "ceiling": { "name": "Domantas Sabonis",    "tier": "Star" }
+      }
+    },
+    "adaymara": {
+      "prospectName": "Aday Mara",
+      "ladder": {
+        "floor":   { "name": "Boban Marjanović",     "tier": "Role Player" },
+        "lowEnd":  { "name": "Jakob Poeltl",         "tier": "Role Player" },
+        "middle":  { "name": "Zach Edey",            "tier": "Starter" },
+        "highEnd": { "name": "Donovan Clingan",      "tier": "Starter" },
+        "ceiling": { "name": "Zydrunas Ilgauskas lite", "tier": "Star" }
+      }
+    },
+    "nateament": {
+      "prospectName": "Nate Ament",
+      "ladder": {
+        "floor":   { "name": "Patrick Baldwin Jr.",  "tier": "Bench" },
+        "lowEnd":  { "name": "Will Riley",           "tier": "Role Player" },
+        "middle":  { "name": "Zaccharie Risacher",   "tier": "Starter" },
+        "highEnd": null,
+        "ceiling": { "name": "Brandon Ingram lite",  "tier": "Star" }
+      }
+    }
+  }
+}

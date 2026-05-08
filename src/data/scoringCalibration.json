@@ -1,0 +1,2211 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "generatedAt": "2026-05-07T13:11:13.442Z",
+    "generatedBy": "scripts/scoring/calibrate.js",
+    "poolSize": 956,
+    "poolWithMinimumFeatures": 469,
+    "poolWithAllFeatures": 450,
+    "featureKeys": [
+      "tsPct",
+      "efgPct",
+      "usgPct",
+      "astPct",
+      "tovPct",
+      "stlPct",
+      "blkPct",
+      "orbPct",
+      "drbPct",
+      "bpm",
+      "obpm",
+      "dbpm",
+      "per",
+      "threePAr",
+      "age",
+      "heightIn"
+    ],
+    "eraBuckets": [
+      "PRE_SPACING",
+      "TRANSITIONAL",
+      "SPACING",
+      "MODERN"
+    ],
+    "positionFamilies": [
+      "guard",
+      "wing",
+      "big"
+    ],
+    "traitContributors": {
+      "AdvantageCreation": [
+        "usgPct",
+        "obpm",
+        "bpm",
+        "age"
+      ],
+      "DecisionMaking": [
+        "astPct",
+        "tovPct",
+        "obpm",
+        "bpm"
+      ],
+      "PassingCreation": [
+        "astPct",
+        "obpm",
+        "bpm",
+        "usgPct"
+      ],
+      "ShootingGravity": [
+        "tsPct",
+        "efgPct",
+        "threePAr"
+      ],
+      "OffBallValue": [
+        "tsPct",
+        "orbPct",
+        "blkPct"
+      ],
+      "ProcessingSpeed": [
+        "stlPct",
+        "dbpm",
+        "bpm"
+      ],
+      "Scalability": [
+        "tovPct",
+        "age",
+        "heightIn"
+      ],
+      "DefensiveVersatility": [
+        "dbpm",
+        "blkPct",
+        "stlPct",
+        "heightIn"
+      ]
+    },
+    "outcomeScoreMap": {
+      "Legend": 100,
+      "Star": 80,
+      "Hit": 60,
+      "Swing": 40,
+      "Bust": 20
+    },
+    "notes": [
+      "Era buckets are derived from draftYear, NOT from historicalProspects.json[].eraBucket (which is too coarse).",
+      "Cell normalizers use per-feature n; runtime should fall back to poolNormalizers when cell n < 20.",
+      "Trait regressions: outcome score is regressed on the trait's contributor features (ridge, λ=1.0). Coefficients tell us how to weight each contributor inside the trait composite.",
+      "Comp-distance weights come from a global logistic regression on outcomeTier ∈ {Hit-or-better}. |coef| normalized so mean=1, floored at 0.1."
+    ],
+    "lastBackfilledAt": "2026-05-07T14:41:20.352Z",
+    "axisRuntimeCalibrationCells": 30,
+    "architectureNote": "Per-trait regressions deprecated 2026-05 after 9-axis pivot. Per-axis weights now live in config/axisFeatureWeights.json (sign-constrained, hand-authored). Runtime variance calibration via axisRuntimeCalibration (empirical std normalization)."
+  },
+  "cellNormalizers": {
+    "MODERN|big": {
+      "tsPct": {
+        "mean": 59.33,
+        "std": 6.19,
+        "n": 28
+      },
+      "efgPct": {
+        "mean": 56.84,
+        "std": 6.47,
+        "n": 26
+      },
+      "usgPct": {
+        "mean": 23.28,
+        "std": 4,
+        "n": 28
+      },
+      "astPct": {
+        "mean": 13.05,
+        "std": 6.34,
+        "n": 28
+      },
+      "tovPct": {
+        "mean": 13.62,
+        "std": 3.56,
+        "n": 28
+      },
+      "stlPct": {
+        "mean": 1.92,
+        "std": 0.73,
+        "n": 28
+      },
+      "blkPct": {
+        "mean": 6.45,
+        "std": 3.98,
+        "n": 28
+      },
+      "orbPct": {
+        "mean": 9.44,
+        "std": 3.23,
+        "n": 28
+      },
+      "drbPct": {
+        "mean": 19.59,
+        "std": 5.31,
+        "n": 28
+      },
+      "bpm": {
+        "mean": 8.69,
+        "std": 3.93,
+        "n": 28
+      },
+      "obpm": {
+        "mean": 4.94,
+        "std": 2.7,
+        "n": 28
+      },
+      "dbpm": {
+        "mean": 3.77,
+        "std": 1.91,
+        "n": 28
+      },
+      "per": {
+        "mean": 24.41,
+        "std": 5.18,
+        "n": 28
+      },
+      "threePAr": {
+        "mean": 22.62,
+        "std": 12.43,
+        "n": 26
+      },
+      "age": {
+        "mean": 20.58,
+        "std": 1.54,
+        "n": 28
+      },
+      "heightIn": {
+        "mean": 82.11,
+        "std": 2.08,
+        "n": 28
+      }
+    },
+    "MODERN|wing": {
+      "tsPct": {
+        "mean": 57.66,
+        "std": 4.01,
+        "n": 38
+      },
+      "efgPct": {
+        "mean": 53.47,
+        "std": 4.74,
+        "n": 38
+      },
+      "usgPct": {
+        "mean": 22.58,
+        "std": 4.7,
+        "n": 38
+      },
+      "astPct": {
+        "mean": 16.68,
+        "std": 6.18,
+        "n": 38
+      },
+      "tovPct": {
+        "mean": 14.1,
+        "std": 3.31,
+        "n": 38
+      },
+      "stlPct": {
+        "mean": 2.17,
+        "std": 0.71,
+        "n": 38
+      },
+      "blkPct": {
+        "mean": 2.01,
+        "std": 1.18,
+        "n": 38
+      },
+      "orbPct": {
+        "mean": 4.08,
+        "std": 2.15,
+        "n": 38
+      },
+      "drbPct": {
+        "mean": 14.23,
+        "std": 3.69,
+        "n": 38
+      },
+      "bpm": {
+        "mean": 6.73,
+        "std": 2.34,
+        "n": 38
+      },
+      "obpm": {
+        "mean": 4.14,
+        "std": 1.67,
+        "n": 38
+      },
+      "dbpm": {
+        "mean": 2.59,
+        "std": 1.55,
+        "n": 38
+      },
+      "per": {
+        "mean": 18.98,
+        "std": 3.14,
+        "n": 38
+      },
+      "threePAr": {
+        "mean": 42.42,
+        "std": 12.98,
+        "n": 38
+      },
+      "age": {
+        "mean": 20.84,
+        "std": 1.62,
+        "n": 38
+      },
+      "heightIn": {
+        "mean": 77.61,
+        "std": 1.42,
+        "n": 38
+      }
+    },
+    "MODERN|guard": {
+      "tsPct": {
+        "mean": 60.86,
+        "std": 5.44,
+        "n": 10
+      },
+      "efgPct": {
+        "mean": 56.92,
+        "std": 6.96,
+        "n": 10
+      },
+      "usgPct": {
+        "mean": 23.82,
+        "std": 4.58,
+        "n": 10
+      },
+      "astPct": {
+        "mean": 18.64,
+        "std": 9.2,
+        "n": 10
+      },
+      "tovPct": {
+        "mean": 12.83,
+        "std": 4.27,
+        "n": 10
+      },
+      "stlPct": {
+        "mean": 2.61,
+        "std": 0.84,
+        "n": 10
+      },
+      "blkPct": {
+        "mean": 1.25,
+        "std": 0.9,
+        "n": 10
+      },
+      "orbPct": {
+        "mean": 2.98,
+        "std": 1.55,
+        "n": 10
+      },
+      "drbPct": {
+        "mean": 13.74,
+        "std": 2.32,
+        "n": 10
+      },
+      "bpm": {
+        "mean": 7.48,
+        "std": 2.5,
+        "n": 10
+      },
+      "obpm": {
+        "mean": 5.02,
+        "std": 1.06,
+        "n": 10
+      },
+      "dbpm": {
+        "mean": 2.48,
+        "std": 1.68,
+        "n": 10
+      },
+      "per": {
+        "mean": 21.13,
+        "std": 2.48,
+        "n": 10
+      },
+      "threePAr": {
+        "mean": 48.6,
+        "std": 9.78,
+        "n": 10
+      },
+      "age": {
+        "mean": 21.54,
+        "std": 1.87,
+        "n": 10
+      },
+      "heightIn": {
+        "mean": 74.2,
+        "std": 0.92,
+        "n": 10
+      }
+    },
+    "SPACING|wing": {
+      "tsPct": {
+        "mean": 56.65,
+        "std": 3.82,
+        "n": 105
+      },
+      "efgPct": {
+        "mean": 53.21,
+        "std": 4.56,
+        "n": 103
+      },
+      "usgPct": {
+        "mean": 23.19,
+        "std": 3.6,
+        "n": 105
+      },
+      "astPct": {
+        "mean": 15.67,
+        "std": 6.86,
+        "n": 105
+      },
+      "tovPct": {
+        "mean": 13.75,
+        "std": 2.7,
+        "n": 105
+      },
+      "stlPct": {
+        "mean": 2.09,
+        "std": 0.68,
+        "n": 105
+      },
+      "blkPct": {
+        "mean": 2.35,
+        "std": 1.78,
+        "n": 105
+      },
+      "orbPct": {
+        "mean": 5.31,
+        "std": 3.3,
+        "n": 105
+      },
+      "drbPct": {
+        "mean": 14.92,
+        "std": 4.01,
+        "n": 105
+      },
+      "bpm": {
+        "mean": 7.06,
+        "std": 2.7,
+        "n": 105
+      },
+      "obpm": {
+        "mean": 4.32,
+        "std": 2.03,
+        "n": 105
+      },
+      "dbpm": {
+        "mean": 2.75,
+        "std": 1.3,
+        "n": 105
+      },
+      "per": {
+        "mean": 20.26,
+        "std": 3.87,
+        "n": 105
+      },
+      "threePAr": {
+        "mean": 35.87,
+        "std": 14.47,
+        "n": 103
+      },
+      "age": {
+        "mean": 21.3,
+        "std": 1.44,
+        "n": 105
+      },
+      "heightIn": {
+        "mean": 77.66,
+        "std": 1.34,
+        "n": 105
+      }
+    },
+    "SPACING|guard": {
+      "tsPct": {
+        "mean": 55.88,
+        "std": 4.42,
+        "n": 39
+      },
+      "efgPct": {
+        "mean": 52.37,
+        "std": 3.66,
+        "n": 36
+      },
+      "usgPct": {
+        "mean": 24.38,
+        "std": 4.74,
+        "n": 39
+      },
+      "astPct": {
+        "mean": 25.28,
+        "std": 9.75,
+        "n": 39
+      },
+      "tovPct": {
+        "mean": 14.57,
+        "std": 3.22,
+        "n": 39
+      },
+      "stlPct": {
+        "mean": 2.55,
+        "std": 0.79,
+        "n": 39
+      },
+      "blkPct": {
+        "mean": 0.99,
+        "std": 0.98,
+        "n": 39
+      },
+      "orbPct": {
+        "mean": 2.81,
+        "std": 1.7,
+        "n": 39
+      },
+      "drbPct": {
+        "mean": 11.07,
+        "std": 2.24,
+        "n": 39
+      },
+      "bpm": {
+        "mean": 7.49,
+        "std": 1.98,
+        "n": 39
+      },
+      "obpm": {
+        "mean": 5.01,
+        "std": 1.56,
+        "n": 39
+      },
+      "dbpm": {
+        "mean": 2.47,
+        "std": 1.59,
+        "n": 39
+      },
+      "per": {
+        "mean": 21.17,
+        "std": 2.97,
+        "n": 39
+      },
+      "threePAr": {
+        "mean": 38.01,
+        "std": 11.14,
+        "n": 36
+      },
+      "age": {
+        "mean": 21.26,
+        "std": 1.42,
+        "n": 39
+      },
+      "heightIn": {
+        "mean": 73.36,
+        "std": 1.63,
+        "n": 39
+      }
+    },
+    "SPACING|big": {
+      "tsPct": {
+        "mean": 56.12,
+        "std": 12.21,
+        "n": 87
+      },
+      "efgPct": {
+        "mean": 56.05,
+        "std": 5.95,
+        "n": 78
+      },
+      "usgPct": {
+        "mean": 23.15,
+        "std": 3.7,
+        "n": 87
+      },
+      "astPct": {
+        "mean": 10.18,
+        "std": 6.07,
+        "n": 87
+      },
+      "tovPct": {
+        "mean": 14.41,
+        "std": 3.13,
+        "n": 87
+      },
+      "stlPct": {
+        "mean": 1.73,
+        "std": 0.69,
+        "n": 87
+      },
+      "blkPct": {
+        "mean": 5.18,
+        "std": 3.41,
+        "n": 87
+      },
+      "orbPct": {
+        "mean": 9.26,
+        "std": 3.63,
+        "n": 87
+      },
+      "drbPct": {
+        "mean": 19.45,
+        "std": 4.89,
+        "n": 87
+      },
+      "bpm": {
+        "mean": 6.78,
+        "std": 3.04,
+        "n": 87
+      },
+      "obpm": {
+        "mean": 3.87,
+        "std": 2.36,
+        "n": 87
+      },
+      "dbpm": {
+        "mean": 2.92,
+        "std": 1.8,
+        "n": 87
+      },
+      "per": {
+        "mean": 22.9,
+        "std": 4.51,
+        "n": 87
+      },
+      "threePAr": {
+        "mean": 18.08,
+        "std": 16.46,
+        "n": 78
+      },
+      "age": {
+        "mean": 18.41,
+        "std": 6.39,
+        "n": 87
+      },
+      "heightIn": {
+        "mean": 81.58,
+        "std": 1.63,
+        "n": 77
+      }
+    },
+    "TRANSITIONAL|wing": {
+      "tsPct": {
+        "mean": 52.37,
+        "std": 12.01,
+        "n": 97
+      },
+      "efgPct": {
+        "mean": 52.01,
+        "std": 3.74,
+        "n": 72
+      },
+      "usgPct": {
+        "mean": 24.36,
+        "std": 4.03,
+        "n": 97
+      },
+      "astPct": {
+        "mean": 15.62,
+        "std": 7.84,
+        "n": 97
+      },
+      "tovPct": {
+        "mean": 14.41,
+        "std": 3.93,
+        "n": 97
+      },
+      "stlPct": {
+        "mean": 2.26,
+        "std": 0.83,
+        "n": 97
+      },
+      "blkPct": {
+        "mean": 1.9,
+        "std": 1.28,
+        "n": 97
+      },
+      "orbPct": {
+        "mean": 6.24,
+        "std": 3.1,
+        "n": 97
+      },
+      "drbPct": {
+        "mean": 15,
+        "std": 5.06,
+        "n": 97
+      },
+      "bpm": {
+        "mean": 5.63,
+        "std": 3.75,
+        "n": 97
+      },
+      "obpm": {
+        "mean": 5.05,
+        "std": 1.93,
+        "n": 74
+      },
+      "dbpm": {
+        "mean": 2.32,
+        "std": 1.37,
+        "n": 74
+      },
+      "per": {
+        "mean": 22.07,
+        "std": 4.05,
+        "n": 97
+      },
+      "threePAr": {
+        "mean": 33.12,
+        "std": 14.52,
+        "n": 72
+      },
+      "age": {
+        "mean": 21.38,
+        "std": 1.38,
+        "n": 97
+      },
+      "heightIn": {
+        "mean": 77.96,
+        "std": 1.27,
+        "n": 97
+      }
+    },
+    "TRANSITIONAL|big": {
+      "tsPct": {
+        "mean": 52.63,
+        "std": 14.24,
+        "n": 101
+      },
+      "efgPct": {
+        "mean": 54.28,
+        "std": 3.82,
+        "n": 75
+      },
+      "usgPct": {
+        "mean": 22.41,
+        "std": 3.7,
+        "n": 101
+      },
+      "astPct": {
+        "mean": 8.81,
+        "std": 4.39,
+        "n": 101
+      },
+      "tovPct": {
+        "mean": 14.91,
+        "std": 3.31,
+        "n": 101
+      },
+      "stlPct": {
+        "mean": 1.74,
+        "std": 0.7,
+        "n": 101
+      },
+      "blkPct": {
+        "mean": 5.8,
+        "std": 3.52,
+        "n": 101
+      },
+      "orbPct": {
+        "mean": 10.56,
+        "std": 3.21,
+        "n": 101
+      },
+      "drbPct": {
+        "mean": 20.42,
+        "std": 4.65,
+        "n": 101
+      },
+      "bpm": {
+        "mean": 5.69,
+        "std": 4.01,
+        "n": 101
+      },
+      "obpm": {
+        "mean": 4.54,
+        "std": 2.03,
+        "n": 76
+      },
+      "dbpm": {
+        "mean": 3.03,
+        "std": 1.59,
+        "n": 76
+      },
+      "per": {
+        "mean": 23.72,
+        "std": 4.09,
+        "n": 101
+      },
+      "threePAr": {
+        "mean": 14.44,
+        "std": 17.35,
+        "n": 75
+      },
+      "age": {
+        "mean": 18.66,
+        "std": 7.65,
+        "n": 101
+      },
+      "heightIn": {
+        "mean": 81.89,
+        "std": 1.34,
+        "n": 84
+      }
+    },
+    "TRANSITIONAL|guard": {
+      "tsPct": {
+        "mean": 55.13,
+        "std": 4.1,
+        "n": 39
+      },
+      "efgPct": {
+        "mean": 50.87,
+        "std": 3.63,
+        "n": 35
+      },
+      "usgPct": {
+        "mean": 24.99,
+        "std": 3.22,
+        "n": 39
+      },
+      "astPct": {
+        "mean": 24.33,
+        "std": 6.31,
+        "n": 39
+      },
+      "tovPct": {
+        "mean": 15.89,
+        "std": 3.34,
+        "n": 39
+      },
+      "stlPct": {
+        "mean": 2.7,
+        "std": 0.93,
+        "n": 39
+      },
+      "blkPct": {
+        "mean": 0.99,
+        "std": 0.7,
+        "n": 39
+      },
+      "orbPct": {
+        "mean": 2.97,
+        "std": 1.63,
+        "n": 39
+      },
+      "drbPct": {
+        "mean": 10.56,
+        "std": 2.29,
+        "n": 39
+      },
+      "bpm": {
+        "mean": 7.14,
+        "std": 3.65,
+        "n": 39
+      },
+      "obpm": {
+        "mean": 5.45,
+        "std": 2.54,
+        "n": 35
+      },
+      "dbpm": {
+        "mean": 2.49,
+        "std": 1.63,
+        "n": 35
+      },
+      "per": {
+        "mean": 21.61,
+        "std": 4.61,
+        "n": 39
+      },
+      "threePAr": {
+        "mean": 34.79,
+        "std": 11.11,
+        "n": 35
+      },
+      "age": {
+        "mean": 21.31,
+        "std": 1.16,
+        "n": 39
+      },
+      "heightIn": {
+        "mean": 73.82,
+        "std": 1.55,
+        "n": 39
+      }
+    },
+    "PRE_SPACING|big": {
+      "tsPct": {
+        "mean": 39.05,
+        "std": 23.44,
+        "n": 198
+      },
+      "efgPct": {
+        "mean": 55.25,
+        "std": 5.2,
+        "n": 8
+      },
+      "usgPct": {
+        "mean": 24.04,
+        "std": 4.33,
+        "n": 128
+      },
+      "astPct": {
+        "mean": 11.36,
+        "std": 6.38,
+        "n": 129
+      },
+      "tovPct": {
+        "mean": 15.81,
+        "std": 3.29,
+        "n": 198
+      },
+      "stlPct": {
+        "mean": 1.8,
+        "std": 0.42,
+        "n": 7
+      },
+      "blkPct": {
+        "mean": 3.51,
+        "std": 2.33,
+        "n": 129
+      },
+      "orbPct": {
+        "mean": 10.6,
+        "std": 0,
+        "n": 1
+      },
+      "drbPct": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "bpm": {
+        "mean": 0,
+        "std": 0,
+        "n": 198
+      },
+      "obpm": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "dbpm": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "per": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "threePAr": {
+        "mean": 7.63,
+        "std": 13.15,
+        "n": 8
+      },
+      "age": {
+        "mean": 17.11,
+        "std": 8.98,
+        "n": 198
+      },
+      "heightIn": {
+        "mean": 82.06,
+        "std": 1.58,
+        "n": 146
+      }
+    },
+    "PRE_SPACING|wing": {
+      "tsPct": {
+        "mean": 49.38,
+        "std": 9.6,
+        "n": 138
+      },
+      "efgPct": {
+        "mean": 51.94,
+        "std": 0.94,
+        "n": 8
+      },
+      "usgPct": {
+        "mean": 24.94,
+        "std": 4.17,
+        "n": 99
+      },
+      "astPct": {
+        "mean": 15.17,
+        "std": 6.65,
+        "n": 99
+      },
+      "tovPct": {
+        "mean": 15.25,
+        "std": 3.46,
+        "n": 138
+      },
+      "stlPct": {
+        "mean": 2.93,
+        "std": 0.95,
+        "n": 4
+      },
+      "blkPct": {
+        "mean": 1.71,
+        "std": 1.51,
+        "n": 99
+      },
+      "orbPct": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "drbPct": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "bpm": {
+        "mean": 0,
+        "std": 0,
+        "n": 138
+      },
+      "obpm": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "dbpm": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "per": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "threePAr": {
+        "mean": 18.81,
+        "std": 10.33,
+        "n": 8
+      },
+      "age": {
+        "mean": 21.78,
+        "std": 1.26,
+        "n": 138
+      },
+      "heightIn": {
+        "mean": 78.2,
+        "std": 1.38,
+        "n": 138
+      }
+    },
+    "PRE_SPACING|guard": {
+      "tsPct": {
+        "mean": 48.93,
+        "std": 9.86,
+        "n": 76
+      },
+      "efgPct": {
+        "mean": 52.29,
+        "std": 2.31,
+        "n": 7
+      },
+      "usgPct": {
+        "mean": 24.01,
+        "std": 4.31,
+        "n": 52
+      },
+      "astPct": {
+        "mean": 26.43,
+        "std": 8.2,
+        "n": 52
+      },
+      "tovPct": {
+        "mean": 17.98,
+        "std": 4.05,
+        "n": 76
+      },
+      "stlPct": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "blkPct": {
+        "mean": 0.47,
+        "std": 0.35,
+        "n": 52
+      },
+      "orbPct": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "drbPct": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "bpm": {
+        "mean": 0,
+        "std": 0,
+        "n": 76
+      },
+      "obpm": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "dbpm": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "per": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "threePAr": {
+        "mean": 28.2,
+        "std": 11.07,
+        "n": 7
+      },
+      "age": {
+        "mean": 21.66,
+        "std": 1.25,
+        "n": 76
+      },
+      "heightIn": {
+        "mean": 73.61,
+        "std": 1.43,
+        "n": 76
+      }
+    }
+  },
+  "poolNormalizers": {
+    "guard": {
+      "tsPct": {
+        "mean": 52.79,
+        "std": 8.33,
+        "n": 164
+      },
+      "efgPct": {
+        "mean": 52.29,
+        "std": 4.38,
+        "n": 88
+      },
+      "usgPct": {
+        "mean": 24.37,
+        "std": 4.16,
+        "n": 140
+      },
+      "astPct": {
+        "mean": 24.97,
+        "std": 8.42,
+        "n": 140
+      },
+      "tovPct": {
+        "mean": 16.36,
+        "std": 4.05,
+        "n": 164
+      },
+      "stlPct": {
+        "mean": 2.62,
+        "std": 0.85,
+        "n": 88
+      },
+      "blkPct": {
+        "mean": 0.82,
+        "std": 0.75,
+        "n": 140
+      },
+      "orbPct": {
+        "mean": 2.9,
+        "std": 1.64,
+        "n": 88
+      },
+      "drbPct": {
+        "mean": 11.15,
+        "std": 2.44,
+        "n": 88
+      },
+      "bpm": {
+        "mean": 3.93,
+        "std": 4.22,
+        "n": 164
+      },
+      "obpm": {
+        "mean": 5.2,
+        "std": 1.98,
+        "n": 84
+      },
+      "dbpm": {
+        "mean": 2.48,
+        "std": 1.6,
+        "n": 84
+      },
+      "per": {
+        "mean": 21.36,
+        "std": 3.72,
+        "n": 88
+      },
+      "threePAr": {
+        "mean": 37.15,
+        "std": 11.86,
+        "n": 88
+      },
+      "age": {
+        "mean": 21.47,
+        "std": 1.32,
+        "n": 164
+      },
+      "heightIn": {
+        "mean": 73.63,
+        "std": 1.49,
+        "n": 164
+      }
+    },
+    "wing": {
+      "tsPct": {
+        "mean": 53,
+        "std": 9.31,
+        "n": 378
+      },
+      "efgPct": {
+        "mean": 52.81,
+        "std": 4.28,
+        "n": 221
+      },
+      "usgPct": {
+        "mean": 23.97,
+        "std": 4.1,
+        "n": 339
+      },
+      "astPct": {
+        "mean": 15.62,
+        "std": 7.01,
+        "n": 339
+      },
+      "tovPct": {
+        "mean": 14.5,
+        "std": 3.43,
+        "n": 378
+      },
+      "stlPct": {
+        "mean": 2.19,
+        "std": 0.76,
+        "n": 244
+      },
+      "blkPct": {
+        "mean": 2,
+        "std": 1.52,
+        "n": 339
+      },
+      "orbPct": {
+        "mean": 5.49,
+        "std": 3.14,
+        "n": 240
+      },
+      "drbPct": {
+        "mean": 14.84,
+        "std": 4.41,
+        "n": 240
+      },
+      "bpm": {
+        "mean": 4.08,
+        "std": 4,
+        "n": 378
+      },
+      "obpm": {
+        "mean": 4.54,
+        "std": 1.96,
+        "n": 217
+      },
+      "dbpm": {
+        "mean": 2.58,
+        "std": 1.38,
+        "n": 217
+      },
+      "per": {
+        "mean": 20.79,
+        "std": 3.99,
+        "n": 240
+      },
+      "threePAr": {
+        "mean": 35.48,
+        "std": 14.74,
+        "n": 221
+      },
+      "age": {
+        "mean": 21.45,
+        "std": 1.41,
+        "n": 378
+      },
+      "heightIn": {
+        "mean": 77.93,
+        "std": 1.36,
+        "n": 378
+      }
+    },
+    "big": {
+      "tsPct": {
+        "mean": 47.32,
+        "std": 20.26,
+        "n": 414
+      },
+      "efgPct": {
+        "mean": 55.42,
+        "std": 5.3,
+        "n": 187
+      },
+      "usgPct": {
+        "mean": 23.28,
+        "std": 4.01,
+        "n": 344
+      },
+      "astPct": {
+        "mean": 10.45,
+        "std": 5.89,
+        "n": 345
+      },
+      "tovPct": {
+        "mean": 15.15,
+        "std": 3.34,
+        "n": 414
+      },
+      "stlPct": {
+        "mean": 1.76,
+        "std": 0.69,
+        "n": 223
+      },
+      "blkPct": {
+        "mean": 4.84,
+        "std": 3.31,
+        "n": 345
+      },
+      "orbPct": {
+        "mean": 9.89,
+        "std": 3.42,
+        "n": 217
+      },
+      "drbPct": {
+        "mean": 19.92,
+        "std": 4.83,
+        "n": 216
+      },
+      "bpm": {
+        "mean": 3.4,
+        "std": 4.24,
+        "n": 414
+      },
+      "obpm": {
+        "mean": 4.29,
+        "std": 2.31,
+        "n": 191
+      },
+      "dbpm": {
+        "mean": 3.09,
+        "std": 1.75,
+        "n": 191
+      },
+      "per": {
+        "mean": 23.48,
+        "std": 4.42,
+        "n": 216
+      },
+      "threePAr": {
+        "mean": 16.8,
+        "std": 16.45,
+        "n": 187
+      },
+      "age": {
+        "mean": 18,
+        "std": 7.89,
+        "n": 414
+      },
+      "heightIn": {
+        "mean": 81.91,
+        "std": 1.58,
+        "n": 335
+      }
+    }
+  },
+  "cohortThresholds": {
+    "guard": {
+      "tsPct": {
+        "p25": 49.85,
+        "p50": 53.9,
+        "p60": 55.08,
+        "p85": 58.41,
+        "p95": 61.63,
+        "n": 164
+      },
+      "efgPct": {
+        "p25": 49.77,
+        "p50": 51.4,
+        "p60": 52.46,
+        "p85": 56.4,
+        "p95": 58.86,
+        "n": 88
+      },
+      "usgPct": {
+        "p25": 21,
+        "p50": 24.05,
+        "p60": 25.54,
+        "p85": 28.2,
+        "p95": 31.02,
+        "n": 140
+      },
+      "astPct": {
+        "p25": 18.67,
+        "p50": 25.15,
+        "p60": 26.24,
+        "p85": 33.93,
+        "p95": 40.21,
+        "n": 140
+      },
+      "tovPct": {
+        "p25": 13.6,
+        "p50": 15.5,
+        "p60": 16.88,
+        "p85": 20.1,
+        "p95": 23.65,
+        "n": 164
+      },
+      "stlPct": {
+        "p25": 2.1,
+        "p50": 2.5,
+        "p60": 2.7,
+        "p85": 3.5,
+        "p95": 4.36,
+        "n": 88
+      },
+      "blkPct": {
+        "p25": 0.3,
+        "p50": 0.6,
+        "p60": 0.7,
+        "p85": 1.5,
+        "p95": 2.2,
+        "n": 140
+      },
+      "orbPct": {
+        "p25": 1.8,
+        "p50": 2.4,
+        "p60": 2.62,
+        "p85": 4.4,
+        "p95": 5.46,
+        "n": 88
+      },
+      "drbPct": {
+        "p25": 9.28,
+        "p50": 10.75,
+        "p60": 11.72,
+        "p85": 13.6,
+        "p95": 15.1,
+        "n": 88
+      },
+      "bpm": {
+        "p25": 0,
+        "p50": 2.95,
+        "p60": 5.58,
+        "p85": 8.95,
+        "p95": 10.76,
+        "n": 164
+      },
+      "obpm": {
+        "p25": 4,
+        "p50": 5.15,
+        "p60": 5.6,
+        "p85": 7.15,
+        "p95": 8.85,
+        "n": 84
+      },
+      "dbpm": {
+        "p25": 1.28,
+        "p50": 2.3,
+        "p60": 2.96,
+        "p85": 4.31,
+        "p95": 5,
+        "n": 84
+      },
+      "per": {
+        "p25": 18.95,
+        "p50": 21.35,
+        "p60": 22.12,
+        "p85": 25.2,
+        "p95": 27.22,
+        "n": 88
+      },
+      "threePAr": {
+        "p25": 29.87,
+        "p50": 38.3,
+        "p60": 39.64,
+        "p85": 49.28,
+        "p95": 55.69,
+        "n": 88
+      },
+      "age": {
+        "p25": 20.4,
+        "p50": 21.6,
+        "p60": 22,
+        "p85": 22.8,
+        "p95": 23.3,
+        "n": 164
+      },
+      "heightIn": {
+        "p25": 73,
+        "p50": 74,
+        "p60": 74,
+        "p85": 75,
+        "p95": 75,
+        "n": 164
+      }
+    },
+    "wing": {
+      "tsPct": {
+        "p25": 51.3,
+        "p50": 54.65,
+        "p60": 55.52,
+        "p85": 58.75,
+        "p95": 61.92,
+        "n": 378
+      },
+      "efgPct": {
+        "p25": 50.4,
+        "p50": 52.6,
+        "p60": 53.4,
+        "p85": 56.7,
+        "p95": 60.4,
+        "n": 221
+      },
+      "usgPct": {
+        "p25": 21.3,
+        "p50": 23.9,
+        "p60": 24.9,
+        "p85": 27.93,
+        "p95": 30.8,
+        "n": 339
+      },
+      "astPct": {
+        "p25": 10.8,
+        "p50": 13.8,
+        "p60": 15.6,
+        "p85": 22.36,
+        "p95": 30.25,
+        "n": 339
+      },
+      "tovPct": {
+        "p25": 12.1,
+        "p50": 14.2,
+        "p60": 14.8,
+        "p85": 17.9,
+        "p95": 21.1,
+        "n": 378
+      },
+      "stlPct": {
+        "p25": 1.6,
+        "p50": 2.05,
+        "p60": 2.3,
+        "p85": 2.9,
+        "p95": 3.6,
+        "n": 244
+      },
+      "blkPct": {
+        "p25": 0.9,
+        "p50": 1.6,
+        "p60": 1.9,
+        "p85": 3.4,
+        "p95": 4.9,
+        "n": 339
+      },
+      "orbPct": {
+        "p25": 3.2,
+        "p50": 4.9,
+        "p60": 5.6,
+        "p85": 8.92,
+        "p95": 10.8,
+        "n": 240
+      },
+      "drbPct": {
+        "p25": 11.5,
+        "p50": 14.1,
+        "p60": 15.04,
+        "p85": 19.82,
+        "p95": 23.4,
+        "n": 240
+      },
+      "bpm": {
+        "p25": 0,
+        "p50": 4.2,
+        "p60": 6.1,
+        "p85": 8.64,
+        "p95": 9.91,
+        "n": 378
+      },
+      "obpm": {
+        "p25": 3.2,
+        "p50": 4.5,
+        "p60": 4.9,
+        "p85": 6.46,
+        "p95": 7.82,
+        "n": 217
+      },
+      "dbpm": {
+        "p25": 1.7,
+        "p50": 2.5,
+        "p60": 2.8,
+        "p85": 3.96,
+        "p95": 5.02,
+        "n": 217
+      },
+      "per": {
+        "p25": 18.28,
+        "p50": 20.25,
+        "p60": 21.2,
+        "p85": 24.75,
+        "p95": 28.1,
+        "n": 240
+      },
+      "threePAr": {
+        "p25": 26.4,
+        "p50": 37,
+        "p60": 40.6,
+        "p85": 50.8,
+        "p95": 56.6,
+        "n": 221
+      },
+      "age": {
+        "p25": 20.3,
+        "p50": 21.7,
+        "p60": 22,
+        "p85": 22.9,
+        "p95": 23.5,
+        "n": 378
+      },
+      "heightIn": {
+        "p25": 77,
+        "p50": 78,
+        "p60": 78,
+        "p85": 80,
+        "p95": 80,
+        "n": 378
+      }
+    },
+    "big": {
+      "tsPct": {
+        "p25": 48.73,
+        "p50": 54.3,
+        "p60": 55.9,
+        "p85": 60.4,
+        "p95": 64.17,
+        "n": 414
+      },
+      "efgPct": {
+        "p25": 51.95,
+        "p50": 54.8,
+        "p60": 56.16,
+        "p85": 60.15,
+        "p95": 65.47,
+        "n": 187
+      },
+      "usgPct": {
+        "p25": 20.7,
+        "p50": 23.2,
+        "p60": 24.2,
+        "p85": 27.2,
+        "p95": 29.68,
+        "n": 344
+      },
+      "astPct": {
+        "p25": 6.6,
+        "p50": 9.3,
+        "p60": 10.5,
+        "p85": 15.48,
+        "p95": 22.04,
+        "n": 345
+      },
+      "tovPct": {
+        "p25": 12.9,
+        "p50": 15,
+        "p60": 15.6,
+        "p85": 18.6,
+        "p95": 21.04,
+        "n": 414
+      },
+      "stlPct": {
+        "p25": 1.3,
+        "p50": 1.6,
+        "p60": 1.8,
+        "p85": 2.4,
+        "p95": 3.2,
+        "n": 223
+      },
+      "blkPct": {
+        "p25": 2.4,
+        "p50": 4.3,
+        "p60": 5,
+        "p85": 8.54,
+        "p95": 11.16,
+        "n": 345
+      },
+      "orbPct": {
+        "p25": 7.8,
+        "p50": 10,
+        "p60": 10.8,
+        "p85": 13.2,
+        "p95": 15.04,
+        "n": 217
+      },
+      "drbPct": {
+        "p25": 16.98,
+        "p50": 19.5,
+        "p60": 21.2,
+        "p85": 25.1,
+        "p95": 27.3,
+        "n": 216
+      },
+      "bpm": {
+        "p25": 0,
+        "p50": 0,
+        "p60": 4.3,
+        "p85": 8.7,
+        "p95": 10.73,
+        "n": 414
+      },
+      "obpm": {
+        "p25": 2.9,
+        "p50": 4.3,
+        "p60": 4.7,
+        "p85": 6.7,
+        "p95": 8.1,
+        "n": 191
+      },
+      "dbpm": {
+        "p25": 2,
+        "p50": 3.1,
+        "p60": 3.3,
+        "p85": 4.45,
+        "p95": 6.55,
+        "n": 191
+      },
+      "per": {
+        "p25": 20.5,
+        "p50": 23.1,
+        "p60": 24.4,
+        "p85": 27.87,
+        "p95": 31.05,
+        "n": 216
+      },
+      "threePAr": {
+        "p25": 1.6,
+        "p50": 12.1,
+        "p60": 18.38,
+        "p85": 37.58,
+        "p95": 44.49,
+        "n": 187
+      },
+      "age": {
+        "p25": 19.5,
+        "p50": 20.9,
+        "p60": 21.5,
+        "p85": 22.7,
+        "p95": 23.5,
+        "n": 414
+      },
+      "heightIn": {
+        "p25": 81,
+        "p50": 82,
+        "p60": 82,
+        "p85": 84,
+        "p95": 84,
+        "n": 335
+      }
+    }
+  },
+  "outcomeBaseRates": {
+    "MODERN|big": {
+      "n": 28,
+      "p_legend": 0,
+      "p_star": 0,
+      "p_hit": 0.143,
+      "p_swing": 0.321,
+      "p_bust": 0.536
+    },
+    "MODERN|wing": {
+      "n": 38,
+      "p_legend": 0,
+      "p_star": 0.026,
+      "p_hit": 0.079,
+      "p_swing": 0.395,
+      "p_bust": 0.5
+    },
+    "MODERN|guard": {
+      "n": 10,
+      "p_legend": 0,
+      "p_star": 0,
+      "p_hit": 0,
+      "p_swing": 0.1,
+      "p_bust": 0.9
+    },
+    "SPACING|wing": {
+      "n": 105,
+      "p_legend": 0,
+      "p_star": 0.038,
+      "p_hit": 0.095,
+      "p_swing": 0.6,
+      "p_bust": 0.267
+    },
+    "SPACING|guard": {
+      "n": 39,
+      "p_legend": 0,
+      "p_star": 0.077,
+      "p_hit": 0.179,
+      "p_swing": 0.308,
+      "p_bust": 0.436
+    },
+    "SPACING|big": {
+      "n": 87,
+      "p_legend": 0,
+      "p_star": 0.057,
+      "p_hit": 0.161,
+      "p_swing": 0.379,
+      "p_bust": 0.402
+    },
+    "TRANSITIONAL|wing": {
+      "n": 97,
+      "p_legend": 0.031,
+      "p_star": 0.052,
+      "p_hit": 0.144,
+      "p_swing": 0.361,
+      "p_bust": 0.412
+    },
+    "TRANSITIONAL|big": {
+      "n": 101,
+      "p_legend": 0.01,
+      "p_star": 0.05,
+      "p_hit": 0.129,
+      "p_swing": 0.327,
+      "p_bust": 0.485
+    },
+    "TRANSITIONAL|guard": {
+      "n": 39,
+      "p_legend": 0.051,
+      "p_star": 0.051,
+      "p_hit": 0.154,
+      "p_swing": 0.333,
+      "p_bust": 0.41
+    },
+    "PRE_SPACING|big": {
+      "n": 198,
+      "p_legend": 0.02,
+      "p_star": 0.04,
+      "p_hit": 0.146,
+      "p_swing": 0.318,
+      "p_bust": 0.475
+    },
+    "PRE_SPACING|wing": {
+      "n": 138,
+      "p_legend": 0.043,
+      "p_star": 0.029,
+      "p_hit": 0.188,
+      "p_swing": 0.362,
+      "p_bust": 0.377
+    },
+    "PRE_SPACING|guard": {
+      "n": 76,
+      "p_legend": 0.053,
+      "p_star": 0.039,
+      "p_hit": 0.184,
+      "p_swing": 0.342,
+      "p_bust": 0.382
+    }
+  },
+  "compDistanceWeights": {
+    "featureKeys": [
+      "tsPct",
+      "efgPct",
+      "usgPct",
+      "astPct",
+      "tovPct",
+      "stlPct",
+      "blkPct",
+      "orbPct",
+      "drbPct",
+      "bpm",
+      "obpm",
+      "dbpm",
+      "per",
+      "threePAr",
+      "age",
+      "heightIn"
+    ],
+    "logisticCoefficients": [
+      {
+        "feature": "tsPct",
+        "coef": -0.019,
+        "absCoef": 0.019,
+        "distanceWeight": 0.1,
+        "mean": 57.35,
+        "std": 4.24
+      },
+      {
+        "feature": "efgPct",
+        "coef": -0.235,
+        "absCoef": 0.235,
+        "distanceWeight": 1.113,
+        "mean": 53.81,
+        "std": 4.99
+      },
+      {
+        "feature": "usgPct",
+        "coef": -0.2,
+        "absCoef": 0.2,
+        "distanceWeight": 0.945,
+        "mean": 23.39,
+        "std": 3.91
+      },
+      {
+        "feature": "astPct",
+        "coef": -0.107,
+        "absCoef": 0.107,
+        "distanceWeight": 0.509,
+        "mean": 15.31,
+        "std": 8.34
+      },
+      {
+        "feature": "tovPct",
+        "coef": 0.121,
+        "absCoef": 0.121,
+        "distanceWeight": 0.572,
+        "mean": 14.17,
+        "std": 3.26
+      },
+      {
+        "feature": "stlPct",
+        "coef": -0.03,
+        "absCoef": 0.03,
+        "distanceWeight": 0.14,
+        "mean": 2.13,
+        "std": 0.81
+      },
+      {
+        "feature": "blkPct",
+        "coef": -0.081,
+        "absCoef": 0.081,
+        "distanceWeight": 0.383,
+        "mean": 3.2,
+        "std": 2.94
+      },
+      {
+        "feature": "orbPct",
+        "coef": -0.058,
+        "absCoef": 0.058,
+        "distanceWeight": 0.275,
+        "mean": 6.55,
+        "std": 3.99
+      },
+      {
+        "feature": "drbPct",
+        "coef": 0.112,
+        "absCoef": 0.112,
+        "distanceWeight": 0.532,
+        "mean": 16.1,
+        "std": 5.33
+      },
+      {
+        "feature": "bpm",
+        "coef": 0.279,
+        "absCoef": 0.279,
+        "distanceWeight": 1.32,
+        "mean": 7.58,
+        "std": 2.55
+      },
+      {
+        "feature": "obpm",
+        "coef": 0.298,
+        "absCoef": 0.298,
+        "distanceWeight": 1.409,
+        "mean": 4.69,
+        "std": 1.95
+      },
+      {
+        "feature": "dbpm",
+        "coef": 0.052,
+        "absCoef": 0.052,
+        "distanceWeight": 0.246,
+        "mean": 2.89,
+        "std": 1.48
+      },
+      {
+        "feature": "per",
+        "coef": 0.411,
+        "absCoef": 0.411,
+        "distanceWeight": 1.946,
+        "mean": 21.88,
+        "std": 4.23
+      },
+      {
+        "feature": "threePAr",
+        "coef": -0.381,
+        "absCoef": 0.381,
+        "distanceWeight": 1.802,
+        "mean": 29.54,
+        "std": 17.42
+      },
+      {
+        "feature": "age",
+        "coef": -0.665,
+        "absCoef": 0.665,
+        "distanceWeight": 3.149,
+        "mean": 21.14,
+        "std": 1.47
+      },
+      {
+        "feature": "heightIn",
+        "coef": -0.332,
+        "absCoef": 0.332,
+        "distanceWeight": 1.571,
+        "mean": 78.41,
+        "std": 3.21
+      }
+    ],
+    "intercept": -1.649,
+    "n": 450,
+    "accuracy": 0.796,
+    "recallPositive": 0.141
+  },
+  "axisRuntimeCalibration": {
+    "initiate": {
+      "guard": {
+        "axis": "initiate",
+        "posFam": "guard",
+        "zMean": 0.2383674814131273,
+        "zStd": 0.4955382772636624,
+        "n": 164
+      },
+      "wing": {
+        "axis": "initiate",
+        "posFam": "wing",
+        "zMean": -0.07012865117812402,
+        "zStd": 0.5838963255895676,
+        "n": 378
+      },
+      "big": {
+        "axis": "initiate",
+        "posFam": "big",
+        "zMean": -0.2753936101294915,
+        "zStd": 0.5987306094347372,
+        "n": 414
+      }
+    },
+    "extend": {
+      "guard": {
+        "axis": "extend",
+        "posFam": "guard",
+        "zMean": 0.619677372789094,
+        "zStd": 0.5610939336884201,
+        "n": 164
+      },
+      "wing": {
+        "axis": "extend",
+        "posFam": "wing",
+        "zMean": 0.46658335983644167,
+        "zStd": 0.4913573359850537,
+        "n": 378
+      },
+      "big": {
+        "axis": "extend",
+        "posFam": "big",
+        "zMean": 0.13371174442489764,
+        "zStd": 0.6834122526007782,
+        "n": 414
+      }
+    },
+    "close": {
+      "guard": {
+        "axis": "close",
+        "posFam": "guard",
+        "zMean": 0.4357927680857671,
+        "zStd": 0.4821505399300595,
+        "n": 164
+      },
+      "wing": {
+        "axis": "close",
+        "posFam": "wing",
+        "zMean": 0.34841224341967797,
+        "zStd": 0.5371841039005616,
+        "n": 378
+      },
+      "big": {
+        "axis": "close",
+        "posFam": "big",
+        "zMean": 0.4054724284971711,
+        "zStd": 1.013066639179009,
+        "n": 414
+      }
+    },
+    "space": {
+      "guard": {
+        "axis": "space",
+        "posFam": "guard",
+        "zMean": 0.36638589994777093,
+        "zStd": 0.5321846407317062,
+        "n": 164
+      },
+      "wing": {
+        "axis": "space",
+        "posFam": "wing",
+        "zMean": 0.4048260913239882,
+        "zStd": 0.5097326369415155,
+        "n": 378
+      },
+      "big": {
+        "axis": "space",
+        "posFam": "big",
+        "zMean": -0.06787661754024904,
+        "zStd": 0.981511249812625,
+        "n": 414
+      }
+    },
+    "connect": {
+      "guard": {
+        "axis": "connect",
+        "posFam": "guard",
+        "zMean": 0.4821514556552585,
+        "zStd": 0.37617387058332225,
+        "n": 164
+      },
+      "wing": {
+        "axis": "connect",
+        "posFam": "wing",
+        "zMean": 0.5402527010486601,
+        "zStd": 0.37593976883691366,
+        "n": 378
+      },
+      "big": {
+        "axis": "connect",
+        "posFam": "big",
+        "zMean": 0.2992806408188861,
+        "zStd": 0.6230695202900977,
+        "n": 414
+      }
+    },
+    "contain": {
+      "guard": {
+        "axis": "contain",
+        "posFam": "guard",
+        "zMean": 0.35239641849454667,
+        "zStd": 0.4544127660956697,
+        "n": 164
+      },
+      "wing": {
+        "axis": "contain",
+        "posFam": "wing",
+        "zMean": 0.4434563411236287,
+        "zStd": 0.5141137515313257,
+        "n": 378
+      },
+      "big": {
+        "axis": "contain",
+        "posFam": "big",
+        "zMean": 0.4851663111746541,
+        "zStd": 0.5607889446144393,
+        "n": 365
+      }
+    },
+    "disrupt": {
+      "guard": {
+        "axis": "disrupt",
+        "posFam": "guard",
+        "zMean": 0.17537714081546088,
+        "zStd": 0.4719801069945321,
+        "n": 164
+      },
+      "wing": {
+        "axis": "disrupt",
+        "posFam": "wing",
+        "zMean": 0.23830112200309206,
+        "zStd": 0.5005155708603803,
+        "n": 378
+      },
+      "big": {
+        "axis": "disrupt",
+        "posFam": "big",
+        "zMean": 0.44434403465360267,
+        "zStd": 0.6812112334061873,
+        "n": 398
+      }
+    },
+    "switch": {
+      "guard": {
+        "axis": "switch",
+        "posFam": "guard",
+        "zMean": -0.005964349579665861,
+        "zStd": 0.3777421136836937,
+        "n": 164
+      },
+      "wing": {
+        "axis": "switch",
+        "posFam": "wing",
+        "zMean": 0.25670182264315294,
+        "zStd": 0.5594744483847242,
+        "n": 378
+      },
+      "big": {
+        "axis": "switch",
+        "posFam": "big",
+        "zMean": 0.24058333159821083,
+        "zStd": 0.5628073513091925,
+        "n": 398
+      }
+    },
+    "transition": {
+      "guard": {
+        "axis": "transition",
+        "posFam": "guard",
+        "zMean": 0.3458612590028648,
+        "zStd": 0.39540637564047293,
+        "n": 164
+      },
+      "wing": {
+        "axis": "transition",
+        "posFam": "wing",
+        "zMean": 0.30966497409062066,
+        "zStd": 0.41498079974644775,
+        "n": 378
+      },
+      "big": {
+        "axis": "transition",
+        "posFam": "big",
+        "zMean": 0.3351374819225554,
+        "zStd": 0.4265128640652247,
+        "n": 414
+      }
+    },
+    "translate": {
+      "guard": {
+        "axis": "translate",
+        "posFam": "guard",
+        "zMean": 0.2062670543093874,
+        "zStd": 0.3039332009657836,
+        "n": 164
+      },
+      "wing": {
+        "axis": "translate",
+        "posFam": "wing",
+        "zMean": 0.16621703755990772,
+        "zStd": 0.3201805004200023,
+        "n": 378
+      },
+      "big": {
+        "axis": "translate",
+        "posFam": "big",
+        "zMean": 0.05245843860017142,
+        "zStd": 0.387750285383465,
+        "n": 414
+      }
+    }
+  }
+}

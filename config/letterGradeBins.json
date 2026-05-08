@@ -1,0 +1,15 @@
+{
+  "_README": "Letter-grade thresholds for traits, axes, and overall scores. Two gates: (1) absolute score floor — always operative, derived from z-score thresholds via score = 50 + 15·z; (2) cohort percentile rank within the historical pool per positionFamily — operative only when historicalDistributions.json has been backfilled. A grade requires BOTH gates to pass (when percentile data is available). When percentile data is unavailable, the floor gate alone determines the grade.",
+  "_dualGateRationale": "The floor gate prevents grade inflation in unusually weak classes. The percentile gate prevents grade compression in unusually strong classes. Both together produce era-stable grading: a 'B Shooting Gravity' wing means the same thing across draft years.",
+  "_schema": {
+    "scoreFloor":          "Minimum 0-100 score to qualify for the grade. Equivalent z-score is shown for reference.",
+    "cohortPercentileMin": "Minimum percentile rank within the historical positionFamily pool (0-100, where 100 = top of pool). Effective only when distributions are loaded."
+  },
+  "thresholds": {
+    "A+": { "scoreFloor": 75, "scoreFloorZ": 1.67, "cohortPercentileMin": 95 },
+    "A":  { "scoreFloor": 66, "scoreFloorZ": 1.07, "cohortPercentileMin": 85 },
+    "B":  { "scoreFloor": 54, "scoreFloorZ": 0.27, "cohortPercentileMin": 60 },
+    "C":  { "scoreFloor": 43, "scoreFloorZ": -0.47, "cohortPercentileMin": 25 },
+    "D":  { "scoreFloor": 0,  "scoreFloorZ": -3.33, "cohortPercentileMin": 0 }
+  }
+}

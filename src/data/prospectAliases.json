@@ -71,6 +71,7 @@
     { "id": "kj-lewis",             "name": "K.J. Lewis",           "firstName": "K.J.",      "lastName": "Lewis",        "searchAliases": ["K.J. Lewis", "Lewis", "K. Lewis", "K.Lewis"], "active": true, "tickerPriority": "normal" },
     { "id": "dame-sarr",            "name": "Dame Sarr",            "firstName": "Dame",      "lastName": "Sarr",         "searchAliases": ["Dame Sarr", "Sarr", "D. Sarr", "D.Sarr"], "active": true, "tickerPriority": "normal" },
     { "id": "fletcher-loyer",       "name": "Fletcher Loyer",       "firstName": "Fletcher",  "lastName": "Loyer",        "searchAliases": ["Fletcher Loyer", "Loyer", "F. Loyer", "F.Loyer"], "active": true, "tickerPriority": "normal" },
-    { "id": "otega-oweh",           "name": "Otega Oweh",           "firstName": "Otega",     "lastName": "Oweh",         "searchAliases": ["Otega Oweh", "Oweh", "O. Oweh", "O.Oweh"], "active": true, "tickerPriority": "normal" }
+    { "id": "otega-oweh",           "name": "Otega Oweh",           "firstName": "Otega",     "lastName": "Oweh",         "searchAliases": ["Otega Oweh", "Oweh", "O. Oweh", "O.Oweh"], "active": true, "tickerPriority": "normal" },
+    { "id": "amari-allen",          "name": "Amari Allen",          "firstName": "Amari",     "lastName": "Allen",        "searchAliases": ["Amari Allen", "Allen", "A. Allen", "A.Allen"], "active": true, "tickerPriority": "normal" }
   ]
 }

@@ -1,0 +1,68 @@
+{
+  "_README": "Configuration for the overall composite (Module 3). All magic numbers from the design doc live here. Adjustable without touching logic files.",
+
+  "_schema": {
+    "knnK":              "Number of nearest historical neighbors used for outcome-tier distribution. Spec default 30.",
+    "outcomeTierScores": "Per-tier point value used in E[outcome] = sum(p_tier * score_tier).",
+    "starShape":         "Rewards specialist profiles with one elite trait + a strong supporting trait.",
+    "redFlags":          "Per-flag deduction + activation rule. Total capped at maxTotalDeduction.",
+    "confidence":        "Sigma derivation. Combines NN-outcome variance + missing-data penalty.",
+    "scoreClamp":        "Final point-estimate min/max."
+  },
+
+  "knnK": 30,
+
+  "outcomeTierScores": {
+    "Legend": 100,
+    "Star":    85,
+    "Hit":     70,
+    "Swing":   50,
+    "Bust":    30
+  },
+
+  "starShape": {
+    "_note": "Activated only when at least one trait is z>=1.5 AND a second trait z>=0.5. Bonus = min(maxBonus, slope * (maxZ - eliteThreshold)).",
+    "eliteThreshold":     1.5,
+    "supportingThreshold": 0.5,
+    "slope":               5.0,
+    "maxBonus":            8.0
+  },
+
+  "redFlags": {
+    "ageFlag": {
+      "_note": "Older prospect (age > ageThreshold) with weak production (OBPM below posFam-median).",
+      "ageThreshold":   22,
+      "deduction":       -8
+    },
+    "lengthFlag": {
+      "_note": "Wingspan less than height — applies only to wings + bigs (guards rarely have a length advantage).",
+      "applicablePositionFamilies": ["wing", "big"],
+      "deduction":       -4
+    },
+    "archetypeFingerprintFlag": {
+      "_note": "The prospect's stat fingerprint diverges from their stated archetype anchor by >fingerprintDistanceSigma standard deviations in z-space. Hand-coded archetypes that don't actually fit produce this flag.",
+      "fingerprintDistanceSigma": 1.5,
+      "deduction":                 -3
+    },
+    "sosFlag": {
+      "_note": "DEFERRED until KenPom subscription. School-strength quartile detection requires conference-level SOS data.",
+      "enabled": false,
+      "deduction": -3
+    },
+    "maxTotalDeduction": -12
+  },
+
+  "confidence": {
+    "_note": "sigma = clip(sigmaFromOutcomeVariance + sigmaFromMissingData, sigmaMin, sigmaMax). sigmaFromOutcomeVariance is the std-dev of p_tier outcome scores in the 30-NN. sigmaFromMissingData adds 0.5 per missing 'core' feature (max 4 features).",
+    "sigmaMin": 4,
+    "sigmaMax": 12,
+    "missingDataPenaltyPerFeature": 0.5,
+    "missingDataMaxPenalty":        4.0,
+    "coreFeatures": ["tsPct", "usgPct", "bpm", "obpm", "dbpm", "stlPct", "blkPct", "heightIn"]
+  },
+
+  "scoreClamp": {
+    "min": 30,
+    "max": 99
+  }
+}

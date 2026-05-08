@@ -1,0 +1,128 @@
+{
+  "_README": "Per-axis contributor map. Each axis has: (1) feature contributors with signed weights, (2) archetype-anchor blend weight, (3) prose blend weight. Sum of (anchorWeight + proseWeight + featureWeight = 1) where featureWeight is implicit (1 - anchorWeight - proseWeight). Feature `weight` is the sign and prior magnitude — actual coefficients come from the calibrator (axisRegressions in scoringCalibration.json) at runtime. The `weight` here is used only when calibration coefficients are absent (cold start) or as a sign-constraint sanity check. `required` features must be present for a 'full' dataMode; missing required → dataMode degrades to 'partial' or 'scout_anchored'.",
+  "_schema": {
+    "axisKey":             "One of: initiate, extend, close, space, connect, contain, disrupt, switch, transition. (translate is derived, not in this file.)",
+    "features":            "Array of {feature, weight, required, sign} contributor entries.",
+    "archetypeAnchorWeight": "0..1, fraction of final score from archetype anchor.",
+    "proseWeight":           "0..1, fraction from authored-prose tags."
+  },
+  "axes": {
+    "initiate": {
+      "_label": "Self-creation / advantage-creation pressure",
+      "features": [
+        { "feature": "usgPct",   "weight": 1.0, "sign": "+", "required": true  },
+        { "feature": "obpm",     "weight": 1.0, "sign": "+", "required": true  },
+        { "feature": "bpm",      "weight": 0.6, "sign": "+", "required": false },
+        { "feature": "ftr",      "weight": 0.4, "sign": "+", "required": false },
+        { "feature": "age",      "weight": 0.3, "sign": "-", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.20,
+      "proseWeight": 0.10
+    },
+    "extend": {
+      "_label": "Playmaking, advantage extension, downhill passing",
+      "features": [
+        { "feature": "astPct",   "weight": 1.0, "sign": "+", "required": true  },
+        { "feature": "obpm",     "weight": 0.7, "sign": "+", "required": true  },
+        { "feature": "tovPct",   "weight": 0.6, "sign": "-", "required": false },
+        { "feature": "usgPct",   "weight": 0.3, "sign": "+", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.20,
+      "proseWeight": 0.10
+    },
+    "close": {
+      "_label": "Finishing, late-clock scoring, half-court shotmaking",
+      "features": [
+        { "feature": "tsPct",    "weight": 1.0, "sign": "+", "required": true  },
+        { "feature": "ftr",      "weight": 0.6, "sign": "+", "required": false },
+        { "feature": "obpm",     "weight": 0.5, "sign": "+", "required": true  }
+      ],
+      "archetypeAnchorWeight": 0.20,
+      "proseWeight": 0.10
+    },
+    "space": {
+      "_label": "Floor spacing, three-level threat",
+      "features": [
+        { "feature": "tsPct",    "weight": 1.0, "sign": "+", "required": true  },
+        { "feature": "threePAr", "weight": 0.7, "sign": "+", "required": false },
+        { "feature": "ftr",      "weight": 0.2, "sign": "+", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.20,
+      "proseWeight": 0.10
+    },
+    "connect": {
+      "_label": "Connector / role-offensive value, low-USG efficiency",
+      "_note": "Hardest axis to fit from box stats (R^2 ~0.07-0.12). Archetype anchor and authored prose carry more weight here.",
+      "features": [
+        { "feature": "tsPct",    "weight": 1.0, "sign": "+", "required": true  },
+        { "feature": "tovPct",   "weight": 0.7, "sign": "-", "required": false },
+        { "feature": "astPct",   "weight": 0.4, "sign": "+", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.30,
+      "proseWeight": 0.15
+    },
+    "contain": {
+      "_label": "Point-of-attack defense, primary matchup containment",
+      "_note": "College defensive box stats barely predict NBA D (R^2 ~0.04-0.10). Anchor weight bumped to 0.30. dbpm is OPTIONAL because pre-2011 historicals don't have it; without this relaxation 48% of the historical pool would get null DefensiveVersatility grades.",
+      "features": [
+        { "feature": "dbpm",      "weight": 1.0, "sign": "+", "required": false },
+        { "feature": "heightIn",  "weight": 0.4, "sign": "+", "required": true  },
+        { "feature": "stlPct",    "weight": 0.3, "sign": "+", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.30,
+      "proseWeight": 0.15
+    },
+    "disrupt": {
+      "_label": "Defensive disruption / events (steals, blocks, deflections)",
+      "_note": "dbpm is OPTIONAL because pre-2011 historicals don't have it; stlPct + blkPct (universal since 1973) carry the required gate.",
+      "features": [
+        { "feature": "stlPct",    "weight": 1.0, "sign": "+", "required": true  },
+        { "feature": "blkPct",    "weight": 0.8, "sign": "+", "required": true  },
+        { "feature": "dbpm",      "weight": 0.5, "sign": "+", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.25,
+      "proseWeight": 0.10
+    },
+    "switch": {
+      "_label": "Defensive scheme range, switch-ability across positions",
+      "_note": "Anchor weight 0.30 because switchability is hard to capture without play-by-play. dbpm is OPTIONAL — see contain note for rationale.",
+      "features": [
+        { "feature": "heightIn",  "weight": 0.8, "sign": "+", "required": true  },
+        { "feature": "dbpm",      "weight": 0.7, "sign": "+", "required": false },
+        { "feature": "stlPct",    "weight": 0.5, "sign": "+", "required": false },
+        { "feature": "blkPct",    "weight": 0.4, "sign": "+", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.30,
+      "proseWeight": 0.15
+    },
+    "transition": {
+      "_label": "Open-court value, athletic projection",
+      "features": [
+        { "feature": "stlPct",    "weight": 0.7, "sign": "+", "required": false },
+        { "feature": "bpm",       "weight": 0.6, "sign": "+", "required": true  },
+        { "feature": "age",       "weight": 0.5, "sign": "-", "required": false },
+        { "feature": "obpm",      "weight": 0.5, "sign": "+", "required": false }
+      ],
+      "archetypeAnchorWeight": 0.20,
+      "proseWeight": 0.10
+    }
+  },
+  "translate": {
+    "_label": "Meta-translation factor — how does the whole game project to the NBA",
+    "_derivation": "Computed in src/grading/axisScores.ts as a weighted blend of (initiate + close + switch) axis scores plus stat-side modifiers (BPM, age curve). NOT a first-class axis with its own contributors.",
+    "axisBlend": {
+      "initiate": 0.25,
+      "close":    0.20,
+      "switch":   0.15,
+      "extend":   0.10,
+      "space":    0.10,
+      "contain":  0.10,
+      "disrupt":  0.05,
+      "connect":  0.05
+    },
+    "statSideModifiers": [
+      { "feature": "bpm",      "weight": 0.20, "sign": "+", "required": true  },
+      { "feature": "age",      "weight": 0.15, "sign": "-", "required": true  }
+    ]
+  }
+}

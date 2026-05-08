@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Plus, X, Search, Download, Edit3, ChevronDown, ChevronRight, FileText, Clock, BookOpen, Check } from "lucide-react";
 import SCOUT_TRAIT_LIBRARY from "../data/scoutTraitLibrary.json";
 
@@ -28,23 +28,33 @@ const mono = {
   fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
 };
 
-const STATUSES = [
+export const STATUSES = [
   { value: "WATCH", label: "Watch", color: T.textDim, hint: "On the list, deep dive not started" },
   { value: "ACTIVE", label: "Active", color: T.cyan, hint: "Actively writing / tracking" },
   { value: "ARCHIVED", label: "Archived", color: T.textMute, hint: "Finalized" },
 ];
 
-const BUY_SELL = [
+export const BUY_SELL = [
   { value: "BUY", label: "Buy", color: T.positive, hint: "Favorable view, taking the over" },
   { value: "HOLD", label: "Hold", color: T.warn, hint: "Neutral, watching" },
   { value: "SELL", label: "Sell", color: T.danger, hint: "Unfavorable view, taking the under" },
 ];
 
-const CONFIDENCE = [
+export const CONFIDENCE = [
   { value: "LOW", label: "Low", color: T.textMute },
   { value: "MEDIUM", label: "Medium", color: T.warn },
   { value: "HIGH", label: "High", color: T.cyan },
 ];
+
+// Tier colors for ceiling/floor pills — re-exported from here so other
+// surfaces (Big Board / Scout Desk) can render dive indicators consistently.
+export const DEEP_DIVE_TIER_COLORS = {
+  Legend: "#A855F7",
+  Star:   "var(--prospera-cyan)",
+  Hit:    "#10B981",
+  Swing:  "#F59E0B",
+  Bust:   "#EF4444",
+};
 
 // ---------- TAXONOMY ----------
 const TRAIT_KEYS = [
@@ -1268,12 +1278,25 @@ function TemplatePanel({ open, onClose }) {
 }
 
 // ---------- MAIN PAGE ----------
-export const DeepDivesPage = ({ prospects = [], deepDives = {}, setDeepDives, onOpenProfile }) => {
+export const DeepDivesPage = ({
+  prospects = [],
+  deepDives = {},
+  setDeepDives,
+  onOpenProfile,
+  initialEditingId = null,   // when set (e.g., from Scout Desk row), open straight into editor
+}) => {
   const [statusFilter, setStatusFilter] = useState("ALL");
   const [query, setQuery] = useState("");
-  const [editingId, setEditingId] = useState(null);
+  const [editingId, setEditingId] = useState(initialEditingId);
   const [showTemplate, setShowTemplate] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
+
+  // If parent supplies a new initialEditingId mid-session (e.g., user clicked
+  // a different "+ Dive" button on Scout Desk), respect it.
+  useEffect(() => {
+    if (initialEditingId && initialEditingId !== editingId) setEditingId(initialEditingId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialEditingId]);
 
   const prospectsById = useMemo(() => Object.fromEntries(prospects.map((p) => [p.id, p])), [prospects]);
 
