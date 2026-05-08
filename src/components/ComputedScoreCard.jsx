@@ -1,6 +1,7 @@
 import React from "react";
 import { getProspectScores, getProspectScoresByName } from "../grading/precomputed";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
+import ComputedOutcomesLadder from "./ComputedOutcomesLadder";
 
 // Match the existing PROSPERA token system used elsewhere in the app
 const T = {
@@ -263,31 +264,36 @@ export default function ComputedScoreCard({ prospectId, prospectName }) {
       {/* AUTHORED LADDER — user's eye-test read, primary view when present */}
       <AuthoredCompsLadder prospectName={scores.prospectName} />
 
-      {/* STATISTICAL COMPS — engine output */}
-      <div style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.textMute, textTransform: "uppercase", marginBottom: 10 }}>
-        Statistical Comp Engine
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
-        <CompCell label="Headline" comp={scores.summary.headlineComp} />
-        <CompCell label="Shadow (cautionary)" comp={scores.summary.shadowComp} />
-      </div>
-      {scores.comps.body && scores.comps.body.length > 0 && (
-        <div style={{ marginBottom: 24 }}>
-          <div style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.textMute, textTransform: "uppercase", marginBottom: 8 }}>
-            Body Comps
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
-            {scores.comps.body.map((c) => (
-              <CompCell key={c.candidate.id} label={c.role} comp={{
-                name: c.candidate.name,
-                tier: c.candidate.outcomeTier,
-                year: c.candidate.draftYear || null,
-                similarity: c.similarity,
-              }} />
-            ))}
-          </div>
-        </div>
-      )}
+      {/* STATISTICAL COMPS — engine output, rendered as ladder for visual parity */}
+      <ComputedOutcomesLadder
+        prospectName={scores.prospectName}
+        entries={[
+          ...(scores.summary.headlineComp ? [{
+            role: "headline",
+            name: scores.summary.headlineComp.name,
+            tier: scores.summary.headlineComp.tier,
+            year: scores.summary.headlineComp.year,
+            similarity: scores.summary.headlineComp.similarity,
+            school: scores.comps.headline?.candidate?.school,
+          }] : []),
+          ...(scores.comps.body || []).map((c) => ({
+            role: "body",
+            name: c.candidate.name,
+            tier: c.candidate.outcomeTier,
+            year: c.candidate.draftYear || null,
+            similarity: c.similarity,
+            school: c.candidate.school,
+          })),
+          ...(scores.summary.shadowComp ? [{
+            role: "shadow",
+            name: scores.summary.shadowComp.name,
+            tier: scores.summary.shadowComp.tier,
+            year: scores.summary.shadowComp.year,
+            similarity: scores.summary.shadowComp.similarity,
+            school: scores.comps.shadow?.candidate?.school,
+          }] : []),
+        ]}
+      />
 
       {/* TIER RATIONING + ELEVATION */}
       <div style={{ background: T.surface2, border: `1px solid ${T.borderSoft}`, padding: 12, ...mono, fontSize: 11, color: T.textDim }}>

@@ -292,6 +292,7 @@ import {
 import ComputedScoreCard from "./ComputedScoreCard";
 import ComputedScorePill from "./ComputedScorePill";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
+import ComputedOutcomesLadder from "./ComputedOutcomesLadder";
 import { buildLegacyCompGroups, getTopComps } from "../grading/compsBridge";
 import { getProspectScoresByName } from "../grading/precomputed";
 import { getAuthoredCompLadder } from "../grading/authoredComps";
@@ -2553,6 +2554,82 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
   const ACCENT_REAL = OUTCOME_TIER_COLORS.Hit || T.blue;
   const ACCENT_CAUT = T.textMute;
 
+  // RefineCompsSection — collapsed by default. Exposes the legacy bucket
+  // cards with override actions (move/hide/pin) for power-user editing.
+  // Inlined here as a closure so it captures p + compOverrides without
+  // an extra prop drill.
+  // eslint-disable-next-line no-inner-declarations
+  function RefineCompsSection({ groups, allowOverride, cardProps, accentHigh, accentReal, accentCaut }) {
+    const [open, setOpen] = useState(false);
+    const total = groups.highEnd.length + groups.realistic.length + groups.cautionary.length;
+    return (
+      <div style={{ paddingTop: 4 }}>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          style={{
+            ...mono, fontSize: 9, letterSpacing: "0.16em",
+            color: T.textMute, background: "transparent", border: "none",
+            padding: "4px 0", cursor: "pointer",
+            textTransform: "uppercase",
+            display: "inline-flex", alignItems: "center", gap: 6,
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = T.textDim)}
+          onMouseLeave={(e) => (e.currentTarget.style.color = T.textMute)}
+        >
+          <span>{open ? "Hide" : "Refine"} comps · {total}</span>
+          <span style={{ color: T.textDim }}>{open ? "▾" : "▸"}</span>
+        </button>
+        {open && (
+          <div style={{ display: "grid", gap: 14, marginTop: 10 }}>
+            {groups.highEnd.length > 0 && (
+              <div>
+                <ComparableSectionHeader
+                  eyebrow="Best Case" title="High-End Outcomes"
+                  count={groups.highEnd.length} accent={accentHigh}
+                  hint="If everything translates — Star / Legend tier outcomes."
+                />
+                <div style={{ display: "grid", gap: 8 }}>
+                  {groups.highEnd.map((entry) => (
+                    <ComparableCard key={entry.historical.id} {...entry} {...cardProps(entry, "highEnd")} />
+                  ))}
+                </div>
+              </div>
+            )}
+            {groups.realistic.length > 0 && (
+              <div>
+                <ComparableSectionHeader
+                  eyebrow="Median Projection" title="Realistic Outcomes"
+                  count={groups.realistic.length} accent={accentReal}
+                  hint="Hit-tier solid contributors — most likely outcome."
+                />
+                <div style={{ display: "grid", gap: 10 }}>
+                  {groups.realistic.map((entry) => (
+                    <ComparableCard key={entry.historical.id} {...entry} {...cardProps(entry, "realistic")} />
+                  ))}
+                </div>
+              </div>
+            )}
+            {groups.cautionary.length > 0 && (
+              <div>
+                <ComparableSectionHeader
+                  eyebrow="Downside Risk" title="Cautionary Comps"
+                  count={groups.cautionary.length} accent={accentCaut}
+                  hint="Same profile, didn't translate."
+                />
+                <div style={{ display: "grid", gap: 8 }}>
+                  {groups.cautionary.map((entry) => (
+                    <ComparableCard key={entry.historical.id} {...entry} dim {...cardProps(entry, "cautionary")} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   // Build the section's overflow handlers for ComparableCard. `currentSection`
   // tells the menu which moves are valid; the handlers fire onSetCompOverride.
   const cardProps = (entry, currentSection) => allowOverride ? {
@@ -2596,59 +2673,52 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
           comps below are the primary view. */}
       <AuthoredCompsLadder prospectName={p.name} />
 
-      <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.14em" }}>
-        STATISTICAL COMP ENGINE · BEST CASE → MEDIAN → DOWNSIDE
-      </div>
+      {/* Statistical comp engine output as a clean ladder — same visual rhythm
+          as the authored ladder. Maps the bucket structure to ladder rungs:
+          highEnd → headline-style top, realistic → body, cautionary → shadow-style. */}
+      <ComputedOutcomesLadder
+        prospectName={p.name}
+        entries={[
+          ...groups.highEnd.map((entry) => ({
+            role: entry.pinned ? "headline" : "headline",
+            name: entry.historical.name,
+            tier: entry.historical.outcomeTier,
+            year: entry.historical.draftYear || null,
+            school: entry.historical.school,
+            similarity: entry.score,
+          })),
+          ...groups.realistic.map((entry) => ({
+            role: "body",
+            name: entry.historical.name,
+            tier: entry.historical.outcomeTier,
+            year: entry.historical.draftYear || null,
+            school: entry.historical.school,
+            similarity: entry.score,
+          })),
+          ...groups.cautionary.map((entry) => ({
+            role: "shadow",
+            name: entry.historical.name,
+            tier: entry.historical.outcomeTier,
+            year: entry.historical.draftYear || null,
+            school: entry.historical.school,
+            similarity: entry.score,
+          })),
+        ]}
+      />
 
-      {groups.highEnd.length > 0 && (
-        <div>
-          <ComparableSectionHeader
-            eyebrow="Best Case"
-            title="High-End Outcomes"
-            count={groups.highEnd.length}
-            accent={ACCENT_HIGH}
-            hint="If everything translates — Star / Legend tier outcomes that match this profile."
-          />
-          <div style={{ display: "grid", gap: 8 }}>
-            {groups.highEnd.map((entry) => (
-              <ComparableCard key={entry.historical.id} {...entry} {...cardProps(entry, "highEnd")} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {groups.realistic.length > 0 && (
-        <div>
-          <ComparableSectionHeader
-            eyebrow="Median Projection"
-            title="Realistic Outcomes"
-            count={groups.realistic.length}
-            accent={ACCENT_REAL}
-            hint="Hit-tier solid contributors — the most likely outcome for this profile."
-          />
-          <div style={{ display: "grid", gap: 10 }}>
-            {groups.realistic.map((entry) => (
-              <ComparableCard key={entry.historical.id} {...entry} {...cardProps(entry, "realistic")} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {groups.cautionary.length > 0 && (
-        <div>
-          <ComparableSectionHeader
-            eyebrow="Downside Risk"
-            title="Cautionary Comps"
-            count={groups.cautionary.length}
-            accent={ACCENT_CAUT}
-            hint="Same profile, didn't translate. What goes wrong looks like this."
-          />
-          <div style={{ display: "grid", gap: 8 }}>
-            {groups.cautionary.map((entry) => (
-              <ComparableCard key={entry.historical.id} {...entry} dim {...cardProps(entry, "cautionary")} />
-            ))}
-          </div>
-        </div>
+      {/* The override-capable cards are still available below for surgical
+          editing (pin / hide / move). Hidden by default — a thin "Refine comps"
+          toggle expands them. Keeps the page clean while preserving power-user
+          features. */}
+      {(groups.highEnd.length + groups.realistic.length + groups.cautionary.length) > 0 && (
+        <RefineCompsSection
+          groups={groups}
+          allowOverride={allowOverride}
+          cardProps={cardProps}
+          accentHigh={ACCENT_HIGH}
+          accentReal={ACCENT_REAL}
+          accentCaut={ACCENT_CAUT}
+        />
       )}
 
       {/* Hidden comps · expandable footer so removed comps stay reversible.
