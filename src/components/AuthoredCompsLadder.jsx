@@ -71,11 +71,11 @@ export default function AuthoredCompsLadder({ prospectName, compact = false }) {
                 gap: 12,
                 alignItems: "center",
                 padding: compact ? "6px 10px" : "10px 12px",
-                borderLeft: `4px solid ${color}`,
                 background: isPeak ? `color-mix(in srgb, ${color} 10%, transparent)` : T.surface2,
-                border: `1px solid ${T.borderSoft}`,
-                borderLeftWidth: 4,
-                borderLeftColor: color,
+                borderTop: `1px solid ${T.borderSoft}`,
+                borderRight: `1px solid ${T.borderSoft}`,
+                borderBottom: `1px solid ${T.borderSoft}`,
+                borderLeft: `4px solid ${color}`,
               }}
             >
               <span style={{

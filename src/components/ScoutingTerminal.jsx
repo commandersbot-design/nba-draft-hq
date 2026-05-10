@@ -292,6 +292,7 @@ import {
 import ComputedScoreCard from "./ComputedScoreCard";
 import ComputedScorePill from "./ComputedScorePill";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
+import ScoutTab from "./ScoutTab";
 import ComputedOutcomesLadder from "./ComputedOutcomesLadder";
 import { buildLegacyCompGroups, getTopComps } from "../grading/compsBridge";
 import { getProspectScoresByName } from "../grading/precomputed";
@@ -2810,7 +2811,7 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
 };
 
 // ---------- PLAYER PROFILE PAGE ----------
-const PROFILE_TABS = ["Prospect Stats", "Evaluation", "Advantage", "Traits", "Computed", "Comparables", "Constellation", "Shot Chart", "Notes"];
+const PROFILE_TABS = ["Scout View", "Prospect Stats", "Evaluation", "Advantage", "Traits", "Computed", "Comparables", "Constellation", "Shot Chart", "Notes"];
 
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
@@ -3236,6 +3237,7 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
         })}
       </div>
 
+      {tab === "Scout View" && <ScoutTab p={p} />}
       {tab === "Prospect Stats" && <ProspectStatsTab p={p} />}
       {tab === "Evaluation" && (
         <EvaluationTab
