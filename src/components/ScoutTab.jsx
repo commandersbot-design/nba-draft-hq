@@ -37,7 +37,7 @@ const TIERS = [
   { key: "floor",   abbr: "FL",  label: "Floor",     hint: "Worst-case outcome — what they look like if everything goes wrong" },
   { key: "lowEnd",  abbr: "LE",  label: "Low End",   hint: "Below-median outcome — modest contributor, tools without translation" },
   { key: "middle",  abbr: "MID", label: "Middle",    hint: "Median outcome — the projection that feels most likely" },
-  { key: "highEnd", abbr: "HET", label: "High End",  hint: "Above-median outcome — bet pays off, role expands" },
+  { key: "highEnd", abbr: "HE",  label: "High End",  hint: "Above-median outcome — bet pays off, role expands" },
   { key: "ceiling", abbr: "C",   label: "Ceiling",   hint: "Best-case outcome — everything translates, peak version" },
 ];
 
