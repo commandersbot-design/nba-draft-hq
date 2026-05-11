@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Search, Download, RefreshCw, X, ArrowDown, Plus, Dices } from "lucide-react";
+import { Search, Download, RefreshCw, X, ArrowDown, Plus } from "lucide-react";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
 import { useCustomWeights, ScoreCell } from "./CustomWeights";
 
@@ -7,71 +7,6 @@ const TEAMS = DRAFT_CONTEXT.teams;
 const NEEDS = DRAFT_CONTEXT.needs;
 const DEFAULT_ORDER = DRAFT_CONTEXT.defaultOrder;
 const TEAM_OPTIONS = Object.keys(TEAMS).sort();
-
-// ---------- LOTTERY ----------
-// Real NBA lottery odds (post-2019 anti-tank reform): bottom 3 teams each at
-// 14% for #1, then sliding scale down to 0.5% for the 14th-worst team.
-// Picks 1-4 are drawn weighted; picks 5-14 fall to remaining lottery teams in
-// reverse-standings order. Picks 15-30 stay locked to standings.
-const LOTTERY_ODDS = [14.0, 14.0, 14.0, 12.5, 10.5, 9.0, 7.5, 6.0, 4.5, 3.0, 2.0, 1.5, 1.0, 0.5];
-const LOTTERY_DRAW_COUNT = 4; // top-4 picks are drawn from weighted odds
-
-function weightedDraw(teams, weights) {
-  const total = weights.reduce((a, b) => a + b, 0);
-  if (total <= 0) return 0;
-  let r = Math.random() * total;
-  for (let i = 0; i < teams.length; i++) {
-    r -= weights[i];
-    if (r <= 0) return i;
-  }
-  return teams.length - 1;
-}
-
-function simulateLottery(standingsOrder) {
-  // standingsOrder: array of 14 team abbreviations, worst-record first.
-  const teams = [...standingsOrder];
-  const weights = [...LOTTERY_ODDS];
-  const drawn = [];
-  for (let i = 0; i < LOTTERY_DRAW_COUNT && teams.length > 0; i++) {
-    const idx = weightedDraw(teams, weights);
-    drawn.push(teams[idx]);
-    teams.splice(idx, 1);
-    weights.splice(idx, 1);
-  }
-  // Remaining teams fill picks 5-14 in their pre-lottery standings order
-  return [...drawn, ...teams];
-}
-
-// Full NBA lottery probability table — odds (%) for each standings position
-// to land each of pick 1 through pick 14. Source: NBA's official lottery
-// system (post-2019 reform). Rows = standings position (1=worst), cols = pick.
-const LOTTERY_PROBABILITIES = [
-  // Pick:   1     2     3     4     5     6     7     8     9    10    11    12    13    14
-  [14.0, 13.4, 12.7, 11.9, 47.9,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0], // 1st worst
-  [14.0, 13.4, 12.7, 11.9, 27.8, 20.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0], // 2nd
-  [14.0, 13.4, 12.7, 11.9, 14.8, 26.0,  7.1,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0], // 3rd
-  [12.5, 12.2, 11.9, 11.5,  7.2, 25.7, 16.7,  2.2,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0], // 4th
-  [10.5, 10.5, 10.6, 10.5,  2.2, 19.6, 26.7,  8.7,  0.6,  0.0,  0.0,  0.0,  0.0,  0.0], // 5th
-  [ 9.0,  9.2,  9.4,  9.6,  0.0,  8.6, 29.8, 20.6,  3.7,  0.1,  0.0,  0.0,  0.0,  0.0], // 6th
-  [ 7.5,  7.8,  8.1,  8.5,  0.0,  0.0, 19.7, 34.1,  9.9,  0.6,  0.0,  0.0,  0.0,  0.0], // 7th
-  [ 6.0,  6.3,  6.7,  7.2,  0.0,  0.0,  0.0, 34.5, 31.9,  6.7,  0.4,  0.0,  0.0,  0.0], // 8th
-  [ 4.5,  4.8,  5.2,  5.7,  0.0,  0.0,  0.0,  0.0, 53.9, 23.8,  1.9,  0.1,  0.0,  0.0], // 9th
-  [ 3.0,  3.3,  3.6,  4.0,  0.0,  0.0,  0.0,  0.0,  0.0, 68.6, 16.8,  0.6,  0.0,  0.0], // 10th
-  [ 2.0,  2.2,  2.4,  2.7,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0, 79.9, 10.7,  0.1,  0.0], // 11th
-  [ 1.5,  1.7,  1.8,  2.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0, 87.7,  5.2,  0.1], // 12th
-  [ 1.0,  1.1,  1.2,  1.4,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0, 92.9,  1.4], // 13th
-  [ 0.5,  0.6,  0.6,  0.7,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0, 97.6], // 14th
-];
-
-function describeLotteryShift(team, standingsOrder, lotteryOrder) {
-  const standingsIdx = standingsOrder.indexOf(team);
-  const lotteryIdx = lotteryOrder.indexOf(team);
-  if (standingsIdx < 0 || lotteryIdx < 0) return null;
-  const shift = standingsIdx - lotteryIdx;
-  if (shift > 0) return { team, from: standingsIdx + 1, to: lotteryIdx + 1, dir: "up", shift };
-  if (shift < 0) return { team, from: standingsIdx + 1, to: lotteryIdx + 1, dir: "down", shift: -shift };
-  return { team, from: standingsIdx + 1, to: lotteryIdx + 1, dir: "flat", shift: 0 };
-}
 
 // PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
 const T = {
@@ -123,8 +58,6 @@ function downloadText(filename, content) {
 export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setTeamSlots, onOpenProfile }) => {
   const [query, setQuery] = useState("");
   const [showRound2, setShowRound2] = useState(false);
-  const [lotteryResult, setLotteryResult] = useState(null);
-  const [showOdds, setShowOdds] = useState(false);
   const { displayScore, active: weightsActive } = useCustomWeights();
 
   // Available prospects = those not already drafted
@@ -190,31 +123,6 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
     });
   };
 
-  const runLottery = () => {
-    // Take the current top-14 team slots as the "pre-lottery standings order"
-    const standingsOrder = teamSlots.slice(0, 14).filter(Boolean);
-    if (standingsOrder.length < 14) {
-      setLotteryResult({ error: "Need 14 teams in slots 1-14 to run the lottery. Click LOAD 2026 ORDER to populate." });
-      return;
-    }
-    const lotteryOrder = simulateLottery(standingsOrder);
-    setTeamSlots((curr) => {
-      const next = [...curr];
-      for (let i = 0; i < 14; i++) next[i] = lotteryOrder[i];
-      return next;
-    });
-    // Build a result summary: notable jumps + #1 pick winner
-    const movers = lotteryOrder
-      .map((team) => describeLotteryShift(team, standingsOrder, lotteryOrder))
-      .filter((m) => m && Math.abs(m.shift) >= 1);
-    setLotteryResult({
-      winner: lotteryOrder[0],
-      lotteryOrder,
-      standingsOrder,
-      movers,
-    });
-  };
-
   const exportText = () => {
     const lines = ["PROSPERA MOCK DRAFT · 2026", "=========================="];
     let lastRound = "";
@@ -258,12 +166,6 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
           <button type="button" onClick={resetTeamOrder} style={pillBtn(T.textDim)}>
             <RefreshCw size={11} /> LOAD 2026 ORDER
           </button>
-          <button type="button" onClick={runLottery} style={pillBtn(T.warn)}>
-            <Dices size={11} /> RUN LOTTERY
-          </button>
-          <button type="button" onClick={() => setShowOdds((v) => !v)} style={pillBtn(showOdds ? T.cyan : T.textDim)}>
-            {showOdds ? "HIDE ODDS" : "OFFICIAL ODDS"}
-          </button>
           <button type="button" onClick={exportText} style={pillBtn(T.cyan)} disabled={filledCount === 0}>
             <Download size={11} /> EXPORT
           </button>
@@ -272,118 +174,6 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
           </button>
         </div>
       </div>
-
-      {showOdds && (
-        <div style={{
-          marginBottom: 16,
-          padding: "14px 16px",
-          background: T.surface,
-          border: `1px solid ${T.border}`,
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
-            <div>
-              <div style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.textMute, textTransform: "uppercase" }}>
-                Official NBA Lottery Odds · post-2019 reform
-              </div>
-              <div style={{ fontSize: 11, color: T.textDim, marginTop: 4, lineHeight: 1.5 }}>
-                Probability (%) of each pre-lottery standings position landing each pick. Picks 1-4 are drawn weighted; picks 5-14 fall to remaining lottery teams in standings order.
-              </div>
-            </div>
-          </div>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ ...mono, fontSize: 10, color: T.textDim, borderCollapse: "collapse", minWidth: 600 }}>
-              <thead>
-                <tr>
-                  <th style={oddsCellHeader}>Standings</th>
-                  {[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((p) => (
-                    <th key={p} style={oddsCellHeader}>#{p}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {LOTTERY_PROBABILITIES.map((row, rowIdx) => (
-                  <tr key={rowIdx}>
-                    <td style={{ ...oddsCellLabel, color: rowIdx < 3 ? T.warn : T.textDim }}>
-                      #{rowIdx + 1} ({LOTTERY_ODDS[rowIdx].toFixed(1)}%)
-                    </td>
-                    {row.map((pct, pickIdx) => (
-                      <td
-                        key={pickIdx}
-                        style={{
-                          ...oddsCellValue,
-                          color: pct === 0 ? "rgba(100, 116, 139, 0.3)" : pct >= 10 ? T.cyan : T.text,
-                          fontWeight: pickIdx === rowIdx || pct >= 30 ? 600 : 400,
-                        }}
-                      >
-                        {pct === 0 ? "—" : pct.toFixed(1)}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 10, lineHeight: 1.5, textTransform: "uppercase" }}>
-            Worst 3 teams each have a 14.0% chance at #1, sliding down to 0.5% for the 14th-worst. Highlighted cells are the most likely outcome for each standings position.
-          </div>
-        </div>
-      )}
-
-      {lotteryResult && (
-        <div style={{
-          marginBottom: 16,
-          padding: "12px 14px",
-          background: lotteryResult.error ? "rgba(216, 90, 48, 0.08)" : "rgba(245, 158, 11, 0.08)",
-          border: `1px solid ${lotteryResult.error ? "#D85A30" : T.warn}`,
-          display: "flex",
-          alignItems: "flex-start",
-          gap: 14,
-          flexWrap: "wrap",
-        }}>
-          <div style={{ flex: 1, minWidth: 240 }}>
-            {lotteryResult.error ? (
-              <>
-                <div style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: "#D85A30", textTransform: "uppercase", marginBottom: 4 }}>
-                  Lottery error
-                </div>
-                <div style={{ fontSize: 12, color: T.textDim }}>{lotteryResult.error}</div>
-              </>
-            ) : (
-              <>
-                <div style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.warn, textTransform: "uppercase", marginBottom: 4 }}>
-                  Lottery Results · {TEAMS[lotteryResult.winner]?.name || lotteryResult.winner} wins #1
-                </div>
-                <div style={{ fontSize: 11, color: T.textDim, lineHeight: 1.6 }}>
-                  {lotteryResult.movers.length === 0 ? (
-                    <span>Standings held — no movement.</span>
-                  ) : (
-                    lotteryResult.movers.slice(0, 6).map((m, i) => (
-                      <span key={m.team}>
-                        {i > 0 && " · "}
-                        <span style={{ color: m.dir === "up" ? T.cyan : T.textMute, ...mono, letterSpacing: "0.05em" }}>
-                          {m.team}
-                        </span>
-                        {" "}
-                        <span style={{ color: m.dir === "up" ? T.cyan : T.textDim }}>
-                          {m.from}→{m.to}
-                          {m.dir === "up" ? " ↑" : m.dir === "down" ? " ↓" : ""}
-                        </span>
-                      </span>
-                    ))
-                  )}
-                </div>
-              </>
-            )}
-          </div>
-          <button
-            type="button"
-            onClick={() => setLotteryResult(null)}
-            style={{ background: "transparent", border: "none", color: T.textMute, cursor: "pointer", padding: 2 }}
-          >
-            <X size={12} />
-          </button>
-        </div>
-      )}
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 16, alignItems: "start" }} className="prospera-eval-grid">
         {/* Available prospects */}
@@ -489,11 +279,6 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                   <div style={{ fontSize: 8, color: T.textMute, letterSpacing: "0.16em", marginTop: 2 }}>
                     {isRound2 ? "R2" : isLottery ? "LOTTO" : "R1"}
                   </div>
-                  {isLottery && (
-                    <div style={{ fontSize: 8, color: T.warn, letterSpacing: "0.1em", marginTop: 4, fontWeight: 600 }}>
-                      {LOTTERY_ODDS[idx].toFixed(1)}%
-                    </div>
-                  )}
                 </div>
 
                 {/* Team selector + needs */}
@@ -593,33 +378,6 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
       </div>
     </div>
   );
-};
-
-const oddsCellHeader = {
-  ...mono,
-  fontSize: 9,
-  letterSpacing: "0.12em",
-  color: "#64748B",
-  textTransform: "uppercase",
-  padding: "6px 8px",
-  textAlign: "center",
-  borderBottom: "1px solid rgba(31, 41, 55, 0.6)",
-};
-
-const oddsCellLabel = {
-  ...mono,
-  fontSize: 10,
-  letterSpacing: "0.06em",
-  padding: "5px 8px",
-  textAlign: "left",
-  whiteSpace: "nowrap",
-};
-
-const oddsCellValue = {
-  ...mono,
-  fontSize: 10,
-  padding: "5px 6px",
-  textAlign: "center",
 };
 
 function pillBtn(color) {
