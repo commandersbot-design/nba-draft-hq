@@ -809,7 +809,7 @@ const FlagDot = ({ lvl }) => {
 // ---------- TOP NAV ----------
 // Scout Desk = the user's personal scouting hub (former Big Board + Deep Dives merged).
 // My Board = the user-facing board builder (manual / preset / team-need / custom-weights).
-const NAV_ITEMS = ["Scout Desk", "My Board", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
+const NAV_ITEMS = ["Scout Desk", "Deep Dives", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
 // PROSPERA TICKER · slim band above the main nav.
 // Multi-source unified feed: hand-authored news from prospectNews.json
@@ -4867,14 +4867,17 @@ function emptyDeepDiveSeed(prospectId) {
 // Tabbed shell that wraps the Roster vs Dives switch. Renders a small inline
 // segmented control at the top so the user can flip between the prospect
 // roster (with dive indicators) and the full Deep Dive editor index.
-function ScoutDeskShell({ view, setView, diveCount, children }) {
+// DeepDivesShell — sub-tab wrapper for the personal analysis section.
+// Two views: "my-board" (the multi-mode board builder) and "dives" (per-prospect
+// scout reports). The main app nav surfaces this as "Deep Dives".
+function DeepDivesShell({ view, setView, diveCount, children }) {
   return (
     <div>
       <div style={{ padding: "16px 28px 0 28px", maxWidth: 1400, margin: "0 auto" }}>
         <div style={{ display: "inline-flex", gap: 0, border: `1px solid ${T.border}`, background: T.surface }}>
           {[
-            ["roster", "Roster"],
-            ["dives",  `Dives · ${diveCount}`],
+            ["my-board", "My Board"],
+            ["dives",    `Dives · ${diveCount}`],
           ].map(([key, label], i) => {
             const active = view === key;
             return (
@@ -4908,15 +4911,10 @@ function ScoutDeskShell({ view, setView, diveCount, children }) {
 const BigBoardPage = ({
   onOpenProfile, watchlist = [], compareIds = [],
   onToggleWatchlist, onToggleCompare, onOpenCompare,
-  savedViews = [], onSaveView, onDeleteView,
   boardOrder = null, onSetBoardOrder,
-  deepDives = {}, onOpenDive,
 }) => {
   const [watchOnly, setWatchOnly] = useState(false);
-  // Dive-status filter: "ALL" | "DIVES" (any) | "ACTIVE" | "BUY" | "SELL"
-  const [diveFilter, setDiveFilter] = useState("ALL");
   const [query, setQuery] = useState("");
-  const [viewName, setViewName] = useState("");
   const [draggingId, setDraggingId] = useState(null);
   const allowReorder = typeof onSetBoardOrder === "function";
   const lowered = query.trim().toLowerCase();
@@ -4952,33 +4950,14 @@ const BigBoardPage = ({
   }, [boardOrder]);
   const usingCustomOrder = Array.isArray(boardOrder) && boardOrder.length > 0;
 
-  // Apply watchlist + dive-status + search filters AFTER ordering so the user's
-  // drag order is preserved when filters narrow the list.
+  // Apply watchlist + search filters AFTER ordering so the user's drag order
+  // is preserved when filters narrow the list.
   const rows = orderedAllProspects.filter((p) => {
     if (watchOnly && !watchlist.includes(p.id)) return false;
-    const dive = deepDives[p.id];
-    if (diveFilter === "DIVES"  && !dive) return false;
-    if (diveFilter === "ACTIVE" && dive?.status !== "ACTIVE") return false;
-    if (diveFilter === "BUY"    && dive?.buyHoldSell !== "BUY") return false;
-    if (diveFilter === "SELL"   && dive?.buyHoldSell !== "SELL") return false;
     if (!lowered) return true;
     const haystack = [p.name, p.school, p.pos, p.archetype, p.country].join(" ").toLowerCase();
     return haystack.includes(lowered);
   });
-
-  // Counts for the dive filter chips (total / with dive / by status / by side)
-  const diveCounts = useMemo(() => {
-    const c = { ALL: PROSPECTS.length, DIVES: 0, ACTIVE: 0, BUY: 0, SELL: 0 };
-    for (const dd of Object.values(deepDives)) {
-      // Only count dives whose prospectId still maps to an active prospect
-      if (!PROSPECTS.find((p) => p.id === dd.prospectId)) continue;
-      c.DIVES += 1;
-      if (dd.status === "ACTIVE") c.ACTIVE += 1;
-      if (dd.buyHoldSell === "BUY") c.BUY += 1;
-      if (dd.buyHoldSell === "SELL") c.SELL += 1;
-    }
-    return c;
-  }, [deepDives]);
 
   // Drag-and-drop reorder. We persist by saving the FULL ordered prospect ID
   // list (using the current resolved order as the baseline) so dragging while
@@ -4995,20 +4974,16 @@ const BigBoardPage = ({
     onSetBoardOrder(next);
   };
 
-  const applyView = (state) => {
-    setWatchOnly(Boolean(state?.watchOnly));
-    setQuery(state?.query || "");
-  };
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
-      <Label>Class · 2026 · Personal Hub</Label>
+      <Label>Class · 2026</Label>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}>
         <div>
           <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
             Scout Desk
           </h1>
           <div style={{ fontSize: 13, color: T.textDim, marginBottom: 18 }}>
-            {PROSPECTS.length} prospects · {diveCounts.DIVES} deep dive{diveCounts.DIVES === 1 ? "" : "s"} · {usingCustomOrder ? "your custom order" : "alphabetical"} · drag to reorder
+            {PROSPECTS.length} prospects · {usingCustomOrder ? "your custom order" : "alphabetical"} · drag to reorder
           </div>
         </div>
         {allowReorder && usingCustomOrder && (
@@ -5062,84 +5037,6 @@ const BigBoardPage = ({
         )}
       </div>
 
-      <div style={{ display: "flex", gap: 10, marginBottom: 12, flexWrap: "wrap", alignItems: "center" }}>
-        <input
-          value={viewName}
-          onChange={(e) => setViewName(e.target.value)}
-          placeholder="Save current view as…"
-          style={{
-            flex: "1 1 200px",
-            minWidth: 160,
-            background: T.surface2,
-            border: `1px solid ${T.border}`,
-            color: T.text,
-            padding: "6px 10px",
-            fontSize: 12,
-            outline: "none",
-          }}
-        />
-        <button
-          type="button"
-          onClick={() => { onSaveView?.(viewName, { watchOnly, query }); setViewName(""); }}
-          disabled={!viewName.trim()}
-          style={{
-            ...mono,
-            fontSize: 11,
-            letterSpacing: "0.12em",
-            color: viewName.trim() ? T.cyan : T.textMute,
-            background: "transparent",
-            border: `1px solid ${viewName.trim() ? T.cyan : T.border}`,
-            padding: "6px 10px",
-            cursor: viewName.trim() ? "pointer" : "not-allowed",
-          }}
-        >
-          SAVE VIEW
-        </button>
-      </div>
-
-      {savedViews.length > 0 && (
-        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
-          {savedViews.map((view) => (
-            <div key={view.id} style={{ display: "flex", alignItems: "stretch", border: `1px solid ${T.border}` }}>
-              <button
-                type="button"
-                onClick={() => applyView(view.state)}
-                style={{
-                  ...mono,
-                  fontSize: 10,
-                  letterSpacing: "0.12em",
-                  color: T.textDim,
-                  background: "transparent",
-                  border: "none",
-                  padding: "6px 10px",
-                  cursor: "pointer",
-                }}
-                title={`Filter: ${view.state?.watchOnly ? "watchlist" : "all"}${view.state?.query ? ` · "${view.state.query}"` : ""}`}
-              >
-                {view.name.toUpperCase()}
-              </button>
-              <button
-                type="button"
-                onClick={() => onDeleteView?.(view.id)}
-                title="Delete view"
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  borderLeft: `1px solid ${T.border}`,
-                  color: T.textMute,
-                  padding: "6px 8px",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <X size={10} />
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
-
       <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
         <button
           type="button"
@@ -5184,64 +5081,12 @@ const BigBoardPage = ({
         </button>
       </div>
 
-      {/* Dive-status filter chips */}
-      <div style={{ display: "flex", gap: 4, alignItems: "center", flexWrap: "wrap", marginBottom: 12 }}>
-        <span style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.textMute, textTransform: "uppercase", marginRight: 6 }}>
-          Dive Filter
-        </span>
-        {[
-          ["ALL",    "All",      diveCounts.ALL,    T.textDim],
-          ["DIVES",  "W/ Dive",  diveCounts.DIVES,  T.cyan],
-          ["ACTIVE", "Active",   diveCounts.ACTIVE, T.cyan],
-          ["BUY",    "Buy",      diveCounts.BUY,    "var(--prospera-positive)"],
-          ["SELL",   "Sell",     diveCounts.SELL,   "var(--prospera-danger)"],
-        ].map(([key, label, count, accent]) => {
-          const isActive = diveFilter === key;
-          return (
-            <button
-              key={key}
-              type="button"
-              onClick={() => setDiveFilter(key)}
-              style={{
-                ...mono, fontSize: 10, letterSpacing: "0.12em",
-                color: isActive ? T.bg : accent,
-                background: isActive ? accent : "transparent",
-                border: `1px solid ${accent}`,
-                padding: "5px 10px",
-                cursor: "pointer",
-                fontWeight: isActive ? 700 : 400,
-                textTransform: "uppercase",
-              }}
-            >
-              {label} · {count}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Family-bar legend — keyed to the colored leading bar on every row */}
-      <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 10, flexWrap: "wrap", ...mono, fontSize: 9, letterSpacing: "0.14em", color: T.textMute, textTransform: "uppercase" }}>
-        <span>Family Bar:</span>
-        {[
-          ["#A855F7", "Unique"],
-          ["#F97316", "Star Tier"],
-          ["#3B82F6", "Guard"],
-          ["#10B981", "Wing"],
-          ["#F59E0B", "Big"],
-        ].map(([color, label]) => (
-          <span key={label} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-            <span style={{ display: "inline-block", width: 4, height: 12, background: color }} />
-            {label}
-          </span>
-        ))}
-      </div>
-
       <div style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
         <div style={{ minWidth: 760 }}>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 110px" : "1fr 80px 70px 90px 70px 110px",
+              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 70px" : "1fr 80px 70px 90px 70px 70px",
               padding: "10px 16px 10px 14px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
@@ -5258,7 +5103,7 @@ const BigBoardPage = ({
           </div>
           {rows.length === 0 && (
             <div style={{ padding: 32, textAlign: "center", ...mono, fontSize: 11, color: T.textMute, letterSpacing: "0.12em" }}>
-              {watchOnly && diveFilter === "ALL"
+              {watchOnly
                 ? "NO PROSPECTS IN WATCHLIST · CLICK ☆ TO SAVE"
                 : "NO PROSPECTS MATCH THIS FILTER"}
             </div>
@@ -5268,11 +5113,6 @@ const BigBoardPage = ({
             const isCompared = compareIds.includes(p.id);
             const familyBar = familyBarColor(p);
             const isDragging = draggingId === p.id;
-            const dive = deepDives[p.id];
-            const statusMeta = dive ? DIVE_STATUSES.find((s) => s.value === dive.status) : null;
-            const sideMeta   = dive ? DIVE_BUY_SELL.find((s) => s.value === dive.buyHoldSell) : null;
-            const ceilingTier = dive?.ceilingTier;
-            const ceilingColor = ceilingTier ? DEEP_DIVE_TIER_COLORS[ceilingTier] : null;
             return (
               <div
                 key={p.id}
@@ -5293,7 +5133,7 @@ const BigBoardPage = ({
                 }}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 110px" : "1fr 80px 70px 90px 70px 110px",
+                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 70px" : "1fr 80px 70px 90px 70px 70px",
                   padding: "12px 16px 12px 14px",
                   borderBottom: `1px solid ${T.borderSoft}`,
                   boxShadow: `inset 5px 0 0 ${familyBar}`,
@@ -5336,62 +5176,6 @@ const BigBoardPage = ({
                     <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {p.archetype?.toUpperCase() || "—"}
                     </div>
-                    {/* Dive indicators — appear only for prospects with an authored deep dive */}
-                    {dive && (
-                      <div style={{ display: "flex", gap: 4, marginTop: 5, flexWrap: "wrap" }}>
-                        {sideMeta && (
-                          <span
-                            title={`${sideMeta.label} — ${sideMeta.hint}`}
-                            style={{
-                              ...mono, fontSize: 8, letterSpacing: "0.12em",
-                              color: T.bg, background: sideMeta.color,
-                              padding: "2px 6px", borderRadius: 2, fontWeight: 700,
-                            }}
-                          >
-                            {sideMeta.label.toUpperCase()}
-                          </span>
-                        )}
-                        {statusMeta && (
-                          <span
-                            title={`Status: ${statusMeta.label} — ${statusMeta.hint}`}
-                            style={{
-                              ...mono, fontSize: 8, letterSpacing: "0.12em",
-                              color: statusMeta.color, background: "transparent",
-                              border: `1px solid ${statusMeta.color}`,
-                              padding: "1px 5px", borderRadius: 2,
-                            }}
-                          >
-                            {statusMeta.label.toUpperCase()}
-                          </span>
-                        )}
-                        {ceilingTier && ceilingColor && (
-                          <span
-                            title={`Ceiling: ${ceilingTier}`}
-                            style={{
-                              ...mono, fontSize: 8, letterSpacing: "0.12em",
-                              color: ceilingColor, background: "transparent",
-                              border: `1px solid ${ceilingColor}`,
-                              padding: "1px 5px", borderRadius: 2,
-                            }}
-                          >
-                            ↑ {ceilingTier.toUpperCase()}
-                          </span>
-                        )}
-                        {dive.personalComp && (
-                          <span
-                            title={`Personal comp: ${dive.personalComp}`}
-                            style={{
-                              ...mono, fontSize: 8, letterSpacing: "0.10em",
-                              color: T.textDim, background: "transparent",
-                              padding: "1px 0",
-                              maxWidth: 140, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-                            }}
-                          >
-                            ≈ {dive.personalComp}
-                          </span>
-                        )}
-                      </div>
-                    )}
                   </div>
                 </div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
@@ -5431,26 +5215,6 @@ const BigBoardPage = ({
                     }}
                   >
                     <GitCompare size={12} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); onOpenDive?.(p.id); }}
-                    title={dive ? "Edit deep dive" : "Start deep dive"}
-                    style={{
-                      background: dive ? "var(--prospera-accent-bg)" : "transparent",
-                      border: `1px solid ${dive ? T.cyan : T.border}`,
-                      color: dive ? T.cyan : T.textMute,
-                      padding: "3px 6px",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      ...mono,
-                      fontSize: 9,
-                      letterSpacing: "0.08em",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {dive ? "✎ DIVE" : "+ DIVE"}
                   </button>
                 </div>
               </div>
@@ -6604,7 +6368,9 @@ function ProsperaAppInner() {
   const [diveEditorSeq, setDiveEditorSeq] = useState(0);
   // Toggle for the secondary "All Dives" workspace (the former Deep Dives index page).
   // Roster view = personal Big Board; Dives view = the dive index/editor.
-  const [scoutDeskView, setScoutDeskView] = useState("roster");
+  // Sub-view within the Deep Dives section: "my-board" or "dives".
+  // Default to "my-board" — the primary entry point for personal analysis.
+  const [scoutDeskView, setScoutDeskView] = useState("my-board");
   // Per-prospect comp overrides. Shape:
   //   { [prospectId]: { [historicalId]: 'highEnd' | 'realistic' | 'cautionary' | 'hidden' } }
   // Applied by rankComparablesByTier — manual pins inject into the chosen
@@ -6845,37 +6611,40 @@ function ProsperaAppInner() {
             />
           )}
           {route === "Scout Desk" && (
-            <ScoutDeskShell
+            <BigBoardPage
+              onOpenProfile={onOpenProfile}
+              watchlist={watchlist}
+              compareIds={compareIds}
+              onToggleWatchlist={toggleWatchlist}
+              onToggleCompare={toggleCompare}
+              onOpenCompare={() => setRoute("Compare")}
+              boardOrder={bigBoardOrder}
+              onSetBoardOrder={setBigBoardOrder}
+            />
+          )}
+          {route === "Deep Dives" && (
+            <DeepDivesShell
               view={scoutDeskView}
               setView={setScoutDeskView}
               diveCount={Object.keys(deepDives).length}
             >
-              {scoutDeskView === "roster" && (
-                <BigBoardPage
+              {scoutDeskView === "my-board" && (
+                <MyBoardPage
+                  myBoard={myBoard}
+                  savedBoards={savedBoards}
+                  onReorder={reorderMyBoard}
+                  onReset={resetMyBoard}
+                  onSaveBoard={saveCurrentBoard}
+                  onLoadBoard={loadSavedBoard}
+                  onDeleteBoard={deleteSavedBoard}
                   onOpenProfile={onOpenProfile}
-                  watchlist={watchlist}
-                  compareIds={compareIds}
-                  onToggleWatchlist={toggleWatchlist}
-                  onToggleCompare={toggleCompare}
-                  onOpenCompare={() => setRoute("Compare")}
-                  savedViews={savedViews}
-                  onSaveView={saveView}
-                  onDeleteView={deleteView}
-                  boardOrder={bigBoardOrder}
-                  onSetBoardOrder={setBigBoardOrder}
-                  deepDives={deepDives}
-                  onOpenDive={(prospectId) => {
-                    if (!deepDives[prospectId]) {
-                      // Auto-create an empty dive so the editor opens populated
-                      setDeepDives((curr) => ({
-                        ...curr,
-                        [prospectId]: emptyDeepDiveSeed(prospectId),
-                      }));
-                    }
-                    setDiveEditorId(prospectId);
-                    setDiveEditorSeq((n) => n + 1);
-                    setScoutDeskView("dives");
-                  }}
+                  onOpenWeights={() => setWeightsDrawerOpen(true)}
+                  mode={myBoardMode}
+                  setMode={setMyBoardMode}
+                  presetKey={myBoardPresetKey}
+                  setPresetKey={setMyBoardPresetKey}
+                  teamKey={myBoardTeamKey}
+                  setTeamKey={setMyBoardTeamKey}
                 />
               )}
               {scoutDeskView === "dives" && (
@@ -6888,26 +6657,7 @@ function ProsperaAppInner() {
                   initialEditingId={diveEditorId}
                 />
               )}
-            </ScoutDeskShell>
-          )}
-          {route === "My Board" && (
-            <MyBoardPage
-              myBoard={myBoard}
-              savedBoards={savedBoards}
-              onReorder={reorderMyBoard}
-              onReset={resetMyBoard}
-              onSaveBoard={saveCurrentBoard}
-              onLoadBoard={loadSavedBoard}
-              onDeleteBoard={deleteSavedBoard}
-              onOpenProfile={onOpenProfile}
-              onOpenWeights={() => setWeightsDrawerOpen(true)}
-              mode={myBoardMode}
-              setMode={setMyBoardMode}
-              presetKey={myBoardPresetKey}
-              setPresetKey={setMyBoardPresetKey}
-              teamKey={myBoardTeamKey}
-              setTeamKey={setMyBoardTeamKey}
-            />
+            </DeepDivesShell>
           )}
           {route === "Class Map" && (
             <ClassConstellation prospects={PROSPECTS} onOpenProfile={onOpenProfile} />
