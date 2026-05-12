@@ -294,7 +294,8 @@ import ComputedScorePill from "./ComputedScorePill";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
 import ScoutTab from "./ScoutTab";
 import { usePlayerTags } from "./TagEditor";
-import { TagBadgeRow } from "./TagBadge";
+import { TagBadge, TagBadgeRow } from "./TagBadge";
+import { getTagById } from "../lib/tags/library";
 
 /**
  * Reads the prospect's hand-assigned tags from localStorage and renders them
@@ -305,6 +306,48 @@ function ProfileTagBadges({ prospectId }) {
   const { tagIds } = usePlayerTags(prospectId);
   if (!tagIds || tagIds.length === 0) return null;
   return <TagBadgeRow tagIds={tagIds} size="sm" />;
+}
+
+/**
+ * Compact tag row for Scout Desk prospect rows. Prioritized for scanning:
+ * outlook (gold) first, then concerns (red), then first few skills. Capped
+ * at maxVisible with a "+N" overflow chip so rows stay single-line.
+ */
+function RowTagBadges({ prospectId, maxVisible = 4 }) {
+  const { tagIds } = usePlayerTags(prospectId);
+  const prioritized = React.useMemo(() => {
+    if (!tagIds || tagIds.length === 0) return [];
+    // sortTagIds already orders skills→outlook→concerns. We want outlook first.
+    const outlook = [];
+    const concerns = [];
+    const skills = [];
+    for (const id of tagIds) {
+      const tag = getTagById(id);
+      if (!tag) continue;
+      if (tag.layer === "outlook") outlook.push(id);
+      else if (tag.layer === "concerns") concerns.push(id);
+      else skills.push(id);
+    }
+    return [...outlook, ...concerns, ...skills];
+  }, [tagIds]);
+  if (prioritized.length === 0) return null;
+  const visible = prioritized.slice(0, maxVisible);
+  const overflow = prioritized.length - visible.length;
+  return (
+    <div style={{ display: "flex", gap: 4, marginTop: 4, alignItems: "center", flexWrap: "nowrap", overflow: "hidden" }}>
+      {visible.map((id) => <TagBadge key={id} tagId={id} size="sm" />)}
+      {overflow > 0 && (
+        <span style={{
+          fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
+          fontSize: 9, color: T.textMute, letterSpacing: "0.1em",
+          padding: "2px 6px", border: `1px dashed ${T.border}`,
+          whiteSpace: "nowrap",
+        }} title={`${overflow} more tag${overflow === 1 ? "" : "s"} — open profile`}>
+          +{overflow}
+        </span>
+      )}
+    </div>
+  );
 }
 import ComputedOutcomesLadder from "./ComputedOutcomesLadder";
 import { buildLegacyCompGroups, getTopComps } from "../grading/compsBridge";
@@ -5302,11 +5345,12 @@ const BigBoardPage = ({
                 )}
                 <div onClick={() => onOpenProfile(p.id)} style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, cursor: "pointer" }}>
                   <PlayerImg p={p} size={32} />
-                  <div style={{ minWidth: 0 }}>
+                  <div style={{ minWidth: 0, flex: 1 }}>
                     <div style={{ fontSize: 14, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
                     <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {p.archetype?.toUpperCase() || "—"}
                     </div>
+                    <RowTagBadges prospectId={p.id} />
                   </div>
                 </div>
                 <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
