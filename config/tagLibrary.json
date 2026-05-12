@@ -1,5 +1,5 @@
 {
-  "_README": "Tag library for player profile badges. Manually assigned per prospect. 37 tags across 3 layers (skills, outlook, concerns). No auto-fire logic — pure scout authoring. Icon values are semantic names mapped to lucide-react in the UI; missing icons fall through to a generic dot.",
+  "_README": "Tag library for player profile badges. Manually assigned per prospect. 30 tags across 3 layers (skills, outlook, concerns). No auto-fire logic — pure scout authoring. Icon values are semantic names mapped to lucide-react in the UI; missing icons fall through to a generic dot.",
   "schema": "tag-library-v1",
 
   "_layerOrder": "Skills first (the most-assigned/most-visible band), then Outlook (the high-stakes gold layer), then Concerns (red flags) so the visual rhythm goes neutral → bullish → bearish.",
@@ -28,7 +28,7 @@
       "color": "var(--prospera-signal)",
       "background": "color-mix(in srgb, var(--prospera-signal) 12%, transparent)",
       "categoryOrder": [],
-      "usageRule": "Restrictive. Single player should rarely wear more than 2-3 gold tags. The gold layer earns its weight by staying scarce."
+      "usageRule": "Restrictive. Reserve for prospects with realistic generational-talent upside. Apex Ceiling should feel weighty when assigned — a handful of prospects per class at most."
     },
     "concerns": {
       "label": "Concerns",
@@ -41,8 +41,7 @@
 
   "_conflictsRule": "Pairs that should not co-fire. Conflicts are bidirectional but listed once for readability — the editor enforces both directions. Tag conflicts are also stored on the individual tag's `conflicts` field so a per-tag lookup is cheap.",
   "conflicts": [
-    ["lather-scorer", "tuxedo-scorer"],
-    ["plug-and-play", "swing-pick"]
+    ["lather-scorer", "tuxedo-scorer"]
   ],
 
   "tags": [
@@ -140,14 +139,6 @@
       "description": "Reliable spot-up shooter. Defenders have to close out hard — generates value without needing touches."
     },
     {
-      "id": "movement-shooter",
-      "name": "Movement Shooter",
-      "layer": "skills",
-      "category": "off-ball",
-      "icon": "wind",
-      "description": "Threats off screens, hand-offs, relocations. Shooting that scales with the offense around them."
-    },
-    {
       "id": "vertical-spacer",
       "name": "Vertical Spacer",
       "layer": "skills",
@@ -162,6 +153,14 @@
       "category": "off-ball",
       "icon": "navigation",
       "description": "Reads holes in the defense and cuts on time. Creates value without the ball or a shot."
+    },
+    {
+      "id": "functional-gravity",
+      "name": "Functional Gravity",
+      "layer": "skills",
+      "category": "off-ball",
+      "icon": "compass",
+      "description": "Defenses respect them on the perimeter even when the raw shooting % isn't elite. Can't be left alone — that respect alone creates spacing."
     },
 
     {
@@ -180,14 +179,6 @@
       "icon": "wand-2",
       "description": "High-degree-of-difficulty deliveries — wraparounds, over-the-shoulder, no-looks. The dazzling layer."
     },
-    {
-      "id": "live-dribble-passer",
-      "name": "Live-Dribble Passer",
-      "layer": "skills",
-      "category": "passing",
-      "icon": "circle-dot",
-      "description": "Creates assists off the bounce — kickouts to the corner, drop-offs through traffic. Pick-and-roll engine."
-    },
 
     {
       "id": "ball-pressure",
@@ -198,12 +189,12 @@
       "description": "On-ball harassment from 94 feet. Pressures the dribbler, forces difficult initiations, flips possessions."
     },
     {
-      "id": "assignment-defender",
-      "name": "Assignment Defender",
+      "id": "perimeter-eraser",
+      "name": "Perimeter Eraser",
       "layer": "skills",
       "category": "defense",
-      "icon": "user-check",
-      "description": "Takes the toughest matchup and holds. POA defense with positional discipline; the role-player two-way label."
+      "icon": "eraser",
+      "description": "Wing stopper. Takes the opponent's primary perimeter scorer out of the game — length + lateral quickness + scheme discipline."
     },
     {
       "id": "off-ball-disruptor",
@@ -263,63 +254,37 @@
       "description": "Wins boards out of position. Tracks misses, boxes out, finishes plays. Translatable in any scheme."
     },
     {
-      "id": "little-thing-king",
-      "name": "Little Thing King",
+      "id": "versatility",
+      "name": "Versatility",
       "layer": "skills",
       "category": "physical",
-      "icon": "crown",
-      "description": "Charges, screen assists, deflections, hockey assists. The plus column for everything that doesn't show up in box scores."
+      "icon": "shapes",
+      "description": "Plays multiple positions or roles convincingly. Lineup flexibility — slides between assignments or coverages without losing impact."
+    },
+    {
+      "id": "winning-connector",
+      "name": "Winning Connector",
+      "layer": "skills",
+      "category": "physical",
+      "icon": "link",
+      "description": "Shows up in winning. Drives positive lineup data, makes the right read, fits anywhere. The little-things-add-up tag."
+    },
+    {
+      "id": "stage-hunter",
+      "name": "Stage Hunter",
+      "layer": "skills",
+      "category": "physical",
+      "icon": "sun",
+      "description": "Performs in moments that matter — tournament games, late-clock, hostile road, prime-time stages. Rises rather than shrinks."
     },
 
     {
-      "id": "pantheon-potential",
-      "name": "Pantheon Potential",
+      "id": "apex-ceiling",
+      "name": "Apex Ceiling",
       "layer": "outlook",
       "icon": "gem",
-      "description": "Generational ceiling. 3-5 per class, top of board only.",
-      "usageGuide": "Reserve for prospects with a real shot at the all-time conversation. Should feel weighty when assigned."
-    },
-    {
-      "id": "late-bloomer",
-      "name": "Late Bloomer",
-      "layer": "outlook",
-      "icon": "sprout",
-      "description": "22+ year old with a sharp recent climb. The under-the-radar bet that just put pieces together.",
-      "usageGuide": "Use sparingly — must be 22+ AND have a visible jump (year-over-year, transfer, or post-injury). 5-10 per class."
-    },
-    {
-      "id": "lives-for-the-moment",
-      "name": "Lives for the Moment",
-      "layer": "outlook",
-      "icon": "sun",
-      "description": "Confirmed big-game performer. Tournament, late-clock, hostile road — the moment makes them better.",
-      "usageGuide": "Needs evidence — big-game tape, late-game results, real stakes. ~10 per class."
-    },
-    {
-      "id": "swing-pick",
-      "name": "Swing Pick",
-      "layer": "outlook",
-      "icon": "dice-3",
-      "description": "Single-variable bet. One thing has to translate for the pick to hit — and that one thing is plausible but uncertain.",
-      "usageGuide": "Use when there's a clear unlock condition (\"if the shot translates\", \"if the frame fills out\"). ~10 per class.",
-      "conflicts": ["plug-and-play"]
-    },
-    {
-      "id": "plug-and-play",
-      "name": "Plug-and-Play",
-      "layer": "outlook",
-      "icon": "plug-zap",
-      "description": "Ready now. The role is clear, the translation isn't in question, they can be on the floor in October.",
-      "usageGuide": "Skews older + role-clear. ~15 per class. Mutually exclusive with Swing Pick.",
-      "conflicts": ["swing-pick"]
-    },
-    {
-      "id": "two-way-bet",
-      "name": "Two-Way Bet",
-      "layer": "outlook",
-      "icon": "scale",
-      "description": "Genuine both-ends impact projected. Not just \"tries on defense\" — the read is they'll move the needle on both ends.",
-      "usageGuide": "Both-ends signal must be real, not aspirational. ~10 per class."
+      "description": "Top-of-the-board ceiling outlook. Realistic shot at generational-talent upside; the rare 'this could be a franchise pillar' bet.",
+      "usageGuide": "Reserve for prospects with a real shot at the all-time conversation. Should feel weighty when assigned — a handful per class at most."
     },
 
     {
@@ -328,27 +293,6 @@
       "layer": "concerns",
       "icon": "alert-circle",
       "description": "History of significant injuries, current chronic issue, or red-flag medicals. Long-term availability is a real question."
-    },
-    {
-      "id": "frame-concern",
-      "name": "Frame Concern",
-      "layer": "concerns",
-      "icon": "ruler",
-      "description": "Body has to fill out for the projection to land. Wingspan / weight / lower-body strength is a known limiter."
-    },
-    {
-      "id": "shot-question",
-      "name": "Shot Question",
-      "layer": "concerns",
-      "icon": "help-circle",
-      "description": "Shooting is the unknown variable. Whether it's mechanics, sample size, or live-action vs catch-and-shoot, the read isn't settled."
-    },
-    {
-      "id": "age-concern",
-      "name": "Age Concern",
-      "layer": "concerns",
-      "icon": "hourglass",
-      "description": "Older than peers without a corresponding output edge. Less runway for development; expected to be closer-to-finished now."
     }
   ]
 }

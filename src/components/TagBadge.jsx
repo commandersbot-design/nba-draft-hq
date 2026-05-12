@@ -4,6 +4,7 @@ import {
   Crosshair, Wind, ArrowUpCircle, Navigation, Puzzle, Wand2, CircleDot, Shield, UserCheck,
   AlertOctagon, ShieldCheck, Shuffle, GitFork, Mountain, BatteryCharging, Hand, Crown, Gem,
   Sprout, Sun, Dice3, PlugZap, Scale, AlertCircle, Ruler, HelpCircle, Hourglass, Circle,
+  Eraser, Compass, Shapes, Link,
 } from "lucide-react";
 import { getTagById } from "../lib/tags/library";
 
@@ -20,6 +21,8 @@ const ICON_MAP = {
   "hand": Hand, "crown": Crown, "gem": Gem, "sprout": Sprout, "sun": Sun,
   "dice-3": Dice3, "plug-zap": PlugZap, "scale": Scale, "alert-circle": AlertCircle,
   "ruler": Ruler, "help-circle": HelpCircle, "hourglass": Hourglass,
+  // 2026-05-12 new tag icons
+  "eraser": Eraser, "compass": Compass, "shapes": Shapes, "link": Link,
 };
 
 function iconFor(name) { return ICON_MAP[name] || Circle; }
