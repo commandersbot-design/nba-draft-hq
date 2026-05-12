@@ -297,6 +297,7 @@ import { usePlayerTags } from "./TagEditor";
 import { TagBadge, TagBadgeRow } from "./TagBadge";
 import { getTagById } from "../lib/tags/library";
 import InlineTierPill from "./InlineTierPill";
+import InlineTagsPopover from "./InlineTagsPopover";
 
 /**
  * Reads the prospect's hand-assigned tags from localStorage and renders them
@@ -5347,19 +5348,24 @@ const BigBoardPage = ({
                     ⋮⋮
                   </div>
                 )}
-                <div className="prospera-row-info" onClick={() => onOpenProfile(p.id)} style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, cursor: "pointer" }}>
-                  <PlayerImg p={p} size={32} />
+                <div className="prospera-row-info" style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}>
+                  <div onClick={() => onOpenProfile(p.id)} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+                    <PlayerImg p={p} size={32} />
+                  </div>
                   <div style={{ minWidth: 0, flex: 1 }}>
-                    <div style={{ fontSize: 14, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+                    <div onClick={() => onOpenProfile(p.id)} style={{ cursor: "pointer", fontSize: 14, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
                     {/* Desktop meta: archetype only. Mobile meta: archetype + pos + cls + school
                         since those columns are hidden on phone. Toggled via CSS @media. */}
-                    <div className="prospera-row-meta-desktop" style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    <div onClick={() => onOpenProfile(p.id)} className="prospera-row-meta-desktop" style={{ cursor: "pointer", ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {p.archetype?.toUpperCase() || "—"}
                     </div>
-                    <div className="prospera-row-meta-mobile" style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "normal" }}>
+                    <div onClick={() => onOpenProfile(p.id)} className="prospera-row-meta-mobile" style={{ cursor: "pointer", ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "normal" }}>
                       {p.archetype?.toUpperCase() || "—"} · {p.pos} · {p.cls || "—"} · {p.school?.split(" ")[0]}
                     </div>
-                    <RowTagBadges prospectId={p.id} />
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 4 }}>
+                      <RowTagBadges prospectId={p.id} />
+                      <InlineTagsPopover prospectId={p.id} prospectName={p.name} />
+                    </div>
                   </div>
                 </div>
                 <div className="prospera-row-pos" onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
