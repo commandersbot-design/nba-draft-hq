@@ -1,5 +1,5 @@
 {
-  "_README": "User-authored stylistic comps per prospect. Each prospect has a 5-rung outcome ladder from Floor (worst case) → Ceiling (best case), with each rung carrying a player name + role tier label. The UI surfaces this ladder above the statistical comp engine output as the user's eye-test read. Slugs match the precomputed scoring map convention (lowercase alphanumeric). Levels can be null when the user didn't fill that slot.",
+  "_README": "User-authored stylistic comps per prospect. Each prospect has a 5-rung outcome ladder from Floor (worst case) → Ceiling (best case), with each rung carrying a player name + role tier label. The UI surfaces this ladder above the statistical comp engine output as the user's eye-test read. Slugs match the precomputed scoring map convention (lowercase alphanumeric); the displayed prospectName can carry suffixes like 'Jr.' that the canonical prospect record omits. Levels can be null when the user didn't fill that slot.",
   "_levelOrder": ["floor", "lowEnd", "middle", "highEnd", "ceiling"],
   "_authoredAt": "2026-05",
   "comps": {
@@ -26,11 +26,11 @@
     "cameronboozer": {
       "prospectName": "Cameron Boozer",
       "ladder": {
-        "floor":   { "name": "David West",      "tier": "Starter" },
-        "lowEnd":  { "name": "Al Horford",      "tier": "Star" },
-        "middle":  { "name": "Alperen Sengun",  "tier": "Star" },
-        "highEnd": { "name": "Domantas Sabonis","tier": "Star" },
-        "ceiling": { "name": "Kevin Love",      "tier": "Superstar" }
+        "floor":   { "name": "David West",        "tier": "Starter" },
+        "lowEnd":  { "name": "Al Horford",        "tier": "Star" },
+        "middle":  { "name": "Alperen Sengun",    "tier": "Star" },
+        "highEnd": { "name": "Domantas Sabonis",  "tier": "Star" },
+        "ceiling": { "name": "Kevin Love",        "tier": "Superstar" }
       }
     },
     "calebwilson": {
@@ -43,6 +43,56 @@
         "ceiling": { "name": "Chris Bosh",        "tier": "Superstar" }
       }
     },
+    "yaxellendeborg": {
+      "prospectName": "Yaxel Lendeborg",
+      "ladder": {
+        "floor":   { "name": "Kyle Anderson",     "tier": "Role Player" },
+        "lowEnd":  { "name": "Rui Hachimura",     "tier": "Starter" },
+        "middle":  { "name": "Kyle Kuzma",        "tier": "Starter" },
+        "highEnd": { "name": "PJ Washington",     "tier": "Starter" },
+        "ceiling": { "name": "Aaron Gordon",      "tier": "Star" }
+      }
+    },
+    "nateament": {
+      "prospectName": "Nate Ament",
+      "ladder": {
+        "floor":   { "name": "Patrick Baldwin Jr.",  "tier": "Bench" },
+        "lowEnd":  { "name": "Will Riley",           "tier": "Role Player" },
+        "middle":  { "name": "Zaccharie Risacher",   "tier": "Starter" },
+        "highEnd": null,
+        "ceiling": { "name": "Brandon Ingram lite",  "tier": "Star" }
+      }
+    },
+    "karimlopez": {
+      "prospectName": "Karim Lopez",
+      "ladder": {
+        "floor":   { "name": "Rodions Kurucs",    "tier": "Bench" },
+        "lowEnd":  null,
+        "middle":  { "name": "Kyle Anderson",     "tier": "Role Player" },
+        "highEnd": null,
+        "ceiling": { "name": "Tobias Harris",     "tier": "Starter" }
+      }
+    },
+    "dailynswain": {
+      "prospectName": "Dailyn Swain",
+      "ladder": {
+        "floor":   { "name": "Troy Brown Jr.",    "tier": "Bench" },
+        "lowEnd":  null,
+        "middle":  { "name": "Naji Marshall",     "tier": "Role Player" },
+        "highEnd": null,
+        "ceiling": { "name": "Evan Turner+",      "tier": "Starter" }
+      }
+    },
+    "dariusacuff": {
+      "prospectName": "Darius Acuff Jr.",
+      "ladder": {
+        "floor":   { "name": "Cole Anthony",      "tier": "Role Player" },
+        "lowEnd":  { "name": "Isaiah Collier",    "tier": "Starter" },
+        "middle":  { "name": "Keyonte George",    "tier": "Starter" },
+        "highEnd": { "name": "Jeff Teague",       "tier": "Star" },
+        "ceiling": { "name": "Stephon Marbury",   "tier": "Star" }
+      }
+    },
     "kingstonflemings": {
       "prospectName": "Kingston Flemings",
       "ladder": {
@@ -53,18 +103,8 @@
         "ceiling": { "name": "De'Aaron Fox",      "tier": "Star" }
       }
     },
-    "dariusacuff": {
-      "prospectName": "Darius Acuff",
-      "ladder": {
-        "floor":   { "name": "Cole Anthony",      "tier": "Role Player" },
-        "lowEnd":  { "name": "Isaiah Collier",    "tier": "Starter" },
-        "middle":  { "name": "Keyonte George",    "tier": "Starter" },
-        "highEnd": { "name": "Jeff Teague",       "tier": "Star" },
-        "ceiling": { "name": "Stephon Marbury",   "tier": "Star" }
-      }
-    },
     "mikelbrown": {
-      "prospectName": "Mikel Brown",
+      "prospectName": "Mikel Brown Jr.",
       "ladder": {
         "floor":   { "name": "Lonzo Ball",        "tier": "Starter" },
         "lowEnd":  { "name": "Anfernee Simons",   "tier": "Starter" },
@@ -73,10 +113,20 @@
         "ceiling": { "name": "Trae Young",        "tier": "Superstar" }
       }
     },
+    "labaronphilon": {
+      "prospectName": "Labaron Philon Jr.",
+      "ladder": {
+        "floor":   { "name": "Bones Hyland",      "tier": "Role Player" },
+        "lowEnd":  { "name": "Dennis Schröder",   "tier": "Role Player / Starter" },
+        "middle":  { "name": "Mike Conley",       "tier": "Starter" },
+        "highEnd": { "name": "Tyrese Maxey",      "tier": "Star" },
+        "ceiling": { "name": "SGA lite",          "tier": "Superstar" }
+      }
+    },
     "keatonwagler": {
       "prospectName": "Keaton Wagler",
       "ladder": {
-        "floor":   { "name": "Bogdan Bogdanovic", "tier": "Role Player" },
+        "floor":   { "name": "Bogdan Bogdanović", "tier": "Role Player" },
         "lowEnd":  { "name": "Austin Reaves",     "tier": "Starter" },
         "middle":  { "name": "D'Angelo Russell",  "tier": "Starter" },
         "highEnd": { "name": "Tyler Herro",       "tier": "Star" },
@@ -93,26 +143,6 @@
         "ceiling": { "name": "Norman Powell",     "tier": "Star" }
       }
     },
-    "labaronphilon": {
-      "prospectName": "Labaron Philon",
-      "ladder": {
-        "floor":   { "name": "Bones Hyland",      "tier": "Role Player" },
-        "lowEnd":  { "name": "Dennis Schroder",   "tier": "Role Player / Starter" },
-        "middle":  { "name": "Mike Conley",       "tier": "Starter" },
-        "highEnd": { "name": "Tyrese Maxey",      "tier": "Star" },
-        "ceiling": { "name": "SGA lite",          "tier": "Superstar" }
-      }
-    },
-    "yaxellendeborg": {
-      "prospectName": "Yaxel Lendeborg",
-      "ladder": {
-        "floor":   { "name": "Kyle Anderson",     "tier": "Role Player" },
-        "lowEnd":  { "name": "Rui Hachimura",     "tier": "Starter" },
-        "middle":  { "name": "Kyle Kuzma",        "tier": "Starter" },
-        "highEnd": { "name": "PJ Washington",     "tier": "Starter" },
-        "ceiling": { "name": "Aaron Gordon",      "tier": "Star" }
-      }
-    },
     "hannessteinbach": {
       "prospectName": "Hannes Steinbach",
       "ladder": {
@@ -126,21 +156,11 @@
     "adaymara": {
       "prospectName": "Aday Mara",
       "ladder": {
-        "floor":   { "name": "Boban Marjanović",     "tier": "Role Player" },
-        "lowEnd":  { "name": "Jakob Poeltl",         "tier": "Role Player" },
-        "middle":  { "name": "Zach Edey",            "tier": "Starter" },
-        "highEnd": { "name": "Donovan Clingan",      "tier": "Starter" },
-        "ceiling": { "name": "Zydrunas Ilgauskas lite", "tier": "Star" }
-      }
-    },
-    "nateament": {
-      "prospectName": "Nate Ament",
-      "ladder": {
-        "floor":   { "name": "Patrick Baldwin Jr.",  "tier": "Bench" },
-        "lowEnd":  { "name": "Will Riley",           "tier": "Role Player" },
-        "middle":  { "name": "Zaccharie Risacher",   "tier": "Starter" },
-        "highEnd": null,
-        "ceiling": { "name": "Brandon Ingram lite",  "tier": "Star" }
+        "floor":   { "name": "Boban Marjanović",       "tier": "Role Player" },
+        "lowEnd":  { "name": "Jakob Poeltl",           "tier": "Role Player" },
+        "middle":  { "name": "Zach Edey",              "tier": "Starter" },
+        "highEnd": { "name": "Donovan Clingan",        "tier": "Starter" },
+        "ceiling": { "name": "Zydrunas Ilgauskas lite","tier": "Star" }
       }
     }
   }
