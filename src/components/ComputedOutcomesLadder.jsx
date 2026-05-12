@@ -75,6 +75,7 @@ function Rung({ entry, role, isPeak, isBase, totalRungs, compact }) {
 
   return (
     <div
+      className="prospera-ladder-rung"
       style={{
         display: "grid",
         gridTemplateColumns: "84px 1fr auto",
@@ -88,7 +89,7 @@ function Rung({ entry, role, isPeak, isBase, totalRungs, compact }) {
         borderLeft: `4px solid ${color}`,
       }}
     >
-      <span style={{
+      <span className="prospera-rung-label" style={{
         ...mono, fontSize: 9, letterSpacing: "0.16em",
         color: isPeak ? color : T.textMute,
         textTransform: "uppercase",
@@ -96,7 +97,7 @@ function Rung({ entry, role, isPeak, isBase, totalRungs, compact }) {
       }}>
         {isPeak && "↑ "}{label}{isBase && " ↓"}
       </span>
-      <span style={{ display: "flex", alignItems: "baseline", gap: 8, minWidth: 0 }}>
+      <span className="prospera-rung-content" style={{ display: "flex", alignItems: "baseline", gap: 8, minWidth: 0 }}>
         <span style={{
           fontSize: compact ? 13 : 14,
           color: T.text,
@@ -117,7 +118,7 @@ function Rung({ entry, role, isPeak, isBase, totalRungs, compact }) {
           </span>
         )}
       </span>
-      <span style={{ display: "flex", gap: 6, alignItems: "center", whiteSpace: "nowrap" }}>
+      <span className="prospera-rung-trailing" style={{ display: "flex", gap: 6, alignItems: "center", whiteSpace: "nowrap" }}>
         {typeof sim === "number" && (
           <span style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.08em" }}>
             {Math.round(sim)}% sim

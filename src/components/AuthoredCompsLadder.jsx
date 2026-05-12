@@ -65,6 +65,7 @@ export default function AuthoredCompsLadder({ prospectName, compact = false }) {
           return (
             <div
               key={level}
+              className="prospera-ladder-rung"
               style={{
                 display: "grid",
                 gridTemplateColumns: "84px 1fr auto",
@@ -78,7 +79,7 @@ export default function AuthoredCompsLadder({ prospectName, compact = false }) {
                 borderLeft: `4px solid ${color}`,
               }}
             >
-              <span style={{
+              <span className="prospera-rung-label" style={{
                 ...mono, fontSize: 9, letterSpacing: "0.16em",
                 color: isPeak ? color : T.textMute,
                 textTransform: "uppercase",
@@ -86,10 +87,10 @@ export default function AuthoredCompsLadder({ prospectName, compact = false }) {
               }}>
                 {isPeak && "↑ "}{LADDER_LABELS[level]}{isBase && " ↓"}
               </span>
-              <span style={{ fontSize: compact ? 13 : 14, color: T.text, fontWeight: isPeak || isBase ? 600 : 500 }}>
+              <span className="prospera-rung-content" style={{ fontSize: compact ? 13 : 14, color: T.text, fontWeight: isPeak || isBase ? 600 : 500 }}>
                 {entry.name}
               </span>
-              <span style={{
+              <span className="prospera-rung-trailing" style={{
                 ...mono, fontSize: 10,
                 color, border: `1px solid ${color}`,
                 padding: "2px 8px", letterSpacing: "0.1em",

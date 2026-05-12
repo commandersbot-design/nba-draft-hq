@@ -5255,9 +5255,10 @@ const BigBoardPage = ({
         </button>
       </div>
 
-      <div style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
+      <div className="prospera-scout-desk-table-wrap" style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
         <div style={{ minWidth: 760 }}>
           <div
+            className="prospera-scout-desk-header-row"
             style={{
               display: "grid",
               gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 70px" : "1fr 80px 70px 90px 70px 70px",
@@ -5290,6 +5291,7 @@ const BigBoardPage = ({
             return (
               <div
                 key={p.id}
+                className="prospera-scout-desk-row"
                 // Drag-and-drop reorder. The whole row is the drop target;
                 // initiating a drag requires grabbing the ⋮⋮ handle on the
                 // left so accidental clicks don't start drags.
@@ -5321,6 +5323,7 @@ const BigBoardPage = ({
               >
                 {allowReorder && (
                   <div
+                    className="prospera-drag-handle"
                     draggable
                     onDragStart={(e) => {
                       setDraggingId(p.id);
@@ -5343,24 +5346,29 @@ const BigBoardPage = ({
                     ⋮⋮
                   </div>
                 )}
-                <div onClick={() => onOpenProfile(p.id)} style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, cursor: "pointer" }}>
+                <div className="prospera-row-info" onClick={() => onOpenProfile(p.id)} style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, cursor: "pointer" }}>
                   <PlayerImg p={p} size={32} />
                   <div style={{ minWidth: 0, flex: 1 }}>
                     <div style={{ fontSize: 14, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
-                    <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {/* Desktop meta: archetype only. Mobile meta: archetype + pos + cls + school
+                        since those columns are hidden on phone. Toggled via CSS @media. */}
+                    <div className="prospera-row-meta-desktop" style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {p.archetype?.toUpperCase() || "—"}
+                    </div>
+                    <div className="prospera-row-meta-mobile" style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "normal" }}>
+                      {p.archetype?.toUpperCase() || "—"} · {p.pos} · {p.cls || "—"} · {p.school?.split(" ")[0]}
                     </div>
                     <RowTagBadges prospectId={p.id} />
                   </div>
                 </div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.cls || "—"}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school?.split(" ")[0]}</div>
-                <div onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center" }}>
+                <div className="prospera-row-pos" onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.pos}</div>
+                <div className="prospera-row-cls" onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer" }}>{p.cls || "—"}</div>
+                <div className="prospera-row-school" onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school?.split(" ")[0]}</div>
+                <div className="prospera-row-score" onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center" }}>
                   <ScoreCell prospect={p} />
                   <ComputedScorePill prospectName={p.name} />
                 </div>
-                <div style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
+                <div className="prospera-row-actions" style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); onToggleWatchlist?.(p.id); }}

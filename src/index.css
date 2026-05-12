@@ -2020,3 +2020,97 @@ button {
     height: 48px;
   }
 }
+
+/* ---------- 2026-05-12 mobile responsiveness pass ---------- */
+/* Default: desktop meta line visible, mobile meta line hidden. */
+.prospera-row-meta-mobile { display: none; }
+
+/* Scout Desk rows: kill the horizontal scroll on phones by stacking
+ * the row contents. The drag handle (touch-drag is finicky), pos / cls
+ * / school become small meta lines under the prospect name instead of
+ * their own columns. Score + actions stay on the right.
+ */
+@media (max-width: 720px) {
+  .prospera-row-meta-desktop { display: none !important; }
+  .prospera-row-meta-mobile { display: block !important; }
+
+  .prospera-scout-desk-table-wrap {
+    overflow-x: visible !important;
+  }
+  .prospera-scout-desk-table-wrap > div {
+    min-width: 0 !important;
+  }
+  .prospera-scout-desk-header-row {
+    display: none !important;
+  }
+  .prospera-scout-desk-row {
+    grid-template-columns: 1fr auto !important;
+    grid-template-areas:
+      "info score"
+      "info actions" !important;
+    gap: 8px !important;
+    padding: 12px 14px !important;
+    align-items: center !important;
+  }
+  .prospera-scout-desk-row > .prospera-drag-handle {
+    display: none !important;
+  }
+  .prospera-scout-desk-row > .prospera-row-info {
+    grid-area: info;
+    min-width: 0;
+  }
+  .prospera-scout-desk-row > .prospera-row-pos,
+  .prospera-scout-desk-row > .prospera-row-cls,
+  .prospera-scout-desk-row > .prospera-row-school {
+    display: none !important;
+  }
+  .prospera-scout-desk-row > .prospera-row-score {
+    grid-area: score;
+    justify-self: end;
+  }
+  .prospera-scout-desk-row > .prospera-row-actions {
+    grid-area: actions;
+    justify-self: end;
+    align-self: start;
+  }
+}
+
+/* Ladder rungs (AuthoredCompsLadder, ComputedOutcomesLadder, Scout View
+ * tier note cards): the 84px label column + 1fr content + auto trailing
+ * doesn't fit on phones. Stack the trailing chip(s) under the content.
+ */
+@media (max-width: 720px) {
+  .prospera-ladder-rung {
+    grid-template-columns: 64px 1fr !important;
+    grid-template-areas:
+      "label content"
+      "label trailing" !important;
+    row-gap: 4px !important;
+    padding: 10px 12px !important;
+  }
+  .prospera-ladder-rung > .prospera-rung-label {
+    grid-area: label;
+  }
+  .prospera-ladder-rung > .prospera-rung-content {
+    grid-area: content;
+  }
+  .prospera-ladder-rung > .prospera-rung-trailing {
+    grid-area: trailing;
+    justify-self: start !important;
+  }
+}
+
+/* Player profile hero — already has prospera-hero-grid breakpoint via
+ * the 980px rule, but the score block needs to stack at small widths.
+ */
+@media (max-width: 720px) {
+  .prospera-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .prospera-name {
+    font-size: 36px !important;
+    line-height: 1.05 !important;
+  }
+}
+
