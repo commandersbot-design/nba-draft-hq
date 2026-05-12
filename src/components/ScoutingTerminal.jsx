@@ -296,6 +296,7 @@ import ScoutTab from "./ScoutTab";
 import { usePlayerTags } from "./TagEditor";
 import { TagBadge, TagBadgeRow } from "./TagBadge";
 import { getTagById } from "../lib/tags/library";
+import InlineTierPill from "./InlineTierPill";
 
 /**
  * Reads the prospect's hand-assigned tags from localStorage and renders them
@@ -5261,7 +5262,7 @@ const BigBoardPage = ({
             className="prospera-scout-desk-header-row"
             style={{
               display: "grid",
-              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 70px" : "1fr 80px 70px 90px 70px 70px",
+              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 130px" : "1fr 80px 70px 90px 70px 130px",
               padding: "10px 16px 10px 14px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
@@ -5309,7 +5310,7 @@ const BigBoardPage = ({
                 }}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 70px" : "1fr 80px 70px 90px 70px 70px",
+                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 130px" : "1fr 80px 70px 90px 70px 130px",
                   padding: "12px 16px 12px 14px",
                   borderBottom: `1px solid ${T.borderSoft}`,
                   boxShadow: `inset 5px 0 0 ${familyBar}`,
@@ -5368,7 +5369,8 @@ const BigBoardPage = ({
                   <ScoreCell prospect={p} />
                   <ComputedScorePill prospectName={p.name} />
                 </div>
-                <div className="prospera-row-actions" style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
+                <div className="prospera-row-actions" style={{ display: "flex", gap: 6, justifyContent: "flex-end", alignItems: "center" }}>
+                  <InlineTierPill prospectId={p.id} />
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); onToggleWatchlist?.(p.id); }}
