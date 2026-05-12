@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Search, Download, RefreshCw, X, ArrowDown, Plus } from "lucide-react";
 import DRAFT_CONTEXT from "../data/nbaDraftContext2026.json";
 import { useCustomWeights, ScoreCell } from "./CustomWeights";
+import ScoutTierBadge from "./ScoutTierBadge";
 
 const TEAMS = DRAFT_CONTEXT.teams;
 const NEEDS = DRAFT_CONTEXT.needs;
@@ -256,6 +257,10 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
             const teamMeta = team ? TEAMS[team] : null;
             const teamNeeds = team ? NEEDS[team] || [] : [];
             const accent = teamMeta?.color || (isLottery ? T.cyan : T.border);
+            // "via X" trade provenance — show only when the slot's team still
+            // matches the default for this pick (i.e., user hasn't reassigned).
+            const defaultEntry = DEFAULT_ORDER[idx];
+            const viaTeam = (defaultEntry && defaultEntry.team === team && defaultEntry.viaTeam) ? defaultEntry.viaTeam : null;
             return (
               <div
                 key={idx}
@@ -304,6 +309,14 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                       <option key={abbr} value={abbr}>{abbr}</option>
                     ))}
                   </select>
+                  {viaTeam && (
+                    <div
+                      title={`Trade provenance: pick acquired from ${TEAMS[viaTeam]?.name || viaTeam}`}
+                      style={{ ...mono, fontSize: 8, color: T.textDim, letterSpacing: "0.12em", marginTop: 3, textTransform: "uppercase" }}
+                    >
+                      via {viaTeam}
+                    </div>
+                  )}
                   {teamNeeds.length > 0 && (
                     <div style={{ ...mono, fontSize: 8, color: T.textMute, letterSpacing: "0.1em", marginTop: 4, lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {teamNeeds.slice(0, 2).join(" · ")}
@@ -314,13 +327,17 @@ export const MockDraftPage = ({ prospects = [], picks, setPicks, teamSlots, setT
                 {p ? (
                   <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
                     <div style={{ minWidth: 0, flex: 1 }}>
-                      <button
-                        type="button"
-                        onClick={() => onOpenProfile?.(p.id)}
-                        style={{ background: "transparent", border: "none", color: T.text, fontSize: 13, fontWeight: 600, cursor: "pointer", padding: 0, textAlign: "left", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "block", width: "100%" }}
-                      >
-                        {p.name}
-                      </button>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                        <button
+                          type="button"
+                          onClick={() => onOpenProfile?.(p.id)}
+                          style={{ background: "transparent", border: "none", color: T.text, fontSize: 13, fontWeight: 600, cursor: "pointer", padding: 0, textAlign: "left", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "block", minWidth: 0, flex: "0 1 auto" }}
+                        >
+                          {p.name}
+                        </button>
+                        {/* User's Scout View tier-call surfaced on the pick row — renders only when set. */}
+                        <ScoutTierBadge prospectId={p.id} />
+                      </div>
                       <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                         {p.school?.toUpperCase() || "—"} · {p.pos || "—"} · {(p.archetype || "—")}
                       </div>

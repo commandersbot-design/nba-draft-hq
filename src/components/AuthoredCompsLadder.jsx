@@ -1,5 +1,6 @@
 import React from "react";
 import { getAuthoredCompLadder, getLadderRungs, tierColor, LADDER_LABELS } from "../grading/authoredComps";
+import { useShowFounderContent } from "../lib/scoutSource";
 
 const T = {
   bg:         "var(--prospera-bg)",
@@ -27,10 +28,18 @@ const mono = {
  * caller should show statistical comps as the primary view in that case.
  */
 export default function AuthoredCompsLadder({ prospectName, compact = false }) {
+  const showFounder = useShowFounderContent();
+
   const ladder = React.useMemo(() => {
     if (!prospectName) return null;
     return getAuthoredCompLadder(prospectName);
   }, [prospectName]);
+
+  // Source-gate: hide founder's hand-authored ladder in "yours" mode (default).
+  // The Deep Dives section forces this on via its own provider/override path,
+  // so the ladder still appears there. Everywhere else, it stays hidden until
+  // the user flips the global Scout Source toggle to "Founder".
+  if (!showFounder) return null;
 
   if (!ladder) return null;
 

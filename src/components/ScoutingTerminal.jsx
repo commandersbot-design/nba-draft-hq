@@ -294,11 +294,14 @@ import ComputedScorePill from "./ComputedScorePill";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
 import ScoutTab from "./ScoutTab";
 import ScoutNotesHub from "./ScoutNotesHub";
+import { ScoutSourceProvider, useShowFounderContent } from "../lib/scoutSource";
+import ScoutSourceToggle from "./ScoutSourceToggle";
 import { usePlayerTags } from "./TagEditor";
 import { TagBadge, TagBadgeRow } from "./TagBadge";
 import { getTagById } from "../lib/tags/library";
 import InlineTierPill from "./InlineTierPill";
 import InlineTagsPopover from "./InlineTagsPopover";
+import ScoutTierBadge from "./ScoutTierBadge";
 
 /**
  * Reads the prospect's hand-assigned tags from localStorage and renders them
@@ -1156,6 +1159,7 @@ const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => 
     </div>
 
     <div className="prospera-desktop-only" style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <ScoutSourceToggle />
       <button
         type="button"
         onClick={onOpenWeights}
@@ -3058,6 +3062,8 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
               >
                 {p.pos}
               </div>
+              {/* User's Scout View Floor→Ceiling tier call — renders only when set. */}
+              <ScoutTierBadge prospectId={p.id} size="lg" showLabel />
               {(p.customTags || []).map((tag) => (
                 <div
                   key={tag}
@@ -5801,7 +5807,11 @@ const MyBoardPage = ({
               <div onClick={() => onOpenProfile?.(p.id)} style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0, cursor: "pointer" }}>
                 <PlayerImg p={p} size={28} />
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 13, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                    <div style={{ fontSize: 13, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+                    {/* User's Scout View tier-call — read-only surface on My Board rows. */}
+                    <ScoutTierBadge prospectId={p.id} />
+                  </div>
                   <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {p.school?.toUpperCase()} · {p.cls || "—"}
                   </div>
@@ -5833,7 +5843,11 @@ const MyBoardPage = ({
               <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
                 <PlayerImg p={p} size={28} />
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 13, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                    <div style={{ fontSize: 13, color: T.text, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.name}</div>
+                    {/* User's Scout View tier-call — read-only surface on auto-ranked rows. */}
+                    <ScoutTierBadge prospectId={p.id} />
+                  </div>
                   <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {p.archetype?.toUpperCase() || "—"}
                   </div>
@@ -6522,9 +6536,11 @@ const HistoricalCard = ({ p, rateMode = "per-game" }) => {
 // ---------- MAIN ----------
 export default function ProsperaApp() {
   return (
-    <CustomWeightsProvider>
-      <ProsperaAppInner />
-    </CustomWeightsProvider>
+    <ScoutSourceProvider>
+      <CustomWeightsProvider>
+        <ProsperaAppInner />
+      </CustomWeightsProvider>
+    </ScoutSourceProvider>
   );
 }
 
