@@ -293,6 +293,19 @@ import ComputedScoreCard from "./ComputedScoreCard";
 import ComputedScorePill from "./ComputedScorePill";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
 import ScoutTab from "./ScoutTab";
+import { usePlayerTags } from "./TagEditor";
+import { TagBadgeRow } from "./TagBadge";
+
+/**
+ * Reads the prospect's hand-assigned tags from localStorage and renders them
+ * as a compact badge row. Used in the player-profile hero so tags travel with
+ * the player wherever they're surfaced.
+ */
+function ProfileTagBadges({ prospectId }) {
+  const { tagIds } = usePlayerTags(prospectId);
+  if (!tagIds || tagIds.length === 0) return null;
+  return <TagBadgeRow tagIds={tagIds} size="sm" />;
+}
 import ComputedOutcomesLadder from "./ComputedOutcomesLadder";
 import { buildLegacyCompGroups, getTopComps } from "../grading/compsBridge";
 import { getProspectScoresByName } from "../grading/precomputed";
@@ -3033,6 +3046,10 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
               <br />
               <span style={{ color: T.cyan }}>{p.last}</span>
             </h1>
+            {/* Hand-assigned tag badges from the tag library (Scout View tab assigns). */}
+            <div style={{ marginTop: 14 }}>
+              <ProfileTagBadges prospectId={p.id} />
+            </div>
           </div>
 
           {/* Score */}
@@ -4908,6 +4925,99 @@ function DeepDivesShell({ view, setView, diveCount, children }) {
   );
 }
 
+/**
+ * Open the Big Board as a clean, print-friendly HTML view in a new tab.
+ * Designed for Ctrl/Cmd+P → Save as PDF. Self-contained markup, no external
+ * assets so it survives offline / pasted into email or Slack.
+ *
+ * Layout: numbered list, prospect name + school + position + archetype,
+ * computed score pill where available. Page break-friendly.
+ */
+function exportBigBoardToPrintView(rows) {
+  const now = new Date();
+  const dateStr = now.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  const timeStr = now.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+
+  const rowsHtml = rows.map((p, i) => {
+    const rank = i + 1;
+    const archLabel = p.archetype ? `<span class="arch">${escapeHtml(p.archetype)}</span>` : "";
+    const schoolLabel = p.school ? escapeHtml(p.school) : "—";
+    const posLabel = p.pos ? escapeHtml(p.pos) : "—";
+    const classLabel = p.cls ? escapeHtml(p.cls) : "—";
+    return `
+      <tr>
+        <td class="rank">${rank}</td>
+        <td class="name">
+          <div class="name-line">${escapeHtml(p.name)}</div>
+          <div class="meta">${archLabel}</div>
+        </td>
+        <td class="pos">${posLabel}</td>
+        <td class="cls">${classLabel}</td>
+        <td class="school">${schoolLabel}</td>
+      </tr>`;
+  }).join("");
+
+  const html = `<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Prospera Big Board · ${dateStr}</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", system-ui, sans-serif; color: #1F2937; background: #fff; margin: 24px 28px; line-height: 1.4; }
+  header { border-bottom: 2px solid #1F2937; padding-bottom: 12px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: baseline; }
+  header h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  header .meta { font-size: 11px; color: #6B7280; font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #F3F4F6; }
+  th { text-align: left; padding: 8px 10px; font-size: 9px; letter-spacing: 0.14em; color: #6B7280; text-transform: uppercase; font-weight: 600; border-bottom: 1px solid #E5E7EB; font-family: ui-monospace, Menlo, monospace; }
+  td { padding: 10px; border-bottom: 1px solid #F3F4F6; font-size: 13px; vertical-align: top; }
+  td.rank { width: 36px; font-weight: 700; color: #1F2937; font-family: ui-monospace, Menlo, monospace; }
+  td.name .name-line { font-weight: 600; font-size: 14px; color: #111827; }
+  td.name .meta { font-size: 10px; color: #6B7280; margin-top: 2px; font-family: ui-monospace, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+  td.pos, td.cls { font-size: 12px; color: #4B5563; font-family: ui-monospace, Menlo, monospace; }
+  td.school { font-size: 12px; color: #4B5563; }
+  footer { margin-top: 18px; font-size: 10px; color: #9CA3AF; letter-spacing: 0.06em; font-family: ui-monospace, Menlo, monospace; text-align: center; }
+  /* Print: tighter spacing, no page break in the middle of a row */
+  @media print {
+    body { margin: 12mm 14mm; }
+    tr { page-break-inside: avoid; }
+    header h1 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Prospera · Big Board</h1>
+    <div class="meta">${escapeHtml(dateStr)} · ${escapeHtml(timeStr)} · ${rows.length} prospects</div>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Prospect</th>
+        <th>Pos</th>
+        <th>Class</th>
+        <th>School</th>
+      </tr>
+    </thead>
+    <tbody>${rowsHtml}</tbody>
+  </table>
+  <footer>Exported from Prospera Draft HQ · 2026 Class · ${escapeHtml(dateStr)}</footer>
+  <script>
+    // Auto-open print dialog if the user wants ?print=1 in the URL
+    if (location.search.includes("print=1")) { window.addEventListener("load", () => setTimeout(() => window.print(), 200)); }
+  </script>
+</body></html>`;
+
+  const blob = new Blob([html], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  window.open(url, "_blank");
+  setTimeout(() => URL.revokeObjectURL(url), 60_000);
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 const BigBoardPage = ({
   onOpenProfile, watchlist = [], compareIds = [],
   onToggleWatchlist, onToggleCompare, onOpenCompare,
@@ -5078,6 +5188,27 @@ const BigBoardPage = ({
         >
           <GitCompare size={12} />
           {compareIds.length >= 2 ? `OPEN COMPARE · ${compareIds.length}` : `COMPARE QUEUE · ${compareIds.length}/3`}
+        </button>
+        <button
+          type="button"
+          onClick={() => exportBigBoardToPrintView(rows)}
+          title="Open a print-friendly view in a new tab. Use Ctrl/Cmd+P to save as PDF or print."
+          style={{
+            ...mono,
+            fontSize: 11,
+            letterSpacing: "0.12em",
+            color: T.textDim,
+            background: "transparent",
+            border: `1px solid ${T.border}`,
+            padding: "8px 12px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <Download size={12} />
+          EXPORT
         </button>
       </div>
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
+import TagEditor, { usePlayerTags } from "./TagEditor";
+import { TagBadgeRow } from "./TagBadge";
 
 /**
  * ScoutTab — pure-qualitative personal scouting view.
@@ -242,6 +244,11 @@ export default function ScoutTab({ p }) {
             </span>
           )}
         </div>
+      </div>
+
+      {/* TAG EDITOR — pure scout-assigned badges from the tag library */}
+      <div style={{ marginBottom: 26 }}>
+        <TagEditor prospectId={p.id} prospectName={p.name} />
       </div>
 
       {/* PER-TIER NOTES */}
