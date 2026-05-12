@@ -23,9 +23,12 @@ import type {
 } from "./axisScores";
 import { AXIS_KEYS } from "./axisScores";
 import {
+  type CohortStats,
   type DataMode,
+  type PositionFamily,
   EPSILON,
   approxEqual,
+  getTraitRuntime,
 } from "./cohortStats";
 import projectionConfigRaw from "../../config/traitProjection.json";
 
@@ -132,17 +135,34 @@ function worseDataMode(a: DataMode, b: DataMode): DataMode {
   return DATA_MODE_SEVERITY[a] >= DATA_MODE_SEVERITY[b] ? a : b;
 }
 
+export interface ProjectTraitOptions {
+  /** Cohort stats — when provided with positionFamily, enables trait-level
+   *  empirical normalization (fixes std compression for blended traits). */
+  cohortStats?: CohortStats;
+  positionFamily?: PositionFamily;
+}
+
 /**
  * Project a single trait from the resolved axis scores.
  *
  * Renormalization: if a blend axis has score=null, that axis drops out of the
  * weighted average and the remaining axes' weights are renormalized to sum to 1.
  * If ALL blend axes are null, returns score=null with dataMode='blocked'.
+ *
+ * When cohortStats + positionFamily are provided AND a TraitRuntimeStats entry
+ * exists for (trait, posFam), the score is re-normalized empirically:
+ *   z         = (score - 50) / 15
+ *   z_norm    = (z - traitMean) / traitStd
+ *   score_out = 50 + 15 · z_norm
+ * This corrects the variance compression that happens when blending multiple
+ * axes (e.g., ProcessingSpeed = 0.5·disrupt + 0.5·connect → std ~0.71 in
+ * z-space → final score std ~10 instead of 15).
  */
 export function projectTrait(
   trait: TraitKey,
   blend: TraitBlend,
   axisScores: Record<AxisKey, AxisScore>,
+  options: ProjectTraitOptions = {},
 ): TraitScore {
   const contributions: TraitContribution[] = [];
   const notes: string[] = [];
@@ -199,9 +219,22 @@ export function projectTrait(
     }
   }
 
-  const score: number | null = totalAvailableWeight > EPSILON
+  let score: number | null = totalAvailableWeight > EPSILON
     ? weightedSum / totalAvailableWeight
     : null;
+
+  // Empirical trait-level normalization. Same approach as axisRuntime — bring
+  // trait std back to ~15 (i.e., trait z-std back to ~1) for blended traits
+  // whose raw projection compresses. Skipped silently when calibration absent.
+  if (score != null && options.cohortStats && options.positionFamily) {
+    const cal = getTraitRuntime(options.cohortStats, trait, options.positionFamily);
+    if (cal && cal.zStd > EPSILON) {
+      const rawZ = (score - 50) / 15;
+      const normalizedZ = (rawZ - cal.zMean) / cal.zStd;
+      score = 50 + 15 * normalizedZ;
+      notes.push(`trait-level calibration applied (z: ${rawZ.toFixed(2)} → ${normalizedZ.toFixed(2)})`);
+    }
+  }
 
   const scoreZ: number | null = score == null ? null : (score - 50) / 15;
 
@@ -228,11 +261,12 @@ export function projectTrait(
 export function projectAxesToTraits(
   axes: AllAxisScoresOutput,
   projectionMap?: TraitProjectionMap,
+  options: ProjectTraitOptions = {},
 ): Record<TraitKey, TraitScore> {
   const map = projectionMap ?? loadTraitProjection();
   const out = {} as Record<TraitKey, TraitScore>;
   for (const trait of TRAIT_KEYS) {
-    out[trait] = projectTrait(trait, map[trait].blend, axes.axes);
+    out[trait] = projectTrait(trait, map[trait].blend, axes.axes, options);
   }
   return out;
 }

@@ -130,6 +130,24 @@ export interface AxisRuntimeStats {
 
 export type AxisRuntimeCalibration = Record<string, Partial<Record<PositionFamily, AxisRuntimeStats>>>;
 
+/**
+ * Same idea as AxisRuntimeStats but for the 8-trait UI projection. After a
+ * trait is computed as a weighted blend of axes, its empirical std can come
+ * out compressed (e.g., ProcessingSpeed = 0.5·disrupt + 0.5·connect → blending
+ * two unit-variance axes with correlation ~0 gives std ≈ √0.5 ≈ 0.71). We
+ * apply a second-pass empirical normalization to bring trait std back to ~1
+ * in z-space (so the 50+15·z mapping yields the target ~15 score std).
+ */
+export interface TraitRuntimeStats {
+  trait: string;          // trait key (AdvantageCreation, etc.)
+  posFam: PositionFamily;
+  zMean: number;          // empirical mean of (score - 50) / 15
+  zStd: number;           // empirical std of (score - 50) / 15
+  n: number;
+}
+
+export type TraitRuntimeCalibration = Record<string, Partial<Record<PositionFamily, TraitRuntimeStats>>>;
+
 /** Top-level cohort stats returned by loadCohortStats(). */
 export interface CohortStats {
   /** Map keyed by `${era}|${positionFamily}`. */
@@ -144,6 +162,8 @@ export interface CohortStats {
   compDistance: CompDistanceConfig | null;
   /** Empirical per-axis composite-z stats for runtime score normalization. */
   axisRuntime: AxisRuntimeCalibration | null;
+  /** Empirical per-trait z-score stats for second-pass projection normalization. */
+  traitRuntime: TraitRuntimeCalibration | null;
   /** Calibration metadata. */
   meta: {
     version: string;
@@ -311,6 +331,7 @@ export function buildCohortStatsFromCalibration(raw: RawCalibration): CohortStat
     outcomeBaseRates,
     compDistance: (raw.compDistanceWeights as CompDistanceConfig | null) ?? null,
     axisRuntime: (raw.axisRuntimeCalibration as AxisRuntimeCalibration | null) ?? null,
+    traitRuntime: (raw.traitRuntimeCalibration as TraitRuntimeCalibration | null) ?? null,
     meta: {
       version: raw._meta?.version ?? "unknown",
       generatedAt: raw._meta?.generatedAt ?? "unknown",
@@ -330,6 +351,15 @@ export function getAxisRuntime(
   posFam: PositionFamily,
 ): AxisRuntimeStats | null {
   return stats.axisRuntime?.[axisKey]?.[posFam] ?? null;
+}
+
+/** Look up trait-level runtime calibration. */
+export function getTraitRuntime(
+  stats: CohortStats,
+  traitKey: string,
+  posFam: PositionFamily,
+): TraitRuntimeStats | null {
+  return stats.traitRuntime?.[traitKey]?.[posFam] ?? null;
 }
 
 // =============================================================================
@@ -399,4 +429,5 @@ interface RawCalibration {
   outcomeBaseRates?: Record<string, unknown>;
   compDistanceWeights?: unknown;
   axisRuntimeCalibration?: unknown;
+  traitRuntimeCalibration?: unknown;
 }

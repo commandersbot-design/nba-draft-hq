@@ -94,9 +94,10 @@
       "Trait regressions: outcome score is regressed on the trait's contributor features (ridge, λ=1.0). Coefficients tell us how to weight each contributor inside the trait composite.",
       "Comp-distance weights come from a global logistic regression on outcomeTier ∈ {Hit-or-better}. |coef| normalized so mean=1, floored at 0.1."
     ],
-    "lastBackfilledAt": "2026-05-09T22:49:16.714Z",
+    "lastBackfilledAt": "2026-05-12T18:25:14.970Z",
     "axisRuntimeCalibrationCells": 30,
-    "architectureNote": "Per-trait regressions deprecated 2026-05 after 9-axis pivot. Per-axis weights now live in config/axisFeatureWeights.json (sign-constrained, hand-authored). Runtime variance calibration via axisRuntimeCalibration (empirical std normalization)."
+    "architectureNote": "Per-trait regressions deprecated 2026-05 after 9-axis pivot. Per-axis weights now live in config/axisFeatureWeights.json (sign-constrained, hand-authored). Runtime variance calibration via axisRuntimeCalibration (empirical std normalization).",
+    "traitRuntimeCalibrationCells": 24
   },
   "cellNormalizers": {
     "MODERN|big": {
@@ -2205,6 +2206,192 @@
         "zMean": 0.07167549540385798,
         "zStd": 0.39278593536845635,
         "n": 415
+      }
+    }
+  },
+  "traitRuntimeCalibration": {
+    "AdvantageCreation": {
+      "guard": {
+        "trait": "AdvantageCreation",
+        "posFam": "guard",
+        "zMean": -0.007839740755000695,
+        "zStd": 0.8891996843474369,
+        "n": 164
+      },
+      "wing": {
+        "trait": "AdvantageCreation",
+        "posFam": "wing",
+        "zMean": -0.0040981813625956395,
+        "zStd": 0.8712567952155286,
+        "n": 378
+      },
+      "big": {
+        "trait": "AdvantageCreation",
+        "posFam": "big",
+        "zMean": 0.00018371338684937977,
+        "zStd": 0.8040071850693559,
+        "n": 415
+      }
+    },
+    "DecisionMaking": {
+      "guard": {
+        "trait": "DecisionMaking",
+        "posFam": "guard",
+        "zMean": -1.7059524524728015e-16,
+        "zStd": 0.9999999999999999,
+        "n": 164
+      },
+      "wing": {
+        "trait": "DecisionMaking",
+        "posFam": "wing",
+        "zMean": 3.027413710667672e-16,
+        "zStd": 0.9999999999999998,
+        "n": 378
+      },
+      "big": {
+        "trait": "DecisionMaking",
+        "posFam": "big",
+        "zMean": 2.00642715293703e-16,
+        "zStd": 1,
+        "n": 415
+      }
+    },
+    "PassingCreation": {
+      "guard": {
+        "trait": "PassingCreation",
+        "posFam": "guard",
+        "zMean": -1.7059524524728015e-16,
+        "zStd": 0.9999999999999999,
+        "n": 164
+      },
+      "wing": {
+        "trait": "PassingCreation",
+        "posFam": "wing",
+        "zMean": 3.027413710667672e-16,
+        "zStd": 0.9999999999999998,
+        "n": 378
+      },
+      "big": {
+        "trait": "PassingCreation",
+        "posFam": "big",
+        "zMean": 2.00642715293703e-16,
+        "zStd": 1,
+        "n": 415
+      }
+    },
+    "ShootingGravity": {
+      "guard": {
+        "trait": "ShootingGravity",
+        "posFam": "guard",
+        "zMean": 0.002228985871789959,
+        "zStd": 0.9290980230060696,
+        "n": 164
+      },
+      "wing": {
+        "trait": "ShootingGravity",
+        "posFam": "wing",
+        "zMean": 0.0016796923715093957,
+        "zStd": 0.9230293969744493,
+        "n": 378
+      },
+      "big": {
+        "trait": "ShootingGravity",
+        "posFam": "big",
+        "zMean": 0.009877195246903244,
+        "zStd": 0.9006876867263233,
+        "n": 415
+      }
+    },
+    "OffBallValue": {
+      "guard": {
+        "trait": "OffBallValue",
+        "posFam": "guard",
+        "zMean": 0.012778734532287674,
+        "zStd": 0.8688244969105017,
+        "n": 164
+      },
+      "wing": {
+        "trait": "OffBallValue",
+        "posFam": "wing",
+        "zMean": 0.008365698925378025,
+        "zStd": 0.8870480647540816,
+        "n": 378
+      },
+      "big": {
+        "trait": "OffBallValue",
+        "posFam": "big",
+        "zMean": 0.010693440933864106,
+        "zStd": 0.9150844406549679,
+        "n": 415
+      }
+    },
+    "ProcessingSpeed": {
+      "guard": {
+        "trait": "ProcessingSpeed",
+        "posFam": "guard",
+        "zMean": 0.007842688210090744,
+        "zStd": 0.6764836722377097,
+        "n": 164
+      },
+      "wing": {
+        "trait": "ProcessingSpeed",
+        "posFam": "wing",
+        "zMean": 0.004105879096668012,
+        "zStd": 0.7255888600926115,
+        "n": 378
+      },
+      "big": {
+        "trait": "ProcessingSpeed",
+        "posFam": "big",
+        "zMean": -0.024525110118429724,
+        "zStd": 0.8293220456972618,
+        "n": 415
+      }
+    },
+    "Scalability": {
+      "guard": {
+        "trait": "Scalability",
+        "posFam": "guard",
+        "zMean": -0.0028385798620655127,
+        "zStd": 0.9897587519877893,
+        "n": 164
+      },
+      "wing": {
+        "trait": "Scalability",
+        "posFam": "wing",
+        "zMean": -2.0677169559156353e-16,
+        "zStd": 1.0000000000000002,
+        "n": 378
+      },
+      "big": {
+        "trait": "Scalability",
+        "posFam": "big",
+        "zMean": 0.0020330904935822267,
+        "zStd": 0.9923479587568248,
+        "n": 399
+      }
+    },
+    "DefensiveVersatility": {
+      "guard": {
+        "trait": "DefensiveVersatility",
+        "posFam": "guard",
+        "zMean": -0.0011248511355552234,
+        "zStd": 0.954478048051985,
+        "n": 164
+      },
+      "wing": {
+        "trait": "DefensiveVersatility",
+        "posFam": "wing",
+        "zMean": -0.0007631275081087792,
+        "zStd": 0.9587264619716979,
+        "n": 378
+      },
+      "big": {
+        "trait": "DefensiveVersatility",
+        "posFam": "big",
+        "zMean": -0.05640180576564261,
+        "zStd": 1.005531987968866,
+        "n": 399
       }
     }
   }

@@ -191,7 +191,10 @@ function runPipeline(
   );
 
   // ---- Module 1: traits
-  const traits = projectAxesToTraits(axes, projection);
+  const traits = projectAxesToTraits(axes, projection, {
+    cohortStats,
+    positionFamily: compInput.positionFamily,
+  });
 
   // ---- Letter grades (per trait)
   const traitGrades = {} as Record<TraitKey, GradeResult>;

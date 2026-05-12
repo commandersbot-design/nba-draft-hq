@@ -32,6 +32,8 @@ import {
   type PositionFamily,
   type AxisRuntimeCalibration,
   type AxisRuntimeStats,
+  type TraitRuntimeCalibration,
+  type TraitRuntimeStats,
   type CohortStats,
 } from "../../src/grading/cohortStats";
 
@@ -167,7 +169,7 @@ function runPipeline(
     };
 
     const axesOut = computeAllAxisScores(inputs, cohortStats, axisConfigs, translateCfg, archetypeAnchors);
-    const traits = projectAxesToTraits(axesOut, projection);
+    const traits = projectAxesToTraits(axesOut, projection, { cohortStats, positionFamily: posFam });
 
     dataModeCounts[axesOut.translate.dataMode] = (dataModeCounts[axesOut.translate.dataMode] ?? 0) + 1;
 
@@ -222,6 +224,43 @@ function runPipeline(
  * and the runtime falls back to raw 50+15·z mapping for those (axis, posFam)
  * combos. Only matters for low-population cells.
  */
+/**
+ * Same shape as axis calibration but for the 8-trait projection. Fixes the
+ * variance compression on blended traits (ProcessingSpeed, AdvantageCreation)
+ * where the projection of two correlated axes shrinks std below 1.
+ *
+ * Built from PASS 2 results — the trait scores there have already had axis
+ * calibration applied, so the remaining compression is purely from the
+ * blending step. We measure the trait z-score (= (score - 50) / 15) per
+ * (trait, posFam) and write empirical (mean, std).
+ */
+function buildTraitRuntimeCalibration(results: PerProspectResult[]): TraitRuntimeCalibration {
+  const MIN_N = 30;
+  const cal: TraitRuntimeCalibration = {};
+  for (const trait of TRAIT_KEYS) {
+    cal[trait] = {};
+    for (const posFam of POS_FAMS) {
+      const zs: number[] = [];
+      for (const r of results) {
+        if (r.posFam !== posFam) continue;
+        const score = r.traitScores[trait];
+        if (score == null || !Number.isFinite(score)) continue;
+        zs.push((score - 50) / 15);
+      }
+      const stats = meanStd(zs);
+      if (stats.n < MIN_N) continue;
+      const entry: TraitRuntimeStats = {
+        trait, posFam,
+        zMean: stats.mean,
+        zStd: stats.std,
+        n: stats.n,
+      };
+      cal[trait]![posFam] = entry;
+    }
+  }
+  return cal;
+}
+
 function buildAxisRuntimeCalibration(results: PerProspectResult[]): AxisRuntimeCalibration {
   const MIN_N = 30;
   const cal: AxisRuntimeCalibration = {};
@@ -256,15 +295,17 @@ function buildAxisRuntimeCalibration(results: PerProspectResult[]): AxisRuntimeC
 // =============================================================================
 
 async function main() {
-  console.log("=== BACKFILL · Module 1 historical pipeline (two-pass) ===\n");
+  console.log("=== BACKFILL · Module 1 historical pipeline (three-pass) ===\n");
   const historicals = JSON.parse(fs.readFileSync(HIST_PATH, "utf8")) as HistoricalProspectRecord[];
   const adv         = JSON.parse(fs.readFileSync(HASS_PATH, "utf8")) as Record<string, HistoricalAdvancedRecord>;
 
-  // -------- Load + force-clear axisRuntime so PASS 1 runs unscaled --------
+  // -------- Load + force-clear runtime calibrations so PASS 1 runs unscaled --------
   clearCohortCache();
   const cohortStats = loadCohortStats();
   const savedAxisRuntime = cohortStats.axisRuntime;
+  const savedTraitRuntime = cohortStats.traitRuntime;
   cohortStats.axisRuntime = null;
+  cohortStats.traitRuntime = null;
 
   console.log(`Loaded calibration v${cohortStats.meta.version}, ${cohortStats.meta.poolSize} historical pool`);
   console.log(`Loaded ${historicals.length} historical prospects, ${Object.keys(adv).length} advanced stat blocks\n`);
@@ -300,17 +341,36 @@ async function main() {
   console.log(`  ${cellsBuilt} (axis, posFam) cells calibrated`);
 
   // ===================================================================
-  // PASS 2 — re-run with calibration applied
+  // PASS 2 — re-run with axis calibration; measure trait-level compression
   // ===================================================================
-  console.log("\nPASS 2 — re-running pipeline with empirical slope calibration applied...");
+  console.log("\nPASS 2 — re-running pipeline with empirical AXIS slope calibration applied...");
   cohortStats.axisRuntime = axisRuntimeCalibration;
   const pass2 = runPipeline(historicals, adv, cohortStats);
   console.log(`  Processed: ${pass2.withCbb}`);
+
+  // -------- Build trait runtime calibration from pass 2 trait scores --------
+  console.log("\nBuilding TraitRuntimeCalibration from pass-2 trait distributions...");
+  const traitRuntimeCalibration = buildTraitRuntimeCalibration(pass2.results);
+  let traitCellsBuilt = 0;
+  for (const t of Object.keys(traitRuntimeCalibration)) {
+    traitCellsBuilt += Object.keys(traitRuntimeCalibration[t]!).length;
+  }
+  console.log(`  ${traitCellsBuilt} (trait, posFam) cells calibrated`);
+
+  // ===================================================================
+  // PASS 3 — final pass with both axis and trait calibrations applied
+  // ===================================================================
+  console.log("\nPASS 3 — final pass with AXIS + TRAIT calibration applied...");
+  cohortStats.traitRuntime = traitRuntimeCalibration;
+  const pass3 = runPipeline(historicals, adv, cohortStats);
+  console.log(`  Processed: ${pass3.withCbb}`);
   console.log("  Translate dataMode distribution:");
   for (const k of ["full", "partial", "scout_anchored", "blocked"]) {
-    const n = pass2.dataModeCounts[k] ?? 0;
-    console.log(`    ${k.padEnd(16)} ${n} (${(100 * n / pass2.results.length).toFixed(1)}%)`);
+    const n = pass3.dataModeCounts[k] ?? 0;
+    console.log(`    ${k.padEnd(16)} ${n} (${(100 * n / pass3.results.length).toFixed(1)}%)`);
   }
+  // Replace pass2 with pass3 for downstream distribution-write logic
+  Object.assign(pass2, pass3);
 
   // ---------------- DISTRIBUTION VALIDATION ----------------
   console.log("\n=== Trait score distributions (target: mean ≈ 50, std ≈ 15) ===");
@@ -375,27 +435,31 @@ async function main() {
   }
 
   // ---------------- WRITE OUTPUTS ----------------
-  // (1) Append axisRuntimeCalibration into scoringCalibration.json
+  // (1) Append axis + trait runtime calibrations into scoringCalibration.json
   const calibJson = JSON.parse(fs.readFileSync(CALIB_PATH, "utf8"));
   calibJson.axisRuntimeCalibration = axisRuntimeCalibration;
+  calibJson.traitRuntimeCalibration = traitRuntimeCalibration;
   if (calibJson._meta) {
     calibJson._meta.lastBackfilledAt = new Date().toISOString();
     calibJson._meta.axisRuntimeCalibrationCells = cellsBuilt;
+    calibJson._meta.traitRuntimeCalibrationCells = traitCellsBuilt;
   }
   fs.writeFileSync(CALIB_PATH, JSON.stringify(calibJson, null, 2) + "\n");
   console.log(`\nUpdated ${CALIB_PATH}`);
-  console.log(`  Added axisRuntimeCalibration: ${cellsBuilt} cells`);
+  console.log(`  Added axisRuntimeCalibration:  ${cellsBuilt} cells`);
+  console.log(`  Added traitRuntimeCalibration: ${traitCellsBuilt} cells`);
 
   // (2) Write historicalScoreDistributions.json
   const out = {
     _meta: {
       generatedAt: new Date().toISOString(),
-      generatedBy: "scripts/scoring/backfill-historicals.ts (two-pass)",
+      generatedBy: "scripts/scoring/backfill-historicals.ts (three-pass)",
       historicalsProcessed: pass2.withCbb,
       historicalsScored: pass2.results.length,
       anchorsFound: pass2.anchorsFound, anchorsMissing: pass2.anchorsMissing,
       calibrationVersion: cohortStats.meta.version,
       axisRuntimeCalibrationCells: cellsBuilt,
+      traitRuntimeCalibrationCells: traitCellsBuilt,
     },
     distributions,
   };
@@ -404,6 +468,7 @@ async function main() {
 
   // Restore for any subsequent cache reads (unused — script ends here, but defensive)
   cohortStats.axisRuntime = savedAxisRuntime;
+  cohortStats.traitRuntime = savedTraitRuntime;
 }
 
 main().catch((err) => { console.error(err); process.exit(1); });
