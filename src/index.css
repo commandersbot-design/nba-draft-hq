@@ -2114,3 +2114,13 @@ button {
   }
 }
 
+/* Scout Notes master-detail grid: stack on narrow widths so the
+ * prospect list + editor each get their full width. Below the tablet
+ * breakpoint the 320px sidebar squeezes the editor unusably.
+ */
+@media (max-width: 980px) {
+  .prospera-scout-notes-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+

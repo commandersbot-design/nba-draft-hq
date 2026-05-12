@@ -293,6 +293,7 @@ import ComputedScoreCard from "./ComputedScoreCard";
 import ComputedScorePill from "./ComputedScorePill";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
 import ScoutTab from "./ScoutTab";
+import ScoutNotesHub from "./ScoutNotesHub";
 import { usePlayerTags } from "./TagEditor";
 import { TagBadge, TagBadgeRow } from "./TagBadge";
 import { getTagById } from "../lib/tags/library";
@@ -4932,14 +4933,15 @@ function emptyDeepDiveSeed(prospectId) {
 // DeepDivesShell — sub-tab wrapper for the personal analysis section.
 // Two views: "my-board" (the multi-mode board builder) and "dives" (per-prospect
 // scout reports). The main app nav surfaces this as "Deep Dives".
-function DeepDivesShell({ view, setView, diveCount, children }) {
+function DeepDivesShell({ view, setView, diveCount, scoutCount, children }) {
   return (
     <div>
       <div style={{ padding: "16px 28px 0 28px", maxWidth: 1400, margin: "0 auto" }}>
         <div style={{ display: "inline-flex", gap: 0, border: `1px solid ${T.border}`, background: T.surface }}>
           {[
-            ["my-board", "My Board"],
-            ["dives",    `Dives · ${diveCount}`],
+            ["my-board",    "My Board"],
+            ["scout-notes", `Scout Notes · ${scoutCount}`],
+            ["dives",       `Dives · ${diveCount}`],
           ].map(([key, label], i) => {
             const active = view === key;
             return (
@@ -6562,6 +6564,24 @@ function ProsperaAppInner() {
   // Sub-view within the Deep Dives section: "my-board" or "dives".
   // Default to "my-board" — the primary entry point for personal analysis.
   const [scoutDeskView, setScoutDeskView] = useState("my-board");
+  // Scout-view authored-count for the Deep Dives sub-tab badge. Reads the
+  // same localStorage key the ScoutTab editor writes to; counts prospects
+  // that have any authored content (tier rating, ceiling call, summary, or
+  // any tier note).
+  const [scoutViewMap] = useLocalStorageState("prospera.terminal.scout-views", {});
+  const scoutNotesAuthoredCount = useMemo(() => {
+    let n = 0;
+    for (const v of Object.values(scoutViewMap)) {
+      if (!v) continue;
+      const has =
+        v.tierRating ||
+        v.overallCeilingCall?.trim() ||
+        v.summary?.trim() ||
+        Object.values(v.tierNotes || {}).some((x) => x && x.trim());
+      if (has) n++;
+    }
+    return n;
+  }, [scoutViewMap]);
   // Per-prospect comp overrides. Shape:
   //   { [prospectId]: { [historicalId]: 'highEnd' | 'realistic' | 'cautionary' | 'hidden' } }
   // Applied by rankComparablesByTier — manual pins inject into the chosen
@@ -6818,6 +6838,7 @@ function ProsperaAppInner() {
               view={scoutDeskView}
               setView={setScoutDeskView}
               diveCount={Object.keys(deepDives).length}
+              scoutCount={scoutNotesAuthoredCount}
             >
               {scoutDeskView === "my-board" && (
                 <MyBoardPage
@@ -6837,6 +6858,9 @@ function ProsperaAppInner() {
                   teamKey={myBoardTeamKey}
                   setTeamKey={setMyBoardTeamKey}
                 />
+              )}
+              {scoutDeskView === "scout-notes" && (
+                <ScoutNotesHub prospects={PROSPECTS} />
               )}
               {scoutDeskView === "dives" && (
                 <DeepDivesPage
