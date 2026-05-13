@@ -302,6 +302,7 @@ import { getTagById } from "../lib/tags/library";
 import InlineTierPill from "./InlineTierPill";
 import InlineTagsPopover from "./InlineTagsPopover";
 import ScoutTierBadge from "./ScoutTierBadge";
+import DashboardCardV2 from "./dashboard/DashboardCardV2";
 
 /**
  * Reads the prospect's hand-assigned tags from localStorage and renders them
@@ -1333,265 +1334,14 @@ const BigBoardRail = ({ selectedId, onSelect, open, onClose }) => (
   </aside>
 );
 
-// ---------- PROSPECT STREAM CARD ----------
-const ProspectStreamCard = ({ p, isSelected, onClick }) => (
-  <button
-    onClick={onClick}
-    style={{
-      flexShrink: 0,
-      width: 168,
-      background: T.card,
-      border: `1px solid ${isSelected ? T.cyan : T.border}`,
-      padding: 0,
-      cursor: "pointer",
-      textAlign: "left",
-      transition: "all 0.15s",
-      position: "relative",
-    }}
-    onMouseEnter={(e) => {
-      if (!isSelected) e.currentTarget.style.borderColor = "var(--prospera-accent-border-strong)";
-    }}
-    onMouseLeave={(e) => {
-      if (!isSelected) e.currentTarget.style.borderColor = T.border;
-    }}
-  >
-    {/* System rank intentionally hidden on Dashboard. Personal ranks live in
-        My Board / Deep Dives only. Score chip stays — it's a data point that
-        only shows a real value when custom weights are active. */}
-    <div
-      style={{
-        position: "absolute",
-        top: 8,
-        right: 8,
-        ...mono,
-        fontSize: 10,
-        color: T.text,
-        background: "rgba(5, 10, 18, 0.9)",
-        padding: "2px 6px",
-        border: `1px solid ${T.border}`,
-        zIndex: 2,
-      }}
-    >
-      <ScoreCell prospect={p} />
-    </div>
+// NOTE: ProspectStreamCard and DashboardCard (the v1 dashboard components)
+// were removed when the Dashboard was rebuilt around DashboardCardV2 with a
+// search picker + persistent watchlist. See src/components/dashboard/ for
+// the new card. MetricPanel was unreferenced and removed at the same time.
 
-    <div
-      style={{
-        height: 124,
-        background: `
-          linear-gradient(180deg, var(--prospera-accent-bg-mid), transparent 60%),
-          linear-gradient(135deg, ${T.surface2}, ${T.surface})
-        `,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderBottom: `1px solid ${T.border}`,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <ProspectHeadshot
-        p={p}
-        fallbackStyle={{
-          ...mono,
-          fontSize: 44,
-          color: isSelected ? T.cyan : T.textDim,
-          letterSpacing: "0.05em",
-          opacity: 0.95,
-        }}
-        imgStyle={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
-      />
-    </div>
-
-    <div style={{ padding: "10px 12px" }}>
-      <div
-        style={{
-          fontSize: 13,
-          color: T.text,
-          fontWeight: 600,
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        }}
-      >
-        {p.name}
-      </div>
-      <div
-        style={{
-          ...mono,
-          fontSize: 9,
-          color: T.textMute,
-          letterSpacing: "0.12em",
-          marginTop: 4,
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <span>{p.school.split(" ")[0].toUpperCase()}</span>
-        <span style={{ color: T.cyan }}>{p.pos}</span>
-      </div>
-    </div>
-  </button>
-);
-
-// ---------- SELECTED PROSPECT DASHBOARD CARD ----------
-const DashboardCard = ({ p, onOpen, onRemove }) => {
-  const { displayScore } = useCustomWeights();
-  if (!p) return null;
-  return (
-    <div
-      style={{
-        background: T.card,
-        border: `1px solid ${T.border}`,
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div
-        style={{
-          padding: "14px 16px",
-          borderBottom: `1px solid ${T.border}`,
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-        }}
-      >
-        <PlayerImg p={p} size={44} />
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 15, color: T.text, fontWeight: 600 }}>{p.name}</div>
-          <div
-            style={{
-              ...mono,
-              fontSize: 10,
-              color: T.textMute,
-              letterSpacing: "0.1em",
-              marginTop: 2,
-            }}
-          >
-            {p.school.toUpperCase()} · {p.pos} · {p.cls}
-          </div>
-        </div>
-        <select
-          style={{
-            ...mono,
-            fontSize: 10,
-            color: T.textDim,
-            background: T.surface2,
-            border: `1px solid ${T.border}`,
-            padding: "4px 6px",
-            cursor: "pointer",
-          }}
-          defaultValue="2024-25"
-        >
-          <option>2024-25</option>
-          <option>2023-24</option>
-        </select>
-        <button
-          onClick={onOpen}
-          style={{
-            background: "transparent",
-            border: `1px solid ${T.border}`,
-            color: T.cyan,
-            padding: 6,
-            cursor: "pointer",
-          }}
-          title="Open profile"
-        >
-          <ExternalLink size={12} />
-        </button>
-        <button
-          onClick={onRemove}
-          style={{
-            background: "transparent",
-            border: `1px solid ${T.border}`,
-            color: T.textMute,
-            padding: 6,
-            cursor: "pointer",
-          }}
-          title="Remove"
-        >
-          <X size={12} />
-        </button>
-      </div>
-
-      {p.statsSource === "NONE" ? (
-        <div
-          style={{
-            padding: 24,
-            textAlign: "center",
-            color: T.textMute,
-            ...mono,
-            fontSize: 11,
-            letterSpacing: "0.1em",
-          }}
-        >
-          Pre-NBA stats not available
-        </div>
-      ) : (
-        <div style={{ padding: 16, display: "grid", gap: 16 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-            <ScorePanel title="Personal Score" value={displayScore(p)} sub={displayScore(p) != null ? p.tier : "Set custom weights"} color={T.cyan} />
-            <ScorePanel title="Trait Score" value={p.weightedTraitScore} sub={p.percentile ? `${p.percentile}th pct` : "—"} color={T.blue} />
-          </div>
-
-          <div>
-            <Label style={{ marginBottom: 8 }}>Trait Snapshot</Label>
-            <div style={{ display: "grid", gap: 6 }}>
-              {Object.entries(p.traits || {}).map(([k, v]) => (
-                <div
-                  key={k}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "100px 1fr 32px",
-                    gap: 8,
-                    alignItems: "center",
-                  }}
-                >
-                  <span style={{ ...mono, fontSize: 10, color: T.textDim, letterSpacing: "0.08em" }}>
-                    {k.toUpperCase()}
-                  </span>
-                  <MetricBar value={v} />
-                  <span style={{ ...mono, fontSize: 10, color: T.text, textAlign: "right" }}>{v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {p.flags && p.flags.length > 0 && (
-            <div>
-              <Label style={{ marginBottom: 8 }}>Flags</Label>
-              <div style={{ display: "grid", gap: 6 }}>
-                {p.flags.slice(0, 3).map((f, i) => (
-                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                    <FlagDot lvl={f.lvl} />
-                    <div style={{ fontSize: 11, color: T.textDim, lineHeight: 1.5 }}>{f.note}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <button
-            style={{
-              ...mono,
-              fontSize: 10,
-              letterSpacing: "0.14em",
-              color: T.cyan,
-              background: "transparent",
-              border: `1px solid ${T.border}`,
-              padding: "8px 12px",
-              cursor: "pointer",
-              textAlign: "left",
-            }}
-          >
-            + ADD NOTE
-          </button>
-        </div>
-      )}
-    </div>
-  );
-};
-
+// ScorePanel is still used elsewhere on the site (Comps view) — kept here.
+// The v1 DashboardCard + MetricPanel were removed when the Dashboard moved
+// to DashboardCardV2 in src/components/dashboard/.
 const ScorePanel = ({ title, value, sub, color }) => (
   <div style={{ background: T.surface2, border: `1px solid ${T.borderSoft}`, padding: 14 }}>
     <Label style={{ marginBottom: 8, color }}>{title}</Label>
@@ -1604,45 +1354,51 @@ const ScorePanel = ({ title, value, sub, color }) => (
   </div>
 );
 
-const MetricPanel = ({ title, rows, color }) => (
-  <div
-    style={{
-      background: T.surface2,
-      border: `1px solid ${T.borderSoft}`,
-      padding: 12,
-    }}
-  >
-    <Label style={{ marginBottom: 10, color: color }}>{title}</Label>
-    <div style={{ display: "grid", gap: 8 }}>
-      {(rows || []).map((r) => (
-        <div key={r.k}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-            <span style={{ fontSize: 11, color: T.textDim }}>{r.k}</span>
-            <span style={{ ...mono, fontSize: 10, color: T.text }}>{r.v}</span>
-          </div>
-          <MetricBar value={r.v} color={color} />
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
 // ---------- DASHBOARD PAGE ----------
-const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, removeFromSelected, dashSelected }) => {
-  const [view, setView] = useState("Overview");
+// =============================================================================
+// DASHBOARD PAGE — V2
+// =============================================================================
+// Persistent multi-prospect decision board. Each pinned prospect renders as a
+// DashboardCardV2 (rich hero, axis viz, outcome ladder, scores). Pins persist
+// across reloads via localStorage. Axis viz style (radar vs. bars) is a user
+// preference, also persisted. Empty state explains what the surface is for.
+//
+// Picker is search-based — no horizontal stream. The search input shows live
+// hits in a dropdown; clicking a hit pins it. Capped at 12 cards.
+const DashboardPage = ({
+  onOpenProfile,
+  addToSelected,
+  removeFromSelected,
+  clearDashboard,
+  dashSelected = [],
+  axisStyle = "radar",
+  setAxisStyle,
+  pinCap = 12,
+}) => {
   const [query, setQuery] = useState("");
+  const atCap = dashSelected.length >= pinCap;
 
-  // Dashboard hides the rank NUMBER but preserves the rank-based order so
-  // top prospects surface first. Personal ranking surfaces (My Board, Deep
-  // Dives) keep their own ordering.
-  const filtered = (query
-    ? PROSPECTS.filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
-    : PROSPECTS
-  ).slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
+  // Search hits — top-N by rank, excluding already-pinned, only when typing.
+  const searchHits = React.useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    return PROSPECTS
+      .filter((p) => !dashSelected.includes(p.id))
+      .filter((p) => p.name.toLowerCase().includes(q) || (p.school || "").toLowerCase().includes(q))
+      .sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999))
+      .slice(0, 8);
+  }, [query, dashSelected]);
+
+  // Pinned prospects in pin-order (so the user controls layout).
+  const pinned = React.useMemo(
+    () => dashSelected.map((id) => PROSPECTS.find((p) => p.id === id)).filter(Boolean),
+    [dashSelected],
+  );
 
   return (
     <div style={{ padding: "24px 28px", maxWidth: 1400, margin: "0 auto" }}>
-      <div style={{ marginBottom: 24 }}>
+      {/* ====== HEADER ====== */}
+      <div style={{ marginBottom: 16 }}>
         <Label>Workspace · 2026 Class</Label>
         <h1
           style={{
@@ -1655,88 +1411,189 @@ const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, re
         >
           Draft Dashboard
         </h1>
-        <div style={{ fontSize: 13, color: T.textDim }}>Multi-card prospect analysis</div>
+        <div style={{ fontSize: 13, color: T.textDim }}>
+          Pin prospects to your decision board · {dashSelected.length}/{pinCap} pinned
+        </div>
       </div>
 
-      <div style={{ marginBottom: 20 }}>
-        <Label style={{ marginBottom: 8 }}>Add Prospect</Label>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            background: T.surface,
-            border: `1px solid ${T.border}`,
-            padding: "10px 14px",
-          }}
-        >
-          <Search size={14} color={T.textMute} />
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search top prospects..."
+      {/* ====== TOOLBAR: search picker + style toggle + clear-all ====== */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 12,
+          alignItems: "center",
+          marginBottom: 20,
+        }}
+        className="prospera-dash-toolbar"
+      >
+        {/* Search picker */}
+        <div style={{ position: "relative", flex: "1 1 280px", minWidth: 240 }}>
+          <div
             style={{
-              flex: 1,
-              background: "transparent",
-              border: "none",
-              outline: "none",
-              color: T.text,
-              fontSize: 13,
-            }}
-          />
-        </div>
-      </div>
-
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-          <Label>Prospect Stream</Label>
-          <div style={{ ...mono, fontSize: 10, color: T.textMute, letterSpacing: "0.1em" }}>
-            {filtered.length} PROSPECTS
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            gap: 10,
-            overflowX: "auto",
-            paddingBottom: 8,
-          }}
-        >
-          {filtered.map((p) => (
-            <ProspectStreamCard
-              key={p.id}
-              p={p}
-              isSelected={dashSelected.includes(p.id)}
-              onClick={() => addToSelected(p.id)}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div style={{ display: "flex", gap: 0, marginBottom: 20, border: `1px solid ${T.border}`, width: "fit-content" }}>
-        {["Overview", "Factors"].map((v) => (
-          <button
-            key={v}
-            onClick={() => setView(v)}
-            style={{
-              ...mono,
-              fontSize: 11,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              padding: "10px 24px",
-              background: view === v ? "var(--prospera-accent-bg)" : "transparent",
-              color: view === v ? T.cyan : T.textDim,
-              border: "none",
-              borderRight: `1px solid ${T.border}`,
-              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              background: T.surface,
+              border: `1px solid ${T.border}`,
+              padding: "10px 14px",
             }}
           >
-            {v}
+            <Search size={14} color={T.textMute} />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={atCap ? "Dashboard full — remove a pin to add another" : "Add a prospect to the dashboard…"}
+              disabled={atCap}
+              style={{
+                flex: 1,
+                background: "transparent",
+                border: "none",
+                outline: "none",
+                color: T.text,
+                fontSize: 13,
+                opacity: atCap ? 0.4 : 1,
+              }}
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: T.textMute,
+                  cursor: "pointer",
+                  padding: 2,
+                  lineHeight: 0,
+                }}
+                title="Clear search"
+              >
+                <X size={12} />
+              </button>
+            )}
+          </div>
+          {searchHits.length > 0 && (
+            <div
+              style={{
+                position: "absolute",
+                top: "calc(100% + 4px)",
+                left: 0,
+                right: 0,
+                background: T.card,
+                border: `1px solid ${T.border}`,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
+                zIndex: 50,
+                maxHeight: 320,
+                overflowY: "auto",
+              }}
+            >
+              {searchHits.map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => {
+                    addToSelected(p.id);
+                    setQuery("");
+                  }}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "40px 1fr auto",
+                    gap: 10,
+                    alignItems: "center",
+                    width: "100%",
+                    padding: "8px 12px",
+                    background: "transparent",
+                    border: "none",
+                    borderBottom: `1px solid ${T.borderSoft}`,
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "var(--prospera-accent-bg-soft)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  <span style={{ ...mono, fontSize: 11, color: T.cyan, fontWeight: 700 }}>
+                    #{String(p.rank ?? 99).padStart(2, "0")}
+                  </span>
+                  <span style={{ minWidth: 0 }}>
+                    <span style={{ fontSize: 13, color: T.text, fontWeight: 600, display: "block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {p.name}
+                    </span>
+                    <span style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                      {(p.school || "—")} · {p.pos || "—"}
+                    </span>
+                  </span>
+                  <Plus size={13} color={T.cyan} />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Axis style toggle */}
+        <div
+          style={{
+            display: "inline-flex",
+            border: `1px solid ${T.border}`,
+            background: T.surface2,
+          }}
+          title="Toggle how the 8-axis trait grades are drawn on each card. Radar shows shape (well-rounded vs. spiky); bars are easier to compare across cards."
+        >
+          {[
+            { key: "radar", label: "Radar" },
+            { key: "bars",  label: "Bars" },
+          ].map((opt) => {
+            const isActive = axisStyle === opt.key;
+            return (
+              <button
+                key={opt.key}
+                type="button"
+                onClick={() => setAxisStyle?.(opt.key)}
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.16em",
+                  color: isActive ? T.bg : T.textMute,
+                  background: isActive ? T.cyan : "transparent",
+                  border: "none",
+                  padding: "8px 14px",
+                  cursor: "pointer",
+                  textTransform: "uppercase",
+                  fontWeight: isActive ? 700 : 500,
+                }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Clear-all */}
+        {dashSelected.length > 0 && (
+          <button
+            type="button"
+            onClick={clearDashboard}
+            title="Remove all pinned prospects"
+            style={{
+              ...mono,
+              fontSize: 9,
+              letterSpacing: "0.16em",
+              color: T.textMute,
+              background: "transparent",
+              border: `1px solid ${T.border}`,
+              padding: "8px 14px",
+              cursor: "pointer",
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Clear All
           </button>
-        ))}
+        )}
       </div>
 
-      {dashSelected.length === 0 ? (
+      {/* ====== CARD GRID ====== */}
+      {pinned.length === 0 ? (
         <div
           style={{
             background: T.card,
@@ -1751,31 +1608,38 @@ const DashboardPage = ({ selected, setSelected, onOpenProfile, addToSelected, re
               fontSize: 11,
               color: T.textMute,
               letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              marginBottom: 8,
+              fontWeight: 700,
             }}
           >
-            SELECT A PROSPECT FROM THE STREAM TO OPEN THEIR DASHBOARD
+            Your decision board is empty
+          </div>
+          <div style={{ fontSize: 13, color: T.textDim, maxWidth: 480, margin: "0 auto", lineHeight: 1.55 }}>
+            Search above to pin prospects. Each card shows a rich hero, the
+            8-axis trait profile (radar or bars), your authored Floor→Ceiling
+            outcome range, and your scores at a glance — so you can compare
+            up to {pinCap} prospects without leaving the page.
           </div>
         </div>
       ) : (
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: dashSelected.length === 1 ? "1fr" : "1fr 1fr",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 16,
           }}
-          className="prospera-dash-grid"
+          className="prospera-dash-grid-v2"
         >
-          {dashSelected.map((id) => {
-            const p = PROSPECTS.find((x) => x.id === id);
-            return (
-              <DashboardCard
-                key={id}
-                p={p}
-                onOpen={() => onOpenProfile(id)}
-                onRemove={() => removeFromSelected(id)}
-              />
-            );
-          })}
+          {pinned.map((p) => (
+            <DashboardCardV2
+              key={p.id}
+              p={p}
+              axisStyle={axisStyle}
+              onOpenProfile={() => onOpenProfile(p.id)}
+              onRemove={() => removeFromSelected(p.id)}
+            />
+          ))}
         </div>
       )}
     </div>
@@ -6549,7 +6413,14 @@ function ProsperaAppInner() {
   const customWeights = useCustomWeights();
   const [route, setRoute] = useState("Dashboard");
   const [selectedId, setSelectedId] = useState("p1");
-  const [dashSelected, setDashSelected] = useState(["p1", "p2"]);
+  // Dashboard pins persist across sessions. Empty by default so a new user
+  // sees the empty state explaining what the Dashboard is for, then curates
+  // their own watchlist by searching prospects in. Cap is enforced in
+  // addToSelected below (raised from the old 2-card limit).
+  const [dashSelected, setDashSelected] = useLocalStorageState("prospera.terminal.dashboard-pins", []);
+  // Radar vs. bars rendering toggle, also persisted. Both styles share the
+  // same data; this is a per-user preference for how the trait viz is drawn.
+  const [dashAxisStyle, setDashAxisStyle] = useLocalStorageState("prospera.terminal.dashboard-axis-style", "radar");
   const [profileId, setProfileId] = useState(null);
   const [railOpen, setRailOpen] = useState(false);
   const [watchlist, setWatchlist] = useLocalStorageState("prospera.terminal.watchlist", []);
@@ -6718,10 +6589,14 @@ function ProsperaAppInner() {
     });
   };
 
+  // Dashboard pins: toggle in/out, soft cap so the grid doesn't get unwieldy.
+  // The cap is generous (12 = four rows of three) since the user can always
+  // clear-all or unpin individual cards.
+  const DASHBOARD_PIN_CAP = 12;
   const addToSelected = (id) => {
     setDashSelected((curr) => {
       if (curr.includes(id)) return curr.filter((x) => x !== id);
-      if (curr.length >= 2) return [curr[1], id];
+      if (curr.length >= DASHBOARD_PIN_CAP) return curr; // already full — silent no-op
       return [...curr, id];
     });
     setSelectedId(id);
@@ -6730,6 +6605,8 @@ function ProsperaAppInner() {
   const removeFromSelected = (id) => {
     setDashSelected((curr) => curr.filter((x) => x !== id));
   };
+
+  const clearDashboard = () => setDashSelected([]);
 
   const onOpenProfile = (id) => {
     setProfileId(id);
@@ -6829,12 +6706,14 @@ function ProsperaAppInner() {
         <main style={{ flex: 1, minWidth: 0 }}>
           {route === "Dashboard" && (
             <DashboardPage
-              selected={selectedId}
-              setSelected={setSelectedId}
               onOpenProfile={onOpenProfile}
               addToSelected={addToSelected}
               removeFromSelected={removeFromSelected}
+              clearDashboard={clearDashboard}
               dashSelected={dashSelected}
+              axisStyle={dashAxisStyle}
+              setAxisStyle={setDashAxisStyle}
+              pinCap={DASHBOARD_PIN_CAP}
             />
           )}
           {route === "Scout Desk" && (

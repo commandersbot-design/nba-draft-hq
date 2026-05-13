@@ -2124,3 +2124,18 @@ button {
   }
 }
 
+/* Dashboard v2 — 3-up by default, 2-up on tablet, 1-up on phone.
+ * The card content is dense enough that going below ~340px wide makes
+ * the radar/bars hard to read, so we collapse decisively rather than
+ * letting cards shrink. */
+@media (max-width: 1100px) {
+  .prospera-dash-grid-v2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 720px) {
+  .prospera-dash-grid-v2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
