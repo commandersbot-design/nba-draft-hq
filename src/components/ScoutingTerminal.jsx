@@ -4984,6 +4984,23 @@ function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// Sort options for the Scout Desk row list. Order = display order in the
+// segmented selector. The "custom" option is special — it's only really
+// useful once the user has dragged rows around (their order is saved into
+// boardOrder); selecting "custom" with no boardOrder falls back to rank.
+const SCOUT_DESK_SORT_OPTIONS = [
+  { key: "rank",   label: "Rank",   desc: "Consensus rank (default)" },
+  { key: "name",   label: "Name",   desc: "Alphabetical by last name" },
+  { key: "score",  label: "Score",  desc: "Computed score, highest first" },
+  { key: "tier",   label: "Tier",   desc: "Your tier call: Ceiling → Floor" },
+  { key: "recent", label: "Recent", desc: "Most recently touched scout note" },
+  { key: "custom", label: "Custom", desc: "Drag-and-drop order you've saved" },
+];
+
+// Tier-call ordering (Ceiling first, Floor last). Prospects without a tier
+// call fall to the bottom of the tier sort.
+const TIER_RANK = { C: 0, HE: 1, MID: 2, LE: 3, FL: 4 };
+
 const BigBoardPage = ({
   onOpenProfile, watchlist = [], compareIds = [],
   onToggleWatchlist, onToggleCompare, onOpenCompare,
@@ -4992,39 +5009,88 @@ const BigBoardPage = ({
   const [watchOnly, setWatchOnly] = useState(false);
   const [query, setQuery] = useState("");
   const [draggingId, setDraggingId] = useState(null);
-  const allowReorder = typeof onSetBoardOrder === "function";
+  // Sort field is persisted so the user's pick sticks across reloads. Default
+  // is "rank" since that's the most useful starting view for new users.
+  const [sortField, setSortField] = useLocalStorageState("prospera.terminal.scout-desk-sort", "rank");
+  // Scout views are read here so we can sort by tier-call or by last-updated
+  // even though the row component reads them through its own InlineTierPill.
+  const [allScoutViews] = useLocalStorageState("prospera.terminal.scout-views", {});
+  const allowReorder = typeof onSetBoardOrder === "function" && sortField === "custom";
   const lowered = query.trim().toLowerCase();
 
-  // Compute the canonical order of all active prospects:
-  //   - If user has set a custom order via drag-drop, use it
-  //   - Otherwise default to alphabetical by last name
-  // We always validate the custom order against PROSPECTS so stale IDs (from
-  // an earlier active class) are dropped and newly-added prospects auto-append.
+  // Compute the ordered prospect list based on the chosen sort field. The
+  // result is always a full list of all prospects (filters apply after this),
+  // so dragging works on the unfiltered baseline.
   const orderedAllProspects = useMemo(() => {
     const allIds = new Set(PROSPECTS.map((p) => p.id));
-    if (Array.isArray(boardOrder) && boardOrder.length > 0) {
-      const seen = new Set();
-      const ordered = [];
-      for (const id of boardOrder) {
-        if (allIds.has(id) && !seen.has(id)) {
-          seen.add(id);
-          ordered.push(PROSPECTS.find((p) => p.id === id));
+
+    if (sortField === "custom") {
+      // Honour the saved drag-order; append any prospects added since.
+      if (Array.isArray(boardOrder) && boardOrder.length > 0) {
+        const seen = new Set();
+        const ordered = [];
+        for (const id of boardOrder) {
+          if (allIds.has(id) && !seen.has(id)) {
+            seen.add(id);
+            ordered.push(PROSPECTS.find((p) => p.id === id));
+          }
         }
+        for (const p of PROSPECTS) {
+          if (!seen.has(p.id)) ordered.push(p);
+        }
+        return ordered;
       }
-      // Append any new prospects that weren't in the saved order
-      for (const p of PROSPECTS) {
-        if (!seen.has(p.id)) ordered.push(p);
-      }
-      return ordered;
+      // No saved drag-order yet — fall through to rank as the seed so the
+      // user has something coherent before they start dragging.
     }
-    // Default: alphabetical by last name
-    return PROSPECTS.slice().sort((a, b) => {
-      const an = String(a.last || a.name || "").toLowerCase();
-      const bn = String(b.last || b.name || "").toLowerCase();
-      return an.localeCompare(bn);
-    });
-  }, [boardOrder]);
-  const usingCustomOrder = Array.isArray(boardOrder) && boardOrder.length > 0;
+
+    const arr = PROSPECTS.slice();
+    switch (sortField) {
+      case "name":
+        return arr.sort((a, b) => {
+          const an = String(a.last || a.name || "").toLowerCase();
+          const bn = String(b.last || b.name || "").toLowerCase();
+          return an.localeCompare(bn);
+        });
+      case "score":
+        return arr.sort((a, b) => {
+          const av = a.score ?? -Infinity;
+          const bv = b.score ?? -Infinity;
+          return bv - av;
+        });
+      case "tier": {
+        // Ceiling → Floor; ungraded prospects fall to the bottom (rank-ordered
+        // among themselves so the list stays predictable).
+        return arr.sort((a, b) => {
+          const ta = TIER_RANK[allScoutViews?.[a.id]?.tierRating];
+          const tb = TIER_RANK[allScoutViews?.[b.id]?.tierRating];
+          const aHas = ta != null;
+          const bHas = tb != null;
+          if (aHas && bHas && ta !== tb) return ta - tb;
+          if (aHas && !bHas) return -1;
+          if (!aHas && bHas) return 1;
+          return (a.rank ?? 999) - (b.rank ?? 999);
+        });
+      }
+      case "recent": {
+        // Most-recently-touched scout-view first; untouched prospects fall to
+        // the bottom (rank-ordered among themselves).
+        return arr.sort((a, b) => {
+          const au = allScoutViews?.[a.id]?.lastUpdated;
+          const bu = allScoutViews?.[b.id]?.lastUpdated;
+          if (au && bu) return String(bu).localeCompare(String(au));
+          if (au && !bu) return -1;
+          if (!au && bu) return 1;
+          return (a.rank ?? 999) - (b.rank ?? 999);
+        });
+      }
+      case "rank":
+      default:
+        return arr.sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
+    }
+  }, [sortField, boardOrder, allScoutViews]);
+
+  const usingCustomOrder = sortField === "custom" && Array.isArray(boardOrder) && boardOrder.length > 0;
 
   // Apply watchlist + search filters AFTER ordering so the user's drag order
   // is preserved when filters narrow the list.
@@ -5059,18 +5125,18 @@ const BigBoardPage = ({
             Scout Desk
           </h1>
           <div style={{ fontSize: 13, color: T.textDim, marginBottom: 18 }}>
-            {PROSPECTS.length} prospects · {usingCustomOrder ? "your custom order" : "alphabetical"} · drag to reorder
+            {PROSPECTS.length} prospects · sort: {SCOUT_DESK_SORT_OPTIONS.find((o) => o.key === sortField)?.label || "Rank"}{sortField === "custom" ? " · drag to reorder" : ""}
           </div>
         </div>
-        {allowReorder && usingCustomOrder && (
+        {usingCustomOrder && typeof onSetBoardOrder === "function" && (
           <button
             type="button"
             onClick={() => {
-              if (window.confirm("Reset the Big Board to alphabetical order? Your custom order will be cleared.")) {
+              if (window.confirm("Clear your saved custom order? Future visits in Custom sort will start from rank order.")) {
                 onSetBoardOrder(null);
               }
             }}
-            title="Clear your custom order and revert to alphabetical sort"
+            title="Discard the drag-and-drop order you've saved. Does not change the current sort field."
             style={{
               ...mono, fontSize: 9, letterSpacing: "0.16em",
               color: T.textMute, background: "transparent",
@@ -5081,7 +5147,7 @@ const BigBoardPage = ({
             onMouseEnter={(e) => { e.currentTarget.style.color = T.textDim; e.currentTarget.style.borderColor = T.borderSoft; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = T.textMute; e.currentTarget.style.borderColor = T.border; }}
           >
-            ↺ Reset to alphabetical
+            ↺ Clear custom order
           </button>
         )}
       </div>
@@ -5111,6 +5177,54 @@ const BigBoardPage = ({
             <X size={12} />
           </button>
         )}
+      </div>
+
+      {/* Sort selector — segmented row of chips. Sits above the action buttons
+          so the "what's the row order doing?" question is answerable at a glance.
+          Custom sort + drag-handles only render together so the affordance is
+          coherent with the active mode. */}
+      <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10, flexWrap: "wrap" }} className="prospera-scout-desk-sort-row">
+        <span style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase", fontWeight: 700 }}>
+          Sort
+        </span>
+        <div
+          style={{
+            display: "inline-flex",
+            border: `1px solid ${T.border}`,
+            background: T.surface2,
+            flexWrap: "wrap",
+          }}
+        >
+          {SCOUT_DESK_SORT_OPTIONS.map((opt, i) => {
+            const isActive = sortField === opt.key;
+            const isCustom = opt.key === "custom";
+            const noCustomYet = isCustom && !(Array.isArray(boardOrder) && boardOrder.length > 0);
+            return (
+              <button
+                key={opt.key}
+                type="button"
+                onClick={() => setSortField(opt.key)}
+                title={noCustomYet ? `${opt.desc} — switch here, then drag-and-drop rows to set your order` : opt.desc}
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.14em",
+                  color: isActive ? T.bg : (noCustomYet ? T.textMute : T.textDim),
+                  background: isActive ? T.cyan : "transparent",
+                  border: "none",
+                  borderLeft: i === 0 ? "none" : `1px solid ${T.border}`,
+                  padding: "7px 12px",
+                  cursor: "pointer",
+                  textTransform: "uppercase",
+                  fontWeight: isActive ? 700 : 500,
+                  fontStyle: noCustomYet && !isActive ? "italic" : "normal",
+                }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
