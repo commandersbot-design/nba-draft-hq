@@ -54,12 +54,28 @@ const COLORS = {
   surface2:   "var(--prospera-surface-2)",
 };
 
-function clamp(v) {
+// `traits9` values are authored on a 1-10 grade scale (see DeepDives.jsx and
+// StatProfilePanelFromTraits which renders "1–10 SCALE"). Both viz styles
+// here render against a 0-100 axis, so we map grade → display.
+//
+// The mapping is also slightly amplified: most college prospects' grades
+// cluster in 4-8, so a literal *10 would mean every card looks like it
+// fills 40-80% of the bar — differences subtle. Anchoring to 3-10 expands
+// that mid-range to ~0-100% so differences POP across cards. A grade of
+// 3 or below renders empty (truly weak axis); a grade of 10 pegs full.
+//
+// If a caller passes a value already in 11-100 range (the new pipeline's
+// percentile outputs), we use it as-is and skip the grade transform.
+function toDisplay(v) {
   const n = Number(v);
-  if (!Number.isFinite(n)) return 0;
-  if (n < 0) return 0;
-  if (n > 100) return 100;
-  return n;
+  if (!Number.isFinite(n) || n <= 0) return 0;
+  if (n > 10) {
+    // Already on a 0-100 scale; clamp and return.
+    return Math.min(100, Math.max(0, n));
+  }
+  // 1-10 grade → anchored 0-100 spread.
+  const spread = ((n - 3) / 7) * 100;
+  return Math.min(100, Math.max(0, spread));
 }
 
 // =============================================================================
@@ -93,7 +109,7 @@ export function AxisRadar8({ traits9, size = 200 }) {
 
   // Build polygon points string for the score shape
   const scorePoints = ordered.map((axis, i) => {
-    const v = clamp(t[axis]);
+    const v = toDisplay(t[axis]);
     const [x, y] = pointFor(i, v / 100);
     return `${x.toFixed(2)},${y.toFixed(2)}`;
   }).join(" ");
@@ -177,7 +193,7 @@ export function AxisRadar8({ traits9, size = 200 }) {
 
       {/* Score dots at vertices for emphasis */}
       {ordered.map((axis, i) => {
-        const v = clamp(t[axis]);
+        const v = toDisplay(t[axis]);
         const [x, y] = pointFor(i, v / 100);
         const isOff = OFFENSE_AXES.includes(axis);
         return (
@@ -223,7 +239,12 @@ export function AxisBars8({ traits9 }) {
       </div>
       <div style={{ display: "grid", gap: 4 }}>
         {axes.map((axis) => {
-          const v = clamp(t[axis]);
+          const raw = t[axis];                // original 1-10 grade for the label
+          const v = toDisplay(raw);           // 0-100 spread for the bar width
+          const rawNum = Number(raw);
+          const rawDisplay = Number.isFinite(rawNum) && rawNum > 0
+            ? (rawNum <= 10 ? Math.round(rawNum) : Math.round(rawNum / 10))
+            : null;
           return (
             <div
               key={axis}
@@ -272,7 +293,7 @@ export function AxisBars8({ traits9 }) {
                   fontWeight: 600,
                 }}
               >
-                {v ? Math.round(v) : "—"}
+                {rawDisplay != null ? rawDisplay : "—"}
               </span>
             </div>
           );
