@@ -3270,13 +3270,13 @@ const ProspectStatsTab = ({ p }) => {
   const adv = realStats?.stats?.advanced || null;
 
   if (p.statsSource === "NONE") {
+    // Real college stats not available (typical for international prospects).
+    // The trait profile shown previously here was a duplicate of the Traits
+    // tab — Prospect Stats should only carry real data, so an empty state
+    // is the honest answer when there isn't any.
     return (
       <div style={{ display: "grid", gap: 20 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="prospera-stat-grid">
-          <StatProfilePanelFromTraits title="Offensive Profile" traits9={p.traits9} subset={["Advantage Creation","Shooting Gravity","Passing Creation","Off-Ball Value"]} color={T.cyan} />
-          <StatProfilePanelFromTraits title="Defensive Profile" traits9={p.traits9} subset={["Defensive Versatility","Scalability","Processing Speed","Decision Making"]} color={T.blue} />
-        </div>
-        <EmptyState label="Per-game stats not available for international prospects." />
+        <EmptyState label="Per-game stats not available for this prospect. See the Traits tab for grading + risks." />
       </div>
     );
   }
@@ -3395,11 +3395,9 @@ const ProspectStatsTab = ({ p }) => {
 
   return (
     <div style={{ display: "grid", gap: 20 }}>
-      {/* Stat Profile from traits */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="prospera-stat-grid">
-        <StatProfilePanelFromTraits title="Offensive Profile" traits9={p.traits9} subset={["Advantage Creation","Shooting Gravity","Passing Creation","Off-Ball Value"]} color={T.cyan} />
-        <StatProfilePanelFromTraits title="Defensive Profile" traits9={p.traits9} subset={["Defensive Versatility","Scalability","Processing Speed","Decision Making"]} color={T.blue} />
-      </div>
+      {/* The trait Off/Def split panels used to render here, but they duplicated
+          the Traits tab's 9-Trait Profile. Prospect Stats now only shows real
+          college data (counting line, advanced metrics, shooting splits, etc.). */}
 
       {/* Real season stats — counting line with PG/36/100 toggle */}
       {countingLineCells && (
@@ -4148,27 +4146,11 @@ const EvaluationTab = ({ p, customTier = "", customTags = [], onSetCustomTier, o
         </div>
       </Section>
 
-      <Section title="Trait Snapshot">
-        <div style={{ display: "grid", gap: 10 }}>
-          {Object.entries(p.traits || {}).map(([k, v]) => (
-            <div
-              key={k}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr 44px",
-                gap: 12,
-                alignItems: "center",
-              }}
-            >
-              <span style={{ ...mono, fontSize: 11, color: T.textDim, letterSpacing: "0.1em" }}>
-                {k.toUpperCase()}
-              </span>
-              <MetricBar value={v} />
-              <span style={{ ...mono, fontSize: 14, color: T.text, textAlign: "right", fontWeight: 600 }}>{v}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
+      {/* "Trait Snapshot" (the legacy 5-axis Scoring/Playmaking/Defense/Feel/
+          Athleticism panel) used to live here. It duplicated the Traits tab's
+          richer 9-trait taxonomy on a different scale, so the same data read
+          two different ways across two tabs. Removed — Evaluation should
+          stay focused on Story + Overrides + grade reasoning. */}
 
       <Section title="What's Driving the Grade">
         <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gap: 10 }}>
@@ -4322,40 +4304,28 @@ const TraitsTab = ({ p }) => {
     return p.traits9 || {};
   }, [computed, p?.traits9]);
 
-  // 5-bucket (Scoring/Playmaking/Defense/Feel/Athleticism) — derive from
-  // 8-trait when computed is available, fall back to p.traits otherwise.
-  const effectiveTraits5 = useMemo(() => {
-    if (computed?.traits) {
-      const t = computed.traits;
-      const get = (k) => t[k]?.score ?? null;
-      const avg = (vs) => {
-        const present = vs.filter((v) => v != null);
-        return present.length ? Math.round(present.reduce((s, x) => s + x, 0) / present.length) : null;
-      };
-      const scoring     = avg([get("ShootingGravity"), get("AdvantageCreation")]);
-      const playmaking  = avg([get("PassingCreation"), get("DecisionMaking")]);
-      const defense     = avg([get("DefensiveVersatility")]);
-      const feel        = avg([get("DecisionMaking"), get("ProcessingSpeed"), get("OffBallValue")]);
-      const athleticism = avg([get("Scalability"), get("AdvantageCreation")]);
-      const out = {};
-      if (scoring     != null) out.Scoring     = scoring;
-      if (playmaking  != null) out.Playmaking  = playmaking;
-      if (defense     != null) out.Defense     = defense;
-      if (feel        != null) out.Feel        = feel;
-      if (athleticism != null) out.Athleticism = athleticism;
-      if (Object.keys(out).length > 0) return out;
-    }
-    return p.traits || {};
-  }, [computed, p?.traits]);
+  // (The effectiveTraits5 memo that derived a 5-bucket Scoring/Playmaking/
+  // Defense/Feel/Athleticism view was deleted when the 5-Bucket Snapshot
+  // panel was removed from this tab — see commit notes for the dedup pass.)
   return (
     <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 16 }} className="prospera-eval-grid">
       <div style={{ display: "grid", gap: 16 }}>
-        <Section title="9-Trait Profile">
+        <Section title="Trait Profile">
           <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em", marginBottom: 14 }}>
-            FULL EVALUATION TAXONOMY · 1–10 SCALE
+            8-AXIS EVALUATION TAXONOMY · 1–10 SCALE
           </div>
-          <div style={{ display: "grid", gap: 14 }}>
-            {Object.entries(effectiveTraits9).map(([k, v]) => {
+          {Object.keys(effectiveTraits9).length === 0 ? (
+            <div style={{ fontSize: 12, color: T.textMute }}>No trait evaluation on file.</div>
+          ) : (() => {
+            // Split into offence / defence groups so the shape of the
+            // prospect (offense-leaning vs defense-leaning) reads at a glance.
+            // Bars are colour-coded by group — cyan for O, signal for D.
+            const OFFENSE = ["Advantage Creation", "Shooting Gravity", "Passing Creation", "Off-Ball Value"];
+            const DEFENSE = ["Defensive Versatility", "Scalability", "Processing Speed", "Decision Making"];
+
+            const renderRow = (k, color) => {
+              const v = effectiveTraits9[k];
+              if (v == null) return null;
               const ovr = overrides.traits[k];
               return (
                 <div key={k}>
@@ -4389,35 +4359,55 @@ const TraitsTab = ({ p }) => {
                           {ovr.system}/10
                         </span>
                       )}
-                      <span style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700 }}>{v} / 10</span>
+                      <span style={{ ...mono, fontSize: 14, color, fontWeight: 700 }}>{v} / 10</span>
                     </span>
                   </div>
-                  <MetricBar value={v * 10} />
+                  <MetricBar value={v * 10} color={color} />
                 </div>
               );
-            })}
-            {Object.keys(effectiveTraits9).length === 0 && (
-              <div style={{ fontSize: 12, color: T.textMute }}>No trait evaluation on file.</div>
-            )}
-          </div>
+            };
+
+            const groupHeader = (label, color) => (
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.2em",
+                  color,
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                  marginBottom: 10,
+                }}
+              >
+                {label}
+              </div>
+            );
+
+            return (
+              <div style={{ display: "grid", gap: 18 }}>
+                <div>
+                  {groupHeader("Offence", T.cyan)}
+                  <div style={{ display: "grid", gap: 14 }}>
+                    {OFFENSE.map((k) => renderRow(k, T.cyan))}
+                  </div>
+                </div>
+                <div>
+                  {groupHeader("Defence", T.signal)}
+                  <div style={{ display: "grid", gap: 14 }}>
+                    {DEFENSE.map((k) => renderRow(k, T.signal))}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </Section>
 
-        <Section title="5-Bucket Snapshot">
-          <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em", marginBottom: 14 }}>
-            {computed ? "FROM COMPUTED 8-TRAIT PIPELINE · 0–100 SCALE" : "DERIVED FROM 9-TRAIT PROFILE · 0–100 SCALE"}
-          </div>
-          <div style={{ display: "grid", gap: 12 }}>
-            {Object.entries(effectiveTraits5).map(([k, v]) => (
-              <div key={k}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-                  <span style={{ fontSize: 13, color: T.textDim, fontWeight: 500 }}>{k}</span>
-                  <span style={{ ...mono, fontSize: 13, color: T.cyan, fontWeight: 700 }}>{v}</span>
-                </div>
-                <MetricBar value={v} />
-              </div>
-            ))}
-          </div>
-        </Section>
+        {/* The 5-Bucket Snapshot panel that used to live here (Scoring /
+            Playmaking / Defense / Feel / Athleticism on a 0-100 scale) was
+            a derived / coarser view of the same data the 9-Trait Profile
+            already shows above on the 1-10 scale. Two views of the same
+            taxonomy was the main source of "I keep seeing this twice"
+            feedback — removed. The 9-Trait Profile is now canonical. */}
       </div>
 
       <div style={{ display: "grid", gap: 16 }}>
@@ -4480,10 +4470,12 @@ const TraitsTab = ({ p }) => {
             <div style={{ display: "grid", gap: 10 }}>
               <Row k="Tier" v={p.tier} />
               <Row k="Personal Score" v={displayScore(p) != null ? displayScore(p).toFixed(2) : "—"} />
-              <Row k="Weighted Trait" v={p.weightedTraitScore?.toFixed(2) ?? "—"} />
-              <Row k="Risk Penalty" v={p.riskPenalty?.toFixed(2) ?? "—"} />
               <Row k="Percentile" v={p.percentile != null ? `${p.percentile}` : "—"} />
             </div>
+            {/* Weighted Trait + Risk Penalty used to render here. They're
+                pipeline intermediates rather than scout-readable signals —
+                a percentile + a tier already encode their effect. Removed
+                from the surface to keep Model Output focused. */}
           </Section>
         )}
       </div>
