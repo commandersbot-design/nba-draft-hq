@@ -876,7 +876,7 @@ const FlagDot = ({ lvl }) => {
 // ---------- TOP NAV ----------
 // Scout Desk = the user's personal scouting hub (former Big Board + Deep Dives merged).
 // My Board = the user-facing board builder (manual / preset / team-need / custom-weights).
-const NAV_ITEMS = ["Scout Desk", "Deep Dives", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
+const NAV_ITEMS = ["Scout Desk", "Founder's Read", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
 // PROSPERA TICKER · slim band above the main nav.
 // Multi-source unified feed: hand-authored news from prospectNews.json
@@ -4871,7 +4871,10 @@ function emptyDeepDiveSeed(prospectId) {
 // roster (with dive indicators) and the full Deep Dive editor index.
 // DeepDivesShell — sub-tab wrapper for the personal analysis section.
 // Two views: "my-board" (the multi-mode board builder) and "dives" (per-prospect
-// scout reports). The main app nav surfaces this as "Deep Dives".
+// scout reports). The main app nav surfaces this as "Founder's Read"
+// (the section is gated behind the founder content toggle elsewhere; the
+// underlying file/component names still use the legacy "DeepDives" name
+// to avoid breaking imports and localStorage keys).
 function DeepDivesShell({ view, setView, diveCount, scoutCount, children }) {
   return (
     <div>
@@ -7551,7 +7554,7 @@ function ProsperaAppInner() {
               onSetBoardOrder={setBigBoardOrder}
             />
           )}
-          {route === "Deep Dives" && (
+          {route === "Founder's Read" && (
             <DeepDivesShell
               view={scoutDeskView}
               setView={setScoutDeskView}

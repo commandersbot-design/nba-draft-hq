@@ -880,7 +880,7 @@ function DeepDiveForm({ prospect, deepDive, onChange, onClose, onDelete }) {
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, flexWrap: "wrap" }}>
         <div>
-          <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase" }}>Deep Dive</div>
+          <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase" }}>Founder's Read</div>
           <div style={{ fontSize: 22, color: T.text, fontWeight: 700, marginTop: 4, letterSpacing: "-0.01em" }}>
             {prospect?.name || "—"}
           </div>
@@ -1354,7 +1354,7 @@ export const DeepDivesPage = ({
         <div>
           <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase" }}>Workspace</div>
           <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
-            Deep Dives
+            Founder's Read
           </h1>
           <div style={{ fontSize: 13, color: T.textDim }}>
             {counts.ALL} authored · personal scout reports, daily updates, NBA comps, recent observations
