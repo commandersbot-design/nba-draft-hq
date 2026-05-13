@@ -1,4 +1,5 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
 /**
@@ -31,10 +32,22 @@ function colorForTier(abbr) {
   return TIERS.find((t) => t.abbr === abbr)?.color || "var(--prospera-text-mute)";
 }
 
+// Approximate width of the 5-tier strip + CLR button, used for clamping the
+// popover to the viewport so it never spills off the right edge on phones.
+const STRIP_APPROX_WIDTH = 252;
+const STRIP_APPROX_HEIGHT = 36;
+const VIEWPORT_MARGIN = 6;
+
 export default function InlineTierPill({ prospectId }) {
   const [allViews, setAllViews] = useLocalStorageState("prospera.terminal.scout-views", {});
   const [open, setOpen] = React.useState(false);
-  const wrapperRef = React.useRef(null);
+  const triggerRef = React.useRef(null);
+  const popoverRef = React.useRef(null);
+  // Viewport-space coords for the portalised popover. See InlineTagsPopover
+  // for the underlying reason this needs to escape its container: the Scout
+  // Desk row table wraps everything in an overflow-auto scroller, which
+  // forces clipping on both axes and would otherwise cut off this strip.
+  const [coords, setCoords] = React.useState(null);
 
   const currentTier = allViews[prospectId]?.tierRating || "";
   const color = currentTier ? colorForTier(currentTier) : "var(--prospera-border)";
@@ -54,19 +67,60 @@ export default function InlineTierPill({ prospectId }) {
     setOpen(false);
   };
 
-  // Close on outside click
+  const recomputeCoords = React.useCallback(() => {
+    const trigger = triggerRef.current;
+    if (!trigger) return;
+    const rect = trigger.getBoundingClientRect();
+    // Anchor the strip's left edge to the trigger's left edge, then clamp
+    // inside the viewport so phone widths don't cause overflow.
+    let left = rect.left;
+    if (left + STRIP_APPROX_WIDTH > window.innerWidth - VIEWPORT_MARGIN) {
+      left = window.innerWidth - STRIP_APPROX_WIDTH - VIEWPORT_MARGIN;
+    }
+    if (left < VIEWPORT_MARGIN) left = VIEWPORT_MARGIN;
+    // Drop below the trigger by default; flip above when there isn't room.
+    const spaceBelow = window.innerHeight - rect.bottom;
+    let top;
+    if (spaceBelow >= STRIP_APPROX_HEIGHT + VIEWPORT_MARGIN) {
+      top = rect.bottom + 4;
+    } else {
+      top = Math.max(VIEWPORT_MARGIN, rect.top - STRIP_APPROX_HEIGHT - 4);
+    }
+    setCoords({ top, left });
+  }, []);
+
+  // Open lifecycle: compute coords, track scroll/resize, close on outside
+  // click or Escape. Scroll listener uses capture phase to catch the inner
+  // scroll wrap that sits between this trigger and the document.
   React.useEffect(() => {
     if (!open) return;
+    recomputeCoords();
     const onDown = (e) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) setOpen(false);
+      const t = e.target;
+      if (triggerRef.current && triggerRef.current.contains(t)) return;
+      if (popoverRef.current && popoverRef.current.contains(t)) return;
+      setOpen(false);
     };
+    const onKey = (e) => { if (e.key === "Escape") setOpen(false); };
     document.addEventListener("mousedown", onDown);
-    return () => document.removeEventListener("mousedown", onDown);
-  }, [open]);
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("scroll", recomputeCoords, true);
+    window.addEventListener("resize", recomputeCoords);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("scroll", recomputeCoords, true);
+      window.removeEventListener("resize", recomputeCoords);
+    };
+  }, [open, recomputeCoords]);
 
   return (
-    <div ref={wrapperRef} style={{ position: "relative", display: "inline-flex", alignItems: "center" }} onClick={(e) => e.stopPropagation()}>
+    <span
+      style={{ display: "inline-flex", alignItems: "center" }}
+      onClick={(e) => e.stopPropagation()}
+    >
       <button
+        ref={triggerRef}
         type="button"
         onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}
         title={currentTier ? `Tier call: ${TIERS.find(t=>t.abbr===currentTier)?.label}. Click to change.` : "Set Floor→Ceiling tier call"}
@@ -87,13 +141,16 @@ export default function InlineTierPill({ prospectId }) {
       >
         {currentTier || "·"}
       </button>
-      {open && (
+      {open && coords && createPortal(
         <div
+          ref={popoverRef}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
           style={{
-            position: "absolute",
-            top: "calc(100% + 4px)",
-            left: 0,
-            zIndex: 50,
+            position: "fixed",
+            top: coords.top,
+            left: coords.left,
+            zIndex: 1000,
             display: "flex",
             gap: 4,
             padding: 6,
@@ -147,8 +204,9 @@ export default function InlineTierPill({ prospectId }) {
               CLR
             </button>
           )}
-        </div>
+        </div>,
+        document.body,
       )}
-    </div>
+    </span>
   );
 }
