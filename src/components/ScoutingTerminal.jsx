@@ -4984,6 +4984,84 @@ function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// Position family filter buckets — broader than the raw PG/SG/SF/PF/C codes
+// so a single chip ("Guards") covers the common scouting axis. We match
+// using positionFamily() defined elsewhere in this file. Each chip is a
+// toggle; multiple chips OR within the same group, AND across groups.
+const POSITION_FAMILY_CHIPS = [
+  { key: "Guard",   label: "Guards" },
+  { key: "Wing",    label: "Wings" },
+  { key: "Forward", label: "Forwards" },
+  { key: "Big",     label: "Bigs" },
+];
+
+const TIER_CHIPS = [
+  { key: "C",   label: "C",   color: "var(--prospera-signal)" },
+  { key: "HE",  label: "HE",  color: "#F59E0B" },
+  { key: "MID", label: "MID", color: "var(--prospera-cyan)" },
+  { key: "LE",  label: "LE",  color: "var(--prospera-text-dim)" },
+  { key: "FL",  label: "FL",  color: "var(--prospera-text-mute)" },
+];
+
+const STATE_CHIPS = [
+  { key: "tagged",    label: "Tagged",    desc: "Has at least one assigned tag" },
+  { key: "untagged",  label: "Untagged",  desc: "No tags assigned yet" },
+  { key: "scouted",   label: "Scouted",   desc: "Has a tier call or scout-note content" },
+  { key: "untouched", label: "Untouched", desc: "No tier call and no scout-note content" },
+];
+
+// Filter-chip group helper for Scout Desk. Renders a small label + a row of
+// toggleable chips. Chips inside a single group OR together. The `colored`
+// flag lets the Tier-Call group carry the tier's brand colour so the chips
+// match the tier-call badges used elsewhere on the site.
+function FilterChipGroup({ label, options, active, onToggle, colored = false }) {
+  return (
+    <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
+      <span style={{
+        fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
+        fontSize: 9,
+        letterSpacing: "0.18em",
+        color: "var(--prospera-text-mute)",
+        textTransform: "uppercase",
+        fontWeight: 700,
+      }}>
+        {label}
+      </span>
+      <div style={{ display: "inline-flex", gap: 4, flexWrap: "wrap" }}>
+        {options.map((opt) => {
+          const isActive = active.includes(opt.key);
+          const tone = colored && opt.color ? opt.color : "var(--prospera-cyan)";
+          return (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => onToggle(opt.key)}
+              title={opt.desc || `Filter: ${opt.label}`}
+              style={{
+                fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
+                fontSize: 9,
+                letterSpacing: "0.12em",
+                color: isActive ? "var(--prospera-bg)" : tone,
+                background: isActive ? tone : "transparent",
+                border: `1px solid ${tone}`,
+                padding: "4px 9px",
+                cursor: "pointer",
+                textTransform: "uppercase",
+                fontWeight: isActive ? 700 : 500,
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.background = `color-mix(in srgb, ${tone} 12%, transparent)`; }}
+              onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.background = "transparent"; }}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // Sort options for the Scout Desk row list. Order = display order in the
 // segmented selector. The "custom" option is special — it's only really
 // useful once the user has dragged rows around (their order is saved into
@@ -5015,6 +5093,21 @@ const BigBoardPage = ({
   // Scout views are read here so we can sort by tier-call or by last-updated
   // even though the row component reads them through its own InlineTierPill.
   const [allScoutViews] = useLocalStorageState("prospera.terminal.scout-views", {});
+  // Player-tags map drives the Tagged/Untagged filter chips.
+  const [allPlayerTags] = useLocalStorageState("prospera.terminal.player-tags", {});
+  // Filter chips — three independent groups, each stored as an array of
+  // active keys. Empty array means "no filter from this group". Multiple
+  // chips within a group OR; across groups AND. Persisted.
+  const [filterPositions, setFilterPositions] = useLocalStorageState("prospera.terminal.scout-desk-filter-positions", []);
+  const [filterTiers, setFilterTiers] = useLocalStorageState("prospera.terminal.scout-desk-filter-tiers", []);
+  const [filterState, setFilterState] = useLocalStorageState("prospera.terminal.scout-desk-filter-state", []);
+
+  const toggleInArray = (arr, key) => (arr.includes(key) ? arr.filter((k) => k !== key) : [...arr, key]);
+  const togglePositionFilter = (key) => setFilterPositions((curr) => toggleInArray(curr, key));
+  const toggleTierFilter = (key) => setFilterTiers((curr) => toggleInArray(curr, key));
+  const toggleStateFilter = (key) => setFilterState((curr) => toggleInArray(curr, key));
+  const clearAllFilters = () => { setFilterPositions([]); setFilterTiers([]); setFilterState([]); };
+  const activeFilterCount = filterPositions.length + filterTiers.length + filterState.length;
   const allowReorder = typeof onSetBoardOrder === "function" && sortField === "custom";
   const lowered = query.trim().toLowerCase();
 
@@ -5092,13 +5185,50 @@ const BigBoardPage = ({
 
   const usingCustomOrder = sortField === "custom" && Array.isArray(boardOrder) && boardOrder.length > 0;
 
-  // Apply watchlist + search filters AFTER ordering so the user's drag order
-  // is preserved when filters narrow the list.
+  // Apply all filters (watchlist + search + position/tier/state chips) AFTER
+  // ordering so the user's drag order is preserved when filters narrow the
+  // list. Chip groups OR within and AND across.
   const rows = orderedAllProspects.filter((p) => {
     if (watchOnly && !watchlist.includes(p.id)) return false;
-    if (!lowered) return true;
-    const haystack = [p.name, p.school, p.pos, p.archetype, p.country].join(" ").toLowerCase();
-    return haystack.includes(lowered);
+
+    if (filterPositions.length > 0) {
+      const fam = positionFamily(p.pos) || positionFamily(p.pos2);
+      if (!fam || !filterPositions.includes(fam)) return false;
+    }
+
+    if (filterTiers.length > 0) {
+      const t = allScoutViews?.[p.id]?.tierRating;
+      if (!t || !filterTiers.includes(t)) return false;
+    }
+
+    if (filterState.length > 0) {
+      const tagIds = allPlayerTags?.[p.id]?.tagIds || [];
+      const hasTags = tagIds.length > 0;
+      const sv = allScoutViews?.[p.id] || null;
+      const noteContent = sv ? (
+        Boolean(sv.tierRating) ||
+        Boolean(sv.summary && sv.summary.trim()) ||
+        Boolean(sv.overallCeilingCall && sv.overallCeilingCall.trim()) ||
+        Object.values(sv.tierNotes || {}).some((s) => s && String(s).trim())
+      ) : false;
+      // A row passes the state group if it matches ANY of the active state
+      // chips (OR-within-group). The chips themselves represent opposing
+      // conditions, so multiple selections widen the match.
+      const passesAny = filterState.some((key) => {
+        if (key === "tagged")    return hasTags;
+        if (key === "untagged")  return !hasTags;
+        if (key === "scouted")   return noteContent;
+        if (key === "untouched") return !noteContent;
+        return false;
+      });
+      if (!passesAny) return false;
+    }
+
+    if (lowered) {
+      const haystack = [p.name, p.school, p.pos, p.archetype, p.country].join(" ").toLowerCase();
+      if (!haystack.includes(lowered)) return false;
+    }
+    return true;
   });
 
   // Drag-and-drop reorder. We persist by saving the FULL ordered prospect ID
@@ -5227,6 +5357,51 @@ const BigBoardPage = ({
         </div>
       </div>
 
+      {/* Filter chips — three independent groups. Chips OR within a group,
+          groups AND together. Empty state = no filter from that group.
+          Active count shown next to the Clear button so the user knows
+          when a hidden filter is silently narrowing their list. */}
+      <div style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12, flexWrap: "wrap" }} className="prospera-scout-desk-filter-row">
+        <FilterChipGroup
+          label="Position"
+          options={POSITION_FAMILY_CHIPS}
+          active={filterPositions}
+          onToggle={togglePositionFilter}
+        />
+        <FilterChipGroup
+          label="Tier Call"
+          options={TIER_CHIPS}
+          active={filterTiers}
+          onToggle={toggleTierFilter}
+          colored
+        />
+        <FilterChipGroup
+          label="State"
+          options={STATE_CHIPS}
+          active={filterState}
+          onToggle={toggleStateFilter}
+        />
+        {activeFilterCount > 0 && (
+          <button
+            type="button"
+            onClick={clearAllFilters}
+            title={`Clear all ${activeFilterCount} active filter${activeFilterCount === 1 ? "" : "s"}`}
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.14em",
+              color: T.textMute, background: "transparent",
+              border: `1px dashed ${T.border}`, padding: "6px 10px",
+              cursor: "pointer", textTransform: "uppercase",
+              fontWeight: 600,
+              alignSelf: "flex-end",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = T.textDim; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = T.textMute; }}
+          >
+            ✕ Clear · {activeFilterCount}
+          </button>
+        )}
+      </div>
+
       <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
         <button
           type="button"
@@ -5317,7 +5492,9 @@ const BigBoardPage = ({
             <div style={{ padding: 32, textAlign: "center", ...mono, fontSize: 11, color: T.textMute, letterSpacing: "0.12em" }}>
               {watchOnly
                 ? "NO PROSPECTS IN WATCHLIST · CLICK ☆ TO SAVE"
-                : "NO PROSPECTS MATCH THIS FILTER"}
+                : (activeFilterCount > 0 || lowered)
+                  ? "NO PROSPECTS MATCH THESE FILTERS · CLEAR TO SEE THE FULL CLASS"
+                  : "NO PROSPECTS MATCH THIS FILTER"}
             </div>
           )}
           {rows.map((p) => {
