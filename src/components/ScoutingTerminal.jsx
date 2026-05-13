@@ -1370,6 +1370,7 @@ const DashboardPage = ({
   addToSelected,
   removeFromSelected,
   clearDashboard,
+  resetToTop12,
   dashSelected = [],
   axisStyle = "radar",
   setAxisStyle,
@@ -1567,6 +1568,27 @@ const DashboardPage = ({
             );
           })}
         </div>
+
+        {/* Reset to top 12 — useful after Clear-All or as a one-click default */}
+        <button
+          type="button"
+          onClick={resetToTop12}
+          title="Reset the dashboard to the top 12 ranked prospects"
+          style={{
+            ...mono,
+            fontSize: 9,
+            letterSpacing: "0.16em",
+            color: T.cyan,
+            background: "transparent",
+            border: `1px solid var(--prospera-accent-border-faint)`,
+            padding: "8px 14px",
+            cursor: "pointer",
+            textTransform: "uppercase",
+            fontWeight: 600,
+          }}
+        >
+          Reset to Top 12
+        </button>
 
         {/* Clear-all */}
         {dashSelected.length > 0 && (
@@ -6413,11 +6435,25 @@ function ProsperaAppInner() {
   const customWeights = useCustomWeights();
   const [route, setRoute] = useState("Dashboard");
   const [selectedId, setSelectedId] = useState("p1");
-  // Dashboard pins persist across sessions. Empty by default so a new user
-  // sees the empty state explaining what the Dashboard is for, then curates
-  // their own watchlist by searching prospects in. Cap is enforced in
-  // addToSelected below (raised from the old 2-card limit).
-  const [dashSelected, setDashSelected] = useLocalStorageState("prospera.terminal.dashboard-pins", []);
+  // Dashboard pins persist across sessions. Default seeds the top-12 ranked
+  // prospects so the Dashboard is populated on first visit — users still pin
+  // /unpin to customise. Cap enforced in addToSelected (12 = 4×3 grid).
+  //
+  // Storage key is versioned (-v2). The previous -v1 default was empty, which
+  // left every prior user with a saved empty array. Bumping the key forces a
+  // re-seed for those users while still keeping the field localStorage-backed.
+  const DEFAULT_DASHBOARD_PINS = React.useMemo(
+    () => PROSPECTS
+      .slice()
+      .sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999))
+      .slice(0, 12)
+      .map((p) => p.id),
+    [],
+  );
+  const [dashSelected, setDashSelected] = useLocalStorageState(
+    "prospera.terminal.dashboard-pins-v2",
+    DEFAULT_DASHBOARD_PINS,
+  );
   // Radar vs. bars rendering toggle, also persisted. Both styles share the
   // same data; this is a per-user preference for how the trait viz is drawn.
   const [dashAxisStyle, setDashAxisStyle] = useLocalStorageState("prospera.terminal.dashboard-axis-style", "radar");
@@ -6607,6 +6643,7 @@ function ProsperaAppInner() {
   };
 
   const clearDashboard = () => setDashSelected([]);
+  const resetDashboardToTop12 = () => setDashSelected(DEFAULT_DASHBOARD_PINS);
 
   const onOpenProfile = (id) => {
     setProfileId(id);
@@ -6710,6 +6747,7 @@ function ProsperaAppInner() {
               addToSelected={addToSelected}
               removeFromSelected={removeFromSelected}
               clearDashboard={clearDashboard}
+              resetToTop12={resetDashboardToTop12}
               dashSelected={dashSelected}
               axisStyle={dashAxisStyle}
               setAxisStyle={setDashAxisStyle}
