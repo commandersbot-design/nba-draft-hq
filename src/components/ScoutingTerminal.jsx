@@ -298,7 +298,7 @@ import { ScoutSourceProvider, useShowFounderContent } from "../lib/scoutSource";
 import ScoutSourceToggle from "./ScoutSourceToggle";
 import { usePlayerTags } from "./TagEditor";
 import { TagBadge, TagBadgeRow } from "./TagBadge";
-import { getTagById } from "../lib/tags/library";
+import { getTagById, getConflictsFor, getTagLibrary, groupSkillsByCategory, getTagsByLayer } from "../lib/tags/library";
 import InlineTierPill from "./InlineTierPill";
 import InlineTagsPopover from "./InlineTagsPopover";
 import ScoutTierBadge from "./ScoutTierBadge";
@@ -5010,6 +5010,247 @@ const STATE_CHIPS = [
   { key: "untouched", label: "Untouched", desc: "No tier call and no scout-note content" },
 ];
 
+// Bulk-select action bar. Sits between the toolbar and the prospect table
+// whenever bulk-select mode is on. Shows count + Select-All-Visible + Clear,
+// plus the "Add Tag" toggle that reveals the BulkTagPicker inline below it
+// (no portal — the picker is part of the page flow so its position is
+// predictable on phones and the page scrolls naturally to it).
+function BulkActionBar({
+  selectedCount,
+  visibleIds = [],
+  onSelectAllVisible,
+  onClearSelection,
+  onExit,
+  onApplyTag,
+}) {
+  const [pickerOpen, setPickerOpen] = React.useState(false);
+  const noneSelected = selectedCount === 0;
+  return (
+    <div style={{ marginBottom: 12 }}>
+      <div
+        style={{
+          background: noneSelected ? T.surface2 : "var(--prospera-accent-bg)",
+          border: `1px solid ${noneSelected ? T.border : "var(--prospera-accent-border-faint)"}`,
+          padding: "10px 14px",
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          flexWrap: "wrap",
+        }}
+      >
+        <span style={{ ...mono, fontSize: 10, letterSpacing: "0.16em", color: noneSelected ? T.textMute : T.cyan, textTransform: "uppercase", fontWeight: 700 }}>
+          Bulk Select · {selectedCount} pinned
+        </span>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          <button
+            type="button"
+            onClick={onSelectAllVisible}
+            disabled={visibleIds.length === 0}
+            title="Select every prospect currently visible (respects active filters)"
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.14em",
+              color: visibleIds.length === 0 ? T.textMute : T.textDim,
+              background: "transparent",
+              border: `1px solid ${T.border}`,
+              padding: "5px 10px",
+              cursor: visibleIds.length === 0 ? "not-allowed" : "pointer",
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Select All Visible · {visibleIds.length}
+          </button>
+          <button
+            type="button"
+            onClick={onClearSelection}
+            disabled={noneSelected}
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.14em",
+              color: noneSelected ? T.textMute : T.textDim,
+              background: "transparent",
+              border: `1px solid ${T.border}`,
+              padding: "5px 10px",
+              cursor: noneSelected ? "not-allowed" : "pointer",
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Clear
+          </button>
+          <button
+            type="button"
+            onClick={() => setPickerOpen((v) => !v)}
+            disabled={noneSelected}
+            title={noneSelected ? "Pick at least one prospect first" : "Open the tag picker to add or remove tags across all selected"}
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.14em",
+              color: noneSelected ? T.textMute : T.bg,
+              background: noneSelected ? "transparent" : T.cyan,
+              border: `1px solid ${noneSelected ? T.border : T.cyan}`,
+              padding: "5px 12px",
+              cursor: noneSelected ? "not-allowed" : "pointer",
+              textTransform: "uppercase",
+              fontWeight: 700,
+            }}
+          >
+            Bulk Tag {pickerOpen ? "▾" : "▸"}
+          </button>
+        </div>
+        <button
+          type="button"
+          onClick={onExit}
+          title="Exit bulk-select mode and hide the row checkboxes"
+          style={{
+            ...mono, fontSize: 9, letterSpacing: "0.14em",
+            color: T.textMute, background: "transparent",
+            border: `1px dashed ${T.border}`,
+            padding: "5px 10px",
+            cursor: "pointer",
+            textTransform: "uppercase",
+            fontWeight: 600,
+            marginLeft: "auto",
+          }}
+        >
+          Exit
+        </button>
+      </div>
+      {pickerOpen && (
+        <BulkTagPicker
+          selectedCount={selectedCount}
+          onApply={onApplyTag}
+          onClose={() => setPickerOpen(false)}
+        />
+      )}
+    </div>
+  );
+}
+
+// Bulk-tag picker — opens from the bulk action bar. Renders the same 30 tags
+// as the per-prospect popover, but each chip applies/removes the tag across
+// every prospect in the selected set. Mode toggle (Add / Remove) at the top
+// changes what clicking a chip does. Closes itself when user clicks Done.
+function BulkTagPicker({ selectedCount, onApply, onClose }) {
+  const skillGroups = React.useMemo(() => groupSkillsByCategory(), []);
+  const outlookTags = React.useMemo(() => getTagsByLayer("outlook"), []);
+  const concernTags = React.useMemo(() => getTagsByLayer("concerns"), []);
+  const [mode, setMode] = React.useState("add"); // "add" | "remove"
+
+  const renderTagChip = (tag) => {
+    const layerColor =
+      tag.layer === "outlook" ? "var(--prospera-signal)" :
+      tag.layer === "concerns" ? "var(--prospera-danger)" :
+      "var(--prospera-cyan)";
+    return (
+      <button
+        key={tag.id}
+        type="button"
+        onClick={() => onApply(tag.id, mode)}
+        title={mode === "add"
+          ? `Add "${tag.name}" to ${selectedCount} selected prospect${selectedCount === 1 ? "" : "s"}`
+          : `Remove "${tag.name}" from ${selectedCount} selected prospect${selectedCount === 1 ? "" : "s"}`
+        }
+        style={{
+          fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
+          fontSize: 9,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: layerColor,
+          background: "transparent",
+          border: `1px solid ${layerColor}`,
+          padding: "3px 7px",
+          cursor: "pointer",
+          fontWeight: 500,
+          whiteSpace: "nowrap",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.background = `color-mix(in srgb, ${layerColor} 14%, transparent)`; }}
+        onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+      >
+        {tag.name}
+      </button>
+    );
+  };
+
+  return (
+    <div
+      style={{
+        background: T.card,
+        border: `1px solid ${T.border}`,
+        padding: 14,
+        marginBottom: 12,
+        boxShadow: "0 4px 18px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10, gap: 8, flexWrap: "wrap" }}>
+        <div style={{ ...mono, fontSize: 10, letterSpacing: "0.14em", color: T.textDim, textTransform: "uppercase", fontWeight: 700 }}>
+          Bulk Tag · {selectedCount} prospect{selectedCount === 1 ? "" : "s"} selected
+        </div>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <div style={{ display: "inline-flex", border: `1px solid ${T.border}`, background: T.surface2 }}>
+            {[
+              { key: "add",    label: "Add" },
+              { key: "remove", label: "Remove" },
+            ].map((opt) => {
+              const isActive = mode === opt.key;
+              return (
+                <button
+                  key={opt.key}
+                  type="button"
+                  onClick={() => setMode(opt.key)}
+                  style={{
+                    ...mono,
+                    fontSize: 9,
+                    letterSpacing: "0.14em",
+                    color: isActive ? T.bg : T.textMute,
+                    background: isActive ? T.cyan : "transparent",
+                    border: "none",
+                    padding: "5px 12px",
+                    cursor: "pointer",
+                    textTransform: "uppercase",
+                    fontWeight: isActive ? 700 : 500,
+                  }}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            title="Close picker (selection is preserved)"
+            style={{
+              ...mono, fontSize: 9, letterSpacing: "0.14em",
+              color: T.textDim, background: "transparent",
+              border: `1px solid ${T.border}`, padding: "5px 10px",
+              cursor: "pointer", textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Done
+          </button>
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gap: 10 }}>
+        <div>
+          <div style={{ ...mono, fontSize: 8, letterSpacing: "0.18em", color: "var(--prospera-signal)", fontWeight: 700, textTransform: "uppercase", marginBottom: 4 }}>Outlook</div>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>{outlookTags.map(renderTagChip)}</div>
+        </div>
+        <div>
+          <div style={{ ...mono, fontSize: 8, letterSpacing: "0.18em", color: "var(--prospera-danger)", fontWeight: 700, textTransform: "uppercase", marginBottom: 4 }}>Concerns</div>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>{concernTags.map(renderTagChip)}</div>
+        </div>
+        {skillGroups.map((group) => (
+          <div key={group.category}>
+            <div style={{ ...mono, fontSize: 8, letterSpacing: "0.18em", color: T.textMute, fontWeight: 600, textTransform: "uppercase", marginBottom: 4 }}>{group.label}</div>
+            <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>{group.tags.map(renderTagChip)}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // Filter-chip group helper for Scout Desk. Renders a small label + a row of
 // toggleable chips. Chips inside a single group OR together. The `colored`
 // flag lets the Tier-Call group carry the tier's brand colour so the chips
@@ -5158,14 +5399,61 @@ const BigBoardPage = ({
   // Scout views are read here so we can sort by tier-call or by last-updated
   // even though the row component reads them through its own InlineTierPill.
   const [allScoutViews] = useLocalStorageState("prospera.terminal.scout-views", {});
-  // Player-tags map drives the Tagged/Untagged filter chips.
-  const [allPlayerTags] = useLocalStorageState("prospera.terminal.player-tags", {});
+  // Player-tags map drives the Tagged/Untagged filter chips and is written
+  // back to when bulk-applying tags to selected prospects.
+  const [allPlayerTags, setAllPlayerTags] = useLocalStorageState("prospera.terminal.player-tags", {});
   // Filter chips — three independent groups, each stored as an array of
   // active keys. Empty array means "no filter from this group". Multiple
   // chips within a group OR; across groups AND. Persisted.
   const [filterPositions, setFilterPositions] = useLocalStorageState("prospera.terminal.scout-desk-filter-positions", []);
   const [filterTiers, setFilterTiers] = useLocalStorageState("prospera.terminal.scout-desk-filter-tiers", []);
   const [filterState, setFilterState] = useLocalStorageState("prospera.terminal.scout-desk-filter-state", []);
+  // Bulk-select mode — when on, rows show checkboxes and an action bar
+  // appears above the table once any rows are picked. Selection is in-page
+  // only (NOT persisted) because mass-tag operations should be deliberate;
+  // a stale selection across reloads would risk applying tags by surprise.
+  const [bulkMode, setBulkMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState(() => new Set());
+
+  // Bulk-selection helpers. The "visible" set used by "Select All" is the
+  // filtered rows so power users can filter → select-all → bulk-tag without
+  // accidentally tagging hidden prospects.
+  const toggleSelected = (id) => {
+    setSelectedIds((curr) => {
+      const next = new Set(curr);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+  const clearSelection = () => setSelectedIds(new Set());
+  const selectAllVisible = (ids) => setSelectedIds(new Set(ids));
+  const exitBulkMode = () => { setBulkMode(false); clearSelection(); };
+
+  // Apply or remove a tag across every selected prospect. Honours the same
+  // conflict-pair logic as the per-prospect editor: bulk-adding a tag from
+  // a conflict group auto-clears any conflicting tag already on each row.
+  const bulkApplyTag = (tagId, mode /* "add" | "remove" */) => {
+    if (selectedIds.size === 0 || !tagId) return;
+    setAllPlayerTags((prev) => {
+      const next = { ...prev };
+      for (const id of selectedIds) {
+        const record = next[id] || { tagIds: [], lastUpdated: null };
+        const existing = record.tagIds || [];
+        let updated;
+        if (mode === "remove") {
+          if (!existing.includes(tagId)) continue;
+          updated = existing.filter((t) => t !== tagId);
+        } else {
+          if (existing.includes(tagId)) continue;
+          const conflicting = getConflictsFor(tagId, existing);
+          updated = [...existing.filter((t) => !conflicting.includes(t)), tagId];
+        }
+        next[id] = { tagIds: updated, lastUpdated: new Date().toISOString() };
+      }
+      return next;
+    });
+  };
 
   const toggleInArray = (arr, key) => (arr.includes(key) ? arr.filter((k) => k !== key) : [...arr, key]);
   const togglePositionFilter = (key) => setFilterPositions((curr) => toggleInArray(curr, key));
@@ -5531,6 +5819,29 @@ const BigBoardPage = ({
         </button>
         <button
           type="button"
+          onClick={() => {
+            if (bulkMode) exitBulkMode();
+            else setBulkMode(true);
+          }}
+          title={bulkMode ? "Exit bulk-select mode" : "Select multiple prospects to apply tags or other actions in bulk"}
+          style={{
+            ...mono,
+            fontSize: 11,
+            letterSpacing: "0.12em",
+            color: bulkMode ? T.cyan : T.textDim,
+            background: bulkMode ? "var(--prospera-accent-bg)" : "transparent",
+            border: `1px solid ${bulkMode ? T.cyan : T.border}`,
+            padding: "8px 12px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          {bulkMode ? `BULK ON · ${selectedIds.size}` : "BULK SELECT"}
+        </button>
+        <button
+          type="button"
           onClick={() => exportBigBoardToPrintView(rows)}
           title="Open a print-friendly view in a new tab. Use Ctrl/Cmd+P to save as PDF or print."
           style={{
@@ -5552,21 +5863,43 @@ const BigBoardPage = ({
         </button>
       </div>
 
+      {/* Bulk action bar — only renders when bulk-select mode is on. The bar
+          slides in above the table with the count of selected, a Select All
+          toggle keyed to currently-visible (filtered) rows so power users can
+          filter → select-all → apply, plus the Add-Tag picker toggle and a
+          Clear/Exit. */}
+      {bulkMode && (
+        <BulkActionBar
+          selectedCount={selectedIds.size}
+          visibleIds={rows.map((p) => p.id)}
+          onSelectAllVisible={() => selectAllVisible(rows.map((p) => p.id))}
+          onClearSelection={clearSelection}
+          onExit={exitBulkMode}
+          onApplyTag={bulkApplyTag}
+        />
+      )}
+
       <div className="prospera-scout-desk-table-wrap" style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
-        <div style={{ minWidth: 790 }}>
+        <div style={{ minWidth: bulkMode ? 820 : 790 }}>
           <div
             className="prospera-scout-desk-header-row"
             style={{
               display: "grid",
-              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 160px" : "1fr 80px 70px 90px 70px 160px",
+              gridTemplateColumns: bulkMode
+                ? "28px 1fr 80px 70px 90px 70px 160px"
+                : allowReorder
+                  ? "20px 1fr 80px 70px 90px 70px 160px"
+                  : "1fr 80px 70px 90px 70px 160px",
               padding: "10px 16px 10px 14px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
             }}
           >
-            {(allowReorder
-              ? ["", "PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"]
-              : ["PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"]
+            {(bulkMode
+              ? ["✓", "PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"]
+              : allowReorder
+                ? ["", "PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"]
+                : ["PROSPECT", "POS", "CLASS", "SCHOOL", "SCORE", "ACTIONS"]
             ).map((h, i) => (
               <div key={h || `_${i}`} style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
                 {h}
@@ -5587,20 +5920,22 @@ const BigBoardPage = ({
             const isCompared = compareIds.includes(p.id);
             const familyBar = familyBarColor(p);
             const isDragging = draggingId === p.id;
+            const isSelected = selectedIds.has(p.id);
             return (
               <div
                 key={p.id}
                 className="prospera-scout-desk-row"
                 // Drag-and-drop reorder. The whole row is the drop target;
                 // initiating a drag requires grabbing the ⋮⋮ handle on the
-                // left so accidental clicks don't start drags.
+                // left so accidental clicks don't start drags. Drag is
+                // suppressed in bulk-select mode to avoid mode confusion.
                 onDragOver={(e) => {
-                  if (!allowReorder || !draggingId) return;
+                  if (!allowReorder || bulkMode || !draggingId) return;
                   e.preventDefault();
                   e.dataTransfer.dropEffect = "move";
                 }}
                 onDrop={(e) => {
-                  if (!allowReorder) return;
+                  if (!allowReorder || bulkMode) return;
                   e.preventDefault();
                   const fromId = e.dataTransfer.getData("text/plain") || draggingId;
                   reorderRow(fromId, p.id);
@@ -5608,19 +5943,43 @@ const BigBoardPage = ({
                 }}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 160px" : "1fr 80px 70px 90px 70px 160px",
+                  gridTemplateColumns: bulkMode
+                    ? "28px 1fr 80px 70px 90px 70px 160px"
+                    : allowReorder
+                      ? "20px 1fr 80px 70px 90px 70px 160px"
+                      : "1fr 80px 70px 90px 70px 160px",
                   padding: "12px 16px 12px 14px",
                   borderBottom: `1px solid ${T.borderSoft}`,
                   boxShadow: `inset 5px 0 0 ${familyBar}`,
                   alignItems: "center",
                   transition: "background 0.12s",
-                  background: isDragging ? "var(--prospera-accent-bg-mid)" : "transparent",
+                  background: isSelected
+                    ? "var(--prospera-accent-bg-mid)"
+                    : isDragging
+                      ? "var(--prospera-accent-bg-mid)"
+                      : "transparent",
                   opacity: isDragging ? 0.5 : 1,
                 }}
-                onMouseEnter={(e) => { if (!isDragging) e.currentTarget.style.background = "var(--prospera-accent-bg-soft)"; }}
-                onMouseLeave={(e) => { if (!isDragging) e.currentTarget.style.background = "transparent"; }}
+                onMouseEnter={(e) => { if (!isDragging && !isSelected) e.currentTarget.style.background = "var(--prospera-accent-bg-soft)"; }}
+                onMouseLeave={(e) => { if (!isDragging && !isSelected) e.currentTarget.style.background = "transparent"; }}
               >
-                {allowReorder && (
+                {bulkMode ? (
+                  <div className="prospera-row-checkbox" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => toggleSelected(p.id)}
+                      onClick={(e) => e.stopPropagation()}
+                      title={isSelected ? `Unselect ${p.name}` : `Select ${p.name}`}
+                      style={{
+                        width: 16,
+                        height: 16,
+                        accentColor: "var(--prospera-cyan)",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </div>
+                ) : allowReorder && (
                   <div
                     className="prospera-drag-handle"
                     draggable
