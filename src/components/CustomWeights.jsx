@@ -1,6 +1,7 @@
 import React, { useMemo, createContext, useContext } from "react";
 import { X, RefreshCw } from "lucide-react";
-import { deriveAdvantageProfile } from "./AdvantageBars";
+// deriveAdvantageProfile no longer needed — personal score now computed from
+// traits9 directly via the 6-axis scout taxonomy. Import removed.
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { getProspectScoresByName } from "../grading/precomputed";
 
@@ -24,57 +25,76 @@ const mono = {
   fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
 };
 
-// The 9 advantage traits + 1 meta layer (Translate). Default weights model a
-// "balanced two-way wing" priority — adjust to taste.
-export const TRAIT_AXES = [
-  { key: "translate", label: "Translate", region: "Meta", help: "Projection / NBA fit" },
-  { key: "initiate", label: "Initiate", region: "On-Ball", help: "Self-creation, advantage building" },
-  { key: "extend", label: "Extend", region: "On-Ball", help: "Secondary playmaking" },
-  { key: "close", label: "Close", region: "On-Ball", help: "Finishing, shot-making" },
-  { key: "space", label: "Space", region: "Off-Ball", help: "Off-ball gravity, shooting" },
-  { key: "connect", label: "Connect", region: "Off-Ball", help: "Glue plays, cuts, passing" },
-  { key: "contain", label: "Contain", region: "Defense", help: "POA defense, on-ball" },
-  { key: "disrupt", label: "Disrupt", region: "Defense", help: "Rim protection, steals" },
-  { key: "switch", label: "Switch", region: "Defense", help: "Positional range" },
-  { key: "transition", label: "Transition", region: "Game-State", help: "Pace impact" },
+// Six scout-readable weighting categories. Each one is a label a scout would
+// actually use when describing what they value in a prospect — not internal
+// pipeline jargon like "initiate / extend / contain / disrupt". Each category
+// is a blend of one or more 1-10 trait grades from the canonical 8-axis
+// taxonomy (see traits9). Categories can overlap (e.g. Shooting Gravity
+// feeds both Scoring and Shooting) so a user who weights both Shooting AND
+// Scoring is signalling "I care extra about scoring that comes from shooting"
+// — exactly what they'd say in plain language.
+//
+// Sliders are INDEPENDENT (no shared budget cap). Each axis is 0-100 and the
+// final score is a weighted average — only ratios matter, so independent
+// sliders read naturally as "how much do I care about this?".
+export const SCOUT_AXES = [
+  {
+    key: "scoring",
+    label: "Scoring",
+    help: "Self-creation, finishing, getting buckets at any level",
+    blend: { "Advantage Creation": 0.5, "Shooting Gravity": 0.3, "Off-Ball Value": 0.2 },
+  },
+  {
+    key: "shooting",
+    label: "Shooting",
+    help: "Perimeter shooting + the spacing gravity it creates",
+    blend: { "Shooting Gravity": 1.0 },
+  },
+  {
+    key: "passing",
+    label: "Passing",
+    help: "Playmaking, court vision, assist creation",
+    blend: { "Passing Creation": 0.6, "Decision Making": 0.4 },
+  },
+  {
+    key: "defense",
+    label: "Defense",
+    help: "On-ball pressure + help / rotations",
+    blend: { "Defensive Versatility": 0.7, "Scalability": 0.3 },
+  },
+  {
+    key: "feel",
+    label: "Feel / IQ",
+    help: "Decision-making, processing speed, anticipation",
+    blend: { "Decision Making": 0.5, "Processing Speed": 0.5 },
+  },
+  {
+    key: "versatility",
+    label: "Versatility",
+    help: "Lineup flexibility, switchability, fits multiple roles",
+    blend: { "Scalability": 0.7, "Defensive Versatility": 0.3 },
+  },
 ];
 
-// Phase B: Statistical indicator axes — analytics-style adjustments. For
-// prospects with rich data (Stathead CBB / NBA stats), values come from real
-// numbers. For 2026 prospects without per-game stats yet, trait grades serve
-// as proxies. User can dial these in alongside trait grades.
-export const STAT_INDICATOR_AXES = [
-  { key: "bpm", label: "BPM", region: "Stats", help: "Box Plus/Minus (CBB if available, composite proxy otherwise)" },
-  { key: "age_curve", label: "Age Curve", region: "Stats", help: "Younger = bigger NBA upside (22-age × ~7)" },
-  { key: "shooting_threat", label: "Shooting Threat", region: "Stats", help: "3P% × volume (proxy: Shooting Gravity trait)" },
-  { key: "steal_rate", label: "Steal Rate", region: "Stats", help: "Best NBA defensive predictor (proxy: Defensive Versatility)" },
-  { key: "ast_usg", label: "AST/USG", region: "Stats", help: "Pure playmaker vs scoring-dominant (proxy: Passing Creation)" },
-  { key: "plus_minus", label: "Plus/Minus", region: "Stats", help: "On/off impact for older prospects (career WS proxy)" },
-  { key: "league_translation", label: "League Translate", region: "Stats", help: "NCAA 0.6× / G-League 0.95× / Euro 0.85× / NBA 1.0×" },
-];
+// Back-compat aliases — some surfaces import ALL_AXES expecting the legacy
+// pipeline shape. Point them at the new scout list so the imports keep
+// resolving without code churn.
+export const ALL_AXES = SCOUT_AXES;
+export const TRAIT_AXES = SCOUT_AXES;
+export const STAT_INDICATOR_AXES = [];
 
-export const ALL_AXES = [...TRAIT_AXES, ...STAT_INDICATOR_AXES];
-
+// Default weights — start each axis with a moderate non-zero value so that
+// when the user activates custom weights for the first time they get a
+// reasonable balanced read rather than zeros. Ratios are what matter; these
+// numbers just express "all roughly equal, slight emphasis on Scoring +
+// Defense" as a balanced two-way starting bias.
 export const DEFAULT_WEIGHTS = {
-  // Trait grades (default balanced)
-  translate: 12,
-  initiate: 12,
-  extend: 8,
-  close: 12,
-  space: 10,
-  connect: 8,
-  contain: 10,
-  disrupt: 8,
-  switch: 10,
-  transition: 10,
-  // Stat indicators (default off — opt in)
-  bpm: 0,
-  age_curve: 0,
-  shooting_threat: 0,
-  steal_rate: 0,
-  ast_usg: 0,
-  plus_minus: 0,
-  league_translation: 0,
+  scoring:     25,
+  shooting:    20,
+  passing:     15,
+  defense:     25,
+  feel:        15,
+  versatility: 15,
 };
 
 export const ZERO_WEIGHTS = ALL_AXES.reduce((acc, axis) => {
@@ -82,133 +102,43 @@ export const ZERO_WEIGHTS = ALL_AXES.reduce((acc, axis) => {
   return acc;
 }, {});
 
-// Compute a 0-100 statistical indicator value from a prospect's available
-// data. Falls back to trait-grade proxies when raw stats aren't there yet
-// (mostly the case for 2026 current prospects).
-export function computeStatValue(prospect, key) {
-  if (!prospect) return null;
-  const t = prospect.traits9 || {};
-  const cbb = prospect.cbbStats || null;
-  const sr = prospect.srNbaStats || null;
-  const nba = prospect.nbaStats || null;
-
-  switch (key) {
-    case "bpm": {
-      // Real college BPM scaled to 0-100: BPM 5 → 75, BPM 0 → 50, BPM -5 → 25
-      const cbbBpm = cbb?.bpm;
-      if (cbbBpm != null) return Math.max(0, Math.min(100, 50 + cbbBpm * 5));
-      // Proxy: composite trait avg
-      const grades = Object.values(t).filter((v) => Number.isFinite(v));
-      if (grades.length > 0) {
-        const avg = grades.reduce((a, b) => a + b, 0) / grades.length;
-        return Math.max(0, Math.min(100, avg * 10));
-      }
-      return null;
-    }
-    case "age_curve": {
-      const age = prospect.age;
-      if (age == null) return null;
-      // 18 → 78, 19 → 71, 22 → 50, 25 → 29
-      return Math.max(0, Math.min(100, 50 + (22 - age) * 7));
-    }
-    case "shooting_threat": {
-      const threePct = cbb?.threePct;
-      if (threePct != null) {
-        // 35% → 52, 40% → 60, 45% → 67
-        return Math.max(0, Math.min(100, threePct * 1.5));
-      }
-      // Proxy: Shooting Gravity trait (1-10 → 0-100)
-      const sg = t["Shooting Gravity"];
-      if (sg != null) return Math.max(0, Math.min(100, sg * 10));
-      return null;
-    }
-    case "steal_rate": {
-      const spg = Number(nba?.careerSpg) || Number(sr?.tsPct) || null;
-      if (Number.isFinite(spg)) {
-        // 1.5 SPG → 75
-        return Math.max(0, Math.min(100, spg * 50));
-      }
-      // Proxy: Defensive Versatility trait
-      const dv = t["Defensive Versatility"];
-      if (dv != null) return Math.max(0, Math.min(100, dv * 10));
-      return null;
-    }
-    case "ast_usg": {
-      const apg = Number(nba?.careerApg);
-      const ppg = Number(nba?.careerPpg);
-      if (Number.isFinite(apg) && Number.isFinite(ppg) && ppg > 0) {
-        // Pure playmaker has high apg per ppg/10. Scale: apg=8/ppg=18 → 4.4 → 88
-        const ratio = apg / Math.max(1, ppg / 10);
-        return Math.max(0, Math.min(100, ratio * 20));
-      }
-      // Proxy: Passing Creation trait
-      const pc = t["Passing Creation"];
-      if (pc != null) return Math.max(0, Math.min(100, pc * 10));
-      return null;
-    }
-    case "plus_minus": {
-      const ws = Number(sr?.winShares) || null;
-      if (Number.isFinite(ws)) {
-        // 100 WS → 50, 200 WS → 100
-        return Math.max(0, Math.min(100, ws * 0.5));
-      }
-      // Proxy: prospect.score (overall composite)
-      if (prospect.score != null) return prospect.score;
-      return null;
-    }
-    case "league_translation": {
-      const league = (prospect.leagueType || cbb?.source || "").toLowerCase();
-      if (/ncaa|college/.test(league)) return 60;
-      if (/g[\-\s]?league|nba g/.test(league)) return 95;
-      if (/euro/.test(league)) return 85;
-      if (/international|fiba|aussie|nbl/.test(league)) return 80;
-      if (/nba/.test(league)) return 100;
-      // Default neutral
-      return 60;
-    }
+// Compute a 0-100 value for a scout axis (Scoring / Shooting / Passing / etc.)
+// from a prospect's 8 underlying trait grades. Each axis is a weighted blend
+// defined on SCOUT_AXES — e.g. "Scoring" = 50% Advantage Creation + 30%
+// Shooting Gravity + 20% Off-Ball Value. Grades are 1-10; output is 0-100.
+function computeScoutAxisValue(prospect, axisKey) {
+  const blend = SCOUT_AXES.find((a) => a.key === axisKey)?.blend;
+  if (!blend) return null;
+  const traits = prospect?.traits9 || {};
+  let sum = 0;
+  let weight = 0;
+  for (const [traitName, w] of Object.entries(blend)) {
+    const v = traits[traitName];
+    if (v == null) continue;
+    sum += v * w;
+    weight += w;
   }
-  return null;
+  if (weight <= 0) return null;
+  // 1-10 grade → 0-100 display range.
+  return Math.max(0, Math.min(100, (sum / weight) * 10));
 }
 
-// Compute a 0-100 personal score from a prospect + weights. Combines:
-//   1. Trait axes (initiate/extend/close/space/connect/contain/disrupt/switch/transition + translate)
-//      pulled from advantage profile (authored or derived)
-//   2. Statistical indicator axes (BPM, age curve, shooting threat, steal rate,
-//      AST/USG, plus/minus, league translation) computed from raw data with
-//      trait-grade proxies as fallbacks
-// Each axis contributes its value × weight; final score is the weighted average.
+// Compute a 0-100 personal score from a prospect + weights. Iterates the
+// six scout-readable axes, computes each axis's 0-100 value from the
+// underlying trait blend, and returns the weighted average. Independent
+// sliders — only the ratios between weights matter.
 export function computePersonalScore(prospect, weights) {
   if (!prospect || !weights) return null;
-  const profile = deriveAdvantageProfile(prospect);
-
   let total = 0;
   let totalWeight = 0;
-
-  // Trait axes
-  for (const axis of TRAIT_AXES) {
+  for (const axis of SCOUT_AXES) {
     const w = weights[axis.key] || 0;
     if (w <= 0) continue;
-    let value;
-    if (axis.key === "translate") {
-      value = profile?.translate?.archetype ?? null;
-    } else {
-      value = profile?.traits?.[axis.key]?.archetype?.score ?? null;
-    }
+    const value = computeScoutAxisValue(prospect, axis.key);
     if (value == null) continue;
     total += value * w;
     totalWeight += w;
   }
-
-  // Statistical indicator axes
-  for (const axis of STAT_INDICATOR_AXES) {
-    const w = weights[axis.key] || 0;
-    if (w <= 0) continue;
-    const value = computeStatValue(prospect, axis.key);
-    if (value == null) continue;
-    total += value * w;
-    totalWeight += w;
-  }
-
   if (totalWeight <= 0) return null;
   return Math.round((total / totalWeight) * 10) / 10;
 }
@@ -270,25 +200,25 @@ export const ScoreCell = ({ prospect, fallback = "—", style, decimals = 1 }) =
   return <span style={style}>{fallback}</span>;
 };
 
-// Hard ceilings on the weight system. TOTAL_CAP enforces "weights never sum
-// past 100" so the user has a fixed budget — moving one slider up forces
-// trade-offs against the rest. PER_AXIS_CAP keeps any single axis from
-// dominating the budget. A slider's effective max = min(PER_AXIS_CAP,
-// remaining budget when other axes hold their values).
+// Independent slider range. Sliders no longer share a global budget — each
+// axis runs 0-100 freely. The personal-score math takes a weighted average
+// of the active axes, so ratios between weights are what matter; absolute
+// values just express how strongly the user cares about each category.
+export const PER_AXIS_MAX = 100;
+// Back-compat constants for any caller that still imports them. No longer
+// enforced; kept so imports don't break.
 export const TOTAL_CAP = 100;
-export const PER_AXIS_CAP = 40;
+export const PER_AXIS_CAP = 100;
 
 export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active, setActive }) => {
-  const total = ALL_AXES.reduce((acc, a) => acc + (weights[a.key] || 0), 0);
-
   const setOne = (key, value) => {
-    setWeights((curr) => {
-      const others = ALL_AXES.reduce((s, a) => a.key === key ? s : s + (curr[a.key] || 0), 0);
-      const headroom = TOTAL_CAP - others;            // max this axis can take
-      const ceiling = Math.min(PER_AXIS_CAP, Math.max(0, headroom));
-      const clamped = Math.max(0, Math.min(ceiling, Math.round(value)));
-      return { ...curr, [key]: clamped };
-    });
+    // Independent slider: only the axis being moved changes. No squeezing
+    // of others to maintain a shared total — that was the source of the
+    // "all the sliders move when I drag one" complaint.
+    setWeights((curr) => ({
+      ...curr,
+      [key]: Math.max(0, Math.min(PER_AXIS_MAX, Math.round(value))),
+    }));
   };
 
   const reset = () => setWeights({ ...DEFAULT_WEIGHTS });
@@ -355,103 +285,74 @@ export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active
       </div>
 
       <div style={{ padding: "12px 18px", borderBottom: `1px solid ${T.border}`, fontSize: 12, color: T.textDim, lineHeight: 1.55 }}>
-        Slide each trait to set how much it counts. Higher = more important. Total caps at 100 — pushing one slider up forces trade-offs against the rest.
+        Slide each category to set how much you care about it. Sliders are independent — moving one doesn't change the others. Only the ratios between them matter; the personal score weighs each category accordingly.
       </div>
 
       <div style={{ flex: 1, overflowY: "auto", padding: "12px 18px" }}>
         <SliderSection
-          title="Trait Grades"
-          subtitle="Scout-judgment axes from the 9-trait Advantage system"
-          axes={TRAIT_AXES}
+          axes={SCOUT_AXES}
           weights={weights}
-          total={total}
-          setOne={setOne}
-        />
-        <SliderSection
-          title="Statistical Indicators"
-          subtitle="Analytics-style axes (BPM, age curve, shooting threat, etc.). Default off — opt in."
-          axes={STAT_INDICATOR_AXES}
-          weights={weights}
-          total={total}
           setOne={setOne}
         />
       </div>
 
-      <div style={{ padding: "12px 18px", borderTop: `1px solid ${T.border}`, display: "flex", gap: 8, justifyContent: "space-between", alignItems: "center" }}>
-        <div style={{ ...mono, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
-          <span style={{ color: T.textMute }}>Budget</span>
-          <span style={{ color: total >= TOTAL_CAP ? T.cyan : T.text, fontWeight: 700 }}>{total} / {TOTAL_CAP}</span>
-          {total >= TOTAL_CAP && (
-            <span style={{ color: T.cyan, fontSize: 9, padding: "1px 5px", border: `1px solid ${T.cyan}`, fontWeight: 700 }}>AT CAP</span>
-          )}
-        </div>
-        <div style={{ display: "flex", gap: 8 }}>
-          <button
-            type="button"
-            onClick={zeroAll}
-            style={pillBtn(T.textMute)}
-          >
-            ZERO
-          </button>
-          <button
-            type="button"
-            onClick={reset}
-            style={pillBtn(T.textDim)}
-          >
-            <RefreshCw size={11} /> RESET
-          </button>
-        </div>
+      <div style={{ padding: "12px 18px", borderTop: `1px solid ${T.border}`, display: "flex", gap: 8, justifyContent: "flex-end", alignItems: "center" }}>
+        <button
+          type="button"
+          onClick={zeroAll}
+          style={pillBtn(T.textMute)}
+        >
+          ZERO
+        </button>
+        <button
+          type="button"
+          onClick={reset}
+          style={pillBtn(T.textDim)}
+        >
+          <RefreshCw size={11} /> RESET
+        </button>
       </div>
     </div>
   );
 };
 
-function SliderSection({ title, subtitle, axes, weights, total, setOne }) {
+function SliderSection({ axes, weights, setOne }) {
+  // Total only used for showing each axis's relative share (the actual
+  // score math uses the ratios). When all sliders are 0, share renders as 0%.
+  const total = axes.reduce((acc, a) => acc + (weights[a.key] || 0), 0);
   return (
-    <div style={{ marginBottom: 22 }}>
-      <div style={{ marginBottom: 10, paddingBottom: 8, borderBottom: `1px solid ${T.border}` }}>
-        <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.cyan, textTransform: "uppercase", fontWeight: 600 }}>{title}</div>
-        {subtitle && (
-          <div style={{ fontSize: 11, color: T.textDim, marginTop: 4, lineHeight: 1.5 }}>{subtitle}</div>
-        )}
-      </div>
-      <div style={{ display: "grid", gap: 14 }}>
-        {axes.map((axis) => {
-          const value = weights[axis.key] || 0;
-          const sharePct = total > 0 ? Math.round((value / total) * 100) : 0;
-          // Per-slider effective max = min(per-axis cap, what's left in budget
-          // when other axes hold their values + this axis's current value).
-          // This prevents the slider from being dragged past the global 100 cap.
-          const headroom = TOTAL_CAP - (total - value);
-          const sliderMax = Math.max(value, Math.min(PER_AXIS_CAP, headroom));
-          const atCeiling = value >= sliderMax && sliderMax < PER_AXIS_CAP;
-          return (
-            <div key={axis.key}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-                <div>
-                  <div style={{ fontSize: 13, color: T.text, fontWeight: 600 }}>{axis.label}</div>
-                  <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.1em", marginTop: 2, textTransform: "uppercase" }}>
-                    {axis.region} · {axis.help}
-                  </div>
-                </div>
-                <div style={{ ...mono, fontSize: 11, color: value > 0 ? T.cyan : T.textMute, fontWeight: 600, minWidth: 72, textAlign: "right" }}>
-                  {value} <span style={{ color: T.textMute, fontSize: 9 }}>· {sharePct}%</span>
+    <div style={{ display: "grid", gap: 18 }}>
+      {axes.map((axis) => {
+        const value = weights[axis.key] || 0;
+        const sharePct = total > 0 ? Math.round((value / total) * 100) : 0;
+        return (
+          <div key={axis.key}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6, gap: 8 }}>
+              <div style={{ minWidth: 0 }}>
+                <div style={{ fontSize: 14, color: T.text, fontWeight: 700 }}>{axis.label}</div>
+                <div style={{ fontSize: 11, color: T.textDim, marginTop: 2, lineHeight: 1.45 }}>
+                  {axis.help}
                 </div>
               </div>
-              <input
-                type="range"
-                min={0}
-                max={sliderMax}
-                step={1}
-                value={value}
-                onChange={(e) => setOne(axis.key, Number(e.target.value))}
-                title={atCeiling ? "Capped — total budget is at 100. Reduce other axes to give this one more room." : undefined}
-                style={{ width: "100%", accentColor: T.cyan }}
-              />
+              <div style={{ ...mono, fontSize: 11, color: value > 0 ? T.cyan : T.textMute, fontWeight: 700, minWidth: 78, textAlign: "right" }}>
+                {value}
+                <span style={{ color: T.textMute, fontSize: 9, marginLeft: 4 }}>
+                  · {sharePct}%
+                </span>
+              </div>
             </div>
-          );
-        })}
-      </div>
+            <input
+              type="range"
+              min={0}
+              max={100}
+              step={1}
+              value={value}
+              onChange={(e) => setOne(axis.key, Number(e.target.value))}
+              style={{ width: "100%", accentColor: T.cyan }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
