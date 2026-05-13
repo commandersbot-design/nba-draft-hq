@@ -2049,7 +2049,7 @@ button {
       "info score"
       "info actions" !important;
     gap: 8px !important;
-    padding: 12px 14px !important;
+    padding: 10px 12px !important;
     align-items: center !important;
   }
   .prospera-scout-desk-row > .prospera-drag-handle {
@@ -2067,11 +2067,41 @@ button {
   .prospera-scout-desk-row > .prospera-row-score {
     grid-area: score;
     justify-self: end;
+    /* The score column carries the ScoreCell + computed pill on phones too.
+       Allow them to wrap if they don't fit so the tier pill in actions still
+       has space below them. */
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .prospera-scout-desk-row > .prospera-row-actions {
     grid-area: actions;
     justify-self: end;
     align-self: start;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+/* Scout Desk sort + filter chip rows on phones: allow horizontal scroll
+ * within the row so the chips don't wrap to many lines and consume half
+ * the viewport above the prospect list. Each group becomes a single
+ * scrollable strip with the others tucked away to the right. */
+@media (max-width: 720px) {
+  .prospera-scout-desk-sort-row,
+  .prospera-scout-desk-filter-row {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    /* Trim the top/bottom space so the table comes up sooner */
+    margin-bottom: 8px !important;
+    padding-bottom: 4px;
+  }
+  /* Inside the filter row, each group can wrap its own internal chips so
+     two-chip groups (State) don't push everything off-screen. The chips
+     themselves stay legible. */
+  .prospera-scout-desk-filter-row > div {
+    flex-wrap: nowrap !important;
   }
 }
 

@@ -5553,12 +5553,12 @@ const BigBoardPage = ({
       </div>
 
       <div className="prospera-scout-desk-table-wrap" style={{ overflowX: "auto", background: T.surface, border: `1px solid ${T.border}` }}>
-        <div style={{ minWidth: 760 }}>
+        <div style={{ minWidth: 790 }}>
           <div
             className="prospera-scout-desk-header-row"
             style={{
               display: "grid",
-              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 130px" : "1fr 80px 70px 90px 70px 130px",
+              gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 160px" : "1fr 80px 70px 90px 70px 160px",
               padding: "10px 16px 10px 14px",
               background: T.surface2,
               borderBottom: `1px solid ${T.border}`,
@@ -5608,7 +5608,7 @@ const BigBoardPage = ({
                 }}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 130px" : "1fr 80px 70px 90px 70px 130px",
+                  gridTemplateColumns: allowReorder ? "20px 1fr 80px 70px 90px 70px 160px" : "1fr 80px 70px 90px 70px 160px",
                   padding: "12px 16px 12px 14px",
                   borderBottom: `1px solid ${T.borderSoft}`,
                   boxShadow: `inset 5px 0 0 ${familyBar}`,
