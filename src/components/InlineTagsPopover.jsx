@@ -1,4 +1,5 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import { usePlayerTags } from "./TagEditor";
 import { TagBadge } from "./TagBadge";
 import { groupSkillsByCategory, getTagsByLayer, getTagById } from "../lib/tags/library";
@@ -122,25 +123,80 @@ export default function InlineTagsPopover({ prospectId, prospectName }) {
   const { tagIds, toggleTag } = usePlayerTags(prospectId);
   const selected = React.useMemo(() => new Set(tagIds), [tagIds]);
   const [open, setOpen] = React.useState(false);
-  const wrapperRef = React.useRef(null);
+  const triggerRef = React.useRef(null);
+  const popoverRef = React.useRef(null);
+  // Viewport-space coords where the popover should render. Recomputed on open
+  // and on window scroll/resize so the popover tracks the trigger button.
+  const [coords, setCoords] = React.useState(null);
 
+  // Popover dimensions used for positioning math. Match the inline style on
+  // PopoverContent (width: 380, max-height: 460 — see below).
+  const POPOVER_WIDTH = 380;
+  const POPOVER_MAX_HEIGHT = 460;
+  const MARGIN = 6;
+
+  const recomputeCoords = React.useCallback(() => {
+    const trigger = triggerRef.current;
+    if (!trigger) return;
+    const rect = trigger.getBoundingClientRect();
+    // Anchor right edge of popover to right edge of trigger button (matches
+    // the previous in-flow positioning). Pinned inside the viewport with a
+    // small margin so it never gets clipped against a screen edge.
+    let left = rect.right - POPOVER_WIDTH;
+    if (left < MARGIN) left = MARGIN;
+    if (left + POPOVER_WIDTH > window.innerWidth - MARGIN) {
+      left = window.innerWidth - POPOVER_WIDTH - MARGIN;
+    }
+    // Drop below the trigger by default; flip above when there's not enough
+    // room (avoids the popover spilling off the bottom of the viewport).
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const spaceAbove = rect.top;
+    let top;
+    if (spaceBelow >= POPOVER_MAX_HEIGHT + MARGIN || spaceBelow >= spaceAbove) {
+      top = rect.bottom + 4;
+    } else {
+      top = Math.max(MARGIN, rect.top - POPOVER_MAX_HEIGHT - 4);
+    }
+    setCoords({ top, left });
+  }, []);
+
+  // Open/close lifecycle: compute coords once on open, then update on scroll
+  // (any scroll container) and resize. Close on outside click; close on
+  // Escape.
   React.useEffect(() => {
     if (!open) return;
+    recomputeCoords();
     const onDown = (e) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) setOpen(false);
+      const t = e.target;
+      // Ignore clicks inside the trigger button OR inside the popover itself.
+      if (triggerRef.current && triggerRef.current.contains(t)) return;
+      if (popoverRef.current && popoverRef.current.contains(t)) return;
+      setOpen(false);
     };
+    const onKey = (e) => { if (e.key === "Escape") setOpen(false); };
     document.addEventListener("mousedown", onDown);
-    return () => document.removeEventListener("mousedown", onDown);
-  }, [open]);
+    document.addEventListener("keydown", onKey);
+    // `true` (capture phase) catches scroll on inner scroll containers too,
+    // not just the document — critical since the trigger lives inside the
+    // Scout Desk's overflow-auto wrapper.
+    window.addEventListener("scroll", recomputeCoords, true);
+    window.addEventListener("resize", recomputeCoords);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("scroll", recomputeCoords, true);
+      window.removeEventListener("resize", recomputeCoords);
+    };
+  }, [open, recomputeCoords]);
 
   const count = tagIds.length;
   return (
-    <div
-      ref={wrapperRef}
-      style={{ position: "relative", display: "inline-flex" }}
+    <span
+      style={{ display: "inline-flex" }}
       onClick={(e) => e.stopPropagation()}
     >
       <button
+        ref={triggerRef}
         type="button"
         onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}
         title={count === 0 ? "Add tags to this prospect" : `${count} tag${count === 1 ? "" : "s"} assigned — click to edit`}
@@ -161,17 +217,23 @@ export default function InlineTagsPopover({ prospectId, prospectName }) {
       >
         {count === 0 ? "+ TAG" : `+ EDIT`}
       </button>
-      {open && (
+      {open && coords && createPortal(
         <div
+          ref={popoverRef}
           style={{
-            position: "absolute",
-            top: "calc(100% + 4px)",
-            right: 0,
-            zIndex: 60,
+            position: "fixed",
+            top: coords.top,
+            left: coords.left,
+            width: POPOVER_WIDTH,
+            zIndex: 1000,
             background: T.surface,
             border: `1px solid ${T.border}`,
             boxShadow: "0 8px 30px rgba(0,0,0,0.5)",
           }}
+          // Stop click events here so they don't reach the document-level
+          // listener and immediately close the popover.
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
         >
           <PopoverContent
             prospectName={prospectName}
@@ -179,8 +241,9 @@ export default function InlineTagsPopover({ prospectId, prospectName }) {
             toggleTag={toggleTag}
             selected={selected}
           />
-        </div>
+        </div>,
+        document.body,
       )}
-    </div>
+    </span>
   );
 }
