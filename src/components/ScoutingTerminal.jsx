@@ -2658,8 +2658,28 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
     );
   }
 
+  // Constellation viz (formerly a separate tab) lives at the top of the
+  // Comparables surface — it's a star-map of this prospect surrounded by
+  // their nearest historical neighbours, complementing the ladder list
+  // below by giving you the spatial read first.
+  const constellationComps = useMemo(() => {
+    const newTop = getTopComps(p.name, 20);
+    return newTop.length > 0 ? newTop : rankComparables(p, HISTORICAL_PROSPECTS, 20);
+  }, [p]);
+
   return (
     <div style={{ display: "grid", gap: 18 }}>
+      {constellationComps && constellationComps.length > 0 && (
+        <div style={{ background: T.surface, border: `1px solid ${T.border}`, padding: 16 }}>
+          <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.textMute, textTransform: "uppercase", fontWeight: 700, marginBottom: 12 }}>
+            Comp Constellation · Nearest Historical Neighbours
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <ConstellationMap player={p} comparables={constellationComps} size={520} />
+          </div>
+        </div>
+      )}
+
       {/* Authored ladder — user's eye-test read. Renders only when an
           authored ladder exists for this prospect; otherwise the statistical
           comps below are the primary view. */}
@@ -2787,13 +2807,23 @@ const ComparablesTab = ({ p, compOverrides = {}, onSetCompOverride }) => {
 };
 
 // ---------- PLAYER PROFILE PAGE ----------
-const PROFILE_TABS = ["Scout View", "Prospect Stats", "Evaluation", "Advantage", "Traits", "Computed", "Comparables", "Constellation", "Shot Chart", "Notes"];
+// Profile tab strip — consolidated from 10 → 6 tabs to cut redundancy and
+// keep the surface readable for industry users. Cuts:
+//   - "Advantage"     — 9-axis projection viz, too internal for v1
+//   - "Computed"      — score breakdown was pipeline-internal; its comp
+//                       ladders are already shown on Comparables tab
+//   - "Constellation" — unique star-map viz, folded into Comparables (it's
+//                       a comp-style visualization)
+//   - "Shot Chart"    — folded into the renamed Stats tab where the rest
+//                       of the prospect's stat data lives
+// "Prospect Stats" renamed → "Stats" for consistency.
+const PROFILE_TABS = ["Scout View", "Stats", "Evaluation", "Traits", "Comparables", "Notes"];
 
 const TAG_OPTIONS = ["upside", "risk", "wing", "lottery", "sleeper", "international"];
 const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Starter", "Tier 4 - Rotation", "Tier 5 - Developmental"];
 
 const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAddNote, onDeleteNote, customTier = "", customTags = [], onSetCustomTier, onToggleCustomTag, compOverrides = {}, onSetCompOverride }) => {
-  const [tab, setTab] = useState("Prospect Stats");
+  const [tab, setTab] = useState("Stats");
   const { displayScore, active: weightsActive } = useCustomWeights();
   const p = useMemo(() => {
     // Merge scout overrides from the deep dive (if present) into the prospect.
@@ -3220,7 +3250,7 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
       </div>
 
       {tab === "Scout View" && <ScoutTab p={p} />}
-      {tab === "Prospect Stats" && <ProspectStatsTab p={p} />}
+      {tab === "Stats" && <ProspectStatsTab p={p} />}
       {tab === "Evaluation" && (
         <EvaluationTab
           p={p}
@@ -3231,8 +3261,6 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
         />
       )}
       {tab === "Traits" && <TraitsTab p={p} />}
-      {tab === "Advantage" && <AdvantageProfile player={p} />}
-      {tab === "Computed" && <ComputedScoreCard prospectId={p.id} prospectName={p.name} />}
       {tab === "Comparables" && (
         <ComparablesTab
           p={p}
@@ -3240,19 +3268,6 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
           onSetCompOverride={onSetCompOverride}
         />
       )}
-      {tab === "Constellation" && (
-        <ConstellationMap
-          player={p}
-          comparables={(() => {
-            // Prefer new engine's top-20 NN; fall back to legacy ranker if
-            // prospect isn't in the precomputed map.
-            const newTop = getTopComps(p.name, 20);
-            return newTop.length > 0 ? newTop : rankComparables(p, HISTORICAL_PROSPECTS, 20);
-          })()}
-          size={520}
-        />
-      )}
-      {tab === "Shot Chart" && <ShotChartTab p={p} />}
       {tab === "Notes" && <NotesTab p={p} notes={notes} onAddNote={onAddNote} onDeleteNote={onDeleteNote} />}
     </div>
   );
@@ -3509,6 +3524,16 @@ const ProspectStatsTab = ({ p }) => {
           <Label style={{ marginBottom: 10 }}>Game Log</Label>
           <EmptyState label="Per-game stats not yet ingested for this prospect." compact />
         </div>
+      )}
+
+      {/* Shot Distribution — folded in from the former dedicated Shot Chart
+          tab. Lives here because it's a stats-data view, and grouping it
+          with the rest of the prospect's stats reduces the tab count. The
+          Section only renders when the prospect has shot data on file. */}
+      {p.shot && (
+        <Section title="Shot Distribution">
+          <ShotProfileGrid shot={p.shot} />
+        </Section>
       )}
     </div>
   );
