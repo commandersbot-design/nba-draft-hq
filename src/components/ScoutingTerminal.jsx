@@ -1553,9 +1553,9 @@ const DashboardPage = ({
           title="Switch how pinned prospects are displayed. Radar/Bars show the full Decision card with axis viz; Lineup is a compact portrait grid with big headshots."
         >
           {[
+            { key: "lineup", label: "Lineup" },
             { key: "radar",  label: "Radar" },
             { key: "bars",   label: "Bars" },
-            { key: "lineup", label: "Lineup" },
           ].map((opt) => {
             const isActive = viewMode === opt.key;
             return (
@@ -7244,11 +7244,13 @@ function ProsperaAppInner() {
     DEFAULT_DASHBOARD_PINS,
   );
   // Dashboard view mode, persisted. Three options:
+  //   "lineup" → 5-up compact portrait cards (default — most useful at first
+  //              load: lots of prospects visible, nothing dense to parse)
   //   "radar"  → 3-up Decision cards, radar axis viz
   //   "bars"   → 3-up Decision cards, horizontal bar axis viz
-  //   "lineup" → 5-up compact portrait cards, big headshots, minimal info
-  // Storage key is fresh (-view-mode supersedes the older -axis-style key).
-  const [dashViewMode, setDashViewMode] = useLocalStorageState("prospera.terminal.dashboard-view-mode", "radar");
+  // Storage key bumped to -v2 so users with the previous "radar" default
+  // saved get the new "lineup" default automatically.
+  const [dashViewMode, setDashViewMode] = useLocalStorageState("prospera.terminal.dashboard-view-mode-v2", "lineup");
   const [profileId, setProfileId] = useState(null);
   const [railOpen, setRailOpen] = useState(false);
   const [watchlist, setWatchlist] = useLocalStorageState("prospera.terminal.watchlist", []);
