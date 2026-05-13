@@ -28,7 +28,7 @@
       "color": "var(--prospera-signal)",
       "background": "color-mix(in srgb, var(--prospera-signal) 12%, transparent)",
       "categoryOrder": [],
-      "usageRule": "Restrictive. Reserve for prospects with realistic generational-talent upside. Apex Ceiling should feel weighty when assigned — a handful of prospects per class at most."
+      "usageRule": "Restrictive. Reserve for prospects with realistic All-Star / generational-talent upside. Star Upside should feel weighty when assigned — a handful of prospects per class at most."
     },
     "concerns": {
       "label": "Concerns",
@@ -47,7 +47,7 @@
   "tags": [
     {
       "id": "lather-scorer",
-      "name": "Lather Scorer",
+      "name": "Rhythm Scorer",
       "layer": "skills",
       "category": "scoring",
       "icon": "flame",
@@ -64,7 +64,7 @@
     },
     {
       "id": "tuxedo-scorer",
-      "name": "Tuxedo Scorer",
+      "name": "Pure Scorer",
       "layer": "skills",
       "category": "scoring",
       "icon": "sparkles",
@@ -90,7 +90,7 @@
     },
     {
       "id": "downhill-dynamo",
-      "name": "Downhill Dynamo",
+      "name": "Downhill Driver",
       "layer": "skills",
       "category": "creation",
       "icon": "rocket",
@@ -140,7 +140,7 @@
     },
     {
       "id": "vertical-spacer",
-      "name": "Vertical Spacer",
+      "name": "Lob Threat",
       "layer": "skills",
       "category": "off-ball",
       "icon": "arrow-up-circle",
@@ -156,7 +156,7 @@
     },
     {
       "id": "functional-gravity",
-      "name": "Functional Gravity",
+      "name": "Off-Ball Gravity",
       "layer": "skills",
       "category": "off-ball",
       "icon": "compass",
@@ -190,7 +190,7 @@
     },
     {
       "id": "perimeter-eraser",
-      "name": "Perimeter Eraser",
+      "name": "Perimeter Stopper",
       "layer": "skills",
       "category": "defense",
       "icon": "eraser",
@@ -271,7 +271,7 @@
     },
     {
       "id": "stage-hunter",
-      "name": "Stage Hunter",
+      "name": "Big-Moment Player",
       "layer": "skills",
       "category": "physical",
       "icon": "sun",
@@ -280,11 +280,11 @@
 
     {
       "id": "apex-ceiling",
-      "name": "Apex Ceiling",
+      "name": "Star Upside",
       "layer": "outlook",
       "icon": "gem",
-      "description": "Top-of-the-board ceiling outlook. Realistic shot at generational-talent upside; the rare 'this could be a franchise pillar' bet.",
-      "usageGuide": "Reserve for prospects with a real shot at the all-time conversation. Should feel weighty when assigned — a handful per class at most."
+      "description": "Top-of-the-board ceiling outlook. Realistic shot at All-Star / generational-talent upside; the rare 'this could be a franchise pillar' bet.",
+      "usageGuide": "Reserve for prospects with a real shot at the All-Star / all-time conversation. Should feel weighty when assigned — a handful per class at most."
     },
 
     {

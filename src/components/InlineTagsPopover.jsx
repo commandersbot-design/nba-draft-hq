@@ -14,7 +14,7 @@ import { groupSkillsByCategory, getTagsByLayer, getTagById } from "../lib/tags/l
  *
  * Popover positioning: anchored to the right edge of the trigger button so it
  * floats over neighboring rows rather than pushing them. Max-height with
- * internal scroll. Conflict pairs (Lather ↔ Tuxedo Scorer) auto-swap.
+ * internal scroll. Conflict pairs (Rhythm ↔ Pure Scorer) auto-swap.
  *
  * Click outside to close.
  */
