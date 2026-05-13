@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" fill="#050a12"/>
+  <!-- Cyan corner brackets matching the app's "trader terminal" identity. -->
+  <path d="M4 4 L4 11 M4 4 L11 4" stroke="#22d3ee" stroke-width="2" stroke-linecap="square"/>
+  <path d="M28 4 L28 11 M28 4 L21 4" stroke="#22d3ee" stroke-width="2" stroke-linecap="square"/>
+  <path d="M4 28 L4 21 M4 28 L11 28" stroke="#22d3ee" stroke-width="2" stroke-linecap="square"/>
+  <path d="M28 28 L28 21 M28 28 L21 28" stroke="#22d3ee" stroke-width="2" stroke-linecap="square"/>
+  <!-- Centre glyph: stacked tier marks reading like a Floor → Ceiling ladder. -->
+  <rect x="11" y="11" width="10" height="2" fill="#22d3ee"/>
+  <rect x="11" y="15" width="10" height="2" fill="#22d3ee" opacity="0.7"/>
+  <rect x="11" y="19" width="10" height="2" fill="#22d3ee" opacity="0.4"/>
+</svg>

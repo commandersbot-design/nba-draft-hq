@@ -2,33 +2,105 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NBA Draft HQ - 2026 Big Board</title>
+    <title>Prospera Draft HQ · 2026 NBA Big Board</title>
+    <meta name="description" content="A scouting workstation for the 2026 NBA Draft class — 9-axis trait grading, tier-call ladders, historical comps, and a personal Big Board you can drag, weight, and export." />
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Prospera Draft HQ · 2026 NBA Big Board" />
+    <meta property="og:description" content="A scouting workstation for the 2026 NBA Draft class — 9-axis trait grading, tier-call ladders, historical comps, and a personal Big Board." />
+    <meta property="og:site_name" content="Prospera Draft HQ" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prospera Draft HQ · 2026 NBA Big Board" />
+    <meta name="twitter:description" content="A scouting workstation for the 2026 NBA Draft class — 9-axis trait grading, tier-call ladders, historical comps, and a personal Big Board." />
+
+    <meta name="theme-color" content="#050a12" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-      #loading { padding: 20px; text-align: center; font-family: sans-serif; }
-      #error { padding: 20px; color: red; display: none; }
+      /* Pre-React bootstrap state. Visible from the moment the HTML lands
+         until the JS bundle takes over, so it has to read like the rest of
+         the app rather than a generic Vite splash. */
+      html, body { margin: 0; padding: 0; background: #050a12; }
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: #cbd5e1;
+      }
+      #loading {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: #050a12;
+        z-index: 9999;
+      }
+      #loading .brand {
+        font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        color: #22d3ee;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      #loading .sub {
+        font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+        font-size: 9px;
+        letter-spacing: 0.24em;
+        color: #475569;
+        text-transform: uppercase;
+      }
+      #loading .pulse {
+        width: 36px; height: 1px; background: #22d3ee; opacity: 0.5;
+        animation: prospera-pulse 1.2s ease-in-out infinite;
+      }
+      @keyframes prospera-pulse {
+        0%, 100% { opacity: 0.15; transform: scaleX(0.4); }
+        50%      { opacity: 0.85; transform: scaleX(1); }
+      }
+      #error {
+        padding: 20px;
+        color: #ef4444;
+        display: none;
+        font-family: ui-monospace, monospace;
+        font-size: 12px;
+      }
     </style>
   </head>
   <body>
-    <div id="loading">Loading NBA Draft HQ...</div>
+    <div id="loading">
+      <div class="brand">Prospera Draft HQ</div>
+      <div class="pulse"></div>
+      <div class="sub">Loading scouting workstation…</div>
+    </div>
     <div id="error"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
       window.onerror = function(msg, url, line) {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('error').style.display = 'block';
-        document.getElementById('error').innerHTML = '<h2>JavaScript Error</h2><p>' + msg + '</p><p>Line: ' + line + '</p>';
-      };
-      setTimeout(function() {
-        if (document.getElementById('loading').style.display !== 'none') {
-          document.getElementById('loading').innerHTML = 'Still loading... If this persists, check console for errors (F12)';
+        var loading = document.getElementById('loading');
+        var err = document.getElementById('error');
+        if (loading) loading.style.display = 'none';
+        if (err) {
+          err.style.display = 'block';
+          err.innerHTML = '<h2 style="color:#ef4444;margin:0 0 8px">Something went wrong</h2><p style="margin:0">' + msg + '</p><p style="opacity:0.6;margin:4px 0 0">Line: ' + line + ' — try reloading the page.</p>';
         }
-      }, 3000);
+      };
+      // If React still hasn't rendered after 6s, soften the loading copy so
+      // the user knows something is off and can pop open devtools.
+      setTimeout(function() {
+        var loading = document.getElementById('loading');
+        if (loading && loading.style.display !== 'none') {
+          var sub = loading.querySelector('.sub');
+          if (sub) sub.textContent = 'Still loading… open the console (F12) if this persists';
+        }
+      }, 6000);
     </script>
   </body>
 </html>
