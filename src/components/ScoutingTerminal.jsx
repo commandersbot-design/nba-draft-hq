@@ -303,6 +303,7 @@ import InlineTierPill from "./InlineTierPill";
 import InlineTagsPopover from "./InlineTagsPopover";
 import ScoutTierBadge from "./ScoutTierBadge";
 import DashboardCardV2 from "./dashboard/DashboardCardV2";
+import LineupCard from "./dashboard/LineupCard";
 
 /**
  * Reads the prospect's hand-assigned tags from localStorage and renders them
@@ -1372,10 +1373,11 @@ const DashboardPage = ({
   clearDashboard,
   resetToTop12,
   dashSelected = [],
-  axisStyle = "radar",
-  setAxisStyle,
+  viewMode = "radar",
+  setViewMode,
   pinCap = 12,
 }) => {
+  const isLineup = viewMode === "lineup";
   const [query, setQuery] = useState("");
   const atCap = dashSelected.length >= pinCap;
 
@@ -1531,25 +1533,29 @@ const DashboardPage = ({
           )}
         </div>
 
-        {/* Axis style toggle */}
+        {/* View-mode toggle. Radar/Bars share the Decision-card layout (3-up,
+            dense per-card info). Lineup uses the compact LineupCard grid (5-up,
+            big headshots, minimal info) — useful when you want to see all your
+            pinned guys at once as a roster lineup. */}
         <div
           style={{
             display: "inline-flex",
             border: `1px solid ${T.border}`,
             background: T.surface2,
           }}
-          title="Toggle how the 8-axis trait grades are drawn on each card. Radar shows shape (well-rounded vs. spiky); bars are easier to compare across cards."
+          title="Switch how pinned prospects are displayed. Radar/Bars show the full Decision card with axis viz; Lineup is a compact portrait grid with big headshots."
         >
           {[
-            { key: "radar", label: "Radar" },
-            { key: "bars",  label: "Bars" },
+            { key: "radar",  label: "Radar" },
+            { key: "bars",   label: "Bars" },
+            { key: "lineup", label: "Lineup" },
           ].map((opt) => {
-            const isActive = axisStyle === opt.key;
+            const isActive = viewMode === opt.key;
             return (
               <button
                 key={opt.key}
                 type="button"
-                onClick={() => setAxisStyle?.(opt.key)}
+                onClick={() => setViewMode?.(opt.key)}
                 style={{
                   ...mono,
                   fontSize: 9,
@@ -1644,7 +1650,28 @@ const DashboardPage = ({
             up to {pinCap} prospects without leaving the page.
           </div>
         </div>
+      ) : isLineup ? (
+        // Lineup view — denser portrait grid (5-up desktop). Big headshots,
+        // minimal info per card so a row reads like a roster.
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(5, 1fr)",
+            gap: 12,
+          }}
+          className="prospera-dash-grid-lineup"
+        >
+          {pinned.map((p) => (
+            <LineupCard
+              key={p.id}
+              p={p}
+              onOpenProfile={() => onOpenProfile(p.id)}
+              onRemove={() => removeFromSelected(p.id)}
+            />
+          ))}
+        </div>
       ) : (
+        // Decision-card view — 3-up dense cards with axis viz (radar or bars).
         <div
           style={{
             display: "grid",
@@ -1657,7 +1684,7 @@ const DashboardPage = ({
             <DashboardCardV2
               key={p.id}
               p={p}
-              axisStyle={axisStyle}
+              axisStyle={viewMode}
               onOpenProfile={() => onOpenProfile(p.id)}
               onRemove={() => removeFromSelected(p.id)}
             />
@@ -6454,9 +6481,12 @@ function ProsperaAppInner() {
     "prospera.terminal.dashboard-pins-v2",
     DEFAULT_DASHBOARD_PINS,
   );
-  // Radar vs. bars rendering toggle, also persisted. Both styles share the
-  // same data; this is a per-user preference for how the trait viz is drawn.
-  const [dashAxisStyle, setDashAxisStyle] = useLocalStorageState("prospera.terminal.dashboard-axis-style", "radar");
+  // Dashboard view mode, persisted. Three options:
+  //   "radar"  → 3-up Decision cards, radar axis viz
+  //   "bars"   → 3-up Decision cards, horizontal bar axis viz
+  //   "lineup" → 5-up compact portrait cards, big headshots, minimal info
+  // Storage key is fresh (-view-mode supersedes the older -axis-style key).
+  const [dashViewMode, setDashViewMode] = useLocalStorageState("prospera.terminal.dashboard-view-mode", "radar");
   const [profileId, setProfileId] = useState(null);
   const [railOpen, setRailOpen] = useState(false);
   const [watchlist, setWatchlist] = useLocalStorageState("prospera.terminal.watchlist", []);
@@ -6749,8 +6779,8 @@ function ProsperaAppInner() {
               clearDashboard={clearDashboard}
               resetToTop12={resetDashboardToTop12}
               dashSelected={dashSelected}
-              axisStyle={dashAxisStyle}
-              setAxisStyle={setDashAxisStyle}
+              viewMode={dashViewMode}
+              setViewMode={setDashViewMode}
               pinCap={DASHBOARD_PIN_CAP}
             />
           )}
