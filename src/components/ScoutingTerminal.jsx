@@ -876,7 +876,11 @@ const FlagDot = ({ lvl }) => {
 // ---------- TOP NAV ----------
 // Scout Desk = the user's personal scouting hub (former Big Board + Deep Dives merged).
 // My Board = the user-facing board builder (manual / preset / team-need / custom-weights).
-const NAV_ITEMS = ["Scout Desk", "Founder's Read", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
+// My Board and Scout Notes were previously sub-tabs inside the Deep Dives
+// section. They're USER content, so they got promoted to their own
+// top-level tabs alongside Scout Desk. Founder's Read now contains only
+// the founder's authored deep-dive reports.
+const NAV_ITEMS = ["Scout Desk", "My Board", "Scout Notes", "Founder's Read", "Mock Draft", "Class Map", "Dashboard", "Compare", "Notes", "Historical"];
 
 // PROSPERA TICKER · slim band above the main nav.
 // Multi-source unified feed: hand-authored news from prospectNews.json
@@ -7274,7 +7278,10 @@ function ProsperaAppInner() {
   // Roster view = personal Big Board; Dives view = the dive index/editor.
   // Sub-view within the Deep Dives section: "my-board" or "dives".
   // Default to "my-board" — the primary entry point for personal analysis.
-  const [scoutDeskView, setScoutDeskView] = useState("my-board");
+  // (scoutDeskView state removed — was the sub-tab selector inside the old
+  // DeepDivesShell. After the Option-A restructure, "My Board" / "Scout Notes"
+  // / "Founder's Read" are each top-level routes, so this state is no longer
+  // needed.)
   // Scout-view authored-count for the Deep Dives sub-tab badge. Reads the
   // same localStorage key the ScoutTab editor writes to; counts prospects
   // that have any authored content (tier rating, ceiling call, summary, or
@@ -7554,46 +7561,37 @@ function ProsperaAppInner() {
               onSetBoardOrder={setBigBoardOrder}
             />
           )}
+          {route === "My Board" && (
+            <MyBoardPage
+              myBoard={myBoard}
+              savedBoards={savedBoards}
+              onReorder={reorderMyBoard}
+              onReset={resetMyBoard}
+              onSaveBoard={saveCurrentBoard}
+              onLoadBoard={loadSavedBoard}
+              onDeleteBoard={deleteSavedBoard}
+              onOpenProfile={onOpenProfile}
+              onOpenWeights={() => setWeightsDrawerOpen(true)}
+              mode={myBoardMode}
+              setMode={setMyBoardMode}
+              presetKey={myBoardPresetKey}
+              setPresetKey={setMyBoardPresetKey}
+              teamKey={myBoardTeamKey}
+              setTeamKey={setMyBoardTeamKey}
+            />
+          )}
+          {route === "Scout Notes" && (
+            <ScoutNotesHub prospects={PROSPECTS} />
+          )}
           {route === "Founder's Read" && (
-            <DeepDivesShell
-              view={scoutDeskView}
-              setView={setScoutDeskView}
-              diveCount={Object.keys(deepDives).length}
-              scoutCount={scoutNotesAuthoredCount}
-            >
-              {scoutDeskView === "my-board" && (
-                <MyBoardPage
-                  myBoard={myBoard}
-                  savedBoards={savedBoards}
-                  onReorder={reorderMyBoard}
-                  onReset={resetMyBoard}
-                  onSaveBoard={saveCurrentBoard}
-                  onLoadBoard={loadSavedBoard}
-                  onDeleteBoard={deleteSavedBoard}
-                  onOpenProfile={onOpenProfile}
-                  onOpenWeights={() => setWeightsDrawerOpen(true)}
-                  mode={myBoardMode}
-                  setMode={setMyBoardMode}
-                  presetKey={myBoardPresetKey}
-                  setPresetKey={setMyBoardPresetKey}
-                  teamKey={myBoardTeamKey}
-                  setTeamKey={setMyBoardTeamKey}
-                />
-              )}
-              {scoutDeskView === "scout-notes" && (
-                <ScoutNotesHub prospects={PROSPECTS} />
-              )}
-              {scoutDeskView === "dives" && (
-                <DeepDivesPage
-                  key={`dives-${diveEditorId || "none"}-${diveEditorSeq}`}
-                  prospects={PROSPECTS}
-                  deepDives={deepDives}
-                  setDeepDives={setDeepDives}
-                  onOpenProfile={onOpenProfile}
-                  initialEditingId={diveEditorId}
-                />
-              )}
-            </DeepDivesShell>
+            <DeepDivesPage
+              key={`dives-${diveEditorId || "none"}-${diveEditorSeq}`}
+              prospects={PROSPECTS}
+              deepDives={deepDives}
+              setDeepDives={setDeepDives}
+              onOpenProfile={onOpenProfile}
+              initialEditingId={diveEditorId}
+            />
           )}
           {route === "Class Map" && (
             <ClassConstellation prospects={PROSPECTS} onOpenProfile={onOpenProfile} />
