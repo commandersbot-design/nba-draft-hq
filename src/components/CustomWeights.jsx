@@ -83,17 +83,17 @@ export const ALL_AXES = SCOUT_AXES;
 export const TRAIT_AXES = SCOUT_AXES;
 export const STAT_INDICATOR_AXES = [];
 
-// Default weights — start each axis with a moderate non-zero value so that
-// when the user activates custom weights for the first time they get a
-// reasonable balanced read rather than zeros. Ratios are what matter; these
-// numbers just express "all roughly equal, slight emphasis on Scoring +
-// Defense" as a balanced two-way starting bias.
+// Default weights — sum to exactly 100 (the budget cap) so that activating
+// custom weights for the first time gives the user a fully-allocated
+// balanced read rather than zeros or an over-budget state. Slight emphasis
+// on Scoring + Defense for a balanced two-way starting bias; user can
+// reallocate to taste.
 export const DEFAULT_WEIGHTS = {
-  scoring:     25,
+  scoring:     20,
   shooting:    20,
   passing:     15,
-  defense:     25,
-  feel:        15,
+  defense:     20,
+  feel:        10,
   versatility: 15,
 };
 
@@ -147,7 +147,11 @@ export function computePersonalScore(prospect, weights) {
 const CustomWeightsContext = createContext(null);
 
 export function CustomWeightsProvider({ children }) {
-  const [weights, setWeights] = useLocalStorageState("prospera.terminal.custom-weights", DEFAULT_WEIGHTS);
+  // Storage key bumped to -v2 to force a clean default on the new 6-axis
+  // scout taxonomy. The v1 key was shaped for the old 17-pipeline-axis
+  // system (initiate / extend / contain / etc.) — loading it under v2 would
+  // give 17 orphan keys + 6 missing keys. Bumping is the simplest migration.
+  const [weights, setWeights] = useLocalStorageState("prospera.terminal.custom-weights-v2", DEFAULT_WEIGHTS);
   const [active, setActive] = useLocalStorageState("prospera.terminal.custom-weights-active", false);
   const value = useMemo(() => ({
     weights,
@@ -200,25 +204,32 @@ export const ScoreCell = ({ prospect, fallback = "—", style, decimals = 1 }) =
   return <span style={style}>{fallback}</span>;
 };
 
-// Independent slider range. Sliders no longer share a global budget — each
-// axis runs 0-100 freely. The personal-score math takes a weighted average
-// of the active axes, so ratios between weights are what matter; absolute
-// values just express how strongly the user cares about each category.
-export const PER_AXIS_MAX = 100;
-// Back-compat constants for any caller that still imports them. No longer
-// enforced; kept so imports don't break.
+// Total budget for the 6 sliders. The total of all sliders combined can never
+// exceed 100. Sliders themselves are still rendered with a fixed max=100 in
+// the UI so dragging one doesn't visually shift the others — when you try to
+// drag past the available budget, the value just clamps to remaining headroom
+// and the thumb stops moving. No "squeeze" effect on the other sliders.
 export const TOTAL_CAP = 100;
+// Back-compat alias; no separate per-axis cap is enforced now (a single axis
+// can take the whole budget if the others are zero).
 export const PER_AXIS_CAP = 100;
 
 export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active, setActive }) => {
+  const total = SCOUT_AXES.reduce((acc, a) => acc + (weights[a.key] || 0), 0);
+
   const setOne = (key, value) => {
-    // Independent slider: only the axis being moved changes. No squeezing
-    // of others to maintain a shared total — that was the source of the
-    // "all the sliders move when I drag one" complaint.
-    setWeights((curr) => ({
-      ...curr,
-      [key]: Math.max(0, Math.min(PER_AXIS_MAX, Math.round(value))),
-    }));
+    setWeights((curr) => {
+      // Clamp the requested value to "remaining headroom" — how much budget is
+      // left after the other sliders take their cut. Other slider VALUES are
+      // never modified — they stay exactly where the user left them.
+      const others = SCOUT_AXES.reduce(
+        (s, a) => (a.key === key ? s : s + (curr[a.key] || 0)),
+        0,
+      );
+      const headroom = Math.max(0, TOTAL_CAP - others);
+      const clamped = Math.max(0, Math.min(headroom, Math.round(value)));
+      return { ...curr, [key]: clamped };
+    });
   };
 
   const reset = () => setWeights({ ...DEFAULT_WEIGHTS });
@@ -285,7 +296,7 @@ export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active
       </div>
 
       <div style={{ padding: "12px 18px", borderBottom: `1px solid ${T.border}`, fontSize: 12, color: T.textDim, lineHeight: 1.55 }}>
-        Slide each category to set how much you care about it. Sliders are independent — moving one doesn't change the others. Only the ratios between them matter; the personal score weighs each category accordingly.
+        Slide each category to set how much you care about it. You have a 100-point budget across the six categories — when one slider hits the available headroom, it just stops. Other sliders don't move.
       </div>
 
       <div style={{ flex: 1, overflowY: "auto", padding: "12px 18px" }}>
@@ -296,21 +307,30 @@ export const CustomWeightsDrawer = ({ open, onClose, weights, setWeights, active
         />
       </div>
 
-      <div style={{ padding: "12px 18px", borderTop: `1px solid ${T.border}`, display: "flex", gap: 8, justifyContent: "flex-end", alignItems: "center" }}>
-        <button
-          type="button"
-          onClick={zeroAll}
-          style={pillBtn(T.textMute)}
-        >
-          ZERO
-        </button>
-        <button
-          type="button"
-          onClick={reset}
-          style={pillBtn(T.textDim)}
-        >
-          <RefreshCw size={11} /> RESET
-        </button>
+      <div style={{ padding: "12px 18px", borderTop: `1px solid ${T.border}`, display: "flex", gap: 8, justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
+        <div style={{ ...mono, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ color: T.textMute }}>Budget</span>
+          <span style={{ color: total >= TOTAL_CAP ? T.cyan : T.text, fontWeight: 700 }}>{total} / {TOTAL_CAP}</span>
+          {total >= TOTAL_CAP && (
+            <span style={{ color: T.cyan, fontSize: 9, padding: "1px 5px", border: `1px solid ${T.cyan}`, fontWeight: 700 }}>AT CAP</span>
+          )}
+        </div>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button
+            type="button"
+            onClick={zeroAll}
+            style={pillBtn(T.textMute)}
+          >
+            ZERO
+          </button>
+          <button
+            type="button"
+            onClick={reset}
+            style={pillBtn(T.textDim)}
+          >
+            <RefreshCw size={11} /> RESET
+          </button>
+        </div>
       </div>
     </div>
   );
