@@ -5067,17 +5067,82 @@ function FilterChipGroup({ label, options, active, onToggle, colored = false }) 
 // useful once the user has dragged rows around (their order is saved into
 // boardOrder); selecting "custom" with no boardOrder falls back to rank.
 const SCOUT_DESK_SORT_OPTIONS = [
-  { key: "rank",   label: "Rank",   desc: "Consensus rank (default)" },
-  { key: "name",   label: "Name",   desc: "Alphabetical by last name" },
-  { key: "score",  label: "Score",  desc: "Computed score, highest first" },
-  { key: "tier",   label: "Tier",   desc: "Your tier call: Ceiling → Floor" },
-  { key: "recent", label: "Recent", desc: "Most recently touched scout note" },
-  { key: "custom", label: "Custom", desc: "Drag-and-drop order you've saved" },
+  { key: "rank",       label: "Rank",       desc: "Consensus rank (default)" },
+  { key: "name",       label: "Name",       desc: "Alphabetical by last name" },
+  { key: "score",      label: "Score",      desc: "Computed score, highest first" },
+  { key: "tier",       label: "Tier",       desc: "Your tier call: Ceiling → Floor" },
+  { key: "divergence", label: "Divergence", desc: "Biggest gap between your tier call and consensus rank — your boldest takes first" },
+  { key: "recent",     label: "Recent",     desc: "Most recently touched scout note" },
+  { key: "custom",     label: "Custom",     desc: "Drag-and-drop order you've saved" },
 ];
+
+// Visual chip showing how much the user's tier-call diverges from the
+// rank-implied tier. Renders nothing on match — the absence of a chip is
+// the "you agree with the market" signal. Bullish (user higher than market)
+// is cyan-up; bearish is warn-down.
+function DivergenceChip({ rank, userTier }) {
+  const div = tierDivergence(rank, userTier);
+  if (!div || div.abs === 0) return null;
+  const bullish = div.dir === "up";
+  const color = bullish ? "var(--prospera-cyan)" : "var(--prospera-warn)";
+  return (
+    <span
+      title={
+        bullish
+          ? `You have this prospect ${div.abs} tier${div.abs === 1 ? "" : "s"} HIGHER than consensus rank implies — your bullish take`
+          : `You have this prospect ${div.abs} tier${div.abs === 1 ? "" : "s"} LOWER than consensus rank implies — your bearish take`
+      }
+      style={{
+        fontFamily: 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace',
+        fontSize: 9,
+        letterSpacing: "0.08em",
+        color,
+        background: `color-mix(in srgb, ${color} 12%, transparent)`,
+        border: `1px solid ${color}`,
+        padding: "1px 5px",
+        fontWeight: 700,
+        whiteSpace: "nowrap",
+        lineHeight: 1.5,
+      }}
+    >
+      {bullish ? "↑" : "↓"}{div.abs}
+    </span>
+  );
+}
 
 // Tier-call ordering (Ceiling first, Floor last). Prospects without a tier
 // call fall to the bottom of the tier sort.
 const TIER_RANK = { C: 0, HE: 1, MID: 2, LE: 3, FL: 4 };
+const TIER_KEYS_ORDERED = ["C", "HE", "MID", "LE", "FL"]; // by TIER_RANK
+
+// Map a consensus rank to the tier it implies. These thresholds are tuned to
+// the typical "lottery / late-first / early-second / late-second / undrafted"
+// shape of a draft class rather than equal fifths. Adjusts how aggressive the
+// score-divergence indicator reads — a #6 prospect (HE-implied) being called
+// Ceiling by the user is a meaningful "hot take", not noise.
+function rankImpliedTier(rank) {
+  if (rank == null || !Number.isFinite(rank)) return null;
+  if (rank <= 5)  return "C";
+  if (rank <= 15) return "HE";
+  if (rank <= 35) return "MID";
+  if (rank <= 65) return "LE";
+  return "FL";
+}
+
+// Divergence between the user's tier-call and the rank-implied tier.
+// Returns null when the user hasn't graded the prospect (no signal to compare)
+// or when there's no rank. Otherwise returns an object describing the gap:
+//   - delta: signed tier-rank difference (negative = user higher than market)
+//   - abs:   |delta|, count of tier slots between calls
+//   - dir:   "up" (bullish, user higher than rank), "down" (bearish), "even"
+// Used both for the in-row divergence chip and the "Divergence" sort option.
+function tierDivergence(rank, userTier) {
+  const implied = rankImpliedTier(rank);
+  if (!implied || !userTier || TIER_RANK[userTier] == null) return null;
+  const delta = TIER_RANK[userTier] - TIER_RANK[implied];
+  if (delta === 0) return { delta: 0, abs: 0, dir: "even" };
+  return { delta, abs: Math.abs(delta), dir: delta < 0 ? "up" : "down" };
+}
 
 const BigBoardPage = ({
   onOpenProfile, watchlist = [], compareIds = [],
@@ -5174,6 +5239,26 @@ const BigBoardPage = ({
           if (au && bu) return String(bu).localeCompare(String(au));
           if (au && !bu) return -1;
           if (!au && bu) return 1;
+          return (a.rank ?? 999) - (b.rank ?? 999);
+        });
+      }
+      case "divergence": {
+        // Sort by absolute divergence between user tier-call and rank-implied
+        // tier, biggest first. Prospects without a tier-call (no divergence
+        // signal) fall to the bottom in rank order — those rows have nothing
+        // to compare. Ties broken by signed delta then rank.
+        return arr.sort((a, b) => {
+          const da = tierDivergence(a.rank, allScoutViews?.[a.id]?.tierRating);
+          const db = tierDivergence(b.rank, allScoutViews?.[b.id]?.tierRating);
+          const aAbs = da ? da.abs : -1;
+          const bAbs = db ? db.abs : -1;
+          if (aAbs !== bAbs) return bAbs - aAbs;
+          if (aAbs < 0) return (a.rank ?? 999) - (b.rank ?? 999);
+          // Same magnitude: bullish (up) before bearish (down) so positive
+          // takes group together, then rank.
+          const aDir = da?.dir === "up" ? 0 : 1;
+          const bDir = db?.dir === "up" ? 0 : 1;
+          if (aDir !== bDir) return aDir - bDir;
           return (a.rank ?? 999) - (b.rank ?? 999);
         });
       }
@@ -5588,6 +5673,7 @@ const BigBoardPage = ({
                   <ComputedScorePill prospectName={p.name} />
                 </div>
                 <div className="prospera-row-actions" style={{ display: "flex", gap: 6, justifyContent: "flex-end", alignItems: "center" }}>
+                  <DivergenceChip rank={p.rank} userTier={allScoutViews?.[p.id]?.tierRating} />
                   <InlineTierPill prospectId={p.id} />
                   <button
                     type="button"
