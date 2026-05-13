@@ -6,6 +6,16 @@ import { usePlayerTags } from "../TagEditor";
 import { TagBadge } from "../TagBadge";
 import ScoutTierBadge from "../ScoutTierBadge";
 import { AxisRadar8, AxisBars8 } from "./AxisViz";
+import PROSPECT_HEADSHOTS from "../../data/prospectHeadshots.json";
+
+// Same name-keyed headshot resolver used elsewhere on the site. Imported
+// directly here so the Dashboard card doesn't depend on ScoutingTerminal's
+// internal helpers.
+function resolveHeadshotUrl(p) {
+  if (!p || !p.name) return null;
+  const entry = PROSPECT_HEADSHOTS[p.name];
+  return entry?.headshotUrl || null;
+}
 
 /**
  * DashboardCardV2 — the new decision-aid card.
@@ -73,25 +83,15 @@ const FLAG_LABELS = {
   1: "Watch",
 };
 
-function ProspectAvatar({ p, size = 48 }) {
-  const headshot = p?.headshot;
-  const initials = ((p?.first?.[0] || "") + (p?.last?.[0] || "")).toUpperCase() || "?";
-  if (headshot) {
-    return (
-      <img
-        src={headshot}
-        alt={p?.name || ""}
-        style={{
-          width: size,
-          height: size,
-          objectFit: "cover",
-          objectPosition: "center top",
-          border: `1px solid ${T.cyan}`,
-          background: T.surface2,
-        }}
-      />
-    );
-  }
+function ProspectAvatar({ p, size = 56 }) {
+  const headshotUrl = resolveHeadshotUrl(p);
+  const [errored, setErrored] = React.useState(false);
+  const showImage = headshotUrl && !errored;
+  const initials =
+    p?.initials ||
+    ((p?.first?.[0] || "") + (p?.last?.[0] || "")).toUpperCase() ||
+    "?";
+
   return (
     <div
       style={{
@@ -99,17 +99,100 @@ function ProspectAvatar({ p, size = 48 }) {
         height: size,
         border: `1px solid ${T.cyan}`,
         background: `linear-gradient(135deg, ${T.surface2}, ${T.surface})`,
-        ...mono,
-        fontSize: size * 0.38,
-        color: T.cyan,
+        overflow: "hidden",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontWeight: 700,
-        letterSpacing: "0.04em",
+        flexShrink: 0,
       }}
     >
-      {initials}
+      {showImage ? (
+        <img
+          src={headshotUrl}
+          alt={p?.name || ""}
+          loading="lazy"
+          onError={() => setErrored(true)}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center top",
+            display: "block",
+          }}
+        />
+      ) : (
+        <span
+          style={{
+            ...mono,
+            fontSize: size * 0.34,
+            color: T.cyan,
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+          }}
+        >
+          {initials}
+        </span>
+      )}
+    </div>
+  );
+}
+
+// Measurables strip — height / weight / wingspan / age. Each cell shows a
+// short label and the value. Values are rendered as "—" when missing so the
+// strip stays a fixed shape across cards (international prospects often miss
+// wingspan or age data).
+function MeasurablesStrip({ p }) {
+  const items = [
+    ["HT",   p?.height   || "—"],
+    ["WT",   p?.weight   || "—"],
+    ["WING", p?.wingspan || "—"],
+    ["AGE",  p?.age != null ? String(p.age) : "—"],
+  ];
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, 1fr)",
+        background: T.surface2,
+        borderTop: `1px solid ${T.borderSoft}`,
+        borderBottom: `1px solid ${T.borderSoft}`,
+      }}
+    >
+      {items.map(([label, value], i) => (
+        <div
+          key={label}
+          style={{
+            padding: "6px 8px",
+            borderRight: i < items.length - 1 ? `1px solid ${T.borderSoft}` : "none",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              ...mono,
+              fontSize: 8,
+              letterSpacing: "0.18em",
+              color: T.textMute,
+              textTransform: "uppercase",
+              fontWeight: 700,
+            }}
+          >
+            {label}
+          </div>
+          <div
+            style={{
+              ...mono,
+              fontSize: 12,
+              color: value === "—" ? T.textMute : T.text,
+              fontWeight: 600,
+              marginTop: 2,
+              letterSpacing: "0.02em",
+            }}
+          >
+            {value}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -368,7 +451,7 @@ export default function DashboardCardV2({
       >
         {/* Top row: avatar + name block + rank chip + remove */}
         <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-          <ProspectAvatar p={p} size={48} />
+          <ProspectAvatar p={p} size={56} />
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
@@ -459,6 +542,9 @@ export default function DashboardCardV2({
           ))}
         </div>
       </div>
+
+      {/* ====== MEASURABLES ====== */}
+      <MeasurablesStrip p={p} />
 
       {/* ====== RISK STRIP ====== */}
       <RiskStrip flags={p.flags} />
