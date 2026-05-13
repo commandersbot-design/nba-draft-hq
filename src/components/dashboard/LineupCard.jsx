@@ -125,40 +125,113 @@ export default function LineupCard({ p, onOpenProfile, onRemove }) {
   const { tagIds } = usePlayerTags(p?.id || "");
   // Only show the single top tag in the lineup mode — keep it visually quiet.
   const topTagId = (tagIds || [])[0] || null;
+  const [hovering, setHovering] = React.useState(false);
 
   if (!p) return null;
   const personal = displayScore(p);
 
+  // The whole card is a clickable tile that opens the profile. The X (remove)
+  // button stops propagation so it doesn't trigger the underlying open. We
+  // use a div (with role=button) rather than a real <button> here because
+  // having interactive children (the X button, the open profile button)
+  // inside a real button is invalid markup.
+  const handleCardClick = () => { onOpenProfile?.(); };
+  const handleRemoveClick = (e) => {
+    e.stopPropagation();
+    onRemove?.();
+  };
+  const handleOpenClick = (e) => {
+    e.stopPropagation();
+    onOpenProfile?.();
+  };
+
   return (
     <div
+      role="button"
+      tabIndex={0}
+      onClick={handleCardClick}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpenProfile?.();
+        }
+      }}
+      title={`Open ${p.name}'s profile`}
       style={{
         background: T.card,
-        border: `1px solid ${T.border}`,
+        border: `1px solid ${hovering ? T.cyan : T.border}`,
+        boxShadow: hovering
+          ? `0 0 0 1px ${T.cyan}, 0 8px 20px rgba(0, 0, 0, 0.35)`
+          : "none",
         display: "flex",
         flexDirection: "column",
         minWidth: 0,
         position: "relative",
+        cursor: "pointer",
+        transition: "border-color 0.12s ease, box-shadow 0.12s ease",
+        outline: "none",
       }}
     >
-      <LineupHeadshot p={p} />
+      <div style={{ position: "relative" }}>
+        <LineupHeadshot p={p} />
 
-      {/* Remove button — top-right of the whole card so it doesn't sit on
-          top of the headshot image and isn't visually intrusive. */}
+        {/* Hover overlay on the headshot — makes the "open" intent obvious
+            the first time a user moves over a card. Dimmed gradient + label. */}
+        {hovering && (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(180deg, rgba(5,10,18,0.0) 50%, rgba(5,10,18,0.78) 100%)",
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "center",
+              padding: "0 0 10px",
+              pointerEvents: "none",
+            }}
+          >
+            <span
+              style={{
+                ...mono,
+                fontSize: 10,
+                letterSpacing: "0.18em",
+                color: T.cyan,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                background: "rgba(5, 10, 18, 0.78)",
+                padding: "5px 10px",
+                border: `1px solid ${T.cyan}`,
+              }}
+            >
+              View Profile <ExternalLink size={11} />
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Remove button — top-right corner. stopPropagation prevents the card's
+          underlying onClick from also firing. */}
       <button
         type="button"
-        onClick={onRemove}
+        onClick={handleRemoveClick}
         title="Remove from dashboard"
         style={{
           position: "absolute",
           top: 6,
           right: 6,
-          background: "rgba(5, 10, 18, 0.7)",
+          background: "rgba(5, 10, 18, 0.78)",
           border: `1px solid ${T.border}`,
           color: T.textMute,
           padding: 3,
           cursor: "pointer",
           lineHeight: 0,
-          zIndex: 2,
+          zIndex: 3,
         }}
       >
         <X size={11} />
@@ -208,18 +281,22 @@ export default function LineupCard({ p, onOpenProfile, onRemove }) {
           {topTagId && <TagBadge tagId={topTagId} size="sm" showLabel={false} />}
         </div>
 
-        {/* Score row + open profile in one strip */}
+        {/* Score + explicit OPEN PROFILE button. The button is the primary
+            affordance for "expand this card" — solid cyan fill with label so
+            it reads at a glance and pairs with the whole-card click target
+            for redundant clarity. */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            gap: 8,
             marginTop: 4,
             paddingTop: 8,
             borderTop: `1px solid ${T.borderSoft}`,
           }}
         >
-          <div>
+          <div style={{ minWidth: 0 }}>
             <div
               style={{
                 ...mono,
@@ -250,18 +327,26 @@ export default function LineupCard({ p, onOpenProfile, onRemove }) {
           </div>
           <button
             type="button"
-            onClick={onOpenProfile}
+            onClick={handleOpenClick}
             title="Open profile"
             style={{
-              background: "transparent",
-              border: `1px solid ${T.border}`,
-              color: T.cyan,
-              padding: 5,
+              ...mono,
+              fontSize: 9,
+              letterSpacing: "0.16em",
+              color: T.bg,
+              background: T.cyan,
+              border: `1px solid ${T.cyan}`,
+              padding: "7px 10px",
               cursor: "pointer",
-              lineHeight: 0,
+              textTransform: "uppercase",
+              fontWeight: 700,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 5,
+              whiteSpace: "nowrap",
             }}
           >
-            <ExternalLink size={12} />
+            Open <ExternalLink size={11} />
           </button>
         </div>
       </div>
