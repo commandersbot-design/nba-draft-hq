@@ -2,6 +2,7 @@ import React, { useMemo, createContext, useContext } from "react";
 import { X, RefreshCw } from "lucide-react";
 import { deriveAdvantageProfile } from "./AdvantageBars";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
+import { getProspectScoresByName } from "../grading/precomputed";
 
 // PROSPERA · Signal Orange tokens — single source: src/styles/tokens.css.
 const T = {
@@ -245,14 +246,28 @@ export function useCustomWeights() {
   return ctx;
 }
 
-// Small helper for inline score displays. When custom weighting is off,
-// renders the fallback (typically "—"). When on, renders the user's
-// personalized score formatted to one decimal.
+// Small helper for inline score displays. Shows the user's personal-weights
+// score when custom weights are active (1 decimal); otherwise falls back to
+// the computed pipeline score (integer). The fallback was previously just
+// "—", which meant every row showed an em-dash by default until the user
+// activated custom weights — confusing for first-time visitors who had no
+// reason to know what custom weights even are.
 export const ScoreCell = ({ prospect, fallback = "—", style, decimals = 1 }) => {
   const { displayScore } = useCustomWeights();
-  const score = displayScore(prospect);
-  if (score == null) return <span style={style}>{fallback}</span>;
-  return <span style={style}>{score.toFixed(decimals)}</span>;
+  const personal = displayScore(prospect);
+  if (personal != null) {
+    return <span style={style}>{personal.toFixed(decimals)}</span>;
+  }
+  // Fall back to the new pipeline's computed display score so the row
+  // always carries a real number when one exists. Lazy lookup — most code
+  // paths hit this when the prospect has a precomputed entry; international
+  // prospects without NCAA data fall through to the fallback string.
+  const computed = prospect?.name ? getProspectScoresByName(prospect.name) : null;
+  const display = computed?.summary?.overallDisplay;
+  if (display != null) {
+    return <span style={style}>{Math.round(display)}</span>;
+  }
+  return <span style={style}>{fallback}</span>;
 };
 
 // Hard ceilings on the weight system. TOTAL_CAP enforces "weights never sum

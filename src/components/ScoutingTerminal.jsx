@@ -290,7 +290,10 @@ import {
   DEEP_DIVE_TIER_COLORS,
 } from "./DeepDives";
 import ComputedScoreCard from "./ComputedScoreCard";
-import ComputedScorePill from "./ComputedScorePill";
+// ComputedScorePill is no longer rendered next to ScoreCell — the cell now
+// falls back to the computed pipeline score itself, so the dual-pill layout
+// (rendering "— C97" together) is gone. Component file kept for reference.
+// import ComputedScorePill from "./ComputedScorePill";
 import AuthoredCompsLadder from "./AuthoredCompsLadder";
 import ScoutTab from "./ScoutTab";
 import ScoutNotesHub from "./ScoutNotesHub";
@@ -6046,7 +6049,6 @@ const BigBoardPage = ({
                 <div className="prospera-row-school" onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 12, color: T.textDim, cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.school?.split(" ")[0]}</div>
                 <div className="prospera-row-score" onClick={() => onOpenProfile(p.id)} style={{ ...mono, fontSize: 14, color: T.cyan, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center" }}>
                   <ScoreCell prospect={p} />
-                  <ComputedScorePill prospectName={p.name} />
                 </div>
                 <div className="prospera-row-actions" style={{ display: "flex", gap: 6, justifyContent: "flex-end", alignItems: "center" }}>
                   <DivergenceChip rank={p.rank} userTier={allScoutViews?.[p.id]?.tierRating} />
