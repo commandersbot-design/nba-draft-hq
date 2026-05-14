@@ -3853,42 +3853,40 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
     <div style={{ background: T.surface, border: `1px solid ${T.border}`, boxShadow: `inset 3px 0 0 ${T.cyan}` }}>
       <div
         style={{
-          padding: "10px 14px 10px 18px",
+          padding: "12px 16px 12px 18px",
           borderBottom: `1px solid ${T.border}`,
           background: T.surface2,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
         }}
       >
-        <Label style={{ color: T.cyan, letterSpacing: "0.16em", fontWeight: 700 }}>{title}</Label>
-        <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.14em" }}>
-          HOVER A LABEL FOR DETAIL
-        </div>
+        <Label style={{ color: T.cyan, letterSpacing: "0.18em", fontWeight: 700, fontSize: 11 }}>{title}</Label>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${entries.length}, 1fr)` }}>
         {entries.map(([k, v], i) => {
           const tooltip = METRIC_TOOLTIPS[k] || null;
+          const isMissing = v == null || v === "" || v === "—";
           return (
             <div
               key={k}
               style={{
-                padding: "16px 18px",
+                padding: "20px 12px 18px",
                 borderRight: i < entries.length - 1 ? `1px solid ${T.borderSoft}` : "none",
                 position: "relative",
+                textAlign: "center",
               }}
             >
               <div
                 title={tooltip || undefined}
                 style={{
                   ...mono,
-                  fontSize: 9,
+                  fontSize: 10,
                   color: T.textMute,
-                  letterSpacing: "0.16em",
-                  fontWeight: 600,
+                  letterSpacing: "0.2em",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
                   cursor: tooltip ? "help" : "default",
                   borderBottom: tooltip ? `1px dotted ${T.borderSoft}` : "none",
                   display: "inline-block",
+                  paddingBottom: tooltip ? 1 : 0,
                 }}
               >
                 {k}
@@ -3896,18 +3894,20 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
               <div
                 style={{
                   ...mono,
-                  fontSize: 24,
-                  color: T.text,
-                  marginTop: 8,
+                  fontSize: 26,
+                  color: isMissing ? T.textMute : T.text,
+                  marginTop: 10,
                   fontWeight: 700,
-                  letterSpacing: "-0.01em",
-                  lineHeight: 1.05,
+                  letterSpacing: "-0.015em",
+                  lineHeight: 1,
                 }}
               >
                 {typeof v === "number" && v < 1 && v > 0 ? v.toFixed(3) : v}
               </div>
               {percentiles && percentiles[k] != null && (
-                <PercentileIndicator value={percentiles[k]} />
+                <div style={{ display: "flex", justifyContent: "center", marginTop: 8 }}>
+                  <PercentileIndicator value={percentiles[k]} />
+                </div>
               )}
             </div>
           );
