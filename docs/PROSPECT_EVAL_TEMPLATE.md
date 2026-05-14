@@ -4,6 +4,14 @@ Authoring template for per-prospect founder content. Copy the block below into
 your scouting doc, fill out what you have an opinion on, leave the rest blank,
 and paste the filled-out block back into chat for ingestion into the site.
 
+**Quick format rules:**
+- For enumerated fields: **delete the options that don't apply** and leave the one that does.
+- For tag checkboxes: **mark with `[x]`** the tags that apply.
+- Free-text fields: just write what you've got.
+- Sections marked `[future render]` aren't displayed on the site yet — bank
+  the content there and we'll wire up the rendering once there's a critical
+  mass of authored prospects.
+
 **Routing summary:**
 
 | Template section | Lands in |
@@ -28,142 +36,122 @@ Copy from `═══` to `═══`:
 ═══════════════════════════════════════════════════════════════
 PROSPECT EVAL TEMPLATE — Prospera Draft HQ
 ═══════════════════════════════════════════════════════════════
-Fill out what you have an opinion on. Leave blank what you don't.
-One block per prospect; paste back when ready for ingestion.
+Format: for enumerated fields, DELETE the options that don't apply
+and keep the one that does. For checkboxes, mark with [x].
 
-NAME: <exact prospect name as on the site>
+NAME: 
 
 
 ────────────────────────────────────────────────────────
 RANKING                              Founder's Read → Rankings
 ────────────────────────────────────────────────────────
-Rank: #<1-N>
-Tier: <Apex | Star | Hit | Swing | Bust>
-Note: <one sentence, ~15 words — the headline take>
+Rank: #
+Tier: Apex / Star / Hit / Swing / Bust
+Note: 
 
 
 ────────────────────────────────────────────────────────
 TIER BOARD                Founder's Read → Boards → By Tier
 ────────────────────────────────────────────────────────
-Note: <one sentence — what NBA outcome band you have them in>
+Note: 
 
 
 ────────────────────────────────────────────────────────
 POSITION BOARD       Founder's Read → Boards → By Position
 ────────────────────────────────────────────────────────
-Position Group: <Guards | Wings | Forwards | Bigs>
-Note: <position-rank rationale — "best X at the position">
+Group: Guards / Wings / Forwards / Bigs
+Note: 
 
 
 ────────────────────────────────────────────────────────
 MOCK DRAFT                       Founder's Read → Mock Draft
 ────────────────────────────────────────────────────────
-Pick: #<1-60>
-Rationale: <one sentence — why this slot, what need it fills>
+Pick: #
+Why: 
 
 
 ────────────────────────────────────────────────────────
 TAKE                                 Founder's Read → Takes
-                                          (optional, pick one)
+                                       (optional — skip if none)
 ────────────────────────────────────────────────────────
-Category: <sleeper | riser | faller | watchlist>
-   sleeper   = going higher than consensus boards
-   riser     = stock trending up over the last month
-   faller    = stock trending down
-   watchlist = tracking closely + the specific thing you're watching for
-Note: <1-2 sentences>
+Category: sleeper / riser / faller / watchlist
+Note: 
 
 
 ────────────────────────────────────────────────────────
-TAGS                  Profile hero, Scout Desk rows, Dashboard
+TAGS                   Profile hero, Scout Desk, Dashboard
 ────────────────────────────────────────────────────────
-Mark with [x] the ones that apply. Conflict pair auto-resolves:
-Rhythm Scorer ↔ Pure Scorer (can't carry both).
+Mark with [x]. Rhythm Scorer ↔ Pure Scorer can't both fire.
 
 SCORING
-  [ ] Rhythm Scorer       Heat-up rhythm scorer — needs reps to find shot
-  [ ] Volume Scorer       High shot count, role-driven
-  [ ] Pure Scorer         Effortless craft, makes hard buckets look routine
-  [ ] Midrange Mastery    Elite in-between game — pull-ups, runners, fades
+  [ ] Rhythm Scorer        [ ] Volume Scorer
+  [ ] Pure Scorer          [ ] Midrange Mastery
 
 ON-BALL CREATION
-  [ ] Pull-up Threat      Dangerous off the dribble
-  [ ] Downhill Driver     Attacks rim with force, finishes through contact
-  [ ] Crafty Finisher     Wins finishes via angles + touch, not athleticism
-  [ ] Float Game          Floater / runner is a real weapon
-  [ ] Post Moves          Real back-to-basket repertoire
+  [ ] Pull-up Threat       [ ] Downhill Driver
+  [ ] Crafty Finisher      [ ] Float Game
+  [ ] Post Moves
 
 FREE THROWS
-  [ ] Foul Magnet         Draws fouls at elite rate
+  [ ] Foul Magnet
 
 OFF-BALL OFFENSE
-  [ ] Catch-and-shoot Threat   Reliable spot-up shooter
-  [ ] Lob Threat               Rim-runner / vertical spacer
-  [ ] Savvy Cutter             Reads holes, cuts on time
-  [ ] Off-Ball Gravity         Defenses respect on the perimeter
+  [ ] Catch-and-shoot Threat   [ ] Lob Threat
+  [ ] Savvy Cutter             [ ] Off-Ball Gravity
 
 PASSING
-  [ ] Manipulative Passer  Moves defenders with eyes / shoulders / fakes
-  [ ] Wizardly Passer      High-difficulty deliveries — no-looks, wraparounds
+  [ ] Manipulative Passer  [ ] Wizardly Passer
 
 DEFENSE
-  [ ] Ball Pressure        On-ball harassment, 94 feet
-  [ ] Perimeter Stopper    Wing stopper — length + lateral + scheme discipline
-  [ ] Off-Ball Disruptor   Events from the help side
-  [ ] Defensive Anchor     Five who organizes the scheme + rim verticality
-  [ ] Switchable           Holds up against multiple positions
+  [ ] Ball Pressure        [ ] Perimeter Stopper
+  [ ] Off-Ball Disruptor   [ ] Defensive Anchor
+  [ ] Switchable
 
 PHYSICAL / INTANGIBLES
-  [ ] Bendy                Flexibility, hip mobility, recovery
-  [ ] Immovable Object     Strong base, anchor in the paint
-  [ ] Motor                Plays harder than the rest
-  [ ] Rebounding           Wins boards, tracks misses, finishes plays
-  [ ] Versatility          Plays multiple positions or roles convincingly
-  [ ] Winning Connector    Drives positive lineup data, fits anywhere
-  [ ] Big-Moment Player    Performs in moments that matter
+  [ ] Bendy                [ ] Immovable Object
+  [ ] Motor                [ ] Rebounding
+  [ ] Versatility          [ ] Winning Connector
+  [ ] Big-Moment Player
 
-OUTLOOK (rare — handful per class at most)
-  [ ] Star Upside          Realistic All-Star / generational outcome
+OUTLOOK
+  [ ] Star Upside
 
 CONCERNS
-  [ ] Injury Concerns      Significant injury history or chronic issue
+  [ ] Injury Concerns
 
 
 ────────────────────────────────────────────────────────
-COMP LADDER          Authored Floor→Ceiling comps on profile
+COMP LADDER          Authored Floor→Ceiling on profile
 ────────────────────────────────────────────────────────
-Format per rung: <NBA Player Name> (<Tier>)
+Per rung, write: <NBA Player Name> (<tier>)
 
-Tier options: Bench, Role Player, Role Player / Starter,
-              Starter, 6th Man, 6th Man / Starter,
-              Star, All-Star, Superstar, Hall of Famer
-
+Tier options to choose from:
+   Bench / Role Player / Role Player-Starter / Starter / 6th Man /
+   6th Man-Starter / Star / All-Star / Superstar / Hall of Famer
 Suffixes:
-   "+"    above-average for that tier      (e.g. "Andrew Nembhard+")
-   "lite" diminished version of            (e.g. "Brandon Ingram lite")
+   "+"    above-average for tier        ("Andrew Nembhard+")
+   "lite" diminished version            ("Brandon Ingram lite")
 
-Ceiling:  <player> (<tier>)
-High-End: <player> (<tier>)
-Middle:   <player> (<tier>)
-Low-End:  <player> (<tier>)
-Floor:    <player> (<tier>)
+Ceiling:  
+High-End: 
+Middle:   
+Low-End:  
+Floor:    
 
 
 ────────────────────────────────────────────────────────
 SCOUT VIEW NARRATIVE                          [future render]
 ────────────────────────────────────────────────────────
-A short paragraph per rung — what each outcome actually
-looks like in practice. Will render on the Scout View tab
-of the profile once wired.
+Short paragraph per rung — what each outcome looks like.
 
-Ceiling:    <if everything clicks, what does this prospect become?>
-High-End:   <strong outcome — step below the ceiling>
-Middle:     <the realistic median outcome>
-Low-End:    <still in the league but with a limited role>
-Floor:      <worst-case viable outcome>
+Ceiling:    
+High-End:   
+Middle:     
+Low-End:    
+Floor:      
 
-Overall Ceiling Call: <one sentence — the absolute peak in plain English>
-Scout Summary:        <paragraph-length top-level read>
+Overall Ceiling Call:  
+Scout Summary:         
 
 
 ────────────────────────────────────────────────────────
@@ -185,46 +173,37 @@ CONS                                          [future render]
 ────────────────────────────────────────────────────────
 BEST GAME                                     [future render]
 ────────────────────────────────────────────────────────
-Opponent / setting:
-What stood out:
+Opponent: 
+Stood out: 
 
 
 ────────────────────────────────────────────────────────
 WORST GAME                                    [future render]
 ────────────────────────────────────────────────────────
-Opponent / setting:
-What concerned you:
+Opponent: 
+Concerned: 
 
 
 ────────────────────────────────────────────────────────
 RECENT OBSERVATIONS                           [future render]
 ────────────────────────────────────────────────────────
-Dated entries, newest first.
-- YYYY-MM-DD: <observation>
-- YYYY-MM-DD: <observation>
+- YYYY-MM-DD: 
+- YYYY-MM-DD: 
 
 
 ────────────────────────────────────────────────────────
 UPDATE LOG ENTRY                  Founder's Read → Updates
-                                          (optional, chronological)
+                                       (optional, chronological)
 ────────────────────────────────────────────────────────
-Use this if the eval is also a stock-shift you want logged on
-the Updates timeline. Otherwise skip.
-
-Date: <YYYY-MM-DD>
-Title: <short, e.g. "Bumped Flemings to 5">
-Body: <paragraph or two — what changed and why>
+Date: YYYY-MM-DD
+Title: 
+Body: 
 
 
 ────────────────────────────────────────────────────────
 LONG-FORM ANALYSIS                            [future render]
 ────────────────────────────────────────────────────────
-Multi-paragraph essay. Pros / cons / development arc / swing
-factors / key matchups / intangibles / anything not captured
-above. Banked until the long-form per-prospect section is
-wired up (Option B).
 
-<your writeup>
 
 
 ═══════════════════════════════════════════════════════════════
@@ -234,8 +213,9 @@ wired up (Option B).
 
 ## Filled-out example
 
-A reference for what "good" looks like across most fields. (Skipping the
-`[future render]` sections for brevity — fill those out in real evals.)
+Reference for what a completed eval looks like. (The `[future render]`
+sections are skipped here for brevity — fill them out in real evals to
+help bank long-form content.)
 
 ```
 ═══════════════════════════════════════════════════════════════
@@ -250,12 +230,12 @@ Note: Class headliner — two-way wing with star scoring touch and the frame to 
 Note: Only realistic generational outcome in this class — Tracy McGrady ceiling, Jaylen Brown floor.
 
 ─── POSITION BOARD ──────────────────────────────────
-Position Group: Wings
+Group: Wings
 Note: Best wing in the class by a wide margin — the physical-and-skill combo is the rarest profile.
 
 ─── MOCK DRAFT ──────────────────────────────────────
 Pick: #1
-Rationale: BPA. No franchise should be drafting need over the headliner of a top-heavy class.
+Why: BPA. No franchise should be drafting need over the headliner of a top-heavy class.
 
 ─── TAKE ────────────────────────────────────────────
 Category: watchlist
@@ -263,19 +243,15 @@ Note: Watching pull-up jumper volume + percentage at BYU. Tools to be elite — 
 
 ─── TAGS ────────────────────────────────────────────
 SCORING
-  [x] Pure Scorer
-  [x] Midrange Mastery
+  [x] Pure Scorer          [x] Midrange Mastery
 ON-BALL CREATION
-  [x] Pull-up Threat
-  [x] Crafty Finisher
+  [x] Pull-up Threat       [x] Crafty Finisher
 OFF-BALL OFFENSE
   [x] Off-Ball Gravity
 DEFENSE
-  [x] Perimeter Stopper
-  [x] Switchable
+  [x] Perimeter Stopper    [x] Switchable
 PHYSICAL / INTANGIBLES
-  [x] Versatility
-  [x] Big-Moment Player
+  [x] Versatility          [x] Big-Moment Player
 OUTLOOK
   [x] Star Upside
 
