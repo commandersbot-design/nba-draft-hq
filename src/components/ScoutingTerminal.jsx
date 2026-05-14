@@ -2832,11 +2832,21 @@ const TIER_OPTIONS = ["Tier 1 - Franchise", "Tier 2 - All-Star", "Tier 3 - Start
 const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAddNote, onDeleteNote, customTier = "", customTags = [], onSetCustomTier, onToggleCustomTag, compOverrides = {}, onSetCompOverride }) => {
   const [tab, setTab] = useState("Stats");
   const { displayScore, active: weightsActive } = useCustomWeights();
-  const p = useMemo(() => {
-    // Merge scout overrides from the deep dive (if present) into the prospect.
-    // Downstream consumers (TraitsTab, AdvantageProfile, StatProfilePanelFromTraits, etc.)
-    // read from p.traits9 / p.risks directly, so merging here makes overrides
-    // flow through the whole profile without per-component plumbing.
+  // Per-profile view mode — "founder" shows the original system values
+  // (model-authored trait grades, model risk grades, model tier). "user"
+  // shows those same values with the user's deep-dive overrides applied.
+  // Persisted globally so the chosen perspective sticks across profiles.
+  // Stats / measurables / college numbers don't change between modes —
+  // only the analytical / scouting layer does.
+  const [profileViewMode, setProfileViewMode] = useLocalStorageState(
+    "prospera.terminal.profile-view-mode",
+    "user",
+  );
+
+  // Compute both the override deltas (to power the toggle's annotation) and
+  // the merged values (used when in "user" mode). The "founder" mode falls
+  // back to the untouched rawP traits/risks/tier.
+  const { mergedTraits, mergedRisks, mergedTier, overrideMeta } = useMemo(() => {
     const traitOverrides = deepDive?.traitOverrides || {};
     const riskOverrides = deepDive?.riskOverrides || {};
     const traits9Base = rawP.traits9 || {};
@@ -2860,22 +2870,49 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
       overriddenRisks[k] = { scout: Number(v), system: sys };
     }
     return {
-      ...rawP,
-      tier: customTier || rawP.tier,
-      customTags,
-      traits9: traits9Merged,
-      risks: risksMerged,
-      __scoutOverrides: {
+      mergedTraits: traits9Merged,
+      mergedRisks: risksMerged,
+      mergedTier: customTier || rawP.tier,
+      overrideMeta: {
         traits: overriddenTraits,
         risks: overriddenRisks,
-        any: Object.keys(overriddenTraits).length + Object.keys(overriddenRisks).length > 0,
+        traitCount: Object.keys(overriddenTraits).length,
+        riskCount: Object.keys(overriddenRisks).length,
+        any:
+          Object.keys(overriddenTraits).length +
+            Object.keys(overriddenRisks).length >
+          0,
         ceilingTier: deepDive?.ceilingTier || null,
         floorTier: deepDive?.floorTier || null,
         stance: deepDive?.buyHoldSell || null,
         confidence: deepDive?.confidence || null,
       },
     };
-  }, [rawP, customTier, customTags, deepDive]);
+  }, [rawP, customTier, deepDive]);
+
+  // Final prospect object passed to the rest of the profile. Founder mode
+  // returns the unchanged source values; user mode returns the merged values
+  // and exposes overrideMeta so individual rows can render their "Scout"
+  // pill + struck-through original number.
+  const p = useMemo(() => {
+    const isUserView = profileViewMode === "user";
+    return {
+      ...rawP,
+      tier: isUserView ? mergedTier : rawP.tier,
+      customTags,
+      traits9: isUserView ? mergedTraits : (rawP.traits9 || {}),
+      risks: isUserView ? mergedRisks : (rawP.risks || {}),
+      __scoutOverrides: {
+        ...overrideMeta,
+        // Only surface override-pill state to downstream components when
+        // we're in user view. In founder view, no "Scout" pills render.
+        traits: isUserView ? overrideMeta.traits : {},
+        risks: isUserView ? overrideMeta.risks : {},
+        any: isUserView && overrideMeta.any,
+        viewMode: profileViewMode,
+      },
+    };
+  }, [rawP, customTags, mergedTraits, mergedRisks, mergedTier, overrideMeta, profileViewMode]);
   return (
     <div style={{ padding: "20px 28px 60px", maxWidth: 1400, margin: "0 auto" }}>
       <button
@@ -3175,51 +3212,93 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
         })}
       </div>
 
-      {/* SCOUT OVERRIDES BANNER (also shows ceiling/floor tier from deep dive) */}
-      {(p.__scoutOverrides?.any || p.__scoutOverrides?.ceilingTier || p.__scoutOverrides?.floorTier) && (() => {
-        const ceilTier = p.__scoutOverrides?.ceilingTier;
-        const floorTier = p.__scoutOverrides?.floorTier;
-        const ceilColor = ceilTier ? OUTCOME_TIER_COLORS[ceilTier] || T.cyan : null;
+      {/* VIEW TOGGLE — "Founder's Read" vs "Your Read".
+          Replaces the previous "SCOUT VIEW ACTIVE · 2 overrides" banner with
+          a clean perspective selector. Toggle only affects scouting-analysis
+          surfaces (trait grades, risk grades, tier override, ceiling/floor
+          tier badges, Scout-override pills). Facts that don't change between
+          scouts — measurables, school, real college stats — render the same
+          in both views. */}
+      {(() => {
+        const isUser = profileViewMode === "user";
+        const { traitCount = 0, riskCount = 0, ceilingTier, floorTier } = overrideMeta;
+        const totalOverrides = traitCount + riskCount + (ceilingTier ? 1 : 0) + (floorTier ? 1 : 0);
+        const ceilColor = ceilingTier ? OUTCOME_TIER_COLORS[ceilingTier] || T.cyan : null;
         const floorColor = floorTier ? OUTCOME_TIER_COLORS[floorTier] || T.warn : null;
-        const traitCount = Object.keys(p.__scoutOverrides?.traits || {}).length;
-        const riskCount = Object.keys(p.__scoutOverrides?.risks || {}).length;
         return (
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 12,
-              background: "var(--prospera-accent-bg-mid)",
-              border: `1px solid var(--prospera-accent-border)`,
-              borderLeft: `3px solid ${T.cyan}`,
-              padding: "10px 14px",
+              gap: 10,
+              padding: "8px 12px",
               marginBottom: 16,
+              background: T.surface,
+              border: `1px solid ${T.border}`,
+              borderLeft: `3px solid ${isUser ? T.cyan : T.textMute}`,
               flexWrap: "wrap",
             }}
           >
-            <div style={{ ...mono, fontSize: 9, letterSpacing: "0.18em", color: T.cyan, textTransform: "uppercase", fontWeight: 600 }}>
-              Scout View Active
+            <span style={{ ...mono, fontSize: 9, letterSpacing: "0.2em", color: T.textMute, textTransform: "uppercase", fontWeight: 700 }}>
+              View
+            </span>
+            <div style={{ display: "inline-flex", border: `1px solid ${T.border}`, background: T.surface2 }}>
+              {[
+                { key: "founder", label: "Founder's" },
+                { key: "user",    label: "Your Read" },
+              ].map((opt, i) => {
+                const active = profileViewMode === opt.key;
+                return (
+                  <button
+                    key={opt.key}
+                    type="button"
+                    onClick={() => setProfileViewMode(opt.key)}
+                    title={
+                      opt.key === "founder"
+                        ? "Show the founder's authored grades + risks. Your scout overrides are hidden but kept on file."
+                        : "Apply your scout overrides on top of the founder's values. Override pills + your ceiling/floor calls show here."
+                    }
+                    style={{
+                      ...mono,
+                      fontSize: 10,
+                      letterSpacing: "0.14em",
+                      color: active ? T.bg : T.textMute,
+                      background: active ? T.cyan : "transparent",
+                      border: "none",
+                      borderLeft: i === 0 ? "none" : `1px solid ${T.border}`,
+                      padding: "6px 12px",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      fontWeight: active ? 700 : 500,
+                    }}
+                  >
+                    {opt.label}
+                  </button>
+                );
+              })}
             </div>
-            {(traitCount > 0 || riskCount > 0) && (
-              <div style={{ fontSize: 12, color: T.textDim, lineHeight: 1.5 }}>
+
+            {/* When in Your-Read mode and overrides exist, show the count +
+                the ceiling/floor tier badges so the perspective context is
+                visible at a glance. Founder mode hides them. */}
+            {isUser && totalOverrides > 0 && (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, color: T.textDim }}>
                 {traitCount > 0 && (
-                  <span>{traitCount} trait override{traitCount === 1 ? "" : "s"}</span>
+                  <span>{traitCount} trait{traitCount === 1 ? "" : "s"}</span>
                 )}
                 {traitCount > 0 && riskCount > 0 && <span style={{ color: T.textMute }}> · </span>}
                 {riskCount > 0 && (
-                  <span>{riskCount} risk override{riskCount === 1 ? "" : "s"}</span>
+                  <span>{riskCount} risk{riskCount === 1 ? "" : "s"}</span>
                 )}
-                <span style={{ color: T.textMute, marginLeft: 6 }}>applied to system values</span>
-              </div>
-            )}
-            {(ceilTier || floorTier) && (
-              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                {ceilTier && (
+                {(traitCount > 0 || riskCount > 0) && (
+                  <span style={{ color: T.textMute }}>overridden</span>
+                )}
+                {ceilingTier && (
                   <span
                     title="Your ceiling assignment"
                     style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: ceilColor, border: `1px solid ${ceilColor}`, background: "rgba(255,255,255,0.02)", padding: "2px 7px", textTransform: "uppercase", fontWeight: 600 }}
                   >
-                    Ceil ↑ {ceilTier}
+                    Ceil ↑ {ceilingTier}
                   </span>
                 )}
                 {floorTier && (
@@ -3230,26 +3309,41 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
                     Floor ↓ {floorTier}
                   </span>
                 )}
-              </div>
+              </span>
             )}
+
+            {/* When in Founder view but overrides exist, show a quieter hint
+                so the user knows their content is still there, just hidden. */}
+            {!isUser && totalOverrides > 0 && (
+              <span style={{ fontSize: 11, color: T.textMute }}>
+                {totalOverrides} of your scouting input{totalOverrides === 1 ? "" : "s"} hidden — switch to Your Read to apply.
+              </span>
+            )}
+
             <span style={{ flex: 1 }} />
-            <button
-              type="button"
-              onClick={() => setTab("Traits")}
-              style={{
-                ...mono,
-                fontSize: 9,
-                letterSpacing: "0.14em",
-                color: T.cyan,
-                background: "transparent",
-                border: `1px solid ${T.cyan}`,
-                padding: "4px 9px",
-                cursor: "pointer",
-                textTransform: "uppercase",
-              }}
-            >
-              View in Traits
-            </button>
+
+            {/* "View in Traits" jump shortcut survives — it's a useful link
+                whether the user is comparing views or just wants to dig in. */}
+            {totalOverrides > 0 && tab !== "Traits" && (
+              <button
+                type="button"
+                onClick={() => setTab("Traits")}
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.14em",
+                  color: T.cyan,
+                  background: "transparent",
+                  border: `1px solid ${T.cyan}`,
+                  padding: "4px 9px",
+                  cursor: "pointer",
+                  textTransform: "uppercase",
+                  fontWeight: 600,
+                }}
+              >
+                Open Traits
+              </button>
+            )}
           </div>
         );
       })()}
