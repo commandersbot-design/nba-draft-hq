@@ -283,12 +283,13 @@ import { ConstellationMap } from "./ConstellationMap";
 import { ClassConstellation } from "./ClassConstellation";
 import { MockDraftPage } from "./MockDraft";
 import { CustomWeightsProvider, CustomWeightsDrawer, useCustomWeights, ScoreCell, computePersonalScore, DEFAULT_WEIGHTS } from "./CustomWeights";
-import {
-  DeepDivesPage,
-  STATUSES as DIVE_STATUSES,
-  BUY_SELL as DIVE_BUY_SELL,
-  DEEP_DIVE_TIER_COLORS,
-} from "./DeepDives";
+// DeepDives imports (DeepDivesPage, STATUSES, BUY_SELL, DEEP_DIVE_TIER_COLORS)
+// were dropped when the localStorage-only Per-Prospect editor was removed
+// from Founder's Read. The DeepDives.jsx file itself is preserved in source
+// so the editor can be brought back as a JSON-authored long-form section
+// (Option B) if needed. `deepDives` state below stays because PlayerProfilePage
+// reads it for trait/risk overrides in "Your Read" mode — orphaned data only
+// affects users who already authored dives in earlier visits.
 import ComputedScoreCard from "./ComputedScoreCard";
 // ComputedScorePill is no longer rendered next to ScoreCell — the cell now
 // falls back to the computed pipeline score itself, so the dual-pill layout
@@ -7468,14 +7469,12 @@ function ProsperaAppInner() {
   const [savedViews, setSavedViews] = useLocalStorageState("prospera.terminal.saved-views", []);
   const [mockDraftPicks, setMockDraftPicks] = useLocalStorageState("prospera.terminal.mock-draft", Array(60).fill(null));
   const [mockDraftTeams, setMockDraftTeams] = useLocalStorageState("prospera.terminal.mock-draft-teams", DEFAULT_MOCK_DRAFT_TEAMS);
+  // deepDives state stays — PlayerProfilePage reads it for trait/risk
+  // overrides used by the "Your Read" view toggle. The Deep Dives EDITOR
+  // was removed from Founder's Read (it stored localStorage-only data
+  // that never travelled with the share link), but any dive data already
+  // authored remains usable for the override view.
   const [deepDives, setDeepDives] = useLocalStorageState("prospera.terminal.deep-dives", {});
-  // When set, Scout Desk routes through the DeepDives editor for that prospect.
-  // Clearing returns to the roster view. The actual list of dives still lives
-  // in the deepDives map above; this is just navigation state. The seq counter
-  // increments on every open request so the editor remounts even when the user
-  // re-clicks the same prospect they just closed.
-  const [diveEditorId, setDiveEditorId] = useState(null);
-  const [diveEditorSeq, setDiveEditorSeq] = useState(0);
   // Toggle for the secondary "All Dives" workspace (the former Deep Dives index page).
   // Roster view = personal Big Board; Dives view = the dive index/editor.
   // Sub-view within the Deep Dives section: "my-board" or "dives".
@@ -7786,19 +7785,7 @@ function ProsperaAppInner() {
             <ScoutNotesHub prospects={PROSPECTS} />
           )}
           {route === "Founder's Read" && (
-            <FoundersReadPage
-              onOpenProfile={onOpenProfile}
-              perProspectChildren={
-                <DeepDivesPage
-                  key={`dives-${diveEditorId || "none"}-${diveEditorSeq}`}
-                  prospects={PROSPECTS}
-                  deepDives={deepDives}
-                  setDeepDives={setDeepDives}
-                  onOpenProfile={onOpenProfile}
-                  initialEditingId={diveEditorId}
-                />
-              }
-            />
+            <FoundersReadPage onOpenProfile={onOpenProfile} />
           )}
           {route === "Class Map" && (
             <ClassConstellation prospects={PROSPECTS} onOpenProfile={onOpenProfile} />

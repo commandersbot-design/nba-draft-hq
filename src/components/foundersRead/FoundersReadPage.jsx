@@ -754,18 +754,29 @@ function AboutSection() {
 // MAIN PAGE
 // =============================================================================
 
+// "Per-Prospect" sub-tab removed. It used to render the localStorage-only
+// DeepDivesPage editor, but that data lives per-browser and never travels
+// with the share link — so visitors saw an empty editor on a tab labeled
+// "Founder's Read", which made no sense. Per-prospect founder commentary
+// now lives in Rankings notes, Tier-board notes, Position-board notes,
+// Mock Draft rationales, Takes notes, and Updates entries — all
+// JSON-authored, all shipped with the deploy.
+//
+// If long-form per-prospect content (a full essay per prospect) becomes
+// the need later, add a `deepDives` array to founderContent.json and
+// render it as long-form cards here. Existing localStorage dive data is
+// orphaned but preserved; recovery is straightforward.
 const SUB_NAVS = [
-  { key: "rankings",     label: "Rankings",     subtitle: "Top 15 with notes" },
-  { key: "boards",       label: "Boards",       subtitle: "By tier + by position" },
-  { key: "mock-draft",   label: "Mock Draft",   subtitle: "Pick-by-pick with rationale" },
-  { key: "takes",        label: "Takes",        subtitle: "Sleepers / risers / fallers / watchlist" },
-  { key: "class-notes",  label: "Class Notes",  subtitle: "Themes + watch points" },
-  { key: "updates",      label: "Updates",      subtitle: "Chronological log" },
-  { key: "per-prospect", label: "Per-Prospect", subtitle: "Long-form deep dives" },
-  { key: "about",        label: "About",        subtitle: "Founder bio + philosophy" },
+  { key: "rankings",    label: "Rankings",    subtitle: "Top 15 with notes" },
+  { key: "boards",      label: "Boards",      subtitle: "By tier + by position" },
+  { key: "mock-draft",  label: "Mock Draft",  subtitle: "Pick-by-pick with rationale" },
+  { key: "takes",       label: "Takes",       subtitle: "Sleepers / risers / fallers / watchlist" },
+  { key: "class-notes", label: "Class Notes", subtitle: "Themes + watch points" },
+  { key: "updates",     label: "Updates",     subtitle: "Chronological log" },
+  { key: "about",       label: "About",       subtitle: "Founder bio + philosophy" },
 ];
 
-export default function FoundersReadPage({ onOpenProfile, perProspectChildren }) {
+export default function FoundersReadPage({ onOpenProfile }) {
   const [subTab, setSubTab] = useLocalStorageState(
     "prospera.terminal.founders-read-sub",
     "rankings",
@@ -833,15 +844,23 @@ export default function FoundersReadPage({ onOpenProfile, perProspectChildren })
         })}
       </div>
 
-      {/* Active sub-section */}
-      {subTab === "rankings"     && <RankingsSection onOpenProfile={onOpenProfile} />}
-      {subTab === "boards"       && <BoardsSection onOpenProfile={onOpenProfile} />}
-      {subTab === "mock-draft"   && <MockDraftSection onOpenProfile={onOpenProfile} />}
-      {subTab === "takes"        && <TakesSection onOpenProfile={onOpenProfile} />}
-      {subTab === "class-notes"  && <ClassNotesSection />}
-      {subTab === "updates"      && <UpdatesSection />}
-      {subTab === "per-prospect" && perProspectChildren}
-      {subTab === "about"        && <AboutSection />}
+      {/* Active sub-section. If a user has the now-removed "per-prospect" key
+          stuck in localStorage from a prior visit, fall back to Rankings
+          so they don't land on a blank page. */}
+      {(() => {
+        const validKeys = SUB_NAVS.map((n) => n.key);
+        const resolved = validKeys.includes(subTab) ? subTab : "rankings";
+        switch (resolved) {
+          case "rankings":    return <RankingsSection onOpenProfile={onOpenProfile} />;
+          case "boards":      return <BoardsSection onOpenProfile={onOpenProfile} />;
+          case "mock-draft":  return <MockDraftSection onOpenProfile={onOpenProfile} />;
+          case "takes":       return <TakesSection onOpenProfile={onOpenProfile} />;
+          case "class-notes": return <ClassNotesSection />;
+          case "updates":     return <UpdatesSection />;
+          case "about":       return <AboutSection />;
+          default:            return <RankingsSection onOpenProfile={onOpenProfile} />;
+        }
+      })()}
     </div>
   );
 }
