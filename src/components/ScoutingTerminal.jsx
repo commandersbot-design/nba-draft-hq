@@ -3109,7 +3109,10 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
         </div>
       </div>
 
-      {/* META STRIP */}
+      {/* META STRIP — measurables, position, class, country. Centered, larger,
+          with a top accent rail so each cell reads as a discrete stat card.
+          The eye should land on the VALUES first (cyan, big, bold) with the
+          label as a quiet eyebrow above. */}
       <div
         style={{
           display: "grid",
@@ -3128,18 +3131,48 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
           ["Class", p.cls],
           ["Position", [p.pos, p.pos2].filter(Boolean).join("/")],
           ["Country", p.country],
-        ].map(([k, v], i) => (
-          <div
-            key={k}
-            style={{
-              padding: "14px 16px",
-              borderRight: i < 6 ? `1px solid ${T.border}` : "none",
-            }}
-          >
-            <Label>{k}</Label>
-            <div style={{ ...mono, fontSize: 18, color: T.text, marginTop: 4, fontWeight: 600 }}>{v ?? "—"}</div>
-          </div>
-        ))}
+        ].map(([k, v], i) => {
+          const value = v != null && v !== "" ? String(v) : "—";
+          const isMissing = value === "—";
+          return (
+            <div
+              key={k}
+              style={{
+                padding: "18px 12px 16px",
+                borderRight: i < 6 ? `1px solid ${T.border}` : "none",
+                borderTop: `2px solid ${isMissing ? T.borderSoft : T.cyan}`,
+                textAlign: "center",
+                transition: "background 0.15s",
+              }}
+            >
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  letterSpacing: "0.22em",
+                  color: T.textMute,
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                }}
+              >
+                {k}
+              </div>
+              <div
+                style={{
+                  ...mono,
+                  fontSize: 24,
+                  color: isMissing ? T.textMute : T.text,
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
+                  marginTop: 8,
+                  lineHeight: 1,
+                }}
+              >
+                {value}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* SCOUT OVERRIDES BANNER (also shows ceiling/floor tier from deep dive) */}
@@ -4361,9 +4394,9 @@ const TraitsTab = ({ p }) => {
               const ovr = overrides.traits[k];
               return (
                 <div key={k}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, gap: 8, flexWrap: "wrap" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8, gap: 8, flexWrap: "wrap" }}>
                     <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ fontSize: 14, color: T.text, fontWeight: 500 }}>{k}</span>
+                      <span style={{ fontSize: 16, color: T.text, fontWeight: 600, letterSpacing: "-0.005em" }}>{k}</span>
                       {ovr && (
                         <span
                           title={`Scout override: was ${ovr.system}/10, set to ${ovr.scout}/10`}
@@ -4391,7 +4424,7 @@ const TraitsTab = ({ p }) => {
                           {ovr.system}/10
                         </span>
                       )}
-                      <span style={{ ...mono, fontSize: 14, color, fontWeight: 700 }}>{v} / 10</span>
+                      <span style={{ ...mono, fontSize: 17, color, fontWeight: 700, letterSpacing: "0.02em" }}>{v} / 10</span>
                     </span>
                   </div>
                   <MetricBar value={v * 10} color={color} />
@@ -4403,12 +4436,14 @@ const TraitsTab = ({ p }) => {
               <div
                 style={{
                   ...mono,
-                  fontSize: 9,
-                  letterSpacing: "0.2em",
+                  fontSize: 11,
+                  letterSpacing: "0.22em",
                   color,
                   textTransform: "uppercase",
-                  fontWeight: 700,
-                  marginBottom: 10,
+                  fontWeight: 800,
+                  marginBottom: 14,
+                  paddingBottom: 6,
+                  borderBottom: `1px solid color-mix(in srgb, ${color} 35%, transparent)`,
                 }}
               >
                 {label}
@@ -4416,16 +4451,16 @@ const TraitsTab = ({ p }) => {
             );
 
             return (
-              <div style={{ display: "grid", gap: 18 }}>
+              <div style={{ display: "grid", gap: 22 }}>
                 <div>
                   {groupHeader("Offence", T.cyan)}
-                  <div style={{ display: "grid", gap: 14 }}>
+                  <div style={{ display: "grid", gap: 16 }}>
                     {OFFENSE.map((k) => renderRow(k, T.cyan))}
                   </div>
                 </div>
                 <div>
                   {groupHeader("Defence", T.signal)}
-                  <div style={{ display: "grid", gap: 14 }}>
+                  <div style={{ display: "grid", gap: 16 }}>
                     {DEFENSE.map((k) => renderRow(k, T.signal))}
                   </div>
                 </div>
