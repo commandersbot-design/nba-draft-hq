@@ -3223,138 +3223,194 @@ const PlayerProfilePage = ({ p: rawP, deepDive = null, onBack, notes = [], onAdd
         })}
       </div>
 
-      {/* VIEW TOGGLE — "Founder's Read" vs "Your Read".
-          Replaces the previous "SCOUT VIEW ACTIVE · 2 overrides" banner with
-          a clean perspective selector. Toggle only affects scouting-analysis
-          surfaces (trait grades, risk grades, tier override, ceiling/floor
-          tier badges, Scout-override pills). Facts that don't change between
-          scouts — measurables, school, real college stats — render the same
-          in both views. */}
+      {/* ANALYSIS VIEW selector. Sits between the meta strip (facts) and the
+          tab strip (mixed) so it visually scopes itself to what comes BELOW
+          it — the analytical content. Strong visual hierarchy:
+            - "Your Read" is the cyan primary action; you live here by default.
+            - "Founder's Read" is the muted secondary — "show what the founder
+              wrote about this prospect" — the cherry on top.
+          Scope copy beneath the toggle makes it explicit that stats /
+          measurables / college numbers are NOT affected by this switch. */}
       {(() => {
         const isUser = profileViewMode === "user";
         const { traitCount = 0, riskCount = 0, ceilingTier, floorTier } = overrideMeta;
         const totalOverrides = traitCount + riskCount + (ceilingTier ? 1 : 0) + (floorTier ? 1 : 0);
         const ceilColor = ceilingTier ? OUTCOME_TIER_COLORS[ceilingTier] || T.cyan : null;
         const floorColor = floorTier ? OUTCOME_TIER_COLORS[floorTier] || T.warn : null;
+        const modeAccent = isUser ? T.cyan : T.signal;
         return (
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              padding: "8px 12px",
-              marginBottom: 16,
               background: T.surface,
               border: `1px solid ${T.border}`,
-              borderLeft: `3px solid ${isUser ? T.cyan : T.textMute}`,
-              flexWrap: "wrap",
+              borderTop: `3px solid ${modeAccent}`,
+              marginBottom: 16,
+              padding: "14px 16px",
             }}
           >
-            <span style={{ ...mono, fontSize: 9, letterSpacing: "0.2em", color: T.textMute, textTransform: "uppercase", fontWeight: 700 }}>
-              View
-            </span>
-            <div style={{ display: "inline-flex", border: `1px solid ${T.border}`, background: T.surface2 }}>
-              {[
-                { key: "founder", label: "Founder's" },
-                { key: "user",    label: "Your Read" },
-              ].map((opt, i) => {
-                const active = profileViewMode === opt.key;
-                return (
-                  <button
-                    key={opt.key}
-                    type="button"
-                    onClick={() => setProfileViewMode(opt.key)}
-                    title={
-                      opt.key === "founder"
-                        ? "Show the founder's authored grades + risks. Your scout overrides are hidden but kept on file."
-                        : "Apply your scout overrides on top of the founder's values. Override pills + your ceiling/floor calls show here."
-                    }
-                    style={{
-                      ...mono,
-                      fontSize: 10,
-                      letterSpacing: "0.14em",
-                      color: active ? T.bg : T.textMute,
-                      background: active ? T.cyan : "transparent",
-                      border: "none",
-                      borderLeft: i === 0 ? "none" : `1px solid ${T.border}`,
-                      padding: "6px 12px",
-                      cursor: "pointer",
-                      textTransform: "uppercase",
-                      fontWeight: active ? 700 : 500,
-                    }}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
+            <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <span style={{ ...mono, fontSize: 9, letterSpacing: "0.22em", color: T.textMute, textTransform: "uppercase", fontWeight: 700 }}>
+                  Analysis View
+                </span>
+                <span style={{ fontSize: 12, color: T.textDim, lineHeight: 1.4, maxWidth: 360 }}>
+                  Switches which scout's analysis appears in Traits + Risks.
+                </span>
+              </div>
+
+              {/* Pill toggle — Your Read is the primary (cyan filled when
+                  active), Founder's is the secondary (signal-orange outlined
+                  when active). Different colours per mode so a glance at the
+                  toggle tells you which lens is active. */}
+              <div style={{ display: "inline-flex", border: `1px solid ${T.border}`, background: T.surface2 }}>
+                {[
+                  {
+                    key: "user",
+                    label: "Your Read",
+                    sub:   "Your scouting",
+                    activeBg: T.cyan,
+                    activeColor: T.bg,
+                  },
+                  {
+                    key: "founder",
+                    label: "Founder's",
+                    sub:   "Cherry on top",
+                    activeBg: T.signal,
+                    activeColor: T.bg,
+                  },
+                ].map((opt, i) => {
+                  const active = profileViewMode === opt.key;
+                  return (
+                    <button
+                      key={opt.key}
+                      type="button"
+                      onClick={() => setProfileViewMode(opt.key)}
+                      title={
+                        opt.key === "user"
+                          ? "Apply your scout overrides on top of the founder's values. Override pills + your ceiling/floor calls show here. This is the default — the platform is your scouting workspace first."
+                          : "Show the founder's authored grades + risks. Your scout overrides are hidden but kept on file."
+                      }
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        gap: 1,
+                        background: active ? opt.activeBg : "transparent",
+                        color: active ? opt.activeColor : T.textMute,
+                        border: "none",
+                        borderLeft: i === 0 ? "none" : `1px solid ${T.border}`,
+                        padding: "7px 14px",
+                        cursor: "pointer",
+                        minWidth: 100,
+                        textAlign: "left",
+                      }}
+                    >
+                      <span style={{ ...mono, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: active ? 800 : 600 }}>
+                        {opt.label}
+                      </span>
+                      <span style={{ ...mono, fontSize: 8, letterSpacing: "0.14em", textTransform: "uppercase", opacity: active ? 0.75 : 0.55, fontWeight: 500 }}>
+                        {opt.sub}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Context strip — shows what's "loaded" into the current view */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1, minWidth: 0 }}>
+                {isUser && totalOverrides > 0 && (
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    <span style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.cyan, textTransform: "uppercase", fontWeight: 700 }}>
+                      Your overrides applied
+                    </span>
+                    <span style={{ fontSize: 11, color: T.textDim }}>
+                      {traitCount > 0 && `${traitCount} trait${traitCount === 1 ? "" : "s"}`}
+                      {traitCount > 0 && riskCount > 0 && " · "}
+                      {riskCount > 0 && `${riskCount} risk${riskCount === 1 ? "" : "s"}`}
+                    </span>
+                    {ceilingTier && (
+                      <span
+                        title="Your ceiling assignment"
+                        style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: ceilColor, border: `1px solid ${ceilColor}`, background: "rgba(255,255,255,0.02)", padding: "2px 7px", textTransform: "uppercase", fontWeight: 600 }}
+                      >
+                        Ceil ↑ {ceilingTier}
+                      </span>
+                    )}
+                    {floorTier && (
+                      <span
+                        title="Your floor assignment"
+                        style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: floorColor, border: `1px solid ${floorColor}`, background: "rgba(255,255,255,0.02)", padding: "2px 7px", textTransform: "uppercase", fontWeight: 600 }}
+                      >
+                        Floor ↓ {floorTier}
+                      </span>
+                    )}
+                  </div>
+                )}
+                {!isUser && (
+                  <div style={{ ...mono, fontSize: 9, letterSpacing: "0.16em", color: T.signal, textTransform: "uppercase", fontWeight: 700 }}>
+                    Founder's authored values
+                  </div>
+                )}
+                {!isUser && totalOverrides > 0 && (
+                  <span style={{ fontSize: 11, color: T.textMute }}>
+                    {totalOverrides} of your scouting input{totalOverrides === 1 ? "" : "s"} hidden — switch back to apply.
+                  </span>
+                )}
+                {isUser && totalOverrides === 0 && (
+                  <span style={{ fontSize: 11, color: T.textMute }}>
+                    No overrides yet — add tier calls in Scout View or grades in Founder's Read.
+                  </span>
+                )}
+              </div>
+
+              {totalOverrides > 0 && tab !== "Traits" && (
+                <button
+                  type="button"
+                  onClick={() => setTab("Traits")}
+                  style={{
+                    ...mono,
+                    fontSize: 9,
+                    letterSpacing: "0.14em",
+                    color: modeAccent,
+                    background: "transparent",
+                    border: `1px solid ${modeAccent}`,
+                    padding: "5px 10px",
+                    cursor: "pointer",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                  }}
+                >
+                  Open Traits →
+                </button>
+              )}
             </div>
 
-            {/* When in Your-Read mode and overrides exist, show the count +
-                the ceiling/floor tier badges so the perspective context is
-                visible at a glance. Founder mode hides them. */}
-            {isUser && totalOverrides > 0 && (
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, color: T.textDim }}>
-                {traitCount > 0 && (
-                  <span>{traitCount} trait{traitCount === 1 ? "" : "s"}</span>
-                )}
-                {traitCount > 0 && riskCount > 0 && <span style={{ color: T.textMute }}> · </span>}
-                {riskCount > 0 && (
-                  <span>{riskCount} risk{riskCount === 1 ? "" : "s"}</span>
-                )}
-                {(traitCount > 0 || riskCount > 0) && (
-                  <span style={{ color: T.textMute }}>overridden</span>
-                )}
-                {ceilingTier && (
-                  <span
-                    title="Your ceiling assignment"
-                    style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: ceilColor, border: `1px solid ${ceilColor}`, background: "rgba(255,255,255,0.02)", padding: "2px 7px", textTransform: "uppercase", fontWeight: 600 }}
-                  >
-                    Ceil ↑ {ceilingTier}
-                  </span>
-                )}
-                {floorTier && (
-                  <span
-                    title="Your floor assignment"
-                    style={{ ...mono, fontSize: 9, letterSpacing: "0.14em", color: floorColor, border: `1px solid ${floorColor}`, background: "rgba(255,255,255,0.02)", padding: "2px 7px", textTransform: "uppercase", fontWeight: 600 }}
-                  >
-                    Floor ↓ {floorTier}
-                  </span>
-                )}
-              </span>
-            )}
-
-            {/* When in Founder view but overrides exist, show a quieter hint
-                so the user knows their content is still there, just hidden. */}
-            {!isUser && totalOverrides > 0 && (
-              <span style={{ fontSize: 11, color: T.textMute }}>
-                {totalOverrides} of your scouting input{totalOverrides === 1 ? "" : "s"} hidden — switch to Your Read to apply.
-              </span>
-            )}
-
-            <span style={{ flex: 1 }} />
-
-            {/* "View in Traits" jump shortcut survives — it's a useful link
-                whether the user is comparing views or just wants to dig in. */}
-            {totalOverrides > 0 && tab !== "Traits" && (
-              <button
-                type="button"
-                onClick={() => setTab("Traits")}
-                style={{
-                  ...mono,
-                  fontSize: 9,
-                  letterSpacing: "0.14em",
-                  color: T.cyan,
-                  background: "transparent",
-                  border: `1px solid ${T.cyan}`,
-                  padding: "4px 9px",
-                  cursor: "pointer",
-                  textTransform: "uppercase",
-                  fontWeight: 600,
-                }}
-              >
-                Open Traits
-              </button>
-            )}
+            {/* Scope footer — explicit that the toggle scope is analysis
+                only. Tells the user what is NOT changing between modes so
+                they don't wonder if anything else is being hidden. */}
+            <div
+              style={{
+                marginTop: 12,
+                paddingTop: 10,
+                borderTop: `1px solid ${T.borderSoft}`,
+                ...mono,
+                fontSize: 9,
+                letterSpacing: "0.14em",
+                color: T.textMute,
+                textTransform: "uppercase",
+                fontWeight: 500,
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                flexWrap: "wrap",
+              }}
+            >
+              <span style={{ color: T.textMute }}>Toggle scope</span>
+              <span style={{ color: T.textDim }}>·</span>
+              <span style={{ color: T.text }}>Trait grades · Risk grades · Tier override</span>
+              <span style={{ color: T.textDim }}>·</span>
+              <span style={{ color: T.textMute }}>Stats / measurables / college numbers stay the same in both views</span>
+            </div>
           </div>
         );
       })()}
