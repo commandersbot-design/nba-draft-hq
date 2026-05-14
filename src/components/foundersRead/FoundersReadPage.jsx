@@ -1,8 +1,8 @@
 import React from "react";
 import founderContent from "../../data/founderContent.json";
 import PROSPECTS_DATA from "../../data/prospects.json";
-import PROSPECT_HEADSHOTS from "../../data/prospectHeadshots.json";
 import { useLocalStorageState } from "../../hooks/useLocalStorageState";
+import { resolveHeadshotUrl } from "../../lib/headshots";
 
 /**
  * FoundersReadPage — the founder's curated section. Eight sub-tabs:
@@ -68,13 +68,8 @@ function resolveProspect(name) {
   return list.find((p) => p.name === name) || null;
 }
 
-function resolveHeadshot(name) {
-  if (!name) return null;
-  return PROSPECT_HEADSHOTS[name]?.headshotUrl || null;
-}
-
 function ProspectAvatar({ name, size = 48, accent = T.cyan }) {
-  const url = resolveHeadshot(name);
+  const url = resolveHeadshotUrl(name);
   const [errored, setErrored] = React.useState(false);
   const showImage = url && !errored;
   const initials = (name || "")

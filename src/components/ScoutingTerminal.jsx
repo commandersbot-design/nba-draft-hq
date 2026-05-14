@@ -19,7 +19,7 @@ import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { useProspectNewsFeed, formatRelativeTime } from "../hooks/useProspectNewsFeed";
 import HISTORICAL_PROSPECTS_RAW from "../data/historicalProspects.json";
 import HISTORICAL_ADVANCED_STATS from "../data/historicalAdvancedStats.json";
-import PROSPECT_HEADSHOTS from "../data/prospectHeadshots.json";
+import { resolveHeadshotUrl as resolveHeadshotByName } from "../lib/headshots";
 import ARCHETYPE_CATALOG from "../data/archetypeCatalog.json";
 import PROFILE_STATS from "../data/profileStats.json";
 import PROSPECT_ADVANCED_EXTRAS from "../data/prospectAdvancedExtras.json";
@@ -375,10 +375,13 @@ const DEFAULT_MOCK_DRAFT_TEAMS = (() => {
   return next;
 })();
 
+// Delegates to the shared resolver in lib/headshots — that one falls back
+// to a slug match so name variants like "Darius Acuff Jr." resolve to the
+// canonical "Darius Acuff" headshot. Without this fallback, prospects whose
+// display name carries a "Jr." / "Sr." / accent (López, Vučević, etc.)
+// rendered as initials even when a headshot existed.
 function getHeadshotUrl(prospect) {
-  if (!prospect || !prospect.name) return null;
-  const entry = PROSPECT_HEADSHOTS[prospect.name];
-  return entry?.headshotUrl || null;
+  return prospect ? resolveHeadshotByName(prospect.name) : null;
 }
 import {
   LineChart,

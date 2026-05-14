@@ -6,15 +6,12 @@ import { usePlayerTags } from "../TagEditor";
 import { TagBadge } from "../TagBadge";
 import ScoutTierBadge from "../ScoutTierBadge";
 import { AxisRadar8, AxisBars8 } from "./AxisViz";
-import PROSPECT_HEADSHOTS from "../../data/prospectHeadshots.json";
+import { resolveHeadshotUrl as resolveHeadshotByName } from "../../lib/headshots";
 
-// Same name-keyed headshot resolver used elsewhere on the site. Imported
-// directly here so the Dashboard card doesn't depend on ScoutingTerminal's
-// internal helpers.
+// Adapter — keeps the existing call-site signature (takes a prospect)
+// while delegating to the shared name-keyed resolver under the hood.
 function resolveHeadshotUrl(p) {
-  if (!p || !p.name) return null;
-  const entry = PROSPECT_HEADSHOTS[p.name];
-  return entry?.headshotUrl || null;
+  return p ? resolveHeadshotByName(p.name) : null;
 }
 
 /**

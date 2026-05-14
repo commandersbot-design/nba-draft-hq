@@ -4,7 +4,7 @@ import { useCustomWeights } from "../CustomWeights";
 import { usePlayerTags } from "../TagEditor";
 import { TagBadge } from "../TagBadge";
 import ScoutTierBadge from "../ScoutTierBadge";
-import PROSPECT_HEADSHOTS from "../../data/prospectHeadshots.json";
+import { resolveHeadshotUrl as resolveHeadshotByName } from "../../lib/headshots";
 
 /**
  * LineupCard — the third Dashboard view mode (alongside Radar and Bars).
@@ -38,9 +38,7 @@ const mono = {
 };
 
 function resolveHeadshotUrl(p) {
-  if (!p || !p.name) return null;
-  const entry = PROSPECT_HEADSHOTS[p.name];
-  return entry?.headshotUrl || null;
+  return p ? resolveHeadshotByName(p.name) : null;
 }
 
 function LineupHeadshot({ p }) {
