@@ -1,5 +1,5 @@
 {
-  "_README": "Founder-authored content for the 'Founder's Read' main tab. Edit this file to update the rankings, class notes, sleepers, and other curated content. Slugs/names should match the canonical prospect names in prospects.json. This file is intentionally not editable from the running site — it's authored content the founder commits.",
+  "_README": "Founder-authored content for the 'Founder's Read' main tab. Edit this file to update everything — rankings, class notes, sleepers/risers/fallers/watchlist, tier and position boards, mock draft, chronological updates, and about page. Names should match the canonical prospect names in prospects.json. This file is intentionally not editable from the running site — it's authored content the founder commits.",
   "_authoredBy": "Prospera Draft HQ founder",
   "_lastUpdated": "2026-05-14",
   "intro": "My personal read on the 2026 NBA Draft class — separate from consensus, separate from your own analysis. This is what I see when I watch tape.",
@@ -8,21 +8,146 @@
     "title": "Top 15",
     "subtitle": "My personal ranking — this is where I'd take each prospect, not where the consensus has them.",
     "items": [
-      { "prospectName": "AJ Dybantsa",       "rank": 1,  "tier": "Apex",       "note": "Class headliner. Two-way wing with star-level scoring touch and the frame to translate. The Tracy McGrady ceiling is real." },
-      { "prospectName": "Darryn Peterson",   "rank": 2,  "tier": "Star",       "note": "Cleanest scoring guard in the class. Footwork + pull-up combination puts him in the All-Star outcome conversation." },
-      { "prospectName": "Cameron Boozer",    "rank": 3,  "tier": "Star",       "note": "Most polished power forward. The shooting development raises the ceiling from solid starter to legitimate offensive hub." },
-      { "prospectName": "Caleb Wilson",      "rank": 4,  "tier": "Star",       "note": "Length + handle combo for a forward is rare. Becomes a real star if the playmaking reads catch up to the physical tools." },
-      { "prospectName": "Kingston Flemings", "rank": 5,  "tier": "Star",       "note": "Two-way point guard with elite size for the position. Defensive versatility unlocks playoff lineups." },
-      { "prospectName": "Darius Acuff Jr.",  "rank": 6,  "tier": "Star",       "note": "Pure lead-guard creator. Shooting touch + creation gravity puts him on a Stephon-Marbury-type track at the ceiling." },
-      { "prospectName": "Mikel Brown Jr.",   "rank": 7,  "tier": "Star",       "note": "If the body holds up, the playmaking ceiling here is the highest in the class. Trae Young is the upside comp for a reason." },
-      { "prospectName": "Yaxel Lendeborg",   "rank": 8,  "tier": "Hit",        "note": "Plug-and-play forward — won't be a star but the role-player floor is unusually high for this slot." },
-      { "prospectName": "Labaron Philon Jr.","rank": 9,  "tier": "Hit",        "note": "Underrated by consensus. The combo guard frame + ball-handling stand up against NBA athletes; SGA-lite is the realistic best case." },
-      { "prospectName": "Nate Ament",        "rank": 10, "tier": "Swing",      "note": "Boom-or-bust wing. Has the tools to be a Brandon Ingram outcome — also has the frame concerns to flame out." },
-      { "prospectName": "Keaton Wagler",     "rank": 11, "tier": "Hit",        "note": "Heady combo guard. Scores at three levels and the feel translates to a high floor; star ceiling depends on athletic gains." },
-      { "prospectName": "Brayden Burries",   "rank": 12, "tier": "Hit",        "note": "Connector wing with good shooting. The role-player floor is real even if star upside is limited." },
-      { "prospectName": "Hannes Steinbach",  "rank": 13, "tier": "Hit",        "note": "Skilled European big. Modern offensive five with the footwork to switch on defense — outcome depends on shooting volume." },
-      { "prospectName": "Karim Lopez",       "rank": 14, "tier": "Swing",      "note": "International unknown. Tools and shooting touch suggest a long runway; need more reps against pro defenses to know." },
-      { "prospectName": "Aday Mara",         "rank": 15, "tier": "Swing",      "note": "Skilled center — touch, vision, footwork. Whether the body and lateral mobility hold up at the NBA level is the question." }
+      { "prospectName": "AJ Dybantsa",       "rank": 1,  "tier": "Apex",  "note": "Class headliner. Two-way wing with star-level scoring touch and the frame to translate. The Tracy McGrady ceiling is real." },
+      { "prospectName": "Darryn Peterson",   "rank": 2,  "tier": "Star",  "note": "Cleanest scoring guard in the class. Footwork + pull-up combination puts him in the All-Star outcome conversation." },
+      { "prospectName": "Cameron Boozer",    "rank": 3,  "tier": "Star",  "note": "Most polished power forward. Shooting development raises the ceiling from solid starter to offensive hub." },
+      { "prospectName": "Caleb Wilson",      "rank": 4,  "tier": "Star",  "note": "Length + handle combo for a forward is rare. Becomes a real star if the playmaking reads catch up to the physical tools." },
+      { "prospectName": "Kingston Flemings", "rank": 5,  "tier": "Star",  "note": "Two-way point guard with elite size. Defensive versatility unlocks playoff lineups." },
+      { "prospectName": "Darius Acuff Jr.",  "rank": 6,  "tier": "Star",  "note": "Pure lead-guard creator. Shooting touch + creation gravity puts him on a Stephon-Marbury-type track at the ceiling." },
+      { "prospectName": "Mikel Brown Jr.",   "rank": 7,  "tier": "Star",  "note": "If the body holds up, the playmaking ceiling here is the highest in the class. Trae Young is the upside comp for a reason." },
+      { "prospectName": "Yaxel Lendeborg",   "rank": 8,  "tier": "Hit",   "note": "Plug-and-play forward — won't be a star but the role-player floor is unusually high for this slot." },
+      { "prospectName": "Labaron Philon Jr.","rank": 9,  "tier": "Hit",   "note": "Underrated by consensus. The combo guard frame + ball-handling stand up against NBA athletes; SGA-lite is the realistic best case." },
+      { "prospectName": "Nate Ament",        "rank": 10, "tier": "Swing", "note": "Boom-or-bust wing. Has the tools to be a Brandon Ingram outcome — also has the frame concerns to flame out." },
+      { "prospectName": "Keaton Wagler",     "rank": 11, "tier": "Hit",   "note": "Heady combo guard. Scores at three levels and the feel translates to a high floor; star ceiling depends on athletic gains." },
+      { "prospectName": "Brayden Burries",   "rank": 12, "tier": "Hit",   "note": "Connector wing with good shooting. The role-player floor is real even if star upside is limited." },
+      { "prospectName": "Hannes Steinbach",  "rank": 13, "tier": "Hit",   "note": "Skilled European big. Modern offensive five with the footwork to switch on defense — outcome depends on shooting volume." },
+      { "prospectName": "Karim Lopez",       "rank": 14, "tier": "Swing", "note": "International unknown. Tools and shooting touch suggest a long runway; need more reps against pro defenses to know." },
+      { "prospectName": "Aday Mara",         "rank": 15, "tier": "Swing", "note": "Skilled center — touch, vision, footwork. Whether the body and lateral mobility hold up at the NBA level is the question." }
+    ]
+  },
+
+  "tierBoards": {
+    "title": "Tier Boards",
+    "subtitle": "Every prospect I've placed into an outcome tier. Read top-to-bottom as best-realistic-outcome.",
+    "tiers": [
+      {
+        "key": "Apex",
+        "label": "Apex — Generational",
+        "description": "A real shot at the all-time conversation. Reserve sparingly.",
+        "items": [
+          { "prospectName": "AJ Dybantsa", "note": "Tracy McGrady ceiling, Jaylen Brown floor." }
+        ]
+      },
+      {
+        "key": "Star",
+        "label": "Star — All-Star Track",
+        "description": "Realistic All-Star outcome. The class's headline names.",
+        "items": [
+          { "prospectName": "Darryn Peterson",   "note": "Scoring guard track — Devin Booker / Brandon Roy band." },
+          { "prospectName": "Cameron Boozer",    "note": "Sengun / Sabonis offensive-hub track." },
+          { "prospectName": "Caleb Wilson",      "note": "Pascal Siakam / Jalen Johnson band." },
+          { "prospectName": "Kingston Flemings", "note": "Dejounte Murray / Jrue Holiday band." },
+          { "prospectName": "Darius Acuff Jr.",  "note": "Stephon Marbury / Jeff Teague band." },
+          { "prospectName": "Mikel Brown Jr.",   "note": "Darius Garland / Tyrese Haliburton band." }
+        ]
+      },
+      {
+        "key": "Hit",
+        "label": "Hit — Quality Starter",
+        "description": "Solid long-term starters. Not stars, but the franchise gets it right.",
+        "items": [
+          { "prospectName": "Yaxel Lendeborg",   "note": "Aaron Gordon / Rui Hachimura band." },
+          { "prospectName": "Labaron Philon Jr.","note": "Tyrese Maxey / Mike Conley band." },
+          { "prospectName": "Keaton Wagler",     "note": "Austin Reaves / D'Angelo Russell band." },
+          { "prospectName": "Brayden Burries",   "note": "Norman Powell / Malcolm Brogdon band." },
+          { "prospectName": "Hannes Steinbach",  "note": "Mason Plumlee / Isaiah Hartenstein band." }
+        ]
+      },
+      {
+        "key": "Swing",
+        "label": "Swing — Boom or Bust",
+        "description": "Real ceiling, real floor. Outcome depends on a couple swing factors.",
+        "items": [
+          { "prospectName": "Nate Ament",   "note": "Brandon Ingram up; Patrick Baldwin Jr. down." },
+          { "prospectName": "Karim Lopez",  "note": "Tobias Harris up; Rodions Kurucs down." },
+          { "prospectName": "Aday Mara",    "note": "Donovan Clingan up; Boban Marjanović down." }
+        ]
+      },
+      {
+        "key": "Bust",
+        "label": "Bust — Real Risk",
+        "description": "Names where the realistic floor is 'didn't pan out'.",
+        "items": []
+      }
+    ]
+  },
+
+  "positionBoards": {
+    "title": "Position Boards",
+    "subtitle": "Best at each position. Cross-referenced against the overall ranking — sometimes the best wing isn't in your top 5 overall.",
+    "positions": [
+      {
+        "key": "Guards",
+        "label": "Guards",
+        "items": [
+          { "prospectName": "Darryn Peterson",    "note": "Best shot creator in the class." },
+          { "prospectName": "Kingston Flemings",  "note": "Best two-way profile at the position." },
+          { "prospectName": "Darius Acuff Jr.",   "note": "Best pure lead-guard." },
+          { "prospectName": "Mikel Brown Jr.",    "note": "Best playmaker." },
+          { "prospectName": "Labaron Philon Jr.", "note": "Best combo-guard upside." },
+          { "prospectName": "Keaton Wagler",      "note": "Best feel at the position." },
+          { "prospectName": "Brayden Burries",    "note": "Best shooting guard at depth." }
+        ]
+      },
+      {
+        "key": "Wings",
+        "label": "Wings",
+        "items": [
+          { "prospectName": "AJ Dybantsa",  "note": "Best wing in the class — by a wide margin." },
+          { "prospectName": "Caleb Wilson", "note": "Length-plus-handle is the rarer profile here." },
+          { "prospectName": "Nate Ament",   "note": "Highest ceiling among swing wings." },
+          { "prospectName": "Karim Lopez",  "note": "Best international wing." }
+        ]
+      },
+      {
+        "key": "Forwards",
+        "label": "Forwards",
+        "items": [
+          { "prospectName": "Cameron Boozer",  "note": "Best forward in the class." },
+          { "prospectName": "Yaxel Lendeborg", "note": "Best plug-and-play forward." }
+        ]
+      },
+      {
+        "key": "Bigs",
+        "label": "Bigs",
+        "items": [
+          { "prospectName": "Hannes Steinbach", "note": "Best modern-five archetype." },
+          { "prospectName": "Aday Mara",        "note": "Best skill-big project." }
+        ]
+      }
+    ]
+  },
+
+  "mockDraft": {
+    "title": "My Mock Draft",
+    "subtitle": "How I'd run the board pick-by-pick. Need fits noted where they matter.",
+    "lastUpdated": "2026-05-14",
+    "picks": [
+      { "pick": 1,  "prospectName": "AJ Dybantsa",       "rationale": "BPA. No franchise should be drafting need over the headliner of a top-heavy class." },
+      { "pick": 2,  "prospectName": "Darryn Peterson",   "rationale": "Cleanest scoring touch in the class — pairs with any roster." },
+      { "pick": 3,  "prospectName": "Cameron Boozer",    "rationale": "Top forward + the most NBA-ready offensive game outside the top two." },
+      { "pick": 4,  "prospectName": "Caleb Wilson",      "rationale": "Length-plus-handle wing — the rarest profile after Dybantsa." },
+      { "pick": 5,  "prospectName": "Kingston Flemings", "rationale": "Two-way guard with size starts to separate from the pack here." },
+      { "pick": 6,  "prospectName": "Darius Acuff Jr.",  "rationale": "Pure lead-guard track for teams needing initiation." },
+      { "pick": 7,  "prospectName": "Mikel Brown Jr.",   "rationale": "Playmaking ceiling — for the team that values vision over scoring." },
+      { "pick": 8,  "prospectName": "Yaxel Lendeborg",   "rationale": "Plug-and-play forward. The 'I want a contributor in year one' pick." },
+      { "pick": 9,  "prospectName": "Labaron Philon Jr.","rationale": "Goes higher than most boards have him. Best combo-guard upside left on the board." },
+      { "pick": 10, "prospectName": "Nate Ament",        "rationale": "Swing-wing upside worth the lottery floor risk for a rebuilding team." },
+      { "pick": 11, "prospectName": "Keaton Wagler",     "rationale": "Heady combo guard — high-floor pick after the swing tier." },
+      { "pick": 12, "prospectName": "Brayden Burries",   "rationale": "Connector wing — fits any roster, costs nothing developmentally." },
+      { "pick": 13, "prospectName": "Hannes Steinbach",  "rationale": "Top international big. Modern offensive five." },
+      { "pick": 14, "prospectName": "Karim Lopez",       "rationale": "International swing. Lottery flier for a team with a long developmental runway." },
+      { "pick": 15, "prospectName": "Aday Mara",         "rationale": "Skill-big project — high-value gamble in the late lottery." }
     ]
   },
 
@@ -43,18 +168,98 @@
       },
       {
         "heading": "What I'm Watching For",
-        "body": "Cooper Flagg-level dominance hasn't shown up at the top yet — Dybantsa is the closest thing but he's not a guarantee. The teams picking 1-3 should be willing to trade down if the right offer comes in for one of the back-half-of-lottery prospects."
+        "body": "Cooper Flagg-level dominance hasn't shown up at the top yet — Dybantsa is the closest thing but he's not a guarantee. Teams picking 1-3 should be willing to trade down if the right offer comes in for one of the back-half-of-lottery prospects."
+      }
+    ]
+  },
+
+  "takes": {
+    "title": "Takes",
+    "subtitle": "Where my read diverges from consensus.",
+    "sleepers": {
+      "label": "Sleepers",
+      "description": "Going higher than the consensus boards put them.",
+      "items": [
+        { "prospectName": "Labaron Philon Jr.", "note": "Going at the back of round one in most mocks. Combo-guard upside doesn't usually go that late — the frame + handle combo is rarer than people think." },
+        { "prospectName": "Keaton Wagler",      "note": "Won't be a top-15 pick on consensus boards but the scoring craft + feel pair is hard to find." },
+        { "prospectName": "Karim Lopez",        "note": "International prospect — most boards have him sliding because of data gaps. Tools suggest a higher ceiling than the slot implies." }
+      ]
+    },
+    "risers": {
+      "label": "Risers",
+      "description": "Stock has been trending up over the last month.",
+      "items": [
+        { "prospectName": "Mikel Brown Jr.",    "note": "Late-season improvement on the defensive end addressed the biggest knock on his board." },
+        { "prospectName": "Cameron Boozer",     "note": "Shot 39% from three over the second half of the season — the swing skill that pushes him from starter to offensive hub." }
+      ]
+    },
+    "fallers": {
+      "label": "Fallers",
+      "description": "Stock trending down — read with caution.",
+      "items": [
+        { "prospectName": "Nate Ament",     "note": "Frame concerns + late-season inconsistency. Tools still there but the swing-prospect designation has gotten more pronounced." }
+      ]
+    },
+    "watchlist": {
+      "label": "Watchlist",
+      "description": "Prospects I'm tracking closely + the specific thing I'm watching for.",
+      "items": [
+        { "prospectName": "AJ Dybantsa",       "note": "Pull-up jumper volume + percentage at BYU. Tools to be elite — need to see the green light usage." },
+        { "prospectName": "Kingston Flemings", "note": "Defensive playmaking against NBA-bodied guards in summer / pre-draft workouts." },
+        { "prospectName": "Hannes Steinbach",  "note": "Defensive mobility on the perimeter. The offensive package is real; the question is whether he can stay on the floor." }
+      ]
+    }
+  },
+
+  "updates": {
+    "title": "Updates",
+    "subtitle": "Chronological log of takes, shifts, and observations. Newest first.",
+    "entries": [
+      {
+        "date": "2026-05-14",
+        "title": "Top 15 update",
+        "body": "Bumped Flemings to 5 after the conference tournament run — his on-ball defense + late-clock decision-making both showed up against NBA-bodied opponents. Ament drops one slot; the frame question hasn't been answered and I'm not betting on it being answered before draft night."
+      },
+      {
+        "date": "2026-05-01",
+        "title": "Boozer's three-point shot is the swing factor",
+        "body": "Watched the last 12 games of Duke film tonight. The shot's gone from 'will it translate' to 'this is actually a weapon'. Boozer's ceiling moved up from solid starter to legitimate offensive hub if it holds."
+      },
+      {
+        "date": "2026-04-22",
+        "title": "Karim Lopez to the watchlist",
+        "body": "International tape from Mexico's pro league finally showed up — the touch is real. Adding him to the top-15 conversation pending more reps. He's the kind of long developmental runway pick that pays off two years from now."
       }
     ]
   },
 
   "sleepers": {
+    "_deprecated": "Folded into takes.sleepers. Kept here for back-compat with older readers; the new UI reads from takes.sleepers.",
     "title": "Sleepers",
     "subtitle": "Prospects I'm higher on than the consensus.",
     "items": [
-      { "prospectName": "Labaron Philon Jr.", "note": "Going at the back of round one in most mocks. Combo-guard upside doesn't usually go that late — the frame + handle combo is rarer than people think." },
+      { "prospectName": "Labaron Philon Jr.", "note": "Going at the back of round one in most mocks. Combo-guard upside doesn't usually go that late." },
       { "prospectName": "Keaton Wagler",      "note": "Won't be a top-15 pick on consensus boards but the scoring craft + feel pair is hard to find." },
-      { "prospectName": "Karim Lopez",        "note": "International prospect — most boards have him sliding because of data gaps. Tools suggest a higher ceiling than the slot implies." }
+      { "prospectName": "Karim Lopez",        "note": "International prospect — most boards have him sliding because of data gaps." }
+    ]
+  },
+
+  "about": {
+    "title": "About the Founder's Read",
+    "intro": "Prospera Draft HQ is a scouting workstation for the 2026 NBA Draft class. The platform itself — the Scout Desk, the Dashboard, the weighting system, the tier-call ladders — is built for YOU to do your own scouting. This 'Founder's Read' tab is the cherry on top: my own takes, separate from the platform's neutral data layer.",
+    "voice": [
+      "I watch a lot of tape — college games, FIBA tournaments, pre-draft workouts. The takes here come from that.",
+      "I'm wrong sometimes. The point of the platform is that you don't have to take my word for it — your own scouting is the main event. Read mine if you want a second pair of eyes."
+    ],
+    "credentials": [
+      "Scouting tape since 2018",
+      "Built Prospera Draft HQ in 2026",
+      "Independent — not affiliated with any team or media outlet"
+    ],
+    "philosophy": [
+      "Tape over numbers, but numbers as the check.",
+      "Tier outcomes over consensus rank — rank is just a sorting heuristic.",
+      "Hot takes are fine; pretending the takes are something other than takes is the problem."
     ]
   }
 }
