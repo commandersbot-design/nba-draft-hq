@@ -1,0 +1,60 @@
+{
+  "_README": "Founder-authored content for the 'Founder's Read' main tab. Edit this file to update the rankings, class notes, sleepers, and other curated content. Slugs/names should match the canonical prospect names in prospects.json. This file is intentionally not editable from the running site — it's authored content the founder commits.",
+  "_authoredBy": "Prospera Draft HQ founder",
+  "_lastUpdated": "2026-05-14",
+  "intro": "My personal read on the 2026 NBA Draft class — separate from consensus, separate from your own analysis. This is what I see when I watch tape.",
+
+  "rankings": {
+    "title": "Top 15",
+    "subtitle": "My personal ranking — this is where I'd take each prospect, not where the consensus has them.",
+    "items": [
+      { "prospectName": "AJ Dybantsa",       "rank": 1,  "tier": "Apex",       "note": "Class headliner. Two-way wing with star-level scoring touch and the frame to translate. The Tracy McGrady ceiling is real." },
+      { "prospectName": "Darryn Peterson",   "rank": 2,  "tier": "Star",       "note": "Cleanest scoring guard in the class. Footwork + pull-up combination puts him in the All-Star outcome conversation." },
+      { "prospectName": "Cameron Boozer",    "rank": 3,  "tier": "Star",       "note": "Most polished power forward. The shooting development raises the ceiling from solid starter to legitimate offensive hub." },
+      { "prospectName": "Caleb Wilson",      "rank": 4,  "tier": "Star",       "note": "Length + handle combo for a forward is rare. Becomes a real star if the playmaking reads catch up to the physical tools." },
+      { "prospectName": "Kingston Flemings", "rank": 5,  "tier": "Star",       "note": "Two-way point guard with elite size for the position. Defensive versatility unlocks playoff lineups." },
+      { "prospectName": "Darius Acuff Jr.",  "rank": 6,  "tier": "Star",       "note": "Pure lead-guard creator. Shooting touch + creation gravity puts him on a Stephon-Marbury-type track at the ceiling." },
+      { "prospectName": "Mikel Brown Jr.",   "rank": 7,  "tier": "Star",       "note": "If the body holds up, the playmaking ceiling here is the highest in the class. Trae Young is the upside comp for a reason." },
+      { "prospectName": "Yaxel Lendeborg",   "rank": 8,  "tier": "Hit",        "note": "Plug-and-play forward — won't be a star but the role-player floor is unusually high for this slot." },
+      { "prospectName": "Labaron Philon Jr.","rank": 9,  "tier": "Hit",        "note": "Underrated by consensus. The combo guard frame + ball-handling stand up against NBA athletes; SGA-lite is the realistic best case." },
+      { "prospectName": "Nate Ament",        "rank": 10, "tier": "Swing",      "note": "Boom-or-bust wing. Has the tools to be a Brandon Ingram outcome — also has the frame concerns to flame out." },
+      { "prospectName": "Keaton Wagler",     "rank": 11, "tier": "Hit",        "note": "Heady combo guard. Scores at three levels and the feel translates to a high floor; star ceiling depends on athletic gains." },
+      { "prospectName": "Brayden Burries",   "rank": 12, "tier": "Hit",        "note": "Connector wing with good shooting. The role-player floor is real even if star upside is limited." },
+      { "prospectName": "Hannes Steinbach",  "rank": 13, "tier": "Hit",        "note": "Skilled European big. Modern offensive five with the footwork to switch on defense — outcome depends on shooting volume." },
+      { "prospectName": "Karim Lopez",       "rank": 14, "tier": "Swing",      "note": "International unknown. Tools and shooting touch suggest a long runway; need more reps against pro defenses to know." },
+      { "prospectName": "Aday Mara",         "rank": 15, "tier": "Swing",      "note": "Skilled center — touch, vision, footwork. Whether the body and lateral mobility hold up at the NBA level is the question." }
+    ]
+  },
+
+  "classNotes": {
+    "title": "Class Notes",
+    "sections": [
+      {
+        "heading": "Top of the Class",
+        "body": "AJ Dybantsa is the headliner, but this is a deep top end — Peterson, Boozer, Wilson, and Flemings all have legitimate star upside. The gap between #1 and #5 is smaller than most classes."
+      },
+      {
+        "heading": "Lead Guard Wave",
+        "body": "Four real lead-creator options in the top 10 (Peterson, Flemings, Acuff, Brown). Each has a different shape — pure scorer, two-way size, traditional initiator, pace-and-space — but the quality at the position is the deepest it's been in years."
+      },
+      {
+        "heading": "International Names to Watch",
+        "body": "Karim Lopez and Hannes Steinbach are the obvious internationals. Both have legitimate upside but the data is thinner. Keep an eye on summer tape and pre-draft workouts."
+      },
+      {
+        "heading": "What I'm Watching For",
+        "body": "Cooper Flagg-level dominance hasn't shown up at the top yet — Dybantsa is the closest thing but he's not a guarantee. The teams picking 1-3 should be willing to trade down if the right offer comes in for one of the back-half-of-lottery prospects."
+      }
+    ]
+  },
+
+  "sleepers": {
+    "title": "Sleepers",
+    "subtitle": "Prospects I'm higher on than the consensus.",
+    "items": [
+      { "prospectName": "Labaron Philon Jr.", "note": "Going at the back of round one in most mocks. Combo-guard upside doesn't usually go that late — the frame + handle combo is rarer than people think." },
+      { "prospectName": "Keaton Wagler",      "note": "Won't be a top-15 pick on consensus boards but the scoring craft + feel pair is hard to find." },
+      { "prospectName": "Karim Lopez",        "note": "International prospect — most boards have him sliding because of data gaps. Tools suggest a higher ceiling than the slot implies." }
+    ]
+  }
+}

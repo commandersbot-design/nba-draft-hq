@@ -307,6 +307,7 @@ import InlineTagsPopover from "./InlineTagsPopover";
 import ScoutTierBadge from "./ScoutTierBadge";
 import DashboardCardV2 from "./dashboard/DashboardCardV2";
 import LineupCard from "./dashboard/LineupCard";
+import FoundersReadPage from "./foundersRead/FoundersReadPage";
 
 /**
  * Reads the prospect's hand-assigned tags from localStorage and renders them
@@ -7782,13 +7783,18 @@ function ProsperaAppInner() {
             <ScoutNotesHub prospects={PROSPECTS} />
           )}
           {route === "Founder's Read" && (
-            <DeepDivesPage
-              key={`dives-${diveEditorId || "none"}-${diveEditorSeq}`}
-              prospects={PROSPECTS}
-              deepDives={deepDives}
-              setDeepDives={setDeepDives}
+            <FoundersReadPage
               onOpenProfile={onOpenProfile}
-              initialEditingId={diveEditorId}
+              perProspectChildren={
+                <DeepDivesPage
+                  key={`dives-${diveEditorId || "none"}-${diveEditorSeq}`}
+                  prospects={PROSPECTS}
+                  deepDives={deepDives}
+                  setDeepDives={setDeepDives}
+                  onOpenProfile={onOpenProfile}
+                  initialEditingId={diveEditorId}
+                />
+              }
             />
           )}
           {route === "Class Map" && (
