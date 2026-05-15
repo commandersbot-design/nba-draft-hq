@@ -16,11 +16,11 @@
     "darrynpeterson": {
       "prospectName": "Darryn Peterson",
       "ladder": {
-        "floor":   { "name": "Ben Gordon",      "tier": "6th Man / Starter" },
-        "lowEnd":  { "name": "Brandon Roy",     "tier": "All-Star" },
-        "middle":  { "name": "Devin Booker",    "tier": "Star" },
-        "highEnd": { "name": "Ray Allen",       "tier": "Superstar" },
-        "ceiling": { "name": "Kobe Bryant",     "tier": "Hall of Famer" }
+        "floor":   { "name": "Cam Thomas",      "tier": "6th Man" },
+        "lowEnd":  { "name": "Jalen Green+",    "tier": "Starter" },
+        "middle":  { "name": "Devin Booker",    "tier": "All-Star" },
+        "highEnd": { "name": "Jaylen Brown",    "tier": "All-Star" },
+        "ceiling": { "name": "Kobe Bryant",     "tier": "Superstar" }
       }
     },
     "cameronboozer": {

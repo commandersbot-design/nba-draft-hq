@@ -1,15 +1,15 @@
 {
   "_README": "Founder-authored content for the 'Founder's Read' main tab. Edit this file to update everything — rankings, class notes, sleepers/risers/fallers/watchlist, tier and position boards, mock draft, chronological updates, and about page. Names should match the canonical prospect names in prospects.json. This file is intentionally not editable from the running site — it's authored content the founder commits.",
   "_authoredBy": "Prospera Draft HQ founder",
-  "_lastUpdated": "2026-05-14",
+  "_lastUpdated": "2026-05-14T13:00:00Z",
   "intro": "My personal read on the 2026 NBA Draft class — separate from consensus, separate from your own analysis. This is what I see when I watch tape.",
 
   "rankings": {
     "title": "Top 15",
     "subtitle": "My personal ranking — this is where I'd take each prospect, not where the consensus has them.",
     "items": [
-      { "prospectName": "AJ Dybantsa",       "rank": 1,  "tier": "Apex",  "note": "Class headliner. Two-way wing with star-level scoring touch and the frame to translate. The Tracy McGrady ceiling is real." },
-      { "prospectName": "Darryn Peterson",   "rank": 2,  "tier": "Star",  "note": "Cleanest scoring guard in the class. Footwork + pull-up combination puts him in the All-Star outcome conversation." },
+      { "prospectName": "Darryn Peterson",   "rank": 1,  "tier": "Apex",  "note": "Highest offensive ceiling in the class. Clean medicals on the cramping push him clear at #1; a flagged medical drops him a tier." },
+      { "prospectName": "AJ Dybantsa",       "rank": 2,  "tier": "Apex",  "note": "Class headliner if Peterson's medical slips. Two-way wing with star-level scoring touch and the frame to translate." },
       { "prospectName": "Cameron Boozer",    "rank": 3,  "tier": "Star",  "note": "Most polished power forward. Shooting development raises the ceiling from solid starter to offensive hub." },
       { "prospectName": "Caleb Wilson",      "rank": 4,  "tier": "Star",  "note": "Length + handle combo for a forward is rare. Becomes a real star if the playmaking reads catch up to the physical tools." },
       { "prospectName": "Kingston Flemings", "rank": 5,  "tier": "Star",  "note": "Two-way point guard with elite size. Defensive versatility unlocks playoff lineups." },
@@ -35,7 +35,8 @@
         "label": "Apex — Generational",
         "description": "A real shot at the all-time conversation. Reserve sparingly.",
         "items": [
-          { "prospectName": "AJ Dybantsa", "note": "Tracy McGrady ceiling, Jaylen Brown floor." }
+          { "prospectName": "Darryn Peterson", "note": "Sits alone at the top of Apex for me — gap is health-contingent. Clean medical pushes him clear; flagged medical drops a tier and Dybantsa moves up." },
+          { "prospectName": "AJ Dybantsa",     "note": "Just below Peterson. Tracy McGrady ceiling, Jaylen Brown floor." }
         ]
       },
       {
@@ -43,7 +44,6 @@
         "label": "Star — All-Star Track",
         "description": "Realistic All-Star outcome. The class's headline names.",
         "items": [
-          { "prospectName": "Darryn Peterson",   "note": "Scoring guard track — Devin Booker / Brandon Roy band." },
           { "prospectName": "Cameron Boozer",    "note": "Sengun / Sabonis offensive-hub track." },
           { "prospectName": "Caleb Wilson",      "note": "Pascal Siakam / Jalen Johnson band." },
           { "prospectName": "Kingston Flemings", "note": "Dejounte Murray / Jrue Holiday band." },
@@ -90,7 +90,7 @@
         "key": "Guards",
         "label": "Guards",
         "items": [
-          { "prospectName": "Darryn Peterson",    "note": "Best shot creator in the class." },
+          { "prospectName": "Darryn Peterson",    "note": "#1 guard by a wide margin. 6'6 / 6'10.5 wing / 8'7 reach — prototypical two-way scoring guard frame. Primary scoring PG with real playmaking." },
           { "prospectName": "Kingston Flemings",  "note": "Best two-way profile at the position." },
           { "prospectName": "Darius Acuff Jr.",   "note": "Best pure lead-guard." },
           { "prospectName": "Mikel Brown Jr.",    "note": "Best playmaker." },
@@ -133,8 +133,8 @@
     "subtitle": "How I'd run the board pick-by-pick. Need fits noted where they matter.",
     "lastUpdated": "2026-05-14",
     "picks": [
-      { "pick": 1,  "prospectName": "AJ Dybantsa",       "rationale": "BPA. No franchise should be drafting need over the headliner of a top-heavy class." },
-      { "pick": 2,  "prospectName": "Darryn Peterson",   "rationale": "Cleanest scoring touch in the class — pairs with any roster." },
+      { "pick": 1,  "prospectName": "Darryn Peterson",   "rationale": "Wizards won the lottery. Consensus has Dybantsa #1, but the offensive engine is more valuable than the wing on a rebuild. Three-level shot creation with this size profile is the rarest commodity in the league. Pending medicals on the cramping history, I take the swing." },
+      { "pick": 2,  "prospectName": "AJ Dybantsa",       "rationale": "Class headliner if Peterson's medical slips. Utah won't hesitate at #2 — two-way wing with star scoring touch and franchise frame." },
       { "pick": 3,  "prospectName": "Cameron Boozer",    "rationale": "Top forward + the most NBA-ready offensive game outside the top two." },
       { "pick": 4,  "prospectName": "Caleb Wilson",      "rationale": "Length-plus-handle wing — the rarest profile after Dybantsa." },
       { "pick": 5,  "prospectName": "Kingston Flemings", "rationale": "Two-way guard with size starts to separate from the pack here." },
@@ -189,6 +189,7 @@
       "label": "Risers",
       "description": "Stock has been trending up over the last month.",
       "items": [
+        { "prospectName": "Darryn Peterson",    "note": "Injury-tarnished freshman year has him slipping toward #2/3 in public mocks. That's a mistake. Pre-draft medicals + interviews should re-establish him as a legit #1 conversation. Combine measurements (37.5\" max vert, plus-four wingspan) already started the rehabilitation." },
         { "prospectName": "Mikel Brown Jr.",    "note": "Late-season improvement on the defensive end addressed the biggest knock on his board." },
         { "prospectName": "Cameron Boozer",     "note": "Shot 39% from three over the second half of the season — the swing skill that pushes him from starter to offensive hub." }
       ]
@@ -217,6 +218,11 @@
     "entries": [
       {
         "date": "2026-05-14",
+        "title": "Holding at #1 — medicals will decide",
+        "body": "Public consensus is hardening around Peterson at #2, but I'm keeping him #1 on my board pending medical review. The combine numbers were the first real evidence that the athletic profile is recoverable, and the shot-making package is still the rarest skill in this class. If the cramping condition gets cleared as situational (creatine-driven) rather than chronic, the gap between him and the field at #2 is real. If it doesn't, he slides to #3 and Boozer moves up."
+      },
+      {
+        "date": "2026-05-14",
         "title": "Top 15 update",
         "body": "Bumped Flemings to 5 after the conference tournament run — his on-ball defense + late-clock decision-making both showed up against NBA-bodied opponents. Ament drops one slot; the frame question hasn't been answered and I'm not betting on it being answered before draft night."
       },
@@ -242,6 +248,63 @@
       { "prospectName": "Keaton Wagler",      "note": "Won't be a top-15 pick on consensus boards but the scoring craft + feel pair is hard to find." },
       { "prospectName": "Karim Lopez",        "note": "International prospect — most boards have him sliding because of data gaps." }
     ]
+  },
+
+  "_prospectAnalysisReadme": "Per-prospect long-form content keyed by prospect name. Banked here until the long-form per-prospect section is wired up — once 3+ prospects have substantive scoutNarrative / pros / cons / longForm content, the render pass goes live (Option B). founderTags get rendered today through the tag-merge layer once that's wired.",
+  "prospectAnalysis": {
+    "Darryn Peterson": {
+      "scoutNarrative": {
+        "ceiling":  "The body cooperates, the cramping was creatine-driven and fully resolvable, and the high school playmaking carries over. He becomes a 28-6-5 primary engine with a Mamba-tier mid-range game, lockdown perimeter defense at his position, and the killer instinct to anchor a contender for a decade.",
+        "highEnd":  "Health stabilizes and the two-way scoring translates fully. Jaylen Brown-style outcome — elite shot-maker on volume, switchable plus defender, multiple All-Star appearances, Finals-level contributor on a top team.",
+        "middle":   "Booker-tier offensive star whose playmaking grows modestly. Plus shot-making at three levels, real mid-range mastery, capable secondary handler, switchable on defense. All-Star appearances, perennial 25+ ppg scorer.",
+        "lowEnd":   "Body never fully comes back. He's a scoring starter who heats up in bursts but doesn't move the needle in playoff settings because the rim pressure and playmaking plateau — Jalen Green+ outcome.",
+        "floor":    "The cramping / soft-tissue history becomes chronic and he can't stay on the floor. Talented microwave scorer off the bench when available — Cam Thomas archetype."
+      },
+      "overallCeilingCall": "Superstar two-way guard, contingent on clean medicals and a return of pre-Kansas burst. The Kobe comp is aspirational but the size, mid-range mastery, footwork, and big-moment DNA give it a real foundation rather than projection alone.",
+      "scoutSummary": "Peterson is the most skilled offensive player in the class — full stop. The freshman year was disjointed because injuries (hamstring, ankle, full-body cramping he's since attributed to creatine use) stripped him of the burst that defined his prep tape. Even compromised, he averaged 20.2/4.2/1.6 on 43.8/38.2/82.6 splits with a 25.4 PER. The frame, length, shot-making versatility, and shot diet are all NBA-ready. The questions are durability, playmaking growth, and point-of-attack defense — all of which are improvable. If you believe the medicals, this is your guy.",
+      "pros": [
+        "Elite three-level shot creator with one of the deepest scoring bags in the class — pull-ups, step-backs, movement threes, self-created mid-range, and tough rim finishes.",
+        "Excels in both on-ball and off-ball roles — rare combination that makes him a plus fit on any roster construction.",
+        "Prototypical scoring guard frame at 6'6\", 205 lbs with a 6'10.5\" wingspan and 8'7\" standing reach — plus positional size with real strength.",
+        "Knockdown perimeter shooter on volume — 38.2% from three on 6.9 attempts per game, 82.6% from the line. Shooting indicators all pointing the same direction.",
+        "Plays at his own pace; uses balance, footwork, and timing rather than pure burst to generate separation. Poise rarely wavers.",
+        "Foul-drawing chops for a perimeter player — .371 FT rate shows he's not just settling for jumpers.",
+        "Defensive tools (length, frame, IQ) suggest a switchable plus defender once focus consolidates. 1.4 steals per game flashes off-ball disruption.",
+        "Big-moment résumé — McDonald's All-American Game MVP, Grind Session championship MVP, Naismith POY, clutch threes vs Texas Tech.",
+        "Genuine downhill driver when healthy — pre-Kansas tape and his Prolific Prep sample show rim pressure that the freshman year largely masked."
+      ],
+      "cons": [
+        "Durability is the headline concern — missed 11 of Kansas's first 27 games. Hamstring, sprained ankle, flu, and a full-body cramping episode described as 'traumatic' that required hospitalization. He has since attributed the severe cramping to creatine use, which — if accurate — reframes the issue as situational rather than chronic.",
+        "Playmaking production did not show up at Kansas — 1.6 apg, 2.2 assists per 40. Profile risk if he stays a non-creator for others, though high school tape (7.4 apg at Prolific Prep) suggests it's there.",
+        "Athletic profile at Kansas looked diminished — burst, lift, and directional change all dulled. Likely tied to the cramping issue and should bounce back, but worth verifying with medicals.",
+        "Shot selection wavers game-to-game; can lean too heavily on contested pull-ups when easier looks are available.",
+        "Some outside questions about maturity and buy-in — likely overstated but will be diligenced."
+      ],
+      "bestGame": {
+        "opponent": "at Texas Tech (Feb 2)",
+        "standout": "Hit two clutch threes in the closing seconds to seal the road win in a hostile Big 12 environment. Quintessential Peterson tape — pace, poise, and big-moment shot-making against high-level competition."
+      },
+      "worstGame": {
+        "opponent": "vs California Baptist (NCAA Tournament 1st Round, Mar 20)",
+        "concern":  "Looked physically compromised — the post-cramping version of himself. Flat lift, no first-step burst, settled for tough jumpers because he couldn't get downhill. Reminder of how narrow the margin is if the body doesn't fully come back."
+      },
+      "recentObservations": [
+        { "date": "2026-04-25", "note": "Declared for the draft. Statement leaned on faith and family — read as a confident, prepared kid rather than someone hedging." },
+        { "date": "2026-05-10", "note": "Wasserman, O'Connor, Woo mocks all converge on #2 to Utah (Dybantsa #1 to Washington, Boozer #3 to Memphis) — but multiple scouts still privately have him as the #1 overall talent in the class." },
+        { "date": "2026-05-12", "note": "Combine measurements confirmed 6'6\", 6'10.5\" wingspan, 8'7\" reach, 37.5\" max vert. Plus-four wingspan and a vert at the top of his class for a guard — first concrete data point that the athletic profile is intact post-injury." }
+      ],
+      "founderTags": [
+        "volume-scorer", "tuxedo-scorer", "midrange-mastery",
+        "pull-up-threat", "downhill-dynamo", "crafty-finisher", "float-game",
+        "foul-magnet",
+        "catch-and-shoot-threat", "functional-gravity",
+        "ball-pressure", "off-ball-disruptor", "switchable",
+        "versatility", "stage-hunter",
+        "apex-ceiling",
+        "injury-concerns"
+      ],
+      "longForm": "The Peterson evaluation is, in the end, a referendum on how much you trust the medicals over the season-long film.\n\nThe film at Kansas was uneven. He averaged 20.2/4.2/1.6 on 43.8/38.2/82.6 across 24 games, missed 11 contests, and played fewer than 25 minutes in seven of his appearances. A hamstring injury, a sprained ankle, the flu, and a full-body cramping episode he himself described as traumatic combined to produce a player who, on most nights, was a flatter, stiffer, less explosive version of the prospect who dominated Prolific Prep. Burst, lift, and directional change all looked degraded. He generated rim pressure less frequently, settled for more contested pull-ups, and the assist numbers (1.6 apg, 2.2 per 40) collapsed relative to a senior year where he posted 7.4 apg. Many of his Kansas nights felt off-rhythm. Peterson has since attributed the severe cramping to creatine use — if that holds up under medical scrutiny, the bulk of the freshman year reads as a correctable input problem rather than a structural red flag.\n\nAgainst that, you have everything else. Pre-Kansas, Peterson was the consensus #1 player in the 2025 class, McDonald's All-American Game MVP, Naismith High School Player of the Year, and Grind Session champion. At the combine he measured 6'6\" with a 6'10.5\" wingspan, an 8'7\" standing reach, and a 37.5\" max vert — every physical box checked. The shooting indicators are unambiguous: 38.2% on 6.9 threes per game and 82.6% at the line are the kind of freshman markers that translate. The shot diet is NBA-ready — pull-ups, step-backs, movement threes, mid-range self-creation, tough rim finishes — and his .371 FT rate confirms he's not just a jump-shooting guard. He plays at his own pace, uses footwork and timing to manufacture space instead of relying on pure burst, and the moment never seems to speed him up. The clutch threes at Texas Tech were a glimpse of the player I expect to see most nights once his body cooperates.\n\nThe playmaking question is real but probably overstated. He looked like a scoring two at Kansas because that's what the role and the body permitted. The high school tape shows a primary ball-handler generating rim pressure and shots for teammates — Wasserman and others have made this point. I weight high school tape less than college film as a rule, but in a season this disrupted, the prep sample matters more than usual.\n\nThe defense is fine. He's not going to be DPOY, but the size, length, and instincts are there for a switchable plus defender with off-ball disruption and on-ball pressure value. Point-of-attack consistency needs work, but the tools are all there.\n\nThe pro comp range tells the story. Kobe on the ceiling is aspirational but the foundation is real — similar size for a guard, similar mid-range mastery, similar footwork-and-pace approach to shot creation, and the same big-moment DNA. Jaylen Brown captures the high-end outcome where the two-way scoring translates fully and the playmaking stays solid but unspectacular. Booker in the middle is a comfortable landing spot — three-level scoring star with All-Star appearances and a sustainable mid-range game — and reflects what most evaluators see as the realistic projection. The floor outcomes (Jalen Green+, Cam Thomas) only land if the medicals become a chronic issue.\n\nFor me, that's a top-of-the-board prospect. Not without risk — the durability question is genuine and could move him down two spots between now and June 23. But the offensive ceiling is the highest in the class, and in a draft where the top three are this close, ceiling wins."
+    }
   },
 
   "about": {
