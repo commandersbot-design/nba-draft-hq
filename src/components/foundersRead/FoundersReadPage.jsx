@@ -234,6 +234,18 @@ function ProspectRow({
   );
 }
 
+// Plain-language descriptions for the outcome tier labels — used as the
+// hover tooltip on every TierPill so a first-time visitor can decode the
+// Apex/Star/Hit/Swing/Bust system without leaving the page they're on.
+// Same definitions surface in the Help drawer's Outcome Tiers section.
+const TIER_DESC = {
+  Apex:  "Apex — Realistic All-Star / generational outcome. Reserve sparingly (a handful per class at most).",
+  Star:  "Star — Realistic All-Star track. The class's headline names.",
+  Hit:   "Hit — Solid long-term starter. Not a star, but the franchise gets the pick right.",
+  Swing: "Swing — Real ceiling AND real floor. Outcome depends on a couple swing factors.",
+  Bust:  "Bust — Realistic 'didn't pan out' outcome.",
+};
+
 function TierPill({ tier }) {
   const color = TIER_COLOR[tier] || T.cyan;
   return (
@@ -249,8 +261,9 @@ function TierPill({ tier }) {
         fontWeight: 700,
         textTransform: "uppercase",
         whiteSpace: "nowrap",
+        cursor: "help",
       }}
-      title={`Founder's outcome tier: ${tier}`}
+      title={TIER_DESC[tier] || `Founder's outcome tier: ${tier}`}
     >
       {tier}
     </span>

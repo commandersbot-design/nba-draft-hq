@@ -300,6 +300,7 @@ import ScoutTab from "./ScoutTab";
 import ScoutNotesHub from "./ScoutNotesHub";
 import { ScoutSourceProvider, useShowFounderContent } from "../lib/scoutSource";
 import ScoutSourceToggle from "./ScoutSourceToggle";
+import HelpDrawer, { HelpButton } from "./HelpDrawer";
 import { usePlayerTags } from "./TagEditor";
 import { TagBadge, TagBadgeRow } from "./TagBadge";
 import { getTagById, getConflictsFor, getTagLibrary, groupSkillsByCategory, getTagsByLayer } from "../lib/tags/library";
@@ -1050,7 +1051,7 @@ const ProsperaTicker = ({ prospects, onOpenProfile }) => {
   );
 };
 
-const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => (
+const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive, onOpenHelp }) => (
   <div
     className="prospera-topbar"
     style={{
@@ -1185,6 +1186,7 @@ const TopNav = ({ active, setActive, onMenu, onOpenWeights, weightsActive }) => 
 
     <div className="prospera-desktop-only" style={{ display: "flex", alignItems: "center", gap: 12 }}>
       <ScoutSourceToggle />
+      <HelpButton onClick={onOpenHelp} />
       <button
         type="button"
         onClick={onOpenWeights}
@@ -1437,8 +1439,13 @@ const DashboardPage = ({
         >
           Draft Dashboard
         </h1>
-        <div style={{ fontSize: 13, color: T.textDim }}>
-          Pin prospects to your decision board · {dashSelected.length}/{pinCap} pinned
+        <div style={{ fontSize: 13, color: T.textDim, maxWidth: 760, lineHeight: 1.55 }}>
+          Your pinned prospects from the 2026 class — landing page for the
+          site. Pick the layout from the toggle below (<strong style={{ color: T.text, fontWeight: 600 }}>Lineup</strong> = compact roster · <strong style={{ color: T.text, fontWeight: 600 }}>Radar</strong>/<strong style={{ color: T.text, fontWeight: 600 }}>Bars</strong> = deeper read of trait shape).
+          Click any card to open that prospect's profile. Top 12 are pinned by default; pin or unpin to taste.
+        </div>
+        <div style={{ fontSize: 12, color: T.textMute, marginTop: 6, ...mono, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+          {dashSelected.length}/{pinCap} pinned
         </div>
       </div>
 
@@ -5855,7 +5862,10 @@ const BigBoardPage = ({
           <h1 style={{ fontSize: 32, color: T.text, margin: "6px 0 4px", fontWeight: 700, letterSpacing: "-0.02em" }}>
             Scout Desk
           </h1>
-          <div style={{ fontSize: 13, color: T.textDim, marginBottom: 18 }}>
+          <div style={{ fontSize: 13, color: T.textDim, marginBottom: 6, maxWidth: 760, lineHeight: 1.55 }}>
+            The full 2026 class as a sortable, filterable list — this is where you'll spend most of your time. Set a <strong style={{ color: T.text, fontWeight: 600 }}>tier call</strong> per prospect with the FL/LE/MID/HE/C pill, add <strong style={{ color: T.text, fontWeight: 600 }}>tags</strong> with the <code style={{ color: T.cyan }}>+ TAG</code> button, click any row to open the full profile. Bulk-select to tag multiple at once.
+          </div>
+          <div style={{ fontSize: 11, color: T.textMute, marginBottom: 18, ...mono, letterSpacing: "0.12em", textTransform: "uppercase" }}>
             {PROSPECTS.length} prospects · sort: {SCOUT_DESK_SORT_OPTIONS.find((o) => o.key === sortField)?.label || "Rank"}{sortField === "custom" ? " · drag to reorder" : ""}
           </div>
         </div>
@@ -7422,6 +7432,7 @@ export default function ProsperaApp() {
 
 function ProsperaAppInner() {
   const [weightsDrawerOpen, setWeightsDrawerOpen] = useState(false);
+  const [helpDrawerOpen, setHelpDrawerOpen] = useState(false);
   const customWeights = useCustomWeights();
   const [route, setRoute] = useState("Dashboard");
   const [selectedId, setSelectedId] = useState("p1");
@@ -7711,6 +7722,7 @@ function ProsperaAppInner() {
         onMenu={() => setRailOpen(!railOpen)}
         onOpenWeights={() => setWeightsDrawerOpen(true)}
         weightsActive={customWeights.active}
+        onOpenHelp={() => setHelpDrawerOpen(true)}
       />
       <CustomWeightsDrawer
         open={weightsDrawerOpen}
@@ -7720,6 +7732,7 @@ function ProsperaAppInner() {
         active={customWeights.active}
         setActive={customWeights.setActive}
       />
+      <HelpDrawer open={helpDrawerOpen} onClose={() => setHelpDrawerOpen(false)} />
 
       <div style={{ display: "flex" }}>
         <BigBoardRail
