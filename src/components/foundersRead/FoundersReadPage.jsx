@@ -60,12 +60,39 @@ const TIER_COLOR = {
 // HELPERS
 // =============================================================================
 
-function resolveProspect(name) {
-  if (!name) return null;
-  const list = Array.isArray(PROSPECTS_DATA)
+// Slug-normaliser shared with the headshot resolver — strips diacritics,
+// "Jr." / "Sr." / "III" suffixes, and punctuation so the founder-authored
+// "Darius Acuff Jr." resolves to the canonical "Darius Acuff" prospect.
+function prospectSlug(name) {
+  if (!name) return "";
+  let s = String(name).normalize("NFKD").replace(/[̀-ͯ]/g, "");
+  s = s.replace(/[\s,.]+(jr|sr|ii|iii|iv|v)\.?\s*$/i, "");
+  return s.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+// Prospect lookup with the same slug fallback. Without this, founder-display
+// name variants (Jr suffix etc.) leave their rows un-clickable + breaks the
+// click-to-open-profile flow from Founder's Read.
+const PROSPECT_LIST = (() => {
+  const raw = Array.isArray(PROSPECTS_DATA)
     ? PROSPECTS_DATA
     : (PROSPECTS_DATA.prospects || []);
-  return list.find((p) => p.name === name) || null;
+  return raw;
+})();
+const PROSPECT_BY_SLUG = (() => {
+  const out = {};
+  for (const p of PROSPECT_LIST) out[prospectSlug(p.name)] = p;
+  return out;
+})();
+
+function resolveProspect(name) {
+  if (!name) return null;
+  // Direct hit first.
+  const exact = PROSPECT_LIST.find((p) => p.name === name);
+  if (exact) return exact;
+  // Slug fallback handles Jr./Sr./III + accents.
+  const slug = prospectSlug(name);
+  return slug ? (PROSPECT_BY_SLUG[slug] || null) : null;
 }
 
 function ProspectAvatar({ name, size = 48, accent = T.cyan }) {

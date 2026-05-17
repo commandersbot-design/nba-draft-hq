@@ -9,7 +9,7 @@
     "subtitle": "My personal ranking — this is where I'd take each prospect, not where the consensus has them.",
     "items": [
       { "prospectName": "Darryn Peterson",   "rank": 1,  "tier": "Apex",  "note": "Highest offensive ceiling in the class. Clean medicals on the cramping push him clear at #1; a flagged medical drops him a tier." },
-      { "prospectName": "AJ Dybantsa",       "rank": 2,  "tier": "Apex",  "note": "Class headliner if Peterson's medical slips. Two-way wing with star-level scoring touch and the frame to translate." },
+      { "prospectName": "AJ Dybantsa",       "rank": 2,  "tier": "Apex",  "note": "True 6'9 wing with guard skills — three-level scoring, advanced handle in tight spaces, and FIBA passing numbers that suggest more secondary creation than BYU's offense unlocked." },
       { "prospectName": "Cameron Boozer",    "rank": 3,  "tier": "Star",  "note": "Most polished power forward. Shooting development raises the ceiling from solid starter to offensive hub." },
       { "prospectName": "Caleb Wilson",      "rank": 4,  "tier": "Star",  "note": "Length + handle combo for a forward is rare. Becomes a real star if the playmaking reads catch up to the physical tools." },
       { "prospectName": "Darius Acuff Jr.",  "rank": 5,  "tier": "Star",  "note": "Pure lead-guard creator. Shooting touch + creation gravity puts him on a Stephon-Marbury-type track at the ceiling." },
@@ -36,7 +36,7 @@
         "description": "A real shot at the all-time conversation. Reserve sparingly.",
         "items": [
           { "prospectName": "Darryn Peterson", "note": "Sits alone at the top of Apex for me — gap is health-contingent. Clean medical pushes him clear; flagged medical drops a tier and Dybantsa moves up." },
-          { "prospectName": "AJ Dybantsa",     "note": "Just below Peterson. Tracy McGrady ceiling, Jaylen Brown floor." }
+          { "prospectName": "AJ Dybantsa",     "note": "Just below Peterson — gap is razor-thin and health-contingent. Wing-scorer positional value is the rarer commodity at the NBA level." }
         ]
       },
       {
@@ -103,7 +103,7 @@
         "key": "Wings",
         "label": "Wings",
         "items": [
-          { "prospectName": "AJ Dybantsa",  "note": "Best wing in the class — by a wide margin." },
+          { "prospectName": "AJ Dybantsa",  "note": "#1 wing in the class. 6'9 / ~6'11 wingspan / 210 lbs — prototypical NBA wing frame with room to add weight. Handle and creation profile let him function as a primary ball-handler in stretches." },
           { "prospectName": "Caleb Wilson", "note": "Length-plus-handle is the rarer profile here." },
           { "prospectName": "Nate Ament",   "note": "Highest ceiling among swing wings." },
           { "prospectName": "Karim Lopez",  "note": "Best international wing." }
@@ -134,7 +134,7 @@
     "lastUpdated": "2026-05-14",
     "picks": [
       { "pick": 1,  "prospectName": "Darryn Peterson",   "rationale": "Wizards won the lottery. Consensus has Dybantsa #1, but the offensive engine is more valuable than the wing on a rebuild. Three-level shot creation with this size profile is the rarest commodity in the league. Pending medicals on the cramping history, I take the swing." },
-      { "pick": 2,  "prospectName": "AJ Dybantsa",       "rationale": "Class headliner if Peterson's medical slips. Utah won't hesitate at #2 — two-way wing with star scoring touch and franchise frame." },
+      { "pick": 2,  "prospectName": "AJ Dybantsa",       "rationale": "Mocks have him #1 to Washington, but I have Peterson there. That puts Dybantsa at #2 to Utah, which might be his preferred landing per recent reporting — BYU-to-Jazz pipeline keeps him in a market he knows and gives him a clear runway as the cornerstone of a young rebuild. If Peterson's medicals flag, this becomes the easiest pick on the board." },
       { "pick": 3,  "prospectName": "Cameron Boozer",    "rationale": "Top forward + the most NBA-ready offensive game outside the top two." },
       { "pick": 4,  "prospectName": "Caleb Wilson",      "rationale": "Length-plus-handle wing — the rarest profile after Dybantsa." },
       { "pick": 5,  "prospectName": "Kingston Flemings", "rationale": "Two-way guard with size starts to separate from the pack here." },
@@ -205,7 +205,7 @@
       "label": "Watchlist",
       "description": "Prospects I'm tracking closely + the specific thing I'm watching for.",
       "items": [
-        { "prospectName": "AJ Dybantsa",       "note": "Pull-up jumper volume + percentage at BYU. Tools to be elite — need to see the green light usage." },
+        { "prospectName": "AJ Dybantsa",       "note": "Not a riser or a faller — the consensus #1 narrative has been stable all year and BYU production (25.5/6.8/3.7 on 51/33/77, 28.1 PER) backs it up. Track decision-making and shot selection — he showed real in-season growth at BYU. If that arc continues, the Tracy McGrady ceiling stops feeling aspirational." },
         { "prospectName": "Kingston Flemings", "note": "Defensive playmaking against NBA-bodied guards in summer / pre-draft workouts." },
         { "prospectName": "Hannes Steinbach",  "note": "Defensive mobility on the perimeter. The offensive package is real; the question is whether he can stay on the floor." }
       ]
@@ -216,6 +216,11 @@
     "title": "Updates",
     "subtitle": "Chronological log of takes, shifts, and observations. Newest first.",
     "entries": [
+      {
+        "date": "2026-05-14",
+        "title": "Holding at #2 — Peterson edges him by a hair",
+        "body": "Dybantsa is the safer pick and the cleaner profile. If I'm running a front office without conviction, he's the right call at #1. But I have Peterson #1 because the offensive ceiling is higher and the shot-making at his size is the rarest skill in the league when healthy. Dybantsa's edge is reliability — fewer ways for the pick to go wrong. If Peterson's medicals come back flagged, this flips immediately and Dybantsa becomes my #1 without hesitation."
+      },
       {
         "date": "2026-05-14",
         "title": "Holding at #1 — medicals will decide",
@@ -252,6 +257,58 @@
 
   "_prospectAnalysisReadme": "Per-prospect long-form content keyed by prospect name. Banked here until the long-form per-prospect section is wired up — once 3+ prospects have substantive scoutNarrative / pros / cons / longForm content, the render pass goes live (Option B). founderTags get rendered today through the tag-merge layer once that's wired.",
   "prospectAnalysis": {
+    "AJ Dybantsa": {
+      "scoutNarrative": {
+        "ceiling":  "The decision-making catches up to the tools and he becomes a 28-7-6 primary engine at 6'9 — a true positional unicorn who creates for himself and others while defending three or four positions. Tracy McGrady is the comp because the combination of size, handle, scoring versatility, and secondary playmaking is that rare.",
+        "highEnd":  "Two-way star wing — elite scoring, plus defense across multiple positions, capable secondary creator. Paul George archetype: multiple All-Star and All-NBA appearances, anchor on a contender, not quite a top-5 player but firmly in the next tier.",
+        "middle":   "Jaylen Brown+ outcome. Three-level scoring star whose playmaking grows modestly, switchable defender, perennial 20-25 ppg threat, multiple All-Star nods, Finals-level contributor on the right team.",
+        "lowEnd":   "Brandon Ingram outcome. Skilled scoring wing with the size to get his shot whenever he wants, but the playmaking and defensive impact don't scale to the highest tier. Borderline All-Star, plus starter, but not the centerpiece of a championship offense.",
+        "floor":    "The shot selection issues persist and the perimeter shooting never fully comes around. MPJ archetype — physically gifted scoring wing with bursts of star-level production who reads more as a high-end role player than a primary option."
+      },
+      "overallCeilingCall": "Two-way All-NBA wing, with realistic odds of landing in the All-Star tier. The path to McGrady requires the playmaking flashes to become baseline and the three-point shot to settle in at league-average or better. The path to Paul George requires less — the tools and motor are already there.",
+      "scoutSummary": "Dybantsa is the safest star bet in the class. 25.5 points, 6.8 rebounds, 3.7 assists per game on 51/33/77 splits as a true freshman is elite production by any historical measure, and he did it for a top-25 team in the Big 12. The package — 6'9 wing with a primary ball-handler's skill set, real defensive tools, an elite motor, and demonstrable in-season growth — is what every front office wants to draft. The questions are shot selection, shooting consistency from three, and how much of the late-season growth carries into the league. None of those are profile-breakers.",
+      "pros": [
+        "Elite positional size at 6'9 with a ~6'11 wingspan, long strides, and a frame that should fill out without losing mobility.",
+        "Three-level scoring at scale — 25.5 ppg on 51.0% FG as a freshman is high-end production for any class, let alone a wing.",
+        "Real secondary creation chops — 3.7 apg with a sub-2 turnover number suggests legitimate playmaking that wasn't fully unlocked in BYU's offense.",
+        "Defensive tools translate. Switchable across multiple positions, active hands, and the motor to defend possessions from start to finish. Posted a 30/10/10 triple-double — one of two in Big 12 history — and a 33-point triple-double on the year.",
+        "Foul-drawing chops — 7+ FTA per game in spots, 77.4% from the line, with strong career indicators (89% FT in EYBL, 84% at the U19 World Cup).",
+        "Demonstrable in-season development. Looked like a meaningfully different (better) player by the end of the BYU season than at the start — the only top-tier prospect in the class with a visible growth arc on tape.",
+        "High-motor, alpha demeanor, vocal leader. Picks up full court, doesn't take possessions off.",
+        "Big-moment résumé — broke BYU's freshman scoring record with 43 vs Utah (passing Danny Ainge), multiple 35+ point games, six games over 35 on the season."
+      ],
+      "cons": [
+        "Decision-making and shot selection are the headline question. Plays sticky in stretches, drives recklessly into pressure, and takes some genuinely unexplainable shots even accounting for BYU's offensive limitations.",
+        "Perimeter shooting isn't where it needs to be — 33.1% on the season, with a longer track record of streakiness (11% from three at the U19 World Cup, 27-33% in earlier FIBA events). Mechanics are smooth, indicators are mixed.",
+        "Has a tendency to flop and hunt foul calls rather than going up strong to finish through contact — translates worse to the NBA game.",
+        "Not a pure vertical athlete. Long strides, leaps off one or two feet, but doesn't have elite explosion. Athleticism is good-to-great but not in the truly rare tier.",
+        "Some 'stat-padding' optics emerged during BYU losses (UCF game in particular). Not a real character flag, but it's the kind of noise that follows high-usage freshmen and front offices will probe it in interviews.",
+        "Handle still tightens up in traffic at times — the dribble arsenal is there but needs refinement."
+      ],
+      "bestGame": {
+        "opponent": "vs Utah (Jan 24)",
+        "standout": "43 points to break BYU's freshman scoring record (previously held by Danny Ainge) in a 91-78 win. 19 in the first half, 24 in the second, including a three-minute stretch of three straight threes and a dunk. Showed every part of his offensive profile in one night — three-level scoring, shot-making in rhythm, and clutch closeout. The kind of game that locks in a #1 narrative."
+      },
+      "worstGame": {
+        "opponent": "vs UCF (Feb 24, home)",
+        "concern":  "29 points on 11-of-22 with zero assists in a 97-84 home loss where BYU was down 24 at the half. Triggered the 'stat-padding' discourse online — fair or not, it's the game that exposes the decision-making concerns. When the team needed playmaking and shot quality, he hunted points instead. Forgivable as freshman growth, but it's the tape that explains the gap between him and the McGrady ceiling outcome."
+      },
+      "recentObservations": [
+        { "date": "2026-05-10", "note": "Lottery shakes out — Wizards #1, Jazz #2, Grizzlies #3. Consensus mocks all snap to Dybantsa #1 to Washington, but internal Wizards interest is reportedly less of a lock than public mocks suggest." },
+        { "date": "2026-05-12", "note": "Combine measurements confirmed the 6'9 listing. Performed well in scrimmages. ESPN flagged him as one of the prospects who 'helped his cause'." },
+        { "date": "2026-05-13", "note": "Reporting surfaces that Dybantsa would prefer to land in Utah and stay with the Jazz. Aligns neatly with the Jazz holding #2 — minimal market disruption if Washington takes Peterson, but pressure on Washington if they want to oblige a preference signal." }
+      ],
+      "founderTags": [
+        "volume-scorer", "tuxedo-scorer",
+        "pull-up-threat", "downhill-dynamo", "crafty-finisher", "post-moves",
+        "foul-magnet",
+        "functional-gravity",
+        "switchable",
+        "bendy", "motor", "versatility", "winning-connector", "stage-hunter",
+        "apex-ceiling"
+      ],
+      "longForm": "Dybantsa is the consensus #1 for a reason. He produced at a level that has historically translated to NBA stardom: 25.5/6.8/3.7 on 51/33/77 splits, a 28.1 PER, and 6.4 win shares as a true freshman for a top-25 team in a power conference. Wings who put up that stat line at 18 years old generally turn into All-Stars. The historical priors are doing real work here.\n\nThe physical profile is what makes the production sticky. He's a legitimate 6'9, 210 lbs, with a wingspan that hovers around 6'11 and a frame with room to add weight without sacrificing mobility. The athleticism is good-to-great rather than truly elite — he's not a vertical explosion guy like Ja Morant or peak Russell Westbrook — but the combination of long strides, quick first step, effective jab, and shot-making touch at his height puts him in a category of players that essentially only Tracy McGrady, Paul George, Jaylen Brown, and Brandon Ingram have lived in over the last 25 years. That's the comp ladder.\n\nOffensively, he can do it all. He shot 51% from the field as a high-usage freshman, which is a rare efficiency-volume combination for a wing his age. He can score in the post, off the pull-up, from the midrange, in transition, and at the rim. His ball-handling operates in tight spaces and his change of speed is genuinely advanced. He takes contested layups with either hand. The playmaking is the underrated piece — 3.7 assists per game with turnovers held in check is real connective tissue, and his FIBA track record (3.8-4.1 apg across multiple events) suggests the secondary creation is more than a flash. If a team puts the ball in his hands as a primary on a properly spaced floor, the playmaking should scale.\n\nThe decision-making is the real question. He plays sticky in stretches, drives into pressure without reading the help, and takes some shots that don't make sense even accounting for BYU's team-wide offensive struggles. The UCF home loss is the canonical tape — 29 points, zero assists, hunted scoring in a game his team needed something else from him. To his credit, this is also the area where he showed the most in-season growth. He looked like a visibly different player by the end of the BYU season than at the start, which nobody else in the top tier of this draft can claim. That arc matters more than the ceiling of any single game.\n\nThe shooting projection is the second question. 33.1% from three on the season is functional but not great, and his FIBA history runs streaky — 32.7% in EYBL, 27.3% at U16s, 31.8% at U17s, and 11.1% in a small sample at the U19 World Cup. Mechanics are smooth and the 77.4% free throw rate (with strong historical FT indicators) suggests the shot will land in league-average or better range over time. But it's not the strength his other tools are.\n\nDefensively, the package is real but unfinished. The tools are all there — switchable across positions, fast feet, good hands, recovery explosiveness, and a motor that holds up over 40 minutes. He slides well, contests high, creates steals with length. The Big 12 schedule was a real test and he passed it.\n\nThe unfinished part is possession-to-possession discipline. He has stretches where he locks in, but also possessions where he stands upright, watches the ball, or gives up angles — defending like a player who knows he can recover with athleticism. That works in college; NBA wings punish it. Screen navigation is the next layer — he can get clipped or take wide recovery angles, part technique and part strength, and physical wings can bump him off his lines until he fills out. Off-ball, he occasionally misses weakside rotations or tags rollers late, and he can over-gamble for events at the cost of structure.\n\nHe won't be a DPOY candidate — he's not a true rim protector — but the framing matters: his defense is behind his offense right now, not limited. When engaged, he flashes guarding 1 through 4, rotating as a helper, and blowing up actions with length. He's an unfinished two-way superwing, not an offensive player who can't defend. On a contender with real defensive structure, he should defend at a plus level and matchup-hunt across positions in playoff series.\n\nThe comp ladder reflects the range. McGrady at the ceiling is aspirational but not absurd — the combination of size, handle, and scoring versatility lives in that bucket. Paul George is the realistic high-end outcome where the defense and the secondary playmaking both translate fully but the absolute scoring peak is slightly below All-NBA First Team level. Jaylen Brown+ in the middle captures the most likely path — multiple All-Star appearances, plus defender, perennial 25 ppg scorer, championship contributor without being the engine. Ingram on the low end is the outcome where the shooting and playmaking plateau and he becomes a tough-shot-making secondary scorer rather than a star. MPJ on the floor only lands if the shot selection issues become chronic and the perimeter shot stays inconsistent.\n\nBottom line: Dybantsa is the right pick if you're risk-averse at #1. He's the second pick on my board because Peterson's offensive ceiling, when healthy, is higher and his shot-making package is more singular. But the gap is small enough that it could flip on a single medical report, and I wouldn't argue against any team that takes Dybantsa #1 on the basis that the floor outcomes are more appealing. In a class where the top three are this tight, both calls are defensible."
+    },
     "Darryn Peterson": {
       "scoutNarrative": {
         "ceiling":  "The body cooperates, the cramping was creatine-driven and fully resolvable, and the high school playmaking carries over. He becomes a 28-6-5 primary engine with a Mamba-tier mid-range game, lockdown perimeter defense at his position, and the killer instinct to anchor a contender for a decade.",
@@ -309,20 +366,17 @@
 
   "about": {
     "title": "About the Founder's Read",
-    "intro": "Prospera Draft HQ is a scouting workstation for the 2026 NBA Draft class. The platform itself — the Scout Desk, the Dashboard, the weighting system, the tier-call ladders — is built for YOU to do your own scouting. This 'Founder's Read' tab is the cherry on top: my own takes, separate from the platform's neutral data layer.",
+    "intro": "Prospera Draft HQ is a scouting workstation for the 2026 NBA Draft class. The platform — Scout Desk, Dashboard, weighting system, tier-call ladders — is built so YOU can do your own scouting. The Founder's Read is the cherry on top: my takes, kept separate from the platform's neutral data layer.",
     "voice": [
-      "I watch a lot of tape — college games, FIBA tournaments, pre-draft workouts. The takes here come from that.",
-      "I'm wrong sometimes. The point of the platform is that you don't have to take my word for it — your own scouting is the main event. Read mine if you want a second pair of eyes."
-    ],
-    "credentials": [
-      "Scouting tape since 2018",
-      "Built Prospera Draft HQ in 2026",
-      "Independent — not affiliated with any team or media outlet"
+      "I watch a lot of tape — HS and grassroots, college, FIBA, overseas, pre-draft workouts. The takes here come from that."
     ],
     "philosophy": [
       "Tape over numbers, but numbers as the check.",
       "Tier outcomes over consensus rank — rank is just a sorting heuristic.",
       "Hot takes are fine; pretending the takes are something other than takes is the problem."
+    ],
+    "credentials": [
+      "Independent — not affiliated with any team or media outlet."
     ]
   }
 }

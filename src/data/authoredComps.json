@@ -6,11 +6,11 @@
     "ajdybantsa": {
       "prospectName": "AJ Dybantsa",
       "ladder": {
-        "floor":   { "name": "RJ Barrett",      "tier": "Starter" },
-        "lowEnd":  { "name": "Andrew Wiggins",  "tier": "Starter" },
-        "middle":  { "name": "Brandon Miller",  "tier": "Star" },
-        "highEnd": { "name": "Jaylen Brown",    "tier": "Superstar" },
-        "ceiling": { "name": "Tracy McGrady",   "tier": "Hall of Famer" }
+        "floor":   { "name": "Michael Porter Jr.", "tier": "Role Player / Starter" },
+        "lowEnd":  { "name": "Brandon Ingram",     "tier": "Starter" },
+        "middle":  { "name": "Jaylen Brown+",      "tier": "All-Star" },
+        "highEnd": { "name": "Paul George",        "tier": "All-Star" },
+        "ceiling": { "name": "Tracy McGrady",      "tier": "Superstar" }
       }
     },
     "darrynpeterson": {
