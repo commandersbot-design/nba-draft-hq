@@ -4592,8 +4592,15 @@ const TraitsTab = ({ p }) => {
     <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 16 }} className="prospera-eval-grid">
       <div style={{ display: "grid", gap: 16 }}>
         <Section title="Trait Profile">
-          <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em", marginBottom: 14 }}>
-            8-AXIS EVALUATION TAXONOMY · 1–10 SCALE
+          <div style={{ fontSize: 13, color: T.textDim, marginBottom: 16, lineHeight: 1.55, maxWidth: 720 }}>
+            Eight trait grades on a <strong style={{ color: T.text, fontWeight: 600 }}>1–10 scale</strong>.
+            Anchor points: <span style={{ color: T.danger, fontWeight: 600 }}>1-2 Poor</span>
+            {" · "}<span style={{ color: T.warn, fontWeight: 600 }}>3-4 Below</span>
+            {" · "}<span style={{ color: T.textDim, fontWeight: 600 }}>5 Average</span>
+            {" · "}<span style={{ color: T.cyan, fontWeight: 600 }}>6-7 Plus</span>
+            {" · "}<span style={{ color: T.cyan, fontWeight: 600 }}>8 Elite</span>
+            {" · "}<span style={{ color: T.signal, fontWeight: 600 }}>9-10 Generational</span>.
+            Hover any trait name for what it measures.
           </div>
           {Object.keys(effectiveTraits9).length === 0 ? (
             <div style={{ fontSize: 12, color: T.textMute }}>No trait evaluation on file.</div>
@@ -4604,15 +4611,74 @@ const TraitsTab = ({ p }) => {
             const OFFENSE = ["Advantage Creation", "Shooting Gravity", "Passing Creation", "Off-Ball Value"];
             const DEFENSE = ["Defensive Versatility", "Scalability", "Processing Speed", "Decision Making"];
 
+            // Plain-language definitions surfaced as a hover tooltip on each
+            // trait label. First-time visitors can't be expected to know what
+            // "Scalability" or "Off-Ball Value" mean in our taxonomy.
+            const TRAIT_DEFS = {
+              "Advantage Creation":   "Can he generate an advantage for himself with the ball? Burst, handle, finishing through contact, getting to spots.",
+              "Shooting Gravity":     "Shooting ability + the spacing it creates. Pull-up, catch-and-shoot, deep range, how much defenders respect him off-ball.",
+              "Passing Creation":     "Ability to create assists for teammates. Vision, manipulation, delivery, kick-out reads.",
+              "Off-Ball Value":       "Contribution without the ball — cutting on time, screening, spacing, drawing weak-side help.",
+              "Defensive Versatility":"Range of defensive assignments he holds up against. Switchability, multi-position coverage.",
+              "Scalability":          "Lineup flexibility — can he play multiple roles and contexts without losing impact?",
+              "Processing Speed":     "How quickly he reads the floor and reacts — anticipation, off-ball IQ, recognition.",
+              "Decision Making":      "Quality of his choices with the ball — when to shoot vs pass vs reset, shot selection.",
+            };
+
+            // Grade tier label + color for each 1-10 value. Reinforces the
+            // anchor key in the subtitle: a "7" is "Plus", an "8" is "Elite",
+            // a "10" is "Generational". Color matches the anchor band so the
+            // pill reads at a glance.
+            const gradeTier = (n) => {
+              if (n == null) return null;
+              if (n >= 9)  return { label: "Generational", color: T.signal };
+              if (n >= 8)  return { label: "Elite",         color: T.cyan };
+              if (n >= 6)  return { label: "Plus",          color: T.cyan };
+              if (n >= 5)  return { label: "Average",       color: T.textDim };
+              if (n >= 3)  return { label: "Below",         color: T.warn };
+              return        { label: "Poor",          color: T.danger };
+            };
+
             const renderRow = (k, color) => {
               const v = effectiveTraits9[k];
               if (v == null) return null;
               const ovr = overrides.traits[k];
+              const tier = gradeTier(v);
+              const def = TRAIT_DEFS[k];
               return (
                 <div key={k}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8, gap: 8, flexWrap: "wrap" }}>
                     <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ fontSize: 16, color: T.text, fontWeight: 600, letterSpacing: "-0.005em" }}>{k}</span>
+                      <span
+                        title={def || undefined}
+                        style={{
+                          fontSize: 16,
+                          color: T.text,
+                          fontWeight: 600,
+                          letterSpacing: "-0.005em",
+                          cursor: def ? "help" : "default",
+                          borderBottom: def ? `1px dashed color-mix(in srgb, ${color} 45%, transparent)` : "none",
+                          paddingBottom: def ? 1 : 0,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 5,
+                        }}
+                      >
+                        {k}
+                        {def && (
+                          <span
+                            aria-hidden="true"
+                            style={{
+                              fontSize: 10,
+                              color: `color-mix(in srgb, ${color} 65%, transparent)`,
+                              fontWeight: 600,
+                              lineHeight: 1,
+                            }}
+                          >
+                            ⓘ
+                          </span>
+                        )}
+                      </span>
                       {ovr && (
                         <span
                           title={`Scout override: was ${ovr.system}/10, set to ${ovr.scout}/10`}
@@ -4631,7 +4697,26 @@ const TraitsTab = ({ p }) => {
                         </span>
                       )}
                     </span>
-                    <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      {tier && (
+                        <span
+                          title={`Grade tier · ${tier.label}`}
+                          style={{
+                            ...mono,
+                            fontSize: 9,
+                            letterSpacing: "0.16em",
+                            color: tier.color,
+                            border: `1px solid ${tier.color}`,
+                            background: `color-mix(in srgb, ${tier.color} 12%, transparent)`,
+                            padding: "2px 7px",
+                            textTransform: "uppercase",
+                            fontWeight: 700,
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {tier.label}
+                        </span>
+                      )}
                       {ovr && ovr.system != null && (
                         <span
                           style={{ ...mono, fontSize: 10, color: T.textMute, textDecoration: "line-through" }}
@@ -4695,8 +4780,12 @@ const TraitsTab = ({ p }) => {
 
       <div style={{ display: "grid", gap: 16 }}>
         <Section title="Risk Profile">
-          <div style={{ ...mono, fontSize: 9, color: T.textMute, letterSpacing: "0.12em", marginBottom: 12 }}>
-            8-DIMENSION RISK TAXONOMY
+          <div style={{ fontSize: 12, color: T.textDim, marginBottom: 14, lineHeight: 1.55 }}>
+            Eight risk dimensions graded
+            {" "}<span style={{ color: T.cyan, fontWeight: 600 }}>Watch</span>
+            {" · "}<span style={{ color: T.warn, fontWeight: 600 }}>Real Risk</span>
+            {" · "}<span style={{ color: T.danger, fontWeight: 600 }}>Critical</span>.
+            Anything not flagged is Clear.
           </div>
           <div style={{ display: "grid", gap: 6 }}>
             {flaggedRisks.length === 0 && (
@@ -4750,10 +4839,25 @@ const TraitsTab = ({ p }) => {
 
         {p.tier && (
           <Section title="Model Output">
+            <div style={{ fontSize: 12, color: T.textDim, marginBottom: 10, lineHeight: 1.55 }}>
+              Where the model places this prospect. Hover each label for what the number means.
+            </div>
             <div style={{ display: "grid", gap: 10 }}>
-              <Row k="Tier" v={p.tier} />
-              <Row k="Personal Score" v={displayScore(p) != null ? displayScore(p).toFixed(2) : "—"} />
-              <Row k="Percentile" v={p.percentile != null ? `${p.percentile}` : "—"} />
+              <Row
+                k="Tier"
+                v={p.tier}
+                tooltip="Outcome tier from the model. Tier 1 (Franchise) is the rarest — generational / All-NBA. Tier 5 (Developmental) is fringe NBA / G-League. Used as the headline grade across the site."
+              />
+              <Row
+                k="Personal Score"
+                v={displayScore(p) != null ? displayScore(p).toFixed(2) : "—"}
+                tooltip="0–100 prospect score under your active Custom Weights. Open the Weights drawer (top nav) to change which categories count more. When custom weights are off, this falls back to the computed pipeline score."
+              />
+              <Row
+                k="Percentile"
+                v={p.percentile != null ? `${p.percentile}` : "—"}
+                tooltip="Where this prospect ranks within the 2026 class on the composite score. 100 = top of the class · 50 = median · 0 = bottom."
+              />
             </div>
             {/* Weighted Trait + Risk Penalty used to render here. They're
                 pipeline intermediates rather than scout-readable signals —
@@ -5019,10 +5123,37 @@ const NotesWorkspacePage = ({ notes = {}, onSelectPlayer, onDeleteNote }) => {
   );
 };
 
-const Row = ({ k, v }) => (
-  <div style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: `1px solid ${T.borderSoft}` }}>
-    <span style={{ fontSize: 12, color: T.textDim }}>{k}</span>
-    <span style={{ ...mono, fontSize: 12, color: T.text }}>{v}</span>
+const Row = ({ k, v, tooltip }) => (
+  <div style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: `1px solid ${T.borderSoft}`, gap: 12 }}>
+    <span
+      title={tooltip || undefined}
+      style={{
+        fontSize: 12,
+        color: T.textDim,
+        cursor: tooltip ? "help" : "default",
+        borderBottom: tooltip ? `1px dashed color-mix(in srgb, ${T.cyan} 45%, transparent)` : "none",
+        paddingBottom: tooltip ? 1 : 0,
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 4,
+      }}
+    >
+      {k}
+      {tooltip && (
+        <span
+          aria-hidden="true"
+          style={{
+            fontSize: 9,
+            color: `color-mix(in srgb, ${T.cyan} 65%, transparent)`,
+            fontWeight: 600,
+            lineHeight: 1,
+          }}
+        >
+          ⓘ
+        </span>
+      )}
+    </span>
+    <span style={{ ...mono, fontSize: 12, color: T.text, textAlign: "right" }}>{v}</span>
   </div>
 );
 
