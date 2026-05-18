@@ -3928,6 +3928,11 @@ const METRIC_TOOLTIPS = {
 const AdvancedTable = ({ title, data, percentiles = null }) => {
   if (!data) return null;
   const entries = Object.entries(data);
+  // Does this table have ANY metric with a tooltip? If so we show a small
+  // "hover any label for the definition" hint in the header — makes the
+  // tooltip system discoverable instead of relying on the user to find
+  // the dotted underline by accident.
+  const anyTooltips = entries.some(([k]) => METRIC_TOOLTIPS[k]);
   return (
     <div style={{ background: T.surface, border: `1px solid ${T.border}`, boxShadow: `inset 3px 0 0 ${T.cyan}` }}>
       <div
@@ -3935,9 +3940,29 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
           padding: "12px 16px 12px 18px",
           borderBottom: `1px solid ${T.border}`,
           background: T.surface2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 12,
+          flexWrap: "wrap",
         }}
       >
         <Label style={{ color: T.cyan, letterSpacing: "0.18em", fontWeight: 700, fontSize: 11 }}>{title}</Label>
+        {anyTooltips && (
+          <span
+            style={{
+              ...mono,
+              fontSize: 8,
+              letterSpacing: "0.16em",
+              color: T.textMute,
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+            title="Hover any metric label below for a plain-language definition."
+          >
+            Hover ⓘ for definitions
+          </span>
+        )}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${entries.length}, 1fr)` }}>
         {entries.map(([k, v], i) => {
@@ -3958,17 +3983,35 @@ const AdvancedTable = ({ title, data, percentiles = null }) => {
                 style={{
                   ...mono,
                   fontSize: 10,
-                  color: T.textMute,
+                  color: tooltip ? T.textDim : T.textMute,
                   letterSpacing: "0.2em",
                   fontWeight: 700,
                   textTransform: "uppercase",
                   cursor: tooltip ? "help" : "default",
-                  borderBottom: tooltip ? `1px dotted ${T.borderSoft}` : "none",
-                  display: "inline-block",
-                  paddingBottom: tooltip ? 1 : 0,
+                  borderBottom: tooltip ? `1px dashed color-mix(in srgb, ${T.cyan} 45%, transparent)` : "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 4,
+                  paddingBottom: tooltip ? 2 : 0,
+                  transition: "color 0.12s",
                 }}
+                onMouseEnter={(e) => { if (tooltip) e.currentTarget.style.color = T.cyan; }}
+                onMouseLeave={(e) => { if (tooltip) e.currentTarget.style.color = T.textDim; }}
               >
                 {k}
+                {tooltip && (
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      fontSize: 9,
+                      color: "color-mix(in srgb, var(--prospera-cyan) 65%, transparent)",
+                      fontWeight: 600,
+                      lineHeight: 1,
+                    }}
+                  >
+                    ⓘ
+                  </span>
+                )}
               </div>
               <div
                 style={{
